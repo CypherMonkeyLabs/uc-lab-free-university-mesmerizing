@@ -150,7 +150,8 @@ Also: 🎓 [Ardham Shastra](https://github.com/cipher0x9/ardham-shastra) · See 
 - Lab safely · pin official vendor docs before production changes  
 - Be kind to learners — including yourself  
 
-**[HOW-TO-GET.md](./HOW-TO-GET.md)** · **[START-HERE.md](./START-HERE.md)** · **[docs/FAQ.md](./docs/FAQ.md)** · **[SIBLINGS.md](./SIBLINGS.md)**
+**[HOW-TO-GET.md](./HOW-TO-GET.md)** · **[START-HERE.md](./START-HERE.md)** · **[docs/FAQ.md](./docs/FAQ.md)** · **[SIBLINGS.md](./SIBLINGS.md)**  
+📚 **[UC & Contact Center Session Vault · Oct 2026](./vault/uc-contact-center-session-vault-2026-10.md)** — Cisco Live, Ignite, re:Invent, Genesys, and Zoom session links
 
 ---
 
