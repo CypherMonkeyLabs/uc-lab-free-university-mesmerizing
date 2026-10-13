@@ -115,4 +115,4 @@ Curated, links-only list of public conference sessions, vendor docs, and worksho
 
 ---
 
-*Last updated: October 2026. Back to [README](../README.md).*
+*Last updated: October 2026. Back to [README](../../README.md).*
