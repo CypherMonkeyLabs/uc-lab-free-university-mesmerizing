@@ -1,84 +1,38 @@
-# How to get UC Lab Free University
+# How to get the campus
 
-**No login required.**  
-**No API keys.**  
-**Educational only — MIT — no warranty.**
+No login. No API key. Educational material under the MIT license. No warranty.
 
----
+## Download (v21)
 
-## Recommended path ⭐
+1. Take [releases/uc-lab-free-university.html.zip](./releases/uc-lab-free-university.html.zip).
+2. Unzip it.
+3. Open `uc-lab-free-university.html` in Chrome, Safari, Edge, or Firefox.
 
-1. Open the release:  
-   https://github.com/cipher0x9/uc-lab-free-university-mesmerizing/releases/tag/v20.2-resources  
-2. Download **`v17-UNIVERSITY.html.zip`**  
-3. Unzip  
-4. Open **`v17-UNIVERSITY.html`** in **Chrome / Safari / Edge / Firefox**
+From a clone of this repo, open [university/v17-UNIVERSITY.html](./university/v17-UNIVERSITY.html). Same edition. Older filename.
 
-Direct file:  
-https://github.com/cipher0x9/uc-lab-free-university-mesmerizing/releases/download/v20.2-resources/v17-UNIVERSITY.html.zip
+## Phone and tablet
 
----
+| Step | What to do |
+|---|---|
+| 1 | Open the zip link in Chrome or Safari, the full app |
+| 2 | Download the zip |
+| 3 | Unzip it in Files on iPhone, or in your downloads folder |
+| 4 | Open the HTML file in Chrome or Safari |
+| 5 | Wait for the first load. 476 sections is a large page |
 
-## Phone & tablet
+If the page stays on "Opening" for a long time, try a laptop. Chat-app browsers are a poor place to open this file.
 
-| Step | Detail |
-|------|--------|
-| 1 | Open the download link in **Chrome or Safari full app** |
-| 2 | Download the **small campus zip** (not a multi-hundred-MB archive) |
-| 3 | Unzip in **Files** (iOS) or your Downloads folder (Android) |
-| 4 | Tap the `.html` file → open in Chrome/Safari |
-| 5 | Wait for first load (full **632-section** curriculum) |
-
-**If you only see “Opening / Loading…” for a long time:**  
-wait up to a minute on older phones, or open the same file on a laptop first. Avoid in-app browsers.
-
----
-
-## Other paths
-
-### Whole repo ZIP (no Git)
-
-GitHub → green **Code** → **Download ZIP** → open `university/v17-UNIVERSITY.html`
-
-### Git clone
+## Clone
 
 ```bash
 git clone https://github.com/cipher0x9/uc-lab-free-university-mesmerizing.git
 cd uc-lab-free-university-mesmerizing
-open university/v17-UNIVERSITY.html
 ```
 
-### Linktree hub
+Then open `university/v17-UNIVERSITY.html`.
 
-https://linktr.ee/cyphermonkey
+## What you are opening
 
----
+Version 21 is the job: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, CCaaS platforms, E911, QoS, and troubleshooting. WebRTC is included for browser agents. The CUCM command line is included because the appliance shell is Linux.
 
-## Sibling — AI Lab Free University
-
-| | |
-|--|--|
-| Repo | https://github.com/cipher0x9/ai-lab-free-university-mesmerizing |
-| Campus zip | https://github.com/cipher0x9/ai-lab-free-university-mesmerizing/raw/main/zips/v2-UNIVERSITY.html.zip |
-
----
-
-## Size honesty
-
-| | Public free campus | Local power archives (optional on maintainer machine) |
-|--|-------------------|------------------------------------------------------|
-| Content | **Full 632 sections** (20.2-RESOURCES) | Huge recursive dumps |
-| Phone friendly | **Yes** | Usually **no** |
-| Default share | **Yes** | **No** |
-
-We package the **real curriculum** so it opens. Bigger files are not automatically better lessons.
-
----
-
-## Safety
-
-- Free educational MIT content  
-- Do not upload production dial plans or customer captures to issues  
-- Lab safely · pin vendor documentation for production  
-
-Be kind. Learn offline. Share freely for learning.
+The briefing deck sits beside the campus: [downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx](./downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx).

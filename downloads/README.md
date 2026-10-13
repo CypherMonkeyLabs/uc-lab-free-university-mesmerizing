@@ -1,10 +1,9 @@
 # Downloads
 
-Public shareable binaries that ship with the campus.
+| File | What it is | Open with |
+|---|---|---|
+| [Enterprise voice briefing](./Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx) | 62 slides on enterprise voice, contact center, and cloud migration | PowerPoint, Keynote, Google Slides, or LibreOffice |
+| [Campus](../university/v17-UNIVERSITY.html) | UC Lab v21. 476 sections. One offline HTML file | Chrome, Safari, Edge, or Firefox |
+| [Campus zip](../releases/uc-lab-free-university.html.zip) | The same HTML, zipped for download | Unzip, then open the HTML file |
 
-| File | What | Open with |
-|------|------|-----------|
-| [`Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx`](./Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx) | **Enterprise Voice with Cisco** — Technologies, Contact Center & Cloud Migration · 62-slide UC technical briefing | PowerPoint / Keynote / Google Slides / LibreOffice |
-| [`../university/v17-UNIVERSITY.html`](../university/v17-UNIVERSITY.html) | Full offline UC Lab campus · 632 sections · v20.2-RESOURCES | Chrome / Safari / Edge / Firefox (**desktop best**) |
-
-Educational · free · MIT · not an official Cisco publication.
+Educational material. Not an official Cisco publication.

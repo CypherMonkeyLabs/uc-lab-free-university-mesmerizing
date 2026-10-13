@@ -1,164 +1,113 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/🌿_UC_Lab-Free_University-0F9B8E?style=for-the-badge&labelColor=0B1220" alt="UC Lab Free University"/>
-</p>
-
-<h1 align="center">🌿 UC Lab Free University</h1>
-
-<p align="center">
-  <strong>A free offline campus for Unified Communications & Contact Center</strong><br/>
-  Multi-vendor · path + proof · open in any full browser · share freely for learning
+  <img src="./docs/assets/hero.svg" alt="UC Lab Free University v21. Voice, UC, and contact center. One offline HTML file." width="100%"/>
 </p>
 
 <p align="center">
-  <a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing/releases/download/v20.2-resources/v17-UNIVERSITY.html.zip"><img src="https://img.shields.io/badge/⬇_Download-Campus_zip-0F9B8E?style=for-the-badge&labelColor=0B1220" alt="Download"/></a>
-  <a href="https://github.com/cipher0x9/ai-lab-free-university-mesmerizing"><img src="https://img.shields.io/badge/🧠_Sibling-AI_Lab_Free-6366F1?style=for-the-badge&labelColor=0B1220" alt="AI Lab"/></a>
-  <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge&labelColor=0B1220" alt="MIT"/></a>
+  <a href="./releases/uc-lab-free-university.html.zip"><img src="./docs/assets/btn-download.svg" alt="Download (v21)" height="48"/></a>
+  &nbsp;
+  <a href="./university/v17-UNIVERSITY.html"><img src="./docs/assets/btn-open.svg" alt="Open" height="48"/></a>
 </p>
+
+A free offline campus for people who run **voice, unified communications, and contact center** systems. The file is the course: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, the main CCaaS platforms, E911, QoS, and the troubleshooting habit that ties them together.
+
+Built by **CYPHER0X9**, a voice and UC engineer. Version **21**. One HTML file. No account, no install, no CDN.
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Sections-632_full_curriculum-0F9B8E?style=for-the-badge&labelColor=0B1220" alt="632"/>
-  <img src="https://img.shields.io/badge/Proof-LICC_·_Leg_·_ID_·_Counter_·_Capture-0F9B8E?style=for-the-badge&labelColor=0B1220" alt="LICC"/>
-  <img src="https://img.shields.io/badge/Open_in-Chrome_·_Safari_·_Edge_·_Firefox-22C55E?style=for-the-badge&labelColor=0B1220" alt="Browsers"/>
-  <img src="https://img.shields.io/badge/Mobile-Full_browser_OK-0F9B8E?style=for-the-badge&labelColor=0B1220" alt="Mobile"/>
+  <img src="./docs/assets/campus-home.png" alt="Campus home in the light theme, with the study rail and track list" width="100%"/>
 </p>
 
-<p align="center">
-  <img src="./docs/assets/preview.png" alt="UC Lab Free University - warm campus with mission control dashboard" width="100%"/>
-</p>
+## Tracks
 
----
+| Track | Sections | You can do this when you finish |
+|---|---:|---|
+| Start here | 6 | Explain a call with leg, identifier, counter, and capture |
+| SIP and media | 9 | Read a ladder and separate signaling from RTP |
+| CUCM and CUBE | 12 | Trace CSS, route pattern, dial-peer, and the SIP trunk |
+| Webex Calling and Teams Phone | 17 | Choose Calling Plan, Operator Connect, Direct Routing, or a local gateway, then prove it |
+| Contact center — UCCE and PCCE | 6 | Trace ingress, CVP, script, queue, Finesse, and CUIC |
+| CCaaS and UCaaS platforms | 105 | Follow a contact on Webex CC, Connect, Genesys, NICE, Five9, Flex, and the platforms you still meet |
+| Emergency calling | 3 | Prove location, ELIN or ERL, and the on-site notification |
+| Voice network and QoS | 16 | Mark and measure EF, use the CUCM CLI, and explain WebRTC only for browser agents |
+| Migrations | 61 | Dual-run a number, rehearse rollback, and leave evidence |
+| Troubleshooting | 112 | One hypothesis, one change, one evidence pack |
+| Evidence habits | 33 | Write the proof before you touch production |
+| Design notes | 35 | Read capacity, identity, recording, and failure domains |
+| Practice | 56 | Drill the same faults without a customer on the line |
+| Reference | 5 | Open the glossary and the official-doc index |
 
-## ✨ Latest build — v20.2 mesmerizing edition
+476 sections in the sidebar. The old bulk practicums, trading-turret track, Asterisk course, and generic machine-learning chapter are not in this edition.
 
-- **Mission Control dashboard** — study-momentum donut, curriculum-map bars, and the Study Loop diagram (Learn → Drill → Lab → Teach, LICC at the core)
-- **7 visual themes** with a swatch gallery — Warm · Night · Cobalt · Forest · Aurora · Sunset · Paper
-- **Export center** — section HTML · full app · Markdown · progress JSON · question-bank CSV · PDF print
-- **Command palette** ⌘K · live search · study badges · font scale · density · mobile-friendly
-- One heavy single file: `university/v17-UNIVERSITY.html` — 632 full sections · offline-first · zero CDN
+## Study order
 
----
-
-## Why this exists
-
-I have been in **Cisco voice and collaboration for 10+ years**.
-
-Certs, courses, and product screens helped — but I still felt unfinished when I needed:
-
-- real **Contact Center** and **gateway** depth  
-- **multi-vendor** clarity (jobs rarely hire one logo)  
-- a habit of **proof**, not “it looked fine on my phone”
-
-Some doors stayed closed. Some training never touched the hard edges.  
-So I built the free campus I wish someone had handed me — and I am sharing it with kindness.
-
-If it helps even one engineer feel less alone in this craft, it was worth the work.
-
----
-
-**All download links:** [DOWNLOADS.md](./DOWNLOADS.md)
-
-## Get it in 60 seconds (no Git needed)
-
-### ⭐ Download the campus zip
-
-**→ [v17-UNIVERSITY.html.zip](https://github.com/cipher0x9/uc-lab-free-university-mesmerizing/releases/download/v20.2-resources/v17-UNIVERSITY.html.zip)**
-
-1. Download the zip  
-2. Unzip  
-3. Open **`v17-UNIVERSITY.html`** in **Chrome, Safari, Edge, or Firefox**
-
-**Works offline. No account. No install. No API keys.**
-
-### How to open (please read once)
-
-| Device | What to do |
-|--------|------------|
-| **Laptop / desktop** | Best experience — unzip → double-click the HTML |
-| **Phone / tablet** | Use **Chrome or Safari full browser app** (not LinkedIn / Instagram / Telegram in-app browser) |
-| **iPhone** | Download zip in Safari/Chrome → **Files** app → unzip → tap HTML → Open in Chrome/Safari |
-| **First open on phone** | May take **10–30 seconds** while the full curriculum loads — wait for the campus, not a blank forever screen |
-
-> This is a **full browser web page**, not an App Store app. That is intentional: one file, offline, free.
-
----
-
-## What you get (nothing cut from the free curriculum)
-
-| | |
-|--|--|
-| **Campus** | `university/v17-UNIVERSITY.html` — **632 sections**, full multi-vendor curriculum |
-| **Briefing deck** | `downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx` — **62-slide** Enterprise Voice / CC / Cloud Migration technical briefing |
-| **Themes** | Warm · Night · Cobalt · Forest · Aurora · Sunset · Paper |
-| **Proof grammar** | **LICC** — Leg · ID · Counter · Capture |
-| **Mobile** | Menu drawer · safer boot · clearer loading tips (v17.1) |
-| **Resources** | Official Resources drawer on chapter hubs — curated, verified Cisco/Microsoft/AWS/Google/Twilio/IETF doc links |
-| **Sibling** | 🧠 [AI Lab Free University](https://github.com/cipher0x9/ai-lab-free-university-mesmerizing) |
-
-### LICC (learn this cold)
-
-| Letter | Meaning | Ask |
-|:--:|--|--|
-| **L** | **Leg** | Which call leg failed? |
-| **I** | **ID** | Which correlation / Call-ID joins the story? |
-| **C** | **Counter** | Which counter or KPI moved? |
-| **C** | **Capture** | What artifact proves it? |
-
-Inside: Cisco voice · CUBE · Teams · Webex · SBC · Contact Center · migrations · E911 · QoS · identity · evidence habits.
-
----
-
-## About file size (honest)
-
-| Pack | About | Use when |
-|------|--------|----------|
-| **Campus zip (~1.4 MB)** ⭐ | Full **632-section** HTML (~15 MB unzipped) | **Everyone** — phone + desktop |
-| Huge “godmode / infinite” archives | Recursive bulk, hard on phones | **Not** the public default |
-
-**We did not delete the free curriculum to make a small zip.**  
-The public file is the real 632-section campus (20.2-RESOURCES), packaged so friends’ phones and laptops can actually open it.
-
----
-
-## Clone (builders)
-
-```bash
-git clone https://github.com/cipher0x9/uc-lab-free-university-mesmerizing.git
-cd uc-lab-free-university-mesmerizing
-open university/v17-UNIVERSITY.html
-# optional: open the 62-slide briefing deck
-open downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx
+```mermaid
+flowchart LR
+  A[SIP ladder] --> B[CUCM and CUBE]
+  B --> C[Webex Calling or Teams Phone]
+  B --> D[UCCE or PCCE and CUIC]
+  C --> E[CCaaS platform you operate]
+  D --> E
+  B --> F[E911]
+  B --> G[QoS and the CUCM CLI]
+  E --> H[Troubleshooting]
+  F --> H
+  G --> H
 ```
 
----
-
-## Sibling pack — AI Lab Free University
-
-Same free-share spirit. Different domain (local + cloud AI, agents, evals, **RTMA** proof grammar).
-
-- Repo: https://github.com/cipher0x9/ai-lab-free-university-mesmerizing  
-- Zip: https://github.com/cipher0x9/ai-lab-free-university-mesmerizing/raw/main/zips/v2-UNIVERSITY.html.zip  
-
-See **[SIBLINGS.md](./SIBLINGS.md)**.
-
----
-
-## Safety & tone
-
-- Educational only · **MIT** license · no warranty  
-- No production secrets, customer data, or private dial plans  
-- Lab safely · pin official vendor docs before production changes  
-- Be kind to learners — including yourself  
-
-**[HOW-TO-GET.md](./HOW-TO-GET.md)** · **[START-HERE.md](./START-HERE.md)** · **[docs/FAQ.md](./docs/FAQ.md)** · **[SIBLINGS.md](./SIBLINGS.md)**  
-📚 **[UC & Contact Center Session Vault · Oct 2026](./vault/uc-contact-center-session-vault-2026-10.md)** — Cisco Live, Ignite, re:Invent, Genesys, and Zoom session links
-
----
-
-## Author
-
-**CYPHER0X9** · [@cipher0x9](https://github.com/cipher0x9)
+## Diagrams inside the file
 
 <p align="center">
-  <strong>Open · Learn · Prove · Pass it to one more engineer</strong><br/>
-  <em>Humble share. Real path. Free for learning.</em>
+  <img src="./docs/assets/campus-sip.png" alt="SIP ladder: INVITE, 100 Trying, 180 Ringing, 200 OK, ACK, RTP, BYE" width="78%"/>
 </p>
+
+<p align="center">
+  <img src="./docs/assets/campus-cube.png" alt="Signaling from phone to CUCM to CUBE to the PSTN, with RTP skipping CUCM" width="100%"/>
+</p>
+
+<p align="center">
+  <img src="./docs/assets/campus-routing.png" alt="Contact-center path from caller through CUBE, CVP, ICM, queue, and Finesse, with CUIC beside the path" width="78%"/>
+</p>
+
+## Open it
+
+1. **Download (v21):** [releases/uc-lab-free-university.html.zip](./releases/uc-lab-free-university.html.zip)
+2. Unzip. The file inside is `uc-lab-free-university.html`.
+3. **Open** it in Chrome, Safari, Edge, or Firefox. From this repo, the same campus is [university/v17-UNIVERSITY.html](./university/v17-UNIVERSITY.html). The filename is older than the edition. The title bar says v21.
+
+Desktop is the comfortable way to read it. A phone works in the full browser app after the file loads. In-app browsers from chat apps often fail on a file this size.
+
+| Also in the repo | What it is |
+|---|---|
+| [62-slide briefing](./downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx) | Enterprise voice, contact center, and cloud migration |
+| [How to get the file](./HOW-TO-GET.md) | Phone and desktop steps |
+| [Start here](./START-HERE.md) | First hour |
+| [FAQ](./docs/FAQ.md) | What this is, and what it is not |
+| [Session vault, Oct 2026](./vault/uc-contact-center-session-vault-2026-10.md) | Public conference and doc links |
+
+## Two topics that look out of place
+
+**WebRTC** stays because contact-center agent desktops and web soft clients send media from the browser. It is not a separate product track.
+
+**Linux** stays as the CUCM command line. CUCM, Unity Connection, IM and Presence, and Emergency Responder run on Cisco VOS. You use that shell to check NTP, replication, certificates, and disk. It is not a Linux administration course.
+
+## Proof habit
+
+| Letter | Meaning | Question |
+|---|---|---|
+| L | Leg | Which hop failed? |
+| I | Identifier | Which Call-ID, RouterCallKey, or interaction id joins the logs? |
+| C | Counter | Which platform counter moved? |
+| C | Capture | Which ladder, packet capture, CLI output, or CUIC interval proves it? |
+
+## Light and dark
+
+<p align="center">
+  <img src="./docs/assets/campus-dark.png" alt="The same campus home in the dark theme" width="100%"/>
+</p>
+
+The palette is teal `#0F9B8E` on navy `#0B1220`, with amber for media and warnings. The header theme control switches light and dark. Nothing is loaded from a CDN.
+
+## License
+
+Educational material under the [MIT license](./LICENSE). Not an official Cisco, Microsoft, Google, Amazon, or Genesys publication. Check the vendor's current document before you change production.
+
+**CYPHER0X9** · [github.com/cipher0x9](https://github.com/cipher0x9)
