@@ -1,82 +1,30 @@
-# 🌿 Start here — UC Lab Free University
+# Start here
 
-Welcome. This is a **free** multi-vendor UC & Contact Center campus — offline, browser-based, built to be shared with kindness.
+UC Lab Free University is an offline campus for voice, unified communications, and contact center work. Version 21. One HTML file.
 
-| Want | Go |
-|------|-----|
-| **Download / open steps** | **[HOW-TO-GET.md](./HOW-TO-GET.md)** |
-| **Both free universities** | **[SIBLINGS.md](./SIBLINGS.md)** |
-| **All links** | https://linktr.ee/cyphermonkey |
+| You want | Go |
+|---|---|
+| The file | [Download (v21)](./releases/uc-lab-free-university.html.zip) or [open it](./university/v17-UNIVERSITY.html) |
+| Steps for a phone | [HOW-TO-GET.md](./HOW-TO-GET.md) |
+| Every public link in this repo | [DOWNLOADS.md](./DOWNLOADS.md) |
+| Questions about what this is | [docs/FAQ.md](./docs/FAQ.md) |
 
----
+## First hour inside the campus
 
-## 1) Open the campus
+1. Read the SIP ladder on the home page until you can point at signaling and at RTP separately.
+2. Open **CUCM** and **CUBE**. Draw phone, subscriber, trunk, CUBE, and carrier. Mark which boxes carry audio.
+3. Open **UCCE** and **CUIC**. The report sits beside the call. It is not the call.
+4. Open **E911** and **QoS** before you treat them as someone else's job.
+5. On the next fault you touch, write one leg, one identifier, one counter, and one capture before you change anything.
 
-Inside the HTML: use the sidebar **Start here** rail (13 chapter hubs). Home opens with a nest map, call-path diagram, LICC study loop, and a first-hour walk. Every section also shows a compact flow plus honest port/protocol chips. The 632 sections sit under those hubs — do not start by scrolling the full list.
+The sidebar is 14 tracks and 476 sections. Use the study rail. Do not start by scrolling the full list.
 
-**Latest local build:** `20.2-RESOURCES` · **632 sections** · open `university/v17-UNIVERSITY.html`
+**WebRTC** is in the list because browser agent desktops use it. **CUCM CLI** is in the list because the server shell is Linux, and that is how you check time, replication, and certificates.
 
+## Browser
 
-**Briefing deck (PPTX, 62 slides):** [`downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx`](./downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx)  
+Use Chrome, Safari, Edge, or Firefox. Use the full browser app on a phone, not the browser built into a chat application. The first open on a phone can take a little while.
 
-**Download:** [v17-UNIVERSITY.html.zip](https://github.com/cipher0x9/uc-lab-free-university-mesmerizing/releases/download/v20.2-resources/v17-UNIVERSITY.html.zip)
+## Safety
 
-Or from a clone:
-
-```bash
-git clone https://github.com/cipher0x9/uc-lab-free-university-mesmerizing.git
-cd uc-lab-free-university-mesmerizing
-open university/v17-UNIVERSITY.html
-```
-
-### Browser rules (important)
-
-- Use **Chrome, Safari, Edge, or Firefox** — the **full browser app**  
-- **Do not** rely on LinkedIn / Instagram / Telegram **in-app** browsers  
-- **Desktop** = smoothest  
-- **Phone** = OK after load; first open may take 10–30 seconds  
-- On iPhone: zip → **Files** → open HTML in Chrome/Safari  
-
----
-
-## 2) Learn LICC cold
-
-**LICC** = **L**eg · **I**D · **C**ounter · **C**apture  
-
-If you cannot explain LICC without notes, stay with fundamentals a little longer.
-
----
-
-## 3) Suggested path
-
-1. Call path thinking (end-to-end before buttons)  
-2. Signaling vs media  
-3. Edge / SBC  
-4. Multi-vendor braid (Cisco + Teams + Webex + CC)  
-5. Migrations · E911 · rollback  
-6. Evidence labs — write LICC on every incident  
-7. Chapter hubs now show an **Official Resources** drawer — curated, verified links to Cisco/Microsoft/AWS/Google/Twilio/IETF docs  
-8. When ready — open sibling **AI Lab**  
-
----
-
-## 4) Optional extras
-
-- Sibling AI: https://github.com/cipher0x9/ai-lab-free-university-mesmerizing  
-
----
-
-## 5) Safety
-
-Educational only · MIT · no warranty  
-No secrets / customer data  
-Lab safely · pin vendor docs for production  
-
----
-
-<p align="center"><em>Go steady. Keep proof. Share with one more engineer.</em></p>
-
-## Also
-
-- [docs/FAQ.md](./docs/FAQ.md)
-- [SIBLINGS.md](./SIBLINGS.md)
+Educational only. MIT license. No warranty. Do not paste production dial plans, captures, or customer names into an issue. Confirm the vendor document before a production change.

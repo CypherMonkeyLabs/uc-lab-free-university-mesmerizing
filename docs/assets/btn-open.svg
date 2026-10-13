@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="48" viewBox="0 0 140 48" role="img" aria-label="Open the campus">
+  <rect width="140" height="48" rx="10" fill="#0B1220"/>
+  <rect x="1" y="1" width="138" height="46" rx="9" fill="none" stroke="#2DD4BF" stroke-width="2"/>
+  <text x="70" y="30" text-anchor="middle" fill="#F4F7FB" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16" font-weight="700">Open</text>
+</svg>

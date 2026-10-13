@@ -1,38 +1,14 @@
-# Sibling free universities
+# Related campus
 
-Same author · same safety bar · three free campuses · one hub.
+UC Lab is the voice, UC, and contact center campus. AI Lab is a separate free campus by the same author.
 
-| | 🌿 **UC Lab** | 🧠 **AI Lab** | 🎓 **Ardham Shastra** |
-|--|--|--|--|
-| **Who** | Voice / UC / Contact Center | AI learners & builders | Mastery-method / learning science |
-| **Repo** | [uc-lab-free-university](https://github.com/cipher0x9/uc-lab-free-university-mesmerizing) | [ai-lab-free-university](https://github.com/cipher0x9/ai-lab-free-university-mesmerizing) | [ardham-shastra](https://github.com/cipher0x9/ardham-shastra) |
-| **Open** | `v17-UNIVERSITY.html` | `v2-UNIVERSITY.html` | `v1-ARDHAM-SHASTRA.html` |
-| **Latest tag** | `v20.2-resources` · 632 sections | `v2` campus · 247 sections | `v5-mastery` |
-| **Proof** | **LICC** Leg·ID·Counter·Capture | **RTMA** Run·Trace·Metric·Artifact | RTMA + LICC habits + Śikṣā loop |
-| **Browser** | Chrome · Safari · Edge · Firefox | Same | Same |
+| | UC Lab | AI Lab |
+|---|---|---|
+| Subject | Voice, UC, contact center | Local and cloud AI |
+| Repo | [uc-lab-free-university-mesmerizing](https://github.com/cipher0x9/uc-lab-free-university-mesmerizing) | [ai-lab-free-university-mesmerizing](https://github.com/cipher0x9/ai-lab-free-university-mesmerizing) |
+| Open | `university/v17-UNIVERSITY.html` (edition v21) | `v2-UNIVERSITY.html` |
+| Proof habit | Leg, identifier, counter, capture | Run, trace, metric, artifact |
 
-**Campus zips**
+They do not replace each other.
 
-- UC: https://github.com/cipher0x9/uc-lab-free-university-mesmerizing/releases/download/v20.2-resources/v17-UNIVERSITY.html.zip  
-- AI: https://github.com/cipher0x9/ai-lab-free-university-mesmerizing/raw/main/zips/v2-UNIVERSITY.html.zip  
-- Ardham: https://github.com/cipher0x9/ardham-shastra/releases/download/v5-mastery/v1-ARDHAM-SHASTRA.html.zip  
-
-Hub: https://linktr.ee/cyphermonkey
-
-## Shared operator habit
-
-```text
-UC path proof:  Leg → ID → Counter → Capture
-AI build proof: Run → Trace · Metric → Artifact
-Mastery loop:   Intend → Practice → Recall → Space → Teach
-```
-
-Voice learners transfer isolation skills into AI voice pipelines.  
-AI learners transfer eval discipline into UC regression packs.  
-Ardham learners apply method to either domain.
-
-Neither sibling overwrites the other. All remain free, offline-readable, MIT.
-
-## Safety (all)
-
-Educational · MIT · no warranty · no secrets · lab safely · be kind
+Educational material. MIT license. No warranty.
