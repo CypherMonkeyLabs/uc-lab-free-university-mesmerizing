@@ -1,10 +1,11 @@
 # Downloads
 
-Public shareable binaries that ship with the campus.
+| File | What it is | Open with |
+|------|------------|-----------|
+| [`Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx`](./Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx) | Enterprise Voice with Cisco — technologies, contact center, and cloud migration. 62 slides. | PowerPoint, Keynote, LibreOffice |
+| [`../campus/uc-lab-free-university.html`](../campus/uc-lab-free-university.html) | Full offline campus. 632 sections. | Chrome, Safari, Edge, Firefox |
+| [`../releases/uc-lab-free-university.html.zip`](../releases/uc-lab-free-university.html.zip) | The campus, packed. Unzip to `uc-lab-free-university.html`. | Same browsers |
 
-| File | What | Open with |
-|------|------|-----------|
-| [`Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx`](./Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx) | **Enterprise Voice with Cisco** — Technologies, Contact Center & Cloud Migration · 62-slide UC technical briefing | PowerPoint / Keynote / Google Slides / LibreOffice |
-| [`../university/v17-UNIVERSITY.html`](../university/v17-UNIVERSITY.html) | Full offline UC Lab campus · 632 sections · v20.2-RESOURCES | Chrome / Safari / Edge / Firefox (**desktop best**) |
+Educational, free, MIT. This is not an official Cisco publication.
 
-Educational · free · MIT · not an official Cisco publication.
+After you edit the deck, run `python3 scripts/scrub-pptx-metadata.py` from the repo root. See [docs/REMIX.md](../docs/REMIX.md).
