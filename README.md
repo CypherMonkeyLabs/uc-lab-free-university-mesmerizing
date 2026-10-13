@@ -5,22 +5,21 @@
 <h1 align="center">🌿 UC Lab Free University</h1>
 
 <p align="center">
-  <strong>A free offline campus for Unified Communications &amp; Contact Center</strong><br/>
+  <strong>A free offline campus for Unified Communications & Contact Center</strong><br/>
   Multi-vendor · path + proof · open in any full browser · share freely for learning
 </p>
 
 <p align="center">
   <a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing/releases/download/v20.2-resources/v17-UNIVERSITY.html.zip"><img src="https://img.shields.io/badge/⬇_Download-Campus_zip-0F9B8E?style=for-the-badge&labelColor=0B1220" alt="Download"/></a>
   <a href="https://github.com/cipher0x9/ai-lab-free-university-mesmerizing"><img src="https://img.shields.io/badge/🧠_Sibling-AI_Lab_Free-6366F1?style=for-the-badge&labelColor=0B1220" alt="AI Lab"/></a>
-  <a href="https://linktr.ee/cyphermonkey"><img src="https://img.shields.io/badge/🔗_Hub-Linktree-E8820C?style=for-the-badge&labelColor=0B1220" alt="Linktree"/></a>
-  <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-159947?style=for-the-badge&labelColor=0B1220" alt="MIT"/></a>
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge&labelColor=0B1220" alt="MIT"/></a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Sections-632_full_curriculum-38BDF8?style=flat-square&labelColor=0B1220" alt="632"/>
-  <img src="https://img.shields.io/badge/Proof-LICC_·_Leg_·_ID_·_Counter_·_Capture-F59E0B?style=flat-square&labelColor=0B1220" alt="LICC"/>
-  <img src="https://img.shields.io/badge/Open_in-Chrome_·_Safari_·_Edge_·_Firefox-22C55E?style=flat-square&labelColor=0B1220" alt="Browsers"/>
-  <img src="https://img.shields.io/badge/Mobile-Full_browser_OK-A78BFA?style=flat-square&labelColor=0B1220" alt="Mobile"/>
+  <img src="https://img.shields.io/badge/Sections-632_full_curriculum-0F9B8E?style=for-the-badge&labelColor=0B1220" alt="632"/>
+  <img src="https://img.shields.io/badge/Proof-LICC_·_Leg_·_ID_·_Counter_·_Capture-0F9B8E?style=for-the-badge&labelColor=0B1220" alt="LICC"/>
+  <img src="https://img.shields.io/badge/Open_in-Chrome_·_Safari_·_Edge_·_Firefox-22C55E?style=for-the-badge&labelColor=0B1220" alt="Browsers"/>
+  <img src="https://img.shields.io/badge/Mobile-Full_browser_OK-0F9B8E?style=for-the-badge&labelColor=0B1220" alt="Mobile"/>
 </p>
 
 <p align="center">
@@ -139,7 +138,7 @@ Same free-share spirit. Different domain (local + cloud AI, agents, evals, **RTM
 - Repo: https://github.com/cipher0x9/ai-lab-free-university-mesmerizing  
 - Zip: https://github.com/cipher0x9/ai-lab-free-university-mesmerizing/raw/main/zips/v2-UNIVERSITY.html.zip  
 
-Also: 🎓 [Ardham Shastra](https://github.com/cipher0x9/ardham-shastra) · See **[SIBLINGS.md](./SIBLINGS.md)**.
+See **[SIBLINGS.md](./SIBLINGS.md)**.
 
 ---
 
@@ -157,8 +156,7 @@ Also: 🎓 [Ardham Shastra](https://github.com/cipher0x9/ardham-shastra) · See 
 
 ## Author
 
-**CYPHER0X9** · [@cipher0x9](https://github.com/cipher0x9)  
-Hub: [linktr.ee/cyphermonkey](https://linktr.ee/cyphermonkey)
+**CYPHER0X9** · [@cipher0x9](https://github.com/cipher0x9)
 
 <p align="center">
   <strong>Open · Learn · Prove · Pass it to one more engineer</strong><br/>
