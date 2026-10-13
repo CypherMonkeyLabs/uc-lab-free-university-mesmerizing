@@ -1,53 +1,58 @@
-# FAQ — UC Lab Free University
+# FAQ
 
-**Last updated:** 2026-08-10
+**Last updated:** October 2026
 
 ## What is this?
 
-A free, offline browser campus for **Unified Communications and Contact Center** learning. Multi-vendor. Proof-first. No account required.
+A free, offline browser campus for Unified Communications and Contact Center. Multi-vendor. Proof-first. No account.
 
 ## How do I open it?
 
-1. Download [v17-UNIVERSITY.html.zip](https://github.com/cipher0x9/uc-lab-free-university-mesmerizing/releases/download/v20.2-resources/v17-UNIVERSITY.html.zip)
-2. Unzip
-3. Open `v17-UNIVERSITY.html` in **Chrome, Safari, Edge, or Firefox** (full browser app — not LinkedIn/Telegram in-app browsers)
+1. Download [the campus zip](../releases/uc-lab-free-university.html.zip).
+2. Unzip it.
+3. Open `uc-lab-free-university.html` in Chrome, Safari, Edge, or Firefox.
 
-Latest tag: **`v20.2-resources`** · **632 sections** · ~15 MB HTML.
+The file in the repo is [`campus/uc-lab-free-university.html`](../campus/uc-lab-free-university.html). It is the 20.2-RESOURCES curriculum, 632 sections, with the October 2026 study note on the home page.
 
-## Does it work on phones?
+Older instructions say `v17-UNIVERSITY.html`. That was the previous filename for this campus.
 
-Yes, in a full browser. First load can take 10–30 seconds for the full **632-section** curriculum. Desktop is smoother.
+## Does it work on a phone?
+
+Yes, in the Chrome or Safari app. The first load can take 10–30 seconds. Desktop is smoother. Steps are in [HOW-TO-USE](./HOW-TO-USE.md).
 
 ## Is there a PDF textbook?
 
-There is no separate multi-hundred-page PDF book on purpose. The campus is a single offline HTML university.
+The campus is the book.
 
-- **Primary:** open the HTML campus
-- **Briefing deck:** [62-slide PPTX](https://github.com/cipher0x9/uc-lab-free-university-mesmerizing/releases/download/v20.2-resources/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx) (Enterprise Voice · CC · Cloud Migration)
-- **Print/PDF a page:** use your browser **Print → Save as PDF** on any section
-- **Official vendor docs:** use the in-campus **Official Resources** drawer (verified links; campus still boots offline)
+- Open the HTML.
+- Brief from the [62-slide PPTX](../downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx).
+- Print any section with the browser's Print → Save as PDF.
+- Official vendor documents are linked from the in-campus Resources drawer. The campus still boots when those sites are unreachable.
 
-## Is this official Cisco / Microsoft training?
+## Is this official Cisco or Microsoft training?
 
-No. Educational free share by CYPHER0X9. Always pin **official vendor documentation** before production changes.
+It is a free educational share by CYPHER0X9. Pin the official vendor document before a production change.
 
 ## What is LICC?
 
-**L**eg · **I**D · **C**ounter · **C**apture — the proof grammar for call-path troubleshooting. See the campus and curriculum packs.
+**L**eg · **I**D · **C**ounter · **C**apture. The proof grammar for a call path. Learn it on `method` inside the campus.
 
 ## Why multi-vendor?
 
-Real jobs rarely hire one logo forever. Learn the call path so you can survive dual-run migrations and interop.
+Jobs move across logos. The call path is the thing that survives a dual-run: Cisco, Webex, Teams, Amazon Connect, Genesys, Zoom.
 
-## Sibling campuses?
+## Where is the 30-day plan?
 
-- 🧠 [AI Lab Free University](https://github.com/cipher0x9/ai-lab-free-university-mesmerizing) · zip: [v2 campus](https://github.com/cipher0x9/ai-lab-free-university-mesmerizing/raw/main/zips/v2-UNIVERSITY.html.zip)
-- 🎓 [Ardham Shastra](https://github.com/cipher0x9/ardham-shastra) · zip: [v5-mastery](https://github.com/cipher0x9/ardham-shastra/releases/download/v5-mastery/v1-ARDHAM-SHASTRA.html.zip)
+[HOW-TO-USE](./HOW-TO-USE.md) covers the day-by-day path, interview prep, and a 90-minute class.
 
-## Can I use this at work / school?
+## Sibling campus?
 
-MIT licensed for learning and reuse. Do not paste secrets. Do not treat it as a production runbook without vendor validation.
+[AI Lab Free University](https://github.com/cipher0x9/ai-lab-free-university-mesmerizing) is the other public campus. Its zip is [v2-UNIVERSITY.html.zip](https://github.com/cipher0x9/ai-lab-free-university-mesmerizing/raw/main/zips/v2-UNIVERSITY.html.zip). See [SIBLINGS](./SIBLINGS.md).
+
+## Can I use this at work or school?
+
+The MIT license allows reuse for learning. Leave secrets and customer data out. Treat it as study material, and validate production changes against vendor docs.
 
 ## How do I contribute?
 
-Open an issue on GitHub. Prefer small, evidence-backed curriculum improvements and broken-link fixes.
+Open an issue, or read [CONTRIBUTING](../CONTRIBUTING.md) and [REMIX](./REMIX.md).

@@ -10,6 +10,7 @@ secrets/
 # never commit huge local archives
 university/v16-TRANSCEND.html
 university/full-archive-optional/
+campus/full-archive-optional/
 *.html.gz
 !releases/*.zip
 
