@@ -1,0 +1,178 @@
+[
+ {
+  "title": "Both sides show a 200 OK. The caller hears silence.",
+  "choices": [
+   [
+    "RTP or the address in SDP. Capture both media directions.",
+    true
+   ],
+   [
+    "Digit analysis failed, so rebuild the CSS.",
+    false
+   ],
+   [
+    "CUIC stopped, so the audio stopped.",
+    false
+   ],
+   [
+    "The phone button template is wrong.",
+    false
+   ]
+  ],
+  "why": "Signaling already succeeded. The next proof is the media address, port, codec, and whether packets arrive both ways."
+ },
+ {
+  "title": "The carrier ladder shows 404. The phone itself is registered.",
+  "choices": [
+   [
+    "The pattern or dial-peer on the hop that sent 404.",
+    true
+   ],
+   [
+    "A factory reset of every phone.",
+    false
+   ],
+   [
+    "Finesse wrap-up codes.",
+    false
+   ],
+   [
+    "The phone's wallpaper.",
+    false
+   ]
+  ],
+  "why": "404 is that hop saying it has no destination. Read the request URI on the leg that rejected it."
+ },
+ {
+  "title": "The agent phone rings. Finesse stays blank.",
+  "choices": [
+   [
+    "PG, CTI, and the desktop, not the PSTN leg you already proved.",
+    true
+   ],
+   [
+    "The carrier codec list.",
+    false
+   ],
+   [
+    "NTP on the public web site.",
+    false
+   ],
+   [
+    "The queue's greeting WAV.",
+    false
+   ]
+  ],
+  "why": "The desktop event is a different path from the INVITE that made the phone ring."
+ },
+ {
+  "title": "Users dial 9 and get reorder. Internal extensions work.",
+  "choices": [
+   [
+    "The line CSS cannot see the PSTN partition, or no route pattern matches.",
+    true
+   ],
+   [
+    "SRTP must be disabled globally.",
+    false
+   ],
+   [
+    "CUIC needs a new report.",
+    false
+   ],
+   [
+    "The handset volume.",
+    false
+   ]
+  ],
+  "why": "Internal success means registration and the phone are alive. The outside pattern is a different partition and route."
+ },
+ {
+  "title": "An emergency call connects, and the dispatch address is the headquarters.",
+  "choices": [
+   [
+    "Location discovery. The 200 OK did not check the civic address.",
+    true
+   ],
+   [
+    "A new MOH file.",
+    false
+   ],
+   [
+    "A longer SIP session timer.",
+    false
+   ],
+   [
+    "More DSCP classes.",
+    false
+   ]
+  ],
+  "why": "The dialog completed. The location object that was sent is a separate fact, often a stale port, subnet, or VPN view."
+ },
+ {
+  "title": "Voice calls work. Fax calls negotiate then fail.",
+  "choices": [
+   [
+    "The T.38 or fax pass-through switchover, not the user's CSS.",
+    true
+   ],
+   [
+    "The hunt logout button.",
+    false
+   ],
+   [
+    "A CSS with only the emergency partition.",
+    false
+   ],
+   [
+    "Finesse reason codes.",
+    false
+   ]
+  ],
+  "why": "Fax often starts as audio and then re-invites into an image codec. That second negotiation can fail while voice never tries it."
+ },
+ {
+  "title": "Voice is marked EF and still chops when backups run.",
+  "choices": [
+   [
+    "The queue. EF is not a priority queue by itself.",
+    true
+   ],
+   [
+    "A new directory number length.",
+    false
+   ],
+   [
+    "More route filters.",
+    false
+   ],
+   [
+    "A second Call-ID format.",
+    false
+   ]
+  ],
+  "why": "Prove the mark on the wire and prove which queue the congested interface actually served."
+ },
+ {
+  "title": "Webex Calling local-gateway calls fail the morning after a certificate expires.",
+  "choices": [
+   [
+    "The TLS certificate on the gateway trunk, before you redraw the dial plan.",
+    true
+   ],
+   [
+    "A new calling search space for every user.",
+    false
+   ],
+   [
+    "Disable emergency notification.",
+    false
+   ],
+   [
+    "Turn off all QoS.",
+    false
+   ]
+  ],
+  "why": "An expired certificate stops the handshake. The dial plan did not change overnight. Look at the security failure first."
+ }
+]

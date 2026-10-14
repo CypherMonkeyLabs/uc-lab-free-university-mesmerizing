@@ -4,11 +4,9 @@
 
 ## What is this?
 
-An offline browser campus for unified communications and contact center study. One HTML file. No account.
+An offline browser campus for unified communications and contact center study. A small HTML shell plus lesson modules. No account.
 
 The tracks match the job: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, the main CCaaS platforms, E911, QoS, and troubleshooting.
-
-The home page is a dashboard. Ctrl+K searches every lesson. Twenty-one labs sit on the same page: call flows (24 scenarios), a dial plan, an IVR, SIP decode, codec and jitter tools, CUCM routing, Webex Calling, UCCE, Finesse, E911, QoS, SRTP, Erlang-C, fault finding, dial-peers, one-way audio, and recording. The quiz has at least 150 scored questions on each track (2,913 total) plus a boss exam. Flashcards are 2,018. Each lesson has a Try it button for its lab. Progress stays in the browser. Nothing is uploaded.
 
 ## How do I open it?
 
@@ -16,11 +14,11 @@ The home page is a dashboard. Ctrl+K searches every lesson. Twenty-one labs sit 
 2. Unzip it.
 3. Open `uc-lab-free-university.html` in Chrome, Safari, Edge, or Firefox.
 
-From a clone, open [campus/uc-lab-free-university.html](../campus/uc-lab-free-university.html). That file is edition v21: 476 sections, light and dark themes. Steps for a phone are in [HOW-TO-USE](./HOW-TO-USE.md).
+From a clone, open [campus/uc-lab-free-university.html](../campus/uc-lab-free-university.html). That file is edition v21: 580 sections. Settings has light, dark, high contrast, and signal, plus sound, narration, motion, and font size. Tips and cheat sheets are at `#/tips`. Steps for a phone are in [HOW-TO-USE](./HOW-TO-USE.md).
 
 ## Does it work on a phone?
 
-Yes, in the full browser app. The first load can take a little while. A laptop is easier to study on.
+Yes, in the full browser app. The shell loads first. Under 640px, **Menu** opens the paths and a bottom nav stays on screen. A laptop is easier for the ladders.
 
 ## Is there a PDF?
 

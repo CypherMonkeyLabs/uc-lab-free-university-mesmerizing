@@ -17,7 +17,7 @@ UC Lab Free University is an offline campus for voice, unified communications, a
 4. Open **E911** and **QoS** before you treat them as someone else's job.
 5. On the next fault you touch, write one leg, one identifier, one counter, and one capture before you change anything.
 
-The sidebar is 14 tracks and 476 sections. Use the study rail. Do not start by scrolling the full list.
+The sidebar is 14 tracks and 580 sections. Use the study rail. Do not start by scrolling the full list. Open **Tips and traps** for the cheat sheet on the track you are in.
 
 **WebRTC** is in the list because browser agent desktops use it. **CUCM CLI** is in the list because the server shell is Linux, and that is how you check time, replication, and certificates.
 
