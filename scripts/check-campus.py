@@ -56,12 +56,25 @@ def main() -> int:
         print("missing campus html", file=sys.stderr)
         return 1
     html = HTML_PATH.read_text(encoding="utf-8")
-    if re.search(r"<script[^>]+src=", html, re.I):
-        fail(errors, "campus has an external script src")
+    def local_asset(url: str) -> bool:
+        value = url.strip()
+        if "://" in value or value.startswith("//") or value.startswith("/") or ".." in value:
+            return False
+        return value.startswith("assets/")
+
+    for match in re.finditer(r"<script\b([^>]*)>", html, re.I):
+        src = re.search(r"""src\s*=\s*['"]([^'"]+)['"]""", match.group(1), re.I)
+        if src and not local_asset(src.group(1)):
+            fail(errors, f"campus script src is not a local asset: {src.group(1)}")
     for match in re.finditer(r"<link\b([^>]*)>", html, re.I):
         href = re.search(r"""href\s*=\s*['"]([^'"]+)['"]""", match.group(1), re.I)
-        if href and not href.group(1).lower().startswith("data:"):
-            fail(errors, "campus has an external link href")
+        if not href:
+            continue
+        target = href.group(1)
+        if target.lower().startswith("data:"):
+            continue
+        if not local_asset(target):
+            fail(errors, f"campus link href is not a local asset: {target}")
     for host in ("cdn.jsdelivr", "unpkg.com", "cdnjs.", "fonts.googleapis", "ajax.googleapis"):
         if host in html.lower():
             fail(errors, f"campus references {host}")
@@ -125,10 +138,26 @@ def main() -> int:
     if ZIP.is_file() and HTML_PATH.is_file():
         with zipfile.ZipFile(ZIP) as zf:
             names = zf.namelist()
-            if names != ["uc-lab-free-university.html"]:
-                fail(errors, f"zip members are {names}")
+            if "uc-lab-free-university.html" not in names:
+                fail(errors, "zip is missing uc-lab-free-university.html")
             elif zf.read("uc-lab-free-university.html") != HTML_PATH.read_bytes():
                 fail(errors, "zip member does not match campus/uc-lab-free-university.html")
+            asset_root = ROOT / "campus" / "assets"
+            expected = {
+                "assets/" + path.relative_to(asset_root).as_posix()
+                for path in asset_root.rglob("*")
+                if path.is_file()
+            }
+            zipped_assets = {name for name in names if name.startswith("assets/")}
+            if zipped_assets != expected:
+                fail(errors, f"zip assets {sorted(zipped_assets)} != campus/assets {sorted(expected)}")
+            for name in names:
+                if name != "uc-lab-free-university.html" and not name.startswith("assets/"):
+                    fail(errors, f"unexpected zip member {name}")
+            for name in sorted(expected):
+                disk = asset_root / name.removeprefix("assets/")
+                if zf.read(name) != disk.read_bytes():
+                    fail(errors, f"zip asset does not match {disk}")
     else:
         fail(errors, "campus zip missing")
 
