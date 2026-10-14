@@ -28,6 +28,17 @@ The campus opens from `uc-lab-free-university.html`. Keep the `assets` folder be
 
 Progress checkmarks stay in this browser. A different browser, or a cleared site store, starts the donut over. Nothing is uploaded.
 
+### Labs and the app shell
+
+The header has **Labs** and a light/dark control. Ctrl+K opens search across every lesson.
+
+- **Call flow** places a simulated call and moves SIP and RTP through CUCM, CUBE, Webex Calling, or UCCE. Use it when a 200 OK is being treated as proof of audio.
+- **Dial plan** asks you to order the line CSS, partition, route pattern, route list, route group, and SIP trunk. A wrong block explains why that call would never leave.
+- **IVR** lets you drag a greeting, a menu, and queues, then send a digit. A digit with no branch never starts a queue.
+- **Quiz** and **flashcards** answer in the page. The line under the answer is the point.
+
+The tone bar stays up after you press Play on a clip, including while you open another section. Stop ends the tone. The labs do not touch a live system.
+
 ### Export without installing anything
 
 Use the export button in the campus bar:
