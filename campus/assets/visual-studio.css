@@ -179,10 +179,29 @@ html[data-theme=contrast] .vs-track-banner{background:#000;color:#fff;border-col
   .vs-march{animation:none}
   .vs-hub-card,.vs-chip,.vs-jump button,.vs-rail i{transition:none}
   .vs-hub-card:hover,.vs-chip:hover,.vs-jump button:hover{transform:none}
-  .vs-studio,.vs-cap.vs-cap-in,.vs-svg-scroll svg{animation:none}
+  .vs-studio,.vs-cap.vs-cap-in,.vs-svg-scroll svg,.vs-key,.vs-badge.got{animation:none}
 }
+.vs-map{margin:8px 0 12px}
+.vs-map svg{width:100%;height:auto;display:block}
+.vs-map-node{cursor:pointer}
+.vs-map text{pointer-events:none}
+.vs-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.vs-badge{font-size:11px;font-weight:800;border-radius:999px;padding:4px 8px;border:1px solid var(--border);color:var(--muted);background:var(--card)}
+.vs-badge.got{color:#052e2b;background:#99f6e4;border-color:transparent;animation:vsPop .4s ease}
+html[data-theme=dark] .vs-badge.got, html[data-theme=night] .vs-badge.got{color:#042f2e}
+html[data-theme=contrast] .vs-badge.got{background:#FFE14A;color:#000;border:2px solid #fff}
+.vs-art{margin:12px 0}
+.vs-art-tabs{display:flex;gap:6px;margin-bottom:8px}
+.vs-art-tabs button{border:1px solid var(--border);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 12px;font-weight:800;font-size:12px;cursor:pointer}
+.vs-art-tabs button[aria-pressed="true"]{background:#6366F1;color:#fff;border-color:transparent}
+.vs-art-svg{width:100%;height:auto;display:block}
+.vs-key{animation:vsPop .45s ease both}
+.vs-key:nth-child(2){animation-delay:.04s}
+.vs-key:nth-child(3){animation-delay:.08s}
+.vs-key:nth-child(4){animation-delay:.12s}
+@keyframes vsPop{from{opacity:0;transform:translateY(6px) scale(.98)}to{opacity:1;transform:none}}
 @media print{
-  .vs-controls,.vs-timeline,.vs-keys-hint,.vs-audio,.vs-jump,.vs-atlas,.vs-film{display:none!important}
+  .vs-controls,.vs-timeline,.vs-keys-hint,.vs-audio,.vs-jump,.vs-atlas,.vs-film,.vs-badges{display:none!important}
   .vs-svg-scroll{max-height:none;overflow:visible}
   .vs-studio,.vs-cap.vs-cap-in,.vs-svg-scroll svg{animation:none}
 }
