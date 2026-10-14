@@ -14,7 +14,7 @@ The tracks match the job: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, 
 2. Unzip it.
 3. Open `uc-lab-free-university.html` in Chrome, Safari, Edge, or Firefox.
 
-From a clone, open [campus/uc-lab-free-university.html](../campus/uc-lab-free-university.html). That file is edition v21: 476 sections, light and dark themes. Steps for a phone are in [HOW-TO-USE](./HOW-TO-USE.md).
+From a clone, open [campus/uc-lab-free-university.html](../campus/uc-lab-free-university.html). That file is edition v21: 580 sections. Settings has light, dark, high contrast, and signal, plus sound, narration, motion, and font size. Tips and cheat sheets are at `#/tips`. Steps for a phone are in [HOW-TO-USE](./HOW-TO-USE.md).
 
 ## Does it work on a phone?
 

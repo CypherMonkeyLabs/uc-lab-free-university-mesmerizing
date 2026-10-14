@@ -23,7 +23,7 @@ The campus opens from `uc-lab-free-university.html`. Keep the `assets` folder be
 1. Open the HTML. The home view shows four paths and the section count. **Study sequence** is on the orientation lesson (`#/lesson/home` or `#home`).
 2. Read **Method** (`#method` or `#/lesson/method`) and say LICC without looking: Leg, ID, Counter, Capture.
 3. Open a path, or pick CUCM (`#prod-cucm`). On a phone, **Menu** opens that list.
-4. Switch the header theme once (Light, Dark, or Contrast).
+4. Open **Settings**. Try Light, Dark, High contrast, and Signal. Sound, narration, motion, and font size stay in this browser.
 5. Search for `Local Gateway`. Open one hit. Stop there.
 
 Progress checkmarks stay in this browser. A different browser, or a cleared site store, starts the donut over. Nothing is uploaded.
@@ -34,7 +34,7 @@ Use **Export** in the campus bar:
 
 - **Question CSV** — a Web Worker reads the section modules. This needs http. `file://` cannot fetch every module.
 - **Markdown for this lesson** and **Markdown for this path**
-- **Print this lesson**, then **Save as PDF** in the browser. Print is the open lesson, not all 476.
+- **Print this lesson**, then **Save as PDF** in the browser. Print is the open lesson, not all 580.
 - **Save lessons offline** — on http, fetches each section so the service worker can keep it. The shell is cached on the first http visit without this button.
 
 ## 30-day study path

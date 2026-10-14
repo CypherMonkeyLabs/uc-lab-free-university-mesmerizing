@@ -2,6 +2,7 @@
 (function () {
   var audioCtx = null;
   function ctx() {
+    if (window.UCSettings && window.UCSettings.soundEnabled && !window.UCSettings.soundEnabled()) return null;
     if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     if (audioCtx.state === "suspended") audioCtx.resume();
     return audioCtx;
@@ -27,6 +28,7 @@
   }
   function playCadence(pattern, peak) {
     var c = ctx();
+    if (!c) return;
     var t = c.currentTime + 0.05;
     pattern.forEach(function (seg) {
       if (seg.hz) mix(c, seg.hz, t, seg.ms / 1000, peak || 0.06);
@@ -40,6 +42,7 @@
   }
   function burst(mode) {
     var c = ctx();
+    if (!c) return;
     var dur = 1.2;
     var n = Math.floor(c.sampleRate * dur);
     var buf = c.createBuffer(1, n, c.sampleRate);

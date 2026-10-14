@@ -1,22 +1,22 @@
 {
   "version": "v21",
-  "sections": 476,
-  "flows": 978,
+  "sections": 580,
+  "flows": 1186,
   "walkthroughs": 27,
   "charts": 32,
-  "illustrations": 2772,
+  "illustrations": 3396,
   "audioClips": 35,
   "trackHubs": 14,
   "groups": 14,
-  "details": 13334,
-  "selfChecks": 1585,
-  "numberedQuestions": 13175,
+  "details": 13758,
+  "selfChecks": 2009,
+  "numberedQuestions": 13599,
   "faults": 110,
   "drills": 4,
   "journeys": {
     "cisco-voice": 314,
-    "webex": 17,
-    "teams": 15,
+    "webex": 69,
+    "teams": 67,
     "contact-center": 130
   }
 }

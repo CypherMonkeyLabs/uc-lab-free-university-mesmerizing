@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="UC Lab Free University v21. Guided paths for Cisco Voice Core, Webex Calling, Teams Phone, and Contact Center Engineer. 476 sections, offline after the shell is cached.">
+<meta name="description" content="UC Lab Free University v21. Guided paths for Cisco Voice Core, Webex Calling, Teams Phone, and Contact Center Engineer. 580 sections, offline after the shell is cached.">
+<meta property="og:image" content="assets/og-card.png">
 <meta name="theme-color" content="#0B1120">
 <meta name="color-scheme" content="light dark">
 <meta name="mobile-web-app-capable" content="yes">
@@ -14,12 +15,15 @@
 <link rel="stylesheet" href="assets/app.css">
 <script>
 try {
-  var saved = localStorage.getItem("uc_theme");
+  var prefs = JSON.parse(localStorage.getItem("uc_lab_settings_v21") || "{}");
+  var saved = prefs.theme || localStorage.getItem("uc_theme");
   if (saved === "night" || saved === "aurora" || saved === "cobalt" || saved === "forest" || saved === "sunset") saved = "dark";
   if (saved === "paper" || saved === "warm") saved = "light";
-  if (saved === "dark" || saved === "contrast" || saved === "light") document.documentElement.setAttribute("data-theme", saved);
+  if (saved === "dark" || saved === "contrast" || saved === "light" || saved === "signal") document.documentElement.setAttribute("data-theme", saved);
+  if (prefs.font === "sm" || prefs.font === "md" || prefs.font === "lg" || prefs.font === "xl") document.documentElement.setAttribute("data-font", prefs.font);
+  if (prefs.motion === "reduce" || prefs.motion === "allow") document.documentElement.setAttribute("data-motion", prefs.motion);
 } catch (err) { /* private mode */ }
-window.STATS = {"version":"v21","built":"2026-10-14","sections":476,"note":"Modular v21 campus. CUCM, CUBE, SIP, Webex Calling, Teams Phone, UCCE/PCCE, CCaaS, E911, QoS."};
+window.STATS = {"version":"v21","built":"2026-10-14","sections":580,"note":"Modular v21 campus. CUCM, CUBE, SIP, Webex Calling, Teams Phone, UCCE/PCCE, CCaaS, E911, QoS."};
 window.UC_NO_AUTOPLAY = true;
 window.UC = window.UC || {};
 UC._packs = {};
@@ -49,13 +53,7 @@ UC.walks = function (list) {
   <a class="brand" href="#/"><strong>UC Lab</strong><span>Free University</span></a>
   <button type="button" class="search-btn" id="searchBtn">Search <span>sections</span></button>
   <span class="grow"></span>
-  <label class="theme-label">Theme
-    <select id="theme" aria-label="Theme">
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-      <option value="contrast">Contrast</option>
-    </select>
-  </label>
+  <button type="button" class="search-btn" id="settingsBtn">Settings</button>
   <details class="menu">
     <summary>Export</summary>
     <div class="menu-panel">
@@ -86,12 +84,55 @@ UC.walks = function (list) {
 <div id="palette" class="palette" hidden>
   <div class="palette-card" role="dialog" aria-modal="true" aria-labelledby="paletteLabel">
     <h2 id="paletteLabel" class="skip">Search</h2>
-    <input id="paletteInput" type="search" placeholder="Search 476 sections" aria-label="Search sections">
+    <input id="paletteInput" type="search" placeholder="Search sections" aria-label="Search sections">
     <div id="paletteHits"></div>
+  </div>
+</div>
+<div id="settings" class="palette" hidden>
+  <div class="palette-card settings-card" role="dialog" aria-modal="true" aria-labelledby="settingsLabel">
+    <h2 id="settingsLabel">Settings</h2>
+    <form id="settingsForm">
+      <fieldset>
+        <legend>Theme</legend>
+        <label><input type="radio" name="theme" value="light"> Light</label>
+        <label><input type="radio" name="theme" value="dark"> Dark</label>
+        <label><input type="radio" name="theme" value="contrast"> High contrast</label>
+        <label><input type="radio" name="theme" value="signal"> Signal</label>
+      </fieldset>
+      <fieldset>
+        <legend>Sound and speech</legend>
+        <label><input type="checkbox" id="setSound"> Sound effects</label>
+        <label><input type="checkbox" id="setNarration"> Narrate new pages</label>
+        <label>Voice <select id="setVoice" aria-label="Narration voice"></select></label>
+        <p id="setVoiceNote" class="muted"></p>
+        <label>Speed <input id="setRate" type="range" min="0.7" max="1.4" step="0.1" value="1" aria-valuemin="0.7" aria-valuemax="1.4"></label>
+        <p class="muted">Speed <span id="setRateOut">1.0</span></p>
+        <button type="button" id="setRead">Read this page aloud</button>
+      </fieldset>
+      <fieldset>
+        <legend>Motion and type</legend>
+        <label>Motion <select id="setMotion" aria-label="Motion">
+          <option value="system">Match this device</option>
+          <option value="reduce">Reduce motion</option>
+          <option value="allow">Allow motion</option>
+        </select></label>
+        <label>Font size <select id="setFont" aria-label="Font size">
+          <option value="sm">Small</option>
+          <option value="md">Medium</option>
+          <option value="lg">Large</option>
+          <option value="xl">Extra large</option>
+        </select></label>
+      </fieldset>
+      <div class="actions" style="padding:0 16px">
+        <button type="button" class="primary" id="settingsClose">Close</button>
+      </div>
+    </form>
   </div>
 </div>
 <script src="assets/telephony.js"></script>
 <script src="assets/tools.js"></script>
+<script src="assets/settings.js"></script>
+<script src="assets/tips.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>

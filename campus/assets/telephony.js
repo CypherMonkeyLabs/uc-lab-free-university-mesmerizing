@@ -7,6 +7,7 @@
   var HIGH = { "1": 1209, "2": 1336, "3": 1477, "4": 1209, "5": 1336, "6": 1477, "7": 1209, "8": 1336, "9": 1477, "*": 1209, "0": 1336, "#": 1477 };
 
   function audio() {
+    if (window.UCSettings && window.UCSettings.soundEnabled && !window.UCSettings.soundEnabled()) return null;
     var AC = window.AudioContext || window.webkitAudioContext;
     if (!AC) return null;
     if (!audioCtx) audioCtx = new AC();
