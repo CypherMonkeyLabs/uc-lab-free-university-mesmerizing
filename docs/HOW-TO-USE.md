@@ -1,6 +1,6 @@
 # How to use UC Lab Free University
 
-The campus is one HTML file. Everything else in the repo helps you download it, brief from it, or study beside it.
+The campus opens from `uc-lab-free-university.html`. Keep the `assets` folder beside it so the diagrams, charts, and tone bench load. Everything else in the repo helps you download it, brief from it, or study beside it.
 
 **Open it in Chrome, Safari, Edge, or Firefox.** The page boots from the file. Themes, search, and the curriculum stay available with the network off. Links inside a section that point at Cisco, Microsoft, AWS, or another vendor need a network, and the campus still opens when those links cannot.
 
@@ -9,7 +9,7 @@ The campus is one HTML file. Everything else in the repo helps you download it, 
 | File | Offline | On a phone |
 |------|---------|------------|
 | `campus/uc-lab-free-university.html` | Double-click, or open the file from the browser. Airplane mode is a fair test: home, search, themes, and a section should still render. | Use the Chrome or Safari **app**. First open can take 10–30 seconds. Then use **☰ Menu**, search, and the theme control. |
-| `releases/uc-lab-free-university.html.zip` | Unzip, then open the HTML the same way. The zip is only packaging. | Download in the browser app, unzip in **Files** (iPhone) or Downloads (Android), then open the HTML in Chrome or Safari. |
+| `releases/uc-lab-free-university.html.zip` | Unzip, keep `assets` next to the HTML, then open the HTML. The zip is the packaging. | Download in the browser app, unzip in **Files** (iPhone) or Downloads (Android), then open the HTML in Chrome or Safari. |
 | `downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx` | PowerPoint, Keynote, or LibreOffice, from the local file. 62 slides. | PowerPoint or Keynote mobile, or the Files preview. The HTML is the better phone textbook. The deck is the projected story. |
 | `docs/HOW-TO-USE.md`, `docs/FAQ.md`, `docs/REMIX.md`, `docs/SIBLINGS.md` | Any markdown preview, including the GitHub app offline cache or a local editor. | Comfortable to read. They do not replace the campus. |
 | `docs/references/uc-contact-center-session-vault-2026-10.md` | The list itself is local. | Read the titles offline. Opening a Cisco Live or YouTube link needs a network, and some sessions need a free vendor account. |

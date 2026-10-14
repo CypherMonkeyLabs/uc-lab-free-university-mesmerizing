@@ -12,6 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 HTML = ROOT / "campus" / "uc-lab-free-university.html"
+ASSETS = ROOT / "campus" / "assets"
 ZIP = ROOT / "releases" / "uc-lab-free-university.html.zip"
 MEMBER = "uc-lab-free-university.html"
 
@@ -24,6 +25,9 @@ def main() -> int:
     tmp = ZIP.with_suffix(".zip.tmp")
     with zipfile.ZipFile(tmp, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
         zf.write(HTML, arcname=MEMBER)
+        if ASSETS.is_dir():
+            for path in sorted(p for p in ASSETS.rglob("*") if p.is_file()):
+                zf.write(path, arcname="assets/" + path.relative_to(ASSETS).as_posix())
     tmp.replace(ZIP)
     with zipfile.ZipFile(ZIP) as zf:
         info = zf.getinfo(MEMBER)
