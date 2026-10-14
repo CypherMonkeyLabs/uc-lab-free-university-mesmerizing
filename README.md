@@ -22,20 +22,20 @@ Built by **CYPHER0X9**, a voice and UC engineer. Version **21**. No account, no 
 |---|---:|---|
 | Start here | 6 | Explain a call with leg, identifier, counter, and capture |
 | SIP and media | 9 | Read a ladder and separate signaling from RTP |
-| CUCM and CUBE | 12 | Trace CSS, route pattern, dial-peer, and the SIP trunk |
-| Webex Calling and Teams Phone | 17 | Choose Calling Plan, Operator Connect, Direct Routing, or a local gateway, then prove it |
-| Contact center — UCCE and PCCE | 6 | Trace ingress, CVP, script, queue, Finesse, and CUIC |
+| CUCM and CUBE | 35 | Trace CSS, route pattern, dial-peer, and the SIP trunk |
+| Webex Calling and Teams Phone | 18 | Choose Calling Plan, Operator Connect, Direct Routing, or a local gateway, then prove it |
+| Contact center — UCCE and PCCE | 7 | Trace ingress, CVP, script, queue, Finesse, and CUIC |
 | CCaaS and UCaaS platforms | 105 | Follow a contact on Webex CC, Connect, Genesys, NICE, Five9, Flex, and the platforms you still meet |
-| Emergency calling | 3 | Prove location, ELIN or ERL, and the on-site notification |
-| Voice network and QoS | 16 | Mark and measure EF, use the CUCM CLI, and explain WebRTC only for browser agents |
-| Migrations | 61 | Dual-run a number, rehearse rollback, and leave evidence |
+| Emergency calling | 4 | Prove location, ELIN or ERL, and the on-site notification |
+| Voice network and QoS | 17 | Mark and measure EF, use the CUCM CLI, and explain WebRTC only for browser agents |
+| Migrations | 63 | Dual-run a number, rehearse rollback, and leave evidence |
 | Troubleshooting | 112 | One hypothesis, one change, one evidence pack |
 | Evidence habits | 33 | Write the proof before you touch production |
-| Design notes | 35 | Read capacity, identity, recording, and failure domains |
+| Design notes | 36 | Read capacity, identity, recording, and failure domains |
 | Practice | 56 | Drill the same faults without a customer on the line |
-| Reference | 5 | Open the glossary and the official-doc index |
+| Reference | 6 | Open the glossary and the official-doc index |
 
-476 sections in the sidebar. The old bulk practicums, trading-turret track, Asterisk course, and generic machine-learning chapter are not in this edition.
+507 sections in the sidebar. The old bulk practicums, trading-turret track, Asterisk course, and generic machine-learning chapter are not in this edition.
 
 ## Study order
 
@@ -55,17 +55,17 @@ flowchart LR
 
 ## Visual studio
 
-Each of the 476 sections opens with its own step-through flow: real message names, ports, headers, and timers for that section, plus a failure path in the scenario menu. Play, pause, step, and speed sit on the diagram. The current message is highlighted and the caption says what the step means. A track map and local achievement badges sit above the player. Nothing in those badges is a name or an address; the browser only stores section ids you opened. Topology, console, and capture tabs are drawn from that section's flow. Twenty-six longer walkthroughs, plus the campus home, play as scenes. Charts are thirty-two different formulas, not one chart reused under new titles. The tone bench is generated in the browser with WebAudio.
+Each of the 507 sections opens with its own step-through flow: real message names, ports, headers, and timers for that section, plus a failure path in the scenario menu. Play, pause, step, and speed sit on the diagram. The current message is highlighted and the caption says what the step means. A track map and local achievement badges sit above the player. Nothing in those badges is a name or an address; the browser only stores section ids you opened. Topology, console, and capture tabs are drawn from that section's flow. Twenty-six longer walkthroughs, plus the campus home, play as scenes. Charts are thirty-two different formulas, not one chart reused under new titles. The tone bench is generated in the browser with WebAudio.
 
 Counts are distinct definitions, not placements:
 
 | Kind | Count |
 |---|---:|
-| Sections | 476 |
-| Distinct flow definitions | 978 |
+| Sections | 507 |
+| Distinct flow definitions | 1,040 |
 | Walkthrough scenes | 27 |
 | Chart types | 32 |
-| Distinct illustrations (topology, console, and capture specs) | 2,772 |
+| Distinct illustrations (topology, console, and capture specs) | 2,948 |
 | Audio clips | 35 |
 | Track hubs | 14 |
 
@@ -139,7 +139,7 @@ The same file now opens like a campus app. The home page is a dashboard: track c
 
 Ctrl+K searches every lesson. Light and dark stay in the header. Moving between sections fades the page. A tone you play stays in a bar at the bottom so you can keep reading.
 
-Labs, from the header or the home page. There are 21. Each lesson has a **Try it** button that opens the lab that matches that page.
+Labs, from the header or the home page. There are 30. Each lesson has a **Try it** button that opens the lab that matches that page.
 
 | Lab | What you do | Why it is here |
 |---|---|---|
@@ -162,10 +162,19 @@ Labs, from the header or the home page. There are 21. Each lesson has a **Try it
 | One-way | Read an SDP address the far side cannot reach | The ladder can be perfect while RTP is not |
 | Record | Choose where the PSTN fork belongs | A report is not the audio |
 | Quiz | Ten questions from a track bank of at least 300, with the reason after each answer | The score is stored per track in this browser |
-| Cards | Flip one of 2,018 terms | The back says why you would use it |
+| Cards | Flip one of 3,402 terms | The back says why you would use it |
 | Boss | Sit the cross-track exam | Eighty percent is the pass line |
+| CSS order | Move partitions between the line CSS and the device CSS | The line CSS is searched first |
+| Digits | Match a translation, discard predot, then prefix | A calling-party mask does not change the called number |
+| Ladder | Build a SIP ladder and mark which arrows carry SDP | A 200 without SDP can be one-way audio |
+| Cert chain | Check names, dates, and issuer links on an Expressway-E style cert | A private CA on the public edge fails |
+| Patterns | Score X, bang, PreDot, and the at-sign | The at-sign does not expand the NANP |
+| PA rate | Size G.711 and G.722 as 64 plus 16 kbps | G.729 in that cell is marked re-check |
+| SDP paste | Paste an offer and an answer | 488, a zero connection address, and a codec the offer never named |
+| Hunt | Offer the next call with one of four algorithms | Longest Idle Time is the default |
+| Cases | Walk one of 29 troubleshooting cases | A detour says why that action is not evidence |
 
-The quiz bank is 6,054 questions: at least 300 scored questions on each of the 14 tracks, plus a 24-question boss exam. Flashcards are 2,018. Progress, per-track quiz score, known cards, badges, and the study streak stay in `localStorage`. No name, number, or capture is stored. The labs are teaching models. They do not change a live system.
+The quiz bank is 6,522 questions: at least 300 scored questions on each of the 14 tracks, plus a 24-question boss exam. Flashcards are 3,402. Twenty-nine branching cases sit in the Cases lab. Progress, per-track quiz score, known cards, badges, and the study streak stay in `localStorage`. No name, number, or capture is stored. The labs are teaching models. They do not change a live system.
 
 ## License
 

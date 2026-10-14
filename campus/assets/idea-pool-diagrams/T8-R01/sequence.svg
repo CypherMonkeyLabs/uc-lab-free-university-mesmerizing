@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="980" height="420" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 420" role="img" aria-labelledby="e911s e911sd">
+  <title id="e911s">911 sequence</title>
+  <desc id="e911sd">Phone to Unified CM to RedSky or CER, then the PSAP, with a notification beside the call.</desc>
+  <rect width="980" height="420" fill="#0a1020"/>
+  <g font-family="Segoe UI,sans-serif" font-size="13" fill="#e7ecf5">
+    <text x="80" y="36" text-anchor="middle">Phone</text>
+    <text x="280" y="36" text-anchor="middle">Unified CM</text>
+    <text x="500" y="36" text-anchor="middle">CER / RedSky</text>
+    <text x="720" y="36" text-anchor="middle">PSAP</text>
+    <text x="900" y="36" text-anchor="middle">Desk</text>
+  </g>
+  <g stroke="#2a3548">
+    <line x1="80" y1="48" x2="80" y2="400"/>
+    <line x1="280" y1="48" x2="280" y2="400"/>
+    <line x1="500" y1="48" x2="500" y2="400"/>
+    <line x1="720" y1="48" x2="720" y2="400"/>
+    <line x1="900" y1="48" x2="900" y2="400"/>
+  </g>
+  <g font-family="ui-monospace,monospace" font-size="12" fill="#c5d0e0">
+    <line x1="80" y1="80" x2="270" y2="80" stroke="#e6c36a"/>
+    <text x="100" y="74">1 INVITE 911</text>
+    <line x1="280" y1="130" x2="490" y2="130" stroke="#3dbeff"/>
+    <text x="300" y="124">2 HELD URI or CER lookup</text>
+    <line x1="500" y1="180" x2="290" y2="180" stroke="#3dd68c"/>
+    <text x="300" y="174">3 ELIN for that ERL</text>
+    <line x1="500" y1="230" x2="710" y2="230" stroke="#ff6b8a"/>
+    <text x="520" y="224">4 Call + callback number</text>
+    <line x1="280" y1="290" x2="890" y2="290" stroke="#f0b429"/>
+    <text x="520" y="284">5 On-site notification</text>
+    <line x1="720" y1="350" x2="90" y2="350" stroke="#93a0b8"/>
+    <text x="300" y="344">6 PSAP callback uses the ELIN, not the extension</text>
+  </g>
+</svg>

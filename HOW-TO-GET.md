@@ -18,7 +18,7 @@ From a clone of this repo, open [campus/uc-lab-free-university.html](./campus/uc
 | 2 | Download the zip |
 | 3 | Unzip it in Files on iPhone, or in your downloads folder |
 | 4 | Open the HTML file in Chrome or Safari |
-| 5 | Wait for the first load. 476 sections is a large page |
+| 5 | Wait for the first load. 507 sections is a large page |
 
 If the page stays on "Opening" for a long time, try a laptop. Chat-app browsers are a poor place to open this file.
 

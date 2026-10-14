@@ -225,7 +225,27 @@ body.uc-app-lock{overflow:hidden}
 .uc-app-tab{
   border:1px solid var(--border); background:var(--bg); color:var(--ink);
   border-radius:999px; padding:7px 12px; font-weight:800; font-size:12px; cursor:pointer; min-height:36px;
+  flex:0 0 auto;
 }
+.pool-room svg, .pool-room img, .pool-lab svg{max-width:100%; height:auto}
+.pool-room table, .pool-room pre, .pool-table-wrap{display:block; max-width:100%; overflow-x:auto}
+.pool-room pre{white-space:pre-wrap}
+.pool-room{overflow-wrap:anywhere}
+.pool-room .choices{display:flex; flex-direction:column; gap:8px; margin:8px 0}
+.pool-room .choices button{text-align:left; font:inherit; color:var(--ink); background:var(--card); border:1px solid var(--border); border-radius:12px; padding:10px 12px; min-height:44px; cursor:pointer}
+.pool-room .choices button.good{border-color:#159947; background:color-mix(in srgb, #159947 16%, var(--card))}
+.pool-room .choices button.bad{border-color:#E11D48; background:color-mix(in srgb, #E11D48 12%, var(--card))}
+.pool-lab-row{display:flex; flex-wrap:wrap; gap:8px; align-items:flex-end; margin:8px 0}
+.pool-field{display:flex; flex-direction:column; gap:4px; min-width:0; flex:1 1 140px; font-size:13px; font-weight:700}
+.pool-field input, .pool-field select, .pool-field textarea, .pool-lab textarea{
+  width:100%; max-width:100%; box-sizing:border-box; font:inherit; font-weight:700; color:var(--ink); background:var(--bg);
+  border:1px solid var(--border); border-radius:12px; padding:8px 10px; min-height:36px;
+}
+.pool-drop{min-height:48px; border:1px dashed var(--border); border-radius:12px; padding:8px; display:flex; flex-wrap:wrap; gap:6px}
+.pool-token{border:1px solid var(--border); background:var(--bg); color:var(--ink); border-radius:999px; padding:8px 12px; min-height:36px; font-weight:800; cursor:pointer}
+.pool-card{border:1px solid var(--border); border-radius:12px; padding:10px 12px; margin:8px 0}
+.pool-lab table{border-collapse:collapse; font-size:13px; min-width:100%}
+.pool-lab th, .pool-lab td{border-bottom:1px solid var(--border); text-align:left; padding:6px 8px; white-space:nowrap}
 .uc-app-tab[aria-selected="true"]{background:#6366F1; color:#fff; border-color:transparent}
 .uc-app-note{margin:0 0 10px; font-size:.98rem; line-height:1.45}
 .uc-app-note b{color:var(--teal)}

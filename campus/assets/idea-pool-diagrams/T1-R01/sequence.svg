@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="980" height="420" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 420" role="img" aria-labelledby="s1 t1s">
+  <title id="s1">National call sequence, teaching example</title>
+  <desc id="t1s">User dials a national habit. A translation pattern globalizes to +E.164. A second analysis matches an on-net directory number or a route pattern that uses a local route group.</desc>
+  <rect width="980" height="420" fill="#0a1020"/>
+  <g font-family="ui-monospace,monospace" font-size="12" fill="#93a0b8">
+    <text x="70" y="36" fill="#e7ecf5">Phone</text>
+    <text x="250" y="36" fill="#e7ecf5">Digit analysis</text>
+    <text x="470" y="36" fill="#e7ecf5">Translation</text>
+    <text x="680" y="36" fill="#e7ecf5">Route / DN</text>
+    <line x1="90" y1="48" x2="90" y2="390" stroke="#2a3548"/>
+    <line x1="300" y1="48" x2="300" y2="390" stroke="#2a3548"/>
+    <line x1="520" y1="48" x2="520" y2="390" stroke="#2a3548"/>
+    <line x1="730" y1="48" x2="730" y2="390" stroke="#2a3548"/>
+  </g>
+  <g font-family="Segoe UI, sans-serif" font-size="13" fill="#e7ecf5">
+    <path d="M90 80 H300" stroke="#3dbeff" marker-end="url(#a)"/>
+    <text x="110" y="74">1 · Off-hook, dial national habit</text>
+    <path d="M300 120 H520" stroke="#f0b429"/>
+    <text x="320" y="114">2 · Match translation in line+device CSS</text>
+    <path d="M520 170 H300" stroke="#b388ff"/>
+    <text x="320" y="164">3 · Called party becomes +E.164</text>
+    <path d="M300 220 H730" stroke="#3dd68c"/>
+    <text x="320" y="214">4 · Second lookup: DN or route pattern</text>
+    <path d="M730 270 H90" stroke="#ff8a4c"/>
+    <text x="110" y="264">5 · Ring phone, or egress via local route group</text>
+    <text x="24" y="340" fill="#93a0b8">Teaching example. The +E.164 preference is from the Collaboration 15 Preferred Architecture [cite:5].</text>
+    <text x="24" y="362" fill="#93a0b8">Second lookup uses the translation pattern CSS, or the originator CSS if that option is set [cite:3][cite:6].</text>
+  </g>
+</svg>
