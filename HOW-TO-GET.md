@@ -8,7 +8,7 @@ No login. No API key. Educational material under the MIT license. No warranty.
 2. Unzip it.
 3. Open `uc-lab-free-university.html` in Chrome, Safari, Edge, or Firefox.
 
-From a clone of this repo, open [university/v17-UNIVERSITY.html](./university/v17-UNIVERSITY.html). Same edition. Older filename.
+From a clone of this repo, open [campus/uc-lab-free-university.html](./campus/uc-lab-free-university.html).
 
 ## Phone and tablet
 
@@ -29,7 +29,7 @@ git clone https://github.com/cipher0x9/uc-lab-free-university-mesmerizing.git
 cd uc-lab-free-university-mesmerizing
 ```
 
-Then open `university/v17-UNIVERSITY.html`.
+Then open `campus/uc-lab-free-university.html`.
 
 ## What you are opening
 

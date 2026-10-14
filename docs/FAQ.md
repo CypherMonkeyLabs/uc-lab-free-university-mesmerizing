@@ -12,9 +12,9 @@ The tracks match the job: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, 
 
 1. Download [the v21 zip](../releases/uc-lab-free-university.html.zip).
 2. Unzip it.
-3. Open the HTML file in Chrome, Safari, Edge, or Firefox.
+3. Open `uc-lab-free-university.html` in Chrome, Safari, Edge, or Firefox.
 
-From a clone, open [university/v17-UNIVERSITY.html](../university/v17-UNIVERSITY.html). The filename predates v21. The page title says v21.
+From a clone, open [campus/uc-lab-free-university.html](../campus/uc-lab-free-university.html). That file is edition v21: 476 sections, light and dark themes. Steps for a phone are in [HOW-TO-USE](./HOW-TO-USE.md).
 
 ## Does it work on a phone?
 
@@ -46,4 +46,8 @@ The license is MIT. Do not paste secrets or customer captures into an issue. Do 
 
 ## Related campus
 
-[AI Lab Free University](https://github.com/cipher0x9/ai-lab-free-university-mesmerizing) is a separate offline campus for a different subject.
+[AI Lab Free University](https://github.com/cipher0x9/ai-lab-free-university-mesmerizing) is a separate offline campus for a different subject. See [SIBLINGS](./SIBLINGS.md).
+
+## How do I contribute?
+
+Open an issue, or read [CONTRIBUTING](../CONTRIBUTING.md) and [REMIX](./REMIX.md).

@@ -4,7 +4,7 @@ UC Lab Free University is an offline campus for voice, unified communications, a
 
 | You want | Go |
 |---|---|
-| The file | [Download (v21)](./releases/uc-lab-free-university.html.zip) or [open it](./university/v17-UNIVERSITY.html) |
+| The file | [Download (v21)](./releases/uc-lab-free-university.html.zip) or [open it](./campus/uc-lab-free-university.html) |
 | Steps for a phone | [HOW-TO-GET.md](./HOW-TO-GET.md) |
 | Every public link in this repo | [DOWNLOADS.md](./DOWNLOADS.md) |
 | Questions about what this is | [docs/FAQ.md](./docs/FAQ.md) |
