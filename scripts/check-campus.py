@@ -26,12 +26,12 @@ def fail(errors: list[str], message: str) -> None:
 CURRICULUM = ROOT / "campus" / "assets" / "curriculum"
 EXPECT = {
     "sections": 580,
-    "flows": 1186,
-    "walkthroughs": 27,
+    "flows": 1197,
+    "walkthroughs": 38,
     "charts": 32,
     "illustrations": 3396,
-    "details": 13758,
-    "selfChecks": 2009,
+    "details": 15972,
+    "selfChecks": 4223,
     "numberedQuestions": 13599,
     "faults": 110,
     "drills": 4,

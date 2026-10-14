@@ -107,8 +107,8 @@ Counts are distinct definitions, not placements:
 | Kind | Count |
 |---|---:|
 | Sections | 580 |
-| Distinct flow definitions | 1,186 |
-| Walkthrough scenes | 27 |
+| Distinct flow definitions | 1,197 |
+| Walkthrough scenes | 38 |
 | Chart types | 32 |
 | Distinct illustrations (topology, console, and capture specs) | 3,396 |
 | Audio clips | 35 |
@@ -181,6 +181,10 @@ The default page is slate paper (`#F3F6FB`), indigo, and teal, with amber and ro
 </p>
 
 Nothing is loaded from a CDN.
+
+## Content carried over from the v23 single-file edition
+
+The modular app includes the v23 call flows (conference, CTI route point, courtesy callback, park, shared line, voicemail forward, early offer, T.38 fax, pickup, single number reach, trunk failover), eight fault drills, and 2,018 term cards with 164 situations and a 24-question cross-track exam. They live in the SIP drill bank, the mastery card library, and the walkthrough list. `scripts/port-main-v23-content.py` records the port.
 
 ## License
 

@@ -72,7 +72,7 @@ Body HTML that already matches the shell: `hero`, `card`, `hook`, `warn`, `tips`
 2. Add the matching object to the `sections` array in `curriculum/manifest.js` (`id`, `num`, `group`, `title`, `sub`, `journey`, `track`, `flow`, `blurb`, `cards`). Bump `stats.sections` and the journey count.
 3. Set `window.STATS.sections` in the HTML shell to the new length.
 4. If the home lesson states the count, update that body too. The home body must keep `data-v21` and the words `Study sequence`.
-5. Run `python3 scripts/check-campus.py`. The checker currently expects the published counts (580 sections, 1,186 flows, and the card totals). A new section means updating those expected totals in `scripts/check-campus.py` in the same change.
+5. Run `python3 scripts/check-campus.py`. The checker currently expects the published counts (580 sections, 1,197 flows, and the card totals). A new section means updating those expected totals in `scripts/check-campus.py` in the same change.
 6. Rebuild the zip. Open `#/lesson/your-id` and the legacy hash `#your-id`.
 
 Example shape, shown with real quote characters. Inside the file those quotes are escaped:
