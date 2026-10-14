@@ -55,20 +55,18 @@ flowchart LR
 
 ## Visual studio
 
-Each of the 476 sections opens with a numbered icon, a hero, a key-numbers strip, and a step-through diagram. Play, pause, step, and speed sit on the diagram. The current message is highlighted, a marker travels along that arrow, and the caption says what the step means in plain English. A step rail under the diagram jumps to any message. SIP, CUBE, CUCM, Webex Calling, Teams Phone, UCCE, emergency calling, and QoS each add a scenario menu, so one section can step through the related ladders (hold, REFER, early media, Local Gateway, Direct Routing, and the rest). Each track has a visual hub: on a section you get the chapters beside you and a jump to every other track. Charts use the formulas named below. The tone bench is generated in the browser with WebAudio.
+Each of the 476 sections opens with its own step-through flow: real message names, ports, headers, and timers for that section, plus a failure path in the scenario menu. Play, pause, step, and speed sit on the diagram. The current message is highlighted and the caption says what the step means. A track map and local achievement badges sit above the player. Nothing in those badges is a name or an address; the browser only stores section ids you opened. Topology, console, and capture tabs are drawn from that section's flow. Twenty-six longer walkthroughs, plus the campus home, play as scenes. Charts are thirty-two different formulas, not one chart reused under new titles. The tone bench is generated in the browser with WebAudio.
 
-Counts from the catalog the page loads:
+Counts are distinct definitions, not placements:
 
 | Kind | Count |
 |---|---:|
 | Sections | 476 |
-| Inline illustrations (icon, hero, and diagram per section, plus header cards and the 14 track hubs) | 1,469 |
-| Diagrams (one animated diagram per section, plus protocol headers and track hubs) | 517 |
-| Distinct flow definitions | 147 |
-| Sections with a play/pause/step player | 476 |
-| Chart modules (SIP timers, codec bandwidth, E-model MOS, delay budget, Erlang B/C, contact-center KPIs) | 6 |
-| Sections that include a chart | 195 |
-| Audio clips | 16 |
+| Distinct flow definitions | 978 |
+| Walkthrough scenes | 27 |
+| Chart types | 32 |
+| Distinct illustrations (topology, console, and capture specs) | 2,772 |
+| Audio clips | 35 |
 | Track hubs | 14 |
 
 Codec bandwidth is `(payload + 40 + L2) × 8 × (1000 / ptime) / 1000`. G.711 at 20 ms is 80 kbit/s at layer 3 and 87.2 kbit/s with an 18-byte Ethernet header. MOS is a short form of ITU-T G.107, labeled as a teaching model. Erlang B and Erlang C use the standard iterative forms. The delay chart sums packetization, queuing, serialization, propagation, and jitter buffer against the 150 ms G.114 planning limit.

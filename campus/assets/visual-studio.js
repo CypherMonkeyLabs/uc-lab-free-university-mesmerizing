@@ -206,9 +206,37 @@
     return out.join("");
   }
 
+  function walkSvg(flow, index) {
+    var steps = flow.steps || [];
+    var actors = flow.actors || [];
+    var st = steps[index] || {};
+    var w = 880;
+    var h = 250;
+    var out = ['<svg class="vs-flow vs-walk" viewBox="0 0 ' + w + " " + h + '" role="img" aria-label="' + esc(flow.title || "Walkthrough") + '">'];
+    out.push('<rect width="' + w + '" height="' + h + '" rx="18" fill="#102033"/>');
+    out.push('<text x="28" y="36" fill="#5EEAD4" font-size="13" font-weight="800" font-family="ui-sans-serif,system-ui">Scene ' + (index + 1) + " of " + steps.length + "</text>");
+    out.push('<text x="28" y="86" fill="#F8FAFC" font-size="30" font-weight="800" font-family="Georgia,serif">' + esc(st.label || "") + "</text>");
+    var tickW = Math.max(8, (w - 56) / Math.max(steps.length, 1) - 6);
+    for (var i = 0; i < steps.length; i++) {
+      var x = 28 + i * ((w - 56) / Math.max(steps.length, 1));
+      var fill = i < index ? "#0F9B8E" : i === index ? "#E08A00" : "#334155";
+      out.push('<rect x="' + x + '" y="128" width="' + tickW + '" height="12" rx="4" fill="' + fill + '"/>');
+    }
+    actors.forEach(function (name, i) {
+      var x = 28 + i * 210;
+      var on = i === st.f || i === st.t;
+      out.push('<rect x="' + x + '" y="168" width="188" height="52" rx="14" fill="' + (on ? "#6366F1" : "#1c2c3d") + '"/>');
+      out.push('<text x="' + (x + 94) + '" y="199" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="ui-sans-serif,system-ui">' + esc(name) + "</text>");
+    });
+    out.push("</svg>");
+    return out.join("");
+  }
+
   function headerSvg(which) {
     var lines;
-    if (which === "hold") {
+    if (which && typeof which === "object" && which.headerLines) {
+      lines = which.headerLines;
+    } else if (which === "hold") {
       lines = [
         "re-INVITE sip:bob.example SIP/2.0",
         "Call-ID: lab-dialog-001",
@@ -262,12 +290,16 @@
   };
 
   function familyFlows(flow) {
+    var cat = byIdMap(window.UC_FLOW_CATALOG || []);
+    if (flow.scenarios && flow.scenarios.length) {
+      var listed = flow.scenarios.map(function (id) { return cat[id]; }).filter(Boolean);
+      if (listed.length > 1) return listed;
+    }
     var ids = null;
     Object.keys(FAMILIES).forEach(function (name) {
       if (FAMILIES[name].indexOf(flow.id) >= 0) ids = FAMILIES[name];
     });
     if (!ids) return [];
-    var cat = byIdMap(window.UC_FLOW_CATALOG || []);
     return ids.map(function (id) { return cat[id]; }).filter(Boolean);
   }
 
@@ -335,7 +367,7 @@
     }
     fillSteps();
     function draw() {
-      var svg = flow.layout === "tree" ? treeSvg(flow, index) : ladderSvg(flow, index);
+      var svg = flow.layout === "tree" ? treeSvg(flow, index) : flow.layout === "walk" ? walkSvg(flow, index) : ladderSvg(flow, index);
       svgHost.innerHTML = svg;
       var st = steps[index] || { label: "", cap: "" };
       cap.classList.remove("vs-cap-in");
@@ -344,6 +376,7 @@
       cap.classList.add("vs-cap-in");
       pos.textContent = (index + 1) + " / " + steps.length;
       if (rail) rail.style.width = (((index + 1) / Math.max(steps.length, 1)) * 100) + "%";
+      if (index === steps.length - 1 && window.UCProgress) window.UCProgress.done(flow);
       if (railBox) railBox.setAttribute("aria-valuenow", String(index + 1));
       var ds = dots.querySelectorAll("button");
       var currentBtn = null;
@@ -421,7 +454,12 @@
             host.insertAdjacentElement("afterend", hd);
           }
           hd.hidden = false;
-          hd.innerHTML = headerSvg(flow.header);
+          hd.innerHTML = headerSvg(flow.headerLines ? flow : flow.header);
+          var artHost = host.parentElement && host.parentElement.querySelector(".vs-art");
+          if (artHost && window.UCArt) {
+            var nextArt = window.UCArt.mount(flow);
+            if (nextArt) artHost.replaceWith(nextArt);
+          }
         } else if (hd) hd.hidden = true;
         draw();
       });
@@ -490,6 +528,7 @@
   }
 
   function mountChart(parent, kind) {
+    if (window.UCCharts && window.UCCharts.mount(parent, kind)) return;
     if (!kind || kind === "none") return;
     if (kind === "sip") {
       var box = chartHost(parent, "SIP timer budget on UDP (RFC 3261)");
@@ -754,6 +793,7 @@
   ];
 
   function audioBench() {
+    if (window.UCAudio && window.UCAudio.bench) return window.UCAudio.bench();
     var det = document.createElement("details");
     det.className = "vs-audio";
     det.innerHTML = "<summary>Tone and media bench · " + CLIPS.length + " labeled clips, generated in this browser</summary><div class=\"vs-clips\"></div>";
@@ -927,14 +967,22 @@
       '<p class="vs-why">' + esc(section.sub || flow.why || "") + "</p></div></div>" +
       heroSvg(section, flow) +
       '<div class="vs-keys">' + keysHtml(flow) + "</div>";
+    if (window.UCProgress) {
+      try { window.UCProgress.seen(section); } catch (e) {}
+      root.appendChild(window.UCProgress.map(section));
+    }
     var player = document.createElement("div");
     player.className = "vs-player";
     root.appendChild(player);
     mountPlayer(player, flow, section);
-    if (flow.header) {
+    if (window.UCArt) {
+      var art = window.UCArt.mount(flow);
+      if (art) root.appendChild(art);
+    }
+    if (flow.header || flow.headerLines) {
       var hd = document.createElement("div");
       hd.className = "vs-header";
-      hd.innerHTML = headerSvg(flow.header);
+      hd.innerHTML = headerSvg(flow.headerLines ? flow : flow.header);
       root.appendChild(hd);
     }
     mountChart(root, flow.chart);
@@ -947,11 +995,10 @@
       row.className = "vs-counts";
       row.innerHTML =
         "<span>" + c.sections + " sections</span>" +
-        "<span>" + c.illustrations + " inline illustrations</span>" +
-        "<span>" + c.flowDefinitions + " flow definitions</span>" +
-        "<span>" + c.animatedSections + " step-through players</span>" +
-        "<span>" + c.chartModules + " chart modules</span>" +
-        "<span>" + c.chartSections + " chart placements</span>" +
+        "<span>" + c.flowDefinitions + " distinct flows</span>" +
+        "<span>" + c.walkthroughs + " walkthroughs</span>" +
+        "<span>" + c.chartTypes + " chart types</span>" +
+        "<span>" + c.illustrations + " distinct illustrations</span>" +
         "<span>" + c.audioClips + " audio clips</span>" +
         "<span>" + c.trackHubs + " track hubs</span>";
       root.appendChild(row);
@@ -994,24 +1041,24 @@
   function counts() {
     var sections = window.SECTIONS || [];
     var flows = window.UC_FLOW_CATALOG || [];
-    var chartSections = 0;
-    var headerSections = 0;
-    sections.forEach(function (s) {
-      var f = sectionFlow(s);
-      if (!f) return;
-      if (f.chart && f.chart !== "none") chartSections += 1;
-      if (f.header) headerSections += 1;
+    var seenArt = {};
+    var walks = 0;
+    flows.forEach(function (f) {
+      if (f.walkthrough || f.layout === "walk") walks += 1;
+      var art = f.art || {};
+      ["topology", "mockup", "capture"].forEach(function (key) {
+        if (!art[key]) return;
+        seenArt[key + ":" + JSON.stringify(art[key])] = 1;
+      });
     });
-    var illustrations = sections.length * 3 + headerSections + TRACKS.length;
     return {
       sections: sections.length,
       flowDefinitions: flows.length,
       animatedSections: sections.length,
-      illustrations: illustrations,
-      diagrams: sections.length + headerSections + TRACKS.length,
-      chartModules: 6,
-      chartSections: chartSections,
-      audioClips: CLIPS.length,
+      walkthroughs: walks,
+      illustrations: Object.keys(seenArt).length,
+      chartTypes: (window.UCCharts && window.UCCharts.types && window.UCCharts.types.length) || (window.UC_CHART_TYPES || []).length,
+      audioClips: (window.UCAudio && window.UCAudio.clips && window.UCAudio.clips.length) || CLIPS.length,
       trackHubs: TRACKS.length
     };
   }

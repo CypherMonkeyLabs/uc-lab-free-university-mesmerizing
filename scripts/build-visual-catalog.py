@@ -2100,6 +2100,11 @@ def assign(sec: dict) -> str:
 
 
 def main() -> None:
+    # The campus catalog is the per-section generator. This file keeps the
+    # earlier hand-authored ladders for reference; running it refreshes the page.
+    import runpy
+    runpy.run_path(str(Path(__file__).with_name("build-section-flows.py")), run_name="__main__")
+    return
     build()
     for flow in FLOWS:
         if flow["id"].startswith("sip-") and not flow.get("header"):
