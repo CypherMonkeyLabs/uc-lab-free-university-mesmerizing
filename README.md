@@ -23,7 +23,7 @@ Built by **CYPHER0X9**, a voice and UC engineer. Version **21**. No account, no 
 | Start here | 6 | Explain a call with leg, identifier, counter, and capture |
 | SIP and media | 9 | Read a ladder and separate signaling from RTP |
 | CUCM and CUBE | 12 | Trace CSS, route pattern, dial-peer, and the SIP trunk |
-| Webex Calling and Teams Phone | 17 | Choose Calling Plan, Operator Connect, Direct Routing, or a local gateway, then prove it |
+| Webex Calling and Teams Phone | 121 | Choose Calling Plan, Operator Connect, Direct Routing, or a local gateway, then prove it |
 | Contact center — UCCE and PCCE | 6 | Trace ingress, CVP, script, queue, Finesse, and CUIC |
 | CCaaS and UCaaS platforms | 105 | Follow a contact on Webex CC, Connect, Genesys, NICE, Five9, Flex, and the platforms you still meet |
 | Emergency calling | 3 | Prove location, ELIN or ERL, and the on-site notification |
@@ -35,17 +35,17 @@ Built by **CYPHER0X9**, a voice and UC engineer. Version **21**. No account, no 
 | Practice | 56 | Drill the same faults without a customer on the line |
 | Reference | 5 | Open the glossary and the official-doc index |
 
-476 sections. The old bulk practicums, trading-turret track, Asterisk course, and generic machine-learning chapter are not in this edition.
+580 sections. The old bulk practicums, trading-turret track, Asterisk course, and generic machine-learning chapter are not in this edition.
 
 ## Paths and labs
 
-The same 476 sections sit on four certification paths. Opened and completed lessons stay in this browser.
+The same 580 sections sit on four certification paths. Opened and completed lessons stay in this browser.
 
 | Path | Sections |
 |---|---:|
 | Cisco Voice Core | 314 |
-| Webex Calling | 17 |
-| Teams Phone | 15 |
+| Webex Calling | 69 |
+| Teams Phone | 67 |
 | Contact Center Engineer | 130 |
 
 Shared foundations stay on Cisco Voice Core. Webex Calling, Teams Phone, and Contact Center Engineer are the specialist trails.
@@ -80,7 +80,7 @@ Measured on this tree. Lighthouse is mobile, simulated throttling, against the l
 | Lighthouse, home | | performance 95, accessibility 100 |
 | Lighthouse, SIP lesson | | performance 87, accessibility 100 |
 
-The 476 section modules are 15,709,777 bytes and load one lesson at a time. A practice bank shows six cards at a time (Teams Phone: 6 of 400, 517 elements). Three.js (691,648 bytes, vendored) loads only on the 3D fabric.
+The 580 section modules are 16,480,344 bytes and load one lesson at a time. A practice bank shows six cards at a time (Teams Phone: 6 of 400, 517 elements). Three.js (691,648 bytes, vendored) loads only on the 3D fabric.
 
 ## Study order
 
@@ -100,17 +100,17 @@ flowchart LR
 
 ## Visual studio
 
-Each of the 476 sections opens with its own step-through flow: real message names, ports, headers, and timers for that section, plus a failure path in the scenario menu. Play, pause, step, and speed sit on the diagram. The current message is highlighted and the caption says what the step means. A track map and local achievement badges sit above the player. Nothing in those badges is a name or an address; the browser only stores section ids you opened. Topology, console, and capture tabs are drawn from that section's flow. Twenty-six longer walkthroughs, plus the campus home, play as scenes. Charts are thirty-two different formulas, not one chart reused under new titles. The tone bench is generated in the browser with WebAudio.
+Each of the 580 sections opens with its own step-through flow, plus a failure path in the scenario menu. The original lessons keep their message names, ports, headers, and timers. Each added Webex Calling and Teams Phone lesson adds a success ladder, a failure ladder, a lab, and a cited quiz. Play, pause, step, and speed sit on the diagram. The current message is highlighted and the caption says what the step means. A track map and local achievement badges sit above the player. Nothing in those badges is a name or an address; the browser only stores section ids you opened. Topology, console, and capture tabs are drawn from that section's flow. Twenty-six longer walkthroughs, plus the campus home, play as scenes. Charts are thirty-two different formulas, not one chart reused under new titles. The tone bench is generated in the browser with WebAudio.
 
 Counts are distinct definitions, not placements:
 
 | Kind | Count |
 |---|---:|
-| Sections | 476 |
-| Distinct flow definitions | 978 |
+| Sections | 580 |
+| Distinct flow definitions | 1,186 |
 | Walkthrough scenes | 27 |
 | Chart types | 32 |
-| Distinct illustrations (topology, console, and capture specs) | 2,772 |
+| Distinct illustrations (topology, console, and capture specs) | 3,396 |
 | Audio clips | 35 |
 | Track hubs | 14 |
 
@@ -166,9 +166,11 @@ Desktop is the comfortable way to read it. Under 640px the path list moves behin
 | C | Counter | Which platform counter moved? |
 | C | Capture | Which ladder, packet capture, CLI output, or CUIC interval proves it? |
 
-## Light, dark, and high contrast
+## Settings, themes, and tips
 
-The page is slate paper (`#F3F6FB`), indigo, and teal, with amber and rose as secondary marks. The header theme control switches light, dark, and high contrast. Primary buttons use `#0F766E` with light text. The 3D stage and ladder inspect panel use navy `#0B1120`.
+**Settings** stores the choice in this browser: light, dark, high contrast, and signal (amber on charcoal); sound effects; narration with a voice list and a speed control; reduced motion; and font size. Narration stays off until you turn it on, and a robotic Microsoft Edge voice is not selected for you. **Tips and traps** (`#/tips`) is a pro-tip, interview-trap, and cheat-sheet page for each of the 14 tracks.
+
+The default page is slate paper (`#F3F6FB`), indigo, and teal, with amber and rose as secondary marks. Primary buttons use `#0F766E` with light text. The 3D stage and ladder inspect panel use navy `#0B1120`.
 
 <p align="center">
   <img src="./docs/assets/visual-dark.png" alt="CUBE call flow in the dark theme" width="100%"/>

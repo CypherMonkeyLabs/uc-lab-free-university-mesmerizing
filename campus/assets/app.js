@@ -24,6 +24,7 @@
   }
 
   function reduced() {
+    if (window.UCSettings && window.UCSettings.motionReduce) return window.UCSettings.motionReduce();
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }
 
@@ -217,6 +218,7 @@
     [["#/lab/ladder", "SIP ladder"], ["#/lab/dial", "Dialpad"], ["#/lab/topology", "3D fabric"], ["#/lab/erlang", "Erlang"], ["#/lab/sdp", "SDP"], ["#/lab/tones", "Tones"]].forEach(function (item) {
       html += '<a href="' + item[0] + '">' + item[1] + "</a>";
     });
+    html += '<p class="side-label kicker">Reference</p><a href="#/tips"' + (current.name === "tips" ? ' aria-current="page"' : "") + ">Tips and traps</a>";
     if (current.name === "lesson" && currentSection) {
       var siblings = sections().filter(function (item) {
         return item.journey === currentSection.journey && item.group === currentSection.group;
@@ -252,7 +254,12 @@
     document.getElementById("menuBtn").setAttribute("aria-expanded", "false");
   }
 
+  function narrate(extra) {
+    if (window.UCSettings && window.UCSettings.onRoute) window.UCSettings.onRoute(titleEl.textContent, extra || "");
+  }
+
   function cleanupTools() {
+    if (window.UCSettings && window.UCSettings.stop) window.UCSettings.stop();
     if (dialHandle && dialHandle.destroy) dialHandle.destroy();
     dialHandle = null;
     if (window.UCTopology) window.UCTopology.destroy();
@@ -271,9 +278,9 @@
         esc(journey.kicker) + " · " + stats.journeys[journey.id] + " sections</small></a>";
     }).join("");
     view.innerHTML =
-      '<div class="hero-stage"><div class="hero-copy"><p class="lede">Four certification paths over the same 476 sections. Open one lesson at a time. The SIP ladder, dialpad, Erlang and SDP tools, and the 3D fabric sit inside the work.</p>' +
+      '<div class="hero-stage"><div class="hero-copy"><p class="lede">Four certification paths over ' + stats.sections + ' sections. Open one lesson at a time. The SIP ladder, dialpad, Erlang and SDP tools, and the 3D fabric sit inside the work.</p>' +
       '<div class="actions"><a class="primary" style="display:inline-flex;align-items:center;text-decoration:none;border-radius:999px;min-height:40px;padding:0 14px" href="#/lab/topology">Open the 3D fabric</a>' +
-      '<a href="#/lesson/home">Campus orientation</a></div></div>' + heroSvg() + "</div>" +
+      '<a href="#/lesson/home">Campus orientation</a> <a href="#/tips">Tips and cheat sheets</a></div></div>' + heroSvg() + "</div>" +
       '<div class="stat-row">' +
       stat(stats.sections, "Sections") + stat(stats.flows, "Flows") + stat(stats.walkthroughs, "Walkthroughs") +
       stat(stats.charts, "Charts") + stat(stats.illustrations, "Illustrations") + stat(stats.audioClips, "Tones") +
@@ -324,6 +331,7 @@
       '<p class="kicker">' + esc(journey.kicker) + "</p><p class=\"lede\">" + esc(journey.blurb) + "</p>" +
       '<div class="ring-row">' + ring(pct(id), accent(journey.accent)) + "<span>" + seenCount(id) + " of " + all.length + " sections opened</span></div>" +
       (continueId ? '<p><a class="primary" style="display:inline-flex;align-items:center;text-decoration:none;border-radius:999px;min-height:40px;padding:0 14px" href="#/lesson/' + continueId + '">Continue</a></p>' : "") +
+      '<p><a href="#/tips">Tips, traps, and cheat sheets</a></p>' +
       '<h2>Tracks in this path</h2><nav class="track-list" aria-label="Tracks">' + tracks + "</nav>" +
       "<h2>" + (track ? esc(shown[0] ? shown[0].group : "Track") : "Lessons") + "</h2>" +
       '<nav class="path-list" aria-label="Lessons">' + list + "</nav>" +
@@ -506,6 +514,7 @@
       view.insertAdjacentHTML("beforeend", window.UCTools.sourcesHtml(meta.journey));
       renderSide();
       markBottom();
+      narrate(meta.sub || "");
     }).catch(function () {
       view.innerHTML = '<p class="warn">This lesson did not load. Check that the assets folder is beside the HTML file.</p>';
     });
@@ -622,6 +631,24 @@
     markBottom();
   }
 
+  function renderTips(slug) {
+    cleanupTools();
+    currentSection = null;
+    if (!window.UCTips) return renderMissing();
+    if (slug && window.UCTips.known(slug)) {
+      setTitle("Tips");
+      view.innerHTML = window.UCTips.trackHtml(slug);
+    } else if (slug) {
+      return renderMissing();
+    } else {
+      setTitle("Tips and tricks");
+      view.innerHTML = window.UCTips.indexHtml();
+    }
+    renderSide();
+    markBottom();
+    narrate("");
+  }
+
   function renderMissing() {
     cleanupTools();
     currentSection = null;
@@ -644,6 +671,7 @@
     if (parts[0] === "lab") return { name: "lab", lab: parts[1] || "" };
     if (parts[0] === "search") return { name: "search", query: current.query || "" };
     if (parts[0] === "progress") return { name: "progress" };
+    if (parts[0] === "tips") return { name: "tips", track: parts[1] || "" };
     if (findSection(parts[0])) return { name: "lesson", id: parts[0] };
     return { name: "missing" };
   }
@@ -659,7 +687,9 @@
     else if (current.name === "lab") renderLab(current.lab);
     else if (current.name === "search") renderSearch(current.query || "");
     else if (current.name === "progress") renderProgress();
+    else if (current.name === "tips") renderTips(current.track || "");
     else renderMissing();
+    if (current.name !== "lesson" && current.name !== "tips") narrate("");
   }
 
   function publishedCounts() {
@@ -863,12 +893,6 @@
     document.getElementById("backdrop").addEventListener("click", closeSide);
     side.addEventListener("click", function (event) {
       if (event.target.closest("a")) closeSide();
-    });
-    document.getElementById("theme").value = document.documentElement.getAttribute("data-theme") || "light";
-    document.getElementById("theme").addEventListener("change", function (event) {
-      var theme = event.target.value;
-      document.documentElement.setAttribute("data-theme", theme);
-      try { localStorage.setItem("uc_theme", theme); } catch (err) { /* private */ }
     });
     document.getElementById("searchBtn").addEventListener("click", openPalette);
     document.getElementById("palette").addEventListener("click", function (event) {

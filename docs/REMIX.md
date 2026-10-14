@@ -72,7 +72,7 @@ Body HTML that already matches the shell: `hero`, `card`, `hook`, `warn`, `tips`
 2. Add the matching object to the `sections` array in `curriculum/manifest.js` (`id`, `num`, `group`, `title`, `sub`, `journey`, `track`, `flow`, `blurb`, `cards`). Bump `stats.sections` and the journey count.
 3. Set `window.STATS.sections` in the HTML shell to the new length.
 4. If the home lesson states the count, update that body too. The home body must keep `data-v21` and the words `Study sequence`.
-5. Run `python3 scripts/check-campus.py`. The checker currently expects the published counts (476 sections, 978 flows, and the card totals). A new section means updating those expected totals in `scripts/check-campus.py` in the same change.
+5. Run `python3 scripts/check-campus.py`. The checker currently expects the published counts (580 sections, 1,186 flows, and the card totals). A new section means updating those expected totals in `scripts/check-campus.py` in the same change.
 6. Rebuild the zip. Open `#/lesson/your-id` and the legacy hash `#your-id`.
 
 Example shape, shown with real quote characters. Inside the file those quotes are escaped:
@@ -94,7 +94,7 @@ Edit the `body` string inside `campus/assets/curriculum/sections/<id>.js`. The T
 
 ### Retheme the whole campus
 
-Public themes are `light` (default), `dark`, and `contrast`. The header select `#theme` stores `uc_theme`. Older names (`warm`, `paper` → light; `night`, `aurora`, `cobalt`, `forest`, `sunset` → dark) are mapped in the boot script in the HTML. Do not put the old seven-theme gallery back as the default.
+Public themes are `light` (default), `dark`, `contrast`, and `signal`. **Settings** stores `uc_lab_settings_v21` and keeps `uc_theme` in step with the theme. Older names (`warm`, `paper` → light; `night`, `aurora`, `cobalt`, `forest`, `sunset` → dark) are mapped in the boot script in the HTML. Do not put the old seven-theme gallery back as the default.
 
 Change `:root` and the `html[data-theme=…]` blocks in `campus/assets/app.css`. Keep the `--cc-*` tokens. The studio still reads `--bg`, `--card`, `--ink`, and `--muted`, which alias those tokens.
 
@@ -103,8 +103,8 @@ Change `:root` and the `html[data-theme=…]` blocks in `campus/assets/app.css`.
 Pick a short lowercase name, such as `tide`.
 
 1. Add `html[data-theme="tide"]` in `campus/assets/app.css`, setting the `--cc-*` tokens and the studio aliases.
-2. Add `<option value="tide">Tide</option>` to `#theme` in the HTML.
-3. Allow `tide` in the boot script next to `dark`, `contrast`, and `light`.
+2. Add a radio `<input type="radio" name="theme" value="tide">` in the Settings dialog, and add `tide` to `THEMES` in `campus/assets/settings.js`.
+3. Allow `tide` in the boot script next to `dark`, `contrast`, `signal`, and `light`.
 
 Reload. The choice should survive a refresh.
 

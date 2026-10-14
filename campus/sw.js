@@ -10,6 +10,8 @@ var SHELL = [
   "./assets/app.js",
   "./assets/telephony.js",
   "./assets/tools.js",
+  "./assets/settings.js",
+  "./assets/tips.js",
   "./assets/icon.svg"
 ];
 

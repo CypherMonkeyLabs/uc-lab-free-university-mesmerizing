@@ -16,6 +16,7 @@ const LINKS = [
 ];
 
 function reducedMotion() {
+  if (window.UCSettings && window.UCSettings.motionReduce) return window.UCSettings.motionReduce();
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
