@@ -14,7 +14,13 @@ HTML_PATH = ROOT / "campus" / "uc-lab-free-university.html"
 DECK = ROOT / "downloads" / "Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx"
 ZIP = ROOT / "releases" / "uc-lab-free-university.html.zip"
 TEXT_SUFFIXES = {".md", ".html", ".cff", ".py", ".yml", ".yaml", ".txt"}
-ALLOWED_EMAILS = {"user@contoso.com", "user@domain.com"}
+# The last two are Cisco system-guide directory-URI examples, not personal mail.
+ALLOWED_EMAILS = {
+    "user@contoso.com",
+    "user@domain.com",
+    "alice@example.com",
+    "joe%20smith%23@cisco.com",
+}
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}")
 PHONE_RE = re.compile(r"(?<![\w.])(?:\+\d{1,3}[\s.\-]?)?\(?\d{3}\)?[\s.\-]\d{3}[\s.\-]\d{4}(?!\d)")
 

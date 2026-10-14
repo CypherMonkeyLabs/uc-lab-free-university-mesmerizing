@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="980" height="420" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 420" role="img" aria-labelledby="t7s t7sd">
+  <title id="t7s">MRA discovery and registration</title>
+  <desc id="t7sd">DNS SRV lookup, TLS to Expressway-E, traversal to Expressway-C, UDS home cluster discovery, SIP REGISTER to Unified CM, media via traversal or TURN.</desc>
+  <rect width="980" height="420" fill="#0a1020"/>
+  <g font-family="ui-monospace,monospace" font-size="12" fill="#e7ecf5">
+    <text x="40" y="34">Client</text>
+    <text x="230" y="34">DNS</text>
+    <text x="430" y="34">Expwy-E</text>
+    <text x="640" y="34">Expwy-C</text>
+    <text x="840" y="34">UCM</text>
+    <line x1="60" y1="46" x2="60" y2="360" stroke="#2a3548"/>
+    <line x1="250" y1="46" x2="250" y2="360" stroke="#2a3548"/>
+    <line x1="470" y1="46" x2="470" y2="360" stroke="#2a3548"/>
+    <line x1="680" y1="46" x2="680" y2="360" stroke="#2a3548"/>
+    <line x1="870" y1="46" x2="870" y2="360" stroke="#2a3548"/>
+  </g>
+  <g font-family="Segoe UI, sans-serif" font-size="13" fill="#e7ecf5">
+    <path d="M60 80 H250" stroke="#7eb6ff"/>
+    <text x="70" y="74">1 · _collab-edge._tls</text>
+    <path d="M250 120 H60" stroke="#93a0b8"/>
+    <text x="70" y="114">2 · Expressway-E : 8443</text>
+    <path d="M60 170 H470" stroke="#ff6b8a"/>
+    <text x="80" y="164">3 · TLS. Client checks Exp-E cert SAN</text>
+    <path d="M470 220 H680" stroke="#f0b429"/>
+    <text x="490" y="214">4 · UC traversal zone</text>
+    <path d="M680 270 H870" stroke="#3dbeff"/>
+    <text x="690" y="264">5 · UDS, then SIP REGISTER</text>
+    <path d="M870 320 H60" stroke="#3dd68c"/>
+    <text x="200" y="314">6 · Media: traversal, or TURN relay on Exp-E</text>
+  </g>
+  <text x="24" y="400" fill="#93a0b8" font-family="Segoe UI,sans-serif" font-size="13">SRV target port 8443 is the example in the X15.2 MRA guide [cite:1]. Media UDP 36002-59999 is that same requirements page [cite:1].</text>
+</svg>

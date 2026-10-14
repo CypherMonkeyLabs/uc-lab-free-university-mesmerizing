@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="980" height="460" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 460" role="img" aria-labelledby="e911t e911d">
+  <title id="e911t">Emergency call path</title>
+  <desc id="e911d">A phone dials 911. Unified CM matches a route. CER or RedSky supplies the ERL and ELIN. The PSAP receives the call and a callback number. A security desk is notified.</desc>
+  <rect width="980" height="460" fill="#0a1020"/>
+  <text x="24" y="32" fill="#e6c36a" font-family="ui-monospace,monospace" font-size="13">T8-R01 - direct dial, location, callback</text>
+  <g font-family="Segoe UI,sans-serif" font-size="14" fill="#e7ecf5">
+    <rect x="24" y="58" width="150" height="70" rx="8" fill="#121826" stroke="#e6c36a"/>
+    <text x="36" y="88">1 Phone</text>
+    <text x="36" y="108" fill="#93a0b8" font-size="12">Dials 911</text>
+    <rect x="200" y="58" width="170" height="70" rx="8" fill="#121826" stroke="#3dbeff"/>
+    <text x="212" y="88">2 Unified CM</text>
+    <text x="212" y="108" fill="#93a0b8" font-size="12">Route pattern</text>
+    <rect x="396" y="58" width="180" height="70" rx="8" fill="#121826" stroke="#3dd68c"/>
+    <text x="408" y="88">3 CER or RedSky</text>
+    <text x="408" y="108" fill="#93a0b8" font-size="12">ERL to ELIN</text>
+    <rect x="602" y="58" width="160" height="70" rx="8" fill="#121826" stroke="#ff6b8a"/>
+    <text x="614" y="88">4 PSAP</text>
+    <text x="614" y="108" fill="#93a0b8" font-size="12">Dispatch</text>
+    <rect x="788" y="58" width="168" height="70" rx="8" fill="#121826" stroke="#f0b429"/>
+    <text x="800" y="88">5 Notify</text>
+    <text x="800" y="108" fill="#93a0b8" font-size="12">On-site desk</text>
+  </g>
+  <g font-family="Segoe UI,sans-serif" font-size="13" fill="#e7ecf5">
+    <rect x="24" y="170" width="300" height="250" rx="8" fill="#121826" stroke="#2a3548"/>
+    <text x="40" y="198" fill="#e6c36a">Kari's Law</text>
+    <text x="40" y="226">Direct 911, no prefix</text>
+    <text x="40" y="252">Notify a person on site</text>
+    <text x="40" y="278" fill="#93a0b8">MLTS installed after</text>
+    <text x="40" y="300" fill="#93a0b8">16 February 2020</text>
+    <text x="40" y="340">A route pattern is only</text>
+    <text x="40" y="362">step 2. It is not the law.</text>
+    <rect x="350" y="170" width="300" height="250" rx="8" fill="#121826" stroke="#2a3548"/>
+    <text x="366" y="198" fill="#e6c36a">RAY BAUM'S Act</text>
+    <text x="366" y="226">Dispatchable location</text>
+    <text x="366" y="252">Street address + suite/floor</text>
+    <text x="366" y="290" fill="#93a0b8">Fixed on-prem: 6 Jan 2021</text>
+    <text x="366" y="316" fill="#93a0b8">Non-fixed and off-prem:</text>
+    <text x="366" y="338" fill="#93a0b8">6 Jan 2022</text>
+    <rect x="676" y="170" width="280" height="250" rx="8" fill="#121826" stroke="#2a3548"/>
+    <text x="692" y="198" fill="#e6c36a">ERL and ELIN</text>
+    <text x="692" y="226">ERL is the zone</text>
+    <text x="692" y="252">ELIN is the callback DID</text>
+    <text x="692" y="290" fill="#93a0b8">CER: port, AP, subnet</text>
+    <text x="692" y="316" fill="#93a0b8">RedSky: HELD location URI</text>
+    <text x="692" y="360">Wrong ELIN: PSAP calls HQ</text>
+  </g>
+</svg>

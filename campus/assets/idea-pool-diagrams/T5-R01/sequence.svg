@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="980" height="440" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 440" role="img" aria-labelledby="t5s t5sd">
+  <title id="t5s">SIP ladder through CUBE</title>
+  <desc id="t5sd">INVITE from Unified CM, CUBE dial-peer match, INVITE to the provider, responses back, ACK, then RTP. A 488 or a missing outbound peer dies before media.</desc>
+  <rect width="980" height="440" fill="#0a1020"/>
+  <g font-family="ui-monospace,monospace" font-size="12" fill="#e7ecf5">
+    <text x="80" y="36">Unified CM</text>
+    <text x="430" y="36">CUBE</text>
+    <text x="760" y="36">ITSP</text>
+    <line x1="120" y1="48" x2="120" y2="410" stroke="#2a3548"/>
+    <line x1="470" y1="48" x2="470" y2="410" stroke="#2a3548"/>
+    <line x1="790" y1="48" x2="790" y2="410" stroke="#2a3548"/>
+  </g>
+  <g font-family="Segoe UI, sans-serif" font-size="13" fill="#e7ecf5">
+    <path d="M120 80 H470" stroke="#3dbeff"/>
+    <text x="140" y="74">1 · INVITE (may lack SDP if delayed offer)</text>
+    <path d="M470 130 H790" stroke="#ff8a4c"/>
+    <text x="490" y="124">2 · INVITE out the WAN peer (early offer if forced)</text>
+    <path d="M790 180 H120" stroke="#3dd68c"/>
+    <text x="200" y="174">3 · 100 / 18x / 200 OK, in order, both legs</text>
+    <path d="M120 230 H790" stroke="#f0b429"/>
+    <text x="200" y="224">4 · ACK. SDP answer must already agree.</text>
+    <path d="M200 290 H720" stroke="#b388ff" stroke-dasharray="4 3"/>
+    <text x="250" y="284">5 · RTP. One-way audio is a media path, not a SIP code.</text>
+    <text x="24" y="360" fill="#93a0b8">If step 2 never happens, look for no outbound dial-peer or a busyout peer [cite:4].</text>
+    <text x="24" y="382" fill="#93a0b8">488 Not Acceptable Here is a codec or SDP refusal [cite:11]. 403 is often trust, identity, or policy.</text>
+  </g>
+</svg>

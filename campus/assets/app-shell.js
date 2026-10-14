@@ -106,9 +106,9 @@
   function liveCounts() {
     var c = window.UC_VISUAL_COUNTS || {};
     return {
-      sections: c.sections || sections().length || 476,
-      flows: c.flowDefinitions || (window.UC_FLOW_CATALOG || []).length || 978,
-      illustrations: c.illustrations || 2772,
+      sections: c.sections || sections().length || 507,
+      flows: c.flowDefinitions || (window.UC_FLOW_CATALOG || []).length || 1040,
+      illustrations: c.illustrations || 2948,
       tracks: c.trackHubs || TRACKS.length
     };
   }
@@ -150,7 +150,16 @@
     { id: "record", short: "Record", title: "Recording fork", icon: "proof", color: "#047857", blurb: "Fork the media where the PSTN audio actually is." },
     { id: "quiz", short: "Quiz", title: "Quiz", icon: "proof", color: "#E08A00", blurb: "A scored drill from the track bank, with the reason." },
     { id: "cards", short: "Cards", title: "Flashcards", icon: "book", color: "#0891B2", blurb: "Flip a term, then say why you would use it." },
-    { id: "boss", short: "Boss", title: "Boss exam", icon: "start", color: "#E11D48", blurb: "One sitting across the tracks. Eighty percent to pass." }
+    { id: "boss", short: "Boss", title: "Boss exam", icon: "start", color: "#E11D48", blurb: "One sitting across the tracks. Eighty percent to pass." },
+    { id: "pool-css", short: "CSS order", title: "Line and device CSS", icon: "design", color: "#6366F1", blurb: "Line CSS first. A block there beats the same pattern on the device." },
+    { id: "pool-digits", short: "Digits", title: "Called-party digits", icon: "cube", color: "#159947", blurb: "Match, discard predot, then prefix. The calling mask stays off the called number." },
+    { id: "pool-sip", short: "Ladder", title: "SIP ladder builder", icon: "sip", color: "#4F46E5", blurb: "Green arrows carry SDP. A missing answer is a one-way suspect." },
+    { id: "pool-cert", short: "Cert chain", title: "Expressway-E certificate chain", icon: "proof", color: "#1D4ED8", blurb: "Names, dates, and issuer links. Signatures are out of scope." },
+    { id: "pool-route", short: "Patterns", title: "Route-pattern matcher", icon: "route", color: "#B45309", blurb: "X, bang, and PreDot. The at-sign does not expand the NANP." },
+    { id: "pool-codec", short: "PA rate", title: "Collaboration PA bandwidth", icon: "qos", color: "#0F766E", blurb: "64 plus 16 for G.711 and G.722. G.729 stays marked re-check." },
+    { id: "pool-pcap", short: "SDP paste", title: "SIP and SDP paste", icon: "sip", color: "#E08A00", blurb: "488, a 200 without SDP, and a zero connection address." },
+    { id: "pool-hunt", short: "Hunt", title: "Hunt distribution", icon: "queue", color: "#7C3AED", blurb: "Four algorithms. Longest Idle Time is the default." },
+    { id: "pool-cases", short: "Cases", title: "Troubleshooting cases", icon: "tree", color: "#B45309", blurb: "Twenty-nine next checks. A detour says why it is not evidence." }
   ];
 
   function labById(id) {
@@ -162,7 +171,18 @@
     return false;
   }
   function drills() {
-    return window.UC_DRILLS || { questions: [], cards: [], boss: [], counts: {} };
+    var bank = window.UC_DRILLS || { questions: [], cards: [], boss: [], counts: {} };
+    var pool = window.UC_IDEA_POOL;
+    if (!pool || bank._poolMerged) return bank;
+    if (pool.questions && pool.questions.length) bank.questions = (bank.questions || []).concat(pool.questions);
+    if (pool.cards && pool.cards.length) bank.cards = (bank.cards || []).concat(pool.cards);
+    var counts = {};
+    (bank.questions || []).forEach(function (item) {
+      counts[item.track] = (counts[item.track] || 0) + 1;
+    });
+    bank.counts = counts;
+    bank._poolMerged = true;
+    return bank;
   }
   function quizStore() {
     var raw = readJson(QUIZ_KEY, {});

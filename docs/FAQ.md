@@ -8,7 +8,7 @@ An offline browser campus for unified communications and contact center study. O
 
 The tracks match the job: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, the main CCaaS platforms, E911, QoS, and troubleshooting.
 
-The home page is a dashboard. Ctrl+K searches every lesson. Twenty-one labs sit on the same page: call flows (24 scenarios), a dial plan, an IVR, SIP decode, codec and jitter tools, CUCM routing, Webex Calling, UCCE, Finesse, E911, QoS, SRTP, Erlang-C, fault finding, dial-peers, one-way audio, and recording. The quiz has at least 300 scored questions on each track (6,054 total) plus a boss exam. Flashcards are 2,018. Each lesson has a Try it button for its lab. Progress stays in the browser. Nothing is uploaded.
+The home page is a dashboard. Ctrl+K searches every lesson. Thirty labs sit on the same page: call flows (24 scenarios), a dial plan, an IVR, SIP decode, codec and jitter tools, CUCM routing, Webex Calling, UCCE, Finesse, E911, QoS, SRTP, Erlang-C, fault finding, dial-peers, one-way audio, recording, plus line-and-device CSS, called-party digits, a SIP ladder, a certificate chain, route patterns, Collaboration PA bandwidth, pasted SDP, hunt distribution, and 29 troubleshooting cases. The quiz has at least 300 scored questions on each track (6,522 total) plus a boss exam. Flashcards are 3,402. Each lesson has a Try it button for its lab. Progress stays in the browser. Nothing is uploaded.
 
 ## How do I open it?
 
@@ -16,7 +16,7 @@ The home page is a dashboard. Ctrl+K searches every lesson. Twenty-one labs sit 
 2. Unzip it.
 3. Open `uc-lab-free-university.html` in Chrome, Safari, Edge, or Firefox.
 
-From a clone, open [campus/uc-lab-free-university.html](../campus/uc-lab-free-university.html). That file is edition v21: 476 sections, light and dark themes. Steps for a phone are in [HOW-TO-USE](./HOW-TO-USE.md).
+From a clone, open [campus/uc-lab-free-university.html](../campus/uc-lab-free-university.html). That file is edition v21: 507 sections, light and dark themes. Steps for a phone are in [HOW-TO-USE](./HOW-TO-USE.md).
 
 ## Does it work on a phone?
 

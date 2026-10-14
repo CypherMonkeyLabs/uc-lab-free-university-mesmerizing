@@ -1815,7 +1815,7 @@ def build() -> None:
             (2, 3, "Your platform", "ok", "Webex, Teams, UCCE, or the CCaaS you operate. The id changes. The legs do not."),
             (3, 3, "Proof", "note", "Emergency location and the QoS mark are part of done, not extras."),
         ],
-        chart="qos", icon="proof", keys=[["476", "Sections"], ["14", "Tracks"], ["LICC", "The habit"], ["Offline", "This file"]], audio=True)
+        chart="qos", icon="proof", keys=[["507", "Sections"], ["14", "Tracks"], ["LICC", "The habit"], ["Offline", "This file"]], audio=True)
 
 
 def load_sections() -> list[dict]:

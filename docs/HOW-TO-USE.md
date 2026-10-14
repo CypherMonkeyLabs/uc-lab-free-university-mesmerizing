@@ -20,7 +20,7 @@ The campus opens from `uc-lab-free-university.html`. Keep the `assets` folder be
 
 ### A ten-minute first session
 
-1. Open the HTML. Wait until the home page shows **Study sequence** and the 476-section stat.
+1. Open the HTML. Wait until the home page shows **Study sequence** and the 507-section stat.
 2. Read **Method** (`#method`) and say LICC without looking: Leg, ID, Counter, Capture.
 3. Use the study rail, or open **☰ Menu** and pick one chapter, for example CUCM (`#prod-cucm`).
 4. Switch the header theme once (Light or Dark). That confirms the page is running locally.
@@ -36,8 +36,9 @@ The header has **Labs** and a light/dark control. Ctrl+K opens search across eve
 - **Dial plan** asks you to order the line CSS, partition, route pattern, route list, route group, and SIP trunk. A wrong block explains why that call would never leave.
 - **IVR** lets you drag a greeting, a menu, and queues, then send a digit. A digit with no branch never starts a queue.
 - The other labs decode a SIP message, size a codec, draw jitter and loss, trace a CUCM CSS, build a Webex Calling location, route a UCCE dialed number, walk Finesse states, order an E911 flow, mark QoS, step SRTP, estimate Erlang-C staff, find a fault, match a CUBE dial-peer, fix one-way audio, and place a recording fork.
-- **Quiz** scores ten questions at a time from a bank of at least 300 per track (6,054 in total). The line under the answer is the point. The **boss exam** is 24 questions, and 80% is the pass line.
-- **Flashcards** are 2,018 terms. Flip, then mark the ones you can use.
+- **Quiz** scores ten questions at a time from a bank of at least 300 per track (6,522 in total). The line under the answer is the point. The **boss exam** is 24 questions, and 80% is the pass line.
+- **Flashcards** are 3,402 terms. Flip, then mark the ones you can use.
+- Nine more labs cover line-and-device CSS, called-party digits, a SIP ladder, an Expressway-E certificate chain, route patterns, Collaboration PA bandwidth, pasted SDP, hunt distribution, and 29 troubleshooting cases.
 
 Every lesson has **Try it**. That button opens the lab that matches the page.
 

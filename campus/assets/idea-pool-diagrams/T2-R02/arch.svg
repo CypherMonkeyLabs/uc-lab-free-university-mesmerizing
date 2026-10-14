@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420">
+<rect width="980" height="420" fill="#0c1220"/>
+<text x="24" y="32" fill="#e7ecf5" font-family="Segoe UI,sans-serif" font-size="16">Digits, translation, route pattern, route list, route group, trunk</text>
+<rect x="40" y="80" width="140" height="64" rx="8" fill="#3dbeff" stroke="#8ea0bd"/>
+<text x="110.0" y="116.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Dialed</text>
+<rect x="210" y="80" width="150" height="64" rx="8" fill="#e6c36a" stroke="#8ea0bd"/>
+<text x="285.0" y="116.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Translation</text>
+<rect x="390" y="80" width="160" height="64" rx="8" fill="#3dd68c" stroke="#8ea0bd"/>
+<text x="470.0" y="116.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Route pattern</text>
+<rect x="580" y="80" width="150" height="64" rx="8" fill="#ff8a4c" stroke="#8ea0bd"/>
+<text x="655.0" y="116.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Route list</text>
+<rect x="760" y="80" width="170" height="64" rx="8" fill="#c4b5fd" stroke="#8ea0bd"/>
+<text x="845.0" y="116.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Route group</text>
+<rect x="300" y="220" width="360" height="64" rx="8" fill="#e7ecf5" stroke="#8ea0bd"/>
+<text x="480.0" y="256.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Called / calling transformation on the trunk</text>
+</svg>

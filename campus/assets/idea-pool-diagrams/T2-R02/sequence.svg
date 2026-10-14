@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420">
+<rect width="980" height="420" fill="#0c1220"/>
+<text x="24" y="28" fill="#e7ecf5" font-family="Segoe UI,sans-serif" font-size="16">National call</text>
+<text x="120" y="64" fill="#e7ecf5" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Phone</text>
+<line x1="120" y1="76" x2="120" y2="390" stroke="#2a3548"/>
+<text x="340" y="64" fill="#e7ecf5" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">CUCM</text>
+<line x1="340" y1="76" x2="340" y2="390" stroke="#2a3548"/>
+<text x="560" y="64" fill="#e7ecf5" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Next</text>
+<line x1="560" y1="76" x2="560" y2="390" stroke="#2a3548"/>
+<text x="780" y="64" fill="#e7ecf5" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Far</text>
+<line x1="780" y1="76" x2="780" y2="390" stroke="#2a3548"/>
+<line x1="120" y1="110" x2="332" y2="110" stroke="#3dbeff" stroke-width="1.6"/>
+<polygon points="340,110 332,106 332,114" fill="#3dbeff"/>
+<text x="230.0" y="104" fill="#c5d0e0" font-family="ui-monospace,monospace" font-size="12" text-anchor="middle">dial 9 1 NXX</text>
+<line x1="340" y1="160" x2="552" y2="160" stroke="#3dbeff" stroke-width="1.6"/>
+<polygon points="560,160 552,156 552,164" fill="#3dbeff"/>
+<text x="450.0" y="154" fill="#c5d0e0" font-family="ui-monospace,monospace" font-size="12" text-anchor="middle">translation to +E.164</text>
+<line x1="560" y1="210" x2="772" y2="210" stroke="#3dbeff" stroke-width="1.6"/>
+<polygon points="780,210 772,206 772,214" fill="#3dbeff"/>
+<text x="670.0" y="204" fill="#c5d0e0" font-family="ui-monospace,monospace" font-size="12" text-anchor="middle">route list / SLRG</text>
+<line x1="780" y1="260" x2="552" y2="260" stroke="#3dbeff" stroke-width="1.6"/>
+<polygon points="560,260 552,256 552,264" fill="#3dbeff"/>
+<text x="670.0" y="254" fill="#c5d0e0" font-family="ui-monospace,monospace" font-size="12" text-anchor="middle">carrier format</text>
+</svg>

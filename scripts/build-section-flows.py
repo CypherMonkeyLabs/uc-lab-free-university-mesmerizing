@@ -1316,8 +1316,9 @@ def main() -> None:
     unique_sigs = len(set(signatures))
     if unique_sigs < 600:
         raise SystemExit(f"only {unique_sigs} distinct step signatures")
-    if len(mapping) != 476:
-        raise SystemExit(f"mapped {len(mapping)} sections")
+    expected = len(load_sections())
+    if len(mapping) != expected:
+        raise SystemExit(f"mapped {len(mapping)} sections, expected {expected}")
     walks = sum(1 for f in flows if f.get("walkthrough"))
     if walks < 20:
         raise SystemExit(f"only {walks} walkthroughs")

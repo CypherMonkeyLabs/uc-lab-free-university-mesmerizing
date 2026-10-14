@@ -1,6 +1,6 @@
 # Downloads
 
-**Edition in this repo:** v21 · 476 sections · 14 tracks  
+**Edition in this repo:** v21 · 507 sections · 14 tracks  
 **Campus file:** [campus/uc-lab-free-university.html](./campus/uc-lab-free-university.html)  
 **Zip:** [releases/uc-lab-free-university.html.zip](./releases/uc-lab-free-university.html.zip)
 
