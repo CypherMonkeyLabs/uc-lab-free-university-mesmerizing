@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" role="img" aria-label="UC Lab Free University, version 21. Voice, UC, and contact center.">
+  <rect width="1200" height="440" rx="24" fill="#0B1220"/>
+  <rect x="0" y="0" width="8" height="440" fill="#0F9B8E"/>
+  <text x="56" y="72" fill="#2DD4BF" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1.5">UC LAB FREE UNIVERSITY · V21</text>
+  <text x="56" y="132" fill="#F4F7FB" font-family="Georgia, Times New Roman, serif" font-size="48">Voice, UC, and contact center</text>
+  <text x="56" y="184" fill="#B7C2D0" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="20">One offline HTML file for the work you actually do.</text>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700">
+    <rect x="56" y="230" width="150" height="52" rx="10" fill="#121A2F" stroke="#2DD4BF" stroke-width="2"/>
+    <text x="131" y="261" text-anchor="middle" fill="#F4F7FB">IP phone</text>
+    <rect x="246" y="230" width="150" height="52" rx="10" fill="#121A2F" stroke="#F4F7FB" stroke-width="2"/>
+    <text x="321" y="261" text-anchor="middle" fill="#F4F7FB">CUCM</text>
+    <rect x="436" y="230" width="150" height="52" rx="10" fill="#121A2F" stroke="#2DD4BF" stroke-width="2"/>
+    <text x="511" y="261" text-anchor="middle" fill="#F4F7FB">CUBE</text>
+    <rect x="626" y="230" width="170" height="52" rx="10" fill="#121A2F" stroke="#F5B942" stroke-width="2"/>
+    <text x="711" y="261" text-anchor="middle" fill="#F4F7FB">PSTN</text>
+    <path d="M206 256h40M396 256h40M586 256h40" stroke="#2DD4BF" stroke-width="2" fill="none"/>
+    <path d="M131 282 v28 h580" fill="none" stroke="#F5B942" stroke-width="2" stroke-dasharray="6 5"/>
+    <text x="420" y="334" text-anchor="middle" fill="#F5B942" font-size="13">RTP skips CUCM unless an MTP or conference is invoked</text>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#B7C2D0">
+    <text x="56" y="388">CUCM · CUBE · SIP · Webex Calling · Teams Phone · UCCE · PCCE · CUIC · CCaaS · E911 · QoS</text>
+    <text x="56" y="414">476 sections · 14 tracks · no CDN · open in Chrome, Safari, Edge, or Firefox</text>
+  </g>
+</svg>

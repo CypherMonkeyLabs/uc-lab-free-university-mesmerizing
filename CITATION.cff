@@ -8,8 +8,11 @@ repository-code: "https://github.com/cipher0x9/uc-lab-free-university-mesmerizin
 url: "https://github.com/cipher0x9/uc-lab-free-university-mesmerizing"
 license: MIT
 date-released: "2026-08-01"
+version: "21"
 abstract: >
-  Free offline multi-vendor Unified Communications and Contact Center university campus with LICC proof grammar.
+  Free offline campus for voice, unified communications, and contact center engineers.
+  Edition 21 covers CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone,
+  UCCE, PCCE, CUIC, CCaaS platforms, E911, QoS, and troubleshooting.
 keywords:
   - education
   - free-learning

@@ -4,7 +4,7 @@ Fork it. Change it. Share it. The license is MIT, and the educational notice in 
 
 Keep two properties intact when you re-engineer the file:
 
-1. **It opens from disk.** System fonts only. No `<script src>`, no `<link href>`, no CDN.
+1. **It opens from disk.** System fonts only. No `<script src>`, no external stylesheet, no CDN. A `data:` favicon is the only `<link href>` the checker allows.
 2. **A section is data.** `window.SECTIONS` is the curriculum. The shell renders whatever that array contains.
 
 `python3 scripts/check-campus.py` is the gate. It checks the section array, the zip, CDN tags, and personal-hub links.
@@ -64,7 +64,7 @@ Body HTML that already matches the shell: `hero`, `card`, `hook`, `warn`, `tips`
 1. Find the end of `window.SECTIONS`, just before `];(function () { "use strict"; var additions`.
 2. Insert one object before the closing `]`. Keep the comma valid.
 3. Set `window.STATS.sections` to the new length.
-4. The home hero hardcodes the visible count in `<b id="st-sec">632</b>`. Update that number when the length changes.
+4. Set the visible home stat in the `home` section body to the new length. The progress script fills `#st-sec` from `SECTIONS.length` when that element exists. v21 home shows the count as a literal in the Study sequence card.
 5. Run `python3 scripts/check-campus.py`.
 6. Open `campus/uc-lab-free-university.html#your-id` with the network disabled.
 
@@ -74,7 +74,7 @@ Example shape, shown with real quote characters. Inside the file those quotes ar
 {
   "id": "lgw-canary-checklist",
   "num": "C18",
-  "group": "Cloud Migrations",
+  "group": "Migrations",
   "title": "🐤 LGW canary",
   "sub": "One site, one rollback",
   "body": "<div class=\"card teal\"><h2>Canary</h2><p>Write the LICC line before the change window.</p></div>"
@@ -87,7 +87,9 @@ Immediately after the array, an IIFE named `additions` appends HTML onto an exis
 
 ### Retheme the whole campus
 
-The seven themes are `warm`, `night`, `cobalt`, `forest`, `aurora`, `sunset`, and `paper`. Warm is the default (`<html data-theme="warm">`). `setAppTheme` sets `data-theme` and stores `uc_theme` in `localStorage`.
+The public themes are `light` and `dark`. Light is the default (`<html data-theme="light">`). Teal `#0F9B8E` is the primary accent and navy `#0B1220` is the dark background and the light-theme ink. `setAppTheme` sets `data-theme` and stores `uc_theme` in `localStorage`. The header select `#theme` offers only those two.
+
+Older names (`warm`, `night`, `cobalt`, `forest`, `aurora`, `sunset`, `paper`) still have CSS rules that map onto light or dark. They are not in the header select. A remix that wants a third public theme adds it to that select and to the cycle list. Do not put the old seven-theme gallery back as the default.
 
 A full visual remix can stop at CSS variables. Change `:root` and you have a new default. Forks that only recolor should still pass `scripts/check-campus.py`.
 
@@ -111,13 +113,13 @@ html[data-theme=tide]{
 <option value="tide">🌊 Tide</option>
 ```
 
-3. **Options buttons**, next to Warm / Night / Paper:
+3. **Options buttons**, next to Light and Dark:
 
 ```html
 <button class="setting-btn" onclick="setAppTheme('tide')">🌊 Tide</button>
 ```
 
-4. **Cycle list**, the array that starts `var themes = ["warm", "night", …]`. Append `"tide"`.
+4. **Cycle list**, the array `var themes = ["light", "dark"]`. Append `"tide"`.
 
 5. **Swatch colors**, the `THEME_DOTS` object:
 
@@ -138,7 +140,7 @@ python3 scripts/check-campus.py
 
 Commit both the HTML and the zip so a download matches the campus in the same commit.
 
-There is a GitHub Release tagged `v20.2-resources`. Updating that release is a maintainer step outside this script: upload the new zip and the scrubbed deck, or cut a new tag. Until that happens, the README points learners at the files in the repo.
+The README points learners at the files in the repo. The zip in `releases/` is edition v21. An older GitHub Release tagged `v20.2-resources` is a previous cut. Updating that release is a maintainer step outside this script.
 
 ## Regenerate the PPTX
 
