@@ -1,57 +1,52 @@
 # FAQ
 
-**Last updated:** October 2026
+**Edition:** v21 · October 2026
 
 ## What is this?
 
-A free, offline browser campus for Unified Communications and Contact Center. Multi-vendor. Proof-first. No account.
+An offline browser campus for unified communications and contact center study. One HTML file. No account.
+
+The tracks match the job: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, the main CCaaS platforms, E911, QoS, and troubleshooting.
 
 ## How do I open it?
 
-1. Download [the campus zip](../releases/uc-lab-free-university.html.zip).
+1. Download [the v21 zip](../releases/uc-lab-free-university.html.zip).
 2. Unzip it.
 3. Open `uc-lab-free-university.html` in Chrome, Safari, Edge, or Firefox.
 
-The file in the repo is [`campus/uc-lab-free-university.html`](../campus/uc-lab-free-university.html). It is the 20.2-RESOURCES curriculum, 632 sections, with the October 2026 study note on the home page.
-
-Older instructions say `v17-UNIVERSITY.html`. That was the previous filename for this campus.
+From a clone, open [campus/uc-lab-free-university.html](../campus/uc-lab-free-university.html). That file is edition v21: 476 sections, light and dark themes. Steps for a phone are in [HOW-TO-USE](./HOW-TO-USE.md).
 
 ## Does it work on a phone?
 
-Yes, in the Chrome or Safari app. The first load can take 10–30 seconds. Desktop is smoother. Steps are in [HOW-TO-USE](./HOW-TO-USE.md).
+Yes, in the full browser app. The first load can take a little while. A laptop is easier to study on.
 
-## Is there a PDF textbook?
+## Is there a PDF?
 
-The campus is the book.
+No separate textbook. The campus is the book. Use the browser print dialog, or the export menu inside the page, when you want a PDF of a section. The [62-slide briefing](../downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx) is the slide companion.
 
-- Open the HTML.
-- Brief from the [62-slide PPTX](../downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx).
-- Print any section with the browser's Print → Save as PDF.
-- Official vendor documents are linked from the in-campus Resources drawer. The campus still boots when those sites are unreachable.
+## Is this official vendor training?
 
-## Is this official Cisco or Microsoft training?
+No. It is educational material by CYPHER0X9. Read the current Cisco, Microsoft, or CCaaS document before you change production.
 
-It is a free educational share by CYPHER0X9. Pin the official vendor document before a production change.
+## Why is WebRTC here?
+
+Contact-center agent desktops and web soft clients send media from the browser. A silent agent is often ICE, TURN, or a SASE inspection policy. A desk phone does not use that path. The campus says so on the WebRTC page.
+
+## Why is Linux here?
+
+CUCM, Unity Connection, IM and Presence, and Emergency Responder run on Cisco VOS, which is a locked-down Linux. The command line is how you check NTP, database replication, certificates, and disk. There is no general Linux course in this edition.
 
 ## What is LICC?
 
-**L**eg · **I**D · **C**ounter · **C**apture. The proof grammar for a call path. Learn it on `method` inside the campus.
+Leg, identifier, counter, capture. Name the hop, the id that joins the logs, the counter that moved, and the artifact that proves it.
 
-## Why multi-vendor?
+## Can I use this at work?
 
-Jobs move across logos. The call path is the thing that survives a dual-run: Cisco, Webex, Teams, Amazon Connect, Genesys, Zoom.
+The license is MIT. Do not paste secrets or customer captures into an issue. Do not treat a page as a production runbook until you have checked the vendor document for your version.
 
-## Where is the 30-day plan?
+## Related campus
 
-[HOW-TO-USE](./HOW-TO-USE.md) covers the day-by-day path, interview prep, and a 90-minute class.
-
-## Sibling campus?
-
-[AI Lab Free University](https://github.com/cipher0x9/ai-lab-free-university-mesmerizing) is the other public campus. Its zip is [v2-UNIVERSITY.html.zip](https://github.com/cipher0x9/ai-lab-free-university-mesmerizing/raw/main/zips/v2-UNIVERSITY.html.zip). See [SIBLINGS](./SIBLINGS.md).
-
-## Can I use this at work or school?
-
-The MIT license allows reuse for learning. Leave secrets and customer data out. Treat it as study material, and validate production changes against vendor docs.
+[AI Lab Free University](https://github.com/cipher0x9/ai-lab-free-university-mesmerizing) is a separate offline campus for a different subject. See [SIBLINGS](./SIBLINGS.md).
 
 ## How do I contribute?
 

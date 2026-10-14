@@ -13,17 +13,17 @@ The campus is one HTML file. Everything else in the repo helps you download it, 
 | `downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx` | PowerPoint, Keynote, or LibreOffice, from the local file. 62 slides. | PowerPoint or Keynote mobile, or the Files preview. The HTML is the better phone textbook. The deck is the projected story. |
 | `docs/HOW-TO-USE.md`, `docs/FAQ.md`, `docs/REMIX.md`, `docs/SIBLINGS.md` | Any markdown preview, including the GitHub app offline cache or a local editor. | Comfortable to read. They do not replace the campus. |
 | `docs/references/uc-contact-center-session-vault-2026-10.md` | The list itself is local. | Read the titles offline. Opening a Cisco Live or YouTube link needs a network, and some sessions need a free vendor account. |
-| `docs/assets/preview.png` | Local image. | The picture on the README. |
+| `docs/assets/campus-home.png` | Local image. | The home-page picture on the README. |
 
 > [!TIP]
 > In-app browsers inside LinkedIn, Instagram, and Telegram often stop on "Loading" for this file. Move the zip into Files and open it from Chrome or Safari.
 
 ### A ten-minute first session
 
-1. Open the HTML. Wait until the home page shows **Mission Control** and the October 2026 card.
+1. Open the HTML. Wait until the home page shows **Study sequence** and the 476-section stat.
 2. Read **Method** (`#method`) and say LICC without looking: Leg, ID, Counter, Capture.
-3. Open **☰ Menu** and pick one product, for example CUCM (`#prod-cucm`).
-4. Switch theme once (Warm, Night, or Paper). That confirms the page is running locally.
+3. Use the study rail, or open **☰ Menu** and pick one chapter, for example CUCM (`#prod-cucm`).
+4. Switch the header theme once (Light or Dark). That confirms the page is running locally.
 5. Search for `Local Gateway`. Open one hit. Stop there.
 
 Progress checkmarks stay in this browser. A different browser, or a cleared site store, starts the donut over. Nothing is uploaded.
@@ -72,14 +72,14 @@ About 45–75 minutes a day. Stay on the day's ids. The hash in the address bar 
 | 25 | `glossary` | Define ten terms you still hesitate on |
 | 26 | Blank page | Teach a CUCM ↔ Local Gateway ↔ Webex call with no notes |
 | 27 | Export | Save one hub as Markdown and read it away from the app |
-| 28 | Paper theme | Present that hub to a person, or record yourself |
+| 28 | Light theme | Present that hub to a person, or record yourself |
 | 29 | Your miss list | Repeat the two weakest days |
 | 30 | One page | Write a LICC story from a drill: leg, id, counter, capture |
 
 Miss a day and continue. The path is a sequence, not a streak.
 
 > [!NOTE]
-> Foundations still teach CUCM, CUBE, UCCE, and dial plan because dual-run and migration jobs still require them. The October 2026 card on `home` names the current product lines to put on top of that base: Webex Calling, Webex Contact Center, Customer Assist, Teams Phone, and the major CCaaS platforms.
+> Foundations still teach CUCM, CUBE, UCCE, and dial plan because dual-run and migration jobs still require them. The home page names the current product lines to put on top of that base: Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, and the major CCaaS platforms.
 
 ## Interview prep
 
@@ -103,7 +103,7 @@ A 90-minute team session:
 
 | Minutes | Do this |
 |---------|---------|
-| 0–10 | Home page, Paper theme, Mission Control. Agree the room rule: synthetic numbers only. |
+| 0–10 | Home page, Light theme, Study sequence. Agree the room rule: synthetic numbers only. |
 | 10–25 | `method`. Everyone writes LICC for a call they already know. |
 | 25–55 | One hub. Good first hubs: `hub-sip`, `hub-cube-sbc`, `hub-webex-cc`, `hub-migrations`, `hub-e911-redsky`. |
 | 55–75 | Pairs. One person breaks a leg. The other asks for id, counter, and capture. |
@@ -114,7 +114,7 @@ Longer programs: assign one row of the 30-day table per week and use the session
 Classroom setup:
 
 - Project from a laptop. The file does not need a login.
-- **Paper** theme is the calm projector look. **Night** is the dim-room look.
+- **Light** is the calm projector look. **Dark** is the dim-room look. Navy is `#0B1220` and teal is `#0F9B8E`.
 - Font scale and density are in the options panel.
 - Hand out the zip, not a screenshot. People should leave with the file.
 - Keep customer captures and production dial plans off the shared screen and out of the HTML.

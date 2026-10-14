@@ -58,8 +58,10 @@ def main() -> int:
     html = HTML_PATH.read_text(encoding="utf-8")
     if re.search(r"<script[^>]+src=", html, re.I):
         fail(errors, "campus has an external script src")
-    if re.search(r"<link[^>]+href=", html, re.I):
-        fail(errors, "campus has an external stylesheet link")
+    for match in re.finditer(r"<link\b([^>]*)>", html, re.I):
+        href = re.search(r"""href\s*=\s*['"]([^'"]+)['"]""", match.group(1), re.I)
+        if href and not href.group(1).lower().startswith("data:"):
+            fail(errors, "campus has an external link href")
     for host in ("cdn.jsdelivr", "unpkg.com", "cdnjs.", "fonts.googleapis", "ajax.googleapis"):
         if host in html.lower():
             fail(errors, f"campus references {host}")
@@ -75,13 +77,14 @@ def main() -> int:
         meta = json.loads(stats.group(1))
         if meta.get("sections") != len(sections):
             fail(errors, f"STATS.sections={meta.get('sections')} but array has {len(sections)}")
-        if meta.get("version") != "20.2-RESOURCES":
+        if meta.get("version") != "v21":
             fail(errors, f"unexpected version {meta.get('version')}")
     ids = [item.get("id") for item in sections]
     if len(ids) != len(set(ids)):
         fail(errors, "duplicate section ids")
-    if sections and "October 2026" not in sections[0].get("body", ""):
-        fail(errors, "home section is missing the October 2026 study note")
+    home = sections[0].get("body", "") if sections else ""
+    if "data-v21" not in home or "Study sequence" not in home:
+        fail(errors, "home section is missing the v21 study sequence")
 
     for path in ROOT.rglob("*"):
         if not path.is_file() or ".git" in path.parts:
