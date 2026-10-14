@@ -161,11 +161,30 @@ Labs, from the header or the home page. There are 21. Each lesson has a **Try it
 | Dial-peer | Match a called number on CUBE | Longest match, then the lowest preference |
 | One-way | Read an SDP address the far side cannot reach | The ladder can be perfect while RTP is not |
 | Record | Choose where the PSTN fork belongs | A report is not the audio |
-| Quiz | Ten questions from a track bank of at least 300, with the reason after each answer | The score is stored per track in this browser |
+| Quiz | Ten questions from a track bank of at least 150, with a reason that is not a copy of the choice | The score is stored per track in this browser |
 | Cards | Flip one of 2,018 terms | The back says why you would use it |
 | Boss | Sit the cross-track exam | Eighty percent is the pass line |
 
-The quiz bank is 6,054 questions: at least 300 scored questions on each of the 14 tracks, plus a 24-question boss exam. Flashcards are 2,018. Progress, per-track quiz score, known cards, badges, and the study streak stay in `localStorage`. No name, number, or capture is stored. The labs are teaching models. They do not change a live system.
+The quiz bank is 2,913 questions: at least 150 scored questions on each of the 14 tracks. Each of the 2,018 facts is asked once. A second question appears only when the reason adds a further consequence (731 of those), and 164 questions are situations. The boss exam is 24 questions. Flashcards are 2,018.
+
+| Track | Questions |
+|---|---|
+| Start here | 169 |
+| SIP and media | 194 |
+| CUCM and CUBE | 185 |
+| Webex Calling and Teams Phone | 243 |
+| Contact center — UCCE and PCCE | 197 |
+| CCaaS and UCaaS platforms | 298 |
+| Emergency calling | 163 |
+| Voice network and QoS | 160 |
+| Migrations | 188 |
+| Troubleshooting | 257 |
+| Evidence habits | 267 |
+| Design notes | 171 |
+| Practice | 162 |
+| Reference | 259 |
+
+Progress, per-track quiz score, known cards, badges, and the study streak stay in `localStorage`. No name, number, or capture is stored. The labs are teaching models. They do not change a live system.
 
 ## License
 

@@ -36,7 +36,7 @@ The header has **Labs** and a light/dark control. Ctrl+K opens search across eve
 - **Dial plan** asks you to order the line CSS, partition, route pattern, route list, route group, and SIP trunk. A wrong block explains why that call would never leave.
 - **IVR** lets you drag a greeting, a menu, and queues, then send a digit. A digit with no branch never starts a queue.
 - The other labs decode a SIP message, size a codec, draw jitter and loss, trace a CUCM CSS, build a Webex Calling location, route a UCCE dialed number, walk Finesse states, order an E911 flow, mark QoS, step SRTP, estimate Erlang-C staff, find a fault, match a CUBE dial-peer, fix one-way audio, and place a recording fork.
-- **Quiz** scores ten questions at a time from a bank of at least 300 per track (6,054 in total). The line under the answer is the point. The **boss exam** is 24 questions, and 80% is the pass line.
+- **Quiz** scores ten questions at a time from a bank of at least 150 per track (2,913 in total). Each fact is asked once. The line under the answer is a reason, not a copy of the choice. The **boss exam** is 24 questions, and 80% is the pass line.
 - **Flashcards** are 2,018 terms. Flip, then mark the ones you can use.
 
 Every lesson has **Try it**. That button opens the lab that matches the page.
