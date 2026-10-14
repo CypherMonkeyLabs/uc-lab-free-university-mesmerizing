@@ -6,6 +6,8 @@
   var QUIZ_KEY = "uc_app_quiz";
   var CARD_KEY = "uc_app_cards";
   var LAST_KEY = "uc_app_last";
+  var STREAK_KEY = "uc_app_streak";
+  var badgeSnap = {};
   var simRAF = 0;
   var waveRAF = 0;
   var palIndex = 0;
@@ -99,6 +101,7 @@
     var state = labState();
     state[name] = 1;
     writeJson(LAB_KEY, state);
+    announceNewBadges();
   }
   function liveCounts() {
     var c = window.UC_VISUAL_COUNTS || {};
@@ -125,6 +128,202 @@
     if (window.openSection) window.openSection(id);
   }
 
+
+  var LABS = [
+    { id: "simulator", short: "Call flow", title: "Call-flow simulator", icon: "phone", color: "#0F9B8E", blurb: "Place a call and watch SIP move apart from RTP." },
+    { id: "dial", short: "Dial plan", title: "Dial-plan builder", icon: "design", color: "#6366F1", blurb: "Build the path from CSS to the CUBE trunk." },
+    { id: "ivr", short: "IVR", title: "IVR sandbox", icon: "queue", color: "#7C3AED", blurb: "Send a digit into a queue, or show where it dies." },
+    { id: "sipdec", short: "SIP decode", title: "SIP message decoder", icon: "sip", color: "#4F46E5", blurb: "Paste a message or click a header and read the job." },
+    { id: "codec", short: "Codec", title: "Codec and bandwidth", icon: "qos", color: "#0F766E", blurb: "Turn payload and headers into kbit/s." },
+    { id: "jitter", short: "Jitter", title: "RTP jitter and loss", icon: "qos", color: "#0891B2", blurb: "See late and missing packets on a teaching chart." },
+    { id: "route", short: "Route", title: "CUCM routing tracer", icon: "cube", color: "#159947", blurb: "Watch CSS order and the partition that wins." },
+    { id: "webex", short: "Webex PSTN", title: "Webex Calling location", icon: "cloud", color: "#0891B2", blurb: "Build a location and name the PSTN path." },
+    { id: "ucce", short: "UCCE", title: "UCCE router", icon: "queue", color: "#7C3AED", blurb: "Follow a dialed number into a call type and skill group." },
+    { id: "finesse", short: "Finesse", title: "Finesse agent states", icon: "phone", color: "#BE185D", blurb: "Walk the desktop states the router can see." },
+    { id: "e911", short: "E911", title: "E911 and RedSky", icon: "emergency", color: "#E11D48", blurb: "Order discovery, location, callback, and proof." },
+    { id: "qos", short: "QoS", title: "QoS marking game", icon: "qos", color: "#0F766E", blurb: "Mark the class, then give it a real queue." },
+    { id: "srtp", short: "SRTP", title: "SRTP and TLS flight", icon: "proof", color: "#1D4ED8", blurb: "Step the teaching handshake. Signaling is not media." },
+    { id: "erlang", short: "Erlang", title: "Erlang-C staffing", icon: "design", color: "#B45309", blurb: "Turn calls and handle time into a teaching staff count." },
+    { id: "fault", short: "Find fault", title: "Find the fault", icon: "tree", color: "#B45309", blurb: "Name the next proof, not a second guess." },
+    { id: "dialpeer", short: "Dial-peer", title: "CUBE dial-peer match", icon: "cube", color: "#159947", blurb: "Longest match, then the lowest preference." },
+    { id: "nat", short: "One-way", title: "One-way audio", icon: "sip", color: "#E08A00", blurb: "The ladder is up. The SDP address is not reachable." },
+    { id: "record", short: "Record", title: "Recording fork", icon: "proof", color: "#047857", blurb: "Fork the media where the PSTN audio actually is." },
+    { id: "quiz", short: "Quiz", title: "Quiz", icon: "proof", color: "#E08A00", blurb: "A scored drill from the track bank, with the reason." },
+    { id: "cards", short: "Cards", title: "Flashcards", icon: "book", color: "#0891B2", blurb: "Flip a term, then say why you would use it." },
+    { id: "boss", short: "Boss", title: "Boss exam", icon: "start", color: "#E11D48", blurb: "One sitting across the tracks. Eighty percent to pass." }
+  ];
+
+  function labById(id) {
+    for (var i = 0; i < LABS.length; i++) if (LABS[i].id === id) return LABS[i];
+    return LABS[0];
+  }
+  function knownLab(id) {
+    for (var i = 0; i < LABS.length; i++) if (LABS[i].id === id) return true;
+    return false;
+  }
+  function drills() {
+    return window.UC_DRILLS || { questions: [], cards: [], boss: [], counts: {} };
+  }
+  function quizStore() {
+    var raw = readJson(QUIZ_KEY, {});
+    if (!raw || typeof raw !== "object" || Array.isArray(raw)) raw = {};
+    if (!raw.tracks || typeof raw.tracks !== "object") raw.tracks = {};
+    if (!raw.boss || typeof raw.boss !== "object") raw.boss = {};
+    return raw;
+  }
+  function dayKey(date) {
+    return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+  }
+  function streakState() {
+    return readJson(STREAK_KEY, { last: "", n: 0 });
+  }
+  function touchStreak() {
+    var row = streakState();
+    var today = new Date();
+    var key = dayKey(today);
+    if (row.last === key) return row;
+    var prior = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1);
+    row.n = row.last === dayKey(prior) ? (Number(row.n) || 0) + 1 : 1;
+    row.last = key;
+    writeJson(STREAK_KEY, row);
+    return row;
+  }
+  function earnedBadges() {
+    var labs = labState();
+    var tried = 0;
+    var all = true;
+    LABS.forEach(function (lab) {
+      if (labs[lab.id]) tried += 1;
+      else all = false;
+    });
+    var opened = Object.keys(progressIds()).length;
+    var streak = Number(streakState().n) || 0;
+    var quiz = quizStore();
+    var sharp = false;
+    Object.keys(quiz.tracks || {}).forEach(function (name) {
+      var row = quiz.tracks[name];
+      if (row && row.bestN && row.best / row.bestN >= 0.8) sharp = true;
+    });
+    var out = {};
+    if (labs.simulator) out["first-call"] = "First call";
+    if (labs.dial) out["dial-plan"] = "Dial plan";
+    if (tried >= 5) out["five-labs"] = "Five labs";
+    if (all) out["full-bench"] = "Full bench";
+    if (opened >= 10) out.listener = "Listener";
+    if (opened >= 50) out.cartographer = "Cartographer";
+    if (streak >= 3) out["streak-3"] = "Three-day streak";
+    if (streak >= 7) out["streak-7"] = "Seven-day streak";
+    if (sharp) out["track-sharp"] = "Track sharp";
+    if (quiz.boss && quiz.boss.passed) out.boss = "Boss exam";
+    return out;
+  }
+  function ensureLive() {
+    var el = document.getElementById("ucAppLive");
+    if (el) return el;
+    el = document.createElement("div");
+    el.id = "ucAppLive";
+    el.className = "uc-app-sr";
+    el.setAttribute("aria-live", "polite");
+    document.body.appendChild(el);
+    return el;
+  }
+  function celebrate(name) {
+    var live = ensureLive();
+    live.textContent = "Badge earned: " + name + ".";
+    if (reduced()) return;
+    var layer = document.createElement("div");
+    layer.className = "uc-app-confetti";
+    layer.setAttribute("aria-hidden", "true");
+    var colors = ["#0F9B8E", "#6366F1", "#F5B942", "#E11D48", "#22C55E"];
+    for (var i = 0; i < 24; i++) {
+      var bit = document.createElement("i");
+      bit.style.left = (4 + Math.random() * 92) + "%";
+      bit.style.background = colors[i % colors.length];
+      bit.style.animationDelay = (Math.random() * 0.25) + "s";
+      layer.appendChild(bit);
+    }
+    document.body.appendChild(layer);
+    setTimeout(function () {
+      if (layer.parentNode) layer.parentNode.removeChild(layer);
+    }, 1700);
+  }
+  function announceNewBadges() {
+    var now = earnedBadges();
+    Object.keys(now).forEach(function (key) {
+      if (!badgeSnap[key]) celebrate(now[key]);
+    });
+    badgeSnap = now;
+  }
+  function badgeRow() {
+    var earned = earnedBadges();
+    var catalog = [
+      ["first-call", "First call"],
+      ["dial-plan", "Dial plan"],
+      ["five-labs", "Five labs"],
+      ["full-bench", "Full bench"],
+      ["listener", "Listener"],
+      ["cartographer", "Cartographer"],
+      ["streak-3", "3-day"],
+      ["streak-7", "7-day"],
+      ["track-sharp", "Track sharp"],
+      ["boss", "Boss"]
+    ];
+    return catalog.map(function (item) {
+      var on = !!earned[item[0]];
+      return '<span class="uc-app-badge' + (on ? " is-on" : "") + '">' + esc(item[1]) + "</span>";
+    }).join("");
+  }
+  function globeMarkup() {
+    return '<div class="uc-app-globe" aria-hidden="true"><div class="uc-app-globe-spin">' +
+      '<div class="uc-app-sphere"></div><span class="uc-app-orbit o1"></span><span class="uc-app-orbit o2"></span>' +
+      '<span class="uc-app-nodelet n1"></span><span class="uc-app-nodelet n2"></span>' +
+      '<span class="uc-app-nodelet n3"></span><span class="uc-app-nodelet n4"></span>' +
+      "</div></div>";
+  }
+  function matchLab(section) {
+    if (!section || section.id === "home") return null;
+    var blob = (section.title + " " + section.id + " " + (section.sub || "")).toLowerCase();
+    function hit(re) { return re.test(blob); }
+    if (hit(/jitter|packet loss/)) return { lab: "jitter" };
+    if (hit(/dscp|\bqos\b|\bllq\b|expedited|marking/)) return { lab: "qos" };
+    if (hit(/srtp|dtls|\btls\b|certificate/)) return { lab: "srtp" };
+    if (hit(/erlang|staffing|shrinkage/)) return { lab: "erlang" };
+    if (hit(/finesse|agent state/)) return { lab: "finesse" };
+    if (hit(/e911|redsky|\belin\b|kari|baum|dispatchable/)) return { lab: "e911" };
+    if (hit(/local gateway|webex calling/)) return { lab: "webex" };
+    if (hit(/direct routing|operator connect|teams phone/)) return { lab: "webex" };
+    if (hit(/skill group|call type|precision queue|\bucce\b|\bpcce\b|\bcvp\b|\bicm\b/)) return { lab: "ucce" };
+    if (hit(/dial-peer|dial peer|\bcube\b/)) return { lab: "dialpeer" };
+    if (hit(/one-way|nat traversal|\bnat\b/)) return { lab: "nat" };
+    if (hit(/recording|built-in bridge|\bbib\b/)) return { lab: "record" };
+    if (hit(/codec|bandwidth|g\.711|g\.729|opus/)) return { lab: "codec" };
+    if (hit(/hunt group|line group|hunt pilot/)) return { lab: "simulator", scenario: "hunt" };
+    if (hit(/blind transfer/)) return { lab: "simulator", scenario: "blind" };
+    if (hit(/\bconsult\b/)) return { lab: "simulator", scenario: "consult" };
+    if (hit(/\btransfer\b/)) return { lab: "simulator", scenario: "consult" };
+    if (hit(/conference/)) return { lab: "simulator", scenario: "conference" };
+    if (hit(/expressway|\bmra\b/)) return { lab: "simulator", scenario: "mra" };
+    if (hit(/callback/)) return { lab: "simulator", scenario: "callback" };
+    if (hit(/failover/)) return { lab: "simulator", scenario: "failover" };
+    if (hit(/\bivr\b|\bdtmf\b|prompt/)) return { lab: "ivr" };
+    if (hit(/partition|calling search space|route pattern|\bcss\b/)) return { lab: "route" };
+    if (hit(/via header|call-id|sip header|invite transaction/)) return { lab: "sipdec" };
+    var group = section.group;
+    if (group === "Start here") return { lab: "simulator", scenario: "station" };
+    if (group === "SIP and media") return { lab: "sipdec" };
+    if (group === "CUCM and CUBE") return { lab: "route" };
+    if (group === "Webex Calling and Teams Phone") return { lab: "webex" };
+    if (group === "Contact center — UCCE and PCCE") return { lab: "ucce" };
+    if (group === "CCaaS and UCaaS platforms") return { lab: "erlang" };
+    if (group === "Emergency calling") return { lab: "e911" };
+    if (group === "Voice network and QoS") return { lab: "qos" };
+    if (group === "Migrations") return { lab: "simulator", scenario: "failover" };
+    if (group === "Troubleshooting" || group === "Evidence habits" || group === "Practice") return { lab: "fault" };
+    if (group === "Design notes") return { lab: "codec" };
+    if (group === "Reference") return { lab: "quiz" };
+    return { lab: "fault" };
+  }
+
   function mountDash() {
     var main = document.getElementById("main");
     var host = main && main.querySelector(".sec-container");
@@ -147,23 +346,27 @@
     dash.id = "ucAppDash";
     dash.className = "uc-app-dash";
     dash.setAttribute("aria-label", "Campus dashboard");
-    var labButtons = [
-      ["simulator", "Call flow", "phone", "#0F9B8E", "Place a call and watch SIP move apart from RTP."],
-      ["dial", "Dial plan", "design", "#6366F1", "Build the path from CSS to the CUBE trunk."],
-      ["ivr", "IVR", "queue", "#7C3AED", "Send a digit into a queue, or show where it dies."],
-      ["quiz", "Quiz", "proof", "#E08A00", "Answer, then read why the fact matters."],
-      ["cards", "Cards", "book", "#0891B2", "Flip a term, then say why you would use it."]
-    ];
+    var streak = streakState();
+    var streakText = (Number(streak.n) || 1) <= 1
+      ? "Day 1 in this browser. Open the campus again tomorrow to start a streak."
+      : streak.n + " day streak in this browser. It stays on this device.";
     dash.innerHTML =
       '<div class="uc-app-hero">' +
-        '<p class="uc-app-kicker">UC Lab · offline campus</p>' +
-        '<h1>Voice, UC, and contact center</h1>' +
-        '<p class="uc-app-lead"><b>Why it matters.</b> The call, the border, the queue, and the proof have to stay separable. This file is the campus: open a track, or prove a path in a lab before you change anything real.</p>' +
-        '<div class="uc-app-counters">' +
-          '<div class="uc-app-counter"><strong data-n="' + counts.sections + '">0</strong><span>Sections</span></div>' +
-          '<div class="uc-app-counter"><strong data-n="' + counts.flows + '">0</strong><span>Flows</span></div>' +
-          '<div class="uc-app-counter"><strong data-n="' + counts.illustrations + '">0</strong><span>Illustrations</span></div>' +
-          '<div class="uc-app-counter"><strong data-n="' + counts.tracks + '">0</strong><span>Tracks</span></div>' +
+        '<div class="uc-app-hero-layout">' +
+          '<div>' +
+            '<p class="uc-app-kicker">UC Lab · offline campus</p>' +
+            '<h1>Voice, UC, and contact center</h1>' +
+            '<p class="uc-app-lead"><b>Why it matters.</b> The call, the border, the queue, and the proof have to stay separable. This file is the campus: open a track, or prove a path in a lab before you change anything real.</p>' +
+            '<p class="uc-app-streak" id="ucAppStreak">' + esc(streakText) + '</p>' +
+            '<div class="uc-app-badges" aria-label="Achievements">' + badgeRow() + '</div>' +
+            '<div class="uc-app-counters">' +
+              '<div class="uc-app-counter"><strong data-n="' + counts.sections + '">0</strong><span>Sections</span></div>' +
+              '<div class="uc-app-counter"><strong data-n="' + counts.flows + '">0</strong><span>Flows</span></div>' +
+              '<div class="uc-app-counter"><strong data-n="' + counts.illustrations + '">0</strong><span>Illustrations</span></div>' +
+              '<div class="uc-app-counter"><strong data-n="' + counts.tracks + '">0</strong><span>Tracks</span></div>' +
+            '</div>' +
+          '</div>' +
+          globeMarkup() +
         '</div>' +
         '<div class="uc-app-row">' +
           '<div class="uc-app-progress">' +
@@ -176,11 +379,11 @@
             '<p>' + opened + ' of ' + total + ' sections opened. Nothing is uploaded.</p>' +
             '<div class="uc-app-actions"><button type="button" class="uc-app-btn primary" data-go="' + esc(contId) + '" aria-label="Continue with ' + esc(cont ? cont.title : "SIP") + '">Continue</button></div></div>' +
           '</div>' +
-          '<div class="uc-app-labs"><h2>Labs</h2><p>Teaching models. They do not change a live system.</p><div class="uc-app-lab-grid">' +
-            labButtons.map(function (item) {
-              return '<button type="button" class="uc-app-lab-launch" data-lab="' + item[0] + '" style="--accent:' + item[3] + '">' +
-                (ICONS[item[2]] || "") + '<strong>' + item[1] + '</strong><span>' + item[4] + '</span>' +
-                (labs[item[0]] ? '<span class="uc-app-done">Tried</span>' : '') + '</button>';
+          '<div class="uc-app-labs"><h2>Labs</h2><p>' + LABS.length + ' teaching models. They do not change a live system.</p><div class="uc-app-lab-grid">' +
+            LABS.map(function (item) {
+              return '<button type="button" class="uc-app-lab-launch" data-lab="' + item.id + '" style="--accent:' + item.color + '">' +
+                (ICONS[item.icon] || "") + '<strong>' + esc(item.short) + '</strong><span>' + esc(item.blurb) + '</span>' +
+                (labs[item.id] ? '<span class="uc-app-done">Tried</span>' : '') + '</button>';
             }).join("") +
           '</div></div>' +
         '</div>' +
@@ -240,9 +443,19 @@
     if (!host || host.querySelector(".uc-app-why")) return;
     var track = trackFor(section.group);
     var sub = section.sub ? " This section covers " + section.sub.replace(/\.$/, "") + "." : "";
-    var bar = document.createElement("p");
+    var match = matchLab(section);
+    var lab = match ? labById(match.lab) : null;
+    var bar = document.createElement("div");
     bar.className = "uc-app-why";
-    bar.innerHTML = "<b>Why it matters.</b> " + esc(track.why + sub);
+    bar.innerHTML = "<div><b>Why it matters.</b> " + esc(track.why + sub) + "</div>" +
+      (lab ? '<button type="button" class="uc-app-btn primary" id="ucAppTry">Try it</button>' : "");
+    var tryBtn = bar.querySelector("#ucAppTry");
+    if (tryBtn && match) {
+      tryBtn.setAttribute("aria-label", "Try it in the " + lab.title + " lab");
+      tryBtn.addEventListener("click", function () {
+        openLab(match.lab, tryBtn, match.scenario || "");
+      });
+    }
     var hero = host.querySelector(".sec-head");
     if (hero && hero.nextSibling) host.insertBefore(bar, hero.nextSibling);
     else host.appendChild(bar);
@@ -558,6 +771,9 @@
       ]
     }
   ];
+  if (window.UC_EXTRA_SCENARIOS && window.UC_EXTRA_SCENARIOS.length) {
+    SCENARIOS = SCENARIOS.concat(window.UC_EXTRA_SCENARIOS);
+  }
 
   var sim = { scenario: 0, i: 2, preview: 0.62, running: false, t0: 0, dur: 1100 };
 
@@ -738,14 +954,16 @@
     simRAF = requestAnimationFrame(simFrame);
   }
   function renderSimulator(root) {
+    if (!SCENARIOS[sim.scenario]) sim.scenario = 0;
     var scenario = SCENARIOS[sim.scenario];
     root.innerHTML =
       '<p class="uc-app-note"><b>Why it matters.</b> ' + esc(scenario.why) + '</p>' +
-      '<div class="uc-app-toolbar" role="tablist" aria-label="Call scenarios">' +
-        SCENARIOS.map(function (item, idx) {
-          return '<button type="button" class="uc-app-tab" data-scenario="' + idx + '" aria-selected="' + (idx === sim.scenario ? "true" : "false") + '">' + esc(item.title) + "</button>";
-        }).join("") +
-      '</div>' +
+      '<div class="uc-app-field"><label for="ucAppScenario">Scenario, ' + SCENARIOS.length + ' paths</label>' +
+        '<select id="ucAppScenario">' +
+          SCENARIOS.map(function (item, idx) {
+            return '<option value="' + idx + '"' + (idx === sim.scenario ? " selected" : "") + ">" + esc(item.title) + "</option>";
+          }).join("") +
+        "</select></div>" +
       '<div class="uc-app-legend"><span><i class="sip"></i>SIP signaling</span><span><i class="rtp"></i>RTP or a report, not the same path</span></div>' +
       '<canvas id="ucAppCanvas" class="uc-app-canvas" role="img" aria-label="Animated call flow"></canvas>' +
       '<div class="uc-app-toolbar">' +
@@ -774,14 +992,12 @@
       simNote();
       drawSim(0);
     });
+    root.querySelector("#ucAppScenario").addEventListener("change", function (e) {
+      stopSim();
+      sim.scenario = Number(e.target.value) || 0;
+      renderSimulator(root);
+    });
     root.onclick = function (e) {
-      var tab = e.target.closest("[data-scenario]");
-      if (tab) {
-        stopSim();
-        sim.scenario = Number(tab.getAttribute("data-scenario"));
-        renderSimulator(root);
-        return;
-      }
       var stepBtn = e.target.closest("[data-step]");
       if (stepBtn) {
         stopSim();
@@ -1105,162 +1321,265 @@
     paint();
   }
 
-  var QUIZ = [
-    { q: "What completes a SIP INVITE transaction after the 200 OK?", choices: ["ACK", "BYE", "A second INVITE", "RTCP only"], answer: 0, why: "The ACK finishes the INVITE transaction. Media usually follows the SDP, and it is still a different problem from the ladder." },
-    { q: "On a normal CUCM call through CUBE, where does RTP go?", choices: ["Through CUCM for every call", "Phone to CUBE to the carrier, unless an MTP or transcoder is invoked", "Only through CUIC", "It stays inside the phone"], answer: 1, why: "CUCM is the signaling brain. Assuming it carries audio hides one-way-audio faults." },
-    { q: "What does a CUBE B2BUA change that you must prove per leg?", choices: ["The caller's name", "The Call-ID", "The VLAN of the phone", "The CUIC schedule"], answer: 1, why: "A new Call-ID means the ladder before CUBE is not the ladder after it." },
-    { q: "A calling search space is best described as:", choices: ["A list of users", "An ordered list of partitions the line or device may reach", "The RTP port range", "A QoS policy"], answer: 1, why: "If the partition is not in the CSS, the route pattern does not exist for that phone." },
-    { q: "In a production CUCM plan, a route pattern usually points at:", choices: ["A route list", "A Finesse layout", "A CUIC report", "An NTP server"], answer: 0, why: "The list selects a route group, and the group holds the trunk. That is how failover is designed." },
-    { q: "DSCP EF (46) is the usual mark for:", choices: ["SIP signaling", "Voice bearer, the RTP", "Email", "Backups"], answer: 1, why: "Signaling is often marked differently. Marking EF does not prove the WAN queued it." },
-    { q: "The G.114 planning figure this campus uses for one-way delay is:", choices: ["15 ms", "150 ms", "1.5 s", "8 seconds"], answer: 1, why: "The delay chart is a budget: packetization, queue, serialization, propagation, and jitter buffer against that limit." },
-    { q: "CUIC, on a UCCE contact, is:", choices: ["The audio path", "The report beside the path", "The dial-peer", "The phone firmware"], answer: 1, why: "Join history with RouterCallKey and matching time. A rename can break the report while calls still connect." },
-    { q: "The phone rings and Finesse shows nothing. Where do you look first?", choices: ["The PSTN leg you already proved", "PG, CTI, and Finesse", "DNS for the public web site", "The handset volume"], answer: 1, why: "The desktop event is not the carrier INVITE. Split the fault at the CTI boundary." },
-    { q: "A SIP 200 OK on an emergency call proves:", choices: ["The PSAP has the right location", "Only that a dialog completed", "The on-site notification fired", "The ELIN is correct"], answer: 1, why: "Location, ELIN or ERL, and on-site notification are separate proof from call setup." },
-    { q: "Webex Calling with your own PSTN uses:", choices: ["No gateway at all", "A local gateway at the border", "Only CUIC", "An MTP on every phone"], answer: 1, why: "Calling Plan is Microsoft or Cisco PSTN without that gateway. Local gateway means you still own dial-peers." },
-    { q: "Teams Direct Routing means:", choices: ["Microsoft supplies the PSTN trunk", "Your SBC connects Teams to the carrier", "Operator Connect with no SBC", "A CUCM route list renamed"], answer: 1, why: "Calling Plan, Operator Connect, and Direct Routing put the PSTN in different hands. Name which one you have before you troubleshoot." },
-    { q: "One-way audio with a perfect ladder usually means:", choices: ["The INVITE failed", "RTP, NAT, or a codec problem on a media leg", "The CSS is empty", "CUIC is down"], answer: 1, why: "Read the SDP and the capture. Do not restart the cluster because signaling succeeded." },
-    { q: "G.711 at 20 ms, layer 3, is about:", choices: ["8 kbit/s", "80 kbit/s", "1.5 Mbit/s", "64 bytes"], answer: 1, why: "Payload plus 40 bytes of IP, UDP, and RTP, fifty packets a second. Ethernet overhead makes it about 87.2 kbit/s." },
-    { q: "A safe number move starts with:", choices: ["Deleting the old route the night before", "A dual-run and a rehearsed rollback", "Turning off QoS", "A new Call-ID format"], answer: 1, why: "Both systems need a proven path before the cut. Rollback that was not rehearsed is a hope." },
-    { q: "LICC asks you to write, before the change:", choices: ["A vendor logo", "One leg, one identifier, one counter, and one capture", "The caller's home address", "A new dial plan from memory"], answer: 1, why: "That is the evidence pack. Without it, the next person cannot see what you proved." }
-  ];
+  function trackQuestions(track) {
+    return (drills().questions || []).filter(function (item) { return item.track === track; });
+  }
   function renderQuiz(root) {
-    var index = 0;
-    var score = 0;
-    var locked = false;
-    function paint() {
-      if (index >= QUIZ.length) {
-        var best = readJson(QUIZ_KEY, {}).best || 0;
-        if (score > best) best = score;
-        writeJson(QUIZ_KEY, { best: best, last: score });
-        markLab("quiz");
-        root.innerHTML = '<p class="uc-app-note"><b>Why it matters.</b> A score is a drill, not a certification. The point is the sentence under each answer.</p>' +
-          '<h3 class="uc-app-q">' + score + " / " + QUIZ.length + "</h3>" +
-          '<p>Best in this browser: ' + best + ".</p>" +
-          '<button type="button" class="uc-app-btn primary" id="ucQuizAgain">Try again</button>';
-        root.querySelector("#ucQuizAgain").addEventListener("click", function () { index = 0; score = 0; locked = false; paint(); });
-        return;
-      }
-      var item = QUIZ[index];
+    var bank = drills();
+    var store = quizStore();
+    function save() { writeJson(QUIZ_KEY, store); }
+    function picker() {
       root.innerHTML =
-        '<p class="uc-app-score">Question ' + (index + 1) + " of " + QUIZ.length + " · " + score + " correct</p>" +
-        '<h3 class="uc-app-q">' + esc(item.q) + "</h3>" +
-        item.choices.map(function (choice, i) {
-          return '<button type="button" class="uc-app-choice" data-choice="' + i + '">' + esc(choice) + "</button>";
-        }).join("") +
-        '<p class="uc-app-status" id="ucQuizWhy" aria-live="polite">Choose an answer. Feedback is immediate.</p>' +
-        '<button type="button" class="uc-app-btn" id="ucQuizNext" disabled>Next</button>';
-      root.querySelector("#ucQuizNext").addEventListener("click", function () {
-        if (!locked) return;
-        index += 1;
-        locked = false;
-        paint();
+        '<p class="uc-app-note"><b>Why it matters.</b> Each track keeps its own score. A drill is ten questions from that bank. The line under the answer is the point.</p>' +
+        '<div class="uc-app-stack" id="ucQuizTracks"></div>';
+      var host = root.querySelector("#ucQuizTracks");
+      TRACKS.forEach(function (track) {
+        var count = (bank.counts && bank.counts[track.group]) || trackQuestions(track.group).length;
+        var row = store.tracks[track.group] || { ok: 0, n: 0, best: 0, bestN: 0 };
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "uc-app-choice";
+        btn.textContent = track.group + " · " + count + " questions · " + (row.ok || 0) + "/" + (row.n || 0) + " scored · best drill " + (row.best || 0) + "/" + (row.bestN || 0);
+        btn.addEventListener("click", function () { start(track.group); });
+        host.appendChild(btn);
       });
     }
-    root.addEventListener("click", function (e) {
-      var btn = e.target.closest("[data-choice]");
-      if (!btn || locked) return;
-      locked = true;
-      var pick = Number(btn.getAttribute("data-choice"));
-      var item = QUIZ[index];
-      root.querySelectorAll("[data-choice]").forEach(function (choice) {
-        var n = Number(choice.getAttribute("data-choice"));
-        if (n === item.answer) choice.classList.add("is-good");
-        else if (n === pick) choice.classList.add("is-bad");
-      });
-      if (pick === item.answer) score += 1;
-      var why = root.querySelector("#ucQuizWhy");
-      why.className = "uc-app-status " + (pick === item.answer ? "is-ok" : "is-bad");
-      why.textContent = (pick === item.answer ? "Correct. " : "Not that one. ") + "Why it matters. " + item.why;
-      var next = root.querySelector("#ucQuizNext");
-      if (next) next.disabled = false;
-    });
-    paint();
+    function start(track) {
+      var items = trackQuestions(track);
+      if (!items.length) { picker(); return; }
+      if (!store.tracks[track]) store.tracks[track] = { ok: 0, n: 0, best: 0, bestN: 0, seen: {}, cursor: 0 };
+      var row = store.tracks[track];
+      var cursor = Number(row.cursor) || 0;
+      var session = [];
+      var i;
+      for (i = 0; i < 10; i++) {
+        session.push(items[cursor % items.length]);
+        cursor += 1;
+      }
+      var index = 0;
+      var score = 0;
+      var locked = false;
+      function paint() {
+        if (index >= session.length) {
+          row.cursor = cursor % items.length;
+          if (!row.bestN || score / session.length >= (row.best || 0) / row.bestN) {
+            row.best = score;
+            row.bestN = session.length;
+          }
+          save();
+          markLab("quiz");
+          root.innerHTML =
+            '<p class="uc-app-note"><b>Why it matters.</b> A drill score is practice. The sentence under each answer is what you keep.</p>' +
+            '<h3 class="uc-app-q">' + score + " / " + session.length + " on " + esc(track) + "</h3>" +
+            '<p class="uc-app-score">Bank size ' + items.length + ". Cumulative " + row.ok + " / " + row.n + ". Best drill " + row.best + " / " + row.bestN + ".</p>" +
+            '<div class="uc-app-toolbar"><button type="button" class="uc-app-btn primary" id="ucQuizAgain">Another ten</button><button type="button" class="uc-app-btn" id="ucQuizTracksBtn">All tracks</button></div>';
+          root.querySelector("#ucQuizAgain").addEventListener("click", function () { start(track); });
+          root.querySelector("#ucQuizTracksBtn").addEventListener("click", picker);
+          return;
+        }
+        var item = session[index];
+        root.innerHTML =
+          '<p class="uc-app-score">' + esc(track) + " · " + items.length + " in the bank · question " + (index + 1) + " of " + session.length + " · " + score + " correct this drill</p>" +
+          '<h3 class="uc-app-q">' + esc(item.q) + "</h3>" +
+          item.choices.map(function (choice, choiceIndex) {
+            return '<button type="button" class="uc-app-choice" data-choice="' + choiceIndex + '">' + esc(choice) + "</button>";
+          }).join("") +
+          '<p class="uc-app-status" id="ucQuizWhy" aria-live="polite">Choose an answer. The reason appears here.</p>' +
+          '<button type="button" class="uc-app-btn" id="ucQuizNext" disabled>Next</button>';
+        root.querySelector("#ucQuizNext").addEventListener("click", function () {
+          if (!locked) return;
+          index += 1;
+          locked = false;
+          paint();
+        });
+        root.querySelectorAll("[data-choice]").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            if (locked) return;
+            locked = true;
+            var pick = Number(btn.getAttribute("data-choice"));
+            root.querySelectorAll("[data-choice]").forEach(function (choice) {
+              var n = Number(choice.getAttribute("data-choice"));
+              if (n === item.answer) choice.classList.add("is-good");
+              else if (n === pick) choice.classList.add("is-bad");
+            });
+            row.n = (row.n || 0) + 1;
+            row.seen = row.seen || {};
+            row.seen[item.id] = 1;
+            if (pick === item.answer) {
+              score += 1;
+              row.ok = (row.ok || 0) + 1;
+            }
+            save();
+            var why = root.querySelector("#ucQuizWhy");
+            why.className = "uc-app-status " + (pick === item.answer ? "is-ok" : "is-bad");
+            why.textContent = (pick === item.answer ? "Correct. " : "Not that one. ") + "Why it matters. " + item.why;
+            var next = root.querySelector("#ucQuizNext");
+            if (next) next.disabled = false;
+          });
+        });
+      }
+      paint();
+    }
+    picker();
   }
 
-  var CARDS = [
-    ["Call-ID", "The identifier for one SIP dialog.", "A B2BUA such as CUBE creates a new one. Match each leg on its own Call-ID."],
-    ["ACK", "The request that completes an INVITE transaction.", "A 200 OK without the ACK story is an unfinished transaction."],
-    ["SDP", "The offer or answer that names media addresses, ports, and codecs.", "Signaling can be perfect while SDP points RTP at an address that cannot be reached."],
-    ["RTP", "The media packets.", "Treat RTP as a separate path from the SIP ladder."],
-    ["Partition", "A bucket of patterns or directory numbers.", "A pattern in the wrong partition is invisible to lines that cannot see that bucket."],
-    ["CSS", "An ordered list of partitions.", "Line CSS first, then device CSS. If the partition is in neither, the call fails digit analysis."],
-    ["Route list", "An ordered set of route groups.", "This is the usual target of a route pattern, so failover is a list decision."],
-    ["Route group", "The devices that can take the call.", "A fax group in a voice list sends the INVITE to the wrong place."],
-    ["CUBE", "Cisco's SBC, acting as a B2BUA at the border.", "Prove dial-peers, codecs, and both Call-IDs. Do not treat it as a wire."],
-    ["Local Gateway", "The premises SBC that connects Webex Calling to your PSTN.", "Calling Plan does not use one. If you have PSTN you own, you need this path or an equivalent."],
-    ["Direct Routing", "Teams Phone through your SBC.", "Operator Connect and Calling Plan put the carrier in someone else's hands."],
-    ["RouterCallKey", "The UCCE identifier used to join the contact across logs and CUIC.", "Without it, the report and the ladder are two stories."],
-    ["CVP", "The voice browser and call-control piece in front of the ICM script.", "The prompt lives here. The queue decision comes back from the script."],
-    ["Finesse", "The agent desktop.", "A ringing phone with a blank desktop is a CTI problem, not a PSTN problem."],
-    ["EF", "Expedited Forwarding, DSCP 46, the usual voice-bearer mark.", "Marking it is not proof the WAN honored it."],
-    ["ELIN", "The callback number tied to an emergency location.", "A connected emergency call with the wrong ELIN is still a failed emergency design."],
-    ["Dual-run", "Both old and new systems can prove the number before the cut.", "Rollback is a procedure you have already done, not a sentence in the plan."],
-    ["LICC", "Leg, identifier, counter, capture.", "Write those four before you change production."]
-  ];
   function renderCards(root) {
+    var bank = drills().cards || [];
     var known = readJson(CARD_KEY, {}).known || {};
     var index = 0;
     var flipped = false;
+    var track = "";
+    function visible() {
+      if (!track) return bank;
+      return bank.filter(function (card) { return card.track === track; });
+    }
     function countKnown() { return Object.keys(known).length; }
+    function cardKey(card) { return card.track + "|" + card.term; }
     function paint() {
-      var card = CARDS[index];
+      var list = visible();
+      if (!list.length) {
+        root.innerHTML = '<p class="uc-app-note">This track has no cards yet.</p>';
+        return;
+      }
+      if (index >= list.length) index = 0;
+      var card = list[index];
+      var options = '<option value="">All tracks (' + bank.length + ")</option>" +
+        TRACKS.map(function (item) {
+          var n = bank.filter(function (entry) { return entry.track === item.group; }).length;
+          return '<option value="' + esc(item.group) + '"' + (track === item.group ? " selected" : "") + ">" + esc(item.group) + " (" + n + ")</option>";
+        }).join("");
       root.innerHTML =
         '<p class="uc-app-note"><b>Why it matters.</b> A definition you cannot use on a bridge is trivia. The back of the card is the reason you keep the term.</p>' +
-        '<p class="uc-app-score">' + (index + 1) + " of " + CARDS.length + " · " + countKnown() + " marked known in this browser</p>" +
+        '<div class="uc-app-field"><label for="ucCardTrack">Track</label><select id="ucCardTrack">' + options + "</select></div>" +
+        '<p class="uc-app-score">' + (index + 1) + " of " + list.length + " · " + countKnown() + " marked known in this browser</p>" +
         '<div class="uc-app-flip' + (flipped ? " is-flipped" : "") + '" id="ucFlip">' +
           '<div class="uc-app-flip-inner">' +
-            '<div class="uc-app-face front"><button type="button" class="uc-app-flip-hit" id="ucFlipBtn" aria-label="Flip card"></button><p class="uc-app-kicker">Term</p><h3>' + esc(card[0]) + '</h3><p>Flip for the definition and why it matters.</p></div>' +
-            '<div class="uc-app-face back"><p class="uc-app-kicker">Definition</p><h3>' + esc(card[0]) + '</h3><p>' + esc(card[1]) + '</p><p style="margin-top:8px"><b>Why it matters.</b> ' + esc(card[2]) + '</p></div>' +
-          '</div></div>' +
+            '<div class="uc-app-face front"><button type="button" class="uc-app-flip-hit" id="ucFlipBtn" aria-label="Flip card"></button><p class="uc-app-kicker">Term</p><h3>' + esc(card.term) + '</h3><p>Flip for the definition and why it matters.</p></div>' +
+            '<div class="uc-app-face back"><p class="uc-app-kicker">Definition</p><h3>' + esc(card.term) + '</h3><p>' + esc(card.def) + '</p><p style="margin-top:8px"><b>Why it matters.</b> ' + esc(card.why) + "</p></div>" +
+          "</div></div>" +
         '<div class="uc-app-toolbar">' +
           '<button type="button" class="uc-app-btn" id="ucCardPrev">Previous</button>' +
           '<button type="button" class="uc-app-btn" id="ucCardFlip">Flip</button>' +
           '<button type="button" class="uc-app-btn" id="ucCardAgain">Again</button>' +
           '<button type="button" class="uc-app-btn primary" id="ucCardKnow">Know it</button>' +
-        '</div>';
+        "</div>";
       function flip() { flipped = !flipped; paint(); }
+      root.querySelector("#ucCardTrack").addEventListener("change", function (e) {
+        track = e.target.value;
+        index = 0;
+        flipped = false;
+        paint();
+      });
       root.querySelector("#ucFlipBtn").addEventListener("click", flip);
       root.querySelector("#ucCardFlip").addEventListener("click", flip);
       root.querySelector("#ucCardPrev").addEventListener("click", function () {
-        index = (index - 1 + CARDS.length) % CARDS.length;
+        index = (index - 1 + list.length) % list.length;
         flipped = false;
         paint();
       });
       root.querySelector("#ucCardAgain").addEventListener("click", function () {
-        delete known[card[0]];
+        delete known[cardKey(card)];
         writeJson(CARD_KEY, { known: known });
-        index = (index + 1) % CARDS.length;
+        index = (index + 1) % list.length;
         flipped = false;
         paint();
       });
       root.querySelector("#ucCardKnow").addEventListener("click", function () {
-        known[card[0]] = 1;
+        known[cardKey(card)] = 1;
         writeJson(CARD_KEY, { known: known });
         if (countKnown() >= 5) markLab("cards");
-        index = (index + 1) % CARDS.length;
+        index = (index + 1) % list.length;
         flipped = false;
         paint();
       });
     }
     root.addEventListener("keydown", function (e) {
-      if (e.key === " " && e.target && e.target.tagName !== "BUTTON") {
+      var list = visible();
+      var tag = e.target && e.target.tagName;
+      if (!list.length || tag === "SELECT" || tag === "INPUT" || tag === "TEXTAREA") return;
+      if (e.key === " " && tag !== "BUTTON") {
         e.preventDefault();
         flipped = !flipped;
         paint();
       }
-      if (e.key === "ArrowRight") { index = (index + 1) % CARDS.length; flipped = false; paint(); }
-      if (e.key === "ArrowLeft") { index = (index - 1 + CARDS.length) % CARDS.length; flipped = false; paint(); }
+      if (e.key === "ArrowRight") { index = (index + 1) % list.length; flipped = false; paint(); }
+      if (e.key === "ArrowLeft") { index = (index - 1 + list.length) % list.length; flipped = false; paint(); }
     });
     paint();
   }
 
-  var LAB_TITLES = {
-    simulator: "Call-flow simulator",
-    dial: "Dial-plan builder",
-    ivr: "IVR sandbox",
-    quiz: "Quiz",
-    cards: "Flashcards"
-  };
+  function renderBoss(root) {
+    var items = drills().boss || [];
+    var index = 0;
+    var score = 0;
+    var locked = false;
+    function paint() {
+      if (!items.length) {
+        root.innerHTML = '<p class="uc-app-note">The boss exam is not loaded.</p>';
+        return;
+      }
+      if (index >= items.length) {
+        var store = quizStore();
+        var passed = score / items.length >= 0.8;
+        var best = Math.max(Number(store.boss.best) || 0, score);
+        store.boss = {
+          best: best,
+          last: score,
+          n: items.length,
+          passed: !!(store.boss.passed || passed)
+        };
+        writeJson(QUIZ_KEY, store);
+        markLab("boss");
+        root.innerHTML =
+          '<p class="uc-app-note"><b>Why it matters.</b> The boss exam crosses the tracks. Eighty percent is the pass line for this teaching set.</p>' +
+          '<h3 class="uc-app-q">' + score + " / " + items.length + (passed ? " · passed" : " · below the pass line") + "</h3>" +
+          '<p class="uc-app-score">Best in this browser: ' + best + " / " + items.length + ".</p>" +
+          '<button type="button" class="uc-app-btn primary" id="ucBossAgain">Sit it again</button>';
+        root.querySelector("#ucBossAgain").addEventListener("click", function () {
+          index = 0;
+          score = 0;
+          locked = false;
+          paint();
+        });
+        return;
+      }
+      var item = items[index];
+      root.innerHTML =
+        '<p class="uc-app-score">Boss exam · question ' + (index + 1) + " of " + items.length + " · " + score + " correct · pass at 80%</p>" +
+        '<h3 class="uc-app-q">' + esc(item.q) + "</h3>" +
+        item.choices.map(function (choice, choiceIndex) {
+          return '<button type="button" class="uc-app-choice" data-choice="' + choiceIndex + '">' + esc(choice) + "</button>";
+        }).join("") +
+        '<p class="uc-app-status" id="ucBossWhy" aria-live="polite">Choose an answer. The reason appears here.</p>' +
+        '<button type="button" class="uc-app-btn" id="ucBossNext" disabled>Next</button>';
+      root.querySelector("#ucBossNext").addEventListener("click", function () {
+        if (!locked) return;
+        index += 1;
+        locked = false;
+        paint();
+      });
+      root.querySelectorAll("[data-choice]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          if (locked) return;
+          locked = true;
+          var pick = Number(btn.getAttribute("data-choice"));
+          root.querySelectorAll("[data-choice]").forEach(function (choice) {
+            var n = Number(choice.getAttribute("data-choice"));
+            if (n === item.answer) choice.classList.add("is-good");
+            else if (n === pick) choice.classList.add("is-bad");
+          });
+          if (pick === item.answer) score += 1;
+          var why = root.querySelector("#ucBossWhy");
+          why.className = "uc-app-status " + (pick === item.answer ? "is-ok" : "is-bad");
+          why.textContent = (pick === item.answer ? "Correct. " : "Not that one. ") + "Why it matters. " + item.why;
+          var next = root.querySelector("#ucBossNext");
+          if (next) next.disabled = false;
+        });
+      });
+    }
+    paint();
+  }
+
   function renderLab(kind) {
     var body = document.getElementById("ucAppLabBody");
     var title = document.getElementById("ucAppLabTitle");
@@ -1269,10 +1588,10 @@
     fresh.id = "ucAppLabBody";
     body.parentNode.replaceChild(fresh, body);
     body = fresh;
-    if (!LAB_TITLES[kind]) kind = "simulator";
+    if (!knownLab(kind)) kind = "simulator";
     labKind = kind;
     stopSim();
-    title.textContent = LAB_TITLES[kind];
+    title.textContent = labById(kind).title;
     document.querySelectorAll(".uc-app-tab[data-lab]").forEach(function (tab) {
       var on = tab.getAttribute("data-lab") === kind;
       tab.setAttribute("aria-selected", on ? "true" : "false");
@@ -1282,7 +1601,10 @@
     else if (kind === "dial") renderDial(body);
     else if (kind === "ivr") renderIvr(body);
     else if (kind === "quiz") renderQuiz(body);
-    else renderCards(body);
+    else if (kind === "cards") renderCards(body);
+    else if (kind === "boss") renderBoss(body);
+    else if (window.UCLabs && window.UCLabs[kind]) window.UCLabs[kind](body);
+    else renderSimulator(body);
   }
   function ensureLab() {
     if (document.getElementById("ucAppLab")) return;
@@ -1297,12 +1619,10 @@
       '<div class="uc-app-lab-panel">' +
         '<div class="uc-app-lab-head"><div><p class="uc-app-kicker">Interactive lab</p><h2 id="ucAppLabTitle">Call-flow simulator</h2></div>' +
         '<button type="button" class="uc-app-btn" id="ucAppLabClose">Close</button></div>' +
-        '<div class="uc-app-tabs" role="tablist" aria-label="Labs">' +
-          '<button type="button" class="uc-app-tab" data-lab="simulator" role="tab">Call flow</button>' +
-          '<button type="button" class="uc-app-tab" data-lab="dial" role="tab">Dial plan</button>' +
-          '<button type="button" class="uc-app-tab" data-lab="ivr" role="tab">IVR</button>' +
-          '<button type="button" class="uc-app-tab" data-lab="quiz" role="tab">Quiz</button>' +
-          '<button type="button" class="uc-app-tab" data-lab="cards" role="tab">Cards</button>' +
+        '<div class="uc-app-tabs uc-app-lab-tabs" role="tablist" aria-label="Labs">' +
+          LABS.map(function (item) {
+            return '<button type="button" class="uc-app-tab" data-lab="' + item.id + '" role="tab">' + esc(item.short) + "</button>";
+          }).join("") +
         '</div>' +
         '<div id="ucAppLabBody"></div>' +
       '</div>';
@@ -1327,7 +1647,12 @@
       if (!lab.hasAttribute("hidden") && labKind === "simulator") drawSim(sim.running ? 0 : sim.preview);
     });
   }
-  function openLab(kind, trigger) {
+  function openLab(kind, trigger, scenarioId) {
+    if (scenarioId) {
+      for (var i = 0; i < SCENARIOS.length; i++) {
+        if (SCENARIOS[i].id === scenarioId) { sim.scenario = i; break; }
+      }
+    }
     ensureLab();
     var lab = document.getElementById("ucAppLab");
     returnFocus = trigger || document.activeElement;
@@ -1340,19 +1665,25 @@
   function closeLab() {
     stopSim();
     var lab = document.getElementById("ucAppLab");
-    if (!lab) return;
+    if (!lab || lab.hasAttribute("hidden")) return;
+    var trigger = returnFocus;
     lab.setAttribute("hidden", "");
     document.body.classList.remove("uc-app-lock");
-    if (returnFocus && returnFocus.focus) returnFocus.focus();
+    if (document.getElementById("ucAppDash")) mountDash();
+    if (trigger && document.body.contains(trigger) && trigger.focus) trigger.focus();
+    else {
+      var fallback = document.getElementById("ucAppLabsBtn");
+      if (fallback && fallback.focus) fallback.focus();
+    }
   }
   function maybeLab() {
     if (openedLabFromQuery) return;
     var params;
     try { params = new URLSearchParams(window.location.search); } catch (e) { return; }
     var kind = params.get("lab");
-    if (!kind || !LAB_TITLES[kind]) return;
+    if (!kind || !knownLab(kind)) return;
     openedLabFromQuery = true;
-    openLab(kind);
+    openLab(kind, null, params.get("scenario") || "");
   }
 
   var lastSection = "";
@@ -1397,6 +1728,8 @@
   }
 
   function boot() {
+    badgeSnap = earnedBadges();
+    touchStreak();
     installChrome();
     installPlayer();
     installPalette();
@@ -1407,10 +1740,12 @@
     else setTimeout(function () {
       var again = findSection(window.getCurrentSectionId && window.getCurrentSectionId());
       if (again) onOpen(again);
+      announceNewBadges();
     }, 90);
+    if (section) announceNewBadges();
   }
 
-  window.UCApp = { openLab: openLab, closeLab: closeLab };
+  window.UCApp = { openLab: openLab, closeLab: closeLab, markLab: markLab, celebrate: celebrate };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
 })();
