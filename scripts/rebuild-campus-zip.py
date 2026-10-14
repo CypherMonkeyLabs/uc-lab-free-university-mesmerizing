@@ -13,8 +13,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 HTML = ROOT / "campus" / "uc-lab-free-university.html"
 ASSETS = ROOT / "campus" / "assets"
+CAMPUS = ROOT / "campus"
 ZIP = ROOT / "releases" / "uc-lab-free-university.html.zip"
 MEMBER = "uc-lab-free-university.html"
+EXTRA = ("sw.js", "manifest.webmanifest")
 
 
 def main() -> int:
@@ -25,6 +27,10 @@ def main() -> int:
     tmp = ZIP.with_suffix(".zip.tmp")
     with zipfile.ZipFile(tmp, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
         zf.write(HTML, arcname=MEMBER)
+        for name in EXTRA:
+            extra = CAMPUS / name
+            if extra.is_file():
+                zf.write(extra, arcname=name)
         if ASSETS.is_dir():
             for path in sorted(p for p in ASSETS.rglob("*") if p.is_file()):
                 zf.write(path, arcname="assets/" + path.relative_to(ASSETS).as_posix())

@@ -6,7 +6,7 @@ No login. No API key. Educational material under the MIT license. No warranty.
 
 1. Take [releases/uc-lab-free-university.html.zip](./releases/uc-lab-free-university.html.zip).
 2. Unzip it.
-3. Open `uc-lab-free-university.html` in Chrome, Safari, Edge, or Firefox. Leave the `assets` folder next to that file. The visual studio loads from it. The page still opens if the folder is missing, without the new diagrams.
+3. Open `uc-lab-free-university.html` in Chrome, Safari, Edge, or Firefox. Leave `assets`, `sw.js`, and `manifest.webmanifest` next to that file.
 
 From a clone of this repo, open [campus/uc-lab-free-university.html](./campus/uc-lab-free-university.html).
 
@@ -18,7 +18,7 @@ From a clone of this repo, open [campus/uc-lab-free-university.html](./campus/uc
 | 2 | Download the zip |
 | 3 | Unzip it in Files on iPhone, or in your downloads folder |
 | 4 | Open the HTML file in Chrome or Safari |
-| 5 | Wait for the first load. 476 sections is a large page |
+| 5 | The home view should show four paths. Open one lesson at a time. |
 
 If the page stays on "Opening" for a long time, try a laptop. Chat-app browsers are a poor place to open this file.
 

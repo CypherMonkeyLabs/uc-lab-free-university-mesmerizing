@@ -1,0 +1,22 @@
+{
+  "version": "v21",
+  "sections": 476,
+  "flows": 978,
+  "walkthroughs": 27,
+  "charts": 32,
+  "illustrations": 2772,
+  "audioClips": 35,
+  "trackHubs": 14,
+  "groups": 14,
+  "details": 13334,
+  "selfChecks": 1585,
+  "numberedQuestions": 13175,
+  "faults": 110,
+  "drills": 4,
+  "journeys": {
+    "cisco-voice": 314,
+    "webex": 17,
+    "teams": 15,
+    "contact-center": 130
+  }
+}

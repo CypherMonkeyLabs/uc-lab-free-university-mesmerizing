@@ -4,7 +4,7 @@
 
 ## What is this?
 
-An offline browser campus for unified communications and contact center study. One HTML file. No account.
+An offline browser campus for unified communications and contact center study. A small HTML shell plus lesson modules. No account.
 
 The tracks match the job: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, the main CCaaS platforms, E911, QoS, and troubleshooting.
 
@@ -18,7 +18,7 @@ From a clone, open [campus/uc-lab-free-university.html](../campus/uc-lab-free-un
 
 ## Does it work on a phone?
 
-Yes, in the full browser app. The first load can take a little while. A laptop is easier to study on.
+Yes, in the full browser app. The shell loads first. Under 640px, **Menu** opens the paths and a bottom nav stays on screen. A laptop is easier for the ladders.
 
 ## Is there a PDF?
 

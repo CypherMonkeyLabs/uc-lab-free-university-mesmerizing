@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./docs/assets/hero.svg" alt="UC Lab Free University v21. Voice, UC, and contact center. One offline HTML file." width="100%"/>
+  <img src="./docs/assets/hero.svg" alt="UC Lab Free University v21. Voice, UC, and contact center." width="100%"/>
 </p>
 
 <p align="center">
@@ -8,9 +8,9 @@
   <a href="./campus/uc-lab-free-university.html"><img src="./docs/assets/btn-open.svg" alt="Open" height="48"/></a>
 </p>
 
-A free offline campus for people who run **voice, unified communications, and contact center** systems. The file is the course: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, the main CCaaS platforms, E911, QoS, and the troubleshooting habit that ties them together.
+A free offline campus for people who run **voice, unified communications, and contact center** systems. The shell is a few kilobytes. Lessons load one at a time: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, the main CCaaS platforms, E911, QoS, and the troubleshooting habit that ties them together.
 
-Built by **CYPHER0X9**, a voice and UC engineer. Version **21**. No account, no install, no CDN. Open the HTML and keep the `assets` folder beside it.
+Built by **CYPHER0X9**, a voice and UC engineer. Version **21**. No account, no install, no CDN. Open the HTML and keep `assets`, `sw.js`, and `manifest.webmanifest` beside it.
 
 <p align="center">
   <img src="./docs/assets/campus-home.png" alt="Campus home in the light theme, with the study rail and track list" width="100%"/>
@@ -35,7 +35,52 @@ Built by **CYPHER0X9**, a voice and UC engineer. Version **21**. No account, no 
 | Practice | 56 | Drill the same faults without a customer on the line |
 | Reference | 5 | Open the glossary and the official-doc index |
 
-476 sections in the sidebar. The old bulk practicums, trading-turret track, Asterisk course, and generic machine-learning chapter are not in this edition.
+476 sections. The old bulk practicums, trading-turret track, Asterisk course, and generic machine-learning chapter are not in this edition.
+
+## Paths and labs
+
+The same 476 sections sit on four certification paths. Opened and completed lessons stay in this browser.
+
+| Path | Sections |
+|---|---:|
+| Cisco Voice Core | 314 |
+| Webex Calling | 17 |
+| Teams Phone | 15 |
+| Contact Center Engineer | 130 |
+
+Shared foundations stay on Cisco Voice Core. Webex Calling, Teams Phone, and Contact Center Engineer are the specialist trails.
+
+| Lab | What you do |
+|---|---|
+| SIP ladder | Play, pause, step, and inspect a call |
+| Dialpad | Off hook, digits, busy (`2222`), reorder (`3333`), `911`, codec choice, WebAudio tones |
+| 3D fabric | Phone, CUCM, CUBE, PSTN, and Webex Calling, with link-failure toggles |
+| Erlang and SDP | Erlang B/C staffing model, and a line-by-line SDP reader |
+| Tone bench | The 35 generated clips, on the campus orientation lesson |
+
+RFC numbers in the lesson text link to the RFC Editor. Each lesson lists the Cisco, Webex, Microsoft, or ITU document for that path. Question CSV and Markdown exports run in a Web Worker. Print covers the open lesson. **Save lessons offline** fills the service-worker cache when the campus is served over http.
+
+<p align="center">
+  <img src="./docs/assets/campus-topology.png" alt="3D topology of a phone, CUCM, CUBE, the PSTN, and Webex Calling, with link-failure toggles" width="100%"/>
+</p>
+
+<p align="center">
+  <img src="./docs/assets/campus-dial.png" alt="Dialpad testbed with off-hook, digits, call, and hangup" width="78%"/>
+</p>
+
+### Page weight
+
+Measured on this tree. Lighthouse is mobile, simulated throttling, against the local campus.
+
+| | Before | After |
+|---|---:|---:|
+| HTML | 14,614,915 bytes | 4,092 bytes |
+| First load | about 19.5 MB with the flow catalog | 323,006 bytes (shell, CSS, app, catalog index) |
+| Home DOM | every section in one document | 229 elements, one `h1` |
+| Lighthouse, home | | performance 95, accessibility 100 |
+| Lighthouse, SIP lesson | | performance 87, accessibility 100 |
+
+The 476 section modules are 15,709,777 bytes and load one lesson at a time. A practice bank shows six cards at a time (Teams Phone: 6 of 400, 517 elements). Three.js (691,648 bytes, vendored) loads only on the 3D fabric.
 
 ## Study order
 
@@ -90,10 +135,12 @@ Codec bandwidth is `(payload + 40 + L2) × 8 × (1000 / ptime) / 1000`. G.711 at
 ## Open it
 
 1. **Download (v21):** [releases/uc-lab-free-university.html.zip](./releases/uc-lab-free-university.html.zip)
-2. Unzip. You get `uc-lab-free-university.html` and an `assets` folder. Leave them side by side.
+2. Unzip. You get `uc-lab-free-university.html`, `sw.js`, `manifest.webmanifest`, and an `assets` folder. Leave them side by side.
 3. **Open** the HTML in Chrome, Safari, Edge, or Firefox. From this repo, the same campus is [campus/uc-lab-free-university.html](./campus/uc-lab-free-university.html).
 
-Desktop is the comfortable way to read it. A phone works in the full browser app after the file loads. In-app browsers from chat apps often fail on a file this size.
+`file://` opens the shell and any lesson you navigate to. Served over http, including GitHub Pages, the service worker caches the shell for the next visit. Old hashes still open a lesson: `#prod-cucm` and `#/lesson/prod-cucm`.
+
+Desktop is the comfortable way to read it. Under 640px the path list moves behind **Menu** and a bottom nav stays on screen. In-app browsers from chat apps are a poor place to open the zip.
 
 | Also in the repo | What it is |
 |---|---|
@@ -121,7 +168,7 @@ Desktop is the comfortable way to read it. A phone works in the full browser app
 
 ## Light, dark, and high contrast
 
-The palette is teal `#0F9B8E` and indigo `#6366F1` on navy `#0B1220`, with green `#22C55E` and amber for media and warnings. The header theme control switches light, dark, and high contrast.
+The page is slate paper (`#F3F6FB`), indigo, and teal, with amber and rose as secondary marks. The header theme control switches light, dark, and high contrast. Primary buttons use `#0F766E` with light text. The 3D stage and ladder inspect panel use navy `#0B1120`.
 
 <p align="center">
   <img src="./docs/assets/visual-dark.png" alt="CUBE call flow in the dark theme" width="100%"/>

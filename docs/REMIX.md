@@ -2,37 +2,43 @@
 
 Fork it. Change it. Share it. The license is MIT, and the educational notice in `NOTICE.md` still applies: vendor trademarks and official docs stay with their owners.
 
-Keep two properties intact when you re-engineer the file:
+Keep two properties intact when you re-engineer the campus:
 
-1. **It opens from disk.** System fonts only. No CDN. Scripts and stylesheets must be relative files under `campus/assets/` (the zip places that folder next to the HTML). A `data:` favicon is still allowed. Do not add `https://` script or font links.
-2. **A section is data.** `window.SECTIONS` is the curriculum. The shell renders whatever that array contains.
+1. **It opens from disk.** System fonts only. No CDN. Scripts and stylesheets are relative. The HTML may link `assets/…`, `sw.js`, and `manifest.webmanifest`. Do not add `https://` script or font links. `file://` loads a lesson by injecting its module. The service worker runs only on http.
+2. **A section is a module.** Do not put `window.SECTIONS` back into the HTML. The checker rejects that, and it rejects an HTML shell over 250,000 bytes.
 
-`python3 scripts/check-campus.py` is the gate. It checks the section array, the zip, CDN tags, and personal-hub links.
+`python3 scripts/check-campus.py` is the gate. It checks every section module, the counts below, the zip, CDN tags, and personal-hub links.
 
 ## File structure
 
 ```text
-campus/uc-lab-free-university.html     the app and the curriculum
-campus/assets/                         visual studio, kept beside the HTML
+campus/uc-lab-free-university.html          shell
+campus/sw.js                                http cache
+campus/manifest.webmanifest
+campus/assets/app.css                       theme
+campus/assets/app.js                        router
+campus/assets/telephony.js                  dialpad and tones
+campus/assets/tools.js                      ladder, Erlang, SDP
+campus/assets/topology.js                   3D fabric (loads Three.js)
+campus/assets/vendor/three.module.min.js    vendored Three.js r170
+campus/assets/curriculum/manifest.js        index: titles, journeys, counts
+campus/assets/curriculum/sections/<id>.js   one lesson
+campus/assets/curriculum/walks.js           long scenes
+campus/assets/visual-*.js                   studio player
 releases/uc-lab-free-university.html.zip
-downloads/*.pptx                       62-slide briefing
-docs/                                  learner and remix guides
-docs/references/                       public session list
-scripts/check-campus.py                integrity gate
-scripts/rebuild-campus-zip.py         zip builder
-scripts/scrub-pptx-metadata.py         deck metadata cleaner
+downloads/*.pptx                            62-slide briefing
+docs/                                       learner and remix guides
+scripts/check-campus.py                     integrity gate
+scripts/rebuild-campus-zip.py              zip builder
+scripts/scrub-pptx-metadata.py              deck metadata cleaner
 ```
-
-The HTML is one document with four layers:
 
 | Layer | Where it is | What a remix changes |
 |-------|-------------|----------------------|
-| Theme CSS | `<style>` near the top, `html[data-theme=…]` | Colors |
-| Shell | Markup for the bar, menu, options, export | Chrome around the sections |
-| Curriculum | `window.SECTIONS = [ … ]` | Lessons |
-| Packs | Scripts after the array: resources, swatches, mission control, orientation, section pictures | Behavior that wraps every section |
-
-Do not pretty-print the HTML. `window.SECTIONS` is a single JSON-compatible literal, and a reflow turns a one-line edit into a 15 MB diff.
+| Theme | `campus/assets/app.css`, `html[data-theme=…]` | Colors. Keep `--cc-bg`, `--cc-surface`, `--cc-accent-1` … `--cc-accent-4` so a future hub can theme the campus. |
+| Shell | `uc-lab-free-university.html` and `app.js` | Chrome, routes, one `h1` |
+| Catalog | `curriculum/manifest.js` | Titles, groups, journeys. No lesson bodies. |
+| Lesson | `curriculum/sections/<id>.js` | That lesson's HTML and its flows |
 
 ## How a section is built
 
@@ -62,12 +68,12 @@ Body HTML that already matches the shell: `hero`, `card`, `hook`, `warn`, `tips`
 
 ### Add a section
 
-1. Find the end of `window.SECTIONS`, just before `];(function () { "use strict"; var additions`.
-2. Insert one object before the closing `]`. Keep the comma valid.
-3. Set `window.STATS.sections` to the new length.
-4. Set the visible home stat in the `home` section body to the new length. The progress script fills `#st-sec` from `SECTIONS.length` when that element exists. v21 home shows the count as a literal in the Study sequence card.
-5. Run `python3 scripts/check-campus.py`.
-6. Open `campus/uc-lab-free-university.html#your-id` with the network disabled.
+1. Add `campus/assets/curriculum/sections/<id>.js`. The file is one statement: `UC.pack({...section}, [...flows]);` with JSON text. Escape `</` inside HTML as `<\/`.
+2. Add the matching object to the `sections` array in `curriculum/manifest.js` (`id`, `num`, `group`, `title`, `sub`, `journey`, `track`, `flow`, `blurb`, `cards`). Bump `stats.sections` and the journey count.
+3. Set `window.STATS.sections` in the HTML shell to the new length.
+4. If the home lesson states the count, update that body too. The home body must keep `data-v21` and the words `Study sequence`.
+5. Run `python3 scripts/check-campus.py`. The checker currently expects the published counts (476 sections, 978 flows, and the card totals). A new section means updating those expected totals in `scripts/check-campus.py` in the same change.
+6. Rebuild the zip. Open `#/lesson/your-id` and the legacy hash `#your-id`.
 
 Example shape, shown with real quote characters. Inside the file those quotes are escaped:
 
@@ -84,55 +90,27 @@ Example shape, shown with real quote characters. Inside the file those quotes ar
 
 ### Extend a section that already exists
 
-Immediately after the array, an IIFE named `additions` appends HTML onto an existing body, keyed by `id`. Use that when you want a checklist on `prod-webex` and you want the original section left in place. The keys already there (`ms-teams-phone-pstn`, `webex-calling-advanced`, `cucm-webex-calling-cutover`, and others) are the pattern.
+Edit the `body` string inside `campus/assets/curriculum/sections/<id>.js`. The Teams Phone PSTN checklist lives in the `ms-teams-phone-pstn` module and must keep the text `V20 FIELD CHECKLIST`.
 
 ### Retheme the whole campus
 
-The public themes are `light` and `dark`. Light is the default (`<html data-theme="light">`). Teal `#0F9B8E` is the primary accent and navy `#0B1220` is the dark background and the light-theme ink. `setAppTheme` sets `data-theme` and stores `uc_theme` in `localStorage`. The header select `#theme` offers only those two.
+Public themes are `light` (default), `dark`, and `contrast`. The header select `#theme` stores `uc_theme`. Older names (`warm`, `paper` → light; `night`, `aurora`, `cobalt`, `forest`, `sunset` → dark) are mapped in the boot script in the HTML. Do not put the old seven-theme gallery back as the default.
 
-Older names (`warm`, `night`, `cobalt`, `forest`, `aurora`, `sunset`, `paper`) still have CSS rules that map onto light or dark. They are not in the header select. A remix that wants a third public theme adds it to that select and to the cycle list. Do not put the old seven-theme gallery back as the default.
-
-A full visual remix can stop at CSS variables. Change `:root` and you have a new default. Forks that only recolor should still pass `scripts/check-campus.py`.
+Change `:root` and the `html[data-theme=…]` blocks in `campus/assets/app.css`. Keep the `--cc-*` tokens. The studio still reads `--bg`, `--card`, `--ink`, and `--muted`, which alias those tokens.
 
 ## Add a theme
 
-Pick a short lowercase name, such as `tide`. Touch five places. All of them are in `campus/uc-lab-free-university.html`.
+Pick a short lowercase name, such as `tide`.
 
-1. **CSS.** Next to the other `html[data-theme=…]` rules:
+1. Add `html[data-theme="tide"]` in `campus/assets/app.css`, setting the `--cc-*` tokens and the studio aliases.
+2. Add `<option value="tide">Tide</option>` to `#theme` in the HTML.
+3. Allow `tide` in the boot script next to `dark`, `contrast`, and `light`.
 
-```css
-html[data-theme=tide]{
-  --bg:#042F2E; --card:#083344; --ink:#ECFEFF; --muted:#99F6E4;
-  --amber:#2DD4BF; --gold:#5EEAD4; --peach:#134E4A; --border:#115E59;
-  --line:#115E59; --teal:#14B8A6; --blue:#67E8F9; --purple:#A5B4FC; --rose:#FB7185;
-}
-```
-
-2. **Header select** `#theme`. The swatch gallery is built from these options:
-
-```html
-<option value="tide">🌊 Tide</option>
-```
-
-3. **Options buttons**, next to Light and Dark:
-
-```html
-<button class="setting-btn" onclick="setAppTheme('tide')">🌊 Tide</button>
-```
-
-4. **Cycle list**, the array `var themes = ["light", "dark"]`. Append `"tide"`.
-
-5. **Swatch colors**, the `THEME_DOTS` object:
-
-```javascript
-tide: ["#042F2E", "#2DD4BF", "#67E8F9"]
-```
-
-Reload from disk. Pick Tide from the select and from the swatch row. The choice should survive a refresh.
+Reload. The choice should survive a refresh.
 
 ## Regenerate the zip
 
-The zip is a snapshot of the HTML, with one member named `uc-lab-free-university.html`.
+The zip contains `uc-lab-free-university.html`, `sw.js`, `manifest.webmanifest`, and `assets/`. Members must match the files on disk.
 
 ```bash
 python3 scripts/rebuild-campus-zip.py
@@ -168,15 +146,14 @@ Cursor, or any agent that can edit the repo, is a good way to add a section. The
 Paste this boundary into the prompt:
 
 ```text
-Read docs/REMIX.md. Edit campus/uc-lab-free-university.html surgically.
-Do not reflow or pretty-print it.
-Add one SECTIONS object with a unique kebab-case id.
-Escape quotes in the body. Keep zero CDN: no script src, no stylesheet link, system fonts only.
-Bump window.STATS.sections and the home stat st-sec if the count changes.
+Read docs/REMIX.md. Add one section module under campus/assets/curriculum/sections/.
+Register it in curriculum/manifest.js. Do not embed window.SECTIONS in the HTML.
+Keep zero CDN: relative assets only, system fonts only.
+Update the expected counts in scripts/check-campus.py if the totals change.
 Run python3 scripts/check-campus.py and python3 scripts/rebuild-campus-zip.py.
 ```
 
-**Cursor.** Open this repo as the workspace. Point the agent at `docs/REMIX.md` and `scripts/check-campus.py`. Ask for a diff that touches the section you named, the STATS line, and the zip. Reject a diff that reformats the HTML.
+**Cursor.** Open this repo as the workspace. Point the agent at `docs/REMIX.md` and `scripts/check-campus.py`. Ask for a diff that touches the new module, the manifest entry, and the zip. Reject a diff that pastes the curriculum back into the HTML.
 
 **Skills.** A project skill is optional. If you add one under `.cursor/skills`, make it point at this file and at the check script. Do not put API tokens, MCP secrets, or customer data in a skill.
 
