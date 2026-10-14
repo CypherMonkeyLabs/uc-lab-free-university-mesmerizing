@@ -6,7 +6,7 @@ No login. No API key. Educational material under the MIT license. No warranty.
 
 1. Take [releases/uc-lab-free-university.html.zip](./releases/uc-lab-free-university.html.zip).
 2. Unzip it.
-3. Open `uc-lab-free-university.html` in Chrome, Safari, Edge, or Firefox.
+3. Open `uc-lab-free-university.html` in Chrome, Safari, Edge, or Firefox. Leave the `assets` folder next to that file. The visual studio loads from it. The page still opens if the folder is missing, without the new diagrams.
 
 From a clone of this repo, open [campus/uc-lab-free-university.html](./campus/uc-lab-free-university.html).
 

@@ -4,7 +4,7 @@ Fork it. Change it. Share it. The license is MIT, and the educational notice in 
 
 Keep two properties intact when you re-engineer the file:
 
-1. **It opens from disk.** System fonts only. No `<script src>`, no external stylesheet, no CDN. A `data:` favicon is the only `<link href>` the checker allows.
+1. **It opens from disk.** System fonts only. No CDN. Scripts and stylesheets must be relative files under `campus/assets/` (the zip places that folder next to the HTML). A `data:` favicon is still allowed. Do not add `https://` script or font links.
 2. **A section is data.** `window.SECTIONS` is the curriculum. The shell renders whatever that array contains.
 
 `python3 scripts/check-campus.py` is the gate. It checks the section array, the zip, CDN tags, and personal-hub links.
@@ -13,6 +13,7 @@ Keep two properties intact when you re-engineer the file:
 
 ```text
 campus/uc-lab-free-university.html     the app and the curriculum
+campus/assets/                         visual studio, kept beside the HTML
 releases/uc-lab-free-university.html.zip
 downloads/*.pptx                       62-slide briefing
 docs/                                  learner and remix guides

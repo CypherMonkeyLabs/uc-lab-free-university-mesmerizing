@@ -734,6 +734,7 @@ html[data-theme=dark] table.nice th{background:#0F9B8E;color:#04221E}
   <select id="theme" aria-label="Theme">
     <option value="light">Light</option>
     <option value="dark">Dark</option>
+    <option value="contrast">High contrast</option>
   </select>
   <button type="button" id="btnCmd" class="primary" title="Command Palette (Cmd+K)" aria-label="Open command palette">⌘K</button>
   <button type="button" id="btnPrev" title="Previous section (←)" aria-label="Previous section">←</button>
@@ -1057,7 +1058,7 @@ window.SECTIONS = [{"id":"home","num":"000","group":"Start here","title":"Campus
     try {
       var saved = localStorage.getItem("uc-theme") || localStorage.getItem("uc_theme");
       if(saved==="night"||saved==="cobalt"||saved==="forest"||saved==="aurora"||saved==="sunset"||saved==="amber") saved="dark";
-      else if(saved && saved!=="dark" && saved!=="light") saved="light";
+      else if(saved && saved!=="dark" && saved!=="light" && saved!=="contrast") saved="light";
       if(saved){ document.documentElement.setAttribute("data-theme", saved); if(theme.querySelector('option[value="'+saved+'"]')) theme.value = saved; }
     } catch(e){}
     theme.addEventListener("change", function(){
@@ -1244,6 +1245,7 @@ window.SECTIONS = [{"id":"home","num":"000","group":"Start here","title":"Campus
         <div class="setting-controls">
           <button class="setting-btn" onclick="setAppTheme('light')">Light</button>
           <button class="setting-btn" onclick="setAppTheme('dark')">Dark</button>
+          <button class="setting-btn" onclick="setAppTheme('contrast')">High contrast</button>
         </div>
       </div>
       <div class="setting-row">
@@ -1413,7 +1415,7 @@ window.SECTIONS = [{"id":"home","num":"000","group":"Start here","title":"Campus
     document.documentElement.setAttribute("data-theme", themeName);
     var sel = document.getElementById("theme");
     if (sel) sel.value = themeName;
-    try { localStorage.setItem("uc_theme", themeName); } catch(e) {}
+    try { localStorage.setItem("uc_theme", themeName); localStorage.setItem("uc-theme", themeName); } catch(e) {}
     window.showToast("Theme updated: " + themeName);
   };
 
@@ -1687,7 +1689,7 @@ window.SECTIONS = [{"id":"home","num":"000","group":"Start here","title":"Campus
       if (btnNext) btnNext.click();
     } else if ((e.metaKey || e.ctrlKey) && k === "d") {
       e.preventDefault();
-      var themes = ["light", "dark"];
+      var themes = ["light", "dark", "contrast"];
       var curr = document.documentElement.getAttribute("data-theme") || "light";
       var next = themes[(themes.indexOf(curr) + 1) % themes.length];
       window.setAppTheme(next);
@@ -2780,5 +2782,8 @@ window.SECTIONS = [{"id":"home","num":"000","group":"Start here","title":"Campus
 })();
 </script>
 <!-- ===== /UC SECTION VISUAL PACK ===== -->
+<link rel="stylesheet" href="assets/visual-studio.css"/>
+<script src="assets/flow-catalog.js"></script>
+<script src="assets/visual-studio.js"></script>
 </body>
 </html>
