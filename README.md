@@ -133,6 +133,59 @@ The palette is teal `#0F9B8E` and indigo `#6366F1` on navy `#0B1220`, with green
 
 Nothing is loaded from a CDN.
 
+## App shell
+
+The same file now opens like a campus app. The home page is a dashboard: track cards tilt as you move across them, counters settle on the real totals, and a progress ring reads only the section ids this browser has opened.
+
+Ctrl+K searches every lesson. Light and dark stay in the header. Moving between sections fades the page. A tone you play stays in a bar at the bottom so you can keep reading.
+
+Labs, from the header or the home page. There are 21. Each lesson has a **Try it** button that opens the lab that matches that page.
+
+| Lab | What you do | Why it is here |
+|---|---|---|
+| Call flow | Place one of 24 calls, including transfer, conference, hunt, CTI route point, MRA, trunk failover, IVR to agent, and callback | A 200 OK is not two-way audio |
+| Dial plan | Drag the CSS, partition, pattern, list, group, and trunk into order | A missing partition means the outside number does not exist for that phone |
+| IVR | Drag nodes, connect a digit, and place a test call | A prompt is not a queue |
+| SIP decode | Paste a message or click a header | A header is a job |
+| Codec | Turn payload, packetization, and layer-2 bytes into kbit/s | G.711 on the wire is more than 64 kbit/s |
+| Jitter | Move loss and jitter and watch arrivals | A jitter buffer hides variation by adding delay |
+| Route | Pick a directory number and trace CSS and partition order | If 9.@ is searched before 911, emergency takes the PSTN route |
+| Webex PSTN | Name a location and the PSTN model | Calling Plan has no local gateway |
+| UCCE | Follow a dialed number into a call type and skill group | The call type is the report bucket |
+| Finesse | Walk ready, reserved, talking, and wrap | The router sees the desktop state |
+| E911 | Order discovery, mapping, callback, route, notify, and proof | A connected call with the wrong location is a failed emergency call |
+| QoS | Mark RTP, SIP, and bulk, then pick the queue | EF without a priority queue is a label |
+| SRTP | Step a teaching TLS and SRTP flight | TLS locks signaling. SRTP locks audio |
+| Erlang | Estimate staff from calls per hour and handle time | The figure is a teaching formula |
+| Find fault | Pick the next proof for a named symptom | A second guess without evidence is not a finding |
+| Dial-peer | Match a called number on CUBE | Longest match, then the lowest preference |
+| One-way | Read an SDP address the far side cannot reach | The ladder can be perfect while RTP is not |
+| Record | Choose where the PSTN fork belongs | A report is not the audio |
+| Quiz | Ten questions from a track bank of at least 150, with a reason that is not a copy of the choice | The score is stored per track in this browser |
+| Cards | Flip one of 2,018 terms | The back says why you would use it |
+| Boss | Sit the cross-track exam | Eighty percent is the pass line |
+
+The quiz bank is 2,913 questions: at least 150 scored questions on each of the 14 tracks. Each of the 2,018 facts is asked once. A second question appears only when the reason adds a further consequence (731 of those), and 164 questions are situations. The boss exam is 24 questions. Flashcards are 2,018.
+
+| Track | Questions |
+|---|---|
+| Start here | 169 |
+| SIP and media | 194 |
+| CUCM and CUBE | 185 |
+| Webex Calling and Teams Phone | 243 |
+| Contact center — UCCE and PCCE | 197 |
+| CCaaS and UCaaS platforms | 298 |
+| Emergency calling | 163 |
+| Voice network and QoS | 160 |
+| Migrations | 188 |
+| Troubleshooting | 257 |
+| Evidence habits | 267 |
+| Design notes | 171 |
+| Practice | 162 |
+| Reference | 259 |
+
+Progress, per-track quiz score, known cards, badges, and the study streak stay in `localStorage`. No name, number, or capture is stored. The labs are teaching models. They do not change a live system.
+
 ## License
 
 Educational material under the [MIT license](./LICENSE). Not an official Cisco, Microsoft, Google, Amazon, or Genesys publication. Check the vendor's current document before you change production.

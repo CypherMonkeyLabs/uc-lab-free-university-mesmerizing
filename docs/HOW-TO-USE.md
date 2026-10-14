@@ -28,6 +28,21 @@ The campus opens from `uc-lab-free-university.html`. Keep the `assets` folder be
 
 Progress checkmarks stay in this browser. A different browser, or a cleared site store, starts the donut over. Nothing is uploaded.
 
+### Labs and the app shell
+
+The header has **Labs** and a light/dark control. Ctrl+K opens search across every lesson.
+
+- **Call flow** places a simulated call. The scenario list has 24 paths, including station, CUBE, Webex Calling, UCCE, transfer, conference, hunt, CTI route point, MRA, SIP trunk failover, IVR to agent, and callback. Use it when a 200 OK is being treated as proof of audio.
+- **Dial plan** asks you to order the line CSS, partition, route pattern, route list, route group, and SIP trunk. A wrong block explains why that call would never leave.
+- **IVR** lets you drag a greeting, a menu, and queues, then send a digit. A digit with no branch never starts a queue.
+- The other labs decode a SIP message, size a codec, draw jitter and loss, trace a CUCM CSS, build a Webex Calling location, route a UCCE dialed number, walk Finesse states, order an E911 flow, mark QoS, step SRTP, estimate Erlang-C staff, find a fault, match a CUBE dial-peer, fix one-way audio, and place a recording fork.
+- **Quiz** scores ten questions at a time from a bank of at least 150 per track (2,913 in total). Each fact is asked once. The line under the answer is a reason, not a copy of the choice. The **boss exam** is 24 questions, and 80% is the pass line.
+- **Flashcards** are 2,018 terms. Flip, then mark the ones you can use.
+
+Every lesson has **Try it**. That button opens the lab that matches the page.
+
+The tone bar stays up after you press Play on a clip, including while you open another section. Stop ends the tone. The labs do not touch a live system.
+
 ### Export without installing anything
 
 Use the export button in the campus bar:
