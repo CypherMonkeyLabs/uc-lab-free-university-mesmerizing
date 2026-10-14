@@ -8,7 +8,7 @@ An offline browser campus for unified communications and contact center study. O
 
 The tracks match the job: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, the main CCaaS platforms, E911, QoS, and troubleshooting.
 
-The home page is a dashboard. Ctrl+K searches every lesson. Labs on the same page let you place a simulated call, build a dial plan, walk an IVR digit, take a quiz, or flip a flashcard. Progress stays in the browser. Nothing is uploaded.
+The home page is a dashboard. Ctrl+K searches every lesson. Twenty-one labs sit on the same page: call flows (24 scenarios), a dial plan, an IVR, SIP decode, codec and jitter tools, CUCM routing, Webex Calling, UCCE, Finesse, E911, QoS, SRTP, Erlang-C, fault finding, dial-peers, one-way audio, and recording. The quiz has at least 300 scored questions on each track (6,054 total) plus a boss exam. Flashcards are 2,018. Each lesson has a Try it button for its lab. Progress stays in the browser. Nothing is uploaded.
 
 ## How do I open it?
 

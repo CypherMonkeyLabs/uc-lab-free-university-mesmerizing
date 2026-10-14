@@ -32,10 +32,14 @@ Progress checkmarks stay in this browser. A different browser, or a cleared site
 
 The header has **Labs** and a light/dark control. Ctrl+K opens search across every lesson.
 
-- **Call flow** places a simulated call and moves SIP and RTP through CUCM, CUBE, Webex Calling, or UCCE. Use it when a 200 OK is being treated as proof of audio.
+- **Call flow** places a simulated call. The scenario list has 24 paths, including station, CUBE, Webex Calling, UCCE, transfer, conference, hunt, CTI route point, MRA, SIP trunk failover, IVR to agent, and callback. Use it when a 200 OK is being treated as proof of audio.
 - **Dial plan** asks you to order the line CSS, partition, route pattern, route list, route group, and SIP trunk. A wrong block explains why that call would never leave.
 - **IVR** lets you drag a greeting, a menu, and queues, then send a digit. A digit with no branch never starts a queue.
-- **Quiz** and **flashcards** answer in the page. The line under the answer is the point.
+- The other labs decode a SIP message, size a codec, draw jitter and loss, trace a CUCM CSS, build a Webex Calling location, route a UCCE dialed number, walk Finesse states, order an E911 flow, mark QoS, step SRTP, estimate Erlang-C staff, find a fault, match a CUBE dial-peer, fix one-way audio, and place a recording fork.
+- **Quiz** scores ten questions at a time from a bank of at least 300 per track (6,054 in total). The line under the answer is the point. The **boss exam** is 24 questions, and 80% is the pass line.
+- **Flashcards** are 2,018 terms. Flip, then mark the ones you can use.
+
+Every lesson has **Try it**. That button opens the lab that matches the page.
 
 The tone bar stays up after you press Play on a clip, including while you open another section. Stop ends the tone. The labs do not touch a live system.
 
