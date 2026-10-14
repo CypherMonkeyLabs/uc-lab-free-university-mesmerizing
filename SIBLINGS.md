@@ -6,7 +6,7 @@ UC Lab is the voice, UC, and contact center campus. AI Lab is a separate free ca
 |---|---|---|
 | Subject | Voice, UC, contact center | Local and cloud AI |
 | Repo | [uc-lab-free-university-mesmerizing](https://github.com/cipher0x9/uc-lab-free-university-mesmerizing) | [ai-lab-free-university-mesmerizing](https://github.com/cipher0x9/ai-lab-free-university-mesmerizing) |
-| Open | `university/v17-UNIVERSITY.html` (edition v21) | `v2-UNIVERSITY.html` |
+| Open | `campus/uc-lab-free-university.html` (edition v21) | `v2-UNIVERSITY.html` |
 | Proof habit | Leg, identifier, counter, capture | Run, trace, metric, artifact |
 
 They do not replace each other.

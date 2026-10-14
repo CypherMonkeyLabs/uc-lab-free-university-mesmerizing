@@ -5,7 +5,7 @@
 <p align="center">
   <a href="./releases/uc-lab-free-university.html.zip"><img src="./docs/assets/btn-download.svg" alt="Download (v21)" height="48"/></a>
   &nbsp;
-  <a href="./university/v17-UNIVERSITY.html"><img src="./docs/assets/btn-open.svg" alt="Open" height="48"/></a>
+  <a href="./campus/uc-lab-free-university.html"><img src="./docs/assets/btn-open.svg" alt="Open" height="48"/></a>
 </p>
 
 A free offline campus for people who run **voice, unified communications, and contact center** systems. The file is the course: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, the main CCaaS platforms, E911, QoS, and the troubleshooting habit that ties them together.
@@ -71,7 +71,7 @@ flowchart LR
 
 1. **Download (v21):** [releases/uc-lab-free-university.html.zip](./releases/uc-lab-free-university.html.zip)
 2. Unzip. The file inside is `uc-lab-free-university.html`.
-3. **Open** it in Chrome, Safari, Edge, or Firefox. From this repo, the same campus is [university/v17-UNIVERSITY.html](./university/v17-UNIVERSITY.html). The filename is older than the edition. The title bar says v21.
+3. **Open** it in Chrome, Safari, Edge, or Firefox. From this repo, the same campus is [campus/uc-lab-free-university.html](./campus/uc-lab-free-university.html).
 
 Desktop is the comfortable way to read it. A phone works in the full browser app after the file loads. In-app browsers from chat apps often fail on a file this size.
 
@@ -80,8 +80,9 @@ Desktop is the comfortable way to read it. A phone works in the full browser app
 | [62-slide briefing](./downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx) | Enterprise voice, contact center, and cloud migration |
 | [How to get the file](./HOW-TO-GET.md) | Phone and desktop steps |
 | [Start here](./START-HERE.md) | First hour |
+| [How to use it](./docs/HOW-TO-USE.md) | A 30-day path, interview prep, and a class plan |
 | [FAQ](./docs/FAQ.md) | What this is, and what it is not |
-| [Session vault, Oct 2026](./vault/uc-contact-center-session-vault-2026-10.md) | Public conference and doc links |
+| [Session vault, Oct 2026](./docs/references/uc-contact-center-session-vault-2026-10.md) | Public conference and doc links |
 
 ## Two topics that look out of place
 
