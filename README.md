@@ -133,6 +133,24 @@ The palette is teal `#0F9B8E` and indigo `#6366F1` on navy `#0B1220`, with green
 
 Nothing is loaded from a CDN.
 
+## App shell
+
+The same file now opens like a campus app. The home page is a dashboard: track cards tilt as you move across them, counters settle on the real totals, and a progress ring reads only the section ids this browser has opened.
+
+Ctrl+K searches every lesson. Light and dark stay in the header. Moving between sections fades the page. A tone you play stays in a bar at the bottom so you can keep reading.
+
+Labs, from the header or the home page:
+
+| Lab | What you do | Why it is here |
+|---|---|---|
+| Call flow | Place a call and watch SIP and RTP move through CUCM, CUBE, Webex Calling, or UCCE | A 200 OK is not two-way audio |
+| Dial plan | Drag the CSS, partition, pattern, list, group, and trunk into order | A missing partition means the outside number does not exist for that phone |
+| IVR | Drag nodes, connect a digit, and place a test call | A prompt is not a queue |
+| Quiz | Answer and read the reason immediately | The sentence matters more than the score |
+| Flashcards | Flip a term | The back says why you would use it on a bridge |
+
+Progress, quiz score, and known cards stay in `localStorage`. No name, number, or capture is stored. The labs are teaching models. They do not change a live system.
+
 ## License
 
 Educational material under the [MIT license](./LICENSE). Not an official Cisco, Microsoft, Google, Amazon, or Genesys publication. Check the vendor's current document before you change production.
