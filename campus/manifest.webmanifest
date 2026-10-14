@@ -1,0 +1,19 @@
+{
+  "name": "UC Lab Free University",
+  "short_name": "UC Lab",
+  "description": "Cisco Voice Core, Webex Calling, Teams Phone, and Contact Center Engineer. Offline after the first visit.",
+  "start_url": "./uc-lab-free-university.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0B1120",
+  "theme_color": "#0B1120",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

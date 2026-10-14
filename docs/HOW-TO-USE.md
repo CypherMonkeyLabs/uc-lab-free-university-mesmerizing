@@ -8,8 +8,8 @@ The campus opens from `uc-lab-free-university.html`. Keep the `assets` folder be
 
 | File | Offline | On a phone |
 |------|---------|------------|
-| `campus/uc-lab-free-university.html` | Double-click, or open the file from the browser. Airplane mode is a fair test: home, search, themes, and a section should still render. | Use the Chrome or Safari **app**. First open can take 10–30 seconds. Then use **☰ Menu**, search, and the theme control. |
-| `releases/uc-lab-free-university.html.zip` | Unzip, keep `assets` next to the HTML, then open the HTML. The zip is the packaging. | Download in the browser app, unzip in **Files** (iPhone) or Downloads (Android), then open the HTML in Chrome or Safari. |
+| `campus/uc-lab-free-university.html` | Double-click, or open the file from the browser. Keep `assets`, `sw.js`, and `manifest.webmanifest` beside it. `file://` opens the shell and the lesson you navigate to. | Use the Chrome or Safari **app**. The shell paints first. **Menu** opens the path drawer. A bottom nav covers Home, Paths, Labs, Search, and Progress. |
+| `releases/uc-lab-free-university.html.zip` | Unzip, keep `assets`, `sw.js`, and `manifest.webmanifest` next to the HTML, then open the HTML. | Download in the browser app, unzip in **Files** (iPhone) or Downloads (Android), then open the HTML in Chrome or Safari. |
 | `downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx` | PowerPoint, Keynote, or LibreOffice, from the local file. 62 slides. | PowerPoint or Keynote mobile, or the Files preview. The HTML is the better phone textbook. The deck is the projected story. |
 | `docs/HOW-TO-USE.md`, `docs/FAQ.md`, `docs/REMIX.md`, `docs/SIBLINGS.md` | Any markdown preview, including the GitHub app offline cache or a local editor. | Comfortable to read. They do not replace the campus. |
 | `docs/references/uc-contact-center-session-vault-2026-10.md` | The list itself is local. | Read the titles offline. Opening a Cisco Live or YouTube link needs a network, and some sessions need a free vendor account. |
@@ -20,24 +20,22 @@ The campus opens from `uc-lab-free-university.html`. Keep the `assets` folder be
 
 ### A ten-minute first session
 
-1. Open the HTML. Wait until the home page shows **Study sequence** and the 476-section stat.
-2. Read **Method** (`#method`) and say LICC without looking: Leg, ID, Counter, Capture.
-3. Use the study rail, or open **☰ Menu** and pick one chapter, for example CUCM (`#prod-cucm`).
-4. Switch the header theme once (Light or Dark). That confirms the page is running locally.
+1. Open the HTML. The home view shows four paths and the section count. **Study sequence** is on the orientation lesson (`#/lesson/home` or `#home`).
+2. Read **Method** (`#method` or `#/lesson/method`) and say LICC without looking: Leg, ID, Counter, Capture.
+3. Open a path, or pick CUCM (`#prod-cucm`). On a phone, **Menu** opens that list.
+4. Switch the header theme once (Light, Dark, or Contrast).
 5. Search for `Local Gateway`. Open one hit. Stop there.
 
 Progress checkmarks stay in this browser. A different browser, or a cleared site store, starts the donut over. Nothing is uploaded.
 
 ### Export without installing anything
 
-Use the export button in the campus bar:
+Use **Export** in the campus bar:
 
-- one section as HTML
-- the whole app
-- Markdown
-- progress JSON
-- question-bank CSV
-- print, then **Save as PDF** in the browser
+- **Question CSV** — a Web Worker reads the section modules. This needs http. `file://` cannot fetch every module.
+- **Markdown for this lesson** and **Markdown for this path**
+- **Print this lesson**, then **Save as PDF** in the browser. Print is the open lesson, not all 476.
+- **Save lessons offline** — on http, fetches each section so the service worker can keep it. The shell is cached on the first http visit without this button.
 
 ## 30-day study path
 
@@ -103,7 +101,7 @@ A 90-minute team session:
 
 | Minutes | Do this |
 |---------|---------|
-| 0–10 | Home page, Light theme, Study sequence. Agree the room rule: synthetic numbers only. |
+| 0–10 | Home page, Light theme, then the orientation lesson and its Study sequence. Agree the room rule: synthetic numbers only. |
 | 10–25 | `method`. Everyone writes LICC for a call they already know. |
 | 25–55 | One hub. Good first hubs: `hub-sip`, `hub-cube-sbc`, `hub-webex-cc`, `hub-migrations`, `hub-e911-redsky`. |
 | 55–75 | Pairs. One person breaks a leg. The other asks for id, counter, and capture. |
@@ -113,18 +111,17 @@ Longer programs: assign one row of the 30-day table per week and use the session
 
 Classroom setup:
 
-- Project from a laptop. The file does not need a login.
-- **Light** is the calm projector look. **Dark** is the dim-room look. Navy is `#0B1220` and teal is `#0F9B8E`.
-- Font scale and density are in the options panel.
-- Hand out the zip, not a screenshot. People should leave with the file.
-- Keep customer captures and production dial plans off the shared screen and out of the HTML.
+- Project from a laptop. The campus does not need a login.
+- **Light** is the projector look. **Dark** is the dim-room look. **Contrast** is the high-contrast look.
+- Hand out the zip, not a screenshot. People should leave with the HTML, `sw.js`, `manifest.webmanifest`, and `assets`.
+- Keep customer captures and production dial plans off the shared screen and out of the modules.
 
 ## If the page looks stuck
 
-- Give a phone up to a minute on the first open.
+- The shell should show the four paths without a long wait. If the page says the manifest did not load, the `assets` folder is not beside the HTML.
 - Open the same file on a laptop to confirm the copy is intact.
 - Use the full browser app.
-- Search for `THE CALL MUST ALWAYS CONNECT` or `LICC`. A hit means the curriculum is in memory.
-- Themes must still switch in airplane mode. If they do, you are on the local file.
+- Search for `LICC`. A hit means the catalog loaded.
+- Themes still switch with the network off. A lesson you have not opened yet needs its module file, or a prior **Save lessons offline** on http.
 
 More short answers: [FAQ](./FAQ.md). Engineering changes: [REMIX](./REMIX.md).

@@ -23,31 +23,36 @@ def fail(errors: list[str], message: str) -> None:
     errors.append(message)
 
 
-def parse_sections(html: str) -> list[dict]:
-    key = "window.SECTIONS = "
-    i = html.index(key) + len(key)
-    depth = 0
-    in_str = False
-    esc = False
-    for j, ch in enumerate(html[i:], i):
-        if in_str:
-            if esc:
-                esc = False
-            elif ch == "\\":
-                esc = True
-            elif ch == '"':
-                in_str = False
-            continue
-        if ch == '"':
-            in_str = True
-            continue
-        if ch == "[":
-            depth += 1
-        elif ch == "]":
-            depth -= 1
-            if depth == 0:
-                return json.loads(html[i : j + 1])
-    raise ValueError("SECTIONS array did not close")
+CURRICULUM = ROOT / "campus" / "assets" / "curriculum"
+EXPECT = {
+    "sections": 476,
+    "flows": 978,
+    "walkthroughs": 27,
+    "charts": 32,
+    "illustrations": 2772,
+    "details": 13334,
+    "selfChecks": 1585,
+    "numberedQuestions": 13175,
+    "faults": 110,
+    "drills": 4,
+}
+
+
+def parse_js_value(text: str, marker: str):
+    i = text.index(marker) + len(marker)
+    value, _end = json.JSONDecoder().raw_decode(text[i:])
+    return value
+
+
+def parse_pack(text: str) -> tuple[dict, list]:
+    marker = "UC.pack("
+    i = text.index(marker) + len(marker)
+    section, end = json.JSONDecoder().raw_decode(text[i:])
+    rest = text[i + end :].lstrip()
+    if rest.startswith(","):
+        rest = rest[1:]
+    flows, _end = json.JSONDecoder().raw_decode(rest)
+    return section, flows
 
 
 def main() -> int:
@@ -58,6 +63,8 @@ def main() -> int:
     html = HTML_PATH.read_text(encoding="utf-8")
     def local_asset(url: str) -> bool:
         value = url.strip()
+        if value in {"manifest.webmanifest", "sw.js"}:
+            return True
         if "://" in value or value.startswith("//") or value.startswith("/") or ".." in value:
             return False
         return value.startswith("assets/")
@@ -78,26 +85,78 @@ def main() -> int:
     for host in ("cdn.jsdelivr", "unpkg.com", "cdnjs.", "fonts.googleapis", "ajax.googleapis"):
         if host in html.lower():
             fail(errors, f"campus references {host}")
+    if "window.SECTIONS = " in html:
+        fail(errors, "HTML still embeds window.SECTIONS; serve curriculum modules instead")
+    if HTML_PATH.stat().st_size > 250_000:
+        fail(errors, f"HTML is {HTML_PATH.stat().st_size} bytes; keep the shell under 250000")
+    manifest_path = CURRICULUM / "manifest.js"
     try:
-        sections = parse_sections(html)
-    except (ValueError, json.JSONDecodeError) as exc:
-        fail(errors, f"SECTIONS did not parse: {exc}")
-        sections = []
-    stats = re.search(r'window\.STATS = (\{.*?\});', html)
+        manifest = parse_js_value(manifest_path.read_text(encoding="utf-8"), "UC.manifest(")
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        fail(errors, f"manifest did not parse: {exc}")
+        manifest = {}
+    catalog = manifest.get("sections") or []
+    stats_meta = manifest.get("stats") or {}
+    if len(catalog) != EXPECT["sections"]:
+        fail(errors, f"manifest lists {len(catalog)} sections")
+    for key, expected in EXPECT.items():
+        if stats_meta.get(key) != expected:
+            fail(errors, f"manifest stats {key}={stats_meta.get(key)} expected {expected}")
+    ids = [item.get("id") for item in catalog]
+    if len(ids) != len(set(ids)):
+        fail(errors, "duplicate section ids")
+    details = 0
+    self_checks = 0
+    numbered = 0
+    flow_count = 0
+    home = ""
+    teams_extra = False
+    for sid in ids:
+        path = CURRICULUM / "sections" / f"{sid}.js"
+        if not path.is_file():
+            fail(errors, f"missing section module {sid}")
+            continue
+        try:
+            section, flows = parse_pack(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            fail(errors, f"{sid} did not parse: {exc}")
+            continue
+        if section.get("id") != sid:
+            fail(errors, f"{sid} pack id is {section.get('id')}")
+        body = section.get("body") or ""
+        details += body.count("<details")
+        self_checks += body.count('<details class="q"')
+        numbered += len(re.findall(r"\bQ\d+\.", body))
+        flow_count += len(flows)
+        if sid == "home":
+            home = body
+        if sid == "ms-teams-phone-pstn" and "V20 FIELD CHECKLIST" in body:
+            teams_extra = True
+    walks_path = CURRICULUM / "walks.js"
+    try:
+        walks = parse_js_value(walks_path.read_text(encoding="utf-8"), "UC.walks(")
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        fail(errors, f"walks did not parse: {exc}")
+        walks = []
+    flow_count += len(walks)
+    if flow_count != EXPECT["flows"]:
+        fail(errors, f"flow modules total {flow_count}")
+    if details != EXPECT["details"] or self_checks != EXPECT["selfChecks"] or numbered != EXPECT["numberedQuestions"]:
+        fail(errors, f"content counts details={details} selfChecks={self_checks} questions={numbered}")
+    if "data-v21" not in home or "Study sequence" not in home:
+        fail(errors, "home section is missing the v21 study sequence")
+    if not teams_extra:
+        fail(errors, "Teams Phone PSTN checklist addition is missing")
+    sections = catalog
+    stats = re.search(r"window\.STATS = (\{.*?\});", html)
     if not stats:
         fail(errors, "window.STATS missing")
     else:
         meta = json.loads(stats.group(1))
-        if meta.get("sections") != len(sections):
-            fail(errors, f"STATS.sections={meta.get('sections')} but array has {len(sections)}")
+        if meta.get("sections") != EXPECT["sections"]:
+            fail(errors, f"STATS.sections={meta.get('sections')}")
         if meta.get("version") != "v21":
             fail(errors, f"unexpected version {meta.get('version')}")
-    ids = [item.get("id") for item in sections]
-    if len(ids) != len(set(ids)):
-        fail(errors, "duplicate section ids")
-    home = sections[0].get("body", "") if sections else ""
-    if "data-v21" not in home or "Study sequence" not in home:
-        fail(errors, "home section is missing the v21 study sequence")
 
     for path in ROOT.rglob("*"):
         if not path.is_file() or ".git" in path.parts:
@@ -142,6 +201,12 @@ def main() -> int:
                 fail(errors, "zip is missing uc-lab-free-university.html")
             elif zf.read("uc-lab-free-university.html") != HTML_PATH.read_bytes():
                 fail(errors, "zip member does not match campus/uc-lab-free-university.html")
+            for extra_name in ("sw.js", "manifest.webmanifest"):
+                extra_path = ROOT / "campus" / extra_name
+                if extra_name not in names:
+                    fail(errors, f"zip is missing {extra_name}")
+                elif extra_path.is_file() and zf.read(extra_name) != extra_path.read_bytes():
+                    fail(errors, f"zip member does not match campus/{extra_name}")
             asset_root = ROOT / "campus" / "assets"
             expected = {
                 "assets/" + path.relative_to(asset_root).as_posix()
@@ -151,8 +216,9 @@ def main() -> int:
             zipped_assets = {name for name in names if name.startswith("assets/")}
             if zipped_assets != expected:
                 fail(errors, f"zip assets {sorted(zipped_assets)} != campus/assets {sorted(expected)}")
+            allowed_root = {"uc-lab-free-university.html", "sw.js", "manifest.webmanifest"}
             for name in names:
-                if name != "uc-lab-free-university.html" and not name.startswith("assets/"):
+                if name not in allowed_root and not name.startswith("assets/"):
                     fail(errors, f"unexpected zip member {name}")
             for name in sorted(expected):
                 disk = asset_root / name.removeprefix("assets/")

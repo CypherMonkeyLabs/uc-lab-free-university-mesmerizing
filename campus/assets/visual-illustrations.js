@@ -65,8 +65,11 @@
     var tabs = document.createElement("div");
     tabs.className = "vs-art-tabs";
     tabs.setAttribute("role", "tablist");
+    tabs.setAttribute("aria-label", "Diagram views");
     var panel = document.createElement("div");
     panel.className = "vs-art-panel";
+    panel.setAttribute("role", "tabpanel");
+    panel.setAttribute("aria-label", "Diagram");
     var views = [
       ["Topology", art.topology ? topology(art.topology) : ""],
       ["Console", art.mockup ? mockup(art.mockup) : ""],
@@ -76,10 +79,11 @@
       var b = document.createElement("button");
       b.type = "button";
       b.textContent = view[0];
-      b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+      b.setAttribute("role", "tab");
+      b.setAttribute("aria-selected", i === 0 ? "true" : "false");
       b.addEventListener("click", function () {
         var buttons = tabs.querySelectorAll("button");
-        for (var n = 0; n < buttons.length; n++) buttons[n].setAttribute("aria-pressed", buttons[n] === b ? "true" : "false");
+        for (var n = 0; n < buttons.length; n++) buttons[n].setAttribute("aria-selected", buttons[n] === b ? "true" : "false");
         panel.innerHTML = view[1];
       });
       tabs.appendChild(b);
