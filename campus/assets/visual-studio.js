@@ -17,6 +17,12 @@
       .replace(/"/g, "&quot;");
   }
 
+  function linkifyEscaped(s) {
+    return esc(s).replace(/RFC\s*(\d{3,5})/gi, function (_match, num) {
+      return '<a href="https://www.rfc-editor.org/rfc/rfc' + num + '" rel="noopener noreferrer">RFC ' + num + "</a>";
+    });
+  }
+
   function byIdMap(list) {
     var m = {};
     (list || []).forEach(function (f) { if (f && f.id) m[f.id] = f; });
@@ -327,21 +333,23 @@
       '<div class="vs-legend" aria-hidden="true"><span><i style="background:#0F9B8E"></i>Request</span><span><i style="background:#E08A00"></i>Provisional</span><span><i style="background:#22C55E"></i>Answer or media</span><span><i style="background:#E11D48"></i>Failure</span><span><i style="background:#6366F1"></i>Current step</span></div>';
     host.tabIndex = 0;
     host.innerHTML =
-      '<div class="vs-player-top"><h3>' + esc(flow.title) + '</h3><span class="vs-cite">' + esc(flow.cite || "Campus diagram") + "</span></div>" +
+      '<div class="vs-player-top"><h3>' + esc(flow.title) + '</h3><span class="vs-cite">' + linkifyEscaped(flow.cite || "Campus diagram") + "</span></div>" +
       '<p class="vs-why"><b>Why it matters.</b> ' + esc(flow.why || "") + "</p>" +
       scenario +
       legend +
-      '<div class="vs-rail" data-rail role="progressbar" aria-valuemin="1" aria-valuemax="' + steps.length + '" aria-valuenow="1"><i></i></div>' +
+      '<div class="vs-rail" data-rail role="progressbar" aria-label="Playback progress" aria-valuemin="1" aria-valuemax="' + steps.length + '" aria-valuenow="1"><i></i></div>' +
       '<div class="vs-svg-scroll" data-svg></div>' +
       '<p class="vs-cap vs-cap-in" aria-live="polite"></p>' +
       '<div class="vs-controls">' +
       '<button type="button" data-act="play" aria-pressed="false">Play</button>' +
       '<button type="button" data-act="prev">Step back</button>' +
       '<button type="button" data-act="next">Step forward</button>' +
+      '<button type="button" data-act="inspect" aria-pressed="false">Inspect</button>' +
       '<label>Speed <select data-act="speed" aria-label="Playback speed"><option>0.5x</option><option selected>1x</option><option>2x</option></select></label>' +
       '<span class="vs-pos" data-pos></span></div>' +
       '<div class="vs-timeline" data-dots role="tablist" aria-label="Steps"></div>' +
-      '<p class="vs-keys-hint">Focus this player, then use Left and Right to step and Space to play or pause.</p>';
+      '<p class="vs-keys-hint">Focus this player, then use Left and Right to step and Space to play or pause.</p>' +
+      '<pre class="vs-inspect" hidden></pre>';
     var svgHost = host.querySelector("[data-svg]");
     var cap = host.querySelector(".vs-cap");
     var pos = host.querySelector("[data-pos]");
@@ -371,7 +379,12 @@
       svgHost.innerHTML = svg;
       var st = steps[index] || { label: "", cap: "" };
       cap.classList.remove("vs-cap-in");
-      cap.innerHTML = '<span class="vs-step-k">Step ' + (index + 1) + " of " + steps.length + " · " + esc(st.label || "") + "</span>" + esc(st.cap || "");
+      cap.innerHTML = '<span class="vs-step-k">Step ' + (index + 1) + " of " + steps.length + " · " + esc(st.label || "") + "</span>" + linkifyEscaped(st.cap || "");
+      var inspect = host.querySelector(".vs-inspect");
+      if (inspect) {
+        inspect.hidden = inspect.getAttribute("data-open") !== "1";
+        inspect.textContent = (st.label || "Step") + "\n" + (st.cap || "") + (flow.cite ? "\n" + flow.cite : "");
+      }
       void cap.offsetWidth;
       cap.classList.add("vs-cap-in");
       pos.textContent = (index + 1) + " / " + steps.length;
@@ -428,6 +441,16 @@
     playBtn.addEventListener("click", function () { if (playing) stop(); else play(); });
     host.querySelector('[data-act=prev]').addEventListener("click", function () { stepBy(-1); });
     host.querySelector('[data-act=next]').addEventListener("click", function () { stepBy(1); });
+    var inspectBtn = host.querySelector('[data-act=inspect]');
+    if (inspectBtn) {
+      inspectBtn.addEventListener("click", function () {
+        var pre = host.querySelector(".vs-inspect");
+        var open = pre && pre.getAttribute("data-open") === "1";
+        if (pre) pre.setAttribute("data-open", open ? "0" : "1");
+        inspectBtn.setAttribute("aria-pressed", open ? "false" : "true");
+        draw();
+      });
+    }
     host.querySelector('[data-act=speed]').addEventListener("change", function (e) {
       var v = parseFloat(e.target.value);
       speed = v === 0.5 || v === 2 ? v : 1;
@@ -443,7 +466,7 @@
         steps = flow.steps || [];
         index = 0;
         if (titleEl) titleEl.textContent = flow.title || "";
-        if (citeEl) citeEl.textContent = flow.cite || "Campus diagram";
+        if (citeEl) citeEl.innerHTML = linkifyEscaped(flow.cite || "Campus diagram");
         if (whyEl) whyEl.innerHTML = "<b>Why it matters.</b> " + esc(flow.why || "");
         fillSteps();
         var hd = host.parentElement && host.parentElement.querySelector(".vs-header");
@@ -476,7 +499,7 @@
     });
     host._vsStop = stop;
     draw();
-    if (!params.get("noplay") && !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+    if (!window.UC_NO_AUTOPLAY && !params.get("noplay") && !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
       setTimeout(play, 350);
     }
     return host;
@@ -986,7 +1009,7 @@
       root.appendChild(hd);
     }
     mountChart(root, flow.chart);
-    if (wantsAudio(section, flow) || section.id === "home") root.appendChild(audioBench());
+    if (section.id === "home" || window.UC_FORCE_AUDIO_BENCH) root.appendChild(audioBench());
     var hub = trackHub(section);
     if (hub) root.appendChild(hub);
     if (section.id === "home" && window.UC_VISUAL_COUNTS) {
@@ -1041,6 +1064,8 @@
   function counts() {
     var sections = window.SECTIONS || [];
     var flows = window.UC_FLOW_CATALOG || [];
+    var published = window.UC_PUBLISHED_COUNTS;
+    if (published && flows.length < (published.flowDefinitions || 1)) return published;
     var seenArt = {};
     var walks = 0;
     flows.forEach(function (f) {

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./docs/assets/hero.svg" alt="UC Lab Free University v21. Voice, UC, and contact center. One offline HTML file." width="100%"/>
+  <img src="./docs/assets/hero.svg" alt="UC Lab Free University v21. Voice, UC, and contact center." width="100%"/>
 </p>
 
 <p align="center">
@@ -8,9 +8,9 @@
   <a href="./campus/uc-lab-free-university.html"><img src="./docs/assets/btn-open.svg" alt="Open" height="48"/></a>
 </p>
 
-A free offline campus for people who run **voice, unified communications, and contact center** systems. The file is the course: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, the main CCaaS platforms, E911, QoS, and the troubleshooting habit that ties them together.
+A free offline campus for people who run **voice, unified communications, and contact center** systems. The shell is a few kilobytes. Lessons load one at a time: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, the main CCaaS platforms, E911, QoS, and the troubleshooting habit that ties them together.
 
-Built by **CYPHER0X9**, a voice and UC engineer. Version **21**. No account, no install, no CDN. Open the HTML and keep the `assets` folder beside it.
+Built by **CYPHER0X9**, a voice and UC engineer. Version **21**. No account, no install, no CDN. Open the HTML and keep `assets`, `sw.js`, and `manifest.webmanifest` beside it.
 
 <p align="center">
   <img src="./docs/assets/campus-home.png" alt="Campus home in the light theme, with the study rail and track list" width="100%"/>
@@ -23,7 +23,7 @@ Built by **CYPHER0X9**, a voice and UC engineer. Version **21**. No account, no 
 | Start here | 6 | Explain a call with leg, identifier, counter, and capture |
 | SIP and media | 9 | Read a ladder and separate signaling from RTP |
 | CUCM and CUBE | 12 | Trace CSS, route pattern, dial-peer, and the SIP trunk |
-| Webex Calling and Teams Phone | 17 | Choose Calling Plan, Operator Connect, Direct Routing, or a local gateway, then prove it |
+| Webex Calling and Teams Phone | 121 | Choose Calling Plan, Operator Connect, Direct Routing, or a local gateway, then prove it |
 | Contact center — UCCE and PCCE | 6 | Trace ingress, CVP, script, queue, Finesse, and CUIC |
 | CCaaS and UCaaS platforms | 105 | Follow a contact on Webex CC, Connect, Genesys, NICE, Five9, Flex, and the platforms you still meet |
 | Emergency calling | 3 | Prove location, ELIN or ERL, and the on-site notification |
@@ -35,7 +35,52 @@ Built by **CYPHER0X9**, a voice and UC engineer. Version **21**. No account, no 
 | Practice | 56 | Drill the same faults without a customer on the line |
 | Reference | 5 | Open the glossary and the official-doc index |
 
-476 sections in the sidebar. The old bulk practicums, trading-turret track, Asterisk course, and generic machine-learning chapter are not in this edition.
+580 sections. The old bulk practicums, trading-turret track, Asterisk course, and generic machine-learning chapter are not in this edition.
+
+## Paths and labs
+
+The same 580 sections sit on four certification paths. Opened and completed lessons stay in this browser.
+
+| Path | Sections |
+|---|---:|
+| Cisco Voice Core | 314 |
+| Webex Calling | 69 |
+| Teams Phone | 67 |
+| Contact Center Engineer | 130 |
+
+Shared foundations stay on Cisco Voice Core. Webex Calling, Teams Phone, and Contact Center Engineer are the specialist trails.
+
+| Lab | What you do |
+|---|---|
+| SIP ladder | Play, pause, step, and inspect a call |
+| Dialpad | Off hook, digits, busy (`2222`), reorder (`3333`), `911`, codec choice, WebAudio tones |
+| 3D fabric | Phone, CUCM, CUBE, PSTN, and Webex Calling, with link-failure toggles |
+| Erlang and SDP | Erlang B/C staffing model, and a line-by-line SDP reader |
+| Tone bench | The 35 generated clips, on the campus orientation lesson |
+
+RFC numbers in the lesson text link to the RFC Editor. Each lesson lists the Cisco, Webex, Microsoft, or ITU document for that path. Question CSV and Markdown exports run in a Web Worker. Print covers the open lesson. **Save lessons offline** fills the service-worker cache when the campus is served over http.
+
+<p align="center">
+  <img src="./docs/assets/campus-topology.png" alt="3D topology of a phone, CUCM, CUBE, the PSTN, and Webex Calling, with link-failure toggles" width="100%"/>
+</p>
+
+<p align="center">
+  <img src="./docs/assets/campus-dial.png" alt="Dialpad testbed with off-hook, digits, call, and hangup" width="78%"/>
+</p>
+
+### Page weight
+
+Measured on this tree. Lighthouse is mobile, simulated throttling, against the local campus.
+
+| | Before | After |
+|---|---:|---:|
+| HTML | 14,614,915 bytes | 4,092 bytes |
+| First load | about 19.5 MB with the flow catalog | 323,006 bytes (shell, CSS, app, catalog index) |
+| Home DOM | every section in one document | 229 elements, one `h1` |
+| Lighthouse, home | | performance 91, accessibility 100 |
+| Lighthouse, Webex lesson | | performance 84, accessibility 100 |
+
+The 580 section modules are 16,480,344 bytes and load one lesson at a time. A practice bank shows six cards at a time (Teams Phone: 6 of 400, 517 elements). Three.js (691,648 bytes, vendored) loads only on the 3D fabric.
 
 ## Study order
 
@@ -55,17 +100,17 @@ flowchart LR
 
 ## Visual studio
 
-Each of the 476 sections opens with its own step-through flow: real message names, ports, headers, and timers for that section, plus a failure path in the scenario menu. Play, pause, step, and speed sit on the diagram. The current message is highlighted and the caption says what the step means. A track map and local achievement badges sit above the player. Nothing in those badges is a name or an address; the browser only stores section ids you opened. Topology, console, and capture tabs are drawn from that section's flow. Twenty-six longer walkthroughs, plus the campus home, play as scenes. Charts are thirty-two different formulas, not one chart reused under new titles. The tone bench is generated in the browser with WebAudio.
+Each of the 580 sections opens with its own step-through flow, plus a failure path in the scenario menu. The original lessons keep their message names, ports, headers, and timers. Each added Webex Calling and Teams Phone lesson adds a success ladder, a failure ladder, a lab, and a cited quiz. Play, pause, step, and speed sit on the diagram. The current message is highlighted and the caption says what the step means. A track map and local achievement badges sit above the player. Nothing in those badges is a name or an address; the browser only stores section ids you opened. Topology, console, and capture tabs are drawn from that section's flow. Twenty-six longer walkthroughs, plus the campus home, play as scenes. Charts are thirty-two different formulas, not one chart reused under new titles. The tone bench is generated in the browser with WebAudio.
 
 Counts are distinct definitions, not placements:
 
 | Kind | Count |
 |---|---:|
-| Sections | 476 |
-| Distinct flow definitions | 978 |
-| Walkthrough scenes | 27 |
+| Sections | 580 |
+| Distinct flow definitions | 1,197 |
+| Walkthrough scenes | 38 |
 | Chart types | 32 |
-| Distinct illustrations (topology, console, and capture specs) | 2,772 |
+| Distinct illustrations (topology, console, and capture specs) | 3,396 |
 | Audio clips | 35 |
 | Track hubs | 14 |
 
@@ -90,10 +135,12 @@ Codec bandwidth is `(payload + 40 + L2) × 8 × (1000 / ptime) / 1000`. G.711 at
 ## Open it
 
 1. **Download (v21):** [releases/uc-lab-free-university.html.zip](./releases/uc-lab-free-university.html.zip)
-2. Unzip. You get `uc-lab-free-university.html` and an `assets` folder. Leave them side by side.
+2. Unzip. You get `uc-lab-free-university.html`, `sw.js`, `manifest.webmanifest`, and an `assets` folder. Leave them side by side.
 3. **Open** the HTML in Chrome, Safari, Edge, or Firefox. From this repo, the same campus is [campus/uc-lab-free-university.html](./campus/uc-lab-free-university.html).
 
-Desktop is the comfortable way to read it. A phone works in the full browser app after the file loads. In-app browsers from chat apps often fail on a file this size.
+`file://` opens the shell and any lesson you navigate to. Served over http, including GitHub Pages, the service worker caches the shell for the next visit. Old hashes still open a lesson: `#prod-cucm` and `#/lesson/prod-cucm`.
+
+Desktop is the comfortable way to read it. Under 640px the path list moves behind **Menu** and a bottom nav stays on screen. In-app browsers from chat apps are a poor place to open the zip.
 
 | Also in the repo | What it is |
 |---|---|
@@ -119,9 +166,11 @@ Desktop is the comfortable way to read it. A phone works in the full browser app
 | C | Counter | Which platform counter moved? |
 | C | Capture | Which ladder, packet capture, CLI output, or CUIC interval proves it? |
 
-## Light, dark, and high contrast
+## Settings, themes, and tips
 
-The palette is teal `#0F9B8E` and indigo `#6366F1` on navy `#0B1220`, with green `#22C55E` and amber for media and warnings. The header theme control switches light, dark, and high contrast.
+**Settings** stores the choice in this browser: light, dark, high contrast, and signal (amber on charcoal); sound effects; narration with a voice list and a speed control; reduced motion; and font size. Narration stays off until you turn it on, and a robotic Microsoft Edge voice is not selected for you. **Tips and traps** (`#/tips`) is a pro-tip, interview-trap, and cheat-sheet page for each of the 14 tracks.
+
+The default page is slate paper (`#F3F6FB`), indigo, and teal, with amber and rose as secondary marks. Primary buttons use `#0F766E` with light text. The 3D stage and ladder inspect panel use navy `#0B1120`.
 
 <p align="center">
   <img src="./docs/assets/visual-dark.png" alt="CUBE call flow in the dark theme" width="100%"/>
@@ -133,58 +182,9 @@ The palette is teal `#0F9B8E` and indigo `#6366F1` on navy `#0B1220`, with green
 
 Nothing is loaded from a CDN.
 
-## App shell
+## Content carried over from the v23 single-file edition
 
-The same file now opens like a campus app. The home page is a dashboard: track cards tilt as you move across them, counters settle on the real totals, and a progress ring reads only the section ids this browser has opened.
-
-Ctrl+K searches every lesson. Light and dark stay in the header. Moving between sections fades the page. A tone you play stays in a bar at the bottom so you can keep reading.
-
-Labs, from the header or the home page. There are 21. Each lesson has a **Try it** button that opens the lab that matches that page.
-
-| Lab | What you do | Why it is here |
-|---|---|---|
-| Call flow | Place one of 24 calls, including transfer, conference, hunt, CTI route point, MRA, trunk failover, IVR to agent, and callback | A 200 OK is not two-way audio |
-| Dial plan | Drag the CSS, partition, pattern, list, group, and trunk into order | A missing partition means the outside number does not exist for that phone |
-| IVR | Drag nodes, connect a digit, and place a test call | A prompt is not a queue |
-| SIP decode | Paste a message or click a header | A header is a job |
-| Codec | Turn payload, packetization, and layer-2 bytes into kbit/s | G.711 on the wire is more than 64 kbit/s |
-| Jitter | Move loss and jitter and watch arrivals | A jitter buffer hides variation by adding delay |
-| Route | Pick a directory number and trace CSS and partition order | If 9.@ is searched before 911, emergency takes the PSTN route |
-| Webex PSTN | Name a location and the PSTN model | Calling Plan has no local gateway |
-| UCCE | Follow a dialed number into a call type and skill group | The call type is the report bucket |
-| Finesse | Walk ready, reserved, talking, and wrap | The router sees the desktop state |
-| E911 | Order discovery, mapping, callback, route, notify, and proof | A connected call with the wrong location is a failed emergency call |
-| QoS | Mark RTP, SIP, and bulk, then pick the queue | EF without a priority queue is a label |
-| SRTP | Step a teaching TLS and SRTP flight | TLS locks signaling. SRTP locks audio |
-| Erlang | Estimate staff from calls per hour and handle time | The figure is a teaching formula |
-| Find fault | Pick the next proof for a named symptom | A second guess without evidence is not a finding |
-| Dial-peer | Match a called number on CUBE | Longest match, then the lowest preference |
-| One-way | Read an SDP address the far side cannot reach | The ladder can be perfect while RTP is not |
-| Record | Choose where the PSTN fork belongs | A report is not the audio |
-| Quiz | Ten questions from a track bank of at least 150, with a reason that is not a copy of the choice | The score is stored per track in this browser |
-| Cards | Flip one of 2,018 terms | The back says why you would use it |
-| Boss | Sit the cross-track exam | Eighty percent is the pass line |
-
-The quiz bank is 2,913 questions: at least 150 scored questions on each of the 14 tracks. Each of the 2,018 facts is asked once. A second question appears only when the reason adds a further consequence (731 of those), and 164 questions are situations. The boss exam is 24 questions. Flashcards are 2,018.
-
-| Track | Questions |
-|---|---|
-| Start here | 169 |
-| SIP and media | 194 |
-| CUCM and CUBE | 185 |
-| Webex Calling and Teams Phone | 243 |
-| Contact center — UCCE and PCCE | 197 |
-| CCaaS and UCaaS platforms | 298 |
-| Emergency calling | 163 |
-| Voice network and QoS | 160 |
-| Migrations | 188 |
-| Troubleshooting | 257 |
-| Evidence habits | 267 |
-| Design notes | 171 |
-| Practice | 162 |
-| Reference | 259 |
-
-Progress, per-track quiz score, known cards, badges, and the study streak stay in `localStorage`. No name, number, or capture is stored. The labs are teaching models. They do not change a live system.
+The modular app includes the v23 call flows (conference, CTI route point, courtesy callback, park, shared line, voicemail forward, early offer, T.38 fax, pickup, single number reach, trunk failover), eight fault drills, and 2,018 term cards with 164 situations and a 24-question cross-track exam. They live in the SIP drill bank, the mastery card library, and the walkthrough list. `scripts/port-main-v23-content.py` records the port.
 
 ## License
 
