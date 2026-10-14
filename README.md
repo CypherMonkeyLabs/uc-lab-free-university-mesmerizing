@@ -77,8 +77,8 @@ Measured on this tree. Lighthouse is mobile, simulated throttling, against the l
 | HTML | 14,614,915 bytes | 4,092 bytes |
 | First load | about 19.5 MB with the flow catalog | 323,006 bytes (shell, CSS, app, catalog index) |
 | Home DOM | every section in one document | 229 elements, one `h1` |
-| Lighthouse, home | | performance 95, accessibility 100 |
-| Lighthouse, SIP lesson | | performance 87, accessibility 100 |
+| Lighthouse, home | | performance 91, accessibility 100 |
+| Lighthouse, Webex lesson | | performance 84, accessibility 100 |
 
 The 580 section modules are 16,480,344 bytes and load one lesson at a time. A practice bank shows six cards at a time (Teams Phone: 6 of 400, 517 elements). Three.js (691,648 bytes, vendored) loads only on the 3D fabric.
 
