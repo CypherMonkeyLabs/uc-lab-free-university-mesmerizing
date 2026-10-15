@@ -1,0 +1,86 @@
+[
+  {
+    "id": "station",
+    "title": "Station to station",
+    "why": "Two phones on one cluster. CUCM does the signaling. RTP goes phone to phone unless a media resource is inserted.",
+    "nodes": [
+      {"id": "a", "label": "Phone A", "sub": "SIP"},
+      {"id": "cucm", "label": "CUCM", "sub": "signaling"},
+      {"id": "b", "label": "Phone B", "sub": "SIP"}
+    ],
+    "steps": [
+      {"f": "a", "t": "cucm", "kind": "sip", "label": "INVITE", "note": "Phone A sends the INVITE to the subscriber that holds its registration."},
+      {"f": "cucm", "t": "a", "kind": "sip", "label": "100 Trying", "note": "CUCM has the INVITE and is doing digit analysis."},
+      {"f": "cucm", "t": "b", "kind": "sip", "label": "INVITE", "note": "The called CSS and partition resolved to Phone B."},
+      {"f": "b", "t": "cucm", "kind": "sip", "label": "180 Ringing", "note": "Phone B is alerting. This is still signaling, not audio."},
+      {"f": "cucm", "t": "a", "kind": "sip", "label": "180 Ringing", "note": "CUCM relays alerting to the caller."},
+      {"f": "b", "t": "cucm", "kind": "sip", "label": "200 OK", "note": "Phone B answered. SDP names the phone's own media address."},
+      {"f": "a", "t": "b", "kind": "rtp", "label": "RTP", "note": "Audio goes phone to phone. It does not hairpin through CUCM."}
+    ]
+  },
+  {
+    "id": "cube",
+    "title": "PSTN through CUBE",
+    "why": "CUBE is a B2BUA. The Call-ID changes there. A 200 OK on the trunk does not prove the phone has audio.",
+    "nodes": [
+      {"id": "phone", "label": "Phone", "sub": "SIP"},
+      {"id": "cucm", "label": "CUCM", "sub": "CSS / pattern"},
+      {"id": "cube", "label": "CUBE", "sub": "B2BUA"},
+      {"id": "pstn", "label": "PSTN", "sub": "ITSP"}
+    ],
+    "steps": [
+      {"f": "phone", "t": "cucm", "kind": "sip", "label": "INVITE", "note": "The line CSS must contain the partition of the route pattern, or this number does not exist."},
+      {"f": "cucm", "t": "cube", "kind": "sip", "label": "INVITE", "note": "The pattern points at a route list, then a route group, then the SIP trunk. This Call-ID is the CUCM leg."},
+      {"f": "cube", "t": "pstn", "kind": "sip", "label": "INVITE", "note": "A dial-peer matches. CUBE starts a new Call-ID toward the carrier."},
+      {"f": "pstn", "t": "cube", "kind": "sip", "label": "180", "note": "Ringing on the carrier leg. Relay it back only after you know which leg you are looking at."},
+      {"f": "cube", "t": "cucm", "kind": "sip", "label": "180", "note": "CUBE notifies CUCM. Still no audio."},
+      {"f": "pstn", "t": "cube", "kind": "sip", "label": "200 OK", "note": "The carrier answered. SDP is the carrier media address."},
+      {"f": "phone", "t": "cube", "kind": "rtp", "label": "RTP", "note": "Phone media goes to CUBE, not through CUCM, unless an MTP or transcoder is actually invoked."},
+      {"f": "cube", "t": "pstn", "kind": "rtp", "label": "RTP", "note": "CUBE anchors or relays media toward the carrier. Prove both RTP legs."}
+    ]
+  },
+  {
+    "id": "webex",
+    "title": "Webex Calling local gateway",
+    "why": "Webex Calling still needs a premises border for your own PSTN. Calling Plan has no local gateway. This path does.",
+    "nodes": [
+      {"id": "app", "label": "Webex app", "sub": "client"},
+      {"id": "wx", "label": "Webex Calling", "sub": "cloud"},
+      {"id": "lgw", "label": "Local Gateway", "sub": "CUBE"},
+      {"id": "pstn", "label": "PSTN", "sub": "carrier"}
+    ],
+    "steps": [
+      {"f": "app", "t": "wx", "kind": "sip", "label": "INVITE", "note": "The client signals Webex Calling, not your old subscriber."},
+      {"f": "wx", "t": "lgw", "kind": "sip", "label": "INVITE", "note": "Outbound PSTN uses the local gateway trunk or registration, on the ports that design chose."},
+      {"f": "lgw", "t": "pstn", "kind": "sip", "label": "INVITE", "note": "Dial-peers on the gateway decide the carrier leg."},
+      {"f": "pstn", "t": "lgw", "kind": "sip", "label": "200 OK", "note": "Answer is on the carrier leg. Check that SDP before you blame the app."},
+      {"f": "lgw", "t": "wx", "kind": "sip", "label": "200 OK", "note": "The gateway completes the Webex leg."},
+      {"f": "app", "t": "lgw", "kind": "rtp", "label": "RTP", "note": "Media for this PSTN call anchors at the local gateway. The cloud signaling path is not the audio path."}
+    ]
+  },
+  {
+    "id": "ucce",
+    "title": "UCCE comprehensive",
+    "why": "Ingress, prompt, script, queue, and agent are the contact. CUIC is the report beside that path, not the audio.",
+    "nodes": [
+      {"id": "caller", "label": "Caller", "sub": "PSTN"},
+      {"id": "cube", "label": "CUBE", "sub": "ingress"},
+      {"id": "cvp", "label": "CVP", "sub": "VVB prompt"},
+      {"id": "icm", "label": "ICM", "sub": "script"},
+      {"id": "cucm", "label": "CUCM", "sub": "agent phone"},
+      {"id": "agent", "label": "Agent", "sub": "Finesse"},
+      {"id": "cuic", "label": "CUIC", "sub": "report"}
+    ],
+    "steps": [
+      {"f": "caller", "t": "cube", "kind": "sip", "label": "INVITE", "note": "The carrier hits the border. This leg has its own Call-ID."},
+      {"f": "cube", "t": "cvp", "kind": "sip", "label": "INVITE", "note": "CVP takes the call for treatment."},
+      {"f": "cvp", "t": "icm", "kind": "sip", "label": "New call", "note": "ICM runs the script. The route request is not RTP."},
+      {"f": "cvp", "t": "cvp", "kind": "sip", "label": "Prompt", "note": "VVB plays the menu. A prompt is not a queue."},
+      {"f": "icm", "t": "cvp", "kind": "sip", "label": "Label", "note": "The script returns a label for an agent or a queue."},
+      {"f": "cvp", "t": "cucm", "kind": "sip", "label": "INVITE", "note": "The agent phone is a CUCM destination."},
+      {"f": "cucm", "t": "agent", "kind": "sip", "label": "INVITE", "note": "If the phone rings and Finesse does not, look at PG, CTI, and Finesse."},
+      {"f": "caller", "t": "agent", "kind": "rtp", "label": "RTP", "note": "Audio is between the caller path and the agent phone. CUIC never carries it."},
+      {"f": "icm", "t": "cuic", "kind": "report", "label": "Interval", "note": "Join the report with RouterCallKey and matching time. A skill rename can break history while calls still connect."}
+    ]
+  }
+]

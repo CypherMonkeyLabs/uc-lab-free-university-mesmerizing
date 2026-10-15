@@ -8,6 +8,8 @@ An offline browser campus for unified communications and contact center study. A
 
 The tracks match the job: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, the main CCaaS platforms, E911, QoS, and troubleshooting.
 
+Labs load when you open them. There are 21 teaching labs: call flows (24 ladders, including hold, blind and consult transfer, hunt, MRA, IVR to agent, E911, Teams Direct Routing, and Webex Contact Center), a dial plan, an IVR, SIP decode, codec and jitter tools, CUCM routing, Webex Calling, UCCE, Finesse, E911, QoS, SRTP, Erlang-C, fault finding, dial-peers, one-way audio, and recording. The quiz has at least 150 scored questions on each track (2,913 total) plus a boss exam. Flashcards are 2,018. Each lesson links to a matching lab. Quiz scores stay in the browser. Nothing is uploaded.
+
 ## How do I open it?
 
 1. Download [the v21 zip](../releases/uc-lab-free-university.html.zip).

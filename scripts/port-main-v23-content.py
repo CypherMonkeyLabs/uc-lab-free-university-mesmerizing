@@ -11,6 +11,9 @@ ROOT = Path(__file__).resolve().parents[1]
 CUR = ROOT / "campus/assets/curriculum"
 SRC = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "scripts/data/v23-extra-scenarios.json"
 sc = {s["id"]: s for s in json.loads(SRC.read_text())}
+# hold, blind, consult, hunt, mra, ivr-agent, e911, teams-dr, and wxcc are step-through
+# ladders in campus/assets/labs/restored-walks.js. They are not added here, so the
+# published flow count stays on the modular curriculum.
 PORT = {
  "conference": ["prod-cucm"], "cti-rp": ["prod-ucce"], "callback": ["prod-ucce", "prod-wxcc"],
  "park": ["prod-cucm"], "shared": ["prod-cucm"], "vm": ["prod-unity"], "early": ["prod-cube"],
