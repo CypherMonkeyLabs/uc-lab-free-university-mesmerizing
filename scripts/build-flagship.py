@@ -15,6 +15,7 @@ import json
 import re
 import shutil
 import subprocess
+import sys
 import zipfile
 from pathlib import Path
 
@@ -28,19 +29,35 @@ PORT_DOC = "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/sy
 
 NAV = [
     ("Home", "index.html"),
-    ("Path", "path.html"),
+    ("Diagrams", "diagrams/index.html"),
     ("Flows", "flows/index.html"),
-    ("Ports", "ports.html"),
-    ("Ecosystem", "ecosystem/index.html"),
-    ("Guide", "guide/index.html"),
+    ("Charts", "charts/index.html"),
+    ("Cheat Codes", "cheats/index.html"),
     ("Play", "play/index.html"),
-    ("Cheats", "cheats/index.html"),
-    ("Quiz", "quiz.html"),
-    ("Campus", "../campus/uc-lab-free-university.html"),
+    ("Ecosystem", "ecosystem/index.html"),
+    ("Downloads", "download.html"),
+    ("Careers", "guide/interview.html"),
 ]
 
 ORDER = [
     ("index.html", "Home"),
+    ("diagrams/index.html", "Diagrams"),
+    ("charts/index.html", "Charts"),
+    ("tracks/index.html", "Tracks"),
+    ("tracks/start.html", "Start here"),
+    ("tracks/sip.html", "SIP and media"),
+    ("tracks/cucm.html", "CUCM and CUBE"),
+    ("tracks/cloud.html", "Webex and Teams"),
+    ("tracks/ucce.html", "UCCE and PCCE"),
+    ("tracks/ccaas.html", "CCaaS platforms"),
+    ("tracks/e911.html", "Emergency calling"),
+    ("tracks/qos.html", "Voice network and QoS"),
+    ("tracks/migrate.html", "Migrations"),
+    ("tracks/trouble.html", "Troubleshooting"),
+    ("tracks/evidence.html", "Evidence habits"),
+    ("tracks/design.html", "Design notes"),
+    ("tracks/practice.html", "Practice"),
+    ("tracks/reference.html", "Reference"),
     ("path.html", "Fundamentals to advanced"),
     ("flows/index.html", "Call-flow atlas"),
     ("flows/registration.html", "SIP registration"),
@@ -162,6 +179,34 @@ def extract_main(page: str) -> str:
     return body
 
 
+def crumbs_for(rel: str, title: str, root: str) -> str:
+    parents = {
+        "flows": ("Flows", "flows/index.html"),
+        "diagrams": ("Diagrams", "diagrams/index.html"),
+        "charts": ("Charts", "charts/index.html"),
+        "cheats": ("Cheat Codes", "cheats/index.html"),
+        "play": ("Play", "play/index.html"),
+        "ecosystem": ("Ecosystem", "ecosystem/index.html"),
+        "guide": ("Guide", "guide/index.html"),
+        "tracks": ("Tracks", "tracks/index.html"),
+    }
+    items = [("Home", root + "index.html")]
+    if rel != "index.html":
+        folder = rel.split("/")[0] if "/" in rel else ""
+        if folder in parents:
+            label, href = parents[folder]
+            if href != rel:
+                items.append((label, root + href))
+        items.append((title, ""))
+    parts = []
+    for index, (label, href) in enumerate(items):
+        if href and index != len(items) - 1:
+            parts.append(f'<li><a href="{esc(href)}">{esc(label)}</a></li>')
+        else:
+            parts.append(f'<li aria-current="page">{esc(label)}</li>')
+    return f'<nav class="crumbs" aria-label="Breadcrumb"><ol>{"".join(parts)}</ol></nav>'
+
+
 def chrome(rel: str, title: str, body: str, description: str) -> str:
     depth = rel.count("/")
     root = "../" * depth
@@ -209,6 +254,13 @@ def chrome(rel: str, title: str, body: str, description: str) -> str:
         (rel_to("path.html"), "Study path"),
     ]
     sister_html = "".join(f'<a class="card" href="{esc(href)}"><strong>{esc(label)}</strong></a>' for href, label in sisters)
+    effects_html = ""
+    if "data-effects" in body or rel in ("index.html", "diagrams/index.html", "charts/index.html"):
+        effects_html = f'<script type="module" src="{root}assets/effects.js"></script>'
+    confetti_html = ""
+    if 'id="quiz"' in body:
+        confetti_html = f'<script src="{root}assets/vendor/confetti.browser.js"></script>'
+    crumb_html = crumbs_for(rel, title, root)
     return f"""<!DOCTYPE html>
 <html lang="en" data-theme="paper">
 <head>
@@ -250,10 +302,16 @@ try {{
       <a class="btn dl" href="{root}download.html">Offline</a>
       <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
     </div>
+    <form class="site-search" role="search">
+      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off">
+      <div id="searchPop" class="search-pop" hidden></div>
+    </form>
   </div>
   <nav class="tabs" aria-label="Lab">{''.join(tabs)}</nav>
+  <p class="progress" id="visitProgress">Progress</p>
 </header>
 <main id="content" class="wrap">
+{crumb_html}
 {body}
 </main>
 <footer class="site-foot">
@@ -266,9 +324,12 @@ try {{
     <p><a href="{CONTACT}">Report a concern or takedown</a> · <a href="{CONTACT}">Work with us</a></p>
   </div>
 </footer>
+<script src="{root}assets/search.js"></script>
 <script src="{root}assets/bank.js"></script>
 <script src="{root}assets/site.js"></script>
 <script src="{root}assets/play.js"></script>
+{effects_html}
+{confetti_html}
 </body>
 </html>
 """
@@ -1424,8 +1485,11 @@ def main() -> None:
     mindmap_page([OUT / "assets" / "pool" / rel for rel in pool_images])
     other_pages(bank, pool_images)
     from round2_pages import build_round2
+    from round3_pages import build_round3
     build_round2(write_page, sources, bank)
+    build_round3(write_page, sources, bank, ORDER)
     write_zip()
+    subprocess.check_call([sys.executable, str(ROOT / "scripts" / "check-flagship.py")])
     print(f"questions {len(bank['questions'])} cards {len(bank['cards'])} pr2 {len(bank['pr2Cards'])} cases {len(bank['scenarios'])} diagrams {len(pool_images)}")
 
 

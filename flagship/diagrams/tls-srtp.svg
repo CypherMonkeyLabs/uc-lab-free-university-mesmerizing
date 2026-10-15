@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 308" data-animated="false" role="img">
+<rect class="" x="40" y="24" width="780" height="60" rx="12" fill="#fffdf8" stroke="#0f6e62"/><text x="60" y="50" font-size="16" font-family="Georgia, serif">5061</text><text x="60" y="70" font-size="13" font-family="Segoe UI, sans-serif" fill="#5e584e">TLS locks the signaling hop</text>
+<rect class="" x="40" y="98" width="780" height="60" rx="12" fill="#fffdf8" stroke="#0f6e62"/><text x="60" y="124" font-size="16" font-family="Georgia, serif">SRTP</text><text x="60" y="144" font-size="13" font-family="Segoe UI, sans-serif" fill="#5e584e">RFC 3711 locks the audio</text>
+<rect class="" x="40" y="172" width="780" height="60" rx="12" fill="#fffdf8" stroke="#0f6e62"/><text x="60" y="198" font-size="16" font-family="Georgia, serif">Both</text><text x="60" y="218" font-size="13" font-family="Segoe UI, sans-serif" fill="#5e584e">Require both only on a hop that can answer both</text>
+</svg>

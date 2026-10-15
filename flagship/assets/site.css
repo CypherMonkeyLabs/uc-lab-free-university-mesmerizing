@@ -454,9 +454,41 @@ html[data-theme="contrast"] .cardface { background: #000; color: #fff; border: 2
 .map-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 14px; }
 .sandbox-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; }
 
+.stage { position: relative; min-height: 180px; }
+#hero3d { position: absolute; inset: 0; width: 100%; height: 100%; }
+.css3d { display: flex; gap: 14px; align-items: center; justify-content: center; height: 220px; perspective: 700px; }
+.css3d i { display: block; width: 54px; height: 54px; border-radius: 10px; transform: rotateX(16deg) rotateY(-28deg); animation: cube 7s linear infinite; }
+.css3d i:nth-child(1) { background: #f0b429; }
+.css3d i:nth-child(2) { background: #0f6e62; }
+.css3d i:nth-child(3) { background: #a34b24; }
+.css3d i:nth-child(4) { background: #4c3d8f; }
+@keyframes cube { to { transform: rotateX(16deg) rotateY(332deg); } }
+.fold { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 18px; align-items: center; }
+.stats { margin: 10px 0; }
+.mascots, .parallax { display: flex; gap: 8px; align-items: end; }
+.mascot { width: 72px; height: 90px; transform-style: preserve-3d; }
+.symbols { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.symbols span, .crumbs ol { display: inline-flex; }
+.symbols span { border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; font-variant-numeric: tabular-nums; }
+#hero3d, .stage canvas { width: 100%; height: 240px; display: block; }
+.crumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0 0 10px; color: var(--muted); }
+.crumbs li::before { content: "/"; margin-right: 6px; }
+.crumbs li:first-child::before { content: ""; margin: 0; }
+.site-search { position: relative; flex: 1 1 140px; }
+.site-search input { width: 100%; border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 999px; padding: 8px 12px; }
+.search-pop { position: absolute; z-index: 30; top: 110%; left: 0; right: 0; background: var(--card); border: 1px solid var(--line); border-radius: 12px; max-height: 280px; overflow: auto; }
+.search-pop a { display: block; padding: 8px 10px; }
+.search-pop a[aria-selected="true"] { background: var(--bg-2); }
+.progress { width: min(1360px, calc(100% - 28px)); margin: 0 auto 8px; font-size: 12px; color: var(--muted); }
+.chart { width: 100%; height: auto; background: var(--card); border: 1px solid var(--line); border-radius: 16px; margin: 0 0 12px; }
+.mind-live { width: 100%; height: 420px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
+.tilt { display: inline-block; }
+[data-mini3d] { width: 120px; height: 120px; }
+#roughBoard { width: 100%; height: auto; background: var(--card); border-radius: 16px; }
+
 @media (max-width: 760px) {
   .menu-btn { display: inline-flex; }
-  .hub, .tools .themes { display: none; }
+  .hub { display: none; }
   .topbar.open .hub {
     display: flex;
     flex-direction: column;
@@ -468,12 +500,30 @@ html[data-theme="contrast"] .cardface { background: #000; color: #fff; border: 2
   .topbar.open .tools .themes { display: flex; }
   .topbar.open .bar { flex-wrap: wrap; }
   .map-layout { grid-template-columns: 1fr; }
+  .fold { grid-template-columns: 1.15fr 0.85fr; gap: 8px; }
+  #hero3d, .stage canvas, .css3d { height: 120px; }
+  .stage { min-height: 120px; }
+  .mascot { width: 44px; height: 54px; }
+  h1 { font-size: 1.28rem; margin: 0 0 4px; }
+  .kicker, .lede { display: none; }
+  .css3d, #hero3d, .stage { height: 92px; min-height: 92px; }
+  .stat .num { font-size: 1.05rem; }
+  .stat .label { font-size: 11px; line-height: 1.15; }
   .stats, .card-grid, .atlas, .sister, .lab-grid { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 8px 0; }
+  .stat { padding: 8px 6px; }
   .bar { width: min(100% - 16px, 1360px); }
   .tabs, .wrap { width: min(100% - 16px, 1360px); }
   .float-art { width: 64px; }
 }
 
+@media (max-height: 820px) and (min-width: 761px) {
+  .lede { display: none; }
+  .css3d { height: 150px; }
+  .stage { min-height: 150px; }
+  h1 { font-size: 2rem; }
+  .stat { padding: 8px; }
+}
 @media (min-width: 1500px) {
   .wrap, .bar, .tabs { width: min(1480px, calc(100% - 80px)); }
   .hero { gap: 48px; }

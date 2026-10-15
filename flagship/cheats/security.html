@@ -39,10 +39,16 @@ try {
       <a class="btn dl" href="../download.html">Offline</a>
       <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
     </div>
+    <form class="site-search" role="search">
+      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off">
+      <div id="searchPop" class="search-pop" hidden></div>
+    </form>
   </div>
-  <nav class="tabs" aria-label="Lab"><a href="../index.html">Home</a><a href="../path.html">Path</a><a href="../flows/index.html">Flows</a><a href="../ports.html">Ports</a><a href="../ecosystem/index.html">Ecosystem</a><a href="../guide/index.html">Guide</a><a href="../play/index.html">Play</a><a href="../cheats/index.html" aria-current="page">Cheats</a><a href="../quiz.html">Quiz</a><a href="../../campus/uc-lab-free-university.html">Campus</a></nav>
+  <nav class="tabs" aria-label="Lab"><a href="../index.html">Home</a><a href="../diagrams/index.html">Diagrams</a><a href="../flows/index.html">Flows</a><a href="../charts/index.html">Charts</a><a href="../cheats/index.html" aria-current="page">Cheat Codes</a><a href="../play/index.html">Play</a><a href="../ecosystem/index.html">Ecosystem</a><a href="../download.html">Downloads</a><a href="../guide/interview.html">Careers</a></nav>
+  <p class="progress" id="visitProgress">Progress</p>
 </header>
 <main id="content" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../cheats/index.html">Cheat Codes</a></li><li aria-current="page">Security</li></ol></nav>
 <article class='cheat-sheet'><p class='kicker'>Cheat code</p>
 <h1>Security cheat sheet</h1>
 <ul>
@@ -70,8 +76,11 @@ try {
     <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern or takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
   </div>
 </footer>
+<script src="../assets/search.js"></script>
 <script src="../assets/bank.js"></script>
 <script src="../assets/site.js"></script>
 <script src="../assets/play.js"></script>
+
+
 </body>
 </html>

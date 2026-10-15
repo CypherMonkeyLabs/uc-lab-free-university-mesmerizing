@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagrams · UC Lab Free University</title>
+<meta name="description" content="Browsable diagram atlas of call flows, architecture, and cutover.">
+<link rel="icon" href="../assets/icon.svg">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+try {
+  var params = new URLSearchParams(location.search);
+  var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
+  var ok = {paper:1, midnight:1, contrast:1, signal:1, canopy:1};
+  if (ok[t]) document.documentElement.setAttribute("data-theme", t);
+  if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+} catch (e) {}
+</script>
+</head>
+<body data-root="../">
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <div class="bar">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
+      <span><strong>UC Lab</strong><small>Free University</small></span>
+    </a>
+    <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
+    <div class="tools">
+      <div class="themes" role="radiogroup" aria-label="Theme">
+        <button type="button" class="swatch-paper" data-theme-set="paper" aria-label="Paper" aria-checked="true"></button>
+        <button type="button" class="swatch-midnight" data-theme-set="midnight" aria-label="Midnight" aria-checked="false"></button>
+        <button type="button" class="swatch-contrast" data-theme-set="contrast" aria-label="High contrast" aria-checked="false"></button>
+        <button type="button" class="swatch-signal" data-theme-set="signal" aria-label="Signal" aria-checked="false"></button>
+        <button type="button" class="swatch-canopy" data-theme-set="canopy" aria-label="Canopy" aria-checked="false"></button>
+      </div>
+      <button type="button" class="btn motion-btn">Motion</button>
+      <a class="btn dl" href="../download.html">Offline</a>
+      <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
+    </div>
+    <form class="site-search" role="search">
+      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off">
+      <div id="searchPop" class="search-pop" hidden></div>
+    </form>
+  </div>
+  <nav class="tabs" aria-label="Lab"><a href="../index.html">Home</a><a href="../diagrams/index.html" aria-current="page">Diagrams</a><a href="../flows/index.html">Flows</a><a href="../charts/index.html">Charts</a><a href="../cheats/index.html">Cheat Codes</a><a href="../play/index.html">Play</a><a href="../ecosystem/index.html">Ecosystem</a><a href="../download.html">Downloads</a><a href="../guide/interview.html">Careers</a></nav>
+  <p class="progress" id="visitProgress">Progress</p>
+</header>
+<main id="content" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">Diagrams</li></ol></nav>
+<p class="kicker">Atlas</p><h1>Diagram atlas</h1><p class="lede" data-effects>32 custom diagrams. 14 of the hand-built ladders and trees are animated. Mermaid sequence and flow charts, when present, were rendered at build time from the vendored library.</p><div class="atlas"><a class="card" href="registration.html"><h2>SIP registration</h2><p>Animated flow</p><img src="registration.svg" alt="SIP registration"></a><a class="card" href="basic-call.html"><h2>Basic call</h2><p>Animated flow</p><img src="basic-call.svg" alt="Basic call"></a><a class="card" href="hold.html"><h2>Hold re-INVITE</h2><p>Animated flow</p><img src="hold.svg" alt="Hold re-INVITE"></a><a class="card" href="blind-transfer.html"><h2>Blind transfer</h2><p>Animated flow</p><img src="blind-transfer.svg" alt="Blind transfer"></a><a class="card" href="attended-transfer.html"><h2>Attended transfer</h2><p>Animated flow</p><img src="attended-transfer.svg" alt="Attended transfer"></a><a class="card" href="early-media.html"><h2>Early media</h2><p>Animated flow</p><img src="early-media.svg" alt="Early media"></a><a class="card" href="prack.html"><h2>PRACK</h2><p>Animated flow</p><img src="prack.svg" alt="PRACK"></a><a class="card" href="session-refresh.html"><h2>Session refresh</h2><p>Animated flow</p><img src="session-refresh.svg" alt="Session refresh"></a><a class="card" href="one-way.html"><h2>One-way audio</h2><p>Animated flow</p><img src="one-way.svg" alt="One-way audio"></a><a class="card" href="cube.html"><h2>CUBE two legs</h2><p>Animated flow</p><img src="cube.svg" alt="CUBE two legs"></a><a class="card" href="teams-options.html"><h2>Teams OPTIONS</h2><p>Animated flow</p><img src="teams-options.svg" alt="Teams OPTIONS"></a><a class="card" href="e911.html"><h2>Emergency callback</h2><p>Animated flow</p><img src="e911.svg" alt="Emergency callback"></a><a class="card" href="migration-cutover.html"><h2>Cutover canary</h2><p>Animated flow</p><img src="migration-cutover.svg" alt="Cutover canary"></a><a class="card" href="hunt.html"><h2>Hunt pilot</h2><p>Animated flow</p><img src="hunt.svg" alt="Hunt pilot"></a><a class="card" href="architecture.html"><h2>Five planes</h2><p>Diagram</p><img src="architecture.svg" alt="Five planes"></a><a class="card" href="deployment.html"><h2>Deployment order</h2><p>Diagram</p><img src="deployment.svg" alt="Deployment order"></a><a class="card" href="firewall-zones.html"><h2>Firewall zones</h2><p>Diagram</p><img src="firewall-zones.svg" alt="Firewall zones"></a><a class="card" href="qos-marks.html"><h2>QoS marks</h2><p>Diagram</p><img src="qos-marks.svg" alt="QoS marks"></a><a class="card" href="wfm-forecast.html"><h2>Forecast then schedule</h2><p>Diagram</p><img src="wfm-forecast.svg" alt="Forecast then schedule"></a><a class="card" href="recording-fork.html"><h2>Recording fork</h2><p>Diagram</p><img src="recording-fork.svg" alt="Recording fork"></a><a class="card" href="crm-pop.html"><h2>Screen pop</h2><p>Diagram</p><img src="crm-pop.svg" alt="Screen pop"></a><a class="card" href="css-order.html"><h2>Line CSS then device CSS</h2><p>Diagram</p><img src="css-order.svg" alt="Line CSS then device CSS"></a><a class="card" href="mra-dns.html"><h2>MRA names</h2><p>Diagram</p><img src="mra-dns.svg" alt="MRA names"></a><a class="card" href="tls-srtp.html"><h2>TLS is not SRTP</h2><p>Diagram</p><img src="tls-srtp.svg" alt="TLS is not SRTP"></a><a class="card" href="cc-route.html"><h2>Contact center route</h2><p>Diagram</p><img src="cc-route.svg" alt="Contact center route"></a><a class="card" href="trouble-tree.html"><h2>Troubleshooting tree</h2><p>Diagram</p><img src="trouble-tree.svg" alt="Troubleshooting tree"></a><a class="card" href="codec-stack.html"><h2>G.711 at 20 ms</h2><p>Diagram</p><img src="codec-stack.svg" alt="G.711 at 20 ms"></a><a class="card" href="dial-peer.html"><h2>Dial-peer match</h2><p>Diagram</p><img src="dial-peer.svg" alt="Dial-peer match"></a><a class="card" href="mermaid-register.svg"><h2>Mermaid registration</h2><p>Rendered with Mermaid at build time</p><img src="mermaid-register.svg" alt="Mermaid registration"></a><a class="card" href="mermaid-refer.svg"><h2>Mermaid REFER</h2><p>Rendered with Mermaid at build time</p><img src="mermaid-refer.svg" alt="Mermaid REFER"></a><a class="card" href="mermaid-options.svg"><h2>Mermaid OPTIONS</h2><p>Rendered with Mermaid at build time</p><img src="mermaid-options.svg" alt="Mermaid OPTIONS"></a><a class="card" href="mermaid-cutover.svg"><h2>Mermaid cutover</h2><p>Rendered with Mermaid at build time</p><img src="mermaid-cutover.svg" alt="Mermaid cutover"></a></div>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p class="kicker">Next</p>
+    <p><a href="../index.html">Previous · Home</a> · <a href="../charts/index.html">Next · Charts</a> · <a href="../../campus/uc-lab-free-university.html">Deep campus · 580 sections</a></p>
+    <div class="sister"><a class="card" href="https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/"><strong>AI Lab</strong></a><a class="card" href="https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/"><strong>Amazon Connect</strong></a><a class="card" href="https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/"><strong>Microsoft Voice</strong></a><a class="card" href="https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/"><strong>Five9</strong></a><a class="card" href="https://cipher0x9.github.io/genesys-cloud-lab-free-university-mesmerizing/"><strong>Genesys Cloud</strong></a><a class="card" href="https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/"><strong>NICE CXone</strong></a><a class="card" href="https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/"><strong>SIP Universe</strong></a><a class="card" href="../path.html"><strong>Study path</strong></a></div>
+    <p class="sig">CYPHER0X9</p>
+    <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
+    <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern or takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
+  </div>
+</footer>
+<script src="../assets/search.js"></script>
+<script src="../assets/bank.js"></script>
+<script src="../assets/site.js"></script>
+<script src="../assets/play.js"></script>
+<script type="module" src="../assets/effects.js"></script>
+
+</body>
+</html>

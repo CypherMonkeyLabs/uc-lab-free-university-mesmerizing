@@ -243,6 +243,8 @@
   var konami = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
   var progress = 0;
   document.addEventListener("keydown", function (event) {
+    var tag = (event.target && event.target.tagName) || "";
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
     var key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
     if (key === konami[progress]) {
       progress += 1;

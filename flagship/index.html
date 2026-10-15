@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UC Lab · UC Lab Free University</title>
-<meta name="description" content="Flagship UC lab with call flows, ecosystem, quiz, and the deep campus.">
+<meta name="description" content="Flagship UC lab. The repository root opens this studio.">
 <link rel="icon" href="assets/icon.svg">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="assets/site.css">
@@ -39,81 +39,88 @@ try {
       <a class="btn dl" href="download.html">Offline</a>
       <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
     </div>
+    <form class="site-search" role="search">
+      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off">
+      <div id="searchPop" class="search-pop" hidden></div>
+    </form>
   </div>
-  <nav class="tabs" aria-label="Lab"><a href="index.html" aria-current="page">Home</a><a href="path.html">Path</a><a href="flows/index.html">Flows</a><a href="ports.html">Ports</a><a href="ecosystem/index.html">Ecosystem</a><a href="guide/index.html">Guide</a><a href="play/index.html">Play</a><a href="cheats/index.html">Cheats</a><a href="quiz.html">Quiz</a><a href="../campus/uc-lab-free-university.html">Campus</a></nav>
+  <nav class="tabs" aria-label="Lab"><a href="index.html" aria-current="page">Home</a><a href="diagrams/index.html">Diagrams</a><a href="flows/index.html">Flows</a><a href="charts/index.html">Charts</a><a href="cheats/index.html">Cheat Codes</a><a href="play/index.html">Play</a><a href="ecosystem/index.html">Ecosystem</a><a href="download.html">Downloads</a><a href="guide/interview.html">Careers</a></nav>
+  <p class="progress" id="visitProgress">Progress</p>
 </header>
 <main id="content" class="wrap">
-
-<p class="kicker">Flagship studio · v21 campus underneath</p>
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li aria-current="page">Home</li></ol></nav>
+<div class="fold" data-effects data-parallax>
+<div class="hero-copy">
+<p class="kicker">Flagship studio</p>
 <h1>Voice, UC, and contact center. One lab.</h1>
-<p class="lede">A static studio for people who run calls. Fundamentals first, then the edge, the cloud, and the systems around the agent. The 580-section campus is still here when you want the long library.</p>
-<div class="hero">
-  <div class="hero-copy">
-    <div class="actions"><a class="btn dl" href="path.html">Start the path</a><a class="btn" href="flows/basic-call.html">Play a ladder</a><a class="btn" href="../campus/uc-lab-free-university.html">Open the deep campus</a></div>
-    <p class="muted">Five themes. Motion can be turned off. Nothing is loaded from a CDN.</p>
-  </div>
-  <div class="stage">
-    <svg class="float-art float-a" viewBox="0 0 80 120" aria-hidden="true"><rect x="18" y="8" width="44" height="104" rx="8" fill="#f4efe6"/><rect x="26" y="20" width="28" height="40" rx="2" fill="#172033"/><circle cx="40" cy="78" r="8" fill="#0f6e62"/></svg>
-    <svg class="float-art float-b" viewBox="0 0 120 70" aria-hidden="true"><rect x="8" y="16" width="104" height="40" rx="8" fill="#0f6e62"/><circle cx="28" cy="36" r="6" fill="#f5b942"/><circle cx="48" cy="36" r="6" fill="#f4efe6"/><circle cx="68" cy="36" r="6" fill="#e07a5f"/><path d="M78 36h24" stroke="#f4efe6" stroke-width="3"/></svg>
-    <canvas id="fabric" aria-label="Rotating diagram of a phone, CUCM, CUBE, the PSTN, and Webex Calling"></canvas>
-  </div>
+<div class="mascots" aria-hidden="true"><svg class="mascot" viewBox="0 0 76 96" data-mood="study" aria-hidden="true">
+<ellipse cx="38" cy="36" rx="22" ry="20" fill="#f0b429"/>
+<circle cx="18" cy="22" r="8" fill="#e07a5f"/><circle cx="58" cy="22" r="8" fill="#e07a5f"/>
+<circle cx="30" cy="34" r="3" fill="#172033"/><circle cx="46" cy="34" r="3" fill="#172033"/>
+<path d="M28 58c6 6 14 6 20 0" fill="none" stroke="#172033" stroke-width="2"/>
+<rect x="24" y="62" width="28" height="22" rx="8" fill="#0f6e62"/>
+<path d="M18 70h-8v10h8" fill="none" stroke="#172033" stroke-width="2"/>
+</svg><svg class="mascot" viewBox="0 0 76 96" data-mood="alert" aria-hidden="true">
+<ellipse cx="38" cy="36" rx="22" ry="20" fill="#f0b429"/>
+<circle cx="18" cy="22" r="8" fill="#e07a5f"/><circle cx="58" cy="22" r="8" fill="#e07a5f"/>
+<circle cx="30" cy="34" r="3" fill="#172033"/><circle cx="46" cy="34" r="3" fill="#172033"/>
+<circle cx="38" cy="58" r="4" fill="#172033"/>
+<rect x="24" y="62" width="28" height="22" rx="8" fill="#0f6e62"/>
+<path d="M18 70h-8v10h8" fill="none" stroke="#172033" stroke-width="2"/>
+</svg><svg class="mascot" viewBox="0 0 76 96" data-mood="celebrate" aria-hidden="true">
+<ellipse cx="38" cy="36" rx="22" ry="20" fill="#f0b429"/>
+<circle cx="18" cy="22" r="8" fill="#e07a5f"/><circle cx="58" cy="22" r="8" fill="#e07a5f"/>
+<circle cx="30" cy="34" r="3" fill="#172033"/><circle cx="46" cy="34" r="3" fill="#172033"/>
+<path d="M28 54c6 10 14 10 20 0" fill="none" stroke="#172033" stroke-width="2"/>
+<rect x="24" y="62" width="28" height="22" rx="8" fill="#0f6e62"/>
+<path d="M18 70h-8v10h8" fill="none" stroke="#172033" stroke-width="2"/>
+</svg></div>
+<p class="symbols" aria-label="Symbols"><span>5060</span><span>5061</span><span>EF 46</span><span>RTP</span></p>
+<p class="lede">Fundamentals, then the edge, the cloud, and the systems around the agent.</p>
+<div class="actions"><a class="btn dl" href="path.html">Start the path</a><a class="btn" href="diagrams/index.html">Open diagrams</a><a class="btn" href="../campus/uc-lab-free-university.html">Deep campus</a></div>
 </div>
-<div class="toggles" aria-label="Break a link in the diagram">
-  <label><input type="checkbox" data-break="phone-cucm"> Phone–CUCM down</label>
-  <label><input type="checkbox" data-break="cucm-cube"> Trunk down</label>
-  <label><input type="checkbox" data-break="cube-pstn"> Carrier down</label>
-  <label><input type="checkbox" data-break="cucm-webex"> Webex path down</label>
+<div class="stage">
+<div class="css3d" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<canvas id="hero3d" aria-label="Rotating three.js scene of a phone, CUCM, CUBE, and cloud"></canvas>
+</div>
 </div>
 <section class="stats" aria-label="Counts">
-  <div class="stat"><span class="num">29</span><span class="label">Playable flows</span></div>
-  <div class="stat"><span class="num">468</span><span class="label">Quiz questions</span></div>
-  <div class="stat"><span class="num">1472</span><span class="label">Flashcards</span></div>
-  <div class="stat"><span class="num">29</span><span class="label">Branching cases</span></div>
-  <div class="stat"><span class="num">580</span><span class="label">Campus sections</span></div>
-  <div class="stat"><span class="num">5</span><span class="label">Themes</span></div>
+<div class="stat"><span class="num" data-count="29">29</span><span class="label">Playable flows</span></div>
+<div class="stat"><span class="num" data-count="468">468</span><span class="label">Quiz questions</span></div>
+<div class="stat"><span class="num" data-count="1472">1472</span><span class="label">Flashcards</span></div>
+<div class="stat"><span class="num" data-count="29">29</span><span class="label">Branching cases</span></div>
+<div class="stat"><span class="num" data-count="580">580</span><span class="label">Campus sections</span></div>
+<div class="stat"><span class="num" data-count="28">28</span><span class="label">Atlas diagrams</span></div>
 </section>
-<h2>Guide, play, and cheat codes</h2>
+<div class="toggles" aria-label="Break a link in the diagram">
+<label><input type="checkbox" data-break="phone-cucm"> Phone–CUCM down</label>
+<label><input type="checkbox" data-break="cucm-cube"> Trunk down</label>
+<label><input type="checkbox" data-break="cube-pstn"> Carrier down</label>
+</div>
+<h2>Where to go next</h2>
 <div class="atlas">
-<a class="card" href="guide/index.html"><h2>Guide</h2><p>Architecture, deployment, cutover, security, interviews.</p></a>
-<a class="card" href="play/index.html"><h2>Play</h2><p>Ports game, flow map, sandbox, daily challenge, badges.</p></a>
-<a class="card" href="cheats/index.html"><h2>Cheat codes</h2><p>One-page sheets, flashcard files, and the offline zip.</p></a>
+<a class="card" href="diagrams/index.html"><h2>Diagrams</h2><p>Animated ladders and the architecture set.</p></a>
+<a class="card" href="charts/index.html"><h2>Charts</h2><p>Section counts, quiz tracks, bandwidth.</p></a>
+<a class="card" href="cheats/index.html"><h2>Cheat Codes</h2><p>One-page sheets and the offline zip.</p></a>
+<a class="card" href="play/index.html"><h2>Play</h2><p>Ports game, map, sandbox, daily challenge.</p></a>
+<a class="card" href="guide/interview.html"><h2>Careers</h2><p>Interview questions and a path with no invented wages.</p></a>
 </div>
-<h2>From fundamentals to the agent desktop</h2>
-<div class="path">
-  <a href="flows/registration.html"><span class="stepnum">01</span><strong>Signaling</strong><p class="muted">REGISTER, INVITE, SDP</p></a>
-  <a href="flows/dial-plan.html"><span class="stepnum">02</span><strong>Dial plan</strong><p class="muted">CSS, partition, route</p></a>
-  <a href="flows/cube.html"><span class="stepnum">03</span><strong>Edge</strong><p class="muted">CUBE, MRA, SRTP</p></a>
-  <a href="flows/webex-lgw.html"><span class="stepnum">04</span><strong>Cloud</strong><p class="muted">Webex and Teams</p></a>
-  <a href="flows/e911.html"><span class="stepnum">05</span><strong>Safety</strong><p class="muted">E911 and QoS</p></a>
-  <a href="ecosystem/index.html"><span class="stepnum">06</span><strong>Ecosystem</strong><p class="muted">WFM, QM, CRM, AI</p></a>
-</div>
-<h2>A short clip of an INVITE</h2>
-<p>The GIF is generated in this repo. The animated drawing next to it is the same hop, drawn as SVG so it stays sharp.</p>
-<img class="clip" src="assets/clips/invite.gif" alt="Animation of an INVITE moving from a phone toward a proxy and a 100 Trying coming back">
-<img class="clip" src="assets/clips/invite.svg" alt="Animated SVG of the same INVITE and 100 Trying">
-<h2>Real numbers you will reuse</h2>
-<div class="stats">
-  <div class="stat"><span class="num">5060</span><span class="label">SIP</span></div>
-  <div class="stat"><span class="num">5061</span><span class="label">SIP TLS</span></div>
-  <div class="stat"><span class="num">46</span><span class="label">DSCP for EF</span></div>
-  <div class="stat"><span class="num">150</span><span class="label">ms planning delay</span></div>
-  <div class="stat"><span class="num">87.2</span><span class="label">kbit/s G.711 + Ethernet</span></div>
-  <div class="stat"><span class="num">8090</span><span class="label">Gateway recording</span></div>
-</div>
-
 </main>
 <footer class="site-foot">
   <div class="wrap">
     <p class="kicker">Next</p>
-    <p><a href="download.html">Previous · Offline download</a> · <a href="path.html">Next · Fundamentals to advanced</a> · <a href="../campus/uc-lab-free-university.html">Deep campus · 580 sections</a></p>
+    <p><a href="download.html">Previous · Offline download</a> · <a href="diagrams/index.html">Next · Diagrams</a> · <a href="../campus/uc-lab-free-university.html">Deep campus · 580 sections</a></p>
     <div class="sister"><a class="card" href="https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/"><strong>AI Lab</strong></a><a class="card" href="https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/"><strong>Amazon Connect</strong></a><a class="card" href="https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/"><strong>Microsoft Voice</strong></a><a class="card" href="https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/"><strong>Five9</strong></a><a class="card" href="https://cipher0x9.github.io/genesys-cloud-lab-free-university-mesmerizing/"><strong>Genesys Cloud</strong></a><a class="card" href="https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/"><strong>NICE CXone</strong></a><a class="card" href="https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/"><strong>SIP Universe</strong></a><a class="card" href="path.html"><strong>Study path</strong></a></div>
     <p class="sig">CYPHER0X9</p>
     <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
     <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern or takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
   </div>
 </footer>
+<script src="assets/search.js"></script>
 <script src="assets/bank.js"></script>
 <script src="assets/site.js"></script>
 <script src="assets/play.js"></script>
+<script type="module" src="assets/effects.js"></script>
+
 </body>
 </html>
