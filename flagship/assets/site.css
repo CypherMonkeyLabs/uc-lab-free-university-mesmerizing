@@ -934,6 +934,7 @@ body:has(.bleed) .wrap { padding-top: 0; }
 .audio-float audio { width: 100%; height: 32px; display: block; margin: 0 0 4px; }
 .audio-links { font-weight: 650; }
 .audio-links a { color: var(--a); }
+.audio-toggle, .icon-more { display: none; }
 .bleed-copy { padding-top: calc(var(--dock-h, 100px) + 16px); }
 .bleed-copy::before {
   content: "";
@@ -1040,29 +1041,82 @@ body:has(.bleed) .wrap { padding-top: 0; }
   .pack-layout { grid-template-columns: 1fr; }
 }
 @media (max-width: 760px) {
+  .tabs { flex-wrap: wrap; overflow: visible; row-gap: 6px; }
   .flip-grid, .dash, .chart-stack, .tilt-gallery { grid-template-columns: 1fr; }
-  .icon-links { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .icon-links a { min-height: 52px; font-size: 9px; }
+  .icon-dock:not(.is-open) .icon-links {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: calc(100% - 84px);
+  }
+  .icon-dock:not(.is-open) .icon-links a:nth-child(n + 5) { display: none; }
+  .icon-dock.is-open .icon-links { grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; }
+  .icon-links a { min-height: 72px; font-size: 10px; }
+  .icon-dock.is-open .icon-links a { min-height: 56px; }
+  .icon-more {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    z-index: 2;
+    right: 8px;
+    top: 16px;
+    width: 68px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--a) 70%, white);
+    background: color-mix(in srgb, #05030d 55%, transparent);
+    color: #f8fbff;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 0 14px color-mix(in srgb, var(--glow) 65%, transparent);
+  }
+  .icon-dock.is-open .icon-more { position: static; width: auto; height: auto; margin: 6px auto 8px; padding: 6px 12px; }
   .bleed .kicker { display: none; }
-  .bleed h1 { font-size: 1.25rem; }
-  .bleed .actions { max-width: calc(100% - 68px); }
+  .bleed h1 { font-size: 1.35rem; }
+  .bleed .actions { max-width: calc(100% - 8px); }
   .bleed .actions .btn { padding: 4px 8px; font-size: 12px; }
-  .hero-mascot { right: 6px; bottom: 136px; }
-  .hero-mascot .mascot { width: 56px; height: 72px; }
+  .hero-mascot { right: 8px; bottom: 132px; }
+  .hero-mascot .mascot { width: 64px; height: 80px; }
   .bleed .stat { padding: 4px 5px; }
   .bleed .stat .num { font-size: 1rem; }
-  .bleed { height: calc(100dvh - 210px); min-height: calc(100dvh - 210px); }
-  .audio-links { display: none; }
-  .audio-float {
-    left: 8px;
-    right: 8px;
-    width: auto;
-    top: calc(var(--dock-h, 210px) + 10px);
+  .bleed { height: calc(100dvh - 272px); min-height: calc(100dvh - 272px); }
+  .audio-toggle {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px 8px;
-    padding: 6px 8px;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--a) 75%, white);
+    background: color-mix(in srgb, #05030d 70%, transparent);
+    color: #f8fbff;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 0 18px color-mix(in srgb, var(--glow) 80%, transparent);
   }
-  .audio-float p { grid-column: 1 / -1; margin: 0; }
-  .bleed-copy { padding-top: calc(var(--dock-h, 210px) + 96px); }
+  .audio-float {
+    left: auto;
+    right: 10px;
+    top: calc(var(--dock-h, 80px) + 12px);
+    width: auto;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    display: block;
+  }
+  .audio-float:not(.is-open) .audio-panel { display: none; }
+  .audio-float:not(.is-open)::before { display: none; }
+  .audio-float.is-open {
+    width: min(230px, calc(100vw - 20px));
+    padding: 8px;
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--card) 92%, transparent);
+    border: 1px solid var(--line);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--glow) 45%, transparent);
+  }
+  .audio-float.is-open .audio-panel { display: block; }
+  .audio-float.is-open audio { width: 100%; }
+  .bleed-copy { padding-top: calc(var(--dock-h, 80px) + 12px); }
 }
