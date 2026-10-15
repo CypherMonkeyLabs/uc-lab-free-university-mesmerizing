@@ -307,18 +307,6 @@ try {{
     </a>
     <nav class="hub" aria-label="Studio">{hub_html}</nav>
     <div class="tools">
-      <label class="lang"><span class="sr-only" data-i18n="langLabel">Language</span>
-        <select id="langSwitch" aria-label="Language">
-          <option value="en">English</option>
-          <option value="es">Español</option>
-          <option value="hi">हिन्दी</option>
-          <option value="te">తెలుగు</option>
-          <option value="fr">Français</option>
-          <option value="de">Deutsch</option>
-          <option value="ja">日本語</option>
-          <option value="ar">العربية</option>
-        </select>
-      </label>
       <div class="themes" role="radiogroup" aria-label="Theme">
         <button type="button" class="swatch-neon" data-theme-set="neon" aria-label="Neon" aria-checked="true"></button>
         <button type="button" class="swatch-holographic" data-theme-set="holographic" aria-label="Holographic" aria-checked="false"></button>
@@ -337,6 +325,16 @@ try {{
     </form>
   </div>
   <nav class="tabs" aria-label="Lab">{''.join(tabs)}</nav>
+  <div class="lang-chips" role="radiogroup" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true"><span aria-hidden="true">🇬🇧</span> EN</button>
+    <button type="button" data-lang="es" aria-pressed="false"><span aria-hidden="true">🇪🇸</span> ES</button>
+    <button type="button" data-lang="hi" aria-pressed="false"><span aria-hidden="true">🇮🇳</span> HI</button>
+    <button type="button" data-lang="te" aria-pressed="false"><span aria-hidden="true">🇮🇳</span> TE</button>
+    <button type="button" data-lang="fr" aria-pressed="false"><span aria-hidden="true">🇫🇷</span> FR</button>
+    <button type="button" data-lang="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> DE</button>
+    <button type="button" data-lang="ja" aria-pressed="false"><span aria-hidden="true">🇯🇵</span> JA</button>
+    <button type="button" data-lang="ar" aria-pressed="false"><span aria-hidden="true">🇸🇦</span> AR</button>
+  </div>
   <p class="progress" id="visitProgress">Progress</p>
 </header>
 <main id="content" class="wrap">
@@ -497,7 +495,7 @@ def build_flows() -> None:
         body = flow_shell(flow["kicker"], flow["title"], flow["lede"], flow["level"], diagrams, flow["prose"], sources(flow["sources"]), inherited)
         write_page(f"flows/{flow['slug']}.html", flow["title"], body, flow["lede"])
         cards.append(flow)
-    atlas = ["<p class='kicker'>Atlas</p><h1>Call flows</h1>",
+    atlas = ["<p class='kicker'>Atlas</p><h1 data-i18n='pageFlows'>Call flows</h1>",
              f"<p class='lede'>{len(cards)} large ladders. Click a drawing to enlarge it, then play, pause, or step. The study card stays on the flow page.</p>",
              "<div class='flow-atlas'>"]
     for flow in cards:
@@ -895,7 +893,7 @@ def ecosystem_pages() -> None:
     pages = {
         "index.html": ("Ecosystem", """
 <p class="kicker">Around the call</p>
-<h1>Ecosystem</h1>
+<h1 data-i18n="pageEco">Ecosystem</h1>
 <p class="lede">Call control is the middle. Workforce management, recording, emergency location, analytics, CRM, and virtual agents fail in their own ways, and they fail the call when the identifier does not match.</p>
 <div class="atlas">
 <a class="card" href="glossary.html"><h2>Glossary</h2><p>Search 1,384 idea-pool cards and 88 cited study cards.</p></a>
@@ -1380,16 +1378,19 @@ def other_pages(bank: dict, pool_images: list[str]) -> None:
 
     write_page("download.html", "Download", """
 <p class="kicker">Offline</p>
-<h1>Download this lab</h1>
-<p class="lede">The zip is the flagship pages, drawings, quiz bank, and cheat sheets. Unzip and open index.html. One-page sheets live in the cheat-code hub. The deep campus has its own zip.</p>
+<h1 data-i18n="pageDownloads">Download this lab</h1>
+<p class="lede">Pick a stop. The matching file is the one you take with you. Unzip the studio and open index.html. The deep campus has its own zip.</p>
+<ol class="timeline" id="packLine">
+<li><button type="button" aria-expanded="true" data-pack="studio">01 · Studio zip</button><div class="time-body"><p>Flagship pages, drawings, quiz bank, cheat sheets, and the audio player. <a class="btn dl" href="uc-lab-flagship.zip">Download the flagship zip</a></p></div></li>
+<li><button type="button" aria-expanded="false" data-pack="campus">02 · Deep campus</button><div class="time-body" hidden><p>580 sections, kept as the long library. <a class="btn" href="../releases/uc-lab-free-university.html.zip">Download the campus zip</a></p></div></li>
+<li><button type="button" aria-expanded="false" data-pack="sheets">03 · One-page sheets</button><div class="time-body" hidden><p>Each cheat code is one page, as HTML, PDF, and PNG. <a class="btn" href="cheats/index.html">Open cheat codes</a></p></div></li>
+<li><button type="button" aria-expanded="false" data-pack="audio">04 · Audio slots</button><div class="time-body" hidden><p>The player on the home page reads <code>audio/architect-tour.mp3</code> and <code>audio/architect-practice.mp3</code>. A later recording can replace those files without a new page.</p></div></li>
+</ol>
 <section class="stats" aria-label="Download sizes">
 <div class="stat glass"><span class="num">ZIP</span><span class="label">Flagship studio</span></div>
 <div class="stat glass"><span class="num">580</span><span class="label">Campus sections</span></div>
 <div class="stat glass"><span class="num">1 pg</span><span class="label">Each cheat sheet</span></div>
 </section>
-<p><a class="btn" href="cheats/index.html">Open cheat codes</a></p>
-<p><a class="btn dl" href="uc-lab-flagship.zip">Download the flagship zip</a></p>
-<p><a class="btn" href="../releases/uc-lab-free-university.html.zip">Download the 580-section campus zip</a></p>
 <h2>Cheat sheets from the October study set</h2>
 <ul>
 <li><a href="downloads/sip-call-flows.pdf">SIP call flows</a></li>

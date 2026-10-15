@@ -13,6 +13,19 @@
     ja: { skip: "本文へ", brandSub: "フリー大学", greet: "ラボへようこそ", heroTitle: "音声、UC、コンタクトセンター。", heroLede: "基礎から、エッジ、クラウド、エージェント周りのシステムへ。", startPath: "経路を始める", openDiagrams: "図を開く", campus: "深いキャンパス", wall: "シグナルの壁", next: "次に行く場所", audioTitle: "アーキテクトの対話", searchPh: "検索", langLabel: "言語", mode: "ライト", modeDark: "ダーク", navHome: "ホーム", navDiagrams: "図", navFlows: "フロー", navCharts: "チャート", navCheats: "チート", navPlay: "プレイ", navEco: "エコシステム", navDownloads: "ダウンロード", navCareers: "キャリア" },
     ar: { skip: "انتقل إلى المحتوى", brandSub: "جامعة حرة", greet: "أهلًا بك في المختبر", heroTitle: "الصوت والاتصالات ومركز الاتصال.", heroLede: "الأساسيات أولًا، ثم الحافة والسحابة والأنظمة حول الوكيل.", startPath: "ابدأ المسار", openDiagrams: "افتح المخططات", campus: "الحرم العميق", wall: "جدار الإشارة", next: "إلى أين بعد ذلك", audioTitle: "حوار المهندسين", searchPh: "بحث", langLabel: "اللغة", mode: "فاتح", modeDark: "داكن", navHome: "الرئيسية", navDiagrams: "المخططات", navFlows: "التدفقات", navCharts: "الرسوم", navCheats: "أوراق المراجعة", navPlay: "العب", navEco: "المنظومة", navDownloads: "التنزيلات", navCareers: "المسار المهني" }
   };
+  var EXTRA = {
+    en: { pageCharts: "Charts", pagePlay: "Play", pageCheats: "Cheat codes", pageDownloads: "Download this lab", pageCareers: "Interview prep and career path", pageFlows: "Call flows", pageDiagrams: "Diagram atlas", pageEco: "Ecosystem" },
+    es: { pageCharts: "Gráficos", pagePlay: "Jugar", pageCheats: "Chuletas", pageDownloads: "Descarga este laboratorio", pageCareers: "Preparación y carrera", pageFlows: "Flujos de llamada", pageDiagrams: "Atlas de diagramas", pageEco: "Ecosistema" },
+    hi: { pageCharts: "चार्ट", pagePlay: "खेल", pageCheats: "चीट कोड", pageDownloads: "यह प्रयोगशाला डाउनलोड करें", pageCareers: "साक्षात्कार और करियर", pageFlows: "कॉल प्रवाह", pageDiagrams: "आरेख संग्रह", pageEco: "पारिस्थितिकी" },
+    te: { pageCharts: "చార్టులు", pagePlay: "ఆట", pageCheats: "చీట్ కోడ్స్", pageDownloads: "ఈ ప్రయోగశాలను దించుకోండి", pageCareers: "ఇంటర్వ్యూ మరియు వృత్తి", pageFlows: "కాల్ ప్రవాహాలు", pageDiagrams: "చిత్రాల సేకరణ", pageEco: "పర్యావరణం" },
+    fr: { pageCharts: "Graphiques", pagePlay: "Jouer", pageCheats: "Antisèches", pageDownloads: "Télécharger ce laboratoire", pageCareers: "Entretien et parcours", pageFlows: "Flux d'appel", pageDiagrams: "Atlas des schémas", pageEco: "Écosystème" },
+    de: { pageCharts: "Balken", pagePlay: "Spielen", pageCheats: "Spickzettel", pageDownloads: "Dieses Labor herunterladen", pageCareers: "Gespräch und Beruf", pageFlows: "Gesprächsabläufe", pageDiagrams: "Diagramm-Atlas", pageEco: "Ökosystem" },
+    ja: { pageCharts: "チャート", pagePlay: "プレイ", pageCheats: "チートコード", pageDownloads: "このラボを入手する", pageCareers: "面接とキャリア", pageFlows: "コールフロー", pageDiagrams: "図のアトラス", pageEco: "エコシステム" },
+    ar: { pageCharts: "الرسوم", pagePlay: "العب", pageCheats: "أوراق المراجعة", pageDownloads: "نزّل هذا المختبر", pageCareers: "المقابلة والمسار", pageFlows: "تدفقات المكالمات", pageDiagrams: "أطلس المخططات", pageEco: "المنظومة" }
+  };
+  Object.keys(EXTRA).forEach(function (code) {
+    Object.keys(EXTRA[code]).forEach(function (key) { I18N[code][key] = EXTRA[code][key]; });
+  });
   var lang = "en";
   function pack() { return I18N[lang] || I18N.en; }
   function label(key) { return pack()[key] || I18N.en[key] || key; }
@@ -27,8 +40,9 @@
     });
     root.lang = lang;
     root.dir = lang === "ar" ? "rtl" : "ltr";
-    var sel = $("#langSwitch");
-    if (sel) sel.value = lang;
+    $all(".lang-chips button").forEach(function (btn) {
+      btn.setAttribute("aria-pressed", btn.getAttribute("data-lang") === lang ? "true" : "false");
+    });
     var modeBtn = $(".mode-btn");
     if (modeBtn) modeBtn.textContent = root.getAttribute("data-theme") === "light" ? label("modeDark") : label("mode");
   }
@@ -67,14 +81,13 @@
   try { lang = localStorage.getItem("uc_flagship_lang") || root.lang || "en"; } catch (err) { lang = "en"; }
   if (!I18N[lang]) lang = "en";
   applyLang();
-  var langSel = $("#langSwitch");
-  if (langSel) {
-    langSel.addEventListener("change", function () {
-      lang = I18N[langSel.value] ? langSel.value : "en";
+  $all(".lang-chips button").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      lang = I18N[btn.getAttribute("data-lang")] ? btn.getAttribute("data-lang") : "en";
       try { localStorage.setItem("uc_flagship_lang", lang); } catch (err) { /* private */ }
       applyLang();
     });
-  }
+  });
 
   var menu = $(".menu-btn");
   if (menu) {
@@ -738,8 +751,86 @@
       $all(".mascot").forEach(function (el, i) {
         el.setAttribute("data-variant", variants[(step + i) % variants.length]);
       });
-    }, 180000);
+    }, 14000);
   }
+  function mountStudio() {
+    var hops = {
+      register: "Phone to CUCM. If REGISTER never gets a 200, no call starts. A 401 is the registrar challenge, from RFC 3261.",
+      css: "CUCM toward the SBC. A CSS miss never reaches CUBE. Dial-peer 0 means no inbound peer you configured matched.",
+      pstn: "SBC toward the PSTN. OPTIONS can busy the trunk. A 200 OK on the signaling leg is not two-way audio.",
+      webex: "Webex Calling is Calling Plan or a local gateway for that location. Do not mix the two traces.",
+      teams: "Teams PSTN is Calling Plan, Operator Connect, or Direct Routing. Name that model before the port.",
+      ucce: "UCCE starts at the dialed number, then the call type and the script. A ringing phone is not the same as a reserved agent."
+    };
+    var sim = $("#labSim");
+    if (sim) {
+      sim.addEventListener("click", function (event) {
+        var hop = event.target.getAttribute && event.target.getAttribute("data-hop");
+        if (!hop || !hops[hop]) return;
+        var out = $("#simOut");
+        if (out) out.textContent = hops[hop];
+        $all("[data-hop]", sim).forEach(function (btn) {
+          btn.setAttribute("aria-pressed", btn === event.target ? "true" : "false");
+        });
+        var board = $("#simBoard");
+        if (board) {
+          $all("[data-node]", board).forEach(function (node) {
+            node.classList.toggle("is-hot", node.getAttribute("data-node") === hop || (hop === "pstn" && node.getAttribute("data-node") === "pstn-end"));
+          });
+          $all("[data-link]", board).forEach(function (link) {
+            link.classList.toggle("is-down", link.getAttribute("data-link") === hop);
+          });
+        }
+      });
+    }
+    $all(".flip").forEach(function (card) {
+      function toggle(event) {
+        if (event.target.closest("a")) return;
+        if (event.type === "keydown" && event.key !== "Enter" && event.key !== " ") return;
+        if (event.type === "keydown") event.preventDefault();
+        card.setAttribute("aria-pressed", card.getAttribute("aria-pressed") === "true" ? "false" : "true");
+      }
+      card.addEventListener("click", toggle);
+      card.addEventListener("keydown", toggle);
+    });
+    $all(".timeline").forEach(function (list) {
+      list.addEventListener("click", function (event) {
+        var btn = event.target.closest("button");
+        if (!btn || !list.contains(btn)) return;
+        var open = btn.getAttribute("aria-expanded") === "true";
+        $all("button", list).forEach(function (other) {
+          other.setAttribute("aria-expanded", "false");
+          var body = other.parentElement.querySelector(".time-body");
+          if (body) body.hidden = true;
+        });
+        if (!open) {
+          btn.setAttribute("aria-expanded", "true");
+          var body = btn.parentElement.querySelector(".time-body");
+          if (body) body.hidden = false;
+        }
+      });
+    });
+    var picks = $("#chartPicks");
+    var stage = $("#chartStage");
+    var cards = $all("[data-chart-card]");
+    if (picks && stage && cards.length) {
+      cards.forEach(function (card, i) {
+        var title = card.querySelector("text");
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "btn";
+        btn.textContent = title ? title.textContent : ("Chart " + (i + 1));
+        btn.addEventListener("click", function () {
+          stage.innerHTML = "";
+          stage.appendChild(card.querySelector("svg").cloneNode(true));
+          $all("button", picks).forEach(function (other) { other.setAttribute("aria-pressed", other === btn ? "true" : "false"); });
+        });
+        picks.appendChild(btn);
+        if (i === 0) btn.click();
+      });
+    }
+  }
+  mountStudio();
   mountSearch();
   mountProgress();
   mountParallax();

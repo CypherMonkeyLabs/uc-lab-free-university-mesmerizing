@@ -251,13 +251,13 @@ def iso_icon(kind: str) -> str:
 </svg>'''
 
 
-def track_strip(count: int, symbol: str, number: str, label: str) -> str:
+def track_strip(count: int, symbol: str, number: str, label: str, shape: str = "sip") -> str:
     return f'''<div class="track-face" data-effects data-parallax>
 <div class="parallax">
   <span class="tilt" data-depth="0.15">{mascot("study")}</span>
   <span class="tilt" data-depth="0.28">{mascot("alert")}</span>
   <span class="tilt" data-depth="0.4">{mascot("celebrate")}</span>
-  <canvas data-mini3d width="120" height="120" aria-hidden="true"></canvas>
+  <canvas data-mini3d data-shape="{esc(shape)}" width="140" height="140" aria-hidden="true"></canvas>
 </div>
 <section class="stats" aria-label="Track counts">
   <div class="stat"><span class="num" data-count="{count}">{count}</span><span class="label">Campus sections</span></div>
@@ -326,7 +326,7 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
     write_page(
         "diagrams/index.html",
         "Diagrams",
-        f'<p class="kicker">Atlas</p><h1>Diagram atlas</h1>'
+        f'<p class="kicker">Atlas</p><h1 data-i18n="pageDiagrams">Diagram atlas</h1>'
         f'<p class="lede" data-effects>{len(catalog) + len(mermaid_made)} custom diagrams. '
         f'{sum(1 for item in catalog if item[3])} of the hand-built ladders and trees are animated. '
         f'Mermaid sequence and flow charts, when present, were rendered at build time from the vendored library.</p>'
@@ -349,9 +349,10 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
     write_page(
         "charts/index.html",
         "Charts",
-        '<p class="kicker">Counted</p><h1>Charts</h1>'
-        '<p class="lede" data-effects>Six charts. The numbers are the campus catalog, the question bank, the 29 flows, the G.711 formula already used in the labs, or the port-chapter families. Nothing here is a market share.</p>'
-        f'<div class="chart-stack">{"".join(charts)}</div>'
+        '<p class="kicker">Counted</p><h1 data-i18n="pageCharts">Charts</h1>'
+        '<p class="lede" data-effects>Six charts. Hover a bar for the source. Pin one chart in the stage. The numbers are the campus catalog, the question bank, the 29 flows, the G.711 formula already used in the labs, or the port-chapter families. Nothing here is a market share.</p>'
+        '<div class="dash" id="chartDash"><div class="dash-stage glass" id="chartStage"></div><div class="dash-picks" id="chartPicks"></div></div>'
+        f'<div class="chart-stack">{"".join(f"<figure class=\"chart-card glass\" data-chart-card>{svg}</figure>" for svg in charts)}</div>'
         '<h2>Sketch of a troubleshooting tree</h2>'
         '<svg id="roughBoard" viewBox="0 0 780 120" data-effects></svg>'
         + sources([
@@ -377,7 +378,7 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
             f"tracks/{slug}.html",
             title,
             f'<p class="kicker">Track</p><h1>{esc(title)}</h1><p class="lede">{esc(blurb)}</p>'
-            f'{track_strip(count, symbol, number, label)}'
+            f'{track_strip(count, symbol, number, label, slug)}'
             f'<p><a class="btn" href="../{href}">Open the working page</a></p>',
             blurb,
         )
@@ -391,6 +392,11 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
         "Campus tracks with section counts.",
     )
 
+    icon_names = {
+        "start": "Start", "sip": "SIP", "cucm": "CUCM", "cloud": "Webex", "ucce": "UCCE",
+        "ccaas": "CCaaS", "e911": "E911", "qos": "QoS", "migrate": "Migrate", "trouble": "Trouble",
+        "evidence": "Evidence", "design": "Design", "practice": "Practice", "reference": "Reference",
+    }
     qn = len(bank["questions"])
     cn = len(bank["cards"])
     pn = len(bank["pr2Cards"])
@@ -399,6 +405,15 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
         "index.html",
         "UC Lab",
         f'''<section class="bleed" data-effects data-parallax>
+<div class="icon-dock" id="iconDock">
+<div class="icon-track">
+<canvas id="iconStage" aria-hidden="true"></canvas>
+<div class="icon-links">{"".join(
+    f'<a href="tracks/{slug}.html" data-shape="{slug}"><span>{esc(icon_names.get(slug, title.split("—")[0].strip()))}</span></a>'
+    for slug, title, count, blurb, href in CAMPUS_TRACKS
+)}</div>
+</div>
+</div>
 <div class="neon-fallback" aria-hidden="true">
   <div class="grid"></div>
   <div class="sparks"></div>
@@ -407,11 +422,10 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
   <div class="ring r3"></div>
   <div class="orbit"><b></b><b></b><b></b><b></b></div>
 </div>
-<canvas id="hero3d" aria-label="Orbiting three.js call path with a phone, CUCM, CUBE, and cloud"></canvas>
+<canvas id="hero3d" aria-label="Orbiting call path with labelled CUCM, Webex, UCCE, SBC, PSTN, and Teams nodes"></canvas>
 <div class="bleed-copy">
 <p class="kicker" data-i18n="greet">Welcome to the lab</p>
 <h1 data-i18n="heroTitle">Voice, UC, and contact center.</h1>
-<div class="mascots" aria-hidden="true">{mascot("study")}{mascot("alert")}{mascot("celebrate")}</div>
 <p class="symbols" aria-label="Symbols"><span>5060</span><span>5061</span><span>EF 46</span><span>RTP</span></p>
 <p class="lede" data-i18n="heroLede">Fundamentals, then the edge, the cloud, and the systems around the agent.</p>
 <div class="actions">
@@ -420,6 +434,7 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
 <a class="btn" href="campus/uc-lab-free-university.html" data-i18n="campus">Deep campus</a>
 </div>
 </div>
+<div class="hero-mascot">{mascot("study")}</div>
 <div class="ticker" aria-hidden="true"><span>5060 SIP · 5061 TLS · 2000 SCCP · 2443 Secure SCCP · 69 TFTP · 6970 HTTP · EF 46 · RTP 16384–32767 · 911 direct dial · </span></div>
 <section class="stats" aria-label="Counts">
 <div class="stat glass"><svg class="visit-ring" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="16"></circle><circle class="fg" id="visitRing" cx="21" cy="21" r="16"></circle></svg><span class="num" data-count="29">29</span><span class="label">Playable flows</span></div>
