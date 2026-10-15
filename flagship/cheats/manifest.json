@@ -1,0 +1,22 @@
+{
+  "sheets": [
+    "ports",
+    "firewall",
+    "call-flows",
+    "config",
+    "troubleshoot",
+    "glossary",
+    "pstn",
+    "e911",
+    "qos",
+    "migration",
+    "security",
+    "wfm-recording",
+    "flashcards"
+  ],
+  "json": [
+    "flashcards-cited.json",
+    "flashcards-idea-pool.json"
+  ],
+  "bundle": "../uc-lab-flagship.zip"
+}

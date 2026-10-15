@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T.38 fax · UC Lab Free University</title>
+<meta name="description" content="Fax can switch from audio to T.38 mid-call. A voice codec that looked fine will still fail a page.">
+<link rel="icon" href="../assets/icon.svg">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+try {
+  var params = new URLSearchParams(location.search);
+  var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
+  var ok = {paper:1, midnight:1, contrast:1, signal:1, canopy:1};
+  if (ok[t]) document.documentElement.setAttribute("data-theme", t);
+  if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+} catch (e) {}
+</script>
+</head>
+<body data-root="../">
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <div class="bar">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
+      <span><strong>UC Lab</strong><small>Free University</small></span>
+    </a>
+    <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
+    <div class="tools">
+      <div class="themes" role="radiogroup" aria-label="Theme">
+        <button type="button" class="swatch-paper" data-theme-set="paper" aria-label="Paper" aria-checked="true"></button>
+        <button type="button" class="swatch-midnight" data-theme-set="midnight" aria-label="Midnight" aria-checked="false"></button>
+        <button type="button" class="swatch-contrast" data-theme-set="contrast" aria-label="High contrast" aria-checked="false"></button>
+        <button type="button" class="swatch-signal" data-theme-set="signal" aria-label="Signal" aria-checked="false"></button>
+        <button type="button" class="swatch-canopy" data-theme-set="canopy" aria-label="Canopy" aria-checked="false"></button>
+      </div>
+      <button type="button" class="btn motion-btn">Motion</button>
+      <a class="btn dl" href="../download.html">Offline</a>
+      <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Lab"><a href="../index.html">Home</a><a href="../path.html">Path</a><a href="../flows/index.html" aria-current="page">Flows</a><a href="../ports.html">Ports</a><a href="../ecosystem/index.html">Ecosystem</a><a href="../guide/index.html">Guide</a><a href="../play/index.html">Play</a><a href="../cheats/index.html">Cheats</a><a href="../quiz.html">Quiz</a><a href="../../campus/uc-lab-free-university.html">Campus</a></nav>
+</header>
+<main id="content" class="wrap">
+<p class='kicker'>RFC 3362</p><h1>T.38 fax</h1><p class='lede'>Fax can switch from audio to T.38 mid-call. A voice codec that looked fine will still fail a page.</p><div class='read'><div class='prose'><figure class="ladder" data-ladder><svg viewBox="0 0 760 228" role="img" aria-label="Switchover"><defs><marker id='arrow30' markerWidth='8' markerHeight='8' refX='7' refY='3' orient='auto'><path d='M0,0 L8,3 L0,6 Z' fill='#1c1915'/></marker></defs><rect width="760" height="228" rx="16" fill="#fffdf8"/><text x="20" y="24" font-family="Georgia, serif" font-size="16" fill="#a34b24">Switchover</text><text x="126" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">Fax</text><line x1="126" y1="58" x2="126" y2="212" stroke="#e3d7c6" stroke-width="2"/><text x="380" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">CUBE</text><line x1="380" y1="58" x2="380" y2="212" stroke="#e3d7c6" stroke-width="2"/><text x="633" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">Carrier</text><line x1="633" y1="58" x2="633" y2="212" stroke="#e3d7c6" stroke-width="2"/><g class="msg" data-cap="The call starts as audio so the fax tones can be heard."><line x1="126" y1="70" x2="380" y2="70" stroke="#0f6e62" stroke-width="2.4" marker-end="url(#arrow30)"/><text x="253.0" y="62" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#0f6e62">INVITE</text></g><g class="msg" data-cap="T.38 is offered when the tones are detected, if both legs allow the switch."><line x1="126" y1="116" x2="380" y2="116" stroke="#0f6e62" stroke-width="2.4" marker-end="url(#arrow30)"/><text x="253.0" y="108" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#0f6e62">re-INVITE</text></g><g class="msg" data-cap="If the carrier stays on G.711 passthrough, do not force T.38 on only one leg."><line x1="380" y1="162" x2="633" y2="162" stroke="#4c3d8f" stroke-width="2.4" marker-end="url(#arrow30)" class="dash" stroke-dasharray="7 5"/><text x="506.5" y="154" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#4c3d8f">T.38</text></g></svg><div class="ladder-controls"><button type="button" class="btn" data-act="prev">Step back</button><button type="button" class="btn" data-act="play">Play</button><button type="button" class="btn" data-act="next">Step</button></div><p class="ladder-cap muted"></p><ol><li><strong>INVITE</strong> — The call starts as audio so the fax tones can be heard.</li><li><strong>re-INVITE</strong> — T.38 is offered when the tones are detected, if both legs allow the switch.</li><li><strong>T.38</strong> — If the carrier stays on G.711 passthrough, do not force T.38 on only one leg.</li></ol></figure><p>One leg on T.38 and the other on passthrough is a broken fax even when the SIP ladder shows 200 OK. NSE-based fax or passthrough for secure SIP lines is called out in the CUCM 15 gateway notes dated February 2026. Read that note before you change a secure fax trunk.</p><h2>Sources</h2><ul><li><a href="https://www.rfc-editor.org/rfc/rfc3362">RFC 3362</a></li></ul></div><aside class='rail'><div class='paper'><p class='kicker'>Level</p><p class='num'>3 · Edge</p><p class='muted'>Play the ladder, then read the inherited study card when this page has one.</p></div><div class='paper'><p class='kicker'>Proof habit</p><p>Leg, identifier, counter, capture. A 200 OK is not two-way audio.</p></div></aside></div>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p class="kicker">Next</p>
+    <p><a href="../flows/snr.html">Previous · Single Number Reach</a> · <a href="../ports.html">Next · Ports and protocols</a> · <a href="../../campus/uc-lab-free-university.html">Deep campus · 580 sections</a></p>
+    <div class="sister"><a class="card" href="https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/"><strong>AI Lab</strong></a><a class="card" href="https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/"><strong>Amazon Connect</strong></a><a class="card" href="https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/"><strong>Microsoft Voice</strong></a><a class="card" href="https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/"><strong>Five9</strong></a><a class="card" href="https://cipher0x9.github.io/genesys-cloud-lab-free-university-mesmerizing/"><strong>Genesys Cloud</strong></a><a class="card" href="https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/"><strong>NICE CXone</strong></a><a class="card" href="https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/"><strong>SIP Universe</strong></a><a class="card" href="../path.html"><strong>Study path</strong></a></div>
+    <p class="sig">CYPHER0X9</p>
+    <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
+    <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern or takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
+  </div>
+</footer>
+<script src="../assets/bank.js"></script>
+<script src="../assets/site.js"></script>
+<script src="../assets/play.js"></script>
+</body>
+</html>

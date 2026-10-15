@@ -150,9 +150,34 @@ a { color: var(--cc-link); }
 }
 .skip:focus { top: 8px; }
 
-.top {
+.studio-links, .studio-foot {
+  background: var(--cc-surface);
+  border-bottom: 1px solid var(--cc-line);
+  color: var(--cc-ink);
+}
+.studio-links {
   position: sticky;
   top: 0;
+  z-index: 45;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  overflow-x: auto;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.studio-links a, .studio-foot a { color: inherit; white-space: nowrap; }
+.studio-foot {
+  border-top: 1px solid var(--cc-line);
+  border-bottom: 0;
+  padding: 22px 16px 88px;
+  font-size: 14px;
+}
+.studio-foot p { max-width: 78ch; }
+.top {
+  position: sticky;
+  top: 34px;
   z-index: 40;
   display: flex;
   gap: 10px;

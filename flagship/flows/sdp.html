@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Offer and answer · UC Lab Free University</title>
+<meta name="description" content="One offer, one answer. A second offer before the answer is a protocol error.">
+<link rel="icon" href="../assets/icon.svg">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+try {
+  var params = new URLSearchParams(location.search);
+  var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
+  var ok = {paper:1, midnight:1, contrast:1, signal:1, canopy:1};
+  if (ok[t]) document.documentElement.setAttribute("data-theme", t);
+  if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+} catch (e) {}
+</script>
+</head>
+<body data-root="../">
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <div class="bar">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
+      <span><strong>UC Lab</strong><small>Free University</small></span>
+    </a>
+    <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
+    <div class="tools">
+      <div class="themes" role="radiogroup" aria-label="Theme">
+        <button type="button" class="swatch-paper" data-theme-set="paper" aria-label="Paper" aria-checked="true"></button>
+        <button type="button" class="swatch-midnight" data-theme-set="midnight" aria-label="Midnight" aria-checked="false"></button>
+        <button type="button" class="swatch-contrast" data-theme-set="contrast" aria-label="High contrast" aria-checked="false"></button>
+        <button type="button" class="swatch-signal" data-theme-set="signal" aria-label="Signal" aria-checked="false"></button>
+        <button type="button" class="swatch-canopy" data-theme-set="canopy" aria-label="Canopy" aria-checked="false"></button>
+      </div>
+      <button type="button" class="btn motion-btn">Motion</button>
+      <a class="btn dl" href="../download.html">Offline</a>
+      <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Lab"><a href="../index.html">Home</a><a href="../path.html">Path</a><a href="../flows/index.html" aria-current="page">Flows</a><a href="../ports.html">Ports</a><a href="../ecosystem/index.html">Ecosystem</a><a href="../guide/index.html">Guide</a><a href="../play/index.html">Play</a><a href="../cheats/index.html">Cheats</a><a href="../quiz.html">Quiz</a><a href="../../campus/uc-lab-free-university.html">Campus</a></nav>
+</header>
+<main id="content" class="wrap">
+<p class='kicker'>SDP · RFC 3264</p><h1>Offer and answer</h1><p class='lede'>One offer, one answer. A second offer before the answer is a protocol error.</p><div class='read'><div class='prose'><figure class="ladder" data-ladder><svg viewBox="0 0 760 228" role="img" aria-label="Early offer"><defs><marker id='arrow3' markerWidth='8' markerHeight='8' refX='7' refY='3' orient='auto'><path d='M0,0 L8,3 L0,6 Z' fill='#1c1915'/></marker></defs><rect width="760" height="228" rx="16" fill="#fffdf8"/><text x="20" y="24" font-family="Georgia, serif" font-size="16" fill="#a34b24">Early offer</text><text x="190" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">Offerer</text><line x1="190" y1="58" x2="190" y2="212" stroke="#e3d7c6" stroke-width="2"/><text x="570" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">Answerer</text><line x1="570" y1="58" x2="570" y2="212" stroke="#e3d7c6" stroke-width="2"/><g class="msg" data-cap="The offer lists codecs the offerer can receive."><line x1="190" y1="70" x2="570" y2="70" stroke="#0f6e62" stroke-width="2.4" marker-end="url(#arrow3)"/><text x="380.0" y="62" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#0f6e62">INVITE + SDP</text></g><g class="msg" data-cap="The answer picks a common codec. Port 0 rejects a stream."><line x1="570" y1="116" x2="190" y2="116" stroke="#1f7a4d" stroke-width="2.4" marker-end="url(#arrow3)"/><text x="380.0" y="108" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#1f7a4d">200 + SDP</text></g><g class="msg" data-cap="The offer/answer completes with the 200, and ACK confirms the dialog."><line x1="190" y1="162" x2="570" y2="162" stroke="#0f6e62" stroke-width="2.4" marker-end="url(#arrow3)"/><text x="380.0" y="154" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#0f6e62">ACK</text></g></svg><div class="ladder-controls"><button type="button" class="btn" data-act="prev">Step back</button><button type="button" class="btn" data-act="play">Play</button><button type="button" class="btn" data-act="next">Step</button></div><p class="ladder-cap muted"></p><ol><li><strong>INVITE + SDP</strong> — The offer lists codecs the offerer can receive.</li><li><strong>200 + SDP</strong> — The answer picks a common codec. Port 0 rejects a stream.</li><li><strong>ACK</strong> — The offer/answer completes with the 200, and ACK confirms the dialog.</li></ol></figure><p>Delayed offer puts the first SDP in the 200, and the ACK carries the answer. Early offer puts SDP in the INVITE. CUCM trunks and CUBE dial-peers must agree which model the next hop requires. 488 means the SDP was rejected.</p><h2>Sources</h2><ul><li><a href="https://www.rfc-editor.org/rfc/rfc3264">RFC 3264</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc4566">RFC 4566</a></li></ul><h2>Study card carried forward</h2><div class='paper inherited'>
+<p class="kicker">SDP · RFC 4566 · RFC 3264</p><h1>Codecs and the offer/answer model</h1><p class="lede">Every media change you have seen — the first call, hold, early media — is an offer and an answer. Learn the m= line once and the other cards get easier.</p><figure><div class="diagram-scroll slim" tabindex="0"><img src="../assets/inherited/sdp-offer-answer.svg" alt="Four rules: matching m-lines, port 0 rejects a stream, the answer is a subset of codecs, and direction attributes constrain the answer."></div><figcaption>A pocket card of the offer/answer rules. The worked SDP is below.</figcaption></figure><p class="hint">On a phone, swipe a wide ladder sideways. The steps below repeat the same sequence.</p>
+<h2>What an SDP session contains</h2>
+<p>SDP is RFC 4566. An offer and its answer are a use of SDP defined by RFC 3264. The lines you will read on every voice call:</p>
+<ul>
+<li><code>v=</code> protocol version, which is 0.</li>
+<li><code>o=</code> origin: username, session id, version, network type, address type, address.</li>
+<li><code>c=</code> connection address. It may sit at session level or on a single media line.</li>
+<li><code>m=</code> media line: type, port, protocol, then payload types in preference order.</li>
+<li><code>a=rtpmap</code> maps a payload type to a codec name and clock rate.</li>
+<li><code>a=fmtp</code> carries parameters, such as which DTMF events are offered.</li>
+<li><code>a=ptime</code> is the packetization time in milliseconds. 20 is the usual voice default.</li>
+</ul>
+<h2>A worked offer and answer</h2>
+<p>Alice offers G.711 µ-law, G.711 A-law, G.729, and named telephone events. She is at 192.0.2.10. Bob answers with PCMU and telephone-event only. He is at 192.0.2.20. Both addresses are documentation addresses (TEST-NET), not a live network.</p>
+<div class="grid2">
+<pre>v=0
+o=alice 2890844526 2890844526 IN IP4 192.0.2.10
+s=Call
+c=IN IP4 192.0.2.10
+t=0 0
+m=audio 49170 RTP/AVP 0 8 18 101
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=rtpmap:18 G729/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-15
+a=ptime:20
+a=sendrecv</pre>
+<pre>v=0
+o=bob 2808844564 2808844564 IN IP4 192.0.2.20
+s=Call
+c=IN IP4 192.0.2.20
+t=0 0
+m=audio 49200 RTP/AVP 0 101
+a=rtpmap:0 PCMU/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-15
+a=ptime:20
+a=sendrecv</pre>
+</div>
+<p>The answer has one m= line because the offer had one, in the same place. Bob did not invent a video line. He did not answer with a codec Alice omitted. Payload 101 is dynamic: the number is meaningless until <code>rtpmap</code> names it. Telephone-event is RFC 4733, the modern home of RTP DTMF (it replaced RFC 2833).</p>
+<h2>Static payload types you should know</h2>
+<div class="table-scroll"><table>
+<thead><tr><th>PT</th><th>Name</th><th>Clock</th><th>Usual payload rate</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>PCMU (G.711 µ-law)</td><td>8000</td><td>64 kbit/s</td></tr>
+<tr><td>8</td><td>PCMA (G.711 A-law)</td><td>8000</td><td>64 kbit/s</td></tr>
+<tr><td>9</td><td>G722</td><td>8000 in RTP, audio is 16 kHz</td><td>64 kbit/s</td></tr>
+<tr><td>18</td><td>G729</td><td>8000</td><td>8 kbit/s</td></tr>
+<tr><td>96–127</td><td>Dynamic</td><td>Named by rtpmap</td><td>Depends on the codec</td></tr>
+</tbody></table></div>
+<p>Opus (RFC 7587) uses a dynamic payload type. The number is negotiated. There is no universal Opus payload type.</p>
+<p>G.722's rtpmap clock is 8000 even though the audio bandwidth is 16 kHz. That oddity is in the RTP audio/video profile (RFC 3551). Do not "correct" it in a gateway and break interop.</p>
+<h2>Rejecting a stream</h2>
+<p>If Alice also offers video and Bob cannot do video, Bob still answers with two m= lines. The video line uses port <strong>0</strong>. The audio line is negotiated as usual. Dropping the m= line instead of zeroing the port shifts every later line and breaks the answer.</p>
+<p>Direction rules that show up constantly:</p>
+<ul>
+<li>sendrecv may be answered with sendrecv, sendonly, recvonly, or inactive.</li>
+<li>sendonly is answered with recvonly or inactive.</li>
+<li>recvonly is answered with sendonly or inactive.</li>
+<li>inactive is answered with inactive.</li>
+</ul>
+<p>The payload rate is not the bandwidth you plan on a link. A G.711 call at 20 ms is 50 packets per second, 160 bytes of audio each, plus RTP, UDP, IP, and Ethernet. A common Ethernet planning estimate is about <strong>87 kbit/s</strong> per call. G.729 at 20 ms is often planned around <strong>31 kbit/s</strong>. Those figures include framing. They are estimates for capacity planning, not codec definitions.</p>
+<aside class="callout sand"><h3>SRTP in the same model</h3><p>When media is encrypted with SDES, the m= protocol is often <code>RTP/SAVP</code> and the keying material sits in <code>a=crypto</code> (RFC 3711 and RFC 4568). Because the key is inside SDP, the SIP that carries it should be on TLS. Otherwise the key is visible to anyone who can see the signaling.</p></aside><section class="sources"><h2>Sources</h2><ul><li>RFC 4566, SDP</li><li>RFC 3264, an offer/answer model with SDP</li><li>RFC 3550, RTP</li><li>RFC 3551, RTP audio/video profile (static payload types, including G.722&#x27;s clock rate)</li><li>RFC 4733, RTP payload for DTMF digits and telephony tones</li><li>RFC 7587, RTP payload format for Opus</li><li>RFC 3711, SRTP, and RFC 4568, SDES</li></ul></section>
+</div></div><aside class='rail'><div class='paper'><p class='kicker'>Level</p><p class='num'>1 · Fundamentals</p><p class='muted'>Play the ladder, then read the inherited study card when this page has one.</p></div><div class='paper'><p class='kicker'>Proof habit</p><p>Leg, identifier, counter, capture. A 200 OK is not two-way audio.</p></div></aside></div>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p class="kicker">Next</p>
+    <p><a href="../flows/basic-call.html">Previous · Basic call</a> · <a href="../flows/hold.html">Next · Hold</a> · <a href="../../campus/uc-lab-free-university.html">Deep campus · 580 sections</a></p>
+    <div class="sister"><a class="card" href="https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/"><strong>AI Lab</strong></a><a class="card" href="https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/"><strong>Amazon Connect</strong></a><a class="card" href="https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/"><strong>Microsoft Voice</strong></a><a class="card" href="https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/"><strong>Five9</strong></a><a class="card" href="https://cipher0x9.github.io/genesys-cloud-lab-free-university-mesmerizing/"><strong>Genesys Cloud</strong></a><a class="card" href="https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/"><strong>NICE CXone</strong></a><a class="card" href="https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/"><strong>SIP Universe</strong></a><a class="card" href="../path.html"><strong>Study path</strong></a></div>
+    <p class="sig">CYPHER0X9</p>
+    <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
+    <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern or takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
+  </div>
+</footer>
+<script src="../assets/bank.js"></script>
+<script src="../assets/site.js"></script>
+<script src="../assets/play.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mind map · UC Lab Free University</title>
+<meta name="description" content="Ecosystem mind map linking sister systems and call platforms.">
+<link rel="icon" href="../assets/icon.svg">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+try {
+  var params = new URLSearchParams(location.search);
+  var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
+  var ok = {paper:1, midnight:1, contrast:1, signal:1, canopy:1};
+  if (ok[t]) document.documentElement.setAttribute("data-theme", t);
+  if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+} catch (e) {}
+</script>
+</head>
+<body data-root="../">
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <div class="bar">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
+      <span><strong>UC Lab</strong><small>Free University</small></span>
+    </a>
+    <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
+    <div class="tools">
+      <div class="themes" role="radiogroup" aria-label="Theme">
+        <button type="button" class="swatch-paper" data-theme-set="paper" aria-label="Paper" aria-checked="true"></button>
+        <button type="button" class="swatch-midnight" data-theme-set="midnight" aria-label="Midnight" aria-checked="false"></button>
+        <button type="button" class="swatch-contrast" data-theme-set="contrast" aria-label="High contrast" aria-checked="false"></button>
+        <button type="button" class="swatch-signal" data-theme-set="signal" aria-label="Signal" aria-checked="false"></button>
+        <button type="button" class="swatch-canopy" data-theme-set="canopy" aria-label="Canopy" aria-checked="false"></button>
+      </div>
+      <button type="button" class="btn motion-btn">Motion</button>
+      <a class="btn dl" href="../download.html">Offline</a>
+      <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Lab"><a href="../index.html">Home</a><a href="../path.html">Path</a><a href="../flows/index.html">Flows</a><a href="../ports.html">Ports</a><a href="../ecosystem/index.html" aria-current="page">Ecosystem</a><a href="../guide/index.html">Guide</a><a href="../play/index.html">Play</a><a href="../cheats/index.html">Cheats</a><a href="../quiz.html">Quiz</a><a href="../../campus/uc-lab-free-university.html">Campus</a></nav>
+</header>
+<main id="content" class="wrap">
+
+<p class="kicker">Map</p>
+<h1>Mind map</h1>
+<p class="lede">Unified CM sits in the middle of the on-premises system. Sister systems and cloud platforms sit on the rim. Choose a node.</p>
+<figure class="ladder mind"><svg viewBox="0 0 980 640" role="img" aria-label="Ecosystem mind map">
+<rect width="980" height="640" rx="24" fill="#172033"/>
+<text x="36" y="40" fill="#f4efe6" font-family="Georgia, serif" font-size="22">Collaboration ecosystem</text>
+<a href="../flows/pstn.html"><circle cx="490" cy="320" r="78" fill="#0f6e62"/><text x="490" y="316" text-anchor="middle" fill="#f4fffc" font-size="16">Unified CM</text><text x="490" y="336" text-anchor="middle" fill="#d7fff8" font-size="12">call control</text></a>
+<a href="wfm.html"><rect x="40" y="90" width="180" height="54" rx="10" fill="#1d1812" stroke="#f5b942"/><text x="130" y="122" text-anchor="middle" fill="#f8f1df">Workforce</text></a>
+<a href="recording.html"><rect x="40" y="180" width="180" height="54" rx="10" fill="#1d1812" stroke="#f5b942"/><text x="130" y="212" text-anchor="middle" fill="#f8f1df">Recording / QM</text></a>
+<a href="emergency.html"><rect x="40" y="270" width="180" height="54" rx="10" fill="#1d1812" stroke="#ff8fa3"/><text x="130" y="302" text-anchor="middle" fill="#f8f1df">Emergency</text></a>
+<a href="analytics.html"><rect x="40" y="360" width="180" height="54" rx="10" fill="#1d1812" stroke="#7dcec4"/><text x="130" y="392" text-anchor="middle" fill="#f8f1df">Analytics</text></a>
+<a href="crm.html"><rect x="40" y="450" width="180" height="54" rx="10" fill="#1d1812" stroke="#7dcec4"/><text x="130" y="482" text-anchor="middle" fill="#f8f1df">CRM</text></a>
+<a href="agents.html"><rect x="40" y="540" width="180" height="54" rx="10" fill="#1d1812" stroke="#c4b5fd"/><text x="130" y="572" text-anchor="middle" fill="#f8f1df">AI agents</text></a>
+<a href="../flows/webex-lgw.html"><rect x="760" y="120" width="180" height="54" rx="10" fill="#102033" stroke="#5eead4"/><text x="850" y="152" text-anchor="middle" fill="#e8eef8">Webex Calling</text></a>
+<a href="../flows/teams-dr.html"><rect x="760" y="220" width="180" height="54" rx="10" fill="#102033" stroke="#5eead4"/><text x="850" y="252" text-anchor="middle" fill="#e8eef8">Teams Phone</text></a>
+<a href="../flows/ucce.html"><rect x="760" y="320" width="180" height="54" rx="10" fill="#102033" stroke="#5eead4"/><text x="850" y="352" text-anchor="middle" fill="#e8eef8">UCCE</text></a>
+<a href="../flows/cube.html"><rect x="760" y="420" width="180" height="54" rx="10" fill="#102033" stroke="#f0a36a"/><text x="850" y="452" text-anchor="middle" fill="#e8eef8">CUBE / SBC</text></a>
+<a href="bridges.html"><rect x="760" y="520" width="180" height="54" rx="10" fill="#102033" stroke="#f0a36a"/><text x="850" y="552" text-anchor="middle" fill="#e8eef8">Bridges</text></a>
+</svg></figure>
+<h2>Drawing carried from the idea pool</h2>
+<figure class="ladder"><img src="../assets/pool/ecosystem/mindmap.svg" alt="Idea-pool ecosystem drawing with Unified CM in the center"></figure>
+<p class="muted">The inherited drawing uses the pool's own labels. The map above is the flagship navigation.</p>
+
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p class="kicker">Next</p>
+    <p><a href="../ecosystem/glossary.html">Previous · Glossary</a> · <a href="../ecosystem/wfm.html">Next · Workforce management</a> · <a href="../../campus/uc-lab-free-university.html">Deep campus · 580 sections</a></p>
+    <div class="sister"><a class="card" href="https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/"><strong>AI Lab</strong></a><a class="card" href="https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/"><strong>Amazon Connect</strong></a><a class="card" href="https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/"><strong>Microsoft Voice</strong></a><a class="card" href="https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/"><strong>Five9</strong></a><a class="card" href="https://cipher0x9.github.io/genesys-cloud-lab-free-university-mesmerizing/"><strong>Genesys Cloud</strong></a><a class="card" href="https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/"><strong>NICE CXone</strong></a><a class="card" href="https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/"><strong>SIP Universe</strong></a><a class="card" href="../path.html"><strong>Study path</strong></a></div>
+    <p class="sig">CYPHER0X9</p>
+    <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
+    <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern or takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
+  </div>
+</footer>
+<script src="../assets/bank.js"></script>
+<script src="../assets/site.js"></script>
+<script src="../assets/play.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cases · UC Lab Free University</title>
+<meta name="description" content="29 branching troubleshooting cases from the idea pool.">
+<link rel="icon" href="assets/icon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/site.css">
+<script>
+try {
+  var params = new URLSearchParams(location.search);
+  var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
+  var ok = {paper:1, midnight:1, contrast:1, signal:1, canopy:1};
+  if (ok[t]) document.documentElement.setAttribute("data-theme", t);
+  if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+} catch (e) {}
+</script>
+</head>
+<body data-root="">
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <div class="bar">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
+      <span><strong>UC Lab</strong><small>Free University</small></span>
+    </a>
+    <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
+    <div class="tools">
+      <div class="themes" role="radiogroup" aria-label="Theme">
+        <button type="button" class="swatch-paper" data-theme-set="paper" aria-label="Paper" aria-checked="true"></button>
+        <button type="button" class="swatch-midnight" data-theme-set="midnight" aria-label="Midnight" aria-checked="false"></button>
+        <button type="button" class="swatch-contrast" data-theme-set="contrast" aria-label="High contrast" aria-checked="false"></button>
+        <button type="button" class="swatch-signal" data-theme-set="signal" aria-label="Signal" aria-checked="false"></button>
+        <button type="button" class="swatch-canopy" data-theme-set="canopy" aria-label="Canopy" aria-checked="false"></button>
+      </div>
+      <button type="button" class="btn motion-btn">Motion</button>
+      <a class="btn dl" href="download.html">Offline</a>
+      <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Lab"><a href="index.html">Home</a><a href="path.html">Path</a><a href="flows/index.html">Flows</a><a href="ports.html">Ports</a><a href="ecosystem/index.html">Ecosystem</a><a href="guide/index.html">Guide</a><a href="play/index.html">Play</a><a href="cheats/index.html">Cheats</a><a href="quiz.html">Quiz</a><a href="../campus/uc-lab-free-university.html">Campus</a></nav>
+</header>
+<main id="content" class="wrap">
+
+<p class="kicker">Idea pool</p>
+<h1>Troubleshooting cases</h1>
+<p class="lede"><span class="num">29</span> branching cases. Each one starts from a symptom. Wrong branches say why they are wrong and send you back.</p>
+<div class="read"><div class="prose"><ol><li><button type='button' class='btn' data-case='pool-one-way'>One-way audio</button> <span class='muted'>A PSTN call connects. The caller hears the carrier. The carrier hears nothing.</span></li><li><button type='button' class='btn' data-case='pool-fast-busy'>Fast busy</button> <span class='muted'>A lobby phone dials a national number and gets reorder immediately.</span></li><li><button type='button' class='btn' data-case='pool-mra-reg'>MRA registration failure</button> <span class='muted'>A laptop off the VPN cannot register. Desk phones in the office are fine.</span></li><li><button type='button' class='btn' data-case='pool-cert-expiry'>Certificate expiry outage</button> <span class='muted'>Monday morning, nobody outside can sign in. A few internal services warn about tomcat.</span></li><li><button type='button' class='btn' data-case='pool-911-misroute'>911 misroute</button> <span class='muted'>A branch user dials 911. The call connects. The PSAP calls back and reaches a headquarters receptionist.</span></li><li><button type='button' class='btn' data-case='pool-unity-greeting'>Opening Greeting instead of a mailbox</button> <span class='muted'>A forwarded call reaches Unity. Every caller hears the company greeting.</span></li><li><button type='button' class='btn' data-case='pool-route-list-down'>National calls reorder, internal calls work</button> <span class='muted'>Users dial a national number and get reorder. Four-digit calls still work.</span></li><li><button type='button' class='btn' data-case='pool-translation-loop'>Dial tone returns after a translation</button> <span class='muted'>A translation is supposed to turn 9.1 plus ten digits into +E.164. Callers hear dial tone again, then reorder.</span></li><li><button type='button' class='btn' data-case='pool-agent-no-ring'>Agent is Ready, the phone is silent</button> <span class='muted'>The caller sits in queue, then the script selects an agent. The desktop shows Reserved. The phone does not ring.</span></li><li><button type='button' class='btn' data-case='pool-hunt-preference'>The backup carrier takes half the calls</button> <span class='muted'>Two outbound dial peers share a destination pattern. About half the calls use the expensive peer.</span></li><li><button type='button' class='btn' data-case='pool-srst-failback'>Phones stuck in SRST</button> <span class='muted'>The WAN is back. Branch phones still show registered on the router.</span></li><li><button type='button' class='btn' data-case='pool-mra-media'>MRA call with no audio</button> <span class='muted'>A Jabber client outside connects. Neither side hears anything.</span></li><li><button type='button' class='btn' data-case='pool-ils-home'>Jabber on the wrong cluster</button> <span class='muted'>A user in a two-cluster company signs into the cluster that does not own the directory number.</span></li><li><button type='button' class='btn' data-case='pool-phone-tftp'>Desk phone unregistered, Jabber fine</button> <span class='muted'>The user is signed into Jabber. The desk phone is unregistered in RIS.</span></li><li><button type='button' class='btn' data-case='pool-hybrid-outage'>Branch in SRST cannot call Webex</button> <span class='muted'>WAN down. Branch phones are on the router. Webex Calling users in the same company do not ring.</span></li><li><button type='button' class='btn' data-case='pool-ceo-partition'>Lobby can dial the CEO</button> <span class='muted'>A lobby phone reaches the CEO&#x27;s directory number. It should not.</span></li><li><button type='button' class='btn' data-case='pool-emergency-base'>Lobby lost 911</button> <span class='muted'>After a class-of-service cleanup, the lobby cannot dial emergency. Executives still can.</span></li><li><button type='button' class='btn' data-case='pool-cube-silent'>CUBE never sees the INVITE</button> <span class='muted'>A national call fails. The CUBE debug stays empty.</span></li><li><button type='button' class='btn' data-case='pool-inbound-did'>DID fails, outbound works</button> <span class='muted'>The same phone dials out. Inbound to its directory number from the carrier fails.</span></li><li><button type='button' class='btn' data-case='pool-mandatory-mtp'>Mandatory Early Offer, no MTP</button> <span class='muted'>A PSTN call that used to connect now fails after the SIP profile was set to Mandatory.</span></li><li><button type='button' class='btn' data-case='pool-public-uds'>Public DNS answers cisco-uds</button> <span class='muted'>collab-edge is correct. Outside Jabber still will not start MRA. Desk phones are fine.</span></li><li><button type='button' class='btn' data-case='pool-iphone-push'>Locked iPhone never rings</button> <span class='muted'>Jabber on the iPhone works while the app is open. After the screen locks, calls vanish. Desktop Jabber is fine.</span></li><li><button type='button' class='btn' data-case='pool-sip-mode-off'>New Expressway, SIP still off</button> <span class='muted'>DNS is published. A new X14.3 pair has no MRA registrations.</span></li><li><button type='button' class='btn' data-case='pool-translation-grant'>A short code grants international</button> <span class='muted'>The lobby cannot dial the international route pattern. A four-digit code on the same phone can.</span></li><li><button type='button' class='btn' data-case='pool-autoreg-open'>Auto-registered phone dials the PSTN</button> <span class='muted'>A phone that just appeared in the cluster can dial national numbers. Nobody built a line for it.</span></li><li><button type='button' class='btn' data-case='pool-hunt-hlog'>Hunt phone never rings</button> <span class='muted'>The pilot matches. Three phones ring. The fourth, which is first in the line group, stays dark.</span></li><li><button type='button' class='btn' data-case='pool-unity-scope'>Opening Greeting instead of sign-in</button> <span class='muted'>A user dials the pilot from their own phone and hears the opening greeting.</span></li><li><button type='button' class='btn' data-case='pool-dna-mask'>DNA and the trunk disagree</button> <span class='muted'>DNA shows one calling-party mask. The SIP trunk trace selected another.</span></li><li><button type='button' class='btn' data-case='pool-queue-loggedout'>Queue with nobody logged in</button> <span class='muted'>Every hunt member pressed HLog. New callers still sit in queue and hear music.</span></li></ol></div>
+<aside class="rail"><div id="casePlayer" class="paper"><p>Choose a case.</p></div></aside></div>
+
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p class="kicker">Next</p>
+    <p><a href="cards.html">Previous · Flashcards</a> · <a href="labs.html">Next · Interactive labs</a> · <a href="../campus/uc-lab-free-university.html">Deep campus · 580 sections</a></p>
+    <div class="sister"><a class="card" href="https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/"><strong>AI Lab</strong></a><a class="card" href="https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/"><strong>Amazon Connect</strong></a><a class="card" href="https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/"><strong>Microsoft Voice</strong></a><a class="card" href="https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/"><strong>Five9</strong></a><a class="card" href="https://cipher0x9.github.io/genesys-cloud-lab-free-university-mesmerizing/"><strong>Genesys Cloud</strong></a><a class="card" href="https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/"><strong>NICE CXone</strong></a><a class="card" href="https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/"><strong>SIP Universe</strong></a><a class="card" href="path.html"><strong>Study path</strong></a></div>
+    <p class="sig">CYPHER0X9</p>
+    <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
+    <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern or takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
+  </div>
+</footer>
+<script src="assets/bank.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/play.js"></script>
+</body>
+</html>

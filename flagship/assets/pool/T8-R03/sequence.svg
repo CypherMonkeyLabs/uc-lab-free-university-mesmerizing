@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="980" height="400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 400" role="img" aria-labelledby="qoss qossd">
+  <title id="qoss">CAC sequence</title>
+  <desc id="qossd">Phone dials, region selects codec, LBM checks the link, then the call proceeds or AAR runs.</desc>
+  <rect width="980" height="400" fill="#0a1020"/>
+  <g font-family="Segoe UI,sans-serif" font-size="13" fill="#e7ecf5">
+    <text x="90" y="32" text-anchor="middle">Phone</text>
+    <text x="300" y="32" text-anchor="middle">Digit analysis</text>
+    <text x="520" y="32" text-anchor="middle">Region</text>
+    <text x="740" y="32" text-anchor="middle">LBM</text>
+  </g>
+  <g stroke="#2a3548">
+    <line x1="90" y1="44" x2="90" y2="380"/>
+    <line x1="300" y1="44" x2="300" y2="380"/>
+    <line x1="520" y1="44" x2="520" y2="380"/>
+    <line x1="740" y1="44" x2="740" y2="380"/>
+  </g>
+  <g font-family="ui-monospace,monospace" font-size="12" fill="#c5d0e0">
+    <line x1="90" y1="80" x2="290" y2="80" stroke="#e6c36a"/>
+    <text x="110" y="74">1 Digits</text>
+    <line x1="300" y1="140" x2="510" y2="140" stroke="#3dbeff"/>
+    <text x="320" y="134">2 Codec and video cap</text>
+    <line x1="520" y1="200" x2="730" y2="200" stroke="#3dd68c"/>
+    <text x="540" y="194">3 Bandwidth on the effective path</text>
+    <line x1="740" y1="270" x2="100" y2="270" stroke="#3dd68c"/>
+    <text x="300" y="264">4 Admit, deduct, setup</text>
+    <line x1="740" y1="330" x2="100" y2="330" stroke="#ff6b8a"/>
+    <text x="250" y="324">4b Or deny. AAR only if configured, and only for bandwidth.</text>
+  </g>
+</svg>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Integrations · UC Lab Free University</title>
+<meta name="description" content="Published Teams Phone and contact-center integration stories.">
+<link rel="icon" href="assets/icon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/site.css">
+<script>
+try {
+  var params = new URLSearchParams(location.search);
+  var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
+  var ok = {paper:1, midnight:1, contrast:1, signal:1, canopy:1};
+  if (ok[t]) document.documentElement.setAttribute("data-theme", t);
+  if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+} catch (e) {}
+</script>
+</head>
+<body data-root="">
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <div class="bar">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
+      <span><strong>UC Lab</strong><small>Free University</small></span>
+    </a>
+    <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
+    <div class="tools">
+      <div class="themes" role="radiogroup" aria-label="Theme">
+        <button type="button" class="swatch-paper" data-theme-set="paper" aria-label="Paper" aria-checked="true"></button>
+        <button type="button" class="swatch-midnight" data-theme-set="midnight" aria-label="Midnight" aria-checked="false"></button>
+        <button type="button" class="swatch-contrast" data-theme-set="contrast" aria-label="High contrast" aria-checked="false"></button>
+        <button type="button" class="swatch-signal" data-theme-set="signal" aria-label="Signal" aria-checked="false"></button>
+        <button type="button" class="swatch-canopy" data-theme-set="canopy" aria-label="Canopy" aria-checked="false"></button>
+      </div>
+      <button type="button" class="btn motion-btn">Motion</button>
+      <a class="btn dl" href="download.html">Offline</a>
+      <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Lab"><a href="index.html">Home</a><a href="path.html">Path</a><a href="flows/index.html">Flows</a><a href="ports.html">Ports</a><a href="ecosystem/index.html">Ecosystem</a><a href="guide/index.html">Guide</a><a href="play/index.html">Play</a><a href="cheats/index.html">Cheats</a><a href="quiz.html">Quiz</a><a href="../campus/uc-lab-free-university.html">Campus</a></nav>
+</header>
+<main id="content" class="wrap">
+
+<p class="kicker">Published stories only</p>
+<h1>Customer integrations</h1>
+<p class="lede">Names below are taken from the vendor's public story or from a published marketplace listing. They are not this lab's customers, and the numbers are the publisher's numbers.</p>
+<article class="paper">
+<h2>Florida Crystals · Teams Phone</h2>
+<p>Microsoft's customer story says telecom expenses dropped by 78 percent after the company consolidated PBX exposure, removed leased lines, and deployed Teams Phone. Direct Routing as a Service, and later Operator Connect, provided PSTN. The story counts 2,322 phone users on Operator Connect, says all on-premises PBX lines were decommissioned, and counts 400 devices with Teams Phone plus SIP common-area phones. Partners named in the story include Logitech, HP | Poly, AudioCodes, and NTT Data.</p>
+<p><a href="https://www.microsoft.com/en/customers/story/1804528563383903958-florida-crystals-corporation-microsoft-teams-phone-manufacturing-en-united-states">Microsoft customer story</a></p>
+</article>
+<article class="paper">
+<h2>AudioCodes · Teams Phone on Azure</h2>
+<p>Microsoft's customer story quotes Benny Matityahu, VP Unified Communications at AudioCodes: a proof of concept that used to take six to eight weeks could be set up in a day after the move to Azure, and in many cases a new customer could be onboarded to Teams Phone within a week. The same story describes Voca as AudioCodes' Teams-native contact center, using Azure Cognitive Services, with routing, queuing, and CRM integration named as product capabilities.</p>
+<p><a href="https://www.microsoft.com/en/customers/story/1722208281384472910-audiocodes-azurecognitiveservices-telecommunications-and-media-en-israel">Microsoft customer story</a></p>
+</article>
+<article class="paper">
+<h2>A published pattern, not a measured end customer</h2>
+<p>Logicalis lists a service to integrate Microsoft Teams Calling with Webex Contact Center using Teams Direct Routing and a Cisco CUBE as the SBC. That is a partner offer. It is not a case study with an outcome, and it is not evidence that every Teams plus Webex Contact Center design uses CUBE.</p>
+<p>Separately, Cisco publishes a Webex Contact Center integration for Microsoft Teams on Microsoft AppSource. The listing describes skills-based routing of inbound calls, consult between agents and subject-matter experts, and support for Microsoft PSTN and third-party Direct Routing. Read the current listing before you design to a sentence on this page.</p>
+<p><a href="https://appsource.microsoft.com/en-us/product/web-apps/cisco.webex-contact-center-microsoft-team?tab=Overview">Webex Contact Center for Microsoft Teams</a></p>
+<p><a href="https://learn.microsoft.com/en-us/microsoftteams/teams-contact-center">Teams contact center models</a></p>
+</article>
+<h2>Sources</h2><ul><li><a href="https://www.microsoft.com/en/customers/story/1804528563383903958-florida-crystals-corporation-microsoft-teams-phone-manufacturing-en-united-states">Florida Crystals story</a></li><li><a href="https://www.microsoft.com/en/customers/story/1722208281384472910-audiocodes-azurecognitiveservices-telecommunications-and-media-en-israel">AudioCodes story</a></li></ul>
+
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p class="kicker">Next</p>
+    <p><a href="roadmap.html">Previous · Roadmap</a> · <a href="quiz.html">Next · Quiz</a> · <a href="../campus/uc-lab-free-university.html">Deep campus · 580 sections</a></p>
+    <div class="sister"><a class="card" href="https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/"><strong>AI Lab</strong></a><a class="card" href="https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/"><strong>Amazon Connect</strong></a><a class="card" href="https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/"><strong>Microsoft Voice</strong></a><a class="card" href="https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/"><strong>Five9</strong></a><a class="card" href="https://cipher0x9.github.io/genesys-cloud-lab-free-university-mesmerizing/"><strong>Genesys Cloud</strong></a><a class="card" href="https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/"><strong>NICE CXone</strong></a><a class="card" href="https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/"><strong>SIP Universe</strong></a><a class="card" href="path.html"><strong>Study path</strong></a></div>
+    <p class="sig">CYPHER0X9</p>
+    <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
+    <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern or takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
+  </div>
+</footer>
+<script src="assets/bank.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/play.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CUBE · UC Lab Free University</title>
+<meta name="description" content="CUBE is a B2BUA. The inside dial-peer and the outside dial-peer are two legs, and each has its own offer.">
+<link rel="icon" href="../assets/icon.svg">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+try {
+  var params = new URLSearchParams(location.search);
+  var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
+  var ok = {paper:1, midnight:1, contrast:1, signal:1, canopy:1};
+  if (ok[t]) document.documentElement.setAttribute("data-theme", t);
+  if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+} catch (e) {}
+</script>
+</head>
+<body data-root="../">
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <div class="bar">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
+      <span><strong>UC Lab</strong><small>Free University</small></span>
+    </a>
+    <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
+    <div class="tools">
+      <div class="themes" role="radiogroup" aria-label="Theme">
+        <button type="button" class="swatch-paper" data-theme-set="paper" aria-label="Paper" aria-checked="true"></button>
+        <button type="button" class="swatch-midnight" data-theme-set="midnight" aria-label="Midnight" aria-checked="false"></button>
+        <button type="button" class="swatch-contrast" data-theme-set="contrast" aria-label="High contrast" aria-checked="false"></button>
+        <button type="button" class="swatch-signal" data-theme-set="signal" aria-label="Signal" aria-checked="false"></button>
+        <button type="button" class="swatch-canopy" data-theme-set="canopy" aria-label="Canopy" aria-checked="false"></button>
+      </div>
+      <button type="button" class="btn motion-btn">Motion</button>
+      <a class="btn dl" href="../download.html">Offline</a>
+      <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Lab"><a href="../index.html">Home</a><a href="../path.html">Path</a><a href="../flows/index.html" aria-current="page">Flows</a><a href="../ports.html">Ports</a><a href="../ecosystem/index.html">Ecosystem</a><a href="../guide/index.html">Guide</a><a href="../play/index.html">Play</a><a href="../cheats/index.html">Cheats</a><a href="../quiz.html">Quiz</a><a href="../../campus/uc-lab-free-university.html">Campus</a></nav>
+</header>
+<main id="content" class="wrap">
+<p class='kicker'>Cisco IOS XE border element</p><h1>CUBE</h1><p class='lede'>CUBE is a B2BUA. The inside dial-peer and the outside dial-peer are two legs, and each has its own offer.</p><div class='read'><div class='prose'><figure class="ladder" data-ladder><svg viewBox="0 0 760 274" role="img" aria-label="Two dial-peers"><defs><marker id='arrow11' markerWidth='8' markerHeight='8' refX='7' refY='3' orient='auto'><path d='M0,0 L8,3 L0,6 Z' fill='#1c1915'/></marker></defs><rect width="760" height="274" rx="16" fill="#fffdf8"/><text x="20" y="24" font-family="Georgia, serif" font-size="16" fill="#a34b24">Two dial-peers</text><text x="126" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">CUCM</text><line x1="126" y1="58" x2="126" y2="258" stroke="#e3d7c6" stroke-width="2"/><text x="380" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">CUBE</text><line x1="380" y1="58" x2="380" y2="258" stroke="#e3d7c6" stroke-width="2"/><text x="633" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">ITSP</text><line x1="633" y1="58" x2="633" y2="258" stroke="#e3d7c6" stroke-width="2"/><g class="msg" data-cap="Incoming match: URI, then other inbound criteria. Dial-peer 0 means nothing you wrote matched."><line x1="126" y1="70" x2="380" y2="70" stroke="#0f6e62" stroke-width="2.4" marker-end="url(#arrow11)"/><text x="253.0" y="62" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#0f6e62">INVITE</text></g><g class="msg" data-cap="Outgoing match is destination-pattern, longest match, then lowest preference."><line x1="380" y1="116" x2="633" y2="116" stroke="#0f6e62" stroke-width="2.4" marker-end="url(#arrow11)"/><text x="506.5" y="108" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#0f6e62">INVITE</text></g><g class="msg" data-cap="The carrier answer is not automatically the SDP CUCM sees."><line x1="633" y1="162" x2="380" y2="162" stroke="#1f7a4d" stroke-width="2.4" marker-end="url(#arrow11)"/><text x="506.5" y="154" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#1f7a4d">200 + SDP</text></g><g class="msg" data-cap="Early-offer or delayed-offer is a property of this leg&#x27;s dial-peer and SIP profile."><line x1="380" y1="208" x2="126" y2="208" stroke="#1f7a4d" stroke-width="2.4" marker-end="url(#arrow11)"/><text x="253.0" y="200" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#1f7a4d">200 + SDP</text></g></svg><div class="ladder-controls"><button type="button" class="btn" data-act="prev">Step back</button><button type="button" class="btn" data-act="play">Play</button><button type="button" class="btn" data-act="next">Step</button></div><p class="ladder-cap muted"></p><ol><li><strong>INVITE</strong> — Incoming match: URI, then other inbound criteria. Dial-peer 0 means nothing you wrote matched.</li><li><strong>INVITE</strong> — Outgoing match is destination-pattern, longest match, then lowest preference.</li><li><strong>200 + SDP</strong> — The carrier answer is not automatically the SDP CUCM sees.</li><li><strong>200 + SDP</strong> — Early-offer or delayed-offer is a property of this leg&#x27;s dial-peer and SIP profile.</li></ol></figure><p>OPTIONS keepalive can busy-out a server-group target. Cause 188 on a server-group usually means the target was busied out, not that the CSS missed.</p><h2>Sources</h2><ul><li><a href="https://www.cisco.com/c/en/us/support/unified-communications/unified-border-element/series.html">CUBE configuration guides</a></li></ul><h2>Study card carried forward</h2><div class='paper inherited'>
+<p class="kicker">Border</p><h1>SBC and CUBE</h1><p class="lede">CUBE is the usual Cisco border between a call manager and a provider. These two cards cover the topology, header normalization, where RTP flows, and what TLS plus SRTP actually protect.</p><figure><div class="diagram-scroll slim" tabindex="0"><img src="../assets/inherited/cube-topology.svg" alt="Topology: CUCM at 192.0.2.30, CUBE inside 192.0.2.40 and outside 198.51.100.10, ITSP at 203.0.113.10."></div><figcaption>Documentation addresses only (RFC 5737).</figcaption></figure><p class="hint">On a phone, swipe a wide ladder sideways. The steps below repeat the same sequence.</p><figure><div class="diagram-scroll slim" tabindex="0"><img src="../assets/inherited/cube-media.svg" alt="Flow-through anchors RTP on CUBE. Flow-around keeps RTP between the endpoints while SIP still passes the SBC."></div><figcaption>The SDP connection address tells you which picture you are in.</figcaption></figure><p class="hint">On a phone, swipe a wide ladder sideways. The steps below repeat the same sequence.</p>
+<h2>Why the border exists</h2>
+<p>Cisco Unified Border Element (CUBE) is an IOS SBC. In the usual enterprise trunk it sits between CUCM and an internet telephony service provider. CUCM speaks SIP to 192.0.2.40. The provider speaks SIP to 198.51.100.10. Phones and directory numbers stay on the inside. The provider does not need a route to every phone.</p>
+<p>The border is where you hide topology, normalize headers the peer does not understand, interwork DTMF, and decide whether media is anchored. It is also a trust boundary: signaling and media encryption can start or stop here.</p>
+<h2>SIP normalization</h2>
+<p>Normalization means changing the SIP so the next hop will accept it, without changing the meaning of the call. On CUBE that is usually a SIP profile applied to a dial-peer. Typical, still generic, jobs:</p>
+<ul>
+<li>Add, strip, or rewrite a header the peer rejects. A single unsupported header is enough for some providers to answer 400.</li>
+<li>Map identity. Inside the enterprise you may see <code>P-Asserted-Identity</code> (RFC 3325). The provider may want that identity in a different header, or may require a name and number format you do not use internally.</li>
+<li>Pass through, or consume, mid-call signaling such as UPDATE and re-INVITE. Consuming it without understanding it is how hold and resume break at the border.</li>
+<li>Force early offer when the provider refuses an INVITE that has no SDP. Delayed offer (SDP in the 200 OK, answer in the ACK) is legal SIP and a frequent interop fault.</li>
+</ul>
+<p>Keep a before-and-after trace of one call. If you cannot point at the header you changed, the profile is folklore.</p>
+<h2>Flow-through and flow-around</h2>
+<div class="table-scroll"><table>
+<thead><tr><th></th><th>Flow-through</th><th>Flow-around</th></tr></thead>
+<tbody>
+<tr><td>Signaling</td><td>Terminates on CUBE and is reoriginated.</td><td>Still terminates on CUBE.</td></tr>
+<tr><td>RTP</td><td>Anchored. CUBE writes its own address and port into SDP.</td><td>Between the endpoints. SDP keeps their addresses.</td></tr>
+<tr><td>Use it when</td><td>You transcode, interwork DTMF in media, record on the SBC, or convert SRTP to RTP.</td><td>You only need a signaling border and both sides already agree on media.</td></tr>
+<tr><td>Default on CUBE</td><td>Yes. Flow-through is the normal behavior.</td><td>Configured, for example with media flow-around. Confirm the command for your IOS-XE release.</td></tr>
+</tbody></table></div>
+<p>If the SDP you capture on the outside leg shows <code>c=IN IP4 198.51.100.10</code>, media is on the SBC. If it shows the phone's address, media is not on the SBC. Flow-around cannot do a job that requires CUBE to be in the RTP path.</p>
+<h2>TLS and SRTP</h2>
+<ul>
+<li>SIP over UDP or TCP conventionally uses port <strong>5060</strong>. SIP over TLS conventionally uses port <strong>5061</strong>. The RTP ports are whatever the SDP negotiates inside the range you configured.</li>
+<li>A <code>sips:</code> URI means TLS on each hop (RFC 3261). Many trunks instead keep a <code>sip:</code> URI and turn on TLS at the dial-peer. Those are not the same promise. A single clear hop anywhere in a <code>sips:</code> path is a failure. A <code>sip:</code> URI with one TLS hop says nothing about the next hop.</li>
+<li>SRTP (RFC 3711) encrypts RTP. With SDES (RFC 4568) the key is in SDP as <code>a=crypto</code>, and the media protocol token is <code>RTP/SAVP</code>. TLS on the signaling is what stops that key from traveling in clear text.</li>
+<li>CUBE can speak SRTP on one leg and RTP on the other. That conversion requires flow-through. It is a deliberate security decision: the inside leg may be trusted while the outside leg is not, or the reverse. Write down which leg is clear.</li>
+</ul>
+<aside class="callout mint"><h3>Remember</h3><p>Signaling always meets the SBC. Media meets the SBC only in flow-through. Read <code>c=</code> and the m= port. RTP/SAVP plus a=crypto means the key is in the SDP, so protect the SIP.</p></aside><aside class="callout peach"><h3>Common mistakes</h3><ul><li>Enabling flow-around and a transcoder on the same call, then debugging a failure the platform is not offering to do.</li><li>Assuming port 5061 means every hop is encrypted.</li><li>Rewriting headers in a profile you cannot reproduce from a trace.</li></ul></aside><section class="sources"><h2>Sources</h2><ul><li>Cisco IOS CUBE configuration guides: SIP trunking, media flow-around, SIP profiles, TLS, and SRTP</li><li>RFC 3261 (sips and SIP transport)</li><li>RFC 3325, private extensions for asserted identity</li><li>RFC 3711, SRTP, and RFC 4568, SDES keying in SDP</li></ul></section>
+</div></div><aside class='rail'><div class='paper'><p class='kicker'>Level</p><p class='num'>3 · Edge</p><p class='muted'>Play the ladder, then read the inherited study card when this page has one.</p></div><div class='paper'><p class='kicker'>Proof habit</p><p>Leg, identifier, counter, capture. A 200 OK is not two-way audio.</p></div></aside></div>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p class="kicker">Next</p>
+    <p><a href="../flows/dial-plan.html">Previous · CUCM dial plan</a> · <a href="../flows/pstn.html">Next · CUCM to PSTN</a> · <a href="../../campus/uc-lab-free-university.html">Deep campus · 580 sections</a></p>
+    <div class="sister"><a class="card" href="https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/"><strong>AI Lab</strong></a><a class="card" href="https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/"><strong>Amazon Connect</strong></a><a class="card" href="https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/"><strong>Microsoft Voice</strong></a><a class="card" href="https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/"><strong>Five9</strong></a><a class="card" href="https://cipher0x9.github.io/genesys-cloud-lab-free-university-mesmerizing/"><strong>Genesys Cloud</strong></a><a class="card" href="https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/"><strong>NICE CXone</strong></a><a class="card" href="https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/"><strong>SIP Universe</strong></a><a class="card" href="../path.html"><strong>Study path</strong></a></div>
+    <p class="sig">CYPHER0X9</p>
+    <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
+    <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern or takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
+  </div>
+</footer>
+<script src="../assets/bank.js"></script>
+<script src="../assets/site.js"></script>
+<script src="../assets/play.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hold · UC Lab Free University</title>
+<meta name="description" content="Hold is a new offer that changes direction, not a mute button on one phone.">
+<link rel="icon" href="../assets/icon.svg">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+try {
+  var params = new URLSearchParams(location.search);
+  var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
+  var ok = {paper:1, midnight:1, contrast:1, signal:1, canopy:1};
+  if (ok[t]) document.documentElement.setAttribute("data-theme", t);
+  if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+} catch (e) {}
+</script>
+</head>
+<body data-root="../">
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <div class="bar">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
+      <span><strong>UC Lab</strong><small>Free University</small></span>
+    </a>
+    <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
+    <div class="tools">
+      <div class="themes" role="radiogroup" aria-label="Theme">
+        <button type="button" class="swatch-paper" data-theme-set="paper" aria-label="Paper" aria-checked="true"></button>
+        <button type="button" class="swatch-midnight" data-theme-set="midnight" aria-label="Midnight" aria-checked="false"></button>
+        <button type="button" class="swatch-contrast" data-theme-set="contrast" aria-label="High contrast" aria-checked="false"></button>
+        <button type="button" class="swatch-signal" data-theme-set="signal" aria-label="Signal" aria-checked="false"></button>
+        <button type="button" class="swatch-canopy" data-theme-set="canopy" aria-label="Canopy" aria-checked="false"></button>
+      </div>
+      <button type="button" class="btn motion-btn">Motion</button>
+      <a class="btn dl" href="../download.html">Offline</a>
+      <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Lab"><a href="../index.html">Home</a><a href="../path.html">Path</a><a href="../flows/index.html" aria-current="page">Flows</a><a href="../ports.html">Ports</a><a href="../ecosystem/index.html">Ecosystem</a><a href="../guide/index.html">Guide</a><a href="../play/index.html">Play</a><a href="../cheats/index.html">Cheats</a><a href="../quiz.html">Quiz</a><a href="../../campus/uc-lab-free-university.html">Campus</a></nav>
+</header>
+<main id="content" class="wrap">
+<p class='kicker'>SIP · RFC 3264</p><h1>Hold</h1><p class='lede'>Hold is a new offer that changes direction, not a mute button on one phone.</p><div class='read'><div class='prose'><figure class="ladder" data-ladder><svg viewBox="0 0 760 320" role="img" aria-label="re-INVITE sendonly"><defs><marker id='arrow4' markerWidth='8' markerHeight='8' refX='7' refY='3' orient='auto'><path d='M0,0 L8,3 L0,6 Z' fill='#1c1915'/></marker></defs><rect width="760" height="320" rx="16" fill="#fffdf8"/><text x="20" y="24" font-family="Georgia, serif" font-size="16" fill="#a34b24">re-INVITE sendonly</text><text x="190" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">Alice</text><line x1="190" y1="58" x2="190" y2="304" stroke="#e3d7c6" stroke-width="2"/><text x="570" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">Bob</text><line x1="570" y1="58" x2="570" y2="304" stroke="#e3d7c6" stroke-width="2"/><g class="msg" data-cap="Same dialog. SDP a=sendonly, or inactive when neither side should send."><line x1="190" y1="70" x2="570" y2="70" stroke="#0f6e62" stroke-width="2.4" marker-end="url(#arrow4)"/><text x="380.0" y="62" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#0f6e62">re-INVITE</text></g><g class="msg" data-cap="Bob answers with recvonly, matching the direction."><line x1="570" y1="116" x2="190" y2="116" stroke="#1f7a4d" stroke-width="2.4" marker-end="url(#arrow4)"/><text x="380.0" y="108" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#1f7a4d">200</text></g><g class="msg" data-cap="The new offer is in force. Music, if any, is a local decision."><line x1="190" y1="162" x2="570" y2="162" stroke="#0f6e62" stroke-width="2.4" marker-end="url(#arrow4)"/><text x="380.0" y="154" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#0f6e62">ACK</text></g><g class="msg" data-cap="Resume offers sendrecv again."><line x1="190" y1="208" x2="570" y2="208" stroke="#0f6e62" stroke-width="2.4" marker-end="url(#arrow4)"/><text x="380.0" y="200" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#0f6e62">re-INVITE</text></g><g class="msg" data-cap="Both directions restored."><line x1="570" y1="254" x2="190" y2="254" stroke="#1f7a4d" stroke-width="2.4" marker-end="url(#arrow4)"/><text x="380.0" y="246" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#1f7a4d">200</text></g></svg><div class="ladder-controls"><button type="button" class="btn" data-act="prev">Step back</button><button type="button" class="btn" data-act="play">Play</button><button type="button" class="btn" data-act="next">Step</button></div><p class="ladder-cap muted"></p><ol><li><strong>re-INVITE</strong> — Same dialog. SDP a=sendonly, or inactive when neither side should send.</li><li><strong>200</strong> — Bob answers with recvonly, matching the direction.</li><li><strong>ACK</strong> — The new offer is in force. Music, if any, is a local decision.</li><li><strong>re-INVITE</strong> — Resume offers sendrecv again.</li><li><strong>200</strong> — Both directions restored.</li></ol></figure><p>If the far side answers sendrecv to a sendonly offer, you still have a direction bug. Check both SDPs before you blame the network.</p><h2>Sources</h2><ul><li><a href="https://www.rfc-editor.org/rfc/rfc3264">RFC 3264</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc3261">RFC 3261</a></li></ul><h2>Study card carried forward</h2><div class='paper inherited'>
+<p class="kicker">SIP · RFC 3264</p><h1>Hold</h1><p class="lede">Hold is a change to an existing dialog. The same Call-ID stays. A new INVITE, with a higher CSeq, changes the direction attribute on the media line.</p><figure><div class="diagram-scroll mid" tabindex="0"><img src="../assets/inherited/sip-hold.svg" alt="Ladder: Alice sends a re-INVITE with sendonly, Bob answers recvonly, then a later re-INVITE with sendrecv resumes the call."></div><figcaption>Alice holds Bob, then resumes. Music is optional and is not a third SIP dialog.</figcaption></figure><p class="hint">On a phone, swipe a wide ladder sideways. The steps below repeat the same sequence.</p><h2>Sequence</h2><ol class="steps"><li><strong>re-INVITE</strong> — Alice to Bob. a=sendonly on the audio line</li><li><strong>200 OK</strong> — Bob to Alice. Answer uses a=recvonly</li><li><strong>ACK</strong> — Alice to Bob. Hold is now in effect</li><li><strong>RTP one way</strong> — Alice to Bob. Often music from Alice&#x27;s side</li><li><strong>re-INVITE</strong> — Alice to Bob. a=sendrecv resumes the call</li><li><strong>200 OK</strong> — Bob to Alice. a=sendrecv</li><li><strong>ACK</strong> — Alice to Bob. Both directions open again</li><li><strong>RTP both ways</strong> — Alice to Bob. Conversation resumes</li></ol>
+<h2>Direction attributes</h2>
+<p>RFC 3264 section 8.4 replaced the old habit of setting the connection address to <code>0.0.0.0</code>. On a modern offer:</p>
+<ul>
+<li><code>a=sendonly</code> means the offerer will send media and will not receive it. The answer should be <code>a=recvonly</code> (or <code>a=inactive</code> if the answerer will not receive either).</li>
+<li><code>a=inactive</code> means neither direction. Both sides use inactive. Use this when nobody should send, including music.</li>
+<li><code>a=recvonly</code> is the mirror of sendonly.</li>
+<li><code>a=sendrecv</code> is the normal two-way state, and it is the default when no direction attribute is present.</li>
+</ul>
+<p>Music on hold is an application choice. The RFC does not require it. If Alice offers sendonly, her side is allowed to send a music stream. Bob has agreed only to receive.</p>
+<pre>v=0
+o=alice 2890844526 2890844527 IN IP4 192.0.2.10
+s=Hold
+c=IN IP4 192.0.2.10
+t=0 0
+m=audio 49170 RTP/AVP 0
+a=rtpmap:0 PCMU/8000
+a=sendonly</pre>
+<p>Bob's answer uses his own address and <code>a=recvonly</code>. The port stays a real RTP port. Setting the port to <strong>0</strong> rejects the stream. That removes media. It is not hold.</p>
+<aside class="callout mint"><h3>Remember</h3><p>Hold keeps the dialog and keeps the m= line. It changes direction. Resume is another re-INVITE back to sendrecv, then ACK.</p></aside><aside class="callout peach"><h3>Common mistakes</h3><ul><li>Starting a second Call-ID to place someone on hold.</li><li>Using c=0.0.0.0 and hoping every peer still understands it.</li><li>Answering sendrecv to a sendonly offer.</li><li>Using port 0 and then wondering why resume has no stream left.</li></ul></aside><section class="sources"><h2>Sources</h2><ul><li>RFC 3264, section 8.4 (putting a unicast stream on hold)</li><li>RFC 3261, section 14 (modifying an existing session)</li></ul></section>
+</div></div><aside class='rail'><div class='paper'><p class='kicker'>Level</p><p class='num'>2 · Call control</p><p class='muted'>Play the ladder, then read the inherited study card when this page has one.</p></div><div class='paper'><p class='kicker'>Proof habit</p><p>Leg, identifier, counter, capture. A 200 OK is not two-way audio.</p></div></aside></div>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p class="kicker">Next</p>
+    <p><a href="../flows/sdp.html">Previous · Offer and answer</a> · <a href="../flows/transfer.html">Next · Transfer</a> · <a href="../../campus/uc-lab-free-university.html">Deep campus · 580 sections</a></p>
+    <div class="sister"><a class="card" href="https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/"><strong>AI Lab</strong></a><a class="card" href="https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/"><strong>Amazon Connect</strong></a><a class="card" href="https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/"><strong>Microsoft Voice</strong></a><a class="card" href="https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/"><strong>Five9</strong></a><a class="card" href="https://cipher0x9.github.io/genesys-cloud-lab-free-university-mesmerizing/"><strong>Genesys Cloud</strong></a><a class="card" href="https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/"><strong>NICE CXone</strong></a><a class="card" href="https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/"><strong>SIP Universe</strong></a><a class="card" href="../path.html"><strong>Study path</strong></a></div>
+    <p class="sig">CYPHER0X9</p>
+    <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
+    <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern or takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
+  </div>
+</footer>
+<script src="../assets/bank.js"></script>
+<script src="../assets/site.js"></script>
+<script src="../assets/play.js"></script>
+</body>
+</html>
