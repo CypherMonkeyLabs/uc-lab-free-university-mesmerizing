@@ -31,18 +31,6 @@ try {
     </a>
     <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
     <div class="tools">
-      <label class="lang"><span class="sr-only" data-i18n="langLabel">Language</span>
-        <select id="langSwitch" aria-label="Language">
-          <option value="en">English</option>
-          <option value="es">Español</option>
-          <option value="hi">हिन्दी</option>
-          <option value="te">తెలుగు</option>
-          <option value="fr">Français</option>
-          <option value="de">Deutsch</option>
-          <option value="ja">日本語</option>
-          <option value="ar">العربية</option>
-        </select>
-      </label>
       <div class="themes" role="radiogroup" aria-label="Theme">
         <button type="button" class="swatch-neon" data-theme-set="neon" aria-label="Neon" aria-checked="true"></button>
         <button type="button" class="swatch-holographic" data-theme-set="holographic" aria-label="Holographic" aria-checked="false"></button>
@@ -61,6 +49,16 @@ try {
     </form>
   </div>
   <nav class="tabs" aria-label="Lab"><a href="../index.html" data-i18n="navHome">Home</a><a href="../diagrams/index.html" data-i18n="navDiagrams">Diagrams</a><a href="../flows/index.html" data-i18n="navFlows">Flows</a><a href="../charts/index.html" data-i18n="navCharts">Charts</a><a href="../cheats/index.html" data-i18n="navCheats">Cheat Codes</a><a href="../play/index.html" data-i18n="navPlay">Play</a><a href="../ecosystem/index.html" aria-current="page" data-i18n="navEco">Ecosystem</a><a href="../download.html" data-i18n="navDownloads">Downloads</a><a href="../guide/interview.html" data-i18n="navCareers">Careers</a></nav>
+  <div class="lang-chips" role="radiogroup" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true"><span aria-hidden="true">🇬🇧</span> EN</button>
+    <button type="button" data-lang="es" aria-pressed="false"><span aria-hidden="true">🇪🇸</span> ES</button>
+    <button type="button" data-lang="hi" aria-pressed="false"><span aria-hidden="true">🇮🇳</span> HI</button>
+    <button type="button" data-lang="te" aria-pressed="false"><span aria-hidden="true">🇮🇳</span> TE</button>
+    <button type="button" data-lang="fr" aria-pressed="false"><span aria-hidden="true">🇫🇷</span> FR</button>
+    <button type="button" data-lang="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> DE</button>
+    <button type="button" data-lang="ja" aria-pressed="false"><span aria-hidden="true">🇯🇵</span> JA</button>
+    <button type="button" data-lang="ar" aria-pressed="false"><span aria-hidden="true">🇸🇦</span> AR</button>
+  </div>
   <p class="progress" id="visitProgress">Progress</p>
 </header>
 <main id="content" class="wrap">

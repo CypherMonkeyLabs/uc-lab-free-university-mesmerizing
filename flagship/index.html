@@ -31,18 +31,6 @@ try {
     </a>
     <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
     <div class="tools">
-      <label class="lang"><span class="sr-only" data-i18n="langLabel">Language</span>
-        <select id="langSwitch" aria-label="Language">
-          <option value="en">English</option>
-          <option value="es">Español</option>
-          <option value="hi">हिन्दी</option>
-          <option value="te">తెలుగు</option>
-          <option value="fr">Français</option>
-          <option value="de">Deutsch</option>
-          <option value="ja">日本語</option>
-          <option value="ar">العربية</option>
-        </select>
-      </label>
       <div class="themes" role="radiogroup" aria-label="Theme">
         <button type="button" class="swatch-neon" data-theme-set="neon" aria-label="Neon" aria-checked="true"></button>
         <button type="button" class="swatch-holographic" data-theme-set="holographic" aria-label="Holographic" aria-checked="false"></button>
@@ -61,11 +49,27 @@ try {
     </form>
   </div>
   <nav class="tabs" aria-label="Lab"><a href="index.html" aria-current="page" data-i18n="navHome">Home</a><a href="diagrams/index.html" data-i18n="navDiagrams">Diagrams</a><a href="flows/index.html" data-i18n="navFlows">Flows</a><a href="charts/index.html" data-i18n="navCharts">Charts</a><a href="cheats/index.html" data-i18n="navCheats">Cheat Codes</a><a href="play/index.html" data-i18n="navPlay">Play</a><a href="ecosystem/index.html" data-i18n="navEco">Ecosystem</a><a href="download.html" data-i18n="navDownloads">Downloads</a><a href="guide/interview.html" data-i18n="navCareers">Careers</a></nav>
+  <div class="lang-chips" role="radiogroup" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true"><span aria-hidden="true">🇬🇧</span> EN</button>
+    <button type="button" data-lang="es" aria-pressed="false"><span aria-hidden="true">🇪🇸</span> ES</button>
+    <button type="button" data-lang="hi" aria-pressed="false"><span aria-hidden="true">🇮🇳</span> HI</button>
+    <button type="button" data-lang="te" aria-pressed="false"><span aria-hidden="true">🇮🇳</span> TE</button>
+    <button type="button" data-lang="fr" aria-pressed="false"><span aria-hidden="true">🇫🇷</span> FR</button>
+    <button type="button" data-lang="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> DE</button>
+    <button type="button" data-lang="ja" aria-pressed="false"><span aria-hidden="true">🇯🇵</span> JA</button>
+    <button type="button" data-lang="ar" aria-pressed="false"><span aria-hidden="true">🇸🇦</span> AR</button>
+  </div>
   <p class="progress" id="visitProgress">Progress</p>
 </header>
 <main id="content" class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li aria-current="page">Home</li></ol></nav>
 <section class="bleed" data-effects data-parallax>
+<div class="icon-dock" id="iconDock">
+<div class="icon-track">
+<canvas id="iconStage" aria-hidden="true"></canvas>
+<div class="icon-links"><a href="tracks/start.html" data-shape="start"><span>Start</span></a><a href="tracks/sip.html" data-shape="sip"><span>SIP</span></a><a href="tracks/cucm.html" data-shape="cucm"><span>CUCM</span></a><a href="tracks/cloud.html" data-shape="cloud"><span>Webex</span></a><a href="tracks/ucce.html" data-shape="ucce"><span>UCCE</span></a><a href="tracks/ccaas.html" data-shape="ccaas"><span>CCaaS</span></a><a href="tracks/e911.html" data-shape="e911"><span>E911</span></a><a href="tracks/qos.html" data-shape="qos"><span>QoS</span></a><a href="tracks/migrate.html" data-shape="migrate"><span>Migrate</span></a><a href="tracks/trouble.html" data-shape="trouble"><span>Trouble</span></a><a href="tracks/evidence.html" data-shape="evidence"><span>Evidence</span></a><a href="tracks/design.html" data-shape="design"><span>Design</span></a><a href="tracks/practice.html" data-shape="practice"><span>Practice</span></a><a href="tracks/reference.html" data-shape="reference"><span>Reference</span></a></div>
+</div>
+</div>
 <div class="neon-fallback" aria-hidden="true">
   <div class="grid"></div>
   <div class="sparks"></div>
@@ -74,35 +78,10 @@ try {
   <div class="ring r3"></div>
   <div class="orbit"><b></b><b></b><b></b><b></b></div>
 </div>
-<canvas id="hero3d" aria-label="Orbiting three.js call path with a phone, CUCM, CUBE, and cloud"></canvas>
+<canvas id="hero3d" aria-label="Orbiting call path with labelled CUCM, Webex, UCCE, SBC, PSTN, and Teams nodes"></canvas>
 <div class="bleed-copy">
 <p class="kicker" data-i18n="greet">Welcome to the lab</p>
 <h1 data-i18n="heroTitle">Voice, UC, and contact center.</h1>
-<div class="mascots" aria-hidden="true"><svg class="mascot" viewBox="0 0 76 96" data-mood="study" data-variant="study" aria-hidden="true">
-<ellipse cx="38" cy="36" rx="22" ry="20" fill="var(--fur, #fde047)"/>
-<circle class="ear" cx="18" cy="22" r="8" fill="var(--ear, #e879f9)"/><circle class="ear" cx="58" cy="22" r="8" fill="var(--ear, #22d3ee)"/>
-<g class="eyes"><ellipse cx="30" cy="34" rx="3.2" ry="3.2" fill="#172033"/><ellipse cx="46" cy="34" rx="3.2" ry="3.2" fill="#172033"/>
-<ellipse class="lid" cx="30" cy="34" rx="4.2" ry="3.6" fill="var(--fur, #fde047)"/><ellipse class="lid" cx="46" cy="34" rx="4.2" ry="3.6" fill="var(--fur, #fde047)"/></g>
-<path d="M28 58c6 6 14 6 20 0" fill="none" stroke="#172033" stroke-width="2"/>
-<rect x="24" y="62" width="28" height="22" rx="8" fill="var(--suit, #22d3ee)"/>
-<g class="arm"><path d="M20 68c-8 2-12 10-8 14 4-2 8-2 10 2" fill="var(--fur, #fde047)" stroke="#172033" stroke-width="1"/></g>
-</svg><svg class="mascot" viewBox="0 0 76 96" data-mood="alert" data-variant="alert" aria-hidden="true">
-<ellipse cx="38" cy="36" rx="22" ry="20" fill="var(--fur, #fde047)"/>
-<circle class="ear" cx="18" cy="22" r="8" fill="var(--ear, #e879f9)"/><circle class="ear" cx="58" cy="22" r="8" fill="var(--ear, #22d3ee)"/>
-<g class="eyes"><ellipse cx="30" cy="34" rx="3.2" ry="3.2" fill="#172033"/><ellipse cx="46" cy="34" rx="3.2" ry="3.2" fill="#172033"/>
-<ellipse class="lid" cx="30" cy="34" rx="4.2" ry="3.6" fill="var(--fur, #fde047)"/><ellipse class="lid" cx="46" cy="34" rx="4.2" ry="3.6" fill="var(--fur, #fde047)"/></g>
-<circle cx="38" cy="58" r="4" fill="#172033"/>
-<rect x="24" y="62" width="28" height="22" rx="8" fill="var(--suit, #22d3ee)"/>
-<g class="arm"><path d="M20 68c-8 2-12 10-8 14 4-2 8-2 10 2" fill="var(--fur, #fde047)" stroke="#172033" stroke-width="1"/></g>
-</svg><svg class="mascot" viewBox="0 0 76 96" data-mood="celebrate" data-variant="celebrate" aria-hidden="true">
-<ellipse cx="38" cy="36" rx="22" ry="20" fill="var(--fur, #fde047)"/>
-<circle class="ear" cx="18" cy="22" r="8" fill="var(--ear, #e879f9)"/><circle class="ear" cx="58" cy="22" r="8" fill="var(--ear, #22d3ee)"/>
-<g class="eyes"><ellipse cx="30" cy="34" rx="3.2" ry="3.2" fill="#172033"/><ellipse cx="46" cy="34" rx="3.2" ry="3.2" fill="#172033"/>
-<ellipse class="lid" cx="30" cy="34" rx="4.2" ry="3.6" fill="var(--fur, #fde047)"/><ellipse class="lid" cx="46" cy="34" rx="4.2" ry="3.6" fill="var(--fur, #fde047)"/></g>
-<path d="M28 54c6 10 14 10 20 0" fill="none" stroke="#172033" stroke-width="2"/>
-<rect x="24" y="62" width="28" height="22" rx="8" fill="var(--suit, #22d3ee)"/>
-<g class="arm"><path d="M20 68c-8 2-12 10-8 14 4-2 8-2 10 2" fill="var(--fur, #fde047)" stroke="#172033" stroke-width="1"/></g>
-</svg></div>
 <p class="symbols" aria-label="Symbols"><span>5060</span><span>5061</span><span>EF 46</span><span>RTP</span></p>
 <p class="lede" data-i18n="heroLede">Fundamentals, then the edge, the cloud, and the systems around the agent.</p>
 <div class="actions">
@@ -111,6 +90,15 @@ try {
 <a class="btn" href="../campus/uc-lab-free-university.html" data-i18n="campus">Deep campus</a>
 </div>
 </div>
+<div class="hero-mascot"><svg class="mascot" viewBox="0 0 76 96" data-mood="study" data-variant="study" aria-hidden="true">
+<ellipse cx="38" cy="36" rx="22" ry="20" fill="var(--fur, #fde047)"/>
+<circle class="ear" cx="18" cy="22" r="8" fill="var(--ear, #e879f9)"/><circle class="ear" cx="58" cy="22" r="8" fill="var(--ear, #22d3ee)"/>
+<g class="eyes"><ellipse cx="30" cy="34" rx="3.2" ry="3.2" fill="#172033"/><ellipse cx="46" cy="34" rx="3.2" ry="3.2" fill="#172033"/>
+<ellipse class="lid" cx="30" cy="34" rx="4.2" ry="3.6" fill="var(--fur, #fde047)"/><ellipse class="lid" cx="46" cy="34" rx="4.2" ry="3.6" fill="var(--fur, #fde047)"/></g>
+<path d="M28 58c6 6 14 6 20 0" fill="none" stroke="#172033" stroke-width="2"/>
+<rect x="24" y="62" width="28" height="22" rx="8" fill="var(--suit, #22d3ee)"/>
+<g class="arm"><path d="M20 68c-8 2-12 10-8 14 4-2 8-2 10 2" fill="var(--fur, #fde047)" stroke="#172033" stroke-width="1"/></g>
+</svg></div>
 <div class="ticker" aria-hidden="true"><span>5060 SIP · 5061 TLS · 2000 SCCP · 2443 Secure SCCP · 69 TFTP · 6970 HTTP · EF 46 · RTP 16384–32767 · 911 direct dial · </span></div>
 <section class="stats" aria-label="Counts">
 <div class="stat glass"><svg class="visit-ring" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="16"></circle><circle class="fg" id="visitRing" cx="21" cy="21" r="16"></circle></svg><span class="num" data-count="29">29</span><span class="label">Playable flows</span></div>

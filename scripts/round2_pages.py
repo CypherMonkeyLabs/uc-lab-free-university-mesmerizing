@@ -267,20 +267,22 @@ def write_guide(write_page, sources, bank: dict) -> None:
     for question in samples:
         choices = "".join(f"<li>{choice}</li>" for choice in question.get("choices") or [])
         answer = (question.get("choices") or [""])[question.get("answer") or 0]
+        q_track = html.escape(str(question.get("track") or "General"))
         items.append(
-            f"<article class='paper'><h2>{question.get('q')}</h2><p class='muted'>{track}</p><ul>{choices}</ul>"
-            f"<p><strong>Reason in the bank:</strong> {answer}</p></article>"
+            f"<article class='paper'><h2>{html.escape(str(question.get('q') or ''))}</h2><p class='muted'>{q_track}</p><ul>{choices}</ul>"
+            f"<p><strong>Reason in the bank:</strong> {html.escape(str(answer))}</p></article>"
         )
     write_page("guide/interview.html", "Interview and career", f"""
 <p class="kicker">Show the leg</p>
-<h1>Interview prep and career path</h1>
-<p class="lede">Six questions from the idea-pool bank, one track each. The scored quiz has the other {len(bank['questions']) - 6}.</p>
-<div class="atlas">
-<article class="card glass"><p class="num">01</p><h2>Voice and SIP</h2><p>Draw registration and a basic call. A 200 OK is not audio.</p></article>
-<article class="card glass"><p class="num">02</p><h2>Call control and the SBC</h2><p>CSS miss, dial-peer 0, or a carrier timeout. Name which leg.</p></article>
-<article class="card glass"><p class="num">03</p><h2>Cloud PSTN</h2><p>Calling Plan, local gateway, Operator Connect, Direct Routing. Do not mix their traces.</p></article>
-<article class="card glass"><p class="num">04</p><h2>Around the agent</h2><p>Call type or entry point, then recording, WFM, CRM, and a handoff.</p></article>
-</div>
+<h1 data-i18n="pageCareers">Interview prep and career path</h1>
+<p class="lede">Six questions from the idea-pool bank, one track each. The scored quiz has the other {len(bank['questions']) - 6}. Open a stop on the timeline. This lab does not publish wages.</p>
+<ol class="timeline">
+<li><button type="button" aria-expanded="true">01 · Voice and SIP</button><div class="time-body"><p>Draw registration and a basic call. A 200 OK is not audio.</p></div></li>
+<li><button type="button" aria-expanded="false">02 · Call control and the SBC</button><div class="time-body" hidden><p>CSS miss, dial-peer 0, or a carrier timeout. Name which leg.</p></div></li>
+<li><button type="button" aria-expanded="false">03 · Cloud PSTN</button><div class="time-body" hidden><p>Calling Plan, local gateway, Operator Connect, Direct Routing. Do not mix their traces.</p></div></li>
+<li><button type="button" aria-expanded="false">04 · Around the agent</button><div class="time-body" hidden><p>Call type or entry point, then recording, WFM, CRM, and a handoff.</p></div></li>
+<li><button type="button" aria-expanded="false">05 · Proof you can show</button><div class="time-body" hidden><p>Cisco's February 2026 set is one public map: CLCOR, then a concentration. It is not the only way to be hired. The certifications page has the exam names.</p></div></li>
+</ol>
 {''.join(items)}
 <h2>A path, not a salary table</h2>
 <p>This lab does not publish wages. Hiring pages move, and a number here would be a guess. The work itself has a readable order:</p>
@@ -363,8 +365,29 @@ def write_guide(write_page, sources, bank: dict) -> None:
 def write_play(write_page, sources, bank: dict) -> None:
     write_page("play/index.html", "Play", """
 <p class="kicker">Practice</p>
-<h1>Play</h1>
-<p class="lede">Scores stay in this browser. Nothing is sent to a server.</p>
+<h1 data-i18n="pagePlay">Play</h1>
+<p class="lede">Scores stay in this browser. Nothing is sent to a server. Break a hop in the sim, then open a full game.</p>
+<section class="sim glass" id="labSim">
+<h2>Break a hop</h2>
+<div class="sim-board" id="simBoard">
+<span data-node="register">Phone</span><i data-link="register"></i>
+<span data-node="css">CUCM</span><i data-link="css"></i>
+<span data-node="pstn">SBC</span><i data-link="pstn"></i>
+<span data-node="pstn-end">PSTN</span>
+<span data-node="webex">Webex</span>
+<span data-node="teams">Teams</span>
+<span data-node="ucce">UCCE</span>
+</div>
+<p id="simOut">Choose a hop. The note is the teaching read from this lab, not a live trace.</p>
+<div class="sim-path">
+<button type="button" data-hop="register">Phone → CUCM</button>
+<button type="button" data-hop="css">CUCM → SBC</button>
+<button type="button" data-hop="pstn">SBC → PSTN</button>
+<button type="button" data-hop="webex">Webex location</button>
+<button type="button" data-hop="teams">Teams PSTN</button>
+<button type="button" data-hop="ucce">UCCE</button>
+</div>
+</section>
 <div class="atlas">
 <a class="card" href="ports-game.html"><h2>Ports game</h2><p>Eight rounds. Six correct earns a badge.</p></a>
 <a class="card" href="map.html"><h2>Flow map</h2><p>Click the nodes. Three opens earn a badge.</p></a>
@@ -624,11 +647,36 @@ def write_cheats(write_page, sources, bank: dict) -> list[str]:
         "Printable cited flashcards.",
     )
     links = "".join(f"<li><a href='{slug}.html'>{slug}</a> · <a href='{slug}.pdf'>PDF</a> · <a href='{slug}.png'>PNG</a></li>" for slug in slugs)
+    faces = {
+        "ports": "5060 SIP, 5061 TLS, 2000 SCCP, 69 TFTP, 6970 HTTP. From the CUCM 15 port chapter.",
+        "firewall": "Phones to CUCM, gateways, applications, then CUCM outward. The matrix is the sheet, not a live ACL.",
+        "call-flows": "REGISTER stores a binding. The call is not up until ACK. A 200 OK is not audio.",
+        "config": "Line CSS before device CSS. Early offer is SDP in the INVITE. Delayed offer is SDP in the 200.",
+        "troubleshoot": "One leg, one identifier, one change, then the capture. Reorder outside is often CSS before CUBE.",
+        "glossary": "CSS, partition, dial-peer 0, early offer, B2BUA, ELIN, call type, EF 46.",
+        "pstn": "CUCM trunk, Webex Calling Plan or local gateway, Teams Calling Plan or Operator Connect or Direct Routing.",
+        "e911": "Direct 911 in the US. Callback must return to the site that dialed. Name the product before the test.",
+        "qos": "Voice RTP is commonly EF 46. Cisco signaling designs often use CS3. RFC 4594 assigns signaling CS5.",
+        "migration": "Discover, normalize to +E.164, canary including callback, write the rollback, stop if proof is missing.",
+        "security": "TLS locks signaling. SRTP locks audio. 8090 is gateway recording HTTP. Consent is not a port.",
+        "wfm-recording": "Same agent id, same interval, contact-center timezone. A forecast does not route the call.",
+        "flashcards": "Twelve cited cards on the printable page. The JSON files hold the full decks.",
+    }
+    titles = {slug: title for slug, title, _body in sheets}
+    titles["flashcards"] = "Flashcards"
+    flips = []
+    for slug in slugs:
+        flips.append(
+            f"<div class='flip glass' tabindex='0' role='button' aria-pressed='false'>"
+            f"<span class='flip-face flip-front'><strong>{html.escape(titles.get(slug, slug))}</strong><em>Flip</em></span>"
+            f"<span class='flip-face flip-back'><span>{html.escape(faces.get(slug, 'Open the sheet.'))}</span>"
+            f"<span class='flip-links'><a href='{slug}.html'>Sheet</a> · <a href='{slug}.pdf'>PDF</a> · <a href='{slug}.png'>PNG</a></span></span></div>"
+        )
     write_page("cheats/index.html", "Cheat codes", f"""
 <p class="kicker">Downloads</p>
-<h1>Cheat codes</h1>
-<p class="lede">One sheet per topic, as HTML, PDF, and PNG, generated in this repository. Vendor books stay at the links on each study page. These sheets are not those books.</p>
-<ul>{links}</ul>
+<h1 data-i18n="pageCheats">Cheat codes</h1>
+<p class="lede">Flip a card. The back is the short read. The sheet, PDF, and PNG are the one-page files. Vendor books stay at the links on each study page.</p>
+<div class="flip-grid">{''.join(flips)}</div>
 <h2>Flashcard files</h2>
 <ul>
 <li><a href="flashcards-cited.json">Cited deck JSON</a> · {len(bank['pr2Cards'])} cards</li>
