@@ -9,6 +9,8 @@ import sys
 import zipfile
 from pathlib import Path
 
+from test_campus_redirects import collect_errors
+
 ROOT = Path(__file__).resolve().parents[1]
 HTML_PATH = ROOT / "campus" / "uc-lab-free-university.html"
 DECK = ROOT / "downloads" / "Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx"
@@ -226,6 +228,8 @@ def main() -> int:
                     fail(errors, f"zip asset does not match {disk}")
     else:
         fail(errors, "campus zip missing")
+
+    errors.extend(collect_errors(ROOT))
 
     if errors:
         print("\n".join(errors), file=sys.stderr)

@@ -11,9 +11,90 @@
   var currentSection = null;
   var toastTimer = null;
   var dialHandle = null;
+  var labHandle = null;
+  var labToken = 0;
+  var teachingCss = null;
   var exportWorker = null;
   var exportSeq = 0;
   var studioPromise = null;
+  var TEACHING_LABS = [
+    ["simulator", "Call-flow player", "Step through 24 call ladders, including the nine paths the modular walk list left out."],
+    ["dial-plan", "Dial-plan builder", "Place CSS, partition, pattern, route list, route group, and the CUBE trunk."],
+    ["ivr", "IVR sandbox", "Connect a digit to a queue, or show where the caller stays in the menu."],
+    ["sipdec", "SIP message decoder", "Paste a message or click a header and read the job."],
+    ["codec", "Codec and bandwidth", "Turn payload, packetization, and layer-2 bytes into kbit/s."],
+    ["jitter", "RTP jitter and loss", "See late and missing packets on a teaching chart."],
+    ["route", "CUCM routing tracer", "Watch CSS order and the partition that wins."],
+    ["webex", "Webex Calling location", "Name a location and the PSTN path."],
+    ["ucce", "UCCE router", "Follow a dialed number into a call type and skill group."],
+    ["finesse", "Finesse agent states", "Walk the desktop states the router can see."],
+    ["e911", "E911 and RedSky", "Order discovery, location, callback, and proof."],
+    ["qos", "QoS marking game", "Mark the class, then give it a real queue."],
+    ["srtp", "SRTP and TLS flight", "Step a teaching handshake. Signaling is not media."],
+    ["erlang-c", "Erlang-C staffing", "Turn calls per hour and handle time into a teaching staff count."],
+    ["fault", "Find the fault", "Name the next proof, not a second guess."],
+    ["dialpeer", "CUBE dial-peer match", "Longest match, then the lowest preference."],
+    ["nat", "One-way audio", "The ladder is up. The SDP address is not reachable."],
+    ["record", "Recording fork", "Fork the media where the PSTN audio actually is."],
+    ["quiz", "Quiz", "Ten questions from a track bank, with a reason that is not a copy of the choice."],
+    ["cards", "Flashcards", "Flip a term, then read why you would use it."],
+    ["boss", "Boss exam", "One sitting across the tracks. Eighty percent to pass."]
+  ];
+
+  function teachingByRoute(route) {
+    for (var i = 0; i < TEACHING_LABS.length; i++) {
+      if (TEACHING_LABS[i][0] === route) return TEACHING_LABS[i];
+    }
+    return null;
+  }
+
+  function matchTeachingLab(section) {
+    if (!section || section.id === "home") return null;
+    var blob = (section.title + " " + section.id + " " + (section.sub || "")).toLowerCase();
+    function hit(re) { return re.test(blob); }
+    function pack(route, scenario) {
+      var row = teachingByRoute(route);
+      return row ? { route: route, scenario: scenario || "", title: row[1] } : null;
+    }
+    if (hit(/jitter|packet loss/)) return pack("jitter");
+    if (hit(/dscp|\bqos\b|\bllq\b|expedited|marking/)) return pack("qos");
+    if (hit(/srtp|dtls|\btls\b|certificate/)) return pack("srtp");
+    if (hit(/erlang|staffing|shrinkage/)) return pack("erlang-c");
+    if (hit(/finesse|agent state/)) return pack("finesse");
+    if (hit(/e911|redsky|\belin\b|kari|baum|dispatchable/)) return pack("e911");
+    if (hit(/local gateway|webex calling/)) return pack("webex");
+    if (hit(/direct routing|operator connect|teams phone/)) return pack("webex");
+    if (hit(/skill group|call type|precision queue|\bucce\b|\bpcce\b|\bcvp\b|\bicm\b/)) return pack("ucce");
+    if (hit(/dial-peer|dial peer|\bcube\b/)) return pack("dialpeer");
+    if (hit(/one-way|nat traversal|\bnat\b/)) return pack("nat");
+    if (hit(/recording|built-in bridge|\bbib\b/)) return pack("record");
+    if (hit(/codec|bandwidth|g\.711|g\.729|opus/)) return pack("codec");
+    if (hit(/hunt group|line group|hunt pilot/)) return pack("simulator", "hunt");
+    if (hit(/blind transfer/)) return pack("simulator", "blind");
+    if (hit(/\bconsult\b/)) return pack("simulator", "consult");
+    if (hit(/\btransfer\b/)) return pack("simulator", "consult");
+    if (hit(/conference/)) return pack("simulator", "conference");
+    if (hit(/expressway|\bmra\b/)) return pack("simulator", "mra");
+    if (hit(/callback/)) return pack("simulator", "callback");
+    if (hit(/failover/)) return pack("simulator", "failover");
+    if (hit(/\bivr\b|\bdtmf\b|prompt/)) return pack("ivr");
+    if (hit(/partition|calling search space|route pattern|\bcss\b/)) return pack("route");
+    if (hit(/via header|call-id|sip header|invite transaction/)) return pack("sipdec");
+    var group = section.group;
+    if (group === "Start here") return pack("simulator", "station");
+    if (group === "SIP and media") return pack("sipdec");
+    if (group === "CUCM and CUBE") return pack("route");
+    if (group === "Webex Calling and Teams Phone") return pack("webex");
+    if (group === "Contact center — UCCE and PCCE") return pack("ucce");
+    if (group === "CCaaS and UCaaS platforms") return pack("erlang-c");
+    if (group === "Emergency calling") return pack("e911");
+    if (group === "Voice network and QoS") return pack("qos");
+    if (group === "Migrations") return pack("simulator", "failover");
+    if (group === "Troubleshooting" || group === "Evidence habits" || group === "Practice") return pack("fault");
+    if (group === "Design notes") return pack("codec");
+    if (group === "Reference") return pack("quiz");
+    return pack("fault");
+  }
 
   function esc(value) {
     return String(value == null ? "" : value)
@@ -215,8 +296,9 @@
       html += '<a href="' + href + '"' + (currentPage ? ' aria-current="page"' : "") + "><span>" + esc(journey.name) + "</span><small>" + pct(journey.id) + "%</small></a>";
     });
     html += '<p class="side-label kicker">Labs</p>';
-    [["#/lab/ladder", "SIP ladder"], ["#/lab/dial", "Dialpad"], ["#/lab/topology", "3D fabric"], ["#/lab/erlang", "Erlang"], ["#/lab/sdp", "SDP"], ["#/lab/tones", "Tones"]].forEach(function (item) {
-      html += '<a href="' + item[0] + '">' + item[1] + "</a>";
+    [["#/lab/ladder", "SIP ladder"], ["#/lab/dial", "Dialpad"], ["#/lab/topology", "3D fabric"], ["#/lab/erlang", "Erlang"], ["#/lab/sdp", "SDP"], ["#/lab/tones", "Tones"], ["#/lab/simulator", "Call-flow player"], ["#/lab/quiz", "Scored quiz"]].forEach(function (item) {
+      var on = current.name === "lab" && ("#/lab/" + (current.lab || "")) === item[0];
+      html += '<a href="' + item[0] + '"' + (on ? ' aria-current="page"' : "") + ">" + item[1] + "</a>";
     });
     html += '<p class="side-label kicker">Reference</p><a href="#/tips"' + (current.name === "tips" ? ' aria-current="page"' : "") + ">Tips and traps</a>";
     if (current.name === "lesson" && currentSection) {
@@ -259,9 +341,12 @@
   }
 
   function cleanupTools() {
+    labToken += 1;
     if (window.UCSettings && window.UCSettings.stop) window.UCSettings.stop();
     if (dialHandle && dialHandle.destroy) dialHandle.destroy();
     dialHandle = null;
+    if (labHandle && labHandle.destroy) labHandle.destroy();
+    labHandle = null;
     if (window.UCTopology) window.UCTopology.destroy();
   }
 
@@ -278,9 +363,9 @@
         esc(journey.kicker) + " · " + stats.journeys[journey.id] + " sections</small></a>";
     }).join("");
     view.innerHTML =
-      '<div class="hero-stage"><div class="hero-copy"><p class="lede">Four certification paths over ' + stats.sections + ' sections. Open one lesson at a time. The SIP ladder, dialpad, Erlang and SDP tools, and the 3D fabric sit inside the work.</p>' +
+      '<div class="hero-stage"><div class="hero-copy"><p class="lede">Four certification paths over ' + stats.sections + ' sections. Open one lesson at a time. Twenty-one teaching labs and the scored quiz load when you open them.</p>' +
       '<div class="actions"><a class="primary" style="display:inline-flex;align-items:center;text-decoration:none;border-radius:999px;min-height:40px;padding:0 14px" href="#/lab/topology">Open the 3D fabric</a>' +
-      '<a href="#/lesson/home">Campus orientation</a> <a href="#/tips">Tips and cheat sheets</a></div></div>' + heroSvg() + "</div>" +
+      '<a href="#/lab">Teaching labs</a> <a href="#/lesson/home">Campus orientation</a> <a href="#/tips">Tips and cheat sheets</a></div></div>' + heroSvg() + "</div>" +
       '<div class="stat-row">' +
       stat(stats.sections, "Sections") + stat(stats.flows, "Flows") + stat(stats.walkthroughs, "Walkthroughs") +
       stat(stats.charts, "Charts") + stat(stats.illustrations, "Illustrations") + stat(stats.audioClips, "Tones") +
@@ -491,6 +576,12 @@
         '<p class="kicker">' + esc(meta.group) + " · " + esc(meta.num) + "</p>" +
         '<p class="lede">' + esc(meta.sub) + "</p>" +
         '<div class="actions"><button type="button" id="markDone">Mark complete</button>' +
+        (function () {
+          var match = matchTeachingLab(meta);
+          if (!match) return "";
+          var href = "#/lab/" + match.route + (match.scenario ? "/" + encodeURIComponent(match.scenario) : "");
+          return '<a href="' + href + '">Try ' + esc(match.title) + "</a>";
+        })() +
         (prev ? '<a href="#/lesson/' + prev.id + '">Previous</a>' : "") +
         (next ? '<a href="#/lesson/' + next.id + '">Next</a>' : "") +
         '<a href="#/journey/' + meta.journey + '">Back to path</a></div>' +
@@ -526,13 +617,17 @@
     cleanupTools();
     currentSection = null;
     setTitle("Labs");
-    view.innerHTML = '<p class="lede">The labs are wired into lessons and also live here on their own.</p><div class="lab-grid">' +
+    view.innerHTML = '<p class="lede">Benches stay in the shell. The 21 teaching labs, including the scored quiz, load when you open one. They do not change a live system.</p><h2>Benches</h2><div class="lab-grid">' +
       labCard("#/lab/ladder", "SIP ladder", "Play, pause, step, and inspect a CUCM and CUBE call.") +
       labCard("#/lab/dial", "Dialpad", "Dial tone, ringback, busy, and a lab dial plan.") +
       labCard("#/lab/topology", "3D fabric", "Orbit CUCM, CUBE, PSTN, and Webex. Cut a link.") +
       labCard("#/lab/erlang", "Erlang", "Blocking, wait probability, and a teaching ASA.") +
       labCard("#/lab/sdp", "SDP", "Break an offer into lines.") +
       labCard("#/lab/tones", "Tone bench", "Thirty-five WebAudio clips from the studio.") +
+      '</div><h2>Teaching labs</h2><div class="lab-grid">' +
+      TEACHING_LABS.map(function (item) {
+        return labCard("#/lab/" + item[0], item[1], item[2]);
+      }).join("") +
       "</div>";
     renderSide();
     markBottom();
@@ -542,7 +637,45 @@
     return '<a class="lab-card" href="' + href + '"><strong>' + name + "</strong><p>" + copy + "</p></a>";
   }
 
+  function ensureTeaching() {
+    if (!teachingCss) {
+      teachingCss = ensureCss("assets/labs.css").then(function () {
+        return loadScript("assets/labs.js");
+      }).catch(function (err) {
+        teachingCss = null;
+        throw err;
+      });
+    }
+    return teachingCss;
+  }
+
+  function renderTeachingLab(name) {
+    var row = teachingByRoute(name);
+    cleanupTools();
+    currentSection = null;
+    var token = labToken;
+    setTitle(row[1]);
+    view.innerHTML = '<p><a href="#/lab">All labs</a></p><div data-lab><p>Loading lab…</p></div>';
+    var host = view.querySelector("[data-lab]");
+    ensureTeaching().then(function () {
+      if (token !== labToken || !window.UCLabShell) return null;
+      return window.UCLabShell.mount(name, host, { scenario: current.scenario || "" });
+    }).then(function (handle) {
+      if (token !== labToken) {
+        if (handle && handle.destroy) handle.destroy();
+        return;
+      }
+      labHandle = handle;
+    }).catch(function () {
+      if (token !== labToken) return;
+      host.innerHTML = "<p>This lab did not load. Keep the assets folder beside the HTML file.</p>";
+    });
+    renderSide();
+    markBottom();
+  }
+
   function renderLab(name) {
+    if (teachingByRoute(name)) return renderTeachingLab(name);
     cleanupTools();
     currentSection = null;
     var titles = { ladder: "SIP ladder", dial: "Dialpad", topology: "3D fabric", erlang: "Erlang", sdp: "SDP", tones: "Tone bench" };
@@ -620,7 +753,20 @@
     var rows = data().journeys.map(function (journey) {
       return "<li>" + esc(journey.name) + ": " + seenCount(journey.id) + " of " + journeySections(journey.id).length + " opened</li>";
     }).join("");
+    var quiz = null;
+    try { quiz = JSON.parse(localStorage.getItem("uc_app_quiz") || "null"); } catch (err) { quiz = null; }
+    var quizRows = "";
+    if (quiz && quiz.tracks) {
+      Object.keys(quiz.tracks).forEach(function (name) {
+        var row = quiz.tracks[name] || {};
+        quizRows += "<li>" + esc(name) + ": " + (row.ok || 0) + " / " + (row.n || 0) + " scored</li>";
+      });
+    }
+    var boss = quiz && quiz.boss;
     view.innerHTML = '<p class="lede">' + opened + " sections opened. " + done + " marked complete. Progress stays in this browser.</p><ul>" + rows + "</ul>" +
+      "<h2>Quiz scores</h2>" +
+      (quizRows ? "<ul>" + quizRows + "</ul>" : "<p>Track scores appear here after a drill. They stay in this browser.</p>") +
+      (boss && boss.n ? "<p>Boss exam best " + esc(boss.best) + " / " + esc(boss.n) + (boss.passed ? ", passed." : ".") + "</p>" : "") +
       '<p><button type="button" id="resetProgress">Reset progress</button></p>';
     document.getElementById("resetProgress").addEventListener("click", function () {
       localStorage.removeItem(PROGRESS_KEY);
@@ -668,7 +814,7 @@
     if (!parts.length) return { name: "home" };
     if (parts[0] === "journey" && parts[1]) return { name: "journey", id: parts[1], track: parts[2] || "" };
     if (parts[0] === "lesson" && parts[1]) return { name: "lesson", id: parts[1] };
-    if (parts[0] === "lab") return { name: "lab", lab: parts[1] || "" };
+    if (parts[0] === "lab") return { name: "lab", lab: parts[1] || "", scenario: parts[2] || "" };
     if (parts[0] === "search") return { name: "search", query: current.query || "" };
     if (parts[0] === "progress") return { name: "progress" };
     if (parts[0] === "tips") return { name: "tips", track: parts[1] || "" };
@@ -859,10 +1005,32 @@
     var bar = meter.querySelector("[data-bar]");
     var text = meter.querySelector("[data-label]");
     var done = 0;
+    var extras = [
+      "assets/curriculum/walks.js",
+      "assets/labs/restored-walks.js",
+      "assets/labs.js",
+      "assets/labs.css",
+      "assets/app-labs.js",
+      "assets/app-drills.js"
+    ];
     function step(index) {
       if (index >= ids.length) {
-        text.textContent = "Offline copy stored in this browser.";
-        showToast("Lessons are cached for offline use.");
+        var extraDone = 0;
+        function saveExtra(extraIndex) {
+          if (extraIndex >= extras.length) {
+            text.textContent = "Offline copy stored in this browser.";
+            showToast("Lessons, labs, and call ladders are cached for offline use.");
+            return;
+          }
+          fetch(extras[extraIndex]).then(function () {
+            extraDone += 1;
+            text.textContent = "Saving labs " + extraDone + " / " + extras.length;
+            saveExtra(extraIndex + 1);
+          }).catch(function () {
+            text.textContent = "Stopped at " + extras[extraIndex] + ".";
+          });
+        }
+        saveExtra(0);
         return;
       }
       var id = ids[index];

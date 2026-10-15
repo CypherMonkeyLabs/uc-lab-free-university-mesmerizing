@@ -2,7 +2,7 @@
    and when the page asks for a full offline copy. */
 "use strict";
 
-var CACHE = "uc-lab-v21-app";
+var CACHE = "uc-lab-v21-labs";
 var SHELL = [
   "./uc-lab-free-university.html",
   "./manifest.webmanifest",
@@ -13,6 +13,16 @@ var SHELL = [
   "./assets/settings.js",
   "./assets/tips.js",
   "./assets/icon.svg"
+];
+/* Not precached. The fetch handler stores these on first use, and Save lessons
+   offline requests them so a later offline visit can open the ladders and quiz. */
+var LAZY = [
+  "./assets/labs/restored-walks.js",
+  "./assets/curriculum/walks.js",
+  "./assets/labs.js",
+  "./assets/labs.css",
+  "./assets/app-labs.js",
+  "./assets/app-drills.js"
 ];
 
 self.addEventListener("install", function (event) {
@@ -45,6 +55,14 @@ function sameOrigin(request) {
   }
 }
 
+function lazyAsset(url) {
+  var path = url.pathname;
+  for (var i = 0; i < LAZY.length; i++) {
+    if (path.endsWith(LAZY[i].replace(/^\.\//, "/"))) return true;
+  }
+  return false;
+}
+
 self.addEventListener("fetch", function (event) {
   var request = event.request;
   if (request.method !== "GET" || !sameOrigin(request)) return;
@@ -53,9 +71,12 @@ self.addEventListener("fetch", function (event) {
       return cache.match(request).then(function (cached) {
         if (cached) return cached;
         return fetch(request).then(function (response) {
-          if (response && response.ok) cache.put(request, response.clone());
+          if (response && response.ok) {
+            cache.put(request, response.clone());
+          }
           return response;
         }).catch(function () {
+          if (lazyAsset(new URL(request.url))) return cache.match(request);
           if (request.mode === "navigate") return cache.match("./uc-lab-free-university.html");
           throw new Error("offline");
         });
