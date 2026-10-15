@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="neon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ports game · UC Lab Free University</title>
+<meta name="description" content="A ports and protocols quiz game.">
+<link rel="icon" href="../assets/icon.svg">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+try {
+  var params = new URLSearchParams(location.search);
+  var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
+  var ok = {neon:1, holographic:1, cyberpunk:1, sunset:1, light:1};
+  if (ok[t]) document.documentElement.setAttribute("data-theme", t);
+  if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+  var lang = localStorage.getItem("uc_flagship_lang");
+  if (lang) document.documentElement.lang = lang;
+  if (lang === "ar") document.documentElement.dir = "rtl";
+} catch (e) {}
+</script>
+</head>
+<body data-root="../">
+<a class="skip" href="#content" data-i18n="skip">Skip to content</a>
+<header class="topbar">
+  <div class="bar">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
+      <span><strong>UC Lab</strong><small data-i18n="brandSub">Free University</small></span>
+    </a>
+    <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
+    <div class="tools">
+      <div class="themes" role="radiogroup" aria-label="Theme">
+        <button type="button" class="swatch-neon" data-theme-set="neon" aria-label="Neon" aria-checked="true"></button>
+        <button type="button" class="swatch-holographic" data-theme-set="holographic" aria-label="Holographic" aria-checked="false"></button>
+        <button type="button" class="swatch-cyberpunk" data-theme-set="cyberpunk" aria-label="Cyberpunk" aria-checked="false"></button>
+        <button type="button" class="swatch-sunset" data-theme-set="sunset" aria-label="Sunset" aria-checked="false"></button>
+        <button type="button" class="swatch-light" data-theme-set="light" aria-label="Light" aria-checked="false"></button>
+      </div>
+      <button type="button" class="btn mode-btn" data-i18n="mode">Light</button>
+      <button type="button" class="btn motion-btn">Motion</button>
+      <a class="btn dl" href="../download.html">Offline</a>
+      <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
+    </div>
+    <form class="site-search" role="search">
+      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off" data-i18n-placeholder="searchPh">
+      <div id="searchPop" class="search-pop" hidden></div>
+    </form>
+  </div>
+  <nav class="tabs" aria-label="Lab"><a href="../index.html" data-i18n="navHome">Home</a><a href="../diagrams/index.html" data-i18n="navDiagrams">Diagrams</a><a href="../flows/index.html" data-i18n="navFlows">Flows</a><a href="../charts/index.html" data-i18n="navCharts">Charts</a><a href="../cheats/index.html" data-i18n="navCheats">Cheat Codes</a><a href="../play/index.html" aria-current="page" data-i18n="navPlay">Play</a><a href="../ecosystem/index.html" data-i18n="navEco">Ecosystem</a><a href="../download.html" data-i18n="navDownloads">Downloads</a><a href="../guide/interview.html" data-i18n="navCareers">Careers</a></nav>
+  <div class="lang-chips" role="radiogroup" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true"><span aria-hidden="true">🇬🇧</span> EN</button>
+    <button type="button" data-lang="es" aria-pressed="false"><span aria-hidden="true">🇪🇸</span> ES</button>
+    <button type="button" data-lang="hi" aria-pressed="false"><span aria-hidden="true">🇮🇳</span> HI</button>
+    <button type="button" data-lang="te" aria-pressed="false"><span aria-hidden="true">🇮🇳</span> TE</button>
+    <button type="button" data-lang="fr" aria-pressed="false"><span aria-hidden="true">🇫🇷</span> FR</button>
+    <button type="button" data-lang="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> DE</button>
+    <button type="button" data-lang="ja" aria-pressed="false"><span aria-hidden="true">🇯🇵</span> JA</button>
+    <button type="button" data-lang="ar" aria-pressed="false"><span aria-hidden="true">🇸🇦</span> AR</button>
+  </div>
+  <p class="progress" id="visitProgress">Progress</p>
+</header>
+<main id="content" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../play/index.html">Play</a></li><li aria-current="page">Ports game</li></ol></nav>
+
+<p class="kicker">Mastery game</p>
+<h1>Ports and protocols</h1>
+<p class="lede">Pick the port. The reason cites the CUCM 15 chapter, not a high score from a vendor.</p>
+<script type="application/json" id="portDeck">[{"ask": "SIP signaling for a phone or a gateway", "port": "5060 TCP/UDP", "decoys": ["5061 TCP", "2000 TCP", "443 TCP"], "why": "5060 is SIP. 5061 is SIP over TLS. Both are in the CUCM 15 port chapter."}, {"ask": "SIP over TLS", "port": "5061 TCP", "decoys": ["5060 UDP", "8443 TCP", "22 TCP"], "why": "5061/TCP is secure SIP in the phone and gateway tables."}, {"ask": "SCCP from a phone", "port": "2000 TCP", "decoys": ["2443 TCP", "69 UDP", "1720 TCP"], "why": "2000/TCP is SCCP. 2443/TCP is secure SCCP."}, {"ask": "TFTP so a phone can download its file list", "port": "69 UDP", "decoys": ["6970 TCP", "123 UDP", "514 UDP"], "why": "69/UDP is TFTP. 6970/TCP is the HTTP download that follows."}, {"ask": "CAPF, locally significant certificates", "port": "3804 TCP", "decoys": ["2444 TCP", "22 TCP", "443 TCP"], "why": "3804/TCP is the CAPF listening port in the phone table."}, {"ask": "CTI from an application", "port": "2748 TCP", "decoys": ["2749 TCP", "8443 TCP", "5060 TCP"], "why": "2748/TCP is CTI. 2749/TCP is CTI over TLS."}, {"ask": "AXL / SOAP provisioning", "port": "8443 TCP", "decoys": ["443 TCP", "8080 TCP", "6970 TCP"], "why": "The application table lists 8443/TCP for AXL / SOAP."}, {"ask": "Gateway recording HTTP", "port": "8090 TCP", "decoys": ["5060 TCP", "16384 UDP", "2427 UDP"], "why": "8090 is the gateway recording HTTP port in the intracluster table."}, {"ask": "Smart Licensing toward CSSM", "port": "443 HTTPS", "decoys": ["8443 TCP", "22 TCP", "123 UDP"], "why": "Table 10 in the port chapter is 443/HTTPS from the Smart Licensing service to CSSM."}, {"ask": "RTP and SRTP between phones and gateways", "port": "16384-32767 UDP", "decoys": ["5060 UDP", "24576 only", "32768-61000 TCP"], "why": "The chapter gives 16384-32767 for devices, and notes CUCM itself uses 24576-32767."}, {"ask": "MGCP gateway control", "port": "2427 UDP", "decoys": ["2428 TCP", "2000 TCP", "1720 TCP"], "why": "2427/UDP is MGCP control. 2428/TCP is MGCP backhaul."}, {"ask": "NTP", "port": "123 UDP", "decoys": ["53 TCP", "161 UDP", "22 TCP"], "why": "123/UDP is NTP from CUCM to the time server."}]</script>
+<div id="portsGame" class="paper"></div>
+<p><a href="../guide/firewall.html">Open the firewall matrix</a> · <a href="../ports.html">Open the filterable table</a></p>
+<h2>Sources</h2><ul><li><a href="https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15/cucm_m_tcp-and-udp-port-usage-12-0.html">CUCM 15 port usage</a></li></ul>
+
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p class="kicker">Next</p>
+    <p><a href="../play/index.html">Previous · Play</a> · <a href="../play/map.html">Next · Flow map</a> · <a href="../../campus/uc-lab-free-university.html">Deep campus · 580 sections</a></p>
+    <div class="sister"><a class="card" href="https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/"><strong>AI Lab</strong></a><a class="card" href="https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/"><strong>Amazon Connect</strong></a><a class="card" href="https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/"><strong>Microsoft Voice</strong></a><a class="card" href="https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/"><strong>Five9</strong></a><a class="card" href="https://cipher0x9.github.io/genesys-cloud-lab-free-university-mesmerizing/"><strong>Genesys Cloud</strong></a><a class="card" href="https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/"><strong>NICE CXone</strong></a><a class="card" href="https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/"><strong>SIP Universe</strong></a><a class="card" href="../path.html"><strong>Study path</strong></a></div>
+    <p class="sig">CYPHER0X9</p>
+    <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
+    <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern or takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
+  </div>
+</footer>
+<script src="../assets/search.js"></script>
+<script src="../assets/bank.js"></script>
+<script src="../assets/site.js"></script>
+<script src="../assets/play.js"></script>
+
+
+</body>
+</html>

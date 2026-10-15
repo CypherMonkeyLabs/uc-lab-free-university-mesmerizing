@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420">
+<rect width="980" height="420" fill="#0c1220"/>
+<text x="24" y="32" fill="#e7ecf5" font-family="Segoe UI,sans-serif" font-size="16">Trust list, inbound peer, hunt, outbound peer</text>
+<rect x="40" y="90" width="180" height="70" rx="8" fill="#ff8a4c" stroke="#8ea0bd"/>
+<text x="130.0" y="129.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Trust list</text>
+<rect x="260" y="90" width="180" height="70" rx="8" fill="#3dbeff" stroke="#8ea0bd"/>
+<text x="350.0" y="129.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Inbound peer</text>
+<rect x="480" y="90" width="160" height="70" rx="8" fill="#e6c36a" stroke="#8ea0bd"/>
+<text x="560.0" y="129.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Hunt</text>
+<rect x="680" y="90" width="220" height="70" rx="8" fill="#3dd68c" stroke="#8ea0bd"/>
+<text x="790.0" y="129.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Outbound peer</text>
+<rect x="200" y="240" width="520" height="70" rx="8" fill="#e7ecf5" stroke="#8ea0bd"/>
+<text x="460.0" y="279.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">voice class: codec, uri, profile, server-group</text>
+</svg>

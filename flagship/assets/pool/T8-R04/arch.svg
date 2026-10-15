@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420">
+<rect width="980" height="420" fill="#0c1220"/>
+<text x="24" y="32" fill="#e7ecf5" font-family="Segoe UI,sans-serif" font-size="16">One inbound contact-center call</text>
+<rect x="30" y="90" width="140" height="60" rx="8" fill="#ff8a4c" stroke="#8ea0bd"/>
+<text x="100.0" y="124.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">CUBE</text>
+<rect x="190" y="90" width="140" height="60" rx="8" fill="#3dbeff" stroke="#8ea0bd"/>
+<text x="260.0" y="124.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">CVP</text>
+<rect x="350" y="90" width="150" height="60" rx="8" fill="#e6c36a" stroke="#8ea0bd"/>
+<text x="425.0" y="124.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Router</text>
+<rect x="520" y="90" width="130" height="60" rx="8" fill="#b388ff" stroke="#8ea0bd"/>
+<text x="585.0" y="124.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">PG</text>
+<rect x="670" y="90" width="140" height="60" rx="8" fill="#3dd68c" stroke="#8ea0bd"/>
+<text x="740.0" y="124.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">CUCM</text>
+<rect x="830" y="90" width="120" height="60" rx="8" fill="#e7ecf5" stroke="#8ea0bd"/>
+<text x="890.0" y="124.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Agent</text>
+<rect x="250" y="230" width="460" height="64" rx="8" fill="#e7ecf5" stroke="#8ea0bd"/>
+<text x="480.0" y="266.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">VVB prompts over HTTP(S)</text>
+</svg>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="980" height="440" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 440" role="img" aria-labelledby="qost qosd">
+  <title id="qost">QoS and CAC</title>
+  <desc id="qosd">Regions pick codec. Locations and links pick bandwidth. LBM admits the call. The switch queue protects EF.</desc>
+  <rect width="980" height="440" fill="#0a1020"/>
+  <text x="24" y="32" fill="#e6c36a" font-family="ui-monospace,monospace" font-size="13">T8-R03 - mark, then admit</text>
+  <g font-family="Segoe UI,sans-serif" font-size="14" fill="#e7ecf5">
+    <rect x="24" y="56" width="220" height="120" rx="8" fill="#121826" stroke="#3dbeff"/>
+    <text x="36" y="86">Region</text>
+    <text x="36" y="112" fill="#93a0b8" font-size="12">Max audio codec</text>
+    <text x="36" y="134" fill="#93a0b8" font-size="12">Max video bit rate</text>
+    <rect x="270" y="56" width="250" height="120" rx="8" fill="#121826" stroke="#e6c36a"/>
+    <text x="282" y="86">Location and link</text>
+    <text x="282" y="112" fill="#93a0b8" font-size="12">Bandwidth budget</text>
+    <text x="282" y="134" fill="#93a0b8" font-size="12">Weight picks one path</text>
+    <rect x="546" y="56" width="200" height="120" rx="8" fill="#121826" stroke="#3dd68c"/>
+    <text x="558" y="86">LBM</text>
+    <text x="558" y="112" fill="#93a0b8" font-size="12">Admit or deny</text>
+    <text x="558" y="134" fill="#93a0b8" font-size="12">Deduct for the call</text>
+    <rect x="770" y="56" width="186" height="120" rx="8" fill="#121826" stroke="#ff8a4c"/>
+    <text x="782" y="86">Switch queue</text>
+    <text x="782" y="112" fill="#93a0b8" font-size="12">EF priority</text>
+    <text x="782" y="134" fill="#93a0b8" font-size="12">AF video class</text>
+  </g>
+  <g font-family="ui-monospace,monospace" font-size="13" fill="#e7ecf5">
+    <text x="36" y="230" fill="#3dbeff">EF 46</text>
+    <text x="140" y="230">audio, including audio of video</text>
+    <text x="36" y="260" fill="#e6c36a">AF41 34</text>
+    <text x="160" y="260">prioritized desktop and room video</text>
+    <text x="36" y="290" fill="#f0b429">AF42 36</text>
+    <text x="160" y="290">Jabber, MRA, edge video</text>
+    <text x="36" y="320" fill="#7eb6ff">CS3 24</text>
+    <text x="140" y="320">call signaling</text>
+    <text x="36" y="370" fill="#93a0b8">G.711 deducts 80 kbps (64 + 16). A 384 kbps video call with 64 kbps audio</text>
+    <text x="36" y="394" fill="#93a0b8">takes 320 from video and 80 from audio when that service parameter is true.</text>
+  </g>
+</svg>

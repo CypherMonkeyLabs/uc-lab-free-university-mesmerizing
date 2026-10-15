@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 308" data-animated="false" role="img"><rect width="860" height="308" fill="#0b0618"/>
+<rect class="" x="40" y="24" width="780" height="60" rx="12" fill="#141028" stroke="#e879f9"/><text x="60" y="50" font-size="16" font-family="Georgia, serif" fill="#f5f7ff">Inbound</text><text x="60" y="70" font-size="13" font-family="Segoe UI, sans-serif" fill="#c4b5fd">If nothing matches, the leg is dial-peer 0</text>
+<rect class="" x="40" y="98" width="780" height="60" rx="12" fill="#141028" stroke="#e879f9"/><text x="60" y="124" font-size="16" font-family="Georgia, serif" fill="#f5f7ff">Outbound</text><text x="60" y="144" font-size="13" font-family="Segoe UI, sans-serif" fill="#c4b5fd">Longest destination-pattern, then lowest preference</text>
+<rect class="" x="40" y="172" width="780" height="60" rx="12" fill="#141028" stroke="#e879f9"/><text x="60" y="198" font-size="16" font-family="Georgia, serif" fill="#f5f7ff">Offer</text><text x="60" y="218" font-size="13" font-family="Segoe UI, sans-serif" fill="#c4b5fd">Write down early offer or delayed offer per leg</text>
+</svg>

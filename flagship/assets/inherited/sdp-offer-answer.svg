@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 582" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img">
+<title>SDP offer and answer</title>
+<desc>RFC 3264 rules on one card</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f7f3ee"/><stop offset="100%" stop-color="#e5f3f0"/></linearGradient></defs>
+<rect width="520" height="582" fill="url(#bg)"/>
+<text x="24" y="36" font-size="22" font-family="Georgia, Palatino, serif" fill="#1a2332">SDP offer and answer</text>
+<text x="24" y="60" font-size="14" fill="#3a495c">RFC 3264 rules on one card</text>
+<rect x="24" y="86" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="118" r="16" fill="#0e5f59"/>
+<text x="56" y="123" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">1</text>
+<text x="84" y="112" fill="#0e5f59" font-size="12" font-weight="700">Match</text>
+<text x="84" y="136" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Same m= lines, same order</text>
+<text x="84" y="160" fill="#3a495c" font-size="14">The answer mirrors each offered stream.</text>
+<text x="84" y="180" fill="#3a495c" font-size="14">Do not reorder audio and video.</text>
+<rect x="24" y="206" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="238" r="16" fill="#0e5f59"/>
+<text x="56" y="243" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">2</text>
+<text x="84" y="232" fill="#0e5f59" font-size="12" font-weight="700">Reject</text>
+<text x="84" y="256" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Port 0 refuses a stream</text>
+<text x="84" y="280" fill="#3a495c" font-size="14">A refused stream stays in the answer.</text>
+<text x="84" y="300" fill="#3a495c" font-size="14">Port 0 is not how you place a call on hold.</text>
+<rect x="24" y="326" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="358" r="16" fill="#0e5f59"/>
+<text x="56" y="363" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">3</text>
+<text x="84" y="352" fill="#0e5f59" font-size="12" font-weight="700">Codecs</text>
+<text x="84" y="376" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Answer is a subset</text>
+<text x="84" y="400" fill="#3a495c" font-size="14">Use payload types from the offer.</text>
+<text x="84" y="420" fill="#3a495c" font-size="14">PT 0 is PCMU, PT 8 is PCMA, PT 18 is G.729.</text>
+<rect x="24" y="446" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="478" r="16" fill="#0e5f59"/>
+<text x="56" y="483" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">4</text>
+<text x="84" y="472" fill="#0e5f59" font-size="12" font-weight="700">Direction</text>
+<text x="84" y="496" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Say how media will flow</text>
+<text x="84" y="520" fill="#3a495c" font-size="14">sendrecv, sendonly, recvonly, or inactive.</text>
+<text x="84" y="540" fill="#3a495c" font-size="14">A sendonly offer is answered recvonly or inactive.</text>
+</svg>

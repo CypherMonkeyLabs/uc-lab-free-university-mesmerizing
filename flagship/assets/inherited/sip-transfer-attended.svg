@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 968 922" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img">
+<title>Attended transfer</title>
+<desc>REFER plus Replaces, RFC 3891 and RFC 5589</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f7f3ee"/><stop offset="100%" stop-color="#e5f3f0"/></linearGradient>
+<marker id="m-req" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0e5f59"/></marker>
+<marker id="m-rsp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2c3b86"/></marker>
+<marker id="m-prov" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8a5a12"/></marker>
+<marker id="m-media" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#9c3d38"/></marker>
+</defs>
+<rect width="968" height="922" fill="url(#bg)"/>
+<text x="24" y="36" font-size="22" font-family="Georgia, Palatino, serif" fill="#1a2332">Attended transfer</text>
+<text x="24" y="58" font-size="14" fill="#3a495c">REFER plus Replaces, RFC 3891 and RFC 5589</text>
+<text x="198.0" y="100" text-anchor="middle" font-size="16" font-weight="700" fill="#1a2332">Transferor</text>
+<line x1="198.0" y1="116" x2="198.0" y2="876" stroke="#b7cdc6" stroke-width="2" stroke-dasharray="4 6"/>
+<text x="498.0" y="100" text-anchor="middle" font-size="16" font-weight="700" fill="#1a2332">Transferee</text>
+<line x1="498.0" y1="116" x2="498.0" y2="876" stroke="#b7cdc6" stroke-width="2" stroke-dasharray="4 6"/>
+<text x="798.0" y="100" text-anchor="middle" font-size="16" font-weight="700" fill="#1a2332">Target</text>
+<line x1="798.0" y1="116" x2="798.0" y2="876" stroke="#b7cdc6" stroke-width="2" stroke-dasharray="4 6"/>
+<circle cx="26" cy="176" r="12" fill="#fffdfb" stroke="#0e5f59"/>
+<text x="26" y="180" text-anchor="middle" font-size="11" font-weight="700" fill="#0e5f59">1</text>
+<line x1="210.0" y1="176" x2="486.0" y2="176" stroke="#0e5f59" stroke-width="2.4" marker-end="url(#m-req)"/>
+<text x="348.0" y="164" text-anchor="middle" font-size="15" font-weight="700" fill="#0e5f59" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">REFER</text>
+<text x="348.0" y="196" text-anchor="middle" font-size="12" fill="#3a495c" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">Refer-To includes Replaces</text>
+<circle cx="26" cy="248" r="12" fill="#fffdfb" stroke="#0e5f59"/>
+<text x="26" y="252" text-anchor="middle" font-size="11" font-weight="700" fill="#0e5f59">2</text>
+<line x1="486.0" y1="248" x2="210.0" y2="248" stroke="#2c3b86" stroke-width="2.4" marker-end="url(#m-rsp)"/>
+<text x="348.0" y="236" text-anchor="middle" font-size="15" font-weight="700" fill="#2c3b86" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">202 Accepted</text>
+<text x="348.0" y="268" text-anchor="middle" font-size="12" fill="#3a495c" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">Request accepted</text>
+<circle cx="26" cy="320" r="12" fill="#fffdfb" stroke="#0e5f59"/>
+<text x="26" y="324" text-anchor="middle" font-size="11" font-weight="700" fill="#0e5f59">3</text>
+<line x1="510.0" y1="320" x2="786.0" y2="320" stroke="#0e5f59" stroke-width="2.4" marker-end="url(#m-req)"/>
+<text x="648.0" y="308" text-anchor="middle" font-size="15" font-weight="700" fill="#0e5f59" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">INVITE</text>
+<text x="648.0" y="340" text-anchor="middle" font-size="12" fill="#3a495c" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">Replaces the consult dialog</text>
+<circle cx="26" cy="392" r="12" fill="#fffdfb" stroke="#0e5f59"/>
+<text x="26" y="396" text-anchor="middle" font-size="11" font-weight="700" fill="#0e5f59">4</text>
+<line x1="786.0" y1="392" x2="510.0" y2="392" stroke="#2c3b86" stroke-width="2.4" marker-end="url(#m-rsp)"/>
+<text x="648.0" y="380" text-anchor="middle" font-size="15" font-weight="700" fill="#2c3b86" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">200 OK</text>
+<text x="648.0" y="412" text-anchor="middle" font-size="12" fill="#3a495c" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">Target accepts the replacement</text>
+<circle cx="26" cy="464" r="12" fill="#fffdfb" stroke="#0e5f59"/>
+<text x="26" y="468" text-anchor="middle" font-size="11" font-weight="700" fill="#0e5f59">5</text>
+<line x1="510.0" y1="464" x2="786.0" y2="464" stroke="#0e5f59" stroke-width="2.4" marker-end="url(#m-req)"/>
+<text x="648.0" y="452" text-anchor="middle" font-size="15" font-weight="700" fill="#0e5f59" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">ACK</text>
+<text x="648.0" y="484" text-anchor="middle" font-size="12" fill="#3a495c" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">Transferee and target connected</text>
+<circle cx="26" cy="536" r="12" fill="#fffdfb" stroke="#0e5f59"/>
+<text x="26" y="540" text-anchor="middle" font-size="11" font-weight="700" fill="#0e5f59">6</text>
+<line x1="786.0" y1="536" x2="210.0" y2="536" stroke="#0e5f59" stroke-width="2.4" marker-end="url(#m-req)"/>
+<text x="498.0" y="524" text-anchor="middle" font-size="15" font-weight="700" fill="#0e5f59" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">BYE</text>
+<text x="498.0" y="556" text-anchor="middle" font-size="12" fill="#3a495c" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">Consult leg with transferor ends</text>
+<circle cx="26" cy="608" r="12" fill="#fffdfb" stroke="#0e5f59"/>
+<text x="26" y="612" text-anchor="middle" font-size="11" font-weight="700" fill="#0e5f59">7</text>
+<line x1="210.0" y1="608" x2="786.0" y2="608" stroke="#2c3b86" stroke-width="2.4" marker-end="url(#m-rsp)"/>
+<text x="498.0" y="596" text-anchor="middle" font-size="15" font-weight="700" fill="#2c3b86" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">200 OK</text>
+<text x="498.0" y="628" text-anchor="middle" font-size="12" fill="#3a495c" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">Consult dialog cleared</text>
+<circle cx="26" cy="680" r="12" fill="#fffdfb" stroke="#0e5f59"/>
+<text x="26" y="684" text-anchor="middle" font-size="11" font-weight="700" fill="#0e5f59">8</text>
+<line x1="486.0" y1="680" x2="210.0" y2="680" stroke="#0e5f59" stroke-width="2.4" marker-end="url(#m-req)"/>
+<text x="348.0" y="668" text-anchor="middle" font-size="15" font-weight="700" fill="#0e5f59" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">NOTIFY</text>
+<text x="348.0" y="700" text-anchor="middle" font-size="12" fill="#3a495c" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">sipfrag: SIP/2.0 200 OK</text>
+<circle cx="26" cy="752" r="12" fill="#fffdfb" stroke="#0e5f59"/>
+<text x="26" y="756" text-anchor="middle" font-size="11" font-weight="700" fill="#0e5f59">9</text>
+<line x1="210.0" y1="752" x2="486.0" y2="752" stroke="#0e5f59" stroke-width="2.4" marker-end="url(#m-req)"/>
+<text x="348.0" y="740" text-anchor="middle" font-size="15" font-weight="700" fill="#0e5f59" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">BYE</text>
+<text x="348.0" y="772" text-anchor="middle" font-size="12" fill="#3a495c" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">Original leg can clear</text>
+<circle cx="26" cy="824" r="12" fill="#fffdfb" stroke="#0e5f59"/>
+<text x="26" y="828" text-anchor="middle" font-size="11" font-weight="700" fill="#0e5f59">10</text>
+<line x1="486.0" y1="824" x2="210.0" y2="824" stroke="#2c3b86" stroke-width="2.4" marker-end="url(#m-rsp)"/>
+<text x="348.0" y="812" text-anchor="middle" font-size="15" font-weight="700" fill="#2c3b86" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">200 OK</text>
+<text x="348.0" y="844" text-anchor="middle" font-size="12" fill="#3a495c" stroke="#f4f7f6" stroke-width="4" paint-order="stroke fill">One dialog remains</text>
+<rect x="24" y="889" width="14" height="8" rx="2" fill="#0e5f59"/>
+<text x="44" y="897" font-size="12" fill="#3a495c">Request</text>
+<rect x="134" y="889" width="14" height="8" rx="2" fill="#2c3b86"/>
+<text x="154" y="897" font-size="12" fill="#3a495c">Response</text>
+<rect x="244" y="889" width="14" height="8" rx="2" fill="#8a5a12"/>
+<text x="264" y="897" font-size="12" fill="#3a495c">Provisional</text>
+<rect x="354" y="889" width="14" height="8" rx="2" fill="#9c3d38"/>
+<text x="374" y="897" font-size="12" fill="#3a495c">Media</text>
+</svg>

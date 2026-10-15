@@ -16,7 +16,24 @@ HTML_PATH = ROOT / "campus" / "uc-lab-free-university.html"
 DECK = ROOT / "downloads" / "Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx"
 ZIP = ROOT / "releases" / "uc-lab-free-university.html.zip"
 TEXT_SUFFIXES = {".md", ".html", ".cff", ".py", ".yml", ".yaml", ".txt"}
-ALLOWED_EMAILS = {"user@contoso.com", "user@domain.com"}
+ALLOWED_EMAILS = {
+    "user@contoso.com",
+    "user@domain.com",
+    "alice@example.com",
+    "bob@example.com",
+    "carol@example.com",
+}
+# The flagship studio bar and the deep-campus bar publish the public studio
+# links on purpose. The campus lesson text and the briefing deck stay scrubbed.
+HUB_OK_PREFIXES = ("flagship/",)
+HUB_OK_FILES = {
+    "index.html",
+    "campus/uc-lab-free-university.html",
+    "scripts/build-flagship.py",
+    "scripts/round2_pages.py",
+    "scripts/round3_pages.py",
+    "scripts/check-flagship.py",
+}
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}")
 PHONE_RE = re.compile(r"(?<![\w.])(?:\+\d{1,3}[\s.\-]?)?\(?\d{3}\)?[\s.\-]\d{3}[\s.\-]\d{4}(?!\d)")
 
@@ -169,7 +186,9 @@ def main() -> int:
         if rel == "scripts/check-campus.py":
             continue
         text = path.read_text(encoding="utf-8", errors="ignore").lower()
-        if "linktr.ee" in text or "cyphermonkey" in text:
+        if ("linktr.ee" in text or "cyphermonkey" in text) and not (
+            rel.startswith(HUB_OK_PREFIXES) or rel in HUB_OK_FILES
+        ):
             fail(errors, f"personal hub link in {rel}")
         if path.suffix.lower() in {".md", ".html", ".cff"}:
             for email in EMAIL_RE.findall(path.read_text(encoding="utf-8", errors="ignore")):

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="980" height="420" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 420" role="img" aria-labelledby="migs migsd">
+  <title id="migs">Migration sequence</title>
+  <desc id="migsd">Assess, import BAT data, map device pools to Webex locations, cut numbers, move devices, leave a trunk for who remains.</desc>
+  <rect width="980" height="420" fill="#0a1020"/>
+  <text x="24" y="32" fill="#e6c36a" font-family="ui-monospace,monospace" font-size="13">T8-R06 - one site at a time</text>
+  <g font-family="Segoe UI,sans-serif" font-size="14" fill="#e7ecf5">
+    <rect x="36" y="60" width="140" height="64" rx="8" fill="#121826" stroke="#e6c36a"/><text x="48" y="98">1 Assess</text>
+    <rect x="200" y="60" width="150" height="64" rx="8" fill="#121826" stroke="#3dbeff"/><text x="212" y="98">2 Import BAT</text>
+    <rect x="374" y="60" width="170" height="64" rx="8" fill="#121826" stroke="#f0b429"/><text x="386" y="98">3 Map locations</text>
+    <rect x="568" y="60" width="160" height="64" rx="8" fill="#121826" stroke="#3dd68c"/><text x="580" y="98">4 Numbers</text>
+    <rect x="752" y="60" width="190" height="64" rx="8" fill="#121826" stroke="#ff8a4c"/><text x="764" y="98">5 Move phones</text>
+  </g>
+  <g font-family="Segoe UI,sans-serif" font-size="14" fill="#c5d0e0">
+    <text x="40" y="180">Calls between a moved user and a user still on Unified CM cross the local gateway.</text>
+    <text x="40" y="210">Size that trunk for the overlap, not for the final steady state.</text>
+    <text x="40" y="250">Device pool becomes the hint for a Webex location. It does not become a CAC location.</text>
+    <text x="40" y="290">Calling permissions replace the line CSS. Emergency address is per Webex location.</text>
+    <text x="40" y="330">Dedicated Instance is a different project: the cluster moves, the objects stay.</text>
+    <text x="40" y="370">Teams Phone is a different SBC conversation. Do not mix the cut sheets.</text>
+  </g>
+</svg>
