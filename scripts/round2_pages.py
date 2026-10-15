@@ -275,6 +275,12 @@ def write_guide(write_page, sources, bank: dict) -> None:
 <p class="kicker">Show the leg</p>
 <h1>Interview prep and career path</h1>
 <p class="lede">Six questions from the idea-pool bank, one track each. The scored quiz has the other {len(bank['questions']) - 6}.</p>
+<div class="atlas">
+<article class="card glass"><p class="num">01</p><h2>Voice and SIP</h2><p>Draw registration and a basic call. A 200 OK is not audio.</p></article>
+<article class="card glass"><p class="num">02</p><h2>Call control and the SBC</h2><p>CSS miss, dial-peer 0, or a carrier timeout. Name which leg.</p></article>
+<article class="card glass"><p class="num">03</p><h2>Cloud PSTN</h2><p>Calling Plan, local gateway, Operator Connect, Direct Routing. Do not mix their traces.</p></article>
+<article class="card glass"><p class="num">04</p><h2>Around the agent</h2><p>Call type or entry point, then recording, WFM, CRM, and a handoff.</p></article>
+</div>
 {''.join(items)}
 <h2>A path, not a salary table</h2>
 <p>This lab does not publish wages. Hiring pages move, and a number here would be a guess. The work itself has a readable order:</p>

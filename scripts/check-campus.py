@@ -31,6 +31,7 @@ HUB_OK_FILES = {
     "campus/uc-lab-free-university.html",
     "scripts/build-flagship.py",
     "scripts/round2_pages.py",
+    "scripts/round3_pages.py",
     "scripts/check-flagship.py",
 }
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}")

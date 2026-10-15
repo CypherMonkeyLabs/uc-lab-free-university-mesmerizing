@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="paper">
+<html lang="en" data-theme="neon">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,44 +12,60 @@
 try {
   var params = new URLSearchParams(location.search);
   var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
-  var ok = {paper:1, midnight:1, contrast:1, signal:1, canopy:1};
+  var ok = {neon:1, holographic:1, cyberpunk:1, sunset:1, light:1};
   if (ok[t]) document.documentElement.setAttribute("data-theme", t);
   if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+  var lang = localStorage.getItem("uc_flagship_lang");
+  if (lang) document.documentElement.lang = lang;
+  if (lang === "ar") document.documentElement.dir = "rtl";
 } catch (e) {}
 </script>
 </head>
 <body data-root="../">
-<a class="skip" href="#content">Skip to content</a>
+<a class="skip" href="#content" data-i18n="skip">Skip to content</a>
 <header class="topbar">
   <div class="bar">
     <a class="brand" href="../index.html">
       <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
-      <span><strong>UC Lab</strong><small>Free University</small></span>
+      <span><strong>UC Lab</strong><small data-i18n="brandSub">Free University</small></span>
     </a>
     <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
     <div class="tools">
+      <label class="lang"><span class="sr-only" data-i18n="langLabel">Language</span>
+        <select id="langSwitch" aria-label="Language">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="hi">हिन्दी</option>
+          <option value="te">తెలుగు</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="ja">日本語</option>
+          <option value="ar">العربية</option>
+        </select>
+      </label>
       <div class="themes" role="radiogroup" aria-label="Theme">
-        <button type="button" class="swatch-paper" data-theme-set="paper" aria-label="Paper" aria-checked="true"></button>
-        <button type="button" class="swatch-midnight" data-theme-set="midnight" aria-label="Midnight" aria-checked="false"></button>
-        <button type="button" class="swatch-contrast" data-theme-set="contrast" aria-label="High contrast" aria-checked="false"></button>
-        <button type="button" class="swatch-signal" data-theme-set="signal" aria-label="Signal" aria-checked="false"></button>
-        <button type="button" class="swatch-canopy" data-theme-set="canopy" aria-label="Canopy" aria-checked="false"></button>
+        <button type="button" class="swatch-neon" data-theme-set="neon" aria-label="Neon" aria-checked="true"></button>
+        <button type="button" class="swatch-holographic" data-theme-set="holographic" aria-label="Holographic" aria-checked="false"></button>
+        <button type="button" class="swatch-cyberpunk" data-theme-set="cyberpunk" aria-label="Cyberpunk" aria-checked="false"></button>
+        <button type="button" class="swatch-sunset" data-theme-set="sunset" aria-label="Sunset" aria-checked="false"></button>
+        <button type="button" class="swatch-light" data-theme-set="light" aria-label="Light" aria-checked="false"></button>
       </div>
+      <button type="button" class="btn mode-btn" data-i18n="mode">Light</button>
       <button type="button" class="btn motion-btn">Motion</button>
       <a class="btn dl" href="../download.html">Offline</a>
       <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
     </div>
     <form class="site-search" role="search">
-      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off">
+      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off" data-i18n-placeholder="searchPh">
       <div id="searchPop" class="search-pop" hidden></div>
     </form>
   </div>
-  <nav class="tabs" aria-label="Lab"><a href="../index.html">Home</a><a href="../diagrams/index.html">Diagrams</a><a href="../flows/index.html" aria-current="page">Flows</a><a href="../charts/index.html">Charts</a><a href="../cheats/index.html">Cheat Codes</a><a href="../play/index.html">Play</a><a href="../ecosystem/index.html">Ecosystem</a><a href="../download.html">Downloads</a><a href="../guide/interview.html">Careers</a></nav>
+  <nav class="tabs" aria-label="Lab"><a href="../index.html" data-i18n="navHome">Home</a><a href="../diagrams/index.html" data-i18n="navDiagrams">Diagrams</a><a href="../flows/index.html" aria-current="page" data-i18n="navFlows">Flows</a><a href="../charts/index.html" data-i18n="navCharts">Charts</a><a href="../cheats/index.html" data-i18n="navCheats">Cheat Codes</a><a href="../play/index.html" data-i18n="navPlay">Play</a><a href="../ecosystem/index.html" data-i18n="navEco">Ecosystem</a><a href="../download.html" data-i18n="navDownloads">Downloads</a><a href="../guide/interview.html" data-i18n="navCareers">Careers</a></nav>
   <p class="progress" id="visitProgress">Progress</p>
 </header>
 <main id="content" class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../flows/index.html">Flows</a></li><li aria-current="page">Hold</li></ol></nav>
-<p class='kicker'>SIP · RFC 3264</p><h1>Hold</h1><p class='lede'>Hold is a new offer that changes direction, not a mute button on one phone.</p><div class='read'><div class='prose'><figure class="ladder" data-ladder><svg viewBox="0 0 760 320" role="img" aria-label="re-INVITE sendonly"><defs><marker id='arrow4' markerWidth='8' markerHeight='8' refX='7' refY='3' orient='auto'><path d='M0,0 L8,3 L0,6 Z' fill='#1c1915'/></marker></defs><rect width="760" height="320" rx="16" fill="#fffdf8"/><text x="20" y="24" font-family="Georgia, serif" font-size="16" fill="#a34b24">re-INVITE sendonly</text><text x="190" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">Alice</text><line x1="190" y1="58" x2="190" y2="304" stroke="#e3d7c6" stroke-width="2"/><text x="570" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">Bob</text><line x1="570" y1="58" x2="570" y2="304" stroke="#e3d7c6" stroke-width="2"/><g class="msg" data-cap="Same dialog. SDP a=sendonly, or inactive when neither side should send."><line x1="190" y1="70" x2="570" y2="70" stroke="#0f6e62" stroke-width="2.4" marker-end="url(#arrow4)"/><text x="380.0" y="62" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#0f6e62">re-INVITE</text></g><g class="msg" data-cap="Bob answers with recvonly, matching the direction."><line x1="570" y1="116" x2="190" y2="116" stroke="#1f7a4d" stroke-width="2.4" marker-end="url(#arrow4)"/><text x="380.0" y="108" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#1f7a4d">200</text></g><g class="msg" data-cap="The new offer is in force. Music, if any, is a local decision."><line x1="190" y1="162" x2="570" y2="162" stroke="#0f6e62" stroke-width="2.4" marker-end="url(#arrow4)"/><text x="380.0" y="154" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#0f6e62">ACK</text></g><g class="msg" data-cap="Resume offers sendrecv again."><line x1="190" y1="208" x2="570" y2="208" stroke="#0f6e62" stroke-width="2.4" marker-end="url(#arrow4)"/><text x="380.0" y="200" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#0f6e62">re-INVITE</text></g><g class="msg" data-cap="Both directions restored."><line x1="570" y1="254" x2="190" y2="254" stroke="#1f7a4d" stroke-width="2.4" marker-end="url(#arrow4)"/><text x="380.0" y="246" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#1f7a4d">200</text></g></svg><div class="ladder-controls"><button type="button" class="btn" data-act="prev">Step back</button><button type="button" class="btn" data-act="play">Play</button><button type="button" class="btn" data-act="next">Step</button></div><p class="ladder-cap muted"></p><ol><li><strong>re-INVITE</strong> — Same dialog. SDP a=sendonly, or inactive when neither side should send.</li><li><strong>200</strong> — Bob answers with recvonly, matching the direction.</li><li><strong>ACK</strong> — The new offer is in force. Music, if any, is a local decision.</li><li><strong>re-INVITE</strong> — Resume offers sendrecv again.</li><li><strong>200</strong> — Both directions restored.</li></ol></figure><p>If the far side answers sendrecv to a sendonly offer, you still have a direction bug. Check both SDPs before you blame the network.</p><h2>Sources</h2><ul><li><a href="https://www.rfc-editor.org/rfc/rfc3264">RFC 3264</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc3261">RFC 3261</a></li></ul><h2>Study card carried forward</h2><div class='paper inherited'>
+<p class='kicker'>SIP · RFC 3264</p><h1>Hold</h1><p class='lede'>Hold is a new offer that changes direction, not a mute button on one phone.</p><div class='read'><div class='prose'><figure class="ladder" data-ladder><svg viewBox="0 0 760 320" role="img" aria-label="re-INVITE sendonly"><defs><marker id='arrow4' markerWidth='8' markerHeight='8' refX='7' refY='3' orient='auto'><path d='M0,0 L8,3 L0,6 Z' fill='#5eead4'/></marker></defs><rect width="760" height="320" rx="16" fill="#0b0618"/><text x="20" y="24" font-family="Georgia, serif" font-size="16" fill="#f9a8d4">re-INVITE sendonly</text><text x="190" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#f5f7ff">Alice</text><line x1="190" y1="58" x2="190" y2="304" stroke="#3b3260" stroke-width="2"/><text x="570" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#f5f7ff">Bob</text><line x1="570" y1="58" x2="570" y2="304" stroke="#3b3260" stroke-width="2"/><g class="msg" data-cap="Same dialog. SDP a=sendonly, or inactive when neither side should send."><line x1="190" y1="70" x2="570" y2="70" stroke="#5eead4" stroke-width="2.4" marker-end="url(#arrow4)"/><text x="380.0" y="62" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#5eead4">re-INVITE</text></g><g class="msg" data-cap="Bob answers with recvonly, matching the direction."><line x1="570" y1="116" x2="190" y2="116" stroke="#86efac" stroke-width="2.4" marker-end="url(#arrow4)"/><text x="380.0" y="108" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#86efac">200</text></g><g class="msg" data-cap="The new offer is in force. Music, if any, is a local decision."><line x1="190" y1="162" x2="570" y2="162" stroke="#5eead4" stroke-width="2.4" marker-end="url(#arrow4)"/><text x="380.0" y="154" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#5eead4">ACK</text></g><g class="msg" data-cap="Resume offers sendrecv again."><line x1="190" y1="208" x2="570" y2="208" stroke="#5eead4" stroke-width="2.4" marker-end="url(#arrow4)"/><text x="380.0" y="200" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#5eead4">re-INVITE</text></g><g class="msg" data-cap="Both directions restored."><line x1="570" y1="254" x2="190" y2="254" stroke="#86efac" stroke-width="2.4" marker-end="url(#arrow4)"/><text x="380.0" y="246" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#86efac">200</text></g></svg><div class="ladder-controls"><button type="button" class="btn" data-act="prev">Step back</button><button type="button" class="btn" data-act="play">Play</button><button type="button" class="btn" data-act="next">Step</button></div><p class="ladder-cap muted"></p><ol><li><strong>re-INVITE</strong> — Same dialog. SDP a=sendonly, or inactive when neither side should send.</li><li><strong>200</strong> — Bob answers with recvonly, matching the direction.</li><li><strong>ACK</strong> — The new offer is in force. Music, if any, is a local decision.</li><li><strong>re-INVITE</strong> — Resume offers sendrecv again.</li><li><strong>200</strong> — Both directions restored.</li></ol></figure><p>If the far side answers sendrecv to a sendonly offer, you still have a direction bug. Check both SDPs before you blame the network.</p><h2>Sources</h2><ul><li><a href="https://www.rfc-editor.org/rfc/rfc3264">RFC 3264</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc3261">RFC 3261</a></li></ul><h2>Study card carried forward</h2><div class='paper inherited'>
 <p class="kicker">SIP · RFC 3264</p><h1>Hold</h1><p class="lede">Hold is a change to an existing dialog. The same Call-ID stays. A new INVITE, with a higher CSeq, changes the direction attribute on the media line.</p><figure><div class="diagram-scroll mid" tabindex="0"><img src="../assets/inherited/sip-hold.svg" alt="Ladder: Alice sends a re-INVITE with sendonly, Bob answers recvonly, then a later re-INVITE with sendrecv resumes the call."></div><figcaption>Alice holds Bob, then resumes. Music is optional and is not a third SIP dialog.</figcaption></figure><p class="hint">On a phone, swipe a wide ladder sideways. The steps below repeat the same sequence.</p><h2>Sequence</h2><ol class="steps"><li><strong>re-INVITE</strong> — Alice to Bob. a=sendonly on the audio line</li><li><strong>200 OK</strong> — Bob to Alice. Answer uses a=recvonly</li><li><strong>ACK</strong> — Alice to Bob. Hold is now in effect</li><li><strong>RTP one way</strong> — Alice to Bob. Often music from Alice&#x27;s side</li><li><strong>re-INVITE</strong> — Alice to Bob. a=sendrecv resumes the call</li><li><strong>200 OK</strong> — Bob to Alice. a=sendrecv</li><li><strong>ACK</strong> — Alice to Bob. Both directions open again</li><li><strong>RTP both ways</strong> — Alice to Bob. Conversation resumes</li></ol>
 <h2>Direction attributes</h2>
 <p>RFC 3264 section 8.4 replaced the old habit of setting the connection address to <code>0.0.0.0</code>. On a modern offer:</p>

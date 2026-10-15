@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="paper">
+<html lang="en" data-theme="neon">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,99 +12,218 @@
 try {
   var params = new URLSearchParams(location.search);
   var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
-  var ok = {paper:1, midnight:1, contrast:1, signal:1, canopy:1};
+  var ok = {neon:1, holographic:1, cyberpunk:1, sunset:1, light:1};
   if (ok[t]) document.documentElement.setAttribute("data-theme", t);
   if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+  var lang = localStorage.getItem("uc_flagship_lang");
+  if (lang) document.documentElement.lang = lang;
+  if (lang === "ar") document.documentElement.dir = "rtl";
 } catch (e) {}
 </script>
 </head>
 <body data-root="">
-<a class="skip" href="#content">Skip to content</a>
+<a class="skip" href="#content" data-i18n="skip">Skip to content</a>
 <header class="topbar">
   <div class="bar">
     <a class="brand" href="index.html">
       <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
-      <span><strong>UC Lab</strong><small>Free University</small></span>
+      <span><strong>UC Lab</strong><small data-i18n="brandSub">Free University</small></span>
     </a>
     <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
     <div class="tools">
+      <label class="lang"><span class="sr-only" data-i18n="langLabel">Language</span>
+        <select id="langSwitch" aria-label="Language">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="hi">हिन्दी</option>
+          <option value="te">తెలుగు</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="ja">日本語</option>
+          <option value="ar">العربية</option>
+        </select>
+      </label>
       <div class="themes" role="radiogroup" aria-label="Theme">
-        <button type="button" class="swatch-paper" data-theme-set="paper" aria-label="Paper" aria-checked="true"></button>
-        <button type="button" class="swatch-midnight" data-theme-set="midnight" aria-label="Midnight" aria-checked="false"></button>
-        <button type="button" class="swatch-contrast" data-theme-set="contrast" aria-label="High contrast" aria-checked="false"></button>
-        <button type="button" class="swatch-signal" data-theme-set="signal" aria-label="Signal" aria-checked="false"></button>
-        <button type="button" class="swatch-canopy" data-theme-set="canopy" aria-label="Canopy" aria-checked="false"></button>
+        <button type="button" class="swatch-neon" data-theme-set="neon" aria-label="Neon" aria-checked="true"></button>
+        <button type="button" class="swatch-holographic" data-theme-set="holographic" aria-label="Holographic" aria-checked="false"></button>
+        <button type="button" class="swatch-cyberpunk" data-theme-set="cyberpunk" aria-label="Cyberpunk" aria-checked="false"></button>
+        <button type="button" class="swatch-sunset" data-theme-set="sunset" aria-label="Sunset" aria-checked="false"></button>
+        <button type="button" class="swatch-light" data-theme-set="light" aria-label="Light" aria-checked="false"></button>
       </div>
+      <button type="button" class="btn mode-btn" data-i18n="mode">Light</button>
       <button type="button" class="btn motion-btn">Motion</button>
       <a class="btn dl" href="download.html">Offline</a>
       <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
     </div>
     <form class="site-search" role="search">
-      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off">
+      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off" data-i18n-placeholder="searchPh">
       <div id="searchPop" class="search-pop" hidden></div>
     </form>
   </div>
-  <nav class="tabs" aria-label="Lab"><a href="index.html" aria-current="page">Home</a><a href="diagrams/index.html">Diagrams</a><a href="flows/index.html">Flows</a><a href="charts/index.html">Charts</a><a href="cheats/index.html">Cheat Codes</a><a href="play/index.html">Play</a><a href="ecosystem/index.html">Ecosystem</a><a href="download.html">Downloads</a><a href="guide/interview.html">Careers</a></nav>
+  <nav class="tabs" aria-label="Lab"><a href="index.html" aria-current="page" data-i18n="navHome">Home</a><a href="diagrams/index.html" data-i18n="navDiagrams">Diagrams</a><a href="flows/index.html" data-i18n="navFlows">Flows</a><a href="charts/index.html" data-i18n="navCharts">Charts</a><a href="cheats/index.html" data-i18n="navCheats">Cheat Codes</a><a href="play/index.html" data-i18n="navPlay">Play</a><a href="ecosystem/index.html" data-i18n="navEco">Ecosystem</a><a href="download.html" data-i18n="navDownloads">Downloads</a><a href="guide/interview.html" data-i18n="navCareers">Careers</a></nav>
   <p class="progress" id="visitProgress">Progress</p>
 </header>
 <main id="content" class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li aria-current="page">Home</li></ol></nav>
-<div class="fold" data-effects data-parallax>
-<div class="hero-copy">
-<p class="kicker">Flagship studio</p>
-<h1>Voice, UC, and contact center. One lab.</h1>
-<div class="mascots" aria-hidden="true"><svg class="mascot" viewBox="0 0 76 96" data-mood="study" aria-hidden="true">
-<ellipse cx="38" cy="36" rx="22" ry="20" fill="#f0b429"/>
-<circle cx="18" cy="22" r="8" fill="#e07a5f"/><circle cx="58" cy="22" r="8" fill="#e07a5f"/>
-<circle cx="30" cy="34" r="3" fill="#172033"/><circle cx="46" cy="34" r="3" fill="#172033"/>
+<section class="bleed" data-effects data-parallax>
+<div class="neon-fallback" aria-hidden="true">
+  <div class="grid"></div>
+  <div class="sparks"></div>
+  <div class="ring r1"></div>
+  <div class="ring r2"></div>
+  <div class="ring r3"></div>
+  <div class="orbit"><b></b><b></b><b></b><b></b></div>
+</div>
+<canvas id="hero3d" aria-label="Orbiting three.js call path with a phone, CUCM, CUBE, and cloud"></canvas>
+<div class="bleed-copy">
+<p class="kicker" data-i18n="greet">Welcome to the lab</p>
+<h1 data-i18n="heroTitle">Voice, UC, and contact center.</h1>
+<div class="mascots" aria-hidden="true"><svg class="mascot" viewBox="0 0 76 96" data-mood="study" data-variant="study" aria-hidden="true">
+<ellipse cx="38" cy="36" rx="22" ry="20" fill="var(--fur, #fde047)"/>
+<circle class="ear" cx="18" cy="22" r="8" fill="var(--ear, #e879f9)"/><circle class="ear" cx="58" cy="22" r="8" fill="var(--ear, #22d3ee)"/>
+<g class="eyes"><ellipse cx="30" cy="34" rx="3.2" ry="3.2" fill="#172033"/><ellipse cx="46" cy="34" rx="3.2" ry="3.2" fill="#172033"/>
+<ellipse class="lid" cx="30" cy="34" rx="4.2" ry="3.6" fill="var(--fur, #fde047)"/><ellipse class="lid" cx="46" cy="34" rx="4.2" ry="3.6" fill="var(--fur, #fde047)"/></g>
 <path d="M28 58c6 6 14 6 20 0" fill="none" stroke="#172033" stroke-width="2"/>
-<rect x="24" y="62" width="28" height="22" rx="8" fill="#0f6e62"/>
-<path d="M18 70h-8v10h8" fill="none" stroke="#172033" stroke-width="2"/>
-</svg><svg class="mascot" viewBox="0 0 76 96" data-mood="alert" aria-hidden="true">
-<ellipse cx="38" cy="36" rx="22" ry="20" fill="#f0b429"/>
-<circle cx="18" cy="22" r="8" fill="#e07a5f"/><circle cx="58" cy="22" r="8" fill="#e07a5f"/>
-<circle cx="30" cy="34" r="3" fill="#172033"/><circle cx="46" cy="34" r="3" fill="#172033"/>
+<rect x="24" y="62" width="28" height="22" rx="8" fill="var(--suit, #22d3ee)"/>
+<g class="arm"><path d="M20 68c-8 2-12 10-8 14 4-2 8-2 10 2" fill="var(--fur, #fde047)" stroke="#172033" stroke-width="1"/></g>
+</svg><svg class="mascot" viewBox="0 0 76 96" data-mood="alert" data-variant="alert" aria-hidden="true">
+<ellipse cx="38" cy="36" rx="22" ry="20" fill="var(--fur, #fde047)"/>
+<circle class="ear" cx="18" cy="22" r="8" fill="var(--ear, #e879f9)"/><circle class="ear" cx="58" cy="22" r="8" fill="var(--ear, #22d3ee)"/>
+<g class="eyes"><ellipse cx="30" cy="34" rx="3.2" ry="3.2" fill="#172033"/><ellipse cx="46" cy="34" rx="3.2" ry="3.2" fill="#172033"/>
+<ellipse class="lid" cx="30" cy="34" rx="4.2" ry="3.6" fill="var(--fur, #fde047)"/><ellipse class="lid" cx="46" cy="34" rx="4.2" ry="3.6" fill="var(--fur, #fde047)"/></g>
 <circle cx="38" cy="58" r="4" fill="#172033"/>
-<rect x="24" y="62" width="28" height="22" rx="8" fill="#0f6e62"/>
-<path d="M18 70h-8v10h8" fill="none" stroke="#172033" stroke-width="2"/>
-</svg><svg class="mascot" viewBox="0 0 76 96" data-mood="celebrate" aria-hidden="true">
-<ellipse cx="38" cy="36" rx="22" ry="20" fill="#f0b429"/>
-<circle cx="18" cy="22" r="8" fill="#e07a5f"/><circle cx="58" cy="22" r="8" fill="#e07a5f"/>
-<circle cx="30" cy="34" r="3" fill="#172033"/><circle cx="46" cy="34" r="3" fill="#172033"/>
+<rect x="24" y="62" width="28" height="22" rx="8" fill="var(--suit, #22d3ee)"/>
+<g class="arm"><path d="M20 68c-8 2-12 10-8 14 4-2 8-2 10 2" fill="var(--fur, #fde047)" stroke="#172033" stroke-width="1"/></g>
+</svg><svg class="mascot" viewBox="0 0 76 96" data-mood="celebrate" data-variant="celebrate" aria-hidden="true">
+<ellipse cx="38" cy="36" rx="22" ry="20" fill="var(--fur, #fde047)"/>
+<circle class="ear" cx="18" cy="22" r="8" fill="var(--ear, #e879f9)"/><circle class="ear" cx="58" cy="22" r="8" fill="var(--ear, #22d3ee)"/>
+<g class="eyes"><ellipse cx="30" cy="34" rx="3.2" ry="3.2" fill="#172033"/><ellipse cx="46" cy="34" rx="3.2" ry="3.2" fill="#172033"/>
+<ellipse class="lid" cx="30" cy="34" rx="4.2" ry="3.6" fill="var(--fur, #fde047)"/><ellipse class="lid" cx="46" cy="34" rx="4.2" ry="3.6" fill="var(--fur, #fde047)"/></g>
 <path d="M28 54c6 10 14 10 20 0" fill="none" stroke="#172033" stroke-width="2"/>
-<rect x="24" y="62" width="28" height="22" rx="8" fill="#0f6e62"/>
-<path d="M18 70h-8v10h8" fill="none" stroke="#172033" stroke-width="2"/>
+<rect x="24" y="62" width="28" height="22" rx="8" fill="var(--suit, #22d3ee)"/>
+<g class="arm"><path d="M20 68c-8 2-12 10-8 14 4-2 8-2 10 2" fill="var(--fur, #fde047)" stroke="#172033" stroke-width="1"/></g>
 </svg></div>
 <p class="symbols" aria-label="Symbols"><span>5060</span><span>5061</span><span>EF 46</span><span>RTP</span></p>
-<p class="lede">Fundamentals, then the edge, the cloud, and the systems around the agent.</p>
-<div class="actions"><a class="btn dl" href="path.html">Start the path</a><a class="btn" href="diagrams/index.html">Open diagrams</a><a class="btn" href="../campus/uc-lab-free-university.html">Deep campus</a></div>
+<p class="lede" data-i18n="heroLede">Fundamentals, then the edge, the cloud, and the systems around the agent.</p>
+<div class="actions">
+<a class="btn dl" href="path.html" data-i18n="startPath">Start the path</a>
+<a class="btn" href="diagrams/index.html" data-i18n="openDiagrams">Open diagrams</a>
+<a class="btn" href="../campus/uc-lab-free-university.html" data-i18n="campus">Deep campus</a>
 </div>
-<div class="stage">
-<div class="css3d" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-<canvas id="hero3d" aria-label="Rotating three.js scene of a phone, CUCM, CUBE, and cloud"></canvas>
 </div>
-</div>
+<div class="ticker" aria-hidden="true"><span>5060 SIP · 5061 TLS · 2000 SCCP · 2443 Secure SCCP · 69 TFTP · 6970 HTTP · EF 46 · RTP 16384–32767 · 911 direct dial · </span></div>
 <section class="stats" aria-label="Counts">
-<div class="stat"><span class="num" data-count="29">29</span><span class="label">Playable flows</span></div>
-<div class="stat"><span class="num" data-count="468">468</span><span class="label">Quiz questions</span></div>
-<div class="stat"><span class="num" data-count="1472">1472</span><span class="label">Flashcards</span></div>
-<div class="stat"><span class="num" data-count="29">29</span><span class="label">Branching cases</span></div>
-<div class="stat"><span class="num" data-count="580">580</span><span class="label">Campus sections</span></div>
-<div class="stat"><span class="num" data-count="28">28</span><span class="label">Atlas diagrams</span></div>
+<div class="stat glass"><svg class="visit-ring" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="16"></circle><circle class="fg" id="visitRing" cx="21" cy="21" r="16"></circle></svg><span class="num" data-count="29">29</span><span class="label">Playable flows</span></div>
+<div class="stat glass"><span class="num" data-count="468">468</span><span class="label">Quiz questions</span></div>
+<div class="stat glass"><span class="num" data-count="1472">1472</span><span class="label">Flashcards</span></div>
+<div class="stat glass"><span class="num" data-count="29">29</span><span class="label">Branching cases</span></div>
+<div class="stat glass"><span class="num" data-count="580">580</span><span class="label">Campus sections</span></div>
+<div class="stat glass"><span class="num" data-count="28">28</span><span class="label">Atlas diagrams</span></div>
+</section>
 </section>
 <div class="toggles" aria-label="Break a link in the diagram">
 <label><input type="checkbox" data-break="phone-cucm"> Phone–CUCM down</label>
 <label><input type="checkbox" data-break="cucm-cube"> Trunk down</label>
 <label><input type="checkbox" data-break="cube-pstn"> Carrier down</label>
 </div>
-<h2>Where to go next</h2>
-<div class="atlas">
-<a class="card" href="diagrams/index.html"><h2>Diagrams</h2><p>Animated ladders and the architecture set.</p></a>
-<a class="card" href="charts/index.html"><h2>Charts</h2><p>Section counts, quiz tracks, bandwidth.</p></a>
-<a class="card" href="cheats/index.html"><h2>Cheat Codes</h2><p>One-page sheets and the offline zip.</p></a>
-<a class="card" href="play/index.html"><h2>Play</h2><p>Ports game, map, sandbox, daily challenge.</p></a>
-<a class="card" href="guide/interview.html"><h2>Careers</h2><p>Interview questions and a path with no invented wages.</p></a>
+<section class="wall">
+<h2 data-i18n="wall">Signal wall</h2>
+<p class="lede">Large drawings. Click one to enlarge it, then step the hops.</p>
+<div class="wall-grid">
+<button type="button" class="shot glass" data-why="REGISTER stores a binding. It does not create a call. RFC 3261 section 10."><img src="diagrams/registration.svg" alt="SIP registration ladder"></button>
+<button type="button" class="shot glass" data-why="The call is not up until ACK. Media can skip the proxy. RFC 3261."><img src="diagrams/basic-call.svg" alt="Basic call ladder"></button>
+<button type="button" class="shot glass" data-why="Voice RTP is commonly EF, DSCP 46. Cisco signaling designs often use CS3. RFC 4594 assigns signaling CS5."><img src="diagrams/qos-marks.svg" alt="QoS marks"></button>
+<button type="button" class="shot glass" data-why="Emergency calling needs a callback identity. This drawing is a teaching ladder, not a carrier design."><img src="diagrams/e911.svg" alt="Emergency callback ladder"></button>
 </div>
+</section>
+<h2 data-i18n="next">Where to go next</h2>
+<div class="atlas">
+<a class="card glass iso-card" href="diagrams/index.html"><svg class="iso" viewBox="0 0 120 120" aria-hidden="true">
+<defs><linearGradient id="iso15" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#e879f9"/></linearGradient></defs>
+<ellipse cx="60" cy="104" rx="34" ry="8" fill="#000" opacity="0.35"/>
+<polygon points="60,18 102,40 60,62 18,40" fill="url(#iso15)"/>
+<polygon points="18,40 60,62 60,96 18,74" fill="#22d3ee" opacity="0.85"/>
+<polygon points="102,40 60,62 60,96 102,74" fill="#e879f9" opacity="0.9"/>
+<polygon points="60,34 78,44 60,54 42,44" fill="#fff" opacity="0.85"/>
+</svg><h2>Diagrams</h2><p>Animated ladders and the architecture set.</p></a>
+<a class="card glass iso-card" href="flows/index.html"><svg class="iso" viewBox="0 0 120 120" aria-hidden="true">
+<defs><linearGradient id="iso16" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fde047"/><stop offset="1" stop-color="#fb7185"/></linearGradient></defs>
+<ellipse cx="60" cy="104" rx="34" ry="8" fill="#000" opacity="0.35"/>
+<polygon points="60,18 102,40 60,62 18,40" fill="url(#iso16)"/>
+<polygon points="18,40 60,62 60,96 18,74" fill="#fde047" opacity="0.85"/>
+<polygon points="102,40 60,62 60,96 102,74" fill="#fb7185" opacity="0.9"/>
+<polygon points="60,34 78,44 60,54 42,44" fill="#fff" opacity="0.85"/>
+</svg><h2>Flows</h2><p>Large ladders you can step.</p></a>
+<a class="card glass iso-card" href="charts/index.html"><svg class="iso" viewBox="0 0 120 120" aria-hidden="true">
+<defs><linearGradient id="iso17" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#86efac"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
+<ellipse cx="60" cy="104" rx="34" ry="8" fill="#000" opacity="0.35"/>
+<polygon points="60,18 102,40 60,62 18,40" fill="url(#iso17)"/>
+<polygon points="18,40 60,62 60,96 18,74" fill="#86efac" opacity="0.85"/>
+<polygon points="102,40 60,62 60,96 102,74" fill="#22d3ee" opacity="0.9"/>
+<polygon points="60,34 78,44 60,54 42,44" fill="#fff" opacity="0.85"/>
+</svg><h2>Charts</h2><p>Section counts, quiz tracks, bandwidth.</p></a>
+<a class="card glass iso-card" href="cheats/index.html"><svg class="iso" viewBox="0 0 120 120" aria-hidden="true">
+<defs><linearGradient id="iso18" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0abfc"/><stop offset="1" stop-color="#818cf8"/></linearGradient></defs>
+<ellipse cx="60" cy="104" rx="34" ry="8" fill="#000" opacity="0.35"/>
+<polygon points="60,18 102,40 60,62 18,40" fill="url(#iso18)"/>
+<polygon points="18,40 60,62 60,96 18,74" fill="#f0abfc" opacity="0.85"/>
+<polygon points="102,40 60,62 60,96 102,74" fill="#818cf8" opacity="0.9"/>
+<polygon points="60,34 78,44 60,54 42,44" fill="#fff" opacity="0.85"/>
+</svg><h2>Cheat Codes</h2><p>One-page sheets and the offline zip.</p></a>
+<a class="card glass iso-card" href="play/index.html"><svg class="iso" viewBox="0 0 120 120" aria-hidden="true">
+<defs><linearGradient id="iso19" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fb7185"/><stop offset="1" stop-color="#fde047"/></linearGradient></defs>
+<ellipse cx="60" cy="104" rx="34" ry="8" fill="#000" opacity="0.35"/>
+<polygon points="60,18 102,40 60,62 18,40" fill="url(#iso19)"/>
+<polygon points="18,40 60,62 60,96 18,74" fill="#fb7185" opacity="0.85"/>
+<polygon points="102,40 60,62 60,96 102,74" fill="#fde047" opacity="0.9"/>
+<polygon points="60,34 78,44 60,54 42,44" fill="#fff" opacity="0.85"/>
+</svg><h2>Play</h2><p>Ports game, map, sandbox, daily challenge.</p></a>
+<a class="card glass iso-card" href="ecosystem/index.html"><svg class="iso" viewBox="0 0 120 120" aria-hidden="true">
+<defs><linearGradient id="iso20" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#a3e635"/></linearGradient></defs>
+<ellipse cx="60" cy="104" rx="34" ry="8" fill="#000" opacity="0.35"/>
+<polygon points="60,18 102,40 60,62 18,40" fill="url(#iso20)"/>
+<polygon points="18,40 60,62 60,96 18,74" fill="#38bdf8" opacity="0.85"/>
+<polygon points="102,40 60,62 60,96 102,74" fill="#a3e635" opacity="0.9"/>
+<polygon points="60,34 78,44 60,54 42,44" fill="#fff" opacity="0.85"/>
+</svg><h2>Ecosystem</h2><p>WFM, recording, CRM, regions.</p></a>
+<a class="card glass iso-card" href="download.html"><svg class="iso" viewBox="0 0 120 120" aria-hidden="true">
+<defs><linearGradient id="iso21" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fde047"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
+<ellipse cx="60" cy="104" rx="34" ry="8" fill="#000" opacity="0.35"/>
+<polygon points="60,18 102,40 60,62 18,40" fill="url(#iso21)"/>
+<polygon points="18,40 60,62 60,96 18,74" fill="#fde047" opacity="0.85"/>
+<polygon points="102,40 60,62 60,96 102,74" fill="#22d3ee" opacity="0.9"/>
+<polygon points="60,34 78,44 60,54 42,44" fill="#fff" opacity="0.85"/>
+</svg><h2>Downloads</h2><p>Flagship zip and the campus zip.</p></a>
+<a class="card glass iso-card" href="guide/interview.html"><svg class="iso" viewBox="0 0 120 120" aria-hidden="true">
+<defs><linearGradient id="iso22" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#67e8f9"/><stop offset="1" stop-color="#a78bfa"/></linearGradient></defs>
+<ellipse cx="60" cy="104" rx="34" ry="8" fill="#000" opacity="0.35"/>
+<polygon points="60,18 102,40 60,62 18,40" fill="url(#iso22)"/>
+<polygon points="18,40 60,62 60,96 18,74" fill="#67e8f9" opacity="0.85"/>
+<polygon points="102,40 60,62 60,96 102,74" fill="#a78bfa" opacity="0.9"/>
+<polygon points="60,34 78,44 60,54 42,44" fill="#fff" opacity="0.85"/>
+</svg><h2>Careers</h2><p>Interview questions and a path with no invented wages.</p></a>
+<a class="card glass iso-card" href="ecosystem/regions.html"><svg class="iso" viewBox="0 0 120 120" aria-hidden="true">
+<defs><linearGradient id="iso23" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#a3e635"/></linearGradient></defs>
+<ellipse cx="60" cy="104" rx="34" ry="8" fill="#000" opacity="0.35"/>
+<polygon points="60,18 102,40 60,62 18,40" fill="url(#iso23)"/>
+<polygon points="18,40 60,62 60,96 18,74" fill="#38bdf8" opacity="0.85"/>
+<polygon points="102,40 60,62 60,96 102,74" fill="#a3e635" opacity="0.9"/>
+<polygon points="60,34 78,44 60,54 42,44" fill="#fff" opacity="0.85"/>
+</svg><h2>Regions</h2><p>Cited emergency and privacy rules. Coverage stays on the vendor page.</p></a>
+</div>
+<section class="audio-dock glass">
+<h2 data-i18n="audioTitle">Architect conversation</h2>
+<p>Two short clips. Maya asks. Jules answers. About a minute and a half together.</p>
+<audio controls preload="none" src="audio/architect-tour.mp3">
+  <a href="audio/architect-tour.mp3">How to view the lab</a>
+</audio>
+<p>How to view the lab. <a href="audio/scripts/architect-tour.md">Script</a></p>
+<audio controls preload="none" src="audio/architect-practice.mp3">
+  <a href="audio/architect-practice.mp3">How to practise and share</a>
+</audio>
+<p>How to practise and share. <a href="audio/scripts/architect-practice.md">Script</a></p>
+<p><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">Rate, comment, or share this lab on GitHub</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with the studio</a></p>
+</section>
 </main>
 <footer class="site-foot">
   <div class="wrap">

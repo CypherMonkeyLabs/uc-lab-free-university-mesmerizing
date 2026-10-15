@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="paper">
+<html lang="en" data-theme="neon">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,39 +12,55 @@
 try {
   var params = new URLSearchParams(location.search);
   var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
-  var ok = {paper:1, midnight:1, contrast:1, signal:1, canopy:1};
+  var ok = {neon:1, holographic:1, cyberpunk:1, sunset:1, light:1};
   if (ok[t]) document.documentElement.setAttribute("data-theme", t);
   if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+  var lang = localStorage.getItem("uc_flagship_lang");
+  if (lang) document.documentElement.lang = lang;
+  if (lang === "ar") document.documentElement.dir = "rtl";
 } catch (e) {}
 </script>
 </head>
 <body data-root="../">
-<a class="skip" href="#content">Skip to content</a>
+<a class="skip" href="#content" data-i18n="skip">Skip to content</a>
 <header class="topbar">
   <div class="bar">
     <a class="brand" href="../index.html">
       <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
-      <span><strong>UC Lab</strong><small>Free University</small></span>
+      <span><strong>UC Lab</strong><small data-i18n="brandSub">Free University</small></span>
     </a>
     <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
     <div class="tools">
+      <label class="lang"><span class="sr-only" data-i18n="langLabel">Language</span>
+        <select id="langSwitch" aria-label="Language">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="hi">हिन्दी</option>
+          <option value="te">తెలుగు</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="ja">日本語</option>
+          <option value="ar">العربية</option>
+        </select>
+      </label>
       <div class="themes" role="radiogroup" aria-label="Theme">
-        <button type="button" class="swatch-paper" data-theme-set="paper" aria-label="Paper" aria-checked="true"></button>
-        <button type="button" class="swatch-midnight" data-theme-set="midnight" aria-label="Midnight" aria-checked="false"></button>
-        <button type="button" class="swatch-contrast" data-theme-set="contrast" aria-label="High contrast" aria-checked="false"></button>
-        <button type="button" class="swatch-signal" data-theme-set="signal" aria-label="Signal" aria-checked="false"></button>
-        <button type="button" class="swatch-canopy" data-theme-set="canopy" aria-label="Canopy" aria-checked="false"></button>
+        <button type="button" class="swatch-neon" data-theme-set="neon" aria-label="Neon" aria-checked="true"></button>
+        <button type="button" class="swatch-holographic" data-theme-set="holographic" aria-label="Holographic" aria-checked="false"></button>
+        <button type="button" class="swatch-cyberpunk" data-theme-set="cyberpunk" aria-label="Cyberpunk" aria-checked="false"></button>
+        <button type="button" class="swatch-sunset" data-theme-set="sunset" aria-label="Sunset" aria-checked="false"></button>
+        <button type="button" class="swatch-light" data-theme-set="light" aria-label="Light" aria-checked="false"></button>
       </div>
+      <button type="button" class="btn mode-btn" data-i18n="mode">Light</button>
       <button type="button" class="btn motion-btn">Motion</button>
       <a class="btn dl" href="../download.html">Offline</a>
       <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
     </div>
     <form class="site-search" role="search">
-      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off">
+      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off" data-i18n-placeholder="searchPh">
       <div id="searchPop" class="search-pop" hidden></div>
     </form>
   </div>
-  <nav class="tabs" aria-label="Lab"><a href="../index.html">Home</a><a href="../diagrams/index.html">Diagrams</a><a href="../flows/index.html">Flows</a><a href="../charts/index.html">Charts</a><a href="../cheats/index.html">Cheat Codes</a><a href="../play/index.html">Play</a><a href="../ecosystem/index.html" aria-current="page">Ecosystem</a><a href="../download.html">Downloads</a><a href="../guide/interview.html">Careers</a></nav>
+  <nav class="tabs" aria-label="Lab"><a href="../index.html" data-i18n="navHome">Home</a><a href="../diagrams/index.html" data-i18n="navDiagrams">Diagrams</a><a href="../flows/index.html" data-i18n="navFlows">Flows</a><a href="../charts/index.html" data-i18n="navCharts">Charts</a><a href="../cheats/index.html" data-i18n="navCheats">Cheat Codes</a><a href="../play/index.html" data-i18n="navPlay">Play</a><a href="../ecosystem/index.html" aria-current="page" data-i18n="navEco">Ecosystem</a><a href="../download.html" data-i18n="navDownloads">Downloads</a><a href="../guide/interview.html" data-i18n="navCareers">Careers</a></nav>
   <p class="progress" id="visitProgress">Progress</p>
 </header>
 <main id="content" class="wrap">
@@ -63,6 +79,7 @@ try {
 <a class="card" href="crm.html"><h2>CRM</h2><p>Screen pop on a number the CRM can match.</p></a>
 <a class="card" href="agents.html"><h2>AI agents</h2><p>Handoff, grounding, and a human escape.</p></a>
 <a class="card" href="bridges.html"><h2>Bridges</h2><p>CUCM, Webex, Teams, and UCCE, plus hooks you can leave in a design.</p></a>
+<a class="card glass iso-card" href="regions.html"><h2>Regions</h2><p>Cited residency and emergency rules. Coverage lists stay on the vendor page.</p></a>
 </div>
 
 </main>
