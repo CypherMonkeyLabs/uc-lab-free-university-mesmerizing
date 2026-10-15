@@ -500,7 +500,7 @@ def build_flows() -> None:
              "<div class='flow-atlas'>"]
     for flow in cards:
         atlas.append(
-            "<article class='card glass flow-card'>"
+            "<article class='tilt-card glass flow-card' data-tilt>"
             f"<button type='button' class='shot' data-why='{esc(flow['lede'])}'>{flow_preview(flow)}</button>"
             f"<h2><a href='{esc(flow['slug'])}.html'>{esc(flow['title'])}</a></h2>"
             f"<p class='muted'>{esc(flow['level'])} · {esc(flow['kicker'])}</p></article>"
@@ -1376,33 +1376,7 @@ def other_pages(bank: dict, pool_images: list[str]) -> None:
 {''.join(imgs)}
 """, "SVG diagrams copied from the idea-pool branch.")
 
-    write_page("download.html", "Download", """
-<p class="kicker">Offline</p>
-<h1 data-i18n="pageDownloads">Download this lab</h1>
-<p class="lede">Pick a stop. The matching file is the one you take with you. Unzip the studio and open index.html. The deep campus has its own zip.</p>
-<ol class="timeline" id="packLine">
-<li><button type="button" aria-expanded="true" data-pack="studio">01 · Studio zip</button><div class="time-body"><p>Flagship pages, drawings, quiz bank, cheat sheets, and the audio player. <a class="btn dl" href="uc-lab-flagship.zip">Download the flagship zip</a></p></div></li>
-<li><button type="button" aria-expanded="false" data-pack="campus">02 · Deep campus</button><div class="time-body" hidden><p>580 sections, kept as the long library. <a class="btn" href="../releases/uc-lab-free-university.html.zip">Download the campus zip</a></p></div></li>
-<li><button type="button" aria-expanded="false" data-pack="sheets">03 · One-page sheets</button><div class="time-body" hidden><p>Each cheat code is one page, as HTML, PDF, and PNG. <a class="btn" href="cheats/index.html">Open cheat codes</a></p></div></li>
-<li><button type="button" aria-expanded="false" data-pack="audio">04 · Audio slots</button><div class="time-body" hidden><p>The player on the home page reads <code>audio/architect-tour.mp3</code> and <code>audio/architect-practice.mp3</code>. A later recording can replace those files without a new page.</p></div></li>
-</ol>
-<section class="stats" aria-label="Download sizes">
-<div class="stat glass"><span class="num">ZIP</span><span class="label">Flagship studio</span></div>
-<div class="stat glass"><span class="num">580</span><span class="label">Campus sections</span></div>
-<div class="stat glass"><span class="num">1 pg</span><span class="label">Each cheat sheet</span></div>
-</section>
-<h2>Cheat sheets from the October study set</h2>
-<ul>
-<li><a href="downloads/sip-call-flows.pdf">SIP call flows</a></li>
-<li><a href="downloads/sdp-offer-answer.pdf">SDP offer and answer</a></li>
-<li><a href="downloads/cucm-dial-plan.pdf">CUCM dial plan</a></li>
-<li><a href="downloads/cube-sbc.pdf">CUBE</a></li>
-<li><a href="downloads/e911-design.pdf">E911</a></li>
-<li><a href="downloads/qos-dscp.pdf">QoS and DSCP</a></li>
-<li><a href="downloads/cucm-webex-migration.pdf">CUCM to Webex Calling</a></li>
-</ul>
-<p>When this folder is served over http, the service worker caches the shell for the next visit. The zip does not need the network after you have it.</p>
-""", "Offline zip of the flagship lab and the classic campus.")
+    write_page("download.html", "Download", download_body(), "Offline zip of the flagship lab and the classic campus.")
 
     glossary = f"""
 <p class="kicker">Search</p>
@@ -1560,6 +1534,70 @@ self.addEventListener("fetch", function (event) {
 """, encoding="utf-8")
 
 
+def human_size(size: int) -> str:
+    if size >= 1_000_000:
+        return f"{size / 1_000_000:4.1f} MB"
+    if size >= 1000:
+        return f"{size / 1000:.0f} KB"
+    return f"{size} B"
+
+
+def file_icon(kind: str) -> str:
+    color = {"ZIP": "#fde047", "PDF": "#fb7185", "PNG": "#22d3ee", "MP3": "#e879f9"}.get(kind, "#22d3ee")
+    return (
+        f'<svg class="file-ico" viewBox="0 0 48 48" aria-hidden="true">'
+        f'<rect x="8" y="6" width="26" height="36" rx="4" fill="#141028" stroke="{color}" stroke-width="2"/>'
+        f'<path d="M26 6v10h10" fill="none" stroke="{color}" stroke-width="2"/>'
+        f'<text x="21" y="33" text-anchor="middle" font-size="9" font-family="Segoe UI, sans-serif" fill="{color}">{kind}</text>'
+        f"</svg>"
+    )
+
+
+def file_card(href: str, title: str, kind: str, size_label: str) -> str:
+    return (
+        f'<a class="file-card glass" href="{esc(href)}" download>'
+        f"{file_icon(kind)}<strong>{esc(title)}</strong><em>{esc(size_label)}</em></a>"
+    )
+
+
+def download_body() -> str:
+    cards = [
+        file_card("uc-lab-flagship.zip", "Studio zip", "ZIP", "00.0 MB"),
+    ]
+    campus = ROOT / "releases" / "uc-lab-free-university.html.zip"
+    if campus.is_file():
+        cards.append(file_card("../releases/uc-lab-free-university.html.zip", "Campus zip", "ZIP", human_size(campus.stat().st_size)))
+    audio_names = {
+        "architect-tour.mp3": "How to view the lab",
+        "architect-practice.mp3": "How to practise and share",
+    }
+    for name, title in audio_names.items():
+        path = OUT / "audio" / name
+        if path.is_file():
+            cards.append(file_card(f"audio/{name}", title, "MP3", human_size(path.stat().st_size)))
+    for path in sorted((OUT / "downloads").glob("*.pdf")):
+        cards.append(file_card(f"downloads/{path.name}", path.stem.replace("-", " "), "PDF", human_size(path.stat().st_size)))
+    for path in sorted((OUT / "cheats").glob("*.pdf")):
+        cards.append(file_card(f"cheats/{path.name}", f"{path.stem.replace('-', ' ')} sheet", "PDF", human_size(path.stat().st_size)))
+    for path in sorted((OUT / "cheats").glob("*.png")):
+        cards.append(file_card(f"cheats/{path.name}", f"{path.stem.replace('-', ' ')} image", "PNG", human_size(path.stat().st_size)))
+    return f"""
+<p class="kicker">Offline</p>
+<h1 data-i18n="pageDownloads">Download this lab</h1>
+<p class="lede">The timeline says what each group is for. The grid is the file. One click downloads it.</p>
+<div class="pack-layout">
+<ol class="timeline" id="packLine">
+<li><button type="button" aria-expanded="true" data-pack="studio">01 · Studio zip</button><div class="time-body"><p>Flagship pages, drawings, quiz bank, cheat sheets, and the audio player. Open index.html after you unzip it.</p></div></li>
+<li><button type="button" aria-expanded="false" data-pack="campus">02 · Deep campus</button><div class="time-body" hidden><p>580 sections, kept as the long library. The campus zip is the second card in the grid.</p></div></li>
+<li><button type="button" aria-expanded="false" data-pack="sheets">03 · One-page sheets</button><div class="time-body" hidden><p>Each cheat code is one page, as PDF and PNG, plus the October study PDFs.</p></div></li>
+<li><button type="button" aria-expanded="false" data-pack="audio">04 · Audio slots</button><div class="time-body" hidden><p>The player reads <code>audio/architect-tour.mp3</code> and <code>audio/architect-practice.mp3</code>. A later recording can replace those files without a new page.</p></div></li>
+</ol>
+<div class="file-grid">{''.join(cards)}</div>
+</div>
+<p>When this folder is served over http, the service worker caches the shell for the next visit. The zip does not need the network after you have it.</p>
+"""
+
+
 def write_zip() -> None:
     target = OUT / "uc-lab-flagship.zip"
     if target.exists():
@@ -1590,6 +1628,14 @@ def main() -> None:
     from round3_pages import build_round3
     build_round2(write_page, sources, bank)
     build_round3(write_page, sources, bank, ORDER)
+    write_zip()
+    page = OUT / "download.html"
+    stamped = page.read_text(encoding="utf-8").replace(
+        ">00.0 MB<",
+        ">" + f"{(OUT / 'uc-lab-flagship.zip').stat().st_size / 1_000_000:4.1f} MB" + "<",
+        1,
+    )
+    page.write_text(stamped, encoding="utf-8")
     write_zip()
     subprocess.check_call([sys.executable, str(ROOT / "scripts" / "check-flagship.py")])
     print(f"questions {len(bank['questions'])} cards {len(bank['cards'])} pr2 {len(bank['pr2Cards'])} cases {len(bank['scenarios'])} diagrams {len(pool_images)}")

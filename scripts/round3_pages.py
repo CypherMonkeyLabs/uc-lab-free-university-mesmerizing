@@ -118,6 +118,14 @@ def diagram_catalog() -> list[tuple[str, str, str, bool]]:
         ("e911", "Emergency callback", ["Phone", "CUCM", "Gateway", "PSAP"], [(0, 1, "911"), (1, 2, "INVITE ELIN"), (2, 3, "to PSAP"), (3, 2, "callback")], True),
         ("migration-cutover", "Cutover canary", ["Old PBX", "SBC", "New cloud"], [(0, 1, "canary DID"), (1, 2, "INVITE"), (2, 1, "200"), (1, 0, "rollback path")], True),
         ("hunt", "Hunt pilot", ["Caller", "CUCM", "Line 1", "Line 2"], [(0, 1, "to pilot"), (1, 2, "ring"), (2, 1, "no answer"), (1, 3, "next member")], True),
+        ("park", "Call park", ["Alice", "CUCM", "Bob"], [(0, 1, "park"), (1, 0, "200"), (2, 1, "retrieve"), (1, 2, "200")], True),
+        ("conference", "Ad-hoc conference", ["Alice", "CUCM", "Bob", "Carol"], [(0, 1, "hold Bob"), (0, 1, "INVITE Carol"), (1, 3, "INVITE"), (1, 0, "joined")], True),
+        ("voicemail", "No answer to voicemail", ["Caller", "CUCM", "Phone", "Voicemail"], [(0, 1, "INVITE"), (1, 2, "ring"), (2, 1, "no answer"), (1, 3, "INVITE")], True),
+        ("shared-line", "Shared line", ["Caller", "CUCM", "Phone A", "Phone B"], [(0, 1, "INVITE"), (1, 2, "ring"), (1, 3, "ring"), (2, 1, "200")], True),
+        ("snr", "Single number reach", ["Caller", "CUCM", "Desk", "Mobile"], [(0, 1, "INVITE"), (1, 2, "ring desk"), (1, 3, "fork mobile"), (3, 1, "200")], True),
+        ("sdp-offer", "Early offer", ["Phone", "CUCM", "SBC"], [(0, 1, "INVITE SDP"), (1, 2, "INVITE SDP"), (2, 1, "200 answer"), (1, 0, "200 answer")], True),
+        ("t38", "Fax re-INVITE", ["ATA", "CUCM", "Gateway"], [(0, 1, "voice"), (1, 2, "200"), (2, 1, "re-INVITE T.38"), (1, 0, "re-INVITE T.38")], True),
+        ("refer-notify", "REFER then NOTIFY", ["Alice", "CUCM", "Carol"], [(0, 1, "REFER"), (1, 0, "202"), (1, 2, "INVITE"), (1, 0, "NOTIFY")], True),
     ]
     out = []
     for slug, title, actors, hops, animated in ladders:
@@ -303,7 +311,7 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
     for slug, title, _svg, animated in catalog:
         kind = "Animated flow" if animated else "Diagram"
         cards.append(
-            '<article class="card glass shot-card">'
+            '<article class="tilt-card glass" data-tilt>'
             f'<button type="button" class="shot" data-why="{esc(title)}. A teaching drawing. Open the page for the caption.">'
             f'<img src="{slug}.svg" alt="{esc(title)}"></button>'
             f'<h2><a href="{slug}.html">{esc(title)}</a></h2><p>{kind}</p></article>'
@@ -318,7 +326,7 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
         )
     for slug, title in mermaid_made:
         cards.append(
-            '<article class="card glass shot-card">'
+            '<article class="tilt-card glass" data-tilt>'
             f'<button type="button" class="shot" data-why="{esc(title)}. Rendered with Mermaid at build time.">'
             f'<img src="{slug}.svg" alt="{esc(title)}"></button>'
             f'<h2><a href="{slug}.svg">{esc(title)}</a></h2><p>Rendered with Mermaid at build time</p></article>'
@@ -330,7 +338,7 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
         f'<p class="lede" data-effects>{len(catalog) + len(mermaid_made)} custom diagrams. '
         f'{sum(1 for item in catalog if item[3])} of the hand-built ladders and trees are animated. '
         f'Mermaid sequence and flow charts, when present, were rendered at build time from the vendored library.</p>'
-        f'<div class="flow-atlas">{"".join(cards)}</div>',
+        f'<div class="tilt-gallery">{"".join(cards)}</div>',
         "Browsable diagram atlas of call flows, architecture, and cutover.",
     )
 
@@ -392,6 +400,26 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
         "Campus tracks with section counts.",
     )
 
+    gallery_items = [
+        ("registration.svg", "SIP registration", "REGISTER stores a binding. It does not create a call. RFC 3261 section 10."),
+        ("basic-call.svg", "Basic call", "The call is not up until ACK. Media can skip the proxy. RFC 3261."),
+        ("park.svg", "Call park", "Park holds the call on the server. Another phone retrieves it. This is a teaching ladder."),
+        ("conference.svg", "Ad-hoc conference", "Hold one party, invite the next, then join. A teaching ladder, not a product click-path."),
+        ("voicemail.svg", "Voicemail", "No answer on the phone leg is not the same as the voicemail system answering."),
+        ("snr.svg", "Single number reach", "The desk and the mobile are two legs. A 200 on one does not prove audio on the other."),
+        ("sdp-offer.svg", "Early offer", "Early offer puts SDP in the INVITE. The answer is in the 200. RFC 3264."),
+        ("t38.svg", "Fax re-INVITE", "A voice call can switch to T.38 with a re-INVITE. This drawing is the teaching shape, not a gateway debug."),
+        ("e911.svg", "Emergency callback", "Emergency calling needs a callback identity. This drawing is a teaching ladder, not a carrier design."),
+        ("qos-marks.svg", "QoS marks", "Voice RTP is commonly EF, DSCP 46. Cisco signaling designs often use CS3. RFC 4594 assigns signaling CS5."),
+        ("cube.svg", "CUBE two legs", "CUBE is a B2BUA. Read the CUCM leg and the carrier leg separately."),
+        ("teams-options.svg", "Teams OPTIONS", "OPTIONS can busy a Direct Routing trunk. Name the PSTN model before you read the ladder."),
+    ]
+    gallery_html = "".join(
+        '<article class="tilt-card glass" data-tilt>'
+        f'<button type="button" class="shot" data-why="{esc(why)}"><img src="diagrams/{esc(src)}" alt="{esc(title)}"></button>'
+        f'<h2>{esc(title)}</h2></article>'
+        for src, title, why in gallery_items
+    )
     icon_names = {
         "start": "Start", "sip": "SIP", "cucm": "CUCM", "cloud": "Webex", "ucce": "UCCE",
         "ccaas": "CCaaS", "e911": "E911", "qos": "QoS", "migrate": "Migrate", "trouble": "Trouble",
@@ -414,6 +442,12 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
 )}</div>
 </div>
 </div>
+<aside class="audio-float glass" aria-label="Architect conversation">
+<p data-i18n="audioTitle">Architect conversation</p>
+<audio controls preload="none" src="audio/architect-tour.mp3"><a href="audio/architect-tour.mp3">How to view the lab</a></audio>
+<audio controls preload="none" src="audio/architect-practice.mp3"><a href="audio/architect-practice.mp3">How to practise and share</a></audio>
+<p class="audio-links"><a href="audio/scripts/architect-tour.md">Tour script</a> · <a href="audio/scripts/architect-practice.md">Practice script</a></p>
+</aside>
 <div class="neon-fallback" aria-hidden="true">
   <div class="grid"></div>
   <div class="sparks"></div>
@@ -452,13 +486,8 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
 </div>
 <section class="wall">
 <h2 data-i18n="wall">Signal wall</h2>
-<p class="lede">Large drawings. Click one to enlarge it, then step the hops.</p>
-<div class="wall-grid">
-<button type="button" class="shot glass" data-why="REGISTER stores a binding. It does not create a call. RFC 3261 section 10."><img src="diagrams/registration.svg" alt="SIP registration ladder"></button>
-<button type="button" class="shot glass" data-why="The call is not up until ACK. Media can skip the proxy. RFC 3261."><img src="diagrams/basic-call.svg" alt="Basic call ladder"></button>
-<button type="button" class="shot glass" data-why="Voice RTP is commonly EF, DSCP 46. Cisco signaling designs often use CS3. RFC 4594 assigns signaling CS5."><img src="diagrams/qos-marks.svg" alt="QoS marks"></button>
-<button type="button" class="shot glass" data-why="Emergency calling needs a callback identity. This drawing is a teaching ladder, not a carrier design."><img src="diagrams/e911.svg" alt="Emergency callback ladder"></button>
-</div>
+<p class="lede">Twelve drawings from the atlas. Hover to tilt. Click to enlarge.</p>
+<div class="tilt-gallery">{gallery_html}</div>
 </section>
 <h2 data-i18n="next">Where to go next</h2>
 <div class="atlas">
@@ -472,19 +501,7 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
 <a class="card glass iso-card" href="guide/interview.html">{iso_icon("career")}<h2>Careers</h2><p>Interview questions and a path with no invented wages.</p></a>
 <a class="card glass iso-card" href="ecosystem/regions.html">{iso_icon("globe")}<h2>Regions</h2><p>Cited emergency and privacy rules. Coverage stays on the vendor page.</p></a>
 </div>
-<section class="audio-dock glass">
-<h2 data-i18n="audioTitle">Architect conversation</h2>
-<p>Two short clips. Maya asks. Jules answers. About a minute and a half together.</p>
-<audio controls preload="none" src="audio/architect-tour.mp3">
-  <a href="audio/architect-tour.mp3">How to view the lab</a>
-</audio>
-<p>How to view the lab. <a href="audio/scripts/architect-tour.md">Script</a></p>
-<audio controls preload="none" src="audio/architect-practice.mp3">
-  <a href="audio/architect-practice.mp3">How to practise and share</a>
-</audio>
-<p>How to practise and share. <a href="audio/scripts/architect-practice.md">Script</a></p>
-<p><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">Rate, comment, or share this lab on GitHub</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with the studio</a></p>
-</section>''',
+''',
         "Flagship UC lab. The repository root opens this studio.",
     )
     # The deep campus link on the flagship copy must climb out of flagship/.

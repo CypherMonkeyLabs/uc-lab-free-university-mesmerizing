@@ -410,22 +410,33 @@ function mountIconDock(THREE, canvas) {
     return { scene: scene, camera: camera, mesh: mesh };
   });
   function draw(t) {
-    const h = host.clientHeight || 96;
-    const cell = 96;
-    const full = n * cell;
-    renderer.setSize(full, h, false);
-    canvas.style.width = full + "px";
-    canvas.style.height = h + "px";
-    renderer.setScissorTest(true);
+    const width = host.clientWidth;
+    const height = host.clientHeight;
+    if (!width || !height) {
+      if (!reduce) requestAnimationFrame(draw);
+      return;
+    }
+    const bleed = document.querySelector(".bleed");
+    if (bleed) bleed.style.setProperty("--dock-h", height + "px");
+    renderer.setSize(width, height, false);
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
+    const origin = host.getBoundingClientRect();
+    renderer.setScissorTest(false);
     renderer.setClearColor(0x000000, 0);
+    renderer.clear();
+    renderer.setScissorTest(true);
     slots.forEach(function (slot, i) {
-      const x = i * cell;
-      renderer.setViewport(x, 0, cell, h);
-      renderer.setScissor(x, 0, cell, h);
-      renderer.clear();
+      const box = links[i].getBoundingClientRect();
+      const x = box.left - origin.left;
+      const y = height - (box.bottom - origin.top);
+      const w = Math.max(box.width, 1);
+      const h = Math.max(box.height, 1);
+      renderer.setViewport(x, y, w, h);
+      renderer.setScissor(x, y, w, h);
       slot.mesh.rotation.y = t * 0.001 + i;
       slot.mesh.rotation.x = 0.4;
-      slot.camera.aspect = cell / h;
+      slot.camera.aspect = w / h;
       slot.camera.updateProjectionMatrix();
       renderer.render(slot.scene, slot.camera);
     });

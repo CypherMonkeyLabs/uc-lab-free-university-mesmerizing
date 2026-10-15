@@ -830,6 +830,19 @@
       });
     }
   }
+  function mountTilt() {
+    if (root.getAttribute("data-motion") === "reduce") return;
+    $all("[data-tilt]").forEach(function (card) {
+      card.addEventListener("pointermove", function (event) {
+        var rect = card.getBoundingClientRect();
+        var px = (event.clientX - rect.left) / Math.max(rect.width, 1) - 0.5;
+        var py = (event.clientY - rect.top) / Math.max(rect.height, 1) - 0.5;
+        card.style.transform = "rotateY(" + (px * 16).toFixed(2) + "deg) rotateX(" + (-py * 12).toFixed(2) + "deg)";
+      });
+      card.addEventListener("pointerleave", function () { card.style.transform = ""; });
+    });
+  }
+  mountTilt();
   mountStudio();
   mountSearch();
   mountProgress();

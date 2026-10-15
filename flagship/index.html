@@ -70,6 +70,12 @@ try {
 <div class="icon-links"><a href="tracks/start.html" data-shape="start"><span>Start</span></a><a href="tracks/sip.html" data-shape="sip"><span>SIP</span></a><a href="tracks/cucm.html" data-shape="cucm"><span>CUCM</span></a><a href="tracks/cloud.html" data-shape="cloud"><span>Webex</span></a><a href="tracks/ucce.html" data-shape="ucce"><span>UCCE</span></a><a href="tracks/ccaas.html" data-shape="ccaas"><span>CCaaS</span></a><a href="tracks/e911.html" data-shape="e911"><span>E911</span></a><a href="tracks/qos.html" data-shape="qos"><span>QoS</span></a><a href="tracks/migrate.html" data-shape="migrate"><span>Migrate</span></a><a href="tracks/trouble.html" data-shape="trouble"><span>Trouble</span></a><a href="tracks/evidence.html" data-shape="evidence"><span>Evidence</span></a><a href="tracks/design.html" data-shape="design"><span>Design</span></a><a href="tracks/practice.html" data-shape="practice"><span>Practice</span></a><a href="tracks/reference.html" data-shape="reference"><span>Reference</span></a></div>
 </div>
 </div>
+<aside class="audio-float glass" aria-label="Architect conversation">
+<p data-i18n="audioTitle">Architect conversation</p>
+<audio controls preload="none" src="audio/architect-tour.mp3"><a href="audio/architect-tour.mp3">How to view the lab</a></audio>
+<audio controls preload="none" src="audio/architect-practice.mp3"><a href="audio/architect-practice.mp3">How to practise and share</a></audio>
+<p class="audio-links"><a href="audio/scripts/architect-tour.md">Tour script</a> · <a href="audio/scripts/architect-practice.md">Practice script</a></p>
+</aside>
 <div class="neon-fallback" aria-hidden="true">
   <div class="grid"></div>
   <div class="sparks"></div>
@@ -106,7 +112,7 @@ try {
 <div class="stat glass"><span class="num" data-count="1472">1472</span><span class="label">Flashcards</span></div>
 <div class="stat glass"><span class="num" data-count="29">29</span><span class="label">Branching cases</span></div>
 <div class="stat glass"><span class="num" data-count="580">580</span><span class="label">Campus sections</span></div>
-<div class="stat glass"><span class="num" data-count="28">28</span><span class="label">Atlas diagrams</span></div>
+<div class="stat glass"><span class="num" data-count="36">36</span><span class="label">Atlas diagrams</span></div>
 </section>
 </section>
 <div class="toggles" aria-label="Break a link in the diagram">
@@ -116,13 +122,8 @@ try {
 </div>
 <section class="wall">
 <h2 data-i18n="wall">Signal wall</h2>
-<p class="lede">Large drawings. Click one to enlarge it, then step the hops.</p>
-<div class="wall-grid">
-<button type="button" class="shot glass" data-why="REGISTER stores a binding. It does not create a call. RFC 3261 section 10."><img src="diagrams/registration.svg" alt="SIP registration ladder"></button>
-<button type="button" class="shot glass" data-why="The call is not up until ACK. Media can skip the proxy. RFC 3261."><img src="diagrams/basic-call.svg" alt="Basic call ladder"></button>
-<button type="button" class="shot glass" data-why="Voice RTP is commonly EF, DSCP 46. Cisco signaling designs often use CS3. RFC 4594 assigns signaling CS5."><img src="diagrams/qos-marks.svg" alt="QoS marks"></button>
-<button type="button" class="shot glass" data-why="Emergency calling needs a callback identity. This drawing is a teaching ladder, not a carrier design."><img src="diagrams/e911.svg" alt="Emergency callback ladder"></button>
-</div>
+<p class="lede">Twelve drawings from the atlas. Hover to tilt. Click to enlarge.</p>
+<div class="tilt-gallery"><article class="tilt-card glass" data-tilt><button type="button" class="shot" data-why="REGISTER stores a binding. It does not create a call. RFC 3261 section 10."><img src="diagrams/registration.svg" alt="SIP registration"></button><h2>SIP registration</h2></article><article class="tilt-card glass" data-tilt><button type="button" class="shot" data-why="The call is not up until ACK. Media can skip the proxy. RFC 3261."><img src="diagrams/basic-call.svg" alt="Basic call"></button><h2>Basic call</h2></article><article class="tilt-card glass" data-tilt><button type="button" class="shot" data-why="Park holds the call on the server. Another phone retrieves it. This is a teaching ladder."><img src="diagrams/park.svg" alt="Call park"></button><h2>Call park</h2></article><article class="tilt-card glass" data-tilt><button type="button" class="shot" data-why="Hold one party, invite the next, then join. A teaching ladder, not a product click-path."><img src="diagrams/conference.svg" alt="Ad-hoc conference"></button><h2>Ad-hoc conference</h2></article><article class="tilt-card glass" data-tilt><button type="button" class="shot" data-why="No answer on the phone leg is not the same as the voicemail system answering."><img src="diagrams/voicemail.svg" alt="Voicemail"></button><h2>Voicemail</h2></article><article class="tilt-card glass" data-tilt><button type="button" class="shot" data-why="The desk and the mobile are two legs. A 200 on one does not prove audio on the other."><img src="diagrams/snr.svg" alt="Single number reach"></button><h2>Single number reach</h2></article><article class="tilt-card glass" data-tilt><button type="button" class="shot" data-why="Early offer puts SDP in the INVITE. The answer is in the 200. RFC 3264."><img src="diagrams/sdp-offer.svg" alt="Early offer"></button><h2>Early offer</h2></article><article class="tilt-card glass" data-tilt><button type="button" class="shot" data-why="A voice call can switch to T.38 with a re-INVITE. This drawing is the teaching shape, not a gateway debug."><img src="diagrams/t38.svg" alt="Fax re-INVITE"></button><h2>Fax re-INVITE</h2></article><article class="tilt-card glass" data-tilt><button type="button" class="shot" data-why="Emergency calling needs a callback identity. This drawing is a teaching ladder, not a carrier design."><img src="diagrams/e911.svg" alt="Emergency callback"></button><h2>Emergency callback</h2></article><article class="tilt-card glass" data-tilt><button type="button" class="shot" data-why="Voice RTP is commonly EF, DSCP 46. Cisco signaling designs often use CS3. RFC 4594 assigns signaling CS5."><img src="diagrams/qos-marks.svg" alt="QoS marks"></button><h2>QoS marks</h2></article><article class="tilt-card glass" data-tilt><button type="button" class="shot" data-why="CUBE is a B2BUA. Read the CUCM leg and the carrier leg separately."><img src="diagrams/cube.svg" alt="CUBE two legs"></button><h2>CUBE two legs</h2></article><article class="tilt-card glass" data-tilt><button type="button" class="shot" data-why="OPTIONS can busy a Direct Routing trunk. Name the PSTN model before you read the ladder."><img src="diagrams/teams-options.svg" alt="Teams OPTIONS"></button><h2>Teams OPTIONS</h2></article></div>
 </section>
 <h2 data-i18n="next">Where to go next</h2>
 <div class="atlas">
@@ -199,19 +200,7 @@ try {
 <polygon points="60,34 78,44 60,54 42,44" fill="#fff" opacity="0.85"/>
 </svg><h2>Regions</h2><p>Cited emergency and privacy rules. Coverage stays on the vendor page.</p></a>
 </div>
-<section class="audio-dock glass">
-<h2 data-i18n="audioTitle">Architect conversation</h2>
-<p>Two short clips. Maya asks. Jules answers. About a minute and a half together.</p>
-<audio controls preload="none" src="audio/architect-tour.mp3">
-  <a href="audio/architect-tour.mp3">How to view the lab</a>
-</audio>
-<p>How to view the lab. <a href="audio/scripts/architect-tour.md">Script</a></p>
-<audio controls preload="none" src="audio/architect-practice.mp3">
-  <a href="audio/architect-practice.mp3">How to practise and share</a>
-</audio>
-<p>How to practise and share. <a href="audio/scripts/architect-practice.md">Script</a></p>
-<p><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">Rate, comment, or share this lab on GitHub</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with the studio</a></p>
-</section>
+
 </main>
 <footer class="site-foot">
   <div class="wrap">
