@@ -790,3 +790,74 @@ html[data-motion="reduce"] .chart .bar { animation: none !important; }
   html:not([data-motion="allow"]) .mascot .lid,
   html:not([data-motion="allow"]) .mascot .arm { animation: none !important; }
 }
+
+/* Pass 2: stop the header from stacking on itself, and keep the counters on the first screen. */
+.topbar { background: var(--bg); }
+.hub, .tools, .site-search { min-width: 0; }
+.brand { flex: 0 0 auto; min-width: 148px; }
+.site-search { flex: 0 1 220px; }
+.hub { flex: 1 1 0; overflow-x: auto; }
+.tools { flex: 0 0 auto; }
+.card {
+  background: color-mix(in srgb, var(--card) 82%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--a) 32%, transparent);
+}
+.card:hover { transform: translateY(-6px); box-shadow: 0 12px 28px color-mix(in srgb, var(--glow) 35%, transparent); }
+body:has(.bleed) .crumbs {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+body:has(.bleed) .wrap { padding-top: 0; }
+.bleed { height: calc(100dvh - 148px); min-height: calc(100dvh - 148px); }
+.ticker { top: 8px; bottom: auto; }
+.bleed-copy { padding-top: 34px; }
+.bleed-copy h1 { font-size: clamp(2rem, 4vw, 3.5rem); }
+.bleed .mascot { width: 64px; height: 82px; }
+.bleed .stats { bottom: 10px; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.bleed .stat { padding: 6px 8px; }
+.bleed .stat .num { font-size: 1.25rem; line-height: 1.1; }
+.bleed .stat .label { font-size: 11px; line-height: 1.15; }
+.visit-ring { width: 28px; height: 28px; }
+
+@media (max-width: 1200px) {
+  .menu-btn { display: inline-flex; }
+  .hub { display: none; }
+  .topbar.open .hub {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 100%;
+    overflow: visible;
+  }
+  .topbar.open .bar { flex-wrap: wrap; }
+}
+@media (max-width: 760px) {
+  .brand { min-width: 140px; }
+  .tools { flex: 0 0 auto; overflow: visible; }
+  .tools .lang, .tools .themes, .tools .mode-btn, .tools .motion-btn, .tools .dl { display: none; }
+  .topbar.open .tools .lang,
+  .topbar.open .tools .themes,
+  .topbar.open .tools .mode-btn,
+  .topbar.open .tools .motion-btn,
+  .topbar.open .tools .dl { display: flex; }
+  .topbar.open .themes { display: flex; }
+  .site-search { flex: 1 1 120px; order: 0; max-width: none; }
+  .bleed { height: calc(100dvh - 168px); min-height: calc(100dvh - 168px); }
+  .bleed #hero3d, .bleed .neon-fallback { height: 100%; min-height: 0; }
+  .bleed .lede, .bleed .symbols { display: none; }
+  .bleed h1 { font-size: 1.55rem; }
+  .bleed .mascot { width: 46px; height: 58px; }
+  .ticker { display: none; }
+  .bleed .stats {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    width: auto;
+    margin: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .visit-ring { display: none; }
+}
