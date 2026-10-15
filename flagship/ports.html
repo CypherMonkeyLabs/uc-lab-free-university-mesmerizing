@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="neon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ports and protocols · UC Lab Free University</title>
+<meta name="description" content="CUCM 15 ports engineers actually filter for.">
+<link rel="icon" href="assets/icon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/site.css">
+<script>
+try {
+  var params = new URLSearchParams(location.search);
+  var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
+  var ok = {neon:1, holographic:1, cyberpunk:1, sunset:1, light:1};
+  if (ok[t]) document.documentElement.setAttribute("data-theme", t);
+  if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+  var lang = localStorage.getItem("uc_flagship_lang");
+  if (lang) document.documentElement.lang = lang;
+  if (lang === "ar") document.documentElement.dir = "rtl";
+} catch (e) {}
+</script>
+</head>
+<body data-root="">
+<a class="skip" href="#content" data-i18n="skip">Skip to content</a>
+<header class="topbar">
+  <div class="bar">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
+      <span><strong>UC Lab</strong><small data-i18n="brandSub">Free University</small></span>
+    </a>
+    <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
+    <div class="tools">
+      <div class="themes" role="radiogroup" aria-label="Theme">
+        <button type="button" class="swatch-neon" data-theme-set="neon" aria-label="Neon" aria-checked="true"></button>
+        <button type="button" class="swatch-holographic" data-theme-set="holographic" aria-label="Holographic" aria-checked="false"></button>
+        <button type="button" class="swatch-cyberpunk" data-theme-set="cyberpunk" aria-label="Cyberpunk" aria-checked="false"></button>
+        <button type="button" class="swatch-sunset" data-theme-set="sunset" aria-label="Sunset" aria-checked="false"></button>
+        <button type="button" class="swatch-light" data-theme-set="light" aria-label="Light" aria-checked="false"></button>
+      </div>
+      <button type="button" class="btn mode-btn" data-i18n="mode">Light</button>
+      <button type="button" class="btn motion-btn">Motion</button>
+      <a class="btn dl" href="download.html">Offline</a>
+      <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
+    </div>
+    <form class="site-search" role="search">
+      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off" data-i18n-placeholder="searchPh">
+      <div id="searchPop" class="search-pop" hidden></div>
+    </form>
+  </div>
+  <nav class="tabs" aria-label="Lab"><a href="index.html" data-i18n="navHome">Home</a><a href="diagrams/index.html" data-i18n="navDiagrams">Diagrams</a><a href="flows/index.html" data-i18n="navFlows">Flows</a><a href="charts/index.html" data-i18n="navCharts">Charts</a><a href="cheats/index.html" data-i18n="navCheats">Cheat Codes</a><a href="play/index.html" data-i18n="navPlay">Play</a><a href="ecosystem/index.html" data-i18n="navEco">Ecosystem</a><a href="download.html" data-i18n="navDownloads">Downloads</a><a href="guide/interview.html" data-i18n="navCareers">Careers</a></nav>
+  <div class="lang-chips" role="radiogroup" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true"><span aria-hidden="true">🇬🇧</span> EN</button>
+    <button type="button" data-lang="es" aria-pressed="false"><span aria-hidden="true">🇪🇸</span> ES</button>
+    <button type="button" data-lang="hi" aria-pressed="false"><span aria-hidden="true">🇮🇳</span> HI</button>
+    <button type="button" data-lang="te" aria-pressed="false"><span aria-hidden="true">🇮🇳</span> TE</button>
+    <button type="button" data-lang="fr" aria-pressed="false"><span aria-hidden="true">🇫🇷</span> FR</button>
+    <button type="button" data-lang="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> DE</button>
+    <button type="button" data-lang="ja" aria-pressed="false"><span aria-hidden="true">🇯🇵</span> JA</button>
+    <button type="button" data-lang="ar" aria-pressed="false"><span aria-hidden="true">🇸🇦</span> AR</button>
+  </div>
+  <p class="progress" id="visitProgress">Progress</p>
+</header>
+<main id="content" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Ports and protocols</li></ol></nav>
+
+<p class="kicker">Reference · CUCM 15</p>
+<h1>Ports and protocols</h1>
+<p class="lede">A working subset of the Release 15 port chapter. Ports move between releases. The chapter is the authority, and this table is a reading aid.</p>
+<p><span class="num" id="portShown">23</span> rows shown · <span class="num">23</span> in the table</p>
+<div class="filters"><input id="portQ" type="search" placeholder="Filter by port, protocol, or job" aria-label="Filter ports"></div>
+<div class="table-scroll"><table id="portTable"><thead><tr><th>Port</th><th>Protocol</th><th>Job</th><th>Who</th></tr></thead><tbody>
+<tr><td class='num'>5060</td><td>TCP and UDP</td><td>SIP phone, gateway, and ICT</td><td>Phones and gateways</td></tr><tr><td class='num'>5061</td><td>TCP</td><td>SIP over TLS</td><td>Phones and gateways</td></tr><tr><td class='num'>2000</td><td>TCP</td><td>SCCP</td><td>Phones and gateways</td></tr><tr><td class='num'>2443</td><td>TCP</td><td>Secure SCCP</td><td>Phones</td></tr><tr><td class='num'>2427</td><td>UDP</td><td>MGCP control</td><td>Gateways</td></tr><tr><td class='num'>2428</td><td>TCP</td><td>MGCP backhaul</td><td>Gateways</td></tr><tr><td class='num'>1720</td><td>TCP</td><td>H.225 signaling</td><td>H.323 gateways and ICT</td></tr><tr><td class='num'>1719</td><td>UDP</td><td>H.225 RAS</td><td>Gatekeeper</td></tr><tr><td class='num'>69</td><td>UDP</td><td>TFTP</td><td>Phones and gateways</td></tr><tr><td class='num'>6970</td><td>TCP</td><td>HTTP firmware and configuration</td><td>Phones and TFTP</td></tr><tr><td class='num'>443, 8443</td><td>TCP</td><td>HTTPS administration and UDS</td><td>Browsers and phones</td></tr><tr><td class='num'>3804</td><td>TCP</td><td>CAPF, locally significant certificates</td><td>Phones</td></tr><tr><td class='num'>2748</td><td>TCP</td><td>CTI</td><td>Applications</td></tr><tr><td class='num'>2749</td><td>TCP</td><td>CTI over TLS</td><td>JTAPI and TSP</td></tr><tr><td class='num'>8443</td><td>TCP</td><td>AXL / SOAP</td><td>Provisioning applications</td></tr><tr><td class='num'>16384–32767</td><td>UDP</td><td>RTP and SRTP. CUCM itself uses 24576–32767</td><td>Phones and gateways</td></tr><tr><td class='num'>389, 636, 3268, 3269</td><td>TCP</td><td>LDAP and LDAPS, including global catalog</td><td>Directory</td></tr><tr><td class='num'>8090</td><td>TCP</td><td>Gateway recording HTTP</td><td>Recording gateway</td></tr><tr><td class='num'>443</td><td>HTTPS</td><td>Smart Licensing service to CSSM</td><td>Cisco cloud</td></tr><tr><td class='num'>123</td><td>UDP</td><td>NTP</td><td>Time</td></tr><tr><td class='num'>22</td><td>TCP</td><td>SFTP for a new subscriber and for DRS backups</td><td>Cluster</td></tr><tr><td class='num'>514</td><td>UDP</td><td>Syslog</td><td>Endpoints to CUCM</td></tr><tr><td class='num'>7501 / 7502</td><td>TCP</td><td>ILS certificate or password authentication</td><td>Cluster</td></tr>
+</tbody></table></div>
+<div class="callout sand"><p>Multicast music-on-hold ports are whatever the administrator configured. The chapter does not publish one number for them. Ephemeral ports on the CUCM host are 32768–61000 and have to stay open for phones to remain registered.</p></div>
+<h2>Sources</h2><ul><li><a href="https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15/cucm_m_tcp-and-udp-port-usage-12-0.html">CUCM 15 TCP and UDP port usage</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc3261">RFC 3261</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc3550">RFC 3550</a></li></ul>
+
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p class="kicker">Next</p>
+    <p><a href="flows/t38.html">Previous · T.38 fax</a> · <a href="ecosystem/index.html">Next · Ecosystem</a> · <a href="../campus/uc-lab-free-university.html">Deep campus · 580 sections</a></p>
+    <div class="sister"><a class="card" href="https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/"><strong>AI Lab</strong></a><a class="card" href="https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/"><strong>Amazon Connect</strong></a><a class="card" href="https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/"><strong>Microsoft Voice</strong></a><a class="card" href="https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/"><strong>Five9</strong></a><a class="card" href="https://cipher0x9.github.io/genesys-cloud-lab-free-university-mesmerizing/"><strong>Genesys Cloud</strong></a><a class="card" href="https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/"><strong>NICE CXone</strong></a><a class="card" href="https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/"><strong>SIP Universe</strong></a><a class="card" href="path.html"><strong>Study path</strong></a></div>
+    <p class="sig">CYPHER0X9</p>
+    <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
+    <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern or takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
+  </div>
+</footer>
+<script src="assets/search.js"></script>
+<script src="assets/bank.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/play.js"></script>
+
+
+</body>
+</html>

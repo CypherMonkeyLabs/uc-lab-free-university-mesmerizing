@@ -1,0 +1,622 @@
+{
+  "deck": "cited-study-cards",
+  "count": 88,
+  "cards": [
+    {
+      "id": "c01",
+      "topic": "Registration",
+      "q": "What does a SIP REGISTER request ask the registrar to store?",
+      "a": "A binding from an address-of-record to one or more Contact URIs, for an expiry time. It does not create a call.",
+      "cite": "RFC 3261 section 10"
+    },
+    {
+      "id": "c02",
+      "topic": "Registration",
+      "q": "On a REGISTER, what is the difference between the Request-URI, To, and Contact?",
+      "a": "The Request-URI is the registrar domain, such as sip:example.com. To is the address-of-record being registered. Contact is the device URI to bind to that address.",
+      "cite": "RFC 3261 section 10"
+    },
+    {
+      "id": "c03",
+      "topic": "Registration",
+      "q": "Why is the first REGISTER often answered with 401?",
+      "a": "The registrar is issuing a digest challenge. WWW-Authenticate carries the realm and nonce. The phone sends a new REGISTER with Authorization.",
+      "cite": "RFC 3261 section 22"
+    },
+    {
+      "id": "c04",
+      "topic": "Registration",
+      "q": "How is 401 different from 407?",
+      "a": "401 comes from the registrar and uses WWW-Authenticate. 407 comes from a proxy and uses Proxy-Authenticate. The matching response headers are Authorization and Proxy-Authorization.",
+      "cite": "RFC 3261"
+    },
+    {
+      "id": "c05",
+      "topic": "Registration",
+      "q": "What does Expires: 0 do on a REGISTER Contact?",
+      "a": "It removes that binding. Contact: * with Expires: 0 removes all bindings for the address-of-record.",
+      "cite": "RFC 3261 section 10"
+    },
+    {
+      "id": "c06",
+      "topic": "Registration",
+      "q": "Does a successful registration mean media can reach the phone?",
+      "a": "No. Registration publishes a signaling Contact. NAT, firewalls, and the SDP addresses used later are separate problems.",
+      "cite": "RFC 3261"
+    },
+    {
+      "id": "c07",
+      "topic": "Basic call",
+      "q": "What identifies a SIP dialog?",
+      "a": "The Call-ID plus the local tag and the remote tag. From carries the UAC's tag. To carries the UAS's tag once a response creates it.",
+      "cite": "RFC 3261 section 12"
+    },
+    {
+      "id": "c08",
+      "topic": "Basic call",
+      "q": "When is a dialog early, and when is it confirmed?",
+      "a": "A provisional response with a To tag creates an early dialog. The dialog is confirmed when the UAC receives a 2xx to the INVITE.",
+      "cite": "RFC 3261"
+    },
+    {
+      "id": "c09",
+      "topic": "Basic call",
+      "q": "Is 100 Trying forwarded end to end?",
+      "a": "No. 100 Trying is hop-by-hop. A proxy generates its own 100 toward the caller so the caller stops retransmitting the INVITE.",
+      "cite": "RFC 3261"
+    },
+    {
+      "id": "c10",
+      "topic": "Basic call",
+      "q": "How does ACK for a 2xx differ from ACK for a failure such as 486?",
+      "a": "ACK for a 2xx is a new end-to-end transaction and follows the dialog route set. ACK for a non-2xx final response is hop-by-hop and belongs to the INVITE transaction.",
+      "cite": "RFC 3261 section 17"
+    },
+    {
+      "id": "c11",
+      "topic": "Basic call",
+      "q": "What does Record-Route change about later requests?",
+      "a": "It builds a route set so that in-dialog requests such as ACK for the 2xx, re-INVITE, and BYE still pass through that proxy. Without it, they go to the remote Contact.",
+      "cite": "RFC 3261"
+    },
+    {
+      "id": "c12",
+      "topic": "Basic call",
+      "q": "Where is the SDP in a typical early-offer call, and where is it in a delayed offer?",
+      "a": "Early offer: offer in the INVITE, answer in a reliable 18x or in the 200 OK. Delayed offer: the INVITE has no SDP, the offer is in the 200 OK, and the answer is in the ACK.",
+      "cite": "RFC 3261 and RFC 3264"
+    },
+    {
+      "id": "c13",
+      "topic": "Basic call",
+      "q": "Which request ends a confirmed call, and what answers it?",
+      "a": "BYE, inside the dialog. The other side answers 200 OK. The Call-ID does not change.",
+      "cite": "RFC 3261 section 15"
+    },
+    {
+      "id": "c14",
+      "topic": "Basic call",
+      "q": "Does 180 Ringing mean the call was answered?",
+      "a": "No. 180 means the far end is alerting. Answer is a 2xx to the INVITE, completed by ACK.",
+      "cite": "RFC 3261"
+    },
+    {
+      "id": "c15",
+      "topic": "Hold",
+      "q": "Which SDP attribute lets you put the peer on hold while you still send media such as music?",
+      "a": "a=sendonly in a re-INVITE (or UPDATE). The peer should answer a=recvonly.",
+      "cite": "RFC 3264 section 8.4"
+    },
+    {
+      "id": "c16",
+      "topic": "Hold",
+      "q": "If the offer says a=sendonly, what answers are allowed?",
+      "a": "a=recvonly, or a=inactive if the answerer will not receive media either. a=sendrecv is not a correct answer to sendonly.",
+      "cite": "RFC 3264"
+    },
+    {
+      "id": "c17",
+      "topic": "Hold",
+      "q": "What does a=inactive mean on a held call?",
+      "a": "Neither side sends or receives on that stream. Use it when you do not want music or any other media.",
+      "cite": "RFC 3264"
+    },
+    {
+      "id": "c18",
+      "topic": "Hold",
+      "q": "Why is c=0.0.0.0 a poor modern hold signal?",
+      "a": "RFC 3264 uses direction attributes instead. A zero connection address is the older behavior and is widely misunderstood by new peers.",
+      "cite": "RFC 3264 section 8.4"
+    },
+    {
+      "id": "c19",
+      "topic": "Hold",
+      "q": "Does hold use a new Call-ID?",
+      "a": "No. Hold is a re-INVITE or UPDATE inside the existing dialog. The Call-ID and tags stay. CSeq increases.",
+      "cite": "RFC 3261 section 14"
+    },
+    {
+      "id": "c20",
+      "topic": "Hold",
+      "q": "Is setting the media port to 0 the same as hold?",
+      "a": "No. Port 0 rejects the media stream and removes it from the session. Hold keeps the m= line and changes the direction attribute.",
+      "cite": "RFC 3264"
+    },
+    {
+      "id": "c21",
+      "topic": "Transfer",
+      "q": "Which SIP method starts a transfer?",
+      "a": "REFER. The Refer-To header names the target.",
+      "cite": "RFC 3515"
+    },
+    {
+      "id": "c22",
+      "topic": "Transfer",
+      "q": "Does 202 Accepted mean the transfer target answered?",
+      "a": "No. 202 means the REFER was accepted and will be attempted. Success or failure is reported later, typically in NOTIFY.",
+      "cite": "RFC 3515"
+    },
+    {
+      "id": "c23",
+      "topic": "Transfer",
+      "q": "What does a NOTIFY body of type message/sipfrag carry during a transfer?",
+      "a": "A fragment of SIP status, such as SIP/2.0 100 Trying or SIP/2.0 200 OK, describing the referred request.",
+      "cite": "RFC 3515"
+    },
+    {
+      "id": "c24",
+      "topic": "Transfer",
+      "q": "What makes a transfer blind rather than attended?",
+      "a": "Blind transfer's Refer-To is a URI with no Replaces dialog. The transferee sends a new INVITE to that URI. The transferor has not already set up a consult call.",
+      "cite": "RFC 5589"
+    },
+    {
+      "id": "c25",
+      "topic": "Transfer",
+      "q": "What extra information makes a transfer attended?",
+      "a": "A Replaces parameter (Call-ID and tags) identifying the consult dialog. The INVITE from the transferee carries Replaces so the target swaps that dialog.",
+      "cite": "RFC 3891 and RFC 5589"
+    },
+    {
+      "id": "c26",
+      "topic": "Transfer",
+      "q": "Which RFCs should you name for REFER and for transfer behavior?",
+      "a": "RFC 3515 defines REFER. RFC 5589 describes call-transfer practices. RFC 3891 defines Replaces. RFC 4488 can suppress the implicit subscription with Refer-Sub: false.",
+      "cite": "RFC 3515, RFC 5589, RFC 3891, RFC 4488"
+    },
+    {
+      "id": "c27",
+      "topic": "Early media",
+      "q": "Which provisional response commonly carries early-media SDP?",
+      "a": "183 Session Progress. The SDP is the answer (or sometimes the offer) that lets RTP flow before the 200 OK.",
+      "cite": "RFC 3960"
+    },
+    {
+      "id": "c28",
+      "topic": "Early media",
+      "q": "What should a phone do when it receives 180 Ringing with no SDP?",
+      "a": "Generate local ringback. It should not wait for RTP if no early-media offer/answer has completed.",
+      "cite": "RFC 3960"
+    },
+    {
+      "id": "c29",
+      "topic": "Early media",
+      "q": "Why is local ringback plus early RTP a problem?",
+      "a": "The caller hears two sounds at once: the phone's own tone and the network announcement or remote ringback.",
+      "cite": "RFC 3960"
+    },
+    {
+      "id": "c30",
+      "topic": "Early media",
+      "q": "Does early media mean the call was answered?",
+      "a": "No. Answer is still the 2xx to the INVITE. Early media only means a stream was negotiated before answer.",
+      "cite": "RFC 3261 and RFC 3960"
+    },
+    {
+      "id": "c31",
+      "topic": "PRACK",
+      "q": "Why are ordinary provisional responses unreliable?",
+      "a": "They are not retransmitted as a reliable transaction of their own. On UDP they can be lost. RFC 3262 adds reliability with PRACK.",
+      "cite": "RFC 3262"
+    },
+    {
+      "id": "c32",
+      "topic": "PRACK",
+      "q": "Which option tag is used for reliable provisional responses?",
+      "a": "100rel. The caller sends Supported: 100rel, or Require: 100rel if the call must not proceed without it.",
+      "cite": "RFC 3262"
+    },
+    {
+      "id": "c33",
+      "topic": "PRACK",
+      "q": "What do RSeq and RAck contain?",
+      "a": "The reliable provisional carries RSeq, a sequence number. PRACK carries RAck set to that RSeq, the CSeq number, and the method (INVITE).",
+      "cite": "RFC 3262"
+    },
+    {
+      "id": "c34",
+      "topic": "PRACK",
+      "q": "Which request acknowledges a reliable 183?",
+      "a": "PRACK, not ACK. ACK acknowledges a 2xx to INVITE. The PRACK itself is answered with a 200 OK.",
+      "cite": "RFC 3262"
+    },
+    {
+      "id": "c35",
+      "topic": "PRACK",
+      "q": "Can the SDP answer arrive in a reliable 183?",
+      "a": "Yes. That is the usual way to start early media safely. The offer was in the INVITE. Do not send another offer until this answer is finished.",
+      "cite": "RFC 3262 and RFC 3264"
+    },
+    {
+      "id": "c36",
+      "topic": "Session refresh",
+      "q": "What stays the same on a re-INVITE, and what increases?",
+      "a": "Call-ID and both dialog tags stay. CSeq increases. The request is inside the confirmed dialog.",
+      "cite": "RFC 3261 section 14"
+    },
+    {
+      "id": "c37",
+      "topic": "Session refresh",
+      "q": "If a re-INVITE is rejected, what happens to the media that was already working?",
+      "a": "The previous successful session parameters remain. A failed re-INVITE does not by itself end the dialog.",
+      "cite": "RFC 3261 section 14"
+    },
+    {
+      "id": "c38",
+      "topic": "Session refresh",
+      "q": "What do Session-Expires and refresher mean?",
+      "a": "RFC 4028 session timers. The interval is Session-Expires. refresher=uac or refresher=uas names who must refresh. Min-SE is the minimum the peer will accept.",
+      "cite": "RFC 4028"
+    },
+    {
+      "id": "c39",
+      "topic": "Session refresh",
+      "q": "When is UPDATE a better fit than re-INVITE?",
+      "a": "When you need a lightweight session modification or refresh, including during an early dialog, and the peer supports RFC 3311. Re-INVITE remains the tool peers always understand for hold and similar changes.",
+      "cite": "RFC 3311"
+    },
+    {
+      "id": "c40",
+      "topic": "Session refresh",
+      "q": "What does 491 Request Pending usually mean on a re-INVITE?",
+      "a": "Glare. Both sides sent a re-INVITE at once. RFC 3261 has them retry after different short random delays. It is not proof the call is down.",
+      "cite": "RFC 3261 section 14"
+    },
+    {
+      "id": "c41",
+      "topic": "SDP",
+      "q": "What are the fields on an m= line, in order?",
+      "a": "Media type, port, transport protocol, then one or more payload type numbers. Example: m=audio 49170 RTP/AVP 0 8 101.",
+      "cite": "RFC 4566"
+    },
+    {
+      "id": "c42",
+      "topic": "SDP",
+      "q": "How must an answer line up with the offer's m= lines?",
+      "a": "The answer has the same number of m= lines, in the same order. You may reject a line. You may not reorder or silently drop one.",
+      "cite": "RFC 3264"
+    },
+    {
+      "id": "c43",
+      "topic": "SDP",
+      "q": "How do you reject one media stream and keep the others?",
+      "a": "Answer that m= line with port 0. Leave the other m= lines in place so their positions still match the offer.",
+      "cite": "RFC 3264"
+    },
+    {
+      "id": "c44",
+      "topic": "SDP",
+      "q": "Which static payload types are PCMU, PCMA, and G.729?",
+      "a": "0 is PCMU (G.711 \u00b5-law), 8 is PCMA (G.711 A-law), 18 is G.729. These are defined in the RTP audio/video profile.",
+      "cite": "RFC 3551"
+    },
+    {
+      "id": "c45",
+      "topic": "SDP",
+      "q": "What is the payload rate of G.711, and what Ethernet figure is often used for planning?",
+      "a": "The codec payload is 64 kbit/s. A common 20 ms Ethernet planning estimate, including RTP, UDP, IP, and Ethernet framing, is about 87 kbit/s per call.",
+      "cite": "RFC 3551; planning estimate, not a codec parameter"
+    },
+    {
+      "id": "c46",
+      "topic": "SDP",
+      "q": "What does a=rtpmap do for payload type 101?",
+      "a": "101 is dynamic (96 through 127). rtpmap gives it a name and clock rate, for example telephone-event/8000. Without rtpmap the number has no codec meaning.",
+      "cite": "RFC 4566 and RFC 4733"
+    },
+    {
+      "id": "c47",
+      "topic": "SDP",
+      "q": "Which RFC is SDP, and which RFC is the offer/answer model?",
+      "a": "RFC 4566 is the SDP format. RFC 3264 is the offer/answer model that says how two SDPs negotiate.",
+      "cite": "RFC 4566 and RFC 3264"
+    },
+    {
+      "id": "c48",
+      "topic": "SDP",
+      "q": "What is telephone-event used for?",
+      "a": "Named telephony events in RTP, most often DTMF digits, so tones are not left inside the audio codec. The modern specification is RFC 4733.",
+      "cite": "RFC 4733"
+    },
+    {
+      "id": "c49",
+      "topic": "SDP",
+      "q": "Why is G.722's rtpmap clock 8000?",
+      "a": "The RTP audio/video profile defines the G.722 timestamp clock as 8000 even though the audio is 16 kHz wideband. Changing it breaks peers.",
+      "cite": "RFC 3551"
+    },
+    {
+      "id": "c50",
+      "topic": "Migration",
+      "q": "Name the six generic phases for moving CUCM to Webex Calling.",
+      "a": "Discovery, design, number porting, pilot, cutover, and decommission.",
+      "cite": "Study card; confirm product steps in current Cisco Webex Calling docs"
+    },
+    {
+      "id": "c51",
+      "topic": "Migration",
+      "q": "What is a Local Gateway in Webex Calling?",
+      "a": "A supported premises SBC, often CUBE, that connects on-premises PSTN or a remaining CUCM to Webex Calling.",
+      "cite": "Cisco Webex Calling documentation"
+    },
+    {
+      "id": "c52",
+      "topic": "Migration",
+      "q": "Why run a pilot before a full cutover?",
+      "a": "A small group proves inbound, outbound, voicemail, devices, and emergency calling while a return path to CUCM still exists.",
+      "cite": "Migration practice"
+    },
+    {
+      "id": "c53",
+      "topic": "Migration",
+      "q": "What belongs in discovery besides the phone list?",
+      "a": "Numbers, trunks, hunt groups, voicemail, analog and fax, dial plan and class of service, E911 method, recording, contact center, and identity integrations you must retest.",
+      "cite": "Migration practice"
+    },
+    {
+      "id": "c54",
+      "topic": "Migration",
+      "q": "Name two ways a PSTN number can serve a Webex Calling user.",
+      "a": "Port the number to a cloud PSTN provider, or keep it with the current carrier and route it through a Local Gateway.",
+      "cite": "Cisco Webex Calling documentation"
+    },
+    {
+      "id": "c55",
+      "topic": "Migration",
+      "q": "What must still work after decommission?",
+      "a": "The surviving inbound, outbound, and emergency paths. Retire unused nodes, trunks, DNS, and certificates only after a soak and a fresh emergency test on the new path.",
+      "cite": "Migration practice"
+    },
+    {
+      "id": "c56",
+      "topic": "E911",
+      "q": "What two duties does Kari's Law put on a multi-line telephone system?",
+      "a": "Direct dialing of 911 with no prefix, and notification to a central place that can send help, including a callback number and available location information.",
+      "cite": "Kari's Law"
+    },
+    {
+      "id": "c57",
+      "topic": "E911",
+      "q": "What is a dispatchable location under RAY BAUM'S Act Section 506?",
+      "a": "The street address of the caller plus detail such as floor, suite, apartment, or room, enough for responders to find the person.",
+      "cite": "RAY BAUM'S Act Section 506"
+    },
+    {
+      "id": "c58",
+      "topic": "E911",
+      "q": "What is an ELIN?",
+      "a": "Emergency Location Identification Number. A telephone number that represents an emergency response location. The PSAP sees it as the calling number so ALI can return that place's address.",
+      "cite": "Enterprise E911 practice"
+    },
+    {
+      "id": "c59",
+      "topic": "E911",
+      "q": "What is an ERL?",
+      "a": "Emergency Response Location. A zone, such as a floor wing, whose phones share one dispatchable location and one or more ELINs.",
+      "cite": "Enterprise E911 practice"
+    },
+    {
+      "id": "c60",
+      "topic": "E911",
+      "q": "What does the PSAP learn from ALI?",
+      "a": "Automatic Location Identification maps the presented number, often the ELIN, to a civic address. A wrong ALI record sends responders to the wrong place even if the call connects.",
+      "cite": "PSAP practice"
+    },
+    {
+      "id": "c61",
+      "topic": "E911",
+      "q": "How does on-premises phone discovery differ from a roaming cloud soft client?",
+      "a": "On premises, discovery is usually switch port, subnet, or wireless access point. A roaming client should refresh a civic location, often by querying a location server with HELD, rather than keeping the office address.",
+      "cite": "RFC 5985"
+    },
+    {
+      "id": "c62",
+      "topic": "E911",
+      "q": "What problem does HELD solve?",
+      "a": "HTTP-Enabled Location Delivery lets a client ask a Location Information Server where it is. The location object is PIDF-LO.",
+      "cite": "RFC 5985 and RFC 4119"
+    },
+    {
+      "id": "c63",
+      "topic": "E911",
+      "q": "Why test emergency calling with a provider test number instead of 911?",
+      "a": "A live 911 call dispatches responders. Many U.S. providers use 933 as a test that reads back location and does not dispatch. Confirm the code with the provider.",
+      "cite": "Provider practice"
+    },
+    {
+      "id": "c64",
+      "topic": "Dial plan",
+      "q": "What is a partition in Unified CM?",
+      "a": "A group of patterns with the same reachability. Route patterns, translation patterns, and directory numbers are placed in partitions.",
+      "cite": "Cisco Unified CM dial plan"
+    },
+    {
+      "id": "c65",
+      "topic": "Dial plan",
+      "q": "What is a calling search space?",
+      "a": "An ordered list of partitions. It defines which patterns a caller can match. It does not itself contain digits.",
+      "cite": "Cisco Unified CM dial plan"
+    },
+    {
+      "id": "c66",
+      "topic": "Dial plan",
+      "q": "In the line/device model, which calling search space is searched first?",
+      "a": "The line CSS is concatenated in front of the device CSS. Line CSS usually carries class of service. Device CSS usually carries site routing.",
+      "cite": "Cisco line/device dial plan"
+    },
+    {
+      "id": "c67",
+      "topic": "Dial plan",
+      "q": "What does a route list contain?",
+      "a": "An ordered list of route groups. CUCM tries them by preference. Per-member digit manipulation can live here. Cause codes decide whether hunting continues.",
+      "cite": "Cisco Unified CM dial plan"
+    },
+    {
+      "id": "c68",
+      "topic": "Dial plan",
+      "q": "What does a route group contain?",
+      "a": "Gateways or trunks, with a distribution method such as top down or circular.",
+      "cite": "Cisco Unified CM dial plan"
+    },
+    {
+      "id": "c69",
+      "topic": "Dial plan",
+      "q": "How is a translation pattern different from a called-party transformation?",
+      "a": "A translation pattern matches, changes digits, and runs digit analysis again, so it can change the route. A transformation changes calling or called digits as the call egresses and does not choose the route.",
+      "cite": "Cisco Unified CM dial plan"
+    },
+    {
+      "id": "c70",
+      "topic": "Dial plan",
+      "q": "What does the dot mean in a pattern such as 9.55501XX?",
+      "a": "It is a discard boundary, not a wildcard. The PreDot instruction can strip the digits before the dot, such as an access code 9. X matches one digit.",
+      "cite": "Cisco Unified CM route-pattern wildcards"
+    },
+    {
+      "id": "c71",
+      "topic": "Dial plan",
+      "q": "What is a local route group for?",
+      "a": "One route pattern and route list can egress a different gateway per site. The device pool supplies the real route group for the Standard Local Route Group placeholder.",
+      "cite": "Cisco Unified CM dial plan"
+    },
+    {
+      "id": "c72",
+      "topic": "SBC",
+      "q": "Where does CUBE sit on a typical provider trunk?",
+      "a": "Between CUCM and the ITSP. Inside address in this lab is 192.0.2.40. Outside address is 198.51.100.10. The provider is 203.0.113.10.",
+      "cite": "CUBE topology"
+    },
+    {
+      "id": "c73",
+      "topic": "SBC",
+      "q": "What is SIP normalization on an SBC?",
+      "a": "Changing headers or SDP so the next hop will accept the call, without changing who is called. On CUBE this is commonly a SIP profile on a dial-peer.",
+      "cite": "Cisco CUBE SIP profiles"
+    },
+    {
+      "id": "c74",
+      "topic": "SBC",
+      "q": "In flow-through versus flow-around, where does RTP go?",
+      "a": "Flow-through anchors RTP on CUBE, which writes its own address into SDP. Flow-around keeps RTP between the endpoints. Signaling passes through CUBE in both cases.",
+      "cite": "Cisco CUBE media flow"
+    },
+    {
+      "id": "c75",
+      "topic": "SBC",
+      "q": "Name two features that require media to be anchored on the SBC.",
+      "a": "Codec transcoding, and SRTP-to-RTP conversion. In-band DTMF interworking and recording on the SBC also need the media path.",
+      "cite": "Cisco CUBE"
+    },
+    {
+      "id": "c76",
+      "topic": "SBC",
+      "q": "Which ports are conventional for SIP, and which port carries RTP?",
+      "a": "5060 is SIP over UDP or TCP. 5061 is SIP over TLS. RTP uses the ports negotiated in SDP, inside the range you configured. There is no single universal RTP port.",
+      "cite": "RFC 3261"
+    },
+    {
+      "id": "c77",
+      "topic": "SBC",
+      "q": "What SDP tokens indicate SRTP with keys carried in SDP?",
+      "a": "The media protocol RTP/SAVP and the attribute a=crypto. That keying method is SDES. TLS should protect the SIP so the key is not visible.",
+      "cite": "RFC 3711 and RFC 4568"
+    },
+    {
+      "id": "c78",
+      "topic": "SBC",
+      "q": "How can you tell from a trace that CUBE is anchoring media?",
+      "a": "On the provider leg, the SDP c= line and RTP port belong to the SBC (for example 198.51.100.10), not to the phone.",
+      "cite": "SDP connection address"
+    },
+    {
+      "id": "c79",
+      "topic": "SBC",
+      "q": "Is a sip: URI on a TLS dial-peer the same thing as a sips: URI?",
+      "a": "No. sips: requires TLS on every hop. A sip: URI with TLS configured on one dial-peer protects that hop only.",
+      "cite": "RFC 3261"
+    },
+    {
+      "id": "c80",
+      "topic": "QoS",
+      "q": "What DSCP should voice media use, and what queue should carry it?",
+      "a": "EF, decimal 46. It belongs in a priority queue. The mark does nothing if the hop does not schedule it.",
+      "cite": "RFC 3246 and RFC 4594"
+    },
+    {
+      "id": "c81",
+      "topic": "QoS",
+      "q": "What are the name and decimal value of AF41, and which video uses it?",
+      "a": "Assured Forwarding class 4, low drop, decimal 34. Interactive video and multimedia conferencing.",
+      "cite": "RFC 2597 and RFC 4594"
+    },
+    {
+      "id": "c82",
+      "topic": "QoS",
+      "q": "Where do many Cisco designs and RFC 4594 disagree about call signaling?",
+      "a": "Many Cisco campus designs mark SIP or SCCP signaling CS3 (24). RFC 4594 assigns signaling to CS5 (40) and assigns CS3 to broadcast video.",
+      "cite": "RFC 4594"
+    },
+    {
+      "id": "c83",
+      "topic": "QoS",
+      "q": "What is the difference between a DSCP mark and a queue?",
+      "a": "The mark is six bits in the IP header. The queue is the hop's decision to give that mark priority, bandwidth, or a drop policy. Untrusted marks can be rewritten.",
+      "cite": "RFC 2474"
+    },
+    {
+      "id": "c84",
+      "topic": "QoS",
+      "q": "Why mark or re-mark at the access edge?",
+      "a": "That is the trust boundary. A phone can be trusted to mark voice EF and to re-mark an attached PC. A laptop on an open port should not choose its own DSCP.",
+      "cite": "Campus QoS practice"
+    },
+    {
+      "id": "c85",
+      "topic": "QoS",
+      "q": "What planning bandwidth is often used for one G.711 call at 20 ms on Ethernet?",
+      "a": "About 87 kbit/s, including RTP, UDP, IP, and Ethernet overhead. The codec payload itself is 64 kbit/s. G.729 is often planned near 31 kbit/s.",
+      "cite": "Planning estimate"
+    },
+    {
+      "id": "c86",
+      "topic": "QoS",
+      "q": "What do AF41, AF42, and AF43 share, and what changes?",
+      "a": "They are one forwarding class (decimal 34, 36, and 38). The drop precedence rises. Higher drop precedence is discarded earlier when the queue is full.",
+      "cite": "RFC 2597"
+    },
+    {
+      "id": "c87",
+      "topic": "QoS",
+      "q": "Which RFC is the DiffServ service-class guideline that maps telephony to EF?",
+      "a": "RFC 4594. The EF behavior itself is RFC 3246. The DSCP field is RFC 2474.",
+      "cite": "RFC 4594"
+    },
+    {
+      "id": "c88",
+      "topic": "QoS",
+      "q": "Why must the priority queue be limited in size?",
+      "a": "EF is only useful if admission keeps the queue short. If every application is marked EF, the priority queue becomes a congested link and voice delay returns.",
+      "cite": "RFC 3246"
+    }
+  ]
+}

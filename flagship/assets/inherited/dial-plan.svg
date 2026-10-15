@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 702" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img">
+<title>CUCM digit analysis</title>
+<desc>From dialed digits to a trunk</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f7f3ee"/><stop offset="100%" stop-color="#e5f3f0"/></linearGradient></defs>
+<rect width="520" height="702" fill="url(#bg)"/>
+<text x="24" y="36" font-size="22" font-family="Georgia, Palatino, serif" fill="#1a2332">CUCM digit analysis</text>
+<text x="24" y="60" font-size="14" fill="#3a495c">From dialed digits to a trunk</text>
+<rect x="24" y="86" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="118" r="16" fill="#0e5f59"/>
+<text x="56" y="123" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">1</text>
+<text x="84" y="112" fill="#0e5f59" font-size="12" font-weight="700">CSS</text>
+<text x="84" y="136" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Line CSS, then device CSS</text>
+<text x="84" y="160" fill="#3a495c" font-size="14">Partitions are searched in that order.</text>
+<text x="84" y="180" fill="#3a495c" font-size="14">A CSS is a list of partitions, not a pattern.</text>
+<rect x="24" y="206" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="238" r="16" fill="#0e5f59"/>
+<text x="56" y="243" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">2</text>
+<text x="84" y="232" fill="#0e5f59" font-size="12" font-weight="700">Match</text>
+<text x="84" y="256" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Best match inside those partitions</text>
+<text x="84" y="280" fill="#3a495c" font-size="14">Longer, more specific patterns win.</text>
+<text x="84" y="300" fill="#3a495c" font-size="14">Partition order breaks a true tie.</text>
+<rect x="24" y="326" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="358" r="16" fill="#0e5f59"/>
+<text x="56" y="363" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">3</text>
+<text x="84" y="352" fill="#0e5f59" font-size="12" font-weight="700">Translate</text>
+<text x="84" y="376" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Change digits, then look up again</text>
+<text x="84" y="400" fill="#3a495c" font-size="14">The translation pattern has its own CSS.</text>
+<text x="84" y="420" fill="#3a495c" font-size="14">Use it for site codes and access-code habits.</text>
+<rect x="24" y="446" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="478" r="16" fill="#0e5f59"/>
+<text x="56" y="483" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">4</text>
+<text x="84" y="472" fill="#0e5f59" font-size="12" font-weight="700">Route</text>
+<text x="84" y="496" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Route pattern to a route list</text>
+<text x="84" y="520" fill="#3a495c" font-size="14">A route list is an ordered set of route groups.</text>
+<text x="84" y="540" fill="#3a495c" font-size="14">A route group is a set of gateways or trunks.</text>
+<rect x="24" y="566" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="598" r="16" fill="#0e5f59"/>
+<text x="56" y="603" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">5</text>
+<text x="84" y="592" fill="#0e5f59" font-size="12" font-weight="700">Transform</text>
+<text x="84" y="616" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Fix calling and called numbers on the way out</text>
+<text x="84" y="640" fill="#3a495c" font-size="14">Transformation patterns do not choose the route.</text>
+<text x="84" y="660" fill="#3a495c" font-size="14">Apply them at the gateway, trunk, or device pool.</text>
+</svg>

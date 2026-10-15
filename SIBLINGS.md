@@ -11,4 +11,4 @@ UC Lab is the voice, UC, and contact center campus. AI Lab is a separate free ca
 
 They do not replace each other.
 
-Educational material. MIT license. No warranty.
+Code is MIT. Educational content is CC BY-NC-SA 4.0. No warranty.

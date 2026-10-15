@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420">
+<rect width="980" height="420" fill="#0c1220"/>
+<text x="24" y="28" fill="#e7ecf5" font-family="Segoe UI,sans-serif" font-size="16">Forward to greeting</text>
+<text x="120" y="64" fill="#e7ecf5" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Phone</text>
+<line x1="120" y1="76" x2="120" y2="390" stroke="#2a3548"/>
+<text x="340" y="64" fill="#e7ecf5" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">CUCM</text>
+<line x1="340" y1="76" x2="340" y2="390" stroke="#2a3548"/>
+<text x="560" y="64" fill="#e7ecf5" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Next</text>
+<line x1="560" y1="76" x2="560" y2="390" stroke="#2a3548"/>
+<text x="780" y="64" fill="#e7ecf5" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Far</text>
+<line x1="780" y1="76" x2="780" y2="390" stroke="#2a3548"/>
+<line x1="120" y1="120" x2="332" y2="120" stroke="#3dbeff" stroke-width="1.6"/>
+<polygon points="340,120 332,116 332,124" fill="#3dbeff"/>
+<text x="230.0" y="114" fill="#c5d0e0" font-family="ui-monospace,monospace" font-size="12" text-anchor="middle">dial or CFWD</text>
+<line x1="340" y1="180" x2="552" y2="180" stroke="#3dbeff" stroke-width="1.6"/>
+<polygon points="560,180 552,176 552,184" fill="#3dbeff"/>
+<text x="450.0" y="174" fill="#c5d0e0" font-family="ui-monospace,monospace" font-size="12" text-anchor="middle">INVITE + Diversion</text>
+<line x1="560" y1="240" x2="772" y2="240" stroke="#3dbeff" stroke-width="1.6"/>
+<polygon points="780,240 772,236 772,244" fill="#3dbeff"/>
+<text x="670.0" y="234" fill="#c5d0e0" font-family="ui-monospace,monospace" font-size="12" text-anchor="middle">Attempt Forward</text>
+<line x1="780" y1="300" x2="552" y2="300" stroke="#3dbeff" stroke-width="1.6"/>
+<polygon points="560,300 552,296 552,304" fill="#3dbeff"/>
+<text x="670.0" y="294" fill="#c5d0e0" font-family="ui-monospace,monospace" font-size="12" text-anchor="middle">greeting</text>
+</svg>

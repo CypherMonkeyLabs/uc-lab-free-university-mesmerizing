@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1100" height="760" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 760" role="img" aria-labelledby="ecoTitle ecoDesc">
+  <title id="ecoTitle">Cypher UC Lab ecosystem</title>
+  <desc id="ecoDesc">Unified CM at the center. IM and Presence, Unity Connection, CUBE, Expressway, SRST, and Emergency Responder attach directly. Sister systems and cloud platforms sit on the outside.</desc>
+  <rect width="1100" height="760" fill="#0a1020"/>
+  <text x="36" y="36" fill="#e7ecf5" font-family="Georgia, serif" font-size="22">Collaboration ecosystem</text>
+  <text x="36" y="58" fill="#93a0b8" font-family="Segoe UI, sans-serif" font-size="13">On-premises call control in the middle. Cloud calling and contact center on the rim.</text>
+  <g font-family="Segoe UI, sans-serif" font-size="14" fill="#e7ecf5">
+    <circle cx="550" cy="360" r="78" fill="#121826" stroke="#3dbeff" stroke-width="2"/>
+    <text x="550" y="354" text-anchor="middle">Unified CM</text>
+    <text x="550" y="374" text-anchor="middle" fill="#93a0b8" font-size="12">T1 · T2</text>
+    <rect x="250" y="150" width="160" height="54" rx="8" fill="#171e2c" stroke="#b388ff"/>
+    <text x="330" y="182" text-anchor="middle">IM &amp; Presence · T3</text>
+    <rect x="690" y="150" width="180" height="54" rx="8" fill="#171e2c" stroke="#3dd68c"/>
+    <text x="780" y="182" text-anchor="middle">Unity Connection · T4</text>
+    <rect x="70" y="330" width="170" height="54" rx="8" fill="#171e2c" stroke="#ff8a4c"/>
+    <text x="155" y="362" text-anchor="middle">CUBE · T5</text>
+    <rect x="860" y="330" width="190" height="54" rx="8" fill="#171e2c" stroke="#ff6b8a"/>
+    <text x="955" y="362" text-anchor="middle">Expressway · T7</text>
+    <rect x="250" y="520" width="160" height="54" rx="8" fill="#171e2c" stroke="#7eb6ff"/>
+    <text x="330" y="552" text-anchor="middle">SRST · T6</text>
+    <rect x="690" y="520" width="200" height="54" rx="8" fill="#171e2c" stroke="#e6c36a"/>
+    <text x="790" y="552" text-anchor="middle">CER / RedSky · T8</text>
+  </g>
+  <g font-family="Segoe UI, sans-serif" font-size="13" fill="#c5d0e2">
+    <rect x="36" y="90" width="150" height="40" rx="8" fill="#10151f" stroke="#2a3548"/>
+    <text x="111" y="115" text-anchor="middle">Identity / SSO</text>
+    <rect x="36" y="620" width="150" height="40" rx="8" fill="#10151f" stroke="#2a3548"/>
+    <text x="111" y="645" text-anchor="middle">QoS network</text>
+    <rect x="470" y="80" width="160" height="40" rx="8" fill="#10151f" stroke="#2a3548"/>
+    <text x="550" y="105" text-anchor="middle">WFM · QM</text>
+    <rect x="470" y="640" width="160" height="40" rx="8" fill="#10151f" stroke="#2a3548"/>
+    <text x="550" y="665" text-anchor="middle">CRM · AI agents</text>
+    <rect x="900" y="90" width="160" height="40" rx="8" fill="#10151f" stroke="#2a3548"/>
+    <text x="980" y="115" text-anchor="middle">Webex Calling</text>
+    <rect x="880" y="640" width="180" height="40" rx="8" fill="#10151f" stroke="#2a3548"/>
+    <text x="970" y="665" text-anchor="middle">Teams Phone</text>
+    <rect x="860" y="430" width="190" height="40" rx="8" fill="#10151f" stroke="#2a3548"/>
+    <text x="955" y="455" text-anchor="middle">UCCE / PCCE · IVR</text>
+  </g>
+  <g stroke="#2a3548" fill="none">
+    <path d="M410 177 H472 V282"/>
+    <path d="M690 177 H628 V282"/>
+    <path d="M240 357 H472"/>
+    <path d="M860 357 H628"/>
+    <path d="M410 547 H472 V438"/>
+    <path d="M690 547 H628 V438"/>
+    <path d="M186 110 H250"/>
+    <path d="M900 110 H870"/>
+    <path d="M186 640 H250"/>
+    <path d="M880 660 H790"/>
+  </g>
+</svg>

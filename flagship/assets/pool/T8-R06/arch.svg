@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="980" height="460" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 460" role="img" aria-labelledby="migt migd">
+  <title id="migt">Unified CM to Webex Calling</title>
+  <desc id="migd">Users move to Webex Calling. A local gateway keeps premises PSTN and the users who remain on Unified CM. A survivability gateway can share the Cisco IOS router.</desc>
+  <rect width="980" height="460" fill="#0a1020"/>
+  <text x="24" y="32" fill="#e6c36a" font-family="ui-monospace,monospace" font-size="13">T8-R06 - coexist, then move</text>
+  <g font-family="Segoe UI,sans-serif" font-size="14" fill="#e7ecf5">
+    <rect x="24" y="60" width="280" height="150" rx="8" fill="#121826" stroke="#3dbeff"/>
+    <text x="40" y="92">Unified CM</text>
+    <text x="40" y="118" fill="#93a0b8" font-size="13">Users not yet moved</text>
+    <text x="40" y="142" fill="#93a0b8" font-size="13">Contact center route points</text>
+    <text x="40" y="166" fill="#93a0b8" font-size="13">CSS stays here</text>
+    <rect x="350" y="60" width="280" height="150" rx="8" fill="#121826" stroke="#ff8a4c"/>
+    <text x="366" y="92">Local gateway</text>
+    <text x="366" y="118" fill="#93a0b8" font-size="13">CUBE on IOS XE</text>
+    <text x="366" y="142" fill="#93a0b8" font-size="13">PSTN and UCM trunks</text>
+    <text x="366" y="166" fill="#93a0b8" font-size="13">5060 PSTN, 5065 Webex side</text>
+    <rect x="676" y="60" width="280" height="150" rx="8" fill="#121826" stroke="#e6c36a"/>
+    <text x="692" y="92">Webex Calling</text>
+    <text x="692" y="118" fill="#93a0b8" font-size="13">Locations, not partitions</text>
+    <text x="692" y="142" fill="#93a0b8" font-size="13">Calling permissions</text>
+    <text x="692" y="166" fill="#93a0b8" font-size="13">+E.164 numbers</text>
+  </g>
+  <g font-family="Segoe UI,sans-serif" font-size="14" fill="#e7ecf5">
+    <rect x="24" y="240" width="450" height="180" rx="8" fill="#121826" stroke="#2a3548"/>
+    <text x="40" y="272" fill="#e6c36a">PSTN choices</text>
+    <text x="40" y="304">Cisco Calling Plans</text>
+    <text x="40" y="330">Cloud Connected PSTN</text>
+    <text x="40" y="356">Premises PSTN through the local gateway</text>
+    <text x="40" y="390" fill="#93a0b8" font-size="13">You can move PSTN before every user moves.</text>
+    <rect x="500" y="240" width="456" height="180" rx="8" fill="#121826" stroke="#2a3548"/>
+    <text x="516" y="272" fill="#e6c36a">Survivability</text>
+    <text x="516" y="304">Same Cisco IOS router can host both</text>
+    <text x="516" y="330">Third-party SBC does not host it</text>
+    <text x="516" y="356">Phones register locally if the cloud drops</text>
+    <text x="516" y="390" fill="#93a0b8" font-size="13">Not a second Unified CM publisher.</text>
+  </g>
+</svg>

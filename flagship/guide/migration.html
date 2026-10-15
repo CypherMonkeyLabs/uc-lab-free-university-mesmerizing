@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="neon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Migration and cutover · UC Lab Free University</title>
+<meta name="description" content="Migration checklist with rollback for each phase.">
+<link rel="icon" href="../assets/icon.svg">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+try {
+  var params = new URLSearchParams(location.search);
+  var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
+  var ok = {neon:1, holographic:1, cyberpunk:1, sunset:1, light:1};
+  if (ok[t]) document.documentElement.setAttribute("data-theme", t);
+  if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+  var lang = localStorage.getItem("uc_flagship_lang");
+  if (lang) document.documentElement.lang = lang;
+  if (lang === "ar") document.documentElement.dir = "rtl";
+} catch (e) {}
+</script>
+</head>
+<body data-root="../">
+<a class="skip" href="#content" data-i18n="skip">Skip to content</a>
+<header class="topbar">
+  <div class="bar">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
+      <span><strong>UC Lab</strong><small data-i18n="brandSub">Free University</small></span>
+    </a>
+    <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
+    <div class="tools">
+      <div class="themes" role="radiogroup" aria-label="Theme">
+        <button type="button" class="swatch-neon" data-theme-set="neon" aria-label="Neon" aria-checked="true"></button>
+        <button type="button" class="swatch-holographic" data-theme-set="holographic" aria-label="Holographic" aria-checked="false"></button>
+        <button type="button" class="swatch-cyberpunk" data-theme-set="cyberpunk" aria-label="Cyberpunk" aria-checked="false"></button>
+        <button type="button" class="swatch-sunset" data-theme-set="sunset" aria-label="Sunset" aria-checked="false"></button>
+        <button type="button" class="swatch-light" data-theme-set="light" aria-label="Light" aria-checked="false"></button>
+      </div>
+      <button type="button" class="btn mode-btn" data-i18n="mode">Light</button>
+      <button type="button" class="btn motion-btn">Motion</button>
+      <a class="btn dl" href="../download.html">Offline</a>
+      <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
+    </div>
+    <form class="site-search" role="search">
+      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off" data-i18n-placeholder="searchPh">
+      <div id="searchPop" class="search-pop" hidden></div>
+    </form>
+  </div>
+  <nav class="tabs" aria-label="Lab"><a href="../index.html" data-i18n="navHome">Home</a><a href="../diagrams/index.html" data-i18n="navDiagrams">Diagrams</a><a href="../flows/index.html" data-i18n="navFlows">Flows</a><a href="../charts/index.html" data-i18n="navCharts">Charts</a><a href="../cheats/index.html" data-i18n="navCheats">Cheat Codes</a><a href="../play/index.html" data-i18n="navPlay">Play</a><a href="../ecosystem/index.html" data-i18n="navEco">Ecosystem</a><a href="../download.html" data-i18n="navDownloads">Downloads</a><a href="../guide/interview.html" data-i18n="navCareers">Careers</a></nav>
+  <div class="lang-chips" role="radiogroup" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true"><span aria-hidden="true">🇬🇧</span> EN</button>
+    <button type="button" data-lang="es" aria-pressed="false"><span aria-hidden="true">🇪🇸</span> ES</button>
+    <button type="button" data-lang="hi" aria-pressed="false"><span aria-hidden="true">🇮🇳</span> HI</button>
+    <button type="button" data-lang="te" aria-pressed="false"><span aria-hidden="true">🇮🇳</span> TE</button>
+    <button type="button" data-lang="fr" aria-pressed="false"><span aria-hidden="true">🇫🇷</span> FR</button>
+    <button type="button" data-lang="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> DE</button>
+    <button type="button" data-lang="ja" aria-pressed="false"><span aria-hidden="true">🇯🇵</span> JA</button>
+    <button type="button" data-lang="ar" aria-pressed="false"><span aria-hidden="true">🇸🇦</span> AR</button>
+  </div>
+  <p class="progress" id="visitProgress">Progress</p>
+</header>
+<main id="content" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../guide/index.html">Guide</a></li><li aria-current="page">Migration and cutover</li></ol></nav>
+
+<p class="kicker">Dual run</p>
+<h1>Migration checklist</h1>
+<p class="lede">Move a number only when identity, emergency location, and recording have a landing zone. The ladder for a CUCM-to-Webex dual run is on the flow page. This is the checklist around it.</p>
+<div class="table-scroll"><table>
+<thead><tr><th>Phase</th><th>Check</th><th>Rollback</th></tr></thead>
+<tbody>
+<tr><td>Discover</td><td>Who owns the number today, which gateway, which recording profile, which emergency location.</td><td>Nothing has moved. Write the owner down.</td></tr>
+<tr><td>Normalize</td><td>+E.164 on both systems so the same digits mean the same destination.</td><td>Keep the old habit in a translation you can remove.</td></tr>
+<tr><td>Canary</td><td>One user. Inbound, outbound, hold, transfer, voicemail, and emergency callback to the right site.</td><td>Send the number back to the original system the same day.</td></tr>
+<tr><td>Cut</td><td>A named cohort, a window, and one person who can stop the window.</td><td>The trigger is a failed canary proof, not a feeling.</td></tr>
+<tr><td>Evidence</td><td>A ladder, a CDR or cloud record, and the emergency test you are allowed to run.</td><td>If evidence is missing, you are not done, even if users are quiet.</td></tr>
+</tbody></table></div>
+<h2>From platforms other than CUCM</h2>
+<p>The same five rows apply to a PBX, another UC cloud, or a contact-center number. What changes is the object name: a Webex location, a Teams voice routing policy, a UCCE dialed number, a Webex Contact Center entry point. Do not reuse a CUCM CSS screenshot as if it were the other product's screen.</p>
+<p>Florida Crystals, in Microsoft's public story, decommissioned on-premises PBX lines after Teams Phone. That is an outcome on their page, not a template you can copy without the discovery rows above.</p>
+<h2>Sources</h2><ul><li><a href="https://help.webex.com/">Webex Calling help</a></li><li><a href="https://www.microsoft.com/en/customers/story/1804528563383903958-florida-crystals-corporation-microsoft-teams-phone-manufacturing-en-united-states">Florida Crystals story</a></li><li><a href="https://www.fcc.gov/mlts-911-requirements">FCC MLTS</a></li></ul>
+
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p class="kicker">Next</p>
+    <p><a href="../guide/configure.html">Previous · Configuration</a> · <a href="../guide/playbooks.html">Next · Troubleshooting playbooks</a> · <a href="../../campus/uc-lab-free-university.html">Deep campus · 580 sections</a></p>
+    <div class="sister"><a class="card" href="https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/"><strong>AI Lab</strong></a><a class="card" href="https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/"><strong>Amazon Connect</strong></a><a class="card" href="https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/"><strong>Microsoft Voice</strong></a><a class="card" href="https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/"><strong>Five9</strong></a><a class="card" href="https://cipher0x9.github.io/genesys-cloud-lab-free-university-mesmerizing/"><strong>Genesys Cloud</strong></a><a class="card" href="https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/"><strong>NICE CXone</strong></a><a class="card" href="https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/"><strong>SIP Universe</strong></a><a class="card" href="../path.html"><strong>Study path</strong></a></div>
+    <p class="sig">CYPHER0X9</p>
+    <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
+    <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern or takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
+  </div>
+</footer>
+<script src="../assets/search.js"></script>
+<script src="../assets/bank.js"></script>
+<script src="../assets/site.js"></script>
+<script src="../assets/play.js"></script>
+
+
+</body>
+</html>
