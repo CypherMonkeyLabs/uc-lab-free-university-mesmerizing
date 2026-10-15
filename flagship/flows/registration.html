@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="paper">
+<html lang="en" data-theme="neon">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,44 +12,60 @@
 try {
   var params = new URLSearchParams(location.search);
   var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
-  var ok = {paper:1, midnight:1, contrast:1, signal:1, canopy:1};
+  var ok = {neon:1, holographic:1, cyberpunk:1, sunset:1, light:1};
   if (ok[t]) document.documentElement.setAttribute("data-theme", t);
   if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+  var lang = localStorage.getItem("uc_flagship_lang");
+  if (lang) document.documentElement.lang = lang;
+  if (lang === "ar") document.documentElement.dir = "rtl";
 } catch (e) {}
 </script>
 </head>
 <body data-root="../">
-<a class="skip" href="#content">Skip to content</a>
+<a class="skip" href="#content" data-i18n="skip">Skip to content</a>
 <header class="topbar">
   <div class="bar">
     <a class="brand" href="../index.html">
       <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
-      <span><strong>UC Lab</strong><small>Free University</small></span>
+      <span><strong>UC Lab</strong><small data-i18n="brandSub">Free University</small></span>
     </a>
     <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
     <div class="tools">
+      <label class="lang"><span class="sr-only" data-i18n="langLabel">Language</span>
+        <select id="langSwitch" aria-label="Language">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="hi">हिन्दी</option>
+          <option value="te">తెలుగు</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="ja">日本語</option>
+          <option value="ar">العربية</option>
+        </select>
+      </label>
       <div class="themes" role="radiogroup" aria-label="Theme">
-        <button type="button" class="swatch-paper" data-theme-set="paper" aria-label="Paper" aria-checked="true"></button>
-        <button type="button" class="swatch-midnight" data-theme-set="midnight" aria-label="Midnight" aria-checked="false"></button>
-        <button type="button" class="swatch-contrast" data-theme-set="contrast" aria-label="High contrast" aria-checked="false"></button>
-        <button type="button" class="swatch-signal" data-theme-set="signal" aria-label="Signal" aria-checked="false"></button>
-        <button type="button" class="swatch-canopy" data-theme-set="canopy" aria-label="Canopy" aria-checked="false"></button>
+        <button type="button" class="swatch-neon" data-theme-set="neon" aria-label="Neon" aria-checked="true"></button>
+        <button type="button" class="swatch-holographic" data-theme-set="holographic" aria-label="Holographic" aria-checked="false"></button>
+        <button type="button" class="swatch-cyberpunk" data-theme-set="cyberpunk" aria-label="Cyberpunk" aria-checked="false"></button>
+        <button type="button" class="swatch-sunset" data-theme-set="sunset" aria-label="Sunset" aria-checked="false"></button>
+        <button type="button" class="swatch-light" data-theme-set="light" aria-label="Light" aria-checked="false"></button>
       </div>
+      <button type="button" class="btn mode-btn" data-i18n="mode">Light</button>
       <button type="button" class="btn motion-btn">Motion</button>
       <a class="btn dl" href="../download.html">Offline</a>
       <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
     </div>
     <form class="site-search" role="search">
-      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off">
+      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off" data-i18n-placeholder="searchPh">
       <div id="searchPop" class="search-pop" hidden></div>
     </form>
   </div>
-  <nav class="tabs" aria-label="Lab"><a href="../index.html">Home</a><a href="../diagrams/index.html">Diagrams</a><a href="../flows/index.html" aria-current="page">Flows</a><a href="../charts/index.html">Charts</a><a href="../cheats/index.html">Cheat Codes</a><a href="../play/index.html">Play</a><a href="../ecosystem/index.html">Ecosystem</a><a href="../download.html">Downloads</a><a href="../guide/interview.html">Careers</a></nav>
+  <nav class="tabs" aria-label="Lab"><a href="../index.html" data-i18n="navHome">Home</a><a href="../diagrams/index.html" data-i18n="navDiagrams">Diagrams</a><a href="../flows/index.html" aria-current="page" data-i18n="navFlows">Flows</a><a href="../charts/index.html" data-i18n="navCharts">Charts</a><a href="../cheats/index.html" data-i18n="navCheats">Cheat Codes</a><a href="../play/index.html" data-i18n="navPlay">Play</a><a href="../ecosystem/index.html" data-i18n="navEco">Ecosystem</a><a href="../download.html" data-i18n="navDownloads">Downloads</a><a href="../guide/interview.html" data-i18n="navCareers">Careers</a></nav>
   <p class="progress" id="visitProgress">Progress</p>
 </header>
 <main id="content" class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../flows/index.html">Flows</a></li><li aria-current="page">SIP registration</li></ol></nav>
-<p class='kicker'>SIP · RFC 3261 §10</p><h1>SIP registration</h1><p class='lede'>REGISTER stores a binding. It does not create a call.</p><div class='read'><div class='prose'><figure class="ladder" data-ladder><svg viewBox="0 0 760 274" role="img" aria-label="Registrar challenge"><defs><marker id='arrow1' markerWidth='8' markerHeight='8' refX='7' refY='3' orient='auto'><path d='M0,0 L8,3 L0,6 Z' fill='#1c1915'/></marker></defs><rect width="760" height="274" rx="16" fill="#fffdf8"/><text x="20" y="24" font-family="Georgia, serif" font-size="16" fill="#a34b24">Registrar challenge</text><text x="190" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">Phone</text><line x1="190" y1="58" x2="190" y2="258" stroke="#e3d7c6" stroke-width="2"/><text x="570" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">Registrar</text><line x1="570" y1="58" x2="570" y2="258" stroke="#e3d7c6" stroke-width="2"/><g class="msg" data-cap="Request-URI is the registrar domain. Contact is the binding the phone wants stored."><line x1="190" y1="70" x2="570" y2="70" stroke="#0f6e62" stroke-width="2.4" marker-end="url(#arrow1)"/><text x="380.0" y="62" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#0f6e62">REGISTER</text></g><g class="msg" data-cap="WWW-Authenticate challenges the user. 401 is from the registrar, not a proxy."><line x1="570" y1="116" x2="190" y2="116" stroke="#9f3048" stroke-width="2.4" marker-end="url(#arrow1)"/><text x="380.0" y="108" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#9f3048">401</text></g><g class="msg" data-cap="The retry carries Authorization. The Call-ID stays with this registration dialog usage."><line x1="190" y1="162" x2="570" y2="162" stroke="#0f6e62" stroke-width="2.4" marker-end="url(#arrow1)"/><text x="380.0" y="154" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#0f6e62">REGISTER</text></g><g class="msg" data-cap="The binding is stored until the Contact expires. No media starts."><line x1="570" y1="208" x2="190" y2="208" stroke="#1f7a4d" stroke-width="2.4" marker-end="url(#arrow1)"/><text x="380.0" y="200" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#1f7a4d">200 OK</text></g></svg><div class="ladder-controls"><button type="button" class="btn" data-act="prev">Step back</button><button type="button" class="btn" data-act="play">Play</button><button type="button" class="btn" data-act="next">Step</button></div><p class="ladder-cap muted"></p><ol><li><strong>REGISTER</strong> — Request-URI is the registrar domain. Contact is the binding the phone wants stored.</li><li><strong>401</strong> — WWW-Authenticate challenges the user. 401 is from the registrar, not a proxy.</li><li><strong>REGISTER</strong> — The retry carries Authorization. The Call-ID stays with this registration dialog usage.</li><li><strong>200 OK</strong> — The binding is stored until the Contact expires. No media starts.</li></ol></figure><p>A phone that cannot register never places a call. Read the realm, the nonce, and whether the second REGISTER was sent to the same registrar. A 407 would mean a proxy challenged the request, which is a different hop than 401.</p><h2>Sources</h2><ul><li><a href="https://www.rfc-editor.org/rfc/rfc3261">RFC 3261</a></li></ul><h2>Study card carried forward</h2><div class='paper inherited'>
+<p class='kicker'>SIP · RFC 3261 §10</p><h1>SIP registration</h1><p class='lede'>REGISTER stores a binding. It does not create a call.</p><div class='read'><div class='prose'><figure class="ladder" data-ladder><svg viewBox="0 0 760 274" role="img" aria-label="Registrar challenge"><defs><marker id='arrow1' markerWidth='8' markerHeight='8' refX='7' refY='3' orient='auto'><path d='M0,0 L8,3 L0,6 Z' fill='#5eead4'/></marker></defs><rect width="760" height="274" rx="16" fill="#0b0618"/><text x="20" y="24" font-family="Georgia, serif" font-size="16" fill="#f9a8d4">Registrar challenge</text><text x="190" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#f5f7ff">Phone</text><line x1="190" y1="58" x2="190" y2="258" stroke="#3b3260" stroke-width="2"/><text x="570" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#f5f7ff">Registrar</text><line x1="570" y1="58" x2="570" y2="258" stroke="#3b3260" stroke-width="2"/><g class="msg" data-cap="Request-URI is the registrar domain. Contact is the binding the phone wants stored."><line x1="190" y1="70" x2="570" y2="70" stroke="#5eead4" stroke-width="2.4" marker-end="url(#arrow1)"/><text x="380.0" y="62" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#5eead4">REGISTER</text></g><g class="msg" data-cap="WWW-Authenticate challenges the user. 401 is from the registrar, not a proxy."><line x1="570" y1="116" x2="190" y2="116" stroke="#fb7185" stroke-width="2.4" marker-end="url(#arrow1)"/><text x="380.0" y="108" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#fb7185">401</text></g><g class="msg" data-cap="The retry carries Authorization. The Call-ID stays with this registration dialog usage."><line x1="190" y1="162" x2="570" y2="162" stroke="#5eead4" stroke-width="2.4" marker-end="url(#arrow1)"/><text x="380.0" y="154" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#5eead4">REGISTER</text></g><g class="msg" data-cap="The binding is stored until the Contact expires. No media starts."><line x1="570" y1="208" x2="190" y2="208" stroke="#86efac" stroke-width="2.4" marker-end="url(#arrow1)"/><text x="380.0" y="200" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#86efac">200 OK</text></g></svg><div class="ladder-controls"><button type="button" class="btn" data-act="prev">Step back</button><button type="button" class="btn" data-act="play">Play</button><button type="button" class="btn" data-act="next">Step</button></div><p class="ladder-cap muted"></p><ol><li><strong>REGISTER</strong> — Request-URI is the registrar domain. Contact is the binding the phone wants stored.</li><li><strong>401</strong> — WWW-Authenticate challenges the user. 401 is from the registrar, not a proxy.</li><li><strong>REGISTER</strong> — The retry carries Authorization. The Call-ID stays with this registration dialog usage.</li><li><strong>200 OK</strong> — The binding is stored until the Contact expires. No media starts.</li></ol></figure><p>A phone that cannot register never places a call. Read the realm, the nonce, and whether the second REGISTER was sent to the same registrar. A 407 would mean a proxy challenged the request, which is a different hop than 401.</p><h2>Sources</h2><ul><li><a href="https://www.rfc-editor.org/rfc/rfc3261">RFC 3261</a></li></ul><h2>Study card carried forward</h2><div class='paper inherited'>
 <p class="kicker">SIP · RFC 3261</p><h1>Registration</h1><p class="lede">A phone registers to publish where it is. The registrar stores a binding from an address-of-record to a Contact URI. Registration is not a phone call, and it does not by itself reserve media.</p><figure><div class="diagram-scroll mid" tabindex="0"><img src="../assets/inherited/sip-registration.svg" alt="Ladder: phone sends REGISTER, registrar returns 401 with a digest challenge, phone sends REGISTER with Authorization, registrar returns 200 OK."></div><figcaption>Open the SVG beside this page if you want the drawing on its own.</figcaption></figure><p class="hint">On a phone, swipe a wide ladder sideways. The steps below repeat the same sequence.</p><h2>Sequence</h2><ol class="steps"><li><strong>REGISTER</strong> — Phone (UAC) to Registrar. Request-URI is the domain</li><li><strong>401 Unauthorized</strong> — Registrar to Phone (UAC). WWW-Authenticate: Digest</li><li><strong>REGISTER</strong> — Phone (UAC) to Registrar. Authorization: Digest response</li><li><strong>200 OK</strong> — Registrar to Phone (UAC). Binding stored, Expires set</li></ol>
 <h2>What the messages mean</h2>
 <p>The Request-URI of a REGISTER is the registrar's domain, such as <code>sip:example.com</code>. The To header is the address-of-record being registered, such as <code>sip:alice@example.com</code>. The Contact is the device URI the registrar should use later, such as <code>sip:alice@192.0.2.10:5060</code>. From and To are often the same on a REGISTER. They are not the same idea.</p>

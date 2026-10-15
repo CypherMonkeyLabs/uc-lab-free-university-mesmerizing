@@ -100,6 +100,7 @@ ORDER = [
     ("ecosystem/crm.html", "CRM"),
     ("ecosystem/agents.html", "AI agents"),
     ("ecosystem/bridges.html", "Cross-platform bridges"),
+    ("ecosystem/regions.html", "Regions"),
     ("licensing.html", "Licensing"),
     ("certifications.html", "Certifications"),
     ("roadmap.html", "Roadmap"),
@@ -228,7 +229,19 @@ def chrome(rel: str, title: str, body: str, description: str) -> str:
         section = href.split("/")[0] if href.endswith("/index.html") else ""
         on_section = bool(section) and current.startswith(section + "/")
         here = ' aria-current="page"' if href == current or on_section else ""
-        tabs.append(f'<a href="{esc(abs_href)}"{here}>{esc(label)}</a>')
+        i18n_nav = {
+            "Home": "navHome",
+            "Diagrams": "navDiagrams",
+            "Flows": "navFlows",
+            "Charts": "navCharts",
+            "Cheat Codes": "navCheats",
+            "Play": "navPlay",
+            "Ecosystem": "navEco",
+            "Downloads": "navDownloads",
+            "Careers": "navCareers",
+        }
+        key = i18n_nav.get(label, "")
+        tabs.append(f'<a href="{esc(abs_href)}"{here} data-i18n="{key}">{esc(label)}</a>')
     found = [i for i, (href, _) in enumerate(ORDER) if href == rel]
     if found:
         idx = found[0]
@@ -262,7 +275,7 @@ def chrome(rel: str, title: str, body: str, description: str) -> str:
         confetti_html = f'<script src="{root}assets/vendor/confetti.browser.js"></script>'
     crumb_html = crumbs_for(rel, title, root)
     return f"""<!DOCTYPE html>
-<html lang="en" data-theme="paper">
+<html lang="en" data-theme="neon">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -275,35 +288,51 @@ def chrome(rel: str, title: str, body: str, description: str) -> str:
 try {{
   var params = new URLSearchParams(location.search);
   var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
-  var ok = {{paper:1, midnight:1, contrast:1, signal:1, canopy:1}};
+  var ok = {{neon:1, holographic:1, cyberpunk:1, sunset:1, light:1}};
   if (ok[t]) document.documentElement.setAttribute("data-theme", t);
   if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+  var lang = localStorage.getItem("uc_flagship_lang");
+  if (lang) document.documentElement.lang = lang;
+  if (lang === "ar") document.documentElement.dir = "rtl";
 }} catch (e) {{}}
 </script>
 </head>
 <body data-root="{root}">
-<a class="skip" href="#content">Skip to content</a>
+<a class="skip" href="#content" data-i18n="skip">Skip to content</a>
 <header class="topbar">
   <div class="bar">
     <a class="brand" href="{root}index.html">
       <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
-      <span><strong>UC Lab</strong><small>Free University</small></span>
+      <span><strong>UC Lab</strong><small data-i18n="brandSub">Free University</small></span>
     </a>
     <nav class="hub" aria-label="Studio">{hub_html}</nav>
     <div class="tools">
+      <label class="lang"><span class="sr-only" data-i18n="langLabel">Language</span>
+        <select id="langSwitch" aria-label="Language">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="hi">हिन्दी</option>
+          <option value="te">తెలుగు</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="ja">日本語</option>
+          <option value="ar">العربية</option>
+        </select>
+      </label>
       <div class="themes" role="radiogroup" aria-label="Theme">
-        <button type="button" class="swatch-paper" data-theme-set="paper" aria-label="Paper" aria-checked="true"></button>
-        <button type="button" class="swatch-midnight" data-theme-set="midnight" aria-label="Midnight" aria-checked="false"></button>
-        <button type="button" class="swatch-contrast" data-theme-set="contrast" aria-label="High contrast" aria-checked="false"></button>
-        <button type="button" class="swatch-signal" data-theme-set="signal" aria-label="Signal" aria-checked="false"></button>
-        <button type="button" class="swatch-canopy" data-theme-set="canopy" aria-label="Canopy" aria-checked="false"></button>
+        <button type="button" class="swatch-neon" data-theme-set="neon" aria-label="Neon" aria-checked="true"></button>
+        <button type="button" class="swatch-holographic" data-theme-set="holographic" aria-label="Holographic" aria-checked="false"></button>
+        <button type="button" class="swatch-cyberpunk" data-theme-set="cyberpunk" aria-label="Cyberpunk" aria-checked="false"></button>
+        <button type="button" class="swatch-sunset" data-theme-set="sunset" aria-label="Sunset" aria-checked="false"></button>
+        <button type="button" class="swatch-light" data-theme-set="light" aria-label="Light" aria-checked="false"></button>
       </div>
+      <button type="button" class="btn mode-btn" data-i18n="mode">Light</button>
       <button type="button" class="btn motion-btn">Motion</button>
       <a class="btn dl" href="{root}download.html">Offline</a>
       <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
     </div>
     <form class="site-search" role="search">
-      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off">
+      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off" data-i18n-placeholder="searchPh">
       <div id="searchPop" class="search-pop" hidden></div>
     </form>
   </div>
@@ -347,12 +376,12 @@ def sources(pairs: list[tuple[str, str]]) -> str:
 
 
 KIND = {
-    "req": "#0f6e62",
-    "prov": "#a9782c",
-    "ok": "#1f7a4d",
-    "err": "#9f3048",
-    "media": "#4c3d8f",
-    "note": "#5e584e",
+    "req": "#5eead4",
+    "prov": "#fde047",
+    "ok": "#86efac",
+    "err": "#fb7185",
+    "media": "#d8b4fe",
+    "note": "#f0abfc",
 }
 
 
@@ -371,14 +400,14 @@ def ladder_block(title: str, actors: list[str], steps: list[tuple]) -> str:
     cols = [int((i + 0.5) * width / n) for i in range(n)]
     parts = [
         f'<svg viewBox="0 0 {width} {height}" role="img" aria-label="{esc(title)}">',
-        f"<defs><marker id='{marker}' markerWidth='8' markerHeight='8' refX='7' refY='3' orient='auto'><path d='M0,0 L8,3 L0,6 Z' fill='#1c1915'/></marker></defs>",
-        f'<rect width="{width}" height="{height}" rx="16" fill="#fffdf8"/>',
-        f'<text x="20" y="24" font-family="Georgia, serif" font-size="16" fill="#a34b24">{esc(title)}</text>',
+        f"<defs><marker id='{marker}' markerWidth='8' markerHeight='8' refX='7' refY='3' orient='auto'><path d='M0,0 L8,3 L0,6 Z' fill='#5eead4'/></marker></defs>",
+        f'<rect width="{width}" height="{height}" rx="16" fill="#0b0618"/>',
+        f'<text x="20" y="24" font-family="Georgia, serif" font-size="16" fill="#f9a8d4">{esc(title)}</text>',
     ]
     for i, name in enumerate(actors):
         x = cols[i]
-        parts.append(f'<text x="{x}" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">{esc(name)}</text>')
-        parts.append(f'<line x1="{x}" y1="58" x2="{x}" y2="{height - 16}" stroke="#e3d7c6" stroke-width="2"/>')
+        parts.append(f'<text x="{x}" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#f5f7ff">{esc(name)}</text>')
+        parts.append(f'<line x1="{x}" y1="58" x2="{x}" y2="{height - 16}" stroke="#3b3260" stroke-width="2"/>')
     lis = []
     for i, step in enumerate(steps):
         src, dst, label, kind, cap = step
@@ -421,6 +450,42 @@ RFC3261 = ("RFC 3261", "https://www.rfc-editor.org/rfc/rfc3261")
 RFC3264 = ("RFC 3264", "https://www.rfc-editor.org/rfc/rfc3264")
 
 
+def flow_preview(flow: dict) -> str:
+    ladder = flow["ladders"][0]
+    actors = ladder["actors"][:4]
+    steps = ladder["steps"][:6]
+    n = max(len(actors), 1)
+    width = 720
+    row = 42
+    height = 86 + row * max(len(steps), 1)
+    cols = [int((i + 0.5) * width / n) for i in range(n)]
+    parts = [
+        f'<svg viewBox="0 0 {width} {height}" role="img" aria-label="{esc(flow["title"])}">',
+        "<style>.hop{stroke-dasharray:6 5;animation:dash 1.1s linear infinite}"
+        ".pkt{animation:ride 2.8s linear infinite}"
+        "@keyframes dash{to{stroke-dashoffset:-22}}"
+        "@keyframes ride{to{offset-distance:100%}}</style>",
+        f'<rect width="{width}" height="{height}" rx="18" fill="#0b0618"/>',
+        f'<text x="18" y="28" fill="#f9a8d4" font-size="16" font-family="Georgia, serif">{esc(ladder["title"])}</text>',
+    ]
+    for i, name in enumerate(actors):
+        x = cols[i]
+        parts.append(f'<text x="{x}" y="54" text-anchor="middle" fill="#f5f7ff" font-size="14" font-family="Georgia, serif">{esc(name)}</text>')
+        parts.append(f'<line x1="{x}" y1="64" x2="{x}" y2="{height - 14}" stroke="#3b3260" stroke-width="2"/>')
+    for i, step in enumerate(steps):
+        src, dst, label, kind, _cap = step
+        y = 84 + i * row
+        color = KIND.get(kind, "#5eead4")
+        x1, x2 = cols[src], cols[dst]
+        parts.append(f'<g class="msg" data-cap="{esc(label)}">')
+        parts.append(f'<line class="hop" x1="{x1}" y1="{y}" x2="{x2}" y2="{y}" stroke="{color}" stroke-width="2.5"/>')
+        parts.append(f'<text x="{(x1 + x2) / 2:.0f}" y="{y - 8}" text-anchor="middle" fill="{color}" font-size="13" font-family="Segoe UI, sans-serif">{esc(label)}</text>')
+        parts.append(f'<circle class="pkt" r="5" fill="{color}" style="offset-path: path(\'M {x1} {y} H {x2}\'); offset-rotate: 0deg;"/>')
+        parts.append("</g>")
+    parts.append("</svg>")
+    return "".join(parts)
+
+
 def build_flows() -> None:
     flows = flow_defs()
     cards = []
@@ -433,12 +498,14 @@ def build_flows() -> None:
         write_page(f"flows/{flow['slug']}.html", flow["title"], body, flow["lede"])
         cards.append(flow)
     atlas = ["<p class='kicker'>Atlas</p><h1>Call flows</h1>",
-             f"<p class='lede'>{len(cards)} playable ladders. SIP cards from the October study set are kept under each matching page, with the interactive ladder above them.</p>",
-             "<div class='atlas'>"]
+             f"<p class='lede'>{len(cards)} large ladders. Click a drawing to enlarge it, then play, pause, or step. The study card stays on the flow page.</p>",
+             "<div class='flow-atlas'>"]
     for flow in cards:
         atlas.append(
-            f"<a class='card' href='{esc(flow['slug'])}.html'><p class='sym'>{esc(flow['symbol'])}</p>"
-            f"<h2>{esc(flow['title'])}</h2><p class='muted'>{esc(flow['level'])} · {esc(flow['kicker'])}</p></a>"
+            "<article class='card glass flow-card'>"
+            f"<button type='button' class='shot' data-why='{esc(flow['lede'])}'>{flow_preview(flow)}</button>"
+            f"<h2><a href='{esc(flow['slug'])}.html'>{esc(flow['title'])}</a></h2>"
+            f"<p class='muted'>{esc(flow['level'])} · {esc(flow['kicker'])}</p></article>"
         )
     atlas.append("</div>")
     write_page("flows/index.html", "Call flows", "".join(atlas), "Playable SIP, CUCM, cloud, and contact-center ladders.")
@@ -840,6 +907,7 @@ def ecosystem_pages() -> None:
 <a class="card" href="crm.html"><h2>CRM</h2><p>Screen pop on a number the CRM can match.</p></a>
 <a class="card" href="agents.html"><h2>AI agents</h2><p>Handoff, grounding, and a human escape.</p></a>
 <a class="card" href="bridges.html"><h2>Bridges</h2><p>CUCM, Webex, Teams, and UCCE, plus hooks you can leave in a design.</p></a>
+<a class="card glass iso-card" href="regions.html"><h2>Regions</h2><p>Cited residency and emergency rules. Coverage lists stay on the vendor page.</p></a>
 </div>
 """),
         "wfm.html": ("Workforce management", f"""
@@ -949,6 +1017,34 @@ def ecosystem_pages() -> None:
 </ul>
 <p>Webex Contact Center AI, Amazon Connect, and Google Contact Center AI are different products. Copy the idea of handoff and grounding. Copy the setting names from the current guide only.</p>
 {sources([("Webex help", "https://help.webex.com/"), ("Teams contact center", "https://learn.microsoft.com/en-us/microsoftteams/teams-contact-center")])}
+"""),
+        "regions.html": ("Regions", """
+<p class="kicker">Places</p>
+<h1><span class="flag" aria-hidden="true">🇺🇸</span><span class="flag" aria-hidden="true">🇪🇺</span> Regions engineers actually name</h1>
+<p class="lede">Only the rules below are cited. A country list for a calling plan changes. This page does not freeze one. Anything marked example is a teaching label, not coverage.</p>
+<div class="region-grid">
+<article class="card glass">
+<h2><span class="flag" aria-hidden="true">🇺🇸</span> United States</h2>
+<p>The FCC’s MLTS rules, from Kari’s Law and RAY BAUM’s Act section 506, require multi-line telephone systems to let a user dial 911 directly, to notify someone on site, and to send a dispatchable location. Read the current FCC page before you design a prefix or a location source.</p>
+<p><a href="https://www.fcc.gov/mlts-911-requirements">FCC: Multi-line telephone systems</a></p>
+</article>
+<article class="card glass">
+<h2><span class="flag" aria-hidden="true">🇪🇺</span> European Union</h2>
+<p>Regulation (EU) 2016/679 is the GDPR. A recording of a person’s voice can be personal data. This lab does not invent a retention period or a member-state recording statute. Read the regulation and the recorder vendor’s current guide.</p>
+<p><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679">EUR-Lex: Regulation (EU) 2016/679</a></p>
+</article>
+<article class="card glass">
+<h2>Calling-plan countries</h2>
+<p>Microsoft publishes which countries and regions have Calling Plans and Audio Conferencing. That list changes. Direct Routing is a customer SBC and is a different model. Cisco publishes Webex Calling availability in Webex Help. This lab links both and copies neither list.</p>
+<p><a href="https://learn.microsoft.com/en-us/microsoftteams/country-and-region-availability-for-audio-conferencing-and-calling-plans">Microsoft: country and region availability</a></p>
+<p><a href="https://help.webex.com/">Webex Help</a></p>
+</article>
+<article class="card glass">
+<h2>Example numbering labels</h2>
+<p><strong>Example, not a coverage claim.</strong> ITU-T E.164 is the international public numbering plan. Engineers say +1 for the North American plan, and they still have to confirm the national plan they are dialing. +91 and +81 below are examples of country codes in that plan. They are not a statement that any product in this lab sells PSTN there.</p>
+<p><span class="flag" aria-hidden="true">🌐</span> +1 · +91 · +81 · <a href="https://www.itu.int/rec/T-REC-E.164/en">ITU-T E.164</a></p>
+</article>
+</div>
 """),
         "bridges.html": ("Bridges", f"""
 <p class="kicker">Cross platform</p>
@@ -1286,6 +1382,11 @@ def other_pages(bank: dict, pool_images: list[str]) -> None:
 <p class="kicker">Offline</p>
 <h1>Download this lab</h1>
 <p class="lede">The zip is the flagship pages, drawings, quiz bank, and cheat sheets. Unzip and open index.html. One-page sheets live in the cheat-code hub. The deep campus has its own zip.</p>
+<section class="stats" aria-label="Download sizes">
+<div class="stat glass"><span class="num">ZIP</span><span class="label">Flagship studio</span></div>
+<div class="stat glass"><span class="num">580</span><span class="label">Campus sections</span></div>
+<div class="stat glass"><span class="num">1 pg</span><span class="label">Each cheat sheet</span></div>
+</section>
 <p><a class="btn" href="cheats/index.html">Open cheat codes</a></p>
 <p><a class="btn dl" href="uc-lab-flagship.zip">Download the flagship zip</a></p>
 <p><a class="btn" href="../releases/uc-lab-free-university.html.zip">Download the 580-section campus zip</a></p>

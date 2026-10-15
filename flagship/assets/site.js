@@ -1,29 +1,80 @@
 (function () {
   "use strict";
 
-  var THEMES = ["paper", "midnight", "contrast", "signal", "canopy"];
+  var THEMES = ["neon", "holographic", "cyberpunk", "sunset", "light"];
   var root = document.documentElement;
+  var I18N = {
+    en: { skip: "Skip to content", brandSub: "Free University", greet: "Welcome to the lab", heroTitle: "Voice, UC, and contact center.", heroLede: "Fundamentals, then the edge, the cloud, and the systems around the agent.", startPath: "Start the path", openDiagrams: "Open diagrams", campus: "Deep campus", wall: "Signal wall", next: "Where to go next", audioTitle: "Architect conversation", searchPh: "Search", langLabel: "Language", mode: "Light", modeDark: "Dark", navHome: "Home", navDiagrams: "Diagrams", navFlows: "Flows", navCharts: "Charts", navCheats: "Cheat Codes", navPlay: "Play", navEco: "Ecosystem", navDownloads: "Downloads", navCareers: "Careers" },
+    es: { skip: "Saltar al contenido", brandSub: "Universidad libre", greet: "Bienvenido al laboratorio", heroTitle: "Voz, UC y centro de contacto.", heroLede: "Primero lo fundamental, luego el borde, la nube y los sistemas junto al agente.", startPath: "Empezar la ruta", openDiagrams: "Abrir diagramas", campus: "Campus profundo", wall: "Muro de señal", next: "A dónde seguir", audioTitle: "Conversación de arquitectos", searchPh: "Buscar", langLabel: "Idioma", mode: "Claro", modeDark: "Oscuro", navHome: "Inicio", navDiagrams: "Diagramas", navFlows: "Flujos", navCharts: "Gráficos", navCheats: "Chuletas", navPlay: "Jugar", navEco: "Ecosistema", navDownloads: "Descargas", navCareers: "Carreras" },
+    hi: { skip: "सामग्री पर जाएँ", brandSub: "मुक्त विश्वविद्यालय", greet: "प्रयोगशाला में स्वागत है", heroTitle: "वॉइस, यूसी और कॉन्टैक्ट सेंटर।", heroLede: "पहले मूल बातें, फिर एज, क्लाउड, और एजेंट के आसपास के सिस्टम।", startPath: "पथ शुरू करें", openDiagrams: "आरेख खोलें", campus: "गहरा परिसर", wall: "सिग्नल दीवार", next: "आगे कहाँ", audioTitle: "आर्किटेक्ट बातचीत", searchPh: "खोजें", langLabel: "भाषा", mode: "हल्का", modeDark: "गहरा", navHome: "होम", navDiagrams: "आरेख", navFlows: "प्रवाह", navCharts: "चार्ट", navCheats: "चीट कोड", navPlay: "खेल", navEco: "पारिस्थितिकी", navDownloads: "डाउनलोड", navCareers: "करियर" },
+    te: { skip: "విషయానికి వెళ్లండి", brandSub: "ఉచిత విశ్వవిద్యాలయం", greet: "ప్రయోగశాలకు స్వాగతం", heroTitle: "వాయిస్, యూసీ, కాంటాక్ట్ సెంటర్.", heroLede: "ముందు మూలాలు, తర్వాత ఎడ్జ్, క్లౌడ్, ఏజెంట్ చుట్టూ ఉన్న వ్యవస్థలు.", startPath: "మార్గం ప్రారంభించండి", openDiagrams: "చిత్రాలు తెరవండి", campus: "లోతైన క్యాంపస్", wall: "సిగ్నల్ గోడ", next: "తర్వాత ఎక్కడ", audioTitle: "ఆర్కిటెక్ట్ సంభాషణ", searchPh: "వెతకండి", langLabel: "భాష", mode: "వెలుతురు", modeDark: "చీకటి", navHome: "హోమ్", navDiagrams: "చిత్రాలు", navFlows: "ప్రవాహాలు", navCharts: "చార్టులు", navCheats: "చీట్ కోడ్స్", navPlay: "ఆట", navEco: "పర్యావరణం", navDownloads: "డౌన్‌లోడ్", navCareers: "వృత్తి" },
+    fr: { skip: "Aller au contenu", brandSub: "Université libre", greet: "Bienvenue dans le laboratoire", heroTitle: "Voix, UC et centre de contact.", heroLede: "D'abord les bases, puis la bordure, le cloud, et les systèmes autour de l'agent.", startPath: "Commencer le parcours", openDiagrams: "Ouvrir les schémas", campus: "Campus approfondi", wall: "Mur de signal", next: "Où aller ensuite", audioTitle: "Conversation d'architectes", searchPh: "Rechercher", langLabel: "Langue", mode: "Clair", modeDark: "Sombre", navHome: "Accueil", navDiagrams: "Schémas", navFlows: "Flux", navCharts: "Graphiques", navCheats: "Antisèches", navPlay: "Jouer", navEco: "Écosystème", navDownloads: "Téléchargements", navCareers: "Carrières" },
+    de: { skip: "Zum Inhalt", brandSub: "Freie Universität", greet: "Willkommen im Labor", heroTitle: "Sprache, UC und Contact Center.", heroLede: "Zuerst die Grundlagen, dann der Rand, die Cloud und die Systeme um den Agenten.", startPath: "Pfad starten", openDiagrams: "Diagramme öffnen", campus: "Tiefer Campus", wall: "Signalwand", next: "Wohin als Nächstes", audioTitle: "Architekten-Gespräch", searchPh: "Suchen", langLabel: "Sprache", mode: "Hell", modeDark: "Dunkel", navHome: "Start", navDiagrams: "Diagramme", navFlows: "Abläufe", navCharts: "Balken", navCheats: "Spickzettel", navPlay: "Spielen", navEco: "Ökosystem", navDownloads: "Downloads", navCareers: "Beruf" },
+    ja: { skip: "本文へ", brandSub: "フリー大学", greet: "ラボへようこそ", heroTitle: "音声、UC、コンタクトセンター。", heroLede: "基礎から、エッジ、クラウド、エージェント周りのシステムへ。", startPath: "経路を始める", openDiagrams: "図を開く", campus: "深いキャンパス", wall: "シグナルの壁", next: "次に行く場所", audioTitle: "アーキテクトの対話", searchPh: "検索", langLabel: "言語", mode: "ライト", modeDark: "ダーク", navHome: "ホーム", navDiagrams: "図", navFlows: "フロー", navCharts: "チャート", navCheats: "チート", navPlay: "プレイ", navEco: "エコシステム", navDownloads: "ダウンロード", navCareers: "キャリア" },
+    ar: { skip: "انتقل إلى المحتوى", brandSub: "جامعة حرة", greet: "أهلًا بك في المختبر", heroTitle: "الصوت والاتصالات ومركز الاتصال.", heroLede: "الأساسيات أولًا، ثم الحافة والسحابة والأنظمة حول الوكيل.", startPath: "ابدأ المسار", openDiagrams: "افتح المخططات", campus: "الحرم العميق", wall: "جدار الإشارة", next: "إلى أين بعد ذلك", audioTitle: "حوار المهندسين", searchPh: "بحث", langLabel: "اللغة", mode: "فاتح", modeDark: "داكن", navHome: "الرئيسية", navDiagrams: "المخططات", navFlows: "التدفقات", navCharts: "الرسوم", navCheats: "أوراق المراجعة", navPlay: "العب", navEco: "المنظومة", navDownloads: "التنزيلات", navCareers: "المسار المهني" }
+  };
+  var lang = "en";
+  function pack() { return I18N[lang] || I18N.en; }
+  function label(key) { return pack()[key] || I18N.en[key] || key; }
+  function applyLang() {
+    $all("[data-i18n]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n");
+      if (key === "mode") return;
+      if (pack()[key]) el.textContent = pack()[key];
+    });
+    $all("[data-i18n-placeholder]").forEach(function (el) {
+      el.setAttribute("placeholder", label(el.getAttribute("data-i18n-placeholder")));
+    });
+    root.lang = lang;
+    root.dir = lang === "ar" ? "rtl" : "ltr";
+    var sel = $("#langSwitch");
+    if (sel) sel.value = lang;
+    var modeBtn = $(".mode-btn");
+    if (modeBtn) modeBtn.textContent = root.getAttribute("data-theme") === "light" ? label("modeDark") : label("mode");
+  }
 
   function $(sel, base) { return (base || document).querySelector(sel); }
   function $all(sel, base) { return Array.prototype.slice.call((base || document).querySelectorAll(sel)); }
 
+  var lastDark = "neon";
   function setTheme(name) {
-    if (THEMES.indexOf(name) < 0) name = "paper";
+    if (THEMES.indexOf(name) < 0) name = "neon";
+    if (name !== "light") lastDark = name;
     root.setAttribute("data-theme", name);
     try { localStorage.setItem("uc_flagship_theme", name); } catch (err) { /* private mode */ }
     $all(".themes button").forEach(function (btn) {
       btn.setAttribute("aria-checked", btn.getAttribute("data-theme-set") === name ? "true" : "false");
     });
+    var modeBtn = $(".mode-btn");
+    if (modeBtn) modeBtn.textContent = name === "light" ? label("modeDark") : label("mode");
+    if (window.UC_APPLY_THEME) window.UC_APPLY_THEME();
   }
 
   $all(".themes button").forEach(function (btn) {
     btn.addEventListener("click", function () { setTheme(btn.getAttribute("data-theme-set")); });
   });
-  setTheme(root.getAttribute("data-theme") || "paper");
+  setTheme(root.getAttribute("data-theme") || "neon");
+  var modeBtn = $(".mode-btn");
+  if (modeBtn) {
+    modeBtn.addEventListener("click", function () {
+      setTheme(root.getAttribute("data-theme") === "light" ? lastDark : "light");
+    });
+  }
   try {
     var asked = new URLSearchParams(window.location.search).get("theme");
     if (asked) setTheme(asked);
   } catch (err) { /* no query */ }
+  try { lang = localStorage.getItem("uc_flagship_lang") || root.lang || "en"; } catch (err) { lang = "en"; }
+  if (!I18N[lang]) lang = "en";
+  applyLang();
+  var langSel = $("#langSwitch");
+  if (langSel) {
+    langSel.addEventListener("change", function () {
+      lang = I18N[langSel.value] ? langSel.value : "en";
+      try { localStorage.setItem("uc_flagship_lang", lang); } catch (err) { /* private */ }
+      applyLang();
+    });
+  }
 
   var menu = $(".menu-btn");
   if (menu) {
@@ -587,6 +638,11 @@
     try { localStorage.setItem("uc_flagship_seen", JSON.stringify(seen)); } catch (err) { /* private */ }
     var total = (window.UC_SEARCH || []).length || seen.length;
     slot.textContent = "Progress " + seen.length + " / " + total + " pages opened in this browser";
+    var ring = $("#visitRing");
+    if (ring) {
+      var pct = Math.max(4, Math.min(100, Math.round(100 * seen.length / Math.max(total, 1))));
+      ring.style.strokeDasharray = pct + " " + (100 - pct);
+    }
   }
   function mountParallax() {
     var hosts = $all("[data-parallax]");
@@ -602,9 +658,94 @@
       });
     }, { passive: true });
   }
+  function mountLightbox() {
+    var shots = $all(".shot");
+    if (!shots.length) return;
+    var box = document.createElement("div");
+    box.className = "lightbox";
+    box.hidden = true;
+    box.innerHTML = '<div class="lightbox-card" role="dialog" aria-modal="true" aria-label="Diagram"><p class="kicker" id="lbTitle"></p><div id="lbStage"></div><p id="lbWhy"></p><p class="legend"><span><i style="background:#5eead4"></i>Request</span><span><i style="background:#fde047"></i>Provisional</span><span><i style="background:#86efac"></i>Success</span><span><i style="background:#fb7185"></i>Error or media</span></p><div class="actions"><button type="button" class="btn" data-lb="prev">Step back</button><button type="button" class="btn" data-lb="play">Play</button><button type="button" class="btn" data-lb="pause">Pause</button><button type="button" class="btn" data-lb="next">Step</button><button type="button" class="btn" data-lb="close">Close</button></div></div>';
+    document.body.appendChild(box);
+    var stage = $("#lbStage", box);
+    var index = 0;
+    var timer = null;
+    function msgs() { return $all(".msg", stage); }
+    function show(n) {
+      var list = msgs();
+      if (!list.length) return;
+      index = (n + list.length) % list.length;
+      list.forEach(function (el, i) { el.classList.toggle("is-on", i === index); });
+    }
+    function stop() { if (timer) clearInterval(timer); timer = null; }
+    shots.forEach(function (shot) {
+      shot.addEventListener("click", function () {
+        stage.innerHTML = "";
+        var graphic = shot.querySelector("svg, img");
+        if (graphic) stage.appendChild(graphic.cloneNode(true));
+        $("#lbTitle", box).textContent = (shot.getAttribute("aria-label") || (shot.querySelector("img") && shot.querySelector("img").alt) || "Diagram");
+        $("#lbWhy", box).textContent = shot.getAttribute("data-why") || "";
+        box.hidden = false;
+        index = 0;
+        show(0);
+      });
+    });
+    box.addEventListener("click", function (event) {
+      var act = event.target.getAttribute && event.target.getAttribute("data-lb");
+      if (event.target === box) act = "close";
+      if (act === "close") { stop(); box.hidden = true; stage.innerHTML = ""; }
+      if (act === "prev") { stop(); show(index - 1); }
+      if (act === "next") { stop(); show(index + 1); }
+      if (act === "pause") {
+        stop();
+        $all("svg", stage).forEach(function (svg) { svg.style.animationPlayState = "paused"; svg.querySelectorAll("*").forEach(function (el) { el.style.animationPlayState = "paused"; }); });
+      }
+      if (act === "play") {
+        $all("svg", stage).forEach(function (svg) { svg.style.animationPlayState = "running"; svg.querySelectorAll("*").forEach(function (el) { el.style.animationPlayState = "running"; }); });
+        stop();
+        if (msgs().length) timer = setInterval(function () { show(index + 1); }, 900);
+      }
+    });
+    document.addEventListener("keydown", function (event) {
+      if (box.hidden) return;
+      if (event.key === "Escape") { stop(); box.hidden = true; }
+    });
+  }
+  function mountChartTips() {
+    var rows = $all(".bar-row");
+    if (!rows.length) return;
+    var tip = document.createElement("div");
+    tip.className = "chart-tip";
+    tip.hidden = true;
+    document.body.appendChild(tip);
+    rows.forEach(function (row) {
+      function move(event) {
+        var title = row.querySelector("title");
+        tip.textContent = title ? title.textContent : "";
+        tip.hidden = false;
+        tip.style.left = (event.clientX + 12) + "px";
+        tip.style.top = (event.clientY + 12) + "px";
+      }
+      row.addEventListener("pointerenter", move);
+      row.addEventListener("pointermove", move);
+      row.addEventListener("pointerleave", function () { tip.hidden = true; });
+    });
+  }
+  function mountMascotCycle() {
+    var variants = ["study", "alert", "celebrate", "night", "holo"];
+    var step = 0;
+    setInterval(function () {
+      step = (step + 1) % variants.length;
+      $all(".mascot").forEach(function (el, i) {
+        el.setAttribute("data-variant", variants[(step + i) % variants.length]);
+      });
+    }, 180000);
+  }
   mountSearch();
   mountProgress();
   mountParallax();
+  mountLightbox();
+  mountChartTips();
+  mountMascotCycle();
 
   if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
     var prefix = document.body.getAttribute("data-root") || "./";

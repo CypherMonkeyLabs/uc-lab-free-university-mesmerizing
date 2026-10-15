@@ -52,6 +52,7 @@ def flow_svg(actors: list[str], hops: list[tuple[int, int, str]], animated: bool
     lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" data-animated="{"true" if animated else "false"}" role="img">'
     ]
+    lines.append('<rect width="100%" height="100%" fill="#0b0618"/>')
     if animated:
         lines.append(
             "<style>.hop{stroke-dasharray:7 5;animation:dash 1.1s linear infinite}"
@@ -61,15 +62,15 @@ def flow_svg(actors: list[str], hops: list[tuple[int, int, str]], animated: bool
         )
     for i, name in enumerate(actors):
         lines.append(
-            f'<text x="{xs[i]}" y="24" text-anchor="middle" font-size="14" font-family="Georgia, serif">{esc(name)}</text>'
-            f'<line x1="{xs[i]}" y1="34" x2="{xs[i]}" y2="{height - 10}" stroke="#c9bba6"/>'
+            f'<text x="{xs[i]}" y="24" text-anchor="middle" font-size="14" font-family="Georgia, serif" fill="#f5f7ff">{esc(name)}</text>'
+            f'<line x1="{xs[i]}" y1="34" x2="{xs[i]}" y2="{height - 10}" stroke="#3b3260"/>'
         )
     for i, (a, b, label) in enumerate(hops):
         y = 58 + i * row
         x1, x2 = xs[a], xs[b]
         lines.append(
-            f'<line class="hop" x1="{x1}" y1="{y}" x2="{x2}" y2="{y}" stroke="#0f6e62" stroke-width="2"/>'
-            f'<text x="{(x1 + x2) / 2}" y="{y - 8}" text-anchor="middle" font-size="12" font-family="Segoe UI, sans-serif">{esc(label)}</text>'
+            f'<line class="hop" x1="{x1}" y1="{y}" x2="{x2}" y2="{y}" stroke="#5eead4" stroke-width="2"/>'
+            f'<text x="{(x1 + x2) / 2}" y="{y - 8}" text-anchor="middle" font-size="12" font-family="Segoe UI, sans-serif" fill="#f9a8d4">{esc(label)}</text>'
         )
         if animated:
             lines.append(
@@ -84,6 +85,7 @@ def block_svg(boxes: list[tuple[str, str]], animated: bool) -> str:
     height = 86 + 74 * len(boxes)
     lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" data-animated="{"true" if animated else "false"}" role="img">'
+        f'<rect width="{width}" height="{height}" fill="#0b0618"/>'
     ]
     if animated:
         lines.append("<style>.pulse{animation:pop 1.8s ease-in-out infinite}@keyframes pop{50%{opacity:.45}}</style>")
@@ -91,9 +93,9 @@ def block_svg(boxes: list[tuple[str, str]], animated: bool) -> str:
         y = 24 + i * 74
         klass = "pulse" if animated else ""
         lines.append(
-            f'<rect class="{klass}" x="40" y="{y}" width="780" height="60" rx="12" fill="#fffdf8" stroke="#0f6e62"/>'
-            f'<text x="60" y="{y + 26}" font-size="16" font-family="Georgia, serif">{esc(title)}</text>'
-            f'<text x="60" y="{y + 46}" font-size="13" font-family="Segoe UI, sans-serif" fill="#5e584e">{esc(note)}</text>'
+            f'<rect class="{klass}" x="40" y="{y}" width="780" height="60" rx="12" fill="#141028" stroke="#e879f9"/>'
+            f'<text x="60" y="{y + 26}" font-size="16" font-family="Georgia, serif" fill="#f5f7ff">{esc(title)}</text>'
+            f'<text x="60" y="{y + 46}" font-size="13" font-family="Segoe UI, sans-serif" fill="#c4b5fd">{esc(note)}</text>'
         )
     lines.append("</svg>")
     return "\n".join(lines)
@@ -187,17 +189,20 @@ def bar_chart(chart_id: str, title: str, pairs: list[tuple[str, float]], note: s
     peak = max((value for _, value in pairs), default=1) or 1
     rows = [
         f'<svg class="chart" data-chart="{esc(chart_id)}" viewBox="0 0 {width} {height}" role="img" aria-label="{esc(title)}">'
-        f'<text x="16" y="22" font-size="16" font-family="Georgia, serif">{esc(title)}</text>'
+        f'<rect width="{width}" height="{height}" rx="16" fill="#0b0618"/>'
+        f'<text x="16" y="22" font-size="16" font-family="Georgia, serif" fill="#f5f7ff">{esc(title)}</text>'
     ]
     for i, (label, value) in enumerate(pairs):
         y = 36 + i * 28
-        bar = int((width - 280) * (value / peak))
+        bar = max(int((width - 280) * (value / peak)), 2)
+        shown = f"{value:g}{unit}"
         rows.append(
-            f'<text x="16" y="{y + 16}" font-size="12" font-family="Segoe UI, sans-serif">{esc(label)}</text>'
-            f'<rect x="230" y="{y + 4}" width="{bar}" height="16" rx="4" fill="#0f6e62"/>'
-            f'<text x="{238 + bar}" y="{y + 16}" font-size="12">{esc(f"{value:g}{unit}")}</text>'
+            f'<g class="bar-row" tabindex="0"><title>{esc(label)}: {esc(shown)}. {esc(note)}</title>'
+            f'<text x="16" y="{y + 16}" font-size="12" font-family="Segoe UI, sans-serif" fill="#e8eeff">{esc(label)}</text>'
+            f'<rect class="bar" x="230" y="{y + 4}" width="{bar}" height="16" rx="4" fill="#5eead4"/>'
+            f'<text x="{238 + bar}" y="{y + 16}" font-size="12" fill="#fde047">{esc(shown)}</text></g>'
         )
-    rows.append(f'<text x="16" y="{height - 8}" font-size="11" fill="#5e584e">{esc(note)}</text></svg>')
+    rows.append(f'<text x="16" y="{height - 8}" font-size="11" fill="#c4b5fd">{esc(note)}</text></svg>')
     return "\n".join(rows)
 
 
@@ -207,13 +212,42 @@ def mascot(mood: str) -> str:
         "alert": '<circle cx="38" cy="58" r="4" fill="#172033"/>',
         "celebrate": '<path d="M28 54c6 10 14 10 20 0" fill="none" stroke="#172033" stroke-width="2"/>',
     }[mood]
-    return f'''<svg class="mascot" viewBox="0 0 76 96" data-mood="{mood}" aria-hidden="true">
-<ellipse cx="38" cy="36" rx="22" ry="20" fill="#f0b429"/>
-<circle cx="18" cy="22" r="8" fill="#e07a5f"/><circle cx="58" cy="22" r="8" fill="#e07a5f"/>
-<circle cx="30" cy="34" r="3" fill="#172033"/><circle cx="46" cy="34" r="3" fill="#172033"/>
+    return f'''<svg class="mascot" viewBox="0 0 76 96" data-mood="{mood}" data-variant="{mood}" aria-hidden="true">
+<ellipse cx="38" cy="36" rx="22" ry="20" fill="var(--fur, #fde047)"/>
+<circle class="ear" cx="18" cy="22" r="8" fill="var(--ear, #e879f9)"/><circle class="ear" cx="58" cy="22" r="8" fill="var(--ear, #22d3ee)"/>
+<g class="eyes"><ellipse cx="30" cy="34" rx="3.2" ry="3.2" fill="#172033"/><ellipse cx="46" cy="34" rx="3.2" ry="3.2" fill="#172033"/>
+<ellipse class="lid" cx="30" cy="34" rx="4.2" ry="3.6" fill="var(--fur, #fde047)"/><ellipse class="lid" cx="46" cy="34" rx="4.2" ry="3.6" fill="var(--fur, #fde047)"/></g>
 {mouth}
-<rect x="24" y="62" width="28" height="22" rx="8" fill="#0f6e62"/>
-<path d="M18 70h-8v10h8" fill="none" stroke="#172033" stroke-width="2"/>
+<rect x="24" y="62" width="28" height="22" rx="8" fill="var(--suit, #22d3ee)"/>
+<g class="arm"><path d="M20 68c-8 2-12 10-8 14 4-2 8-2 10 2" fill="var(--fur, #fde047)" stroke="#172033" stroke-width="1"/></g>
+</svg>'''
+
+
+_ISO = 0
+
+
+def iso_icon(kind: str) -> str:
+    global _ISO
+    _ISO += 1
+    gid = f"iso{_ISO}"
+    pair = {
+        "diagram": ("#22d3ee", "#e879f9"),
+        "flow": ("#fde047", "#fb7185"),
+        "chart": ("#86efac", "#22d3ee"),
+        "cheat": ("#f0abfc", "#818cf8"),
+        "play": ("#fb7185", "#fde047"),
+        "career": ("#67e8f9", "#a78bfa"),
+        "download": ("#fde047", "#22d3ee"),
+        "globe": ("#38bdf8", "#a3e635"),
+        "phone": ("#e879f9", "#22d3ee"),
+    }.get(kind, ("#22d3ee", "#e879f9"))
+    return f'''<svg class="iso" viewBox="0 0 120 120" aria-hidden="true">
+<defs><linearGradient id="{gid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{pair[0]}"/><stop offset="1" stop-color="{pair[1]}"/></linearGradient></defs>
+<ellipse cx="60" cy="104" rx="34" ry="8" fill="#000" opacity="0.35"/>
+<polygon points="60,18 102,40 60,62 18,40" fill="url(#{gid})"/>
+<polygon points="18,40 60,62 60,96 18,74" fill="{pair[0]}" opacity="0.85"/>
+<polygon points="102,40 60,62 60,96 102,74" fill="{pair[1]}" opacity="0.9"/>
+<polygon points="60,34 78,44 60,54 42,44" fill="#fff" opacity="0.85"/>
 </svg>'''
 
 
@@ -269,8 +303,10 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
     for slug, title, _svg, animated in catalog:
         kind = "Animated flow" if animated else "Diagram"
         cards.append(
-            f'<a class="card" href="{slug}.html"><h2>{esc(title)}</h2><p>{kind}</p>'
-            f'<img src="{slug}.svg" alt="{esc(title)}"></a>'
+            '<article class="card glass shot-card">'
+            f'<button type="button" class="shot" data-why="{esc(title)}. A teaching drawing. Open the page for the caption.">'
+            f'<img src="{slug}.svg" alt="{esc(title)}"></button>'
+            f'<h2><a href="{slug}.html">{esc(title)}</a></h2><p>{kind}</p></article>'
         )
         write_page(
             f"diagrams/{slug}.html",
@@ -282,8 +318,10 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
         )
     for slug, title in mermaid_made:
         cards.append(
-            f'<a class="card" href="{slug}.svg"><h2>{esc(title)}</h2><p>Rendered with Mermaid at build time</p>'
-            f'<img src="{slug}.svg" alt="{esc(title)}"></a>'
+            '<article class="card glass shot-card">'
+            f'<button type="button" class="shot" data-why="{esc(title)}. Rendered with Mermaid at build time.">'
+            f'<img src="{slug}.svg" alt="{esc(title)}"></button>'
+            f'<h2><a href="{slug}.svg">{esc(title)}</a></h2><p>Rendered with Mermaid at build time</p></article>'
         )
     write_page(
         "diagrams/index.html",
@@ -292,7 +330,7 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
         f'<p class="lede" data-effects>{len(catalog) + len(mermaid_made)} custom diagrams. '
         f'{sum(1 for item in catalog if item[3])} of the hand-built ladders and trees are animated. '
         f'Mermaid sequence and flow charts, when present, were rendered at build time from the vendored library.</p>'
-        f'<div class="atlas">{"".join(cards)}</div>',
+        f'<div class="flow-atlas">{"".join(cards)}</div>',
         "Browsable diagram atlas of call flows, architecture, and cutover.",
     )
 
@@ -323,10 +361,18 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
         "Charts drawn from the lab catalog and cited formulas.",
     )
 
+    track_icons = {
+        "start": "phone", "sip": "flow", "cucm": "diagram", "cloud": "globe", "ucce": "chart",
+        "ccaas": "globe", "e911": "phone", "qos": "chart", "migrate": "flow", "trouble": "diagram",
+        "evidence": "cheat", "design": "diagram", "practice": "play", "reference": "cheat",
+    }
     track_cards = []
     for slug, title, count, blurb, href in CAMPUS_TRACKS:
         symbol, number, label = symbols_for(slug)
-        track_cards.append(f'<a class="card" href="{slug}.html"><h2>{esc(title)}</h2><p>{count} sections</p></a>')
+        track_cards.append(
+            f'<a class="card glass iso-card" href="{slug}.html">{iso_icon(track_icons.get(slug, "phone"))}'
+            f'<h2>{esc(title)}</h2><p>{count} sections</p></a>'
+        )
         write_page(
             f"tracks/{slug}.html",
             title,
@@ -352,41 +398,78 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
     write_page(
         "index.html",
         "UC Lab",
-        f'''<div class="fold" data-effects data-parallax>
-<div class="hero-copy">
-<p class="kicker">Flagship studio</p>
-<h1>Voice, UC, and contact center. One lab.</h1>
+        f'''<section class="bleed" data-effects data-parallax>
+<div class="neon-fallback" aria-hidden="true">
+  <div class="grid"></div>
+  <div class="sparks"></div>
+  <div class="ring r1"></div>
+  <div class="ring r2"></div>
+  <div class="ring r3"></div>
+  <div class="orbit"><b></b><b></b><b></b><b></b></div>
+</div>
+<canvas id="hero3d" aria-label="Orbiting three.js call path with a phone, CUCM, CUBE, and cloud"></canvas>
+<div class="bleed-copy">
+<p class="kicker" data-i18n="greet">Welcome to the lab</p>
+<h1 data-i18n="heroTitle">Voice, UC, and contact center.</h1>
 <div class="mascots" aria-hidden="true">{mascot("study")}{mascot("alert")}{mascot("celebrate")}</div>
 <p class="symbols" aria-label="Symbols"><span>5060</span><span>5061</span><span>EF 46</span><span>RTP</span></p>
-<p class="lede">Fundamentals, then the edge, the cloud, and the systems around the agent.</p>
-<div class="actions"><a class="btn dl" href="path.html">Start the path</a><a class="btn" href="diagrams/index.html">Open diagrams</a><a class="btn" href="campus/uc-lab-free-university.html">Deep campus</a></div>
+<p class="lede" data-i18n="heroLede">Fundamentals, then the edge, the cloud, and the systems around the agent.</p>
+<div class="actions">
+<a class="btn dl" href="path.html" data-i18n="startPath">Start the path</a>
+<a class="btn" href="diagrams/index.html" data-i18n="openDiagrams">Open diagrams</a>
+<a class="btn" href="campus/uc-lab-free-university.html" data-i18n="campus">Deep campus</a>
 </div>
-<div class="stage">
-<div class="css3d" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-<canvas id="hero3d" aria-label="Rotating three.js scene of a phone, CUCM, CUBE, and cloud"></canvas>
 </div>
-</div>
+<div class="ticker" aria-hidden="true"><span>5060 SIP · 5061 TLS · 2000 SCCP · 2443 Secure SCCP · 69 TFTP · 6970 HTTP · EF 46 · RTP 16384–32767 · 911 direct dial · </span></div>
 <section class="stats" aria-label="Counts">
-<div class="stat"><span class="num" data-count="29">29</span><span class="label">Playable flows</span></div>
-<div class="stat"><span class="num" data-count="{qn}">{qn}</span><span class="label">Quiz questions</span></div>
-<div class="stat"><span class="num" data-count="{cn + pn}">{cn + pn}</span><span class="label">Flashcards</span></div>
-<div class="stat"><span class="num" data-count="{sn}">{sn}</span><span class="label">Branching cases</span></div>
-<div class="stat"><span class="num" data-count="580">580</span><span class="label">Campus sections</span></div>
-<div class="stat"><span class="num" data-count="{len(catalog)}">{len(catalog)}</span><span class="label">Atlas diagrams</span></div>
+<div class="stat glass"><svg class="visit-ring" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="16"></circle><circle class="fg" id="visitRing" cx="21" cy="21" r="16"></circle></svg><span class="num" data-count="29">29</span><span class="label">Playable flows</span></div>
+<div class="stat glass"><span class="num" data-count="{qn}">{qn}</span><span class="label">Quiz questions</span></div>
+<div class="stat glass"><span class="num" data-count="{cn + pn}">{cn + pn}</span><span class="label">Flashcards</span></div>
+<div class="stat glass"><span class="num" data-count="{sn}">{sn}</span><span class="label">Branching cases</span></div>
+<div class="stat glass"><span class="num" data-count="580">580</span><span class="label">Campus sections</span></div>
+<div class="stat glass"><span class="num" data-count="{len(catalog)}">{len(catalog)}</span><span class="label">Atlas diagrams</span></div>
+</section>
 </section>
 <div class="toggles" aria-label="Break a link in the diagram">
 <label><input type="checkbox" data-break="phone-cucm"> Phone–CUCM down</label>
 <label><input type="checkbox" data-break="cucm-cube"> Trunk down</label>
 <label><input type="checkbox" data-break="cube-pstn"> Carrier down</label>
 </div>
-<h2>Where to go next</h2>
+<section class="wall">
+<h2 data-i18n="wall">Signal wall</h2>
+<p class="lede">Large drawings. Click one to enlarge it, then step the hops.</p>
+<div class="wall-grid">
+<button type="button" class="shot glass" data-why="REGISTER stores a binding. It does not create a call. RFC 3261 section 10."><img src="diagrams/registration.svg" alt="SIP registration ladder"></button>
+<button type="button" class="shot glass" data-why="The call is not up until ACK. Media can skip the proxy. RFC 3261."><img src="diagrams/basic-call.svg" alt="Basic call ladder"></button>
+<button type="button" class="shot glass" data-why="Voice RTP is commonly EF, DSCP 46. Cisco signaling designs often use CS3. RFC 4594 assigns signaling CS5."><img src="diagrams/qos-marks.svg" alt="QoS marks"></button>
+<button type="button" class="shot glass" data-why="Emergency calling needs a callback identity. This drawing is a teaching ladder, not a carrier design."><img src="diagrams/e911.svg" alt="Emergency callback ladder"></button>
+</div>
+</section>
+<h2 data-i18n="next">Where to go next</h2>
 <div class="atlas">
-<a class="card" href="diagrams/index.html"><h2>Diagrams</h2><p>Animated ladders and the architecture set.</p></a>
-<a class="card" href="charts/index.html"><h2>Charts</h2><p>Section counts, quiz tracks, bandwidth.</p></a>
-<a class="card" href="cheats/index.html"><h2>Cheat Codes</h2><p>One-page sheets and the offline zip.</p></a>
-<a class="card" href="play/index.html"><h2>Play</h2><p>Ports game, map, sandbox, daily challenge.</p></a>
-<a class="card" href="guide/interview.html"><h2>Careers</h2><p>Interview questions and a path with no invented wages.</p></a>
-</div>''',
+<a class="card glass iso-card" href="diagrams/index.html">{iso_icon("diagram")}<h2>Diagrams</h2><p>Animated ladders and the architecture set.</p></a>
+<a class="card glass iso-card" href="flows/index.html">{iso_icon("flow")}<h2>Flows</h2><p>Large ladders you can step.</p></a>
+<a class="card glass iso-card" href="charts/index.html">{iso_icon("chart")}<h2>Charts</h2><p>Section counts, quiz tracks, bandwidth.</p></a>
+<a class="card glass iso-card" href="cheats/index.html">{iso_icon("cheat")}<h2>Cheat Codes</h2><p>One-page sheets and the offline zip.</p></a>
+<a class="card glass iso-card" href="play/index.html">{iso_icon("play")}<h2>Play</h2><p>Ports game, map, sandbox, daily challenge.</p></a>
+<a class="card glass iso-card" href="ecosystem/index.html">{iso_icon("globe")}<h2>Ecosystem</h2><p>WFM, recording, CRM, regions.</p></a>
+<a class="card glass iso-card" href="download.html">{iso_icon("download")}<h2>Downloads</h2><p>Flagship zip and the campus zip.</p></a>
+<a class="card glass iso-card" href="guide/interview.html">{iso_icon("career")}<h2>Careers</h2><p>Interview questions and a path with no invented wages.</p></a>
+<a class="card glass iso-card" href="ecosystem/regions.html">{iso_icon("globe")}<h2>Regions</h2><p>Cited emergency and privacy rules. Coverage stays on the vendor page.</p></a>
+</div>
+<section class="audio-dock glass">
+<h2 data-i18n="audioTitle">Architect conversation</h2>
+<p>Two short clips. Maya asks. Jules answers. About a minute and a half together.</p>
+<audio controls preload="none" src="audio/architect-tour.mp3">
+  <a href="audio/architect-tour.mp3">How to view the lab</a>
+</audio>
+<p>How to view the lab. <a href="audio/scripts/architect-tour.md">Script</a></p>
+<audio controls preload="none" src="audio/architect-practice.mp3">
+  <a href="audio/architect-practice.mp3">How to practise and share</a>
+</audio>
+<p>How to practise and share. <a href="audio/scripts/architect-practice.md">Script</a></p>
+<p><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">Rate, comment, or share this lab on GitHub</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with the studio</a></p>
+</section>''',
         "Flagship UC lab. The repository root opens this studio.",
     )
     # The deep campus link on the flagship copy must climb out of flagship/.
