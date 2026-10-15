@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 822" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img">
+<title>CUCM to Webex Calling</title>
+<desc>Generic phases. No site-specific plan.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f7f3ee"/><stop offset="100%" stop-color="#e5f3f0"/></linearGradient></defs>
+<rect width="520" height="822" fill="url(#bg)"/>
+<text x="24" y="36" font-size="22" font-family="Georgia, Palatino, serif" fill="#1a2332">CUCM to Webex Calling</text>
+<text x="24" y="60" font-size="14" fill="#3a495c">Generic phases. No site-specific plan.</text>
+<rect x="24" y="86" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="118" r="16" fill="#0e5f59"/>
+<text x="56" y="123" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">1</text>
+<text x="84" y="112" fill="#0e5f59" font-size="12" font-weight="700">Discover</text>
+<text x="84" y="136" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Inventory what the old system does</text>
+<text x="84" y="160" fill="#3a495c" font-size="14">Users, devices, numbers, trunks, hunt groups.</text>
+<text x="84" y="180" fill="#3a495c" font-size="14">Voicemail, analog, E911, and contact center.</text>
+<rect x="24" y="206" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="238" r="16" fill="#0e5f59"/>
+<text x="56" y="243" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">2</text>
+<text x="84" y="232" fill="#0e5f59" font-size="12" font-weight="700">Design</text>
+<text x="84" y="256" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Map sites to calling locations</text>
+<text x="84" y="280" fill="#3a495c" font-size="14">Cloud PSTN or a Local Gateway.</text>
+<text x="84" y="300" fill="#3a495c" font-size="14">Write down every feature that will change.</text>
+<rect x="24" y="326" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="358" r="16" fill="#0e5f59"/>
+<text x="56" y="363" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">3</text>
+<text x="84" y="352" fill="#0e5f59" font-size="12" font-weight="700">Port</text>
+<text x="84" y="376" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Move numbers on a committed date</text>
+<text x="84" y="400" fill="#3a495c" font-size="14">Or keep the carrier and use a Local Gateway.</text>
+<text x="84" y="420" fill="#3a495c" font-size="14">Do not port 911 treatment by accident.</text>
+<rect x="24" y="446" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="478" r="16" fill="#0e5f59"/>
+<text x="56" y="483" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">4</text>
+<text x="84" y="472" fill="#0e5f59" font-size="12" font-weight="700">Pilot</text>
+<text x="84" y="496" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Move a small group first</text>
+<text x="84" y="520" fill="#3a495c" font-size="14">Inbound, outbound, voicemail, and a 911 test path.</text>
+<text x="84" y="540" fill="#3a495c" font-size="14">Keep a way back to CUCM until the pilot passes.</text>
+<rect x="24" y="566" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="598" r="16" fill="#0e5f59"/>
+<text x="56" y="603" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">5</text>
+<text x="84" y="592" fill="#0e5f59" font-size="12" font-weight="700">Cut over</text>
+<text x="84" y="616" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Move the rest in planned waves</text>
+<text x="84" y="640" fill="#3a495c" font-size="14">Freeze unrelated dial-plan edits.</text>
+<text x="84" y="660" fill="#3a495c" font-size="14">Watch completion, capacity, and emergency calls.</text>
+<rect x="24" y="686" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="718" r="16" fill="#0e5f59"/>
+<text x="56" y="723" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">6</text>
+<text x="84" y="712" fill="#0e5f59" font-size="12" font-weight="700">Retire</text>
+<text x="84" y="736" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Remove the old path after a soak</text>
+<text x="84" y="760" fill="#3a495c" font-size="14">Trunks, nodes, DNS, and unused certificates.</text>
+<text x="84" y="780" fill="#3a495c" font-size="14">Prove 911 still works after the old trunk is gone.</text>
+</svg>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420">
+<rect width="980" height="420" fill="#0c1220"/>
+<text x="24" y="32" fill="#e7ecf5" font-family="Segoe UI,sans-serif" font-size="16">Pilot, trunk, Unity routing tables</text>
+<rect x="40" y="100" width="160" height="64" rx="8" fill="#e7ecf5" stroke="#8ea0bd"/>
+<text x="120.0" y="136.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Phone</text>
+<rect x="230" y="100" width="180" height="64" rx="8" fill="#f0b429" stroke="#8ea0bd"/>
+<text x="320.0" y="136.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Route pattern</text>
+<rect x="440" y="100" width="160" height="64" rx="8" fill="#3dbeff" stroke="#8ea0bd"/>
+<text x="520.0" y="136.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">SIP trunk</text>
+<rect x="630" y="100" width="280" height="64" rx="8" fill="#3dd68c" stroke="#8ea0bd"/>
+<text x="770.0" y="136.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Unity rules</text>
+<rect x="180" y="250" width="560" height="70" rx="8" fill="#e7ecf5" stroke="#8ea0bd"/>
+<text x="460.0" y="289.0" fill="#071018" font-family="Segoe UI,sans-serif" font-size="14" text-anchor="middle">Voice Mail Pilot equals the route pattern</text>
+</svg>

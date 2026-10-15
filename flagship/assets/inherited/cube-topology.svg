@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 582" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img">
+<title>CUBE between CUCM and the ITSP</title>
+<desc>Signaling demarcation at the edge</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f7f3ee"/><stop offset="100%" stop-color="#e5f3f0"/></linearGradient></defs>
+<rect width="520" height="582" fill="url(#bg)"/>
+<text x="24" y="36" font-size="22" font-family="Georgia, Palatino, serif" fill="#1a2332">CUBE between CUCM and the ITSP</text>
+<text x="24" y="60" font-size="14" fill="#3a495c">Signaling demarcation at the edge</text>
+<rect x="24" y="86" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="118" r="16" fill="#0e5f59"/>
+<text x="56" y="123" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">1</text>
+<text x="84" y="112" fill="#0e5f59" font-size="12" font-weight="700">Inside</text>
+<text x="84" y="136" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">CUCM 192.0.2.30</text>
+<text x="84" y="160" fill="#3a495c" font-size="14">SIP trunk to CUBE 192.0.2.40.</text>
+<text x="84" y="180" fill="#3a495c" font-size="14">Enterprise dial plan stays inside.</text>
+<rect x="24" y="206" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="238" r="16" fill="#0e5f59"/>
+<text x="56" y="243" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">2</text>
+<text x="84" y="232" fill="#0e5f59" font-size="12" font-weight="700">Edge</text>
+<text x="84" y="256" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">CUBE rewrites the conversation</text>
+<text x="84" y="280" fill="#3a495c" font-size="14">Header normalization and topology hiding.</text>
+<text x="84" y="300" fill="#3a495c" font-size="14">TLS can stop at this border.</text>
+<rect x="24" y="326" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="358" r="16" fill="#0e5f59"/>
+<text x="56" y="363" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">3</text>
+<text x="84" y="352" fill="#0e5f59" font-size="12" font-weight="700">Outside</text>
+<text x="84" y="376" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">ITSP 203.0.113.10</text>
+<text x="84" y="400" fill="#3a495c" font-size="14">CUBE outside address 198.51.100.10.</text>
+<text x="84" y="420" fill="#3a495c" font-size="14">The provider sees the SBC, not every phone.</text>
+<rect x="24" y="446" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="478" r="16" fill="#0e5f59"/>
+<text x="56" y="483" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">4</text>
+<text x="84" y="472" fill="#0e5f59" font-size="12" font-weight="700">Media</text>
+<text x="84" y="496" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Flow-through is the normal case</text>
+<text x="84" y="520" fill="#3a495c" font-size="14">CUBE puts its own address in SDP.</text>
+<text x="84" y="540" fill="#3a495c" font-size="14">Flow-around lets RTP skip the SBC.</text>
+</svg>

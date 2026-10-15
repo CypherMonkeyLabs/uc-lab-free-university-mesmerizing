@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Labs · UC Lab Free University</title>
+<meta name="description" content="Browser labs for bandwidth, CSS order, and SIP codes.">
+<link rel="icon" href="assets/icon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/site.css">
+<script>
+try {
+  var params = new URLSearchParams(location.search);
+  var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
+  var ok = {paper:1, midnight:1, contrast:1, signal:1, canopy:1};
+  if (ok[t]) document.documentElement.setAttribute("data-theme", t);
+  if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+} catch (e) {}
+</script>
+</head>
+<body data-root="">
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <div class="bar">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
+      <span><strong>UC Lab</strong><small>Free University</small></span>
+    </a>
+    <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
+    <div class="tools">
+      <div class="themes" role="radiogroup" aria-label="Theme">
+        <button type="button" class="swatch-paper" data-theme-set="paper" aria-label="Paper" aria-checked="true"></button>
+        <button type="button" class="swatch-midnight" data-theme-set="midnight" aria-label="Midnight" aria-checked="false"></button>
+        <button type="button" class="swatch-contrast" data-theme-set="contrast" aria-label="High contrast" aria-checked="false"></button>
+        <button type="button" class="swatch-signal" data-theme-set="signal" aria-label="Signal" aria-checked="false"></button>
+        <button type="button" class="swatch-canopy" data-theme-set="canopy" aria-label="Canopy" aria-checked="false"></button>
+      </div>
+      <button type="button" class="btn motion-btn">Motion</button>
+      <a class="btn dl" href="download.html">Offline</a>
+      <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Lab"><a href="index.html">Home</a><a href="path.html">Path</a><a href="flows/index.html">Flows</a><a href="ports.html">Ports</a><a href="ecosystem/index.html">Ecosystem</a><a href="guide/index.html">Guide</a><a href="play/index.html">Play</a><a href="cheats/index.html">Cheats</a><a href="quiz.html">Quiz</a><a href="../campus/uc-lab-free-university.html">Campus</a></nav>
+</header>
+<main id="content" class="wrap">
+
+<p class="kicker">Teaching models</p>
+<h1>Labs</h1>
+<p class="lede">These run in the browser. They do not log in to a cluster.</p>
+<div class="lab-grid">
+<section class="paper">
+<h2>Codec bandwidth</h2>
+<p>Layer 3 is (payload + 40) × 8 × (1000 / ptime) / 1000. Add the layer-2 header you choose.</p>
+<form id="codecForm">
+<label class="field">Payload bytes <input id="payload" type="number" value="160" min="1"></label>
+<label class="field">ptime ms <input id="ptime" type="number" value="20" min="1"></label>
+<label class="field">L2 bytes <input id="l2" type="number" value="18" min="0"></label>
+</form>
+<p id="codecOut" class="num"></p>
+<p class="muted">G.711 at 20 ms with an 18-byte Ethernet header is 87.2 kbit/s.</p>
+</section>
+<section class="paper">
+<h2>CSS order</h2>
+<p>Move Emergency above PSTN, then dial 911. Inside a partition the best match wins. Across partitions, order is searched as you list it. A 9.@ in an earlier partition can consume 911.</p>
+<div id="cssLab">
+<ol id="cssOrder">
+<li data-part="PSTN">PSTN · 9.@ <button type="button" data-move="PSTN" data-dir="-1">Up</button> <button type="button" data-move="PSTN" data-dir="1">Down</button></li>
+<li data-part="Emergency">Emergency · 911 <button type="button" data-move="Emergency" data-dir="-1">Up</button> <button type="button" data-move="Emergency" data-dir="1">Down</button></li>
+<li data-part="Internal">Internal · directory numbers <button type="button" data-move="Internal" data-dir="-1">Up</button> <button type="button" data-move="Internal" data-dir="1">Down</button></li>
+</ol>
+<label>Digits <input id="cssDial" value="911" aria-label="Digits to test"></label>
+<p id="cssOut"></p>
+</div>
+</section>
+<section class="paper">
+<h2>SIP response</h2>
+<label>Code <input id="sipCode" inputmode="numeric" placeholder="180" aria-label="SIP response code"></label>
+<p id="sipOut">Type a code from the list.</p>
+<ul>
+<li id="sip-100" data-mean="100 Trying is hop-by-hop. It is not ringing.">100 Trying</li>
+<li id="sip-180" data-mean="180 Ringing means alerting started. A To tag can create an early dialog.">180 Ringing</li>
+<li id="sip-183" data-mean="183 Session Progress often carries early media. It is not answer.">183 Session Progress</li>
+<li id="sip-200" data-mean="200 OK accepts the request. For INVITE, the dialog is confirmed when ACK completes.">200 OK</li>
+<li id="sip-202" data-mean="202 Accepted takes a REFER. It does not mean the transferred call was answered.">202 Accepted</li>
+<li id="sip-401" data-mean="401 Unauthorized is a registrar challenge. The next REGISTER carries Authorization.">401 Unauthorized</li>
+<li id="sip-407" data-mean="407 is a proxy challenge. It is not the same hop as 401.">407 Proxy Authentication Required</li>
+<li id="sip-486" data-mean="486 Busy Here is a final response from the user agent.">486 Busy Here</li>
+<li id="sip-487" data-mean="487 Request Terminated. The request was cancelled or otherwise given up.">487 Request Terminated</li>
+<li id="sip-488" data-mean="488 Not Acceptable Here. The SDP was rejected.">488 Not Acceptable Here</li>
+<li id="sip-503" data-mean="503 Service Unavailable is a server failure, not a user busy.">503 Service Unavailable</li>
+</ul>
+</section>
+<section class="paper">
+<h2>One-way checklist</h2>
+<ol>
+<li>Is there a 200 OK on both SIP legs?</li>
+<li>Does each 200 that should carry an answer actually contain SDP?</li>
+<li>Is c= an address the other side can route to?</li>
+<li>Are RTP packets present in both directions after ACK?</li>
+<li>Only then look at DSCP and the jitter buffer.</li>
+</ol>
+</section>
+</div>
+
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p class="kicker">Next</p>
+    <p><a href="cases.html">Previous · Troubleshooting cases</a> · <a href="rooms.html">Next · Idea-pool diagrams</a> · <a href="../campus/uc-lab-free-university.html">Deep campus · 580 sections</a></p>
+    <div class="sister"><a class="card" href="https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/"><strong>AI Lab</strong></a><a class="card" href="https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/"><strong>Amazon Connect</strong></a><a class="card" href="https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/"><strong>Microsoft Voice</strong></a><a class="card" href="https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/"><strong>Five9</strong></a><a class="card" href="https://cipher0x9.github.io/genesys-cloud-lab-free-university-mesmerizing/"><strong>Genesys Cloud</strong></a><a class="card" href="https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/"><strong>NICE CXone</strong></a><a class="card" href="https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/"><strong>SIP Universe</strong></a><a class="card" href="path.html"><strong>Study path</strong></a></div>
+    <p class="sig">CYPHER0X9</p>
+    <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
+    <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern or takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
+  </div>
+</footer>
+<script src="assets/bank.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/play.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="980" height="420" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 420" role="img" aria-labelledby="t5t t5d">
+  <title id="t5t">CUCM SIP trunk through CUBE to an ITSP</title>
+  <desc id="t5d">Two call legs. Unified CM sends a SIP INVITE to the CUBE LAN dial-peer. CUBE matches an outbound WAN dial-peer toward the provider. Media may anchor on CUBE.</desc>
+  <rect width="980" height="420" fill="#0a1020"/>
+  <text x="24" y="32" fill="#ff8a4c" font-family="ui-monospace,monospace" font-size="13">T5-R01 · two SIP legs</text>
+  <g font-family="Segoe UI, sans-serif" font-size="14" fill="#e7ecf5">
+    <rect x="24" y="70" width="150" height="80" rx="8" fill="#171e2c" stroke="#3dbeff"/>
+    <text x="40" y="105">1 · Phone</text>
+    <text x="40" y="126" fill="#93a0b8" font-size="12">Registered</text>
+    <rect x="210" y="70" width="180" height="80" rx="8" fill="#171e2c" stroke="#3dbeff"/>
+    <text x="226" y="105">2 · Unified CM</text>
+    <text x="226" y="126" fill="#93a0b8" font-size="12">SIP trunk</text>
+    <rect x="430" y="60" width="220" height="200" rx="8" fill="#171e2c" stroke="#ff8a4c"/>
+    <text x="446" y="96">3 · CUBE</text>
+    <text x="446" y="122" fill="#93a0b8" font-size="12">LAN dial-peer in</text>
+    <text x="446" y="144" fill="#93a0b8" font-size="12">WAN dial-peer out</text>
+    <text x="446" y="166" fill="#93a0b8" font-size="12">Trusted IP list</text>
+    <text x="446" y="188" fill="#93a0b8" font-size="12">Early offer, profiles</text>
+    <text x="446" y="220" fill="#f0b429" font-size="12">VoIP trace on by default</text>
+    <rect x="690" y="70" width="250" height="80" rx="8" fill="#171e2c" stroke="#e6c36a"/>
+    <text x="706" y="105">4 · ITSP or cloud SBC</text>
+    <text x="706" y="126" fill="#93a0b8" font-size="12">Webex LGW is this shape too</text>
+  </g>
+  <g stroke="#3d4d66" fill="none">
+    <path d="M174 110 H210" stroke="#3dbeff"/>
+    <path d="M390 110 H430" stroke="#3dbeff"/>
+    <path d="M650 110 H690" stroke="#ff8a4c"/>
+  </g>
+  <g font-family="Segoe UI, sans-serif" font-size="13" fill="#e7ecf5">
+    <rect x="24" y="290" width="290" height="100" rx="8" fill="#121826" stroke="#2a3548"/>
+    <text x="40" y="320">Leg A · inside</text>
+    <text x="40" y="342" fill="#93a0b8" font-size="12">CUCM Route Pattern to SIP trunk</text>
+    <text x="40" y="362" fill="#93a0b8" font-size="12">CUBE incoming dial-peer</text>
+    <rect x="340" y="290" width="290" height="100" rx="8" fill="#121826" stroke="#2a3548"/>
+    <text x="356" y="320">Leg B · outside</text>
+    <text x="356" y="342" fill="#93a0b8" font-size="12">Outbound dial-peer</text>
+    <text x="356" y="362" fill="#93a0b8" font-size="12">Session target ITSP or DNS SRV</text>
+    <rect x="656" y="290" width="290" height="100" rx="8" fill="#121826" stroke="#2a3548"/>
+    <text x="672" y="320">Read this first</text>
+    <text x="672" y="342" fill="#93a0b8" font-size="12">show voip trace</text>
+    <text x="672" y="362" fill="#93a0b8" font-size="12">Incoming / outgoing peer tags</text>
+  </g>
+</svg>

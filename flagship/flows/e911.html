@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emergency call · UC Lab Free University</title>
+<meta name="description" content="A connected 911 call with the wrong location is a failed emergency call.">
+<link rel="icon" href="../assets/icon.svg">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+try {
+  var params = new URLSearchParams(location.search);
+  var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
+  var ok = {paper:1, midnight:1, contrast:1, signal:1, canopy:1};
+  if (ok[t]) document.documentElement.setAttribute("data-theme", t);
+  if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+} catch (e) {}
+</script>
+</head>
+<body data-root="../">
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <div class="bar">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
+      <span><strong>UC Lab</strong><small>Free University</small></span>
+    </a>
+    <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
+    <div class="tools">
+      <div class="themes" role="radiogroup" aria-label="Theme">
+        <button type="button" class="swatch-paper" data-theme-set="paper" aria-label="Paper" aria-checked="true"></button>
+        <button type="button" class="swatch-midnight" data-theme-set="midnight" aria-label="Midnight" aria-checked="false"></button>
+        <button type="button" class="swatch-contrast" data-theme-set="contrast" aria-label="High contrast" aria-checked="false"></button>
+        <button type="button" class="swatch-signal" data-theme-set="signal" aria-label="Signal" aria-checked="false"></button>
+        <button type="button" class="swatch-canopy" data-theme-set="canopy" aria-label="Canopy" aria-checked="false"></button>
+      </div>
+      <button type="button" class="btn motion-btn">Motion</button>
+      <a class="btn dl" href="../download.html">Offline</a>
+      <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Lab"><a href="../index.html">Home</a><a href="../path.html">Path</a><a href="../flows/index.html" aria-current="page">Flows</a><a href="../ports.html">Ports</a><a href="../ecosystem/index.html">Ecosystem</a><a href="../guide/index.html">Guide</a><a href="../play/index.html">Play</a><a href="../cheats/index.html">Cheats</a><a href="../quiz.html">Quiz</a><a href="../../campus/uc-lab-free-university.html">Campus</a></nav>
+</header>
+<main id="content" class="wrap">
+<p class='kicker'>Kari&#x27;s Law · RAY BAUM</p><h1>Emergency call</h1><p class='lede'>A connected 911 call with the wrong location is a failed emergency call.</p><div class='read'><div class='prose'><figure class="ladder" data-ladder><svg viewBox="0 0 800 274" role="img" aria-label="Dispatchable location"><defs><marker id='arrow20' markerWidth='8' markerHeight='8' refX='7' refY='3' orient='auto'><path d='M0,0 L8,3 L0,6 Z' fill='#1c1915'/></marker></defs><rect width="800" height="274" rx="16" fill="#fffdf8"/><text x="20" y="24" font-family="Georgia, serif" font-size="16" fill="#a34b24">Dispatchable location</text><text x="100" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">Phone</text><line x1="100" y1="58" x2="100" y2="258" stroke="#e3d7c6" stroke-width="2"/><text x="300" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">CUCM</text><line x1="300" y1="58" x2="300" y2="258" stroke="#e3d7c6" stroke-width="2"/><text x="500" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">CER</text><line x1="500" y1="58" x2="500" y2="258" stroke="#e3d7c6" stroke-width="2"/><text x="700" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1915">PSAP</text><line x1="700" y1="58" x2="700" y2="258" stroke="#e3d7c6" stroke-width="2"/><g class="msg" data-cap="Direct dial. Kari&#x27;s Law does not allow a prefix to be required."><line x1="100" y1="70" x2="300" y2="70" stroke="#0f6e62" stroke-width="2.4" marker-end="url(#arrow20)"/><text x="200.0" y="62" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#0f6e62">911</text></g><g class="msg" data-cap="CER, or the cloud location service, selects the ELIN or the dispatchable location."><line x1="300" y1="116" x2="500" y2="116" stroke="#5e584e" stroke-width="2.4" marker-end="url(#arrow20)"/><text x="400.0" y="108" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#5e584e">Route</text></g><g class="msg" data-cap="The calling number the PSAP sees must be the one that maps back to this site."><line x1="500" y1="162" x2="700" y2="162" stroke="#0f6e62" stroke-width="2.4" marker-end="url(#arrow20)"/><text x="600.0" y="154" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#0f6e62">INVITE</text></g><g class="msg" data-cap="On-site notification is a separate duty from completing the call."><line x1="300" y1="208" x2="100" y2="208" stroke="#1f7a4d" stroke-width="2.4" marker-end="url(#arrow20)"/><text x="200.0" y="200" text-anchor="middle" font-size="13" font-family="Segoe UI, sans-serif" fill="#1f7a4d">Notify</text></g></svg><div class="ladder-controls"><button type="button" class="btn" data-act="prev">Step back</button><button type="button" class="btn" data-act="play">Play</button><button type="button" class="btn" data-act="next">Step</button></div><p class="ladder-cap muted"></p><ol><li><strong>911</strong> — Direct dial. Kari&#x27;s Law does not allow a prefix to be required.</li><li><strong>Route</strong> — CER, or the cloud location service, selects the ELIN or the dispatchable location.</li><li><strong>INVITE</strong> — The calling number the PSAP sees must be the one that maps back to this site.</li><li><strong>Notify</strong> — On-site notification is a separate duty from completing the call.</li></ol></figure><p>Callback that rings a headquarters receptionist failed the location, even though the first call connected. Test 933 where the carrier provides it, and keep 911 tests on the procedure your carrier allows.</p><h2>Sources</h2><ul><li><a href="https://www.fcc.gov/mlts-911-requirements">FCC MLTS 911 requirements</a></li><li><a href="https://www.cisco.com/c/en/us/support/unified-communications/emergency-responder/series.html">Emergency Responder</a></li></ul><h2>Study card carried forward</h2><div class='paper inherited'>
+<p class="kicker">Emergency calling</p><h1>E911 design</h1><p class="lede">This card is the engineering shape of U.S. multi-line 911: direct dial, notification, a dispatchable location, and a callback number the PSAP can use. It is a study aid, not a legal opinion.</p><figure><div class="diagram-scroll slim" tabindex="0"><img src="../assets/inherited/e911-design.svg" alt="E911 flow: direct 911, dispatchable location, ELIN, routing to the PSAP, and a cloud location path."></div><figcaption>The drawing is the vocabulary. The tables are the design choices.</figcaption></figure><p class="hint">On a phone, swipe a wide ladder sideways. The steps below repeat the same sequence.</p>
+<h2>Kari's Law</h2>
+<p>Kari's Law applies to multi-line telephone systems. Two duties are the ones a voice engineer designs for:</p>
+<ul>
+<li><strong>Direct dialing.</strong> A person can dial 911 without a prefix or an outside-line digit.</li>
+<li><strong>Notification.</strong> When 911 is dialed, the system notifies a central place (on site or off site) that can send help. The notice includes a callback number and the location information that is available at the time.</li>
+</ul>
+<p>A route pattern for 911 that sits in a partition every calling search space can reach is the usual CUCM expression of the first duty. Keeping 9-911 as a translation to 911 helps people who still dial a prefix. The prefixed habit does not satisfy the law by itself. 911 alone must work. Applicability, manufacture dates, and installation dates are legal questions. Confirm them in the statute and the FCC's current rules. This page is not a compliance opinion.</p>
+<h2>RAY BAUM'S Act Section 506</h2>
+<p>Section 506 is about <strong>dispatchable location</strong>: the street address of the caller, plus extra detail such as floor, suite, apartment, or room, so responders can find the person. A building name with no civic address is not enough. A campus subnet label is not enough unless it is tied to that civic detail and delivered with the call.</p>
+<p>The FCC phased the dates and distinguished fixed on-premises devices, movable on-premises devices, and off-premises devices. Use the current FCC MLTS rules for which deadline and which information apply. Do not take a study card as the calendar.</p>
+<h2>ELIN, ERL, ALI, PSAP</h2>
+<div class="table-scroll"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>PSAP</td><td>Public Safety Answering Point. The call center that answers 911.</td></tr>
+<tr><td>ERL</td><td>Emergency Response Location. A zone that shares one dispatchable location, such as a floor wing.</td></tr>
+<tr><td>ELIN</td><td>Emergency Location Identification Number. A NANP number from your inventory that represents that ERL. The PSAP sees it as the calling number.</td></tr>
+<tr><td>ALI</td><td>Automatic Location Identification. The database the PSAP queries to turn the ELIN into a civic address.</td></tr>
+<tr><td>ANI</td><td>The calling number presented with the call. For these designs, that number is often the ELIN, not the employee's normal DID.</td></tr>
+</tbody></table></div>
+<p>Give a busy ERL more than one ELIN so two overlapping 911 calls do not have to share a single callback identity. Callback to the ELIN, during a defined window, should reach the phone that placed the call rather than a random phone in the same zone. Cisco Emergency Responder is one on-premises product that discovers phones (switch port, subnet, wireless access point), maps them to ERLs, substitutes the ELIN, and tracks that callback.</p>
+<h2>On premises and in the cloud</h2>
+<div class="table-scroll"><table>
+<thead><tr><th></th><th>On premises</th><th>Cloud calling</th></tr></thead>
+<tbody>
+<tr><td>How you learn the place</td><td>Switch port, IP subnet, wireless access point, or a manual assignment.</td><td>A civic address stored on the calling location, plus a client that may ask the network.</td></tr>
+<tr><td>What the PSAP receives</td><td>ELIN as the calling number, then an ALI lookup.</td><td>The provider is expected to send a dispatchable location with the call. The callback number follows that provider's design.</td></tr>
+<tr><td>A soft client that left the building</td><td>Discovery often still says "the office" if the client VPN lands in an office subnet. Treat that as a known gap.</td><td>The client should refresh location. HELD (RFC 5985) is the usual query to a Location Information Server. The answer is PIDF-LO (RFC 4119, civic form in RFC 5139).</td></tr>
+<tr><td>Staff notification</td><td>A parallel alert from the emergency responder system or from CUCM.</td><td>Use the cloud service's notification feature and prove it reaches a staffed place. Do not assume the on-premises alert still fires after cutover.</td></tr>
+</tbody></table></div>
+<p>During a migration, a Local Gateway can keep 911 on a premises trunk that already delivers a correct ELIN and ALI record. That is a valid interim design. It is not automatic. After you remove the trunk, the cloud path has to carry location on its own.</p>
+<p>Test with the provider's published test number. In the United States that number is often <strong>933</strong>, and a correct test does not dispatch responders. Confirm the code before you use it. Do not place a live 911 call as a lab exercise.</p>
+<aside class="callout mint"><h3>Remember</h3><p>Direct 911, a notification someone will hear, and a dispatchable location that matches where the caller is right now. An ELIN is only as good as the ALI record behind it.</p></aside><aside class="callout lav"><h3>Not legal advice</h3><p>Kari's Law and RAY BAUM'S Act Section 506 are federal requirements implemented in FCC rules. Scope and dates depend on the system and the installation. Confirm them with the current rule text and your counsel.</p></aside><section class="sources"><h2>Sources</h2><ul><li>Kari&#x27;s Law (direct 911 dialing and notification for multi-line telephone systems)</li><li>RAY BAUM&#x27;S Act, Section 506 (dispatchable location)</li><li>FCC rules implementing those statutes for MLTS</li><li>RFC 5985, HTTP-Enabled Location Delivery (HELD)</li><li>RFC 4119, PIDF location object, and RFC 5139, civic addresses</li><li>Cisco Emergency Responder documentation, for the on-premises discovery and ELIN callback behavior</li></ul></section>
+</div></div><aside class='rail'><div class='paper'><p class='kicker'>Level</p><p class='num'>5 · Safety</p><p class='muted'>Play the ladder, then read the inherited study card when this page has one.</p></div><div class='paper'><p class='kicker'>Proof habit</p><p>Leg, identifier, counter, capture. A 200 OK is not two-way audio.</p></div></aside></div>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p class="kicker">Next</p>
+    <p><a href="../flows/migration.html">Previous · CUCM to Webex Calling</a> · <a href="../flows/qos.html">Next · QoS marks</a> · <a href="../../campus/uc-lab-free-university.html">Deep campus · 580 sections</a></p>
+    <div class="sister"><a class="card" href="https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/"><strong>AI Lab</strong></a><a class="card" href="https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/"><strong>Amazon Connect</strong></a><a class="card" href="https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/"><strong>Microsoft Voice</strong></a><a class="card" href="https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/"><strong>Five9</strong></a><a class="card" href="https://cipher0x9.github.io/genesys-cloud-lab-free-university-mesmerizing/"><strong>Genesys Cloud</strong></a><a class="card" href="https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/"><strong>NICE CXone</strong></a><a class="card" href="https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/"><strong>SIP Universe</strong></a><a class="card" href="../path.html"><strong>Study path</strong></a></div>
+    <p class="sig">CYPHER0X9</p>
+    <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
+    <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern or takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
+  </div>
+</footer>
+<script src="../assets/bank.js"></script>
+<script src="../assets/site.js"></script>
+<script src="../assets/play.js"></script>
+</body>
+</html>

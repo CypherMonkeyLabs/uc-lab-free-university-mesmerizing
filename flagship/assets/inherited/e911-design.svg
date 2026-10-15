@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 702" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img">
+<title>E911 path</title>
+<desc>Location, ELIN, and the PSAP</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f7f3ee"/><stop offset="100%" stop-color="#e5f3f0"/></linearGradient></defs>
+<rect width="520" height="702" fill="url(#bg)"/>
+<text x="24" y="36" font-size="22" font-family="Georgia, Palatino, serif" fill="#1a2332">E911 path</text>
+<text x="24" y="60" font-size="14" fill="#3a495c">Location, ELIN, and the PSAP</text>
+<rect x="24" y="86" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="118" r="16" fill="#0e5f59"/>
+<text x="56" y="123" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">1</text>
+<text x="84" y="112" fill="#0e5f59" font-size="12" font-weight="700">Dial</text>
+<text x="84" y="136" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">911 with no prefix</text>
+<text x="84" y="160" fill="#3a495c" font-size="14">Kari&#x27;s Law: direct 911 from the phone.</text>
+<text x="84" y="180" fill="#3a495c" font-size="14">Also notify a staffed place that can send help.</text>
+<rect x="24" y="206" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="238" r="16" fill="#0e5f59"/>
+<text x="56" y="243" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">2</text>
+<text x="84" y="232" fill="#0e5f59" font-size="12" font-weight="700">Locate</text>
+<text x="84" y="256" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Dispatchable location</text>
+<text x="84" y="280" fill="#3a495c" font-size="14">Street address plus floor, suite, or room.</text>
+<text x="84" y="300" fill="#3a495c" font-size="14">RAY BAUM&#x27;S Act Section 506.</text>
+<rect x="24" y="326" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="358" r="16" fill="#0e5f59"/>
+<text x="56" y="363" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">3</text>
+<text x="84" y="352" fill="#0e5f59" font-size="12" font-weight="700">ELIN</text>
+<text x="84" y="376" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">A callback number for that place</text>
+<text x="84" y="400" fill="#3a495c" font-size="14">The PSAP sees the ELIN as the calling number.</text>
+<text x="84" y="420" fill="#3a495c" font-size="14">ALI returns the civic address for that ELIN.</text>
+<rect x="24" y="446" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="478" r="16" fill="#0e5f59"/>
+<text x="56" y="483" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">4</text>
+<text x="84" y="472" fill="#0e5f59" font-size="12" font-weight="700">Route</text>
+<text x="84" y="496" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Emergency trunk to the PSAP</text>
+<text x="84" y="520" fill="#3a495c" font-size="14">Selective router, then the answering point.</text>
+<text x="84" y="540" fill="#3a495c" font-size="14">Callback to the ELIN should reach the caller.</text>
+<rect x="24" y="566" width="472" height="106" rx="16" fill="#fffdfb" stroke="#d3e0db"/>
+<circle cx="56" cy="598" r="16" fill="#0e5f59"/>
+<text x="56" y="603" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">5</text>
+<text x="84" y="592" fill="#0e5f59" font-size="12" font-weight="700">Cloud</text>
+<text x="84" y="616" fill="#1a2332" font-size="20" font-family="Georgia, Palatino, serif">Location travels with the user</text>
+<text x="84" y="640" fill="#3a495c" font-size="14">A civic address on the calling location.</text>
+<text x="84" y="660" fill="#3a495c" font-size="14">Roaming clients refresh location with HELD.</text>
+</svg>

@@ -79,10 +79,16 @@ def collect_errors(root: Path | None = None) -> list[str]:
         errors.append("campus/index.html target uc-lab-free-university.html is missing")
     if root_index.is_file():
         root_html = root_index.read_text(encoding="utf-8")
-        if 'content="0; url=campus/uc-lab-free-university.html"' not in root_html:
-            errors.append("repo index.html does not refresh to campus/uc-lab-free-university.html")
+        if 'content="0; url=flagship/index.html"' not in root_html:
+            errors.append("repo index.html does not refresh to flagship/index.html")
+        if 'href="flagship/index.html"' not in root_html:
+            errors.append("repo index.html has no flagship fallback link")
+        if 'href="campus/uc-lab-free-university.html"' not in root_html:
+            errors.append("repo index.html does not keep the deep campus link")
+        if not (root / "flagship" / "index.html").is_file():
+            errors.append("repo index.html flagship target is missing")
         if not (root / "campus" / "uc-lab-free-university.html").is_file():
-            errors.append("repo index.html target is missing")
+            errors.append("repo index.html campus target is missing")
     else:
         errors.append("repo index.html is missing")
 
