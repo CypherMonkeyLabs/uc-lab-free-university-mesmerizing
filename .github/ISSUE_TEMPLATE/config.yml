@@ -1,8 +1,8 @@
 blank_issues_enabled: true
 contact_links:
   - name: How to use the campus
-    url: https://github.com/cipher0x9/uc-lab-free-university-mesmerizing/blob/main/docs/HOW-TO-USE.md
+    url: https://github.com/CypherMonkeyLabs/uc-lab-free-university-mesmerizing/blob/main/docs/HOW-TO-USE.md
     about: Open the file, follow the 30-day path, or teach a class.
   - name: Remix guide
-    url: https://github.com/cipher0x9/uc-lab-free-university-mesmerizing/blob/main/docs/REMIX.md
+    url: https://github.com/CypherMonkeyLabs/uc-lab-free-university-mesmerizing/blob/main/docs/REMIX.md
     about: Add a section, add a theme, or rebuild the zip.
