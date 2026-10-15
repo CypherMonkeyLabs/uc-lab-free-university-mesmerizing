@@ -27,29 +27,39 @@ function mountHero(THREE, canvas) {
   document.documentElement.setAttribute("data-webgl", "on");
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x05030d, 0.045);
-  const camera = new THREE.PerspectiveCamera(48, 1, 0.1, 80);
-  camera.position.set(0, 2.4, 11);
-  const grid = new THREE.GridHelper(36, 36, 0x22d3ee, 0x24143f);
-  grid.position.y = -2.4;
+  const camera = new THREE.PerspectiveCamera(58, 1, 0.1, 80);
+  camera.position.set(0.4, 1.5, 7.2);
+  const grid = new THREE.GridHelper(48, 28, 0x5eead4, 0x6d28d9);
+  grid.position.y = -2.6;
   scene.add(grid);
-  const rings = [3.6, 2.5, 1.5].map(function (radius, i) {
+  const globe = new THREE.Mesh(
+    new THREE.SphereGeometry(3.15, 28, 18),
+    new THREE.MeshBasicMaterial({ color: 0x22d3ee, wireframe: true, transparent: true, opacity: 0.45 })
+  );
+  scene.add(globe);
+  const rings = [4.4, 3.3, 2.15].map(function (radius, i) {
     const mesh = new THREE.Mesh(
-      new THREE.TorusGeometry(radius, 0.03, 12, 96),
-      new THREE.MeshBasicMaterial({ color: 0x22d3ee, transparent: true, opacity: 0.9 })
+      new THREE.TorusGeometry(radius, 0.045, 12, 120),
+      new THREE.MeshBasicMaterial({ color: 0x22d3ee, transparent: true, opacity: 0.95 })
     );
-    mesh.rotation.x = Math.PI / 2.35 + i * 0.28;
+    mesh.rotation.x = Math.PI / 2.6 + i * 0.42;
     scene.add(mesh);
     return mesh;
   });
   const names = ["Phone", "CUCM", "CUBE", "Cloud"];
   const nodes = names.map(function (name, i) {
     const mesh = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(0.38, 1),
-      new THREE.MeshStandardMaterial({ color: 0x22d3ee, emissive: 0x22d3ee, emissiveIntensity: 0.85, roughness: 0.25, metalness: 0.35 })
+      new THREE.IcosahedronGeometry(0.42, 1),
+      new THREE.MeshBasicMaterial({ color: 0x22d3ee })
     );
+    const halo = new THREE.Mesh(
+      new THREE.SphereGeometry(0.85, 16, 12),
+      new THREE.MeshBasicMaterial({ color: 0x22d3ee, transparent: true, opacity: 0.28 })
+    );
+    mesh.add(halo);
     mesh.userData.name = name;
     mesh.userData.i = i;
+    mesh.userData.halo = halo;
     scene.add(mesh);
     return mesh;
   });
@@ -61,16 +71,16 @@ function mountHero(THREE, canvas) {
     scene.add(line);
     links.push(line);
   }
-  const count = 420;
+  const count = 700;
   const positions = new Float32Array(count * 3);
   for (let i = 0; i < count; i += 1) {
-    positions[i * 3] = (Math.random() - 0.5) * 20;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 14;
+    positions[i * 3] = (Math.random() - 0.5) * 16;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 9;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 12;
   }
   const points = new THREE.Points(
     new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(positions, 3)),
-    new THREE.PointsMaterial({ color: 0xe879f9, size: 0.05, transparent: true, opacity: 0.85 })
+    new THREE.PointsMaterial({ color: 0xe879f9, size: 0.07, transparent: true, opacity: 0.95 })
   );
   scene.add(points);
   scene.add(new THREE.AmbientLight(0xffffff, 0.35));
@@ -98,12 +108,11 @@ function mountHero(THREE, canvas) {
     const colors = ["--node1", "--node2", "--node3", "--node4"].map(function (token, i) {
       return new THREE.Color(cssColor(token, ["#22d3ee", "#e879f9", "#fde047", "#fb7185"][i]));
     });
-    const fog = new THREE.Color(cssColor("--scene", "#05030d"));
-    scene.fog.color.copy(fog);
-    scene.background = fog;
+    scene.background = new THREE.Color(cssColor("--scene", "#05030d"));
+    globe.material.color.copy(colors[0]);
     nodes.forEach(function (mesh, i) {
       mesh.material.color.copy(colors[i]);
-      mesh.material.emissive.copy(colors[i]);
+      mesh.userData.halo.material.color.copy(colors[i]);
     });
     rings.forEach(function (ring, i) { ring.material.color.copy(colors[i % colors.length]); });
     points.material.color.copy(colors[1]);
@@ -129,10 +138,11 @@ function mountHero(THREE, canvas) {
       return;
     }
     const scroll = window.scrollY || 0;
+    globe.rotation.y = t * 0.00012;
     nodes.forEach(function (mesh, i) {
       const angle = t * 0.00032 + i * (Math.PI / 2);
       const radius = 3.15;
-      mesh.position.set(Math.cos(angle) * radius, Math.sin(t * 0.0009 + i) * 0.45, Math.sin(angle) * radius * 0.62);
+      mesh.position.set(Math.cos(angle) * radius, Math.sin(angle * 0.6) * 1.15, Math.sin(angle) * radius * 0.72);
       mesh.rotation.y = t * 0.001 + i;
     });
     links.forEach(function (line, i) {
@@ -142,8 +152,8 @@ function mountHero(THREE, canvas) {
     });
     rings.forEach(function (ring, i) { ring.rotation.z = t * 0.00018 * (i + 1); });
     points.rotation.y = t * 0.00006;
-    camera.position.x = mx * 2.2;
-    camera.position.y = 2.4 - my * 1.1 + scroll * 0.0015;
+    camera.position.x = 0.4 + mx * 1.6;
+    camera.position.y = 1.5 - my * 0.8 + scroll * 0.001;
     camera.lookAt(0, 0, 0);
     renderer.render(scene, camera);
     requestAnimationFrame(frame);
