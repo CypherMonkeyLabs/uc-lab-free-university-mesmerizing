@@ -1120,3 +1120,182 @@ body:has(.bleed) .wrap { padding-top: 0; }
   .audio-float.is-open audio { width: 100%; }
   .bleed-copy { padding-top: calc(var(--dock-h, 80px) + 12px); }
 }
+
+/* Phone menu, settings, and motion. These rules sit last so they win. */
+html { scroll-behavior: smooth; }
+html[data-motion="reduce"] { scroll-behavior: auto; }
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion="allow"]) { scroll-behavior: auto; }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.reveal.is-in, .is-in { opacity: 1; transform: none; }
+html[data-motion="reduce"] .reveal,
+html[data-motion="reduce"] .reveal.is-in { opacity: 1; transform: none; transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion="allow"]) .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+.menu-btn { align-items: center; gap: 8px; min-width: 48px; min-height: 48px; }
+.burger {
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor;
+  display: inline-block;
+}
+.site-menu, .settings-sheet, .listen-sheet { color: var(--ink); }
+.site-menu[hidden], .settings-sheet[hidden], .listen-sheet[hidden] { display: none; }
+.site-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--bg);
+  padding: calc(12px + env(safe-area-inset-top, 0px)) 16px calc(16px + env(safe-area-inset-bottom, 0px));
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.sheet-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.sheet-bar h2 { margin: 0; font-size: 1.4rem; }
+.sheet-close, .sheet-settings, .settings-open, .sound-btn, .motion-btn { min-height: 48px; min-width: 48px; }
+.sheet-nav { display: flex; flex-direction: column; gap: 8px; }
+.sheet-nav a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+.sheet-nav a[aria-current="page"] {
+  background: var(--teal);
+  color: var(--teal-ink);
+  border-color: transparent;
+}
+.sheet-settings { width: 100%; }
+.site-menu .site-search { flex: none; width: 100%; }
+.site-menu .site-search input { min-height: 48px; }
+.settings-sheet, .listen-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(4, 2, 12, 0.72);
+  padding: 12px;
+}
+.sheet-card {
+  width: min(560px, 100%);
+  max-height: min(88dvh, 760px);
+  overflow: auto;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 20px 20px 0 0;
+  padding: 16px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+}
+.settings-sheet .themes { margin: 0 0 12px; }
+.settings-sheet .themes button { width: 48px; height: 48px; }
+.settings-sheet .lang-chips { width: auto; flex-wrap: wrap; overflow: visible; margin: 0 0 12px; }
+.settings-sheet .lang-chips button { min-height: 48px; min-width: 48px; }
+.studio-links { display: flex; flex-direction: column; gap: 8px; }
+.studio-links a { min-height: 48px; display: flex; align-items: center; }
+.listen-sheet audio { width: 100%; margin: 0 0 12px; }
+.quickbar { display: none; }
+@media (min-width: 761px) {
+  .tools .menu-btn { display: none; }
+  .settings-sheet, .listen-sheet { align-items: center; }
+  .sheet-card { border-radius: 20px; }
+}
+@media (max-width: 760px) {
+  html, body { overflow-x: clip; }
+  body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+  .topbar {
+    box-sizing: border-box;
+    height: calc(64px + env(safe-area-inset-top, 0px));
+    max-height: calc(64px + env(safe-area-inset-top, 0px));
+    padding-top: env(safe-area-inset-top, 0px);
+    overflow: hidden;
+    border-bottom: 0;
+    box-shadow: inset 0 -1px 0 var(--line);
+  }
+  .topbar .bar {
+    height: 64px;
+    max-height: 64px;
+    padding: 0 8px;
+    flex-wrap: nowrap;
+    width: calc(100% - 8px);
+    box-sizing: border-box;
+  }
+  .topbar .tabs,
+  .topbar .lang-chips,
+  .topbar .progress,
+  .topbar .hub,
+  .topbar .site-search,
+  .topbar .themes,
+  .topbar .mode-btn,
+  .topbar .motion-btn,
+  .topbar .dl,
+  .topbar .settings-open { display: none; }
+  .topbar .menu-btn { display: inline-flex; }
+  .topbar .brand { min-width: 0; }
+  .topbar .brand small { display: none; }
+  .topbar .brand svg { width: 32px; height: 32px; }
+  .topbar .tools { margin-left: auto; }
+  .site-menu {
+    bottom: calc(64px + env(safe-area-inset-bottom, 0px));
+    gap: 6px;
+    padding: calc(8px + env(safe-area-inset-top, 0px)) 12px 8px;
+  }
+  .sheet-nav { gap: 4px; }
+  .sheet-nav a { padding: 8px 14px; }
+  .quickbar {
+    display: grid;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 75;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    background: color-mix(in srgb, var(--bg) 94%, transparent);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid var(--line);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .quickbar a, .quickbar button {
+    min-height: 48px;
+    min-width: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 6px 2px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .quickbar a[aria-current="page"] { background: var(--teal); color: var(--teal-ink); }
+  .audio-float { display: none; }
+  .bleed {
+    height: calc(100dvh - 64px - 64px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    min-height: calc(100dvh - 64px - 64px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+  }
+  .bleed #hero3d, .bleed .neon-fallback { height: 100%; min-height: 0; }
+  .icon-more { min-width: 48px; min-height: 48px; }
+}
+@media print {
+  .quickbar, .site-menu, .settings-sheet, .listen-sheet { display: none !important; }
+}
