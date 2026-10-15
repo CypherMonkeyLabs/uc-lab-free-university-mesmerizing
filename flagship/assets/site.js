@@ -238,7 +238,10 @@
           var pick = Number(btn.getAttribute("data-i"));
           answered += 1;
           var good = pick === q.answer;
-          if (good) correct += 1;
+          if (good) {
+            correct += 1;
+            if (window.confetti) window.confetti({ particleCount: 70, spread: 62, origin: { y: 0.65 } });
+          }
           btn.classList.add(good ? "good" : "bad");
           $all(".choice", box)[q.answer].classList.add("good");
           $("#quizWhy").textContent = q.why ? ("Reason in the bank: " + q.why) : "";
@@ -525,6 +528,83 @@
     setTimeout(function () { note.remove(); }, 2200);
   }
   window.UC_FLAGSHIP = { award: award };
+
+  function mountSearch() {
+    var input = $("#siteSearch");
+    var pop = $("#searchPop");
+    if (!input || !pop) return;
+    var items = window.UC_SEARCH || [];
+    var prefix = (document.body && document.body.getAttribute("data-root")) || "";
+    var cursor = -1;
+    function close() { pop.hidden = true; cursor = -1; }
+    function render(list) {
+      pop.innerHTML = list.slice(0, 8).map(function (item, i) {
+        var href = item.href.indexOf("http") === 0 ? item.href : prefix + item.href;
+        return "<a href='" + href + "' data-i='" + i + "'" + (i === cursor ? " aria-selected='true'" : "") + ">" + item.title + "</a>";
+      }).join("");
+      pop.hidden = list.length === 0;
+    }
+    input.addEventListener("input", function () {
+      var q = input.value.trim().toLowerCase();
+      cursor = 0;
+      if (!q) { close(); return; }
+      render(items.filter(function (item) {
+        return (item.title + " " + item.text + " " + item.href).toLowerCase().indexOf(q) >= 0;
+      }));
+    });
+    input.addEventListener("keydown", function (event) {
+      var links = $all("a", pop);
+      if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+        event.preventDefault();
+        if (!links.length) return;
+        cursor = event.key === "ArrowDown" ? Math.min(links.length - 1, cursor + 1) : Math.max(0, cursor - 1);
+        links.forEach(function (link, i) { link.setAttribute("aria-selected", i === cursor ? "true" : "false"); });
+      } else if (event.key === "Enter" && links[cursor]) {
+        event.preventDefault();
+        window.location.href = links[cursor].getAttribute("href");
+      } else if (event.key === "Escape") close();
+    });
+    document.addEventListener("keydown", function (event) {
+      var tag = (event.target && event.target.tagName) || "";
+      if (event.key === "/" && tag !== "INPUT" && tag !== "TEXTAREA" && tag !== "SELECT") {
+        event.preventDefault();
+        input.focus();
+      }
+    });
+  }
+  function mountProgress() {
+    var slot = $("#visitProgress");
+    if (!slot) return;
+    var id = "index.html";
+    var path = location.pathname;
+    var marker = "/flagship/";
+    var at = path.indexOf(marker);
+    if (at >= 0) id = path.slice(at + marker.length) || "index.html";
+    else if (!(path.endsWith("/") || path.endsWith("/index.html"))) id = path.split("/").pop() || id;
+    var seen = [];
+    try { seen = JSON.parse(localStorage.getItem("uc_flagship_seen") || "[]"); } catch (err) { seen = []; }
+    if (seen.indexOf(id) < 0) seen.push(id);
+    try { localStorage.setItem("uc_flagship_seen", JSON.stringify(seen)); } catch (err) { /* private */ }
+    var total = (window.UC_SEARCH || []).length || seen.length;
+    slot.textContent = "Progress " + seen.length + " / " + total + " pages opened in this browser";
+  }
+  function mountParallax() {
+    var hosts = $all("[data-parallax]");
+    if (!hosts.length) return;
+    if (root.getAttribute("data-motion") === "reduce") return;
+    window.addEventListener("scroll", function () {
+      var y = window.scrollY || 0;
+      hosts.forEach(function (host) {
+        $all("[data-depth]", host).forEach(function (el) {
+          var depth = Number(el.getAttribute("data-depth")) || 0.2;
+          el.style.transform = "translate3d(0," + (-y * depth * 0.15) + "px,0)";
+        });
+      });
+    }, { passive: true });
+  }
+  mountSearch();
+  mountProgress();
+  mountParallax();
 
   if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
     var prefix = document.body.getAttribute("data-root") || "./";

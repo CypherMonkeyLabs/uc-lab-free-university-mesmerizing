@@ -39,10 +39,16 @@ try {
       <a class="btn dl" href="../download.html">Offline</a>
       <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
     </div>
+    <form class="site-search" role="search">
+      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off">
+      <div id="searchPop" class="search-pop" hidden></div>
+    </form>
   </div>
-  <nav class="tabs" aria-label="Lab"><a href="../index.html">Home</a><a href="../path.html">Path</a><a href="../flows/index.html">Flows</a><a href="../ports.html">Ports</a><a href="../ecosystem/index.html">Ecosystem</a><a href="../guide/index.html">Guide</a><a href="../play/index.html">Play</a><a href="../cheats/index.html" aria-current="page">Cheats</a><a href="../quiz.html">Quiz</a><a href="../../campus/uc-lab-free-university.html">Campus</a></nav>
+  <nav class="tabs" aria-label="Lab"><a href="../index.html">Home</a><a href="../diagrams/index.html">Diagrams</a><a href="../flows/index.html">Flows</a><a href="../charts/index.html">Charts</a><a href="../cheats/index.html" aria-current="page">Cheat Codes</a><a href="../play/index.html">Play</a><a href="../ecosystem/index.html">Ecosystem</a><a href="../download.html">Downloads</a><a href="../guide/interview.html">Careers</a></nav>
+  <p class="progress" id="visitProgress">Progress</p>
 </header>
 <main id="content" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../cheats/index.html">Cheat Codes</a></li><li aria-current="page">Printable flashcards</li></ol></nav>
 <article class="cheat-sheet"><p class="kicker">Cheat code</p><h1>Twelve cited cards</h1>
 <p>The JSON files next to this page hold the full cited deck (88) and the idea-pool deck (1384). This page is the one-page pass.</p>
 <table class="deck"><thead><tr><th>Question</th><th>Answer</th><th>Cite</th></tr></thead><tbody><tr><td>What does a SIP REGISTER request ask the registrar to store?</td><td>A binding from an address-of-record to one or more Contact URIs, for an expiry time. It does not create a call.</td><td>RFC 3261 section 10</td></tr><tr><td>On a REGISTER, what is the difference between the Request-URI, To, and Contact?</td><td>The Request-URI is the registrar domain, such as sip:example.com. To is the address-of-record being registered. Contact is the device URI to bind to that address.</td><td>RFC 3261 section 10</td></tr><tr><td>Why is the first REGISTER often answered with 401?</td><td>The registrar is issuing a digest challenge. WWW-Authenticate carries the realm and nonce. The phone sends a new REGISTER with Authorization.</td><td>RFC 3261 section 22</td></tr><tr><td>How is 401 different from 407?</td><td>401 comes from the registrar and uses WWW-Authenticate. 407 comes from a proxy and uses Proxy-Authenticate. The matching response headers are Authorization and Proxy-Authorization.</td><td>RFC 3261</td></tr><tr><td>What does Expires: 0 do on a REGISTER Contact?</td><td>It removes that binding. Contact: * with Expires: 0 removes all bindings for the address-of-record.</td><td>RFC 3261 section 10</td></tr><tr><td>Does a successful registration mean media can reach the phone?</td><td>No. Registration publishes a signaling Contact. NAT, firewalls, and the SDP addresses used later are separate problems.</td><td>RFC 3261</td></tr><tr><td>What identifies a SIP dialog?</td><td>The Call-ID plus the local tag and the remote tag. From carries the UAC&#x27;s tag. To carries the UAS&#x27;s tag once a response creates it.</td><td>RFC 3261 section 12</td></tr><tr><td>When is a dialog early, and when is it confirmed?</td><td>A provisional response with a To tag creates an early dialog. The dialog is confirmed when the UAC receives a 2xx to the INVITE.</td><td>RFC 3261</td></tr><tr><td>Is 100 Trying forwarded end to end?</td><td>No. 100 Trying is hop-by-hop. A proxy generates its own 100 toward the caller so the caller stops retransmitting the INVITE.</td><td>RFC 3261</td></tr><tr><td>How does ACK for a 2xx differ from ACK for a failure such as 486?</td><td>ACK for a 2xx is a new end-to-end transaction and follows the dialog route set. ACK for a non-2xx final response is hop-by-hop and belongs to the INVITE transaction.</td><td>RFC 3261 section 17</td></tr><tr><td>What does Record-Route change about later requests?</td><td>It builds a route set so that in-dialog requests such as ACK for the 2xx, re-INVITE, and BYE still pass through that proxy. Without it, they go to the remote Contact.</td><td>RFC 3261</td></tr><tr><td>Where is the SDP in a typical early-offer call, and where is it in a delayed offer?</td><td>Early offer: offer in the INVITE, answer in a reliable 18x or in the 200 OK. Delayed offer: the INVITE has no SDP, the offer is in the 200 OK, and the answer is in the ACK.</td><td>RFC 3261 and RFC 3264</td></tr></tbody></table>
@@ -65,8 +71,11 @@ try {
     <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern or takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
   </div>
 </footer>
+<script src="../assets/search.js"></script>
 <script src="../assets/bank.js"></script>
 <script src="../assets/site.js"></script>
 <script src="../assets/play.js"></script>
+
+
 </body>
 </html>

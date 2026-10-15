@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Charts · UC Lab Free University</title>
+<meta name="description" content="Charts drawn from the lab catalog and cited formulas.">
+<link rel="icon" href="../assets/icon.svg">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+try {
+  var params = new URLSearchParams(location.search);
+  var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
+  var ok = {paper:1, midnight:1, contrast:1, signal:1, canopy:1};
+  if (ok[t]) document.documentElement.setAttribute("data-theme", t);
+  if (localStorage.getItem("uc_flagship_motion") === "reduce") document.documentElement.setAttribute("data-motion", "reduce");
+} catch (e) {}
+</script>
+</head>
+<body data-root="../">
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <div class="bar">
+    <a class="brand" href="../index.html">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
+      <span><strong>UC Lab</strong><small>Free University</small></span>
+    </a>
+    <nav class="hub" aria-label="Studio"><a href="https://cyphermonkeylabs.com">Studio</a><a href="https://linktr.ee/cyphermonkey">Links</a><a href="https://github.com/cipher0x9/uc-lab-free-university-mesmerizing">GitHub · rate, comment, help</a><a href="https://dev.to/cyphermonkey">DEV</a><a href="https://huggingface.co/Cypher0x9">Hugging Face</a><a href="https://x.com/CypherMonkey">X · @CypherMonkey</a></nav>
+    <div class="tools">
+      <div class="themes" role="radiogroup" aria-label="Theme">
+        <button type="button" class="swatch-paper" data-theme-set="paper" aria-label="Paper" aria-checked="true"></button>
+        <button type="button" class="swatch-midnight" data-theme-set="midnight" aria-label="Midnight" aria-checked="false"></button>
+        <button type="button" class="swatch-contrast" data-theme-set="contrast" aria-label="High contrast" aria-checked="false"></button>
+        <button type="button" class="swatch-signal" data-theme-set="signal" aria-label="Signal" aria-checked="false"></button>
+        <button type="button" class="swatch-canopy" data-theme-set="canopy" aria-label="Canopy" aria-checked="false"></button>
+      </div>
+      <button type="button" class="btn motion-btn">Motion</button>
+      <a class="btn dl" href="../download.html">Offline</a>
+      <button type="button" class="btn menu-btn" aria-expanded="false">Menu</button>
+    </div>
+    <form class="site-search" role="search">
+      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off">
+      <div id="searchPop" class="search-pop" hidden></div>
+    </form>
+  </div>
+  <nav class="tabs" aria-label="Lab"><a href="../index.html">Home</a><a href="../diagrams/index.html">Diagrams</a><a href="../flows/index.html">Flows</a><a href="../charts/index.html" aria-current="page">Charts</a><a href="../cheats/index.html">Cheat Codes</a><a href="../play/index.html">Play</a><a href="../ecosystem/index.html">Ecosystem</a><a href="../download.html">Downloads</a><a href="../guide/interview.html">Careers</a></nav>
+  <p class="progress" id="visitProgress">Progress</p>
+</header>
+<main id="content" class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">Charts</li></ol></nav>
+<p class="kicker">Counted</p><h1>Charts</h1><p class="lede" data-effects>Six charts. The numbers are the campus catalog, the question bank, the 29 flows, the G.711 formula already used in the labs, or the port-chapter families. Nothing here is a market share.</p><div class="chart-stack"><svg class="chart" data-chart="campus-sections" viewBox="0 0 860 456" role="img" aria-label="Campus sections by track"><text x="16" y="22" font-size="16" font-family="Georgia, serif">Campus sections by track</text>
+<text x="16" y="52" font-size="12" font-family="Segoe UI, sans-serif">Start here</text><rect x="230" y="40" width="28" height="16" rx="4" fill="#0f6e62"/><text x="266" y="52" font-size="12">6</text>
+<text x="16" y="80" font-size="12" font-family="Segoe UI, sans-serif">SIP and media</text><rect x="230" y="68" width="43" height="16" rx="4" fill="#0f6e62"/><text x="281" y="80" font-size="12">9</text>
+<text x="16" y="108" font-size="12" font-family="Segoe UI, sans-serif">CUCM and CUBE</text><rect x="230" y="96" width="57" height="16" rx="4" fill="#0f6e62"/><text x="295" y="108" font-size="12">12</text>
+<text x="16" y="136" font-size="12" font-family="Segoe UI, sans-serif">Webex Calling and Teams Phone</text><rect x="230" y="124" width="580" height="16" rx="4" fill="#0f6e62"/><text x="818" y="136" font-size="12">121</text>
+<text x="16" y="164" font-size="12" font-family="Segoe UI, sans-serif">Contact center — UCCE and PCCE</text><rect x="230" y="152" width="28" height="16" rx="4" fill="#0f6e62"/><text x="266" y="164" font-size="12">6</text>
+<text x="16" y="192" font-size="12" font-family="Segoe UI, sans-serif">CCaaS and UCaaS platforms</text><rect x="230" y="180" width="503" height="16" rx="4" fill="#0f6e62"/><text x="741" y="192" font-size="12">105</text>
+<text x="16" y="220" font-size="12" font-family="Segoe UI, sans-serif">Emergency calling</text><rect x="230" y="208" width="14" height="16" rx="4" fill="#0f6e62"/><text x="252" y="220" font-size="12">3</text>
+<text x="16" y="248" font-size="12" font-family="Segoe UI, sans-serif">Voice network and QoS</text><rect x="230" y="236" width="76" height="16" rx="4" fill="#0f6e62"/><text x="314" y="248" font-size="12">16</text>
+<text x="16" y="276" font-size="12" font-family="Segoe UI, sans-serif">Migrations</text><rect x="230" y="264" width="292" height="16" rx="4" fill="#0f6e62"/><text x="530" y="276" font-size="12">61</text>
+<text x="16" y="304" font-size="12" font-family="Segoe UI, sans-serif">Troubleshooting</text><rect x="230" y="292" width="536" height="16" rx="4" fill="#0f6e62"/><text x="774" y="304" font-size="12">112</text>
+<text x="16" y="332" font-size="12" font-family="Segoe UI, sans-serif">Evidence habits</text><rect x="230" y="320" width="158" height="16" rx="4" fill="#0f6e62"/><text x="396" y="332" font-size="12">33</text>
+<text x="16" y="360" font-size="12" font-family="Segoe UI, sans-serif">Design notes</text><rect x="230" y="348" width="167" height="16" rx="4" fill="#0f6e62"/><text x="405" y="360" font-size="12">35</text>
+<text x="16" y="388" font-size="12" font-family="Segoe UI, sans-serif">Practice</text><rect x="230" y="376" width="268" height="16" rx="4" fill="#0f6e62"/><text x="506" y="388" font-size="12">56</text>
+<text x="16" y="416" font-size="12" font-family="Segoe UI, sans-serif">Reference</text><rect x="230" y="404" width="23" height="16" rx="4" fill="#0f6e62"/><text x="261" y="416" font-size="12">5</text>
+<text x="16" y="448" font-size="11" fill="#5e584e">Counts from this repo&#x27;s 580-section catalog. They sum to 580.</text></svg><svg class="chart" data-chart="quiz-tracks" viewBox="0 0 860 232" role="img" aria-label="Quiz questions by track"><text x="16" y="22" font-size="16" font-family="Georgia, serif">Quiz questions by track</text>
+<text x="16" y="52" font-size="12" font-family="Segoe UI, sans-serif">CUCM and CUBE</text><rect x="230" y="40" width="580" height="16" rx="4" fill="#0f6e62"/><text x="818" y="52" font-size="12">340</text>
+<text x="16" y="80" font-size="12" font-family="Segoe UI, sans-serif">Contact center — UCCE and PCCE</text><rect x="230" y="68" width="156" height="16" rx="4" fill="#0f6e62"/><text x="394" y="80" font-size="12">92</text>
+<text x="16" y="108" font-size="12" font-family="Segoe UI, sans-serif">Voice network and QoS</text><rect x="230" y="96" width="22" height="16" rx="4" fill="#0f6e62"/><text x="260" y="108" font-size="12">13</text>
+<text x="16" y="136" font-size="12" font-family="Segoe UI, sans-serif">Emergency calling</text><rect x="230" y="124" width="17" height="16" rx="4" fill="#0f6e62"/><text x="255" y="136" font-size="12">10</text>
+<text x="16" y="164" font-size="12" font-family="Segoe UI, sans-serif">Migrations</text><rect x="230" y="152" width="17" height="16" rx="4" fill="#0f6e62"/><text x="255" y="164" font-size="12">10</text>
+<text x="16" y="192" font-size="12" font-family="Segoe UI, sans-serif">SIP and media</text><rect x="230" y="180" width="5" height="16" rx="4" fill="#0f6e62"/><text x="243" y="192" font-size="12">3</text>
+<text x="16" y="224" font-size="11" fill="#5e584e">Top tracks in the 468 idea-pool questions.</text></svg><svg class="chart" data-chart="card-tracks" viewBox="0 0 860 232" role="img" aria-label="Idea-pool cards by track"><text x="16" y="22" font-size="16" font-family="Georgia, serif">Idea-pool cards by track</text>
+<text x="16" y="52" font-size="12" font-family="Segoe UI, sans-serif">CUCM and CUBE</text><rect x="230" y="40" width="580" height="16" rx="4" fill="#0f6e62"/><text x="818" y="52" font-size="12">977</text>
+<text x="16" y="80" font-size="12" font-family="Segoe UI, sans-serif">Contact center — UCCE and PCCE</text><rect x="230" y="68" width="101" height="16" rx="4" fill="#0f6e62"/><text x="339" y="80" font-size="12">171</text>
+<text x="16" y="108" font-size="12" font-family="Segoe UI, sans-serif">Voice network and QoS</text><rect x="230" y="96" width="62" height="16" rx="4" fill="#0f6e62"/><text x="300" y="108" font-size="12">105</text>
+<text x="16" y="136" font-size="12" font-family="Segoe UI, sans-serif">Migrations</text><rect x="230" y="124" width="39" height="16" rx="4" fill="#0f6e62"/><text x="277" y="136" font-size="12">66</text>
+<text x="16" y="164" font-size="12" font-family="Segoe UI, sans-serif">Emergency calling</text><rect x="230" y="152" width="33" height="16" rx="4" fill="#0f6e62"/><text x="271" y="164" font-size="12">56</text>
+<text x="16" y="192" font-size="12" font-family="Segoe UI, sans-serif">SIP and media</text><rect x="230" y="180" width="5" height="16" rx="4" fill="#0f6e62"/><text x="243" y="192" font-size="12">9</text>
+<text x="16" y="224" font-size="11" fill="#5e584e">Top tracks in the 1384 idea-pool cards.</text></svg><svg class="chart" data-chart="flows" viewBox="0 0 860 232" role="img" aria-label="Playable flows by family"><text x="16" y="22" font-size="16" font-family="Georgia, serif">Playable flows by family</text>
+<text x="16" y="52" font-size="12" font-family="Segoe UI, sans-serif">Signaling</text><rect x="230" y="40" width="580" height="16" rx="4" fill="#0f6e62"/><text x="818" y="52" font-size="12">8</text>
+<text x="16" y="80" font-size="12" font-family="Segoe UI, sans-serif">Edge and media</text><rect x="230" y="68" width="435" height="16" rx="4" fill="#0f6e62"/><text x="673" y="80" font-size="12">6</text>
+<text x="16" y="108" font-size="12" font-family="Segoe UI, sans-serif">Cloud PSTN</text><rect x="230" y="96" width="217" height="16" rx="4" fill="#0f6e62"/><text x="455" y="108" font-size="12">3</text>
+<text x="16" y="136" font-size="12" font-family="Segoe UI, sans-serif">Safety</text><rect x="230" y="124" width="145" height="16" rx="4" fill="#0f6e62"/><text x="383" y="136" font-size="12">2</text>
+<text x="16" y="164" font-size="12" font-family="Segoe UI, sans-serif">Features</text><rect x="230" y="152" width="580" height="16" rx="4" fill="#0f6e62"/><text x="818" y="164" font-size="12">8</text>
+<text x="16" y="192" font-size="12" font-family="Segoe UI, sans-serif">Contact center</text><rect x="230" y="180" width="145" height="16" rx="4" fill="#0f6e62"/><text x="383" y="192" font-size="12">2</text>
+<text x="16" y="224" font-size="11" fill="#5e584e">The 29 flagship ladders, grouped. They sum to 29.</text></svg><svg class="chart" data-chart="g711" viewBox="0 0 860 120" role="img" aria-label="G.711 20 ms bandwidth"><text x="16" y="22" font-size="16" font-family="Georgia, serif">G.711 20 ms bandwidth</text>
+<text x="16" y="52" font-size="12" font-family="Segoe UI, sans-serif">Layer 3</text><rect x="230" y="40" width="532" height="16" rx="4" fill="#0f6e62"/><text x="770" y="52" font-size="12">80 kbit/s</text>
+<text x="16" y="80" font-size="12" font-family="Segoe UI, sans-serif">With 18-byte Ethernet</text><rect x="230" y="68" width="580" height="16" rx="4" fill="#0f6e62"/><text x="818" y="80" font-size="12">87.2 kbit/s</text>
+<text x="16" y="112" font-size="11" fill="#5e584e">Payload 160 bytes. Layer 3 adds a 40-byte IP/UDP/RTP header.</text></svg><svg class="chart" data-chart="ports" viewBox="0 0 860 204" role="img" aria-label="Port chapter families"><text x="16" y="22" font-size="16" font-family="Georgia, serif">Port chapter families</text>
+<text x="16" y="52" font-size="12" font-family="Segoe UI, sans-serif">Signaling</text><rect x="230" y="40" width="580" height="16" rx="4" fill="#0f6e62"/><text x="818" y="52" font-size="12">4</text>
+<text x="16" y="80" font-size="12" font-family="Segoe UI, sans-serif">Phone files</text><rect x="230" y="68" width="435" height="16" rx="4" fill="#0f6e62"/><text x="673" y="80" font-size="12">3</text>
+<text x="16" y="108" font-size="12" font-family="Segoe UI, sans-serif">CTI and AXL</text><rect x="230" y="96" width="435" height="16" rx="4" fill="#0f6e62"/><text x="673" y="108" font-size="12">3</text>
+<text x="16" y="136" font-size="12" font-family="Segoe UI, sans-serif">Media range</text><rect x="230" y="124" width="145" height="16" rx="4" fill="#0f6e62"/><text x="383" y="136" font-size="12">1</text>
+<text x="16" y="164" font-size="12" font-family="Segoe UI, sans-serif">Time and license</text><rect x="230" y="152" width="290" height="16" rx="4" fill="#0f6e62"/><text x="528" y="164" font-size="12">2</text>
+<text x="16" y="196" font-size="11" fill="#5e584e">Families in the flagship firewall sheet, from the CUCM 15 port chapter.</text></svg></div><h2>Sketch of a troubleshooting tree</h2><svg id="roughBoard" viewBox="0 0 780 120" data-effects></svg><h2>Sources</h2><ul><li><a href="https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15/cucm_m_tcp-and-udp-port-usage-12-0.html">CUCM 15 port usage</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc4594">RFC 4594</a></li></ul>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p class="kicker">Next</p>
+    <p><a href="../diagrams/index.html">Previous · Diagrams</a> · <a href="../tracks/index.html">Next · Tracks</a> · <a href="../../campus/uc-lab-free-university.html">Deep campus · 580 sections</a></p>
+    <div class="sister"><a class="card" href="https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/"><strong>AI Lab</strong></a><a class="card" href="https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/"><strong>Amazon Connect</strong></a><a class="card" href="https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/"><strong>Microsoft Voice</strong></a><a class="card" href="https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/"><strong>Five9</strong></a><a class="card" href="https://cipher0x9.github.io/genesys-cloud-lab-free-university-mesmerizing/"><strong>Genesys Cloud</strong></a><a class="card" href="https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/"><strong>NICE CXone</strong></a><a class="card" href="https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/"><strong>SIP Universe</strong></a><a class="card" href="../path.html"><strong>Study path</strong></a></div>
+    <p class="sig">CYPHER0X9</p>
+    <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
+    <p><a href="https://cyphermonkeylabs.com/#contact">Report a concern or takedown</a> · <a href="https://cyphermonkeylabs.com/#contact">Work with us</a></p>
+  </div>
+</footer>
+<script src="../assets/search.js"></script>
+<script src="../assets/bank.js"></script>
+<script src="../assets/site.js"></script>
+<script src="../assets/play.js"></script>
+<script type="module" src="../assets/effects.js"></script>
+
+</body>
+</html>

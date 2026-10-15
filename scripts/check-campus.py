@@ -27,9 +27,11 @@ ALLOWED_EMAILS = {
 # links on purpose. The campus lesson text and the briefing deck stay scrubbed.
 HUB_OK_PREFIXES = ("flagship/",)
 HUB_OK_FILES = {
+    "index.html",
     "campus/uc-lab-free-university.html",
     "scripts/build-flagship.py",
     "scripts/round2_pages.py",
+    "scripts/check-flagship.py",
 }
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}")
 PHONE_RE = re.compile(r"(?<![\w.])(?:\+\d{1,3}[\s.\-]?)?\(?\d{3}\)?[\s.\-]\d{3}[\s.\-]\d{4}(?!\d)")

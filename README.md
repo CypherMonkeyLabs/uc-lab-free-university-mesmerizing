@@ -8,7 +8,7 @@
   <a href="./campus/uc-lab-free-university.html"><img src="./docs/assets/btn-open.svg" alt="Open" height="48"/></a>
 </p>
 
-The flagship studio is [flagship/index.html](./flagship/index.html): call-flow ladders, the ecosystem, a scored quiz, flashcards, and an offline zip. The 580-section campus below is still the deep library.
+The flagship studio is the repository root [index.html](./index.html): call-flow ladders, the diagram atlas, charts, cheat codes, and an offline zip. The same studio also lives at [flagship/index.html](./flagship/index.html). The 580-section campus below is still the deep library.
 
 A free offline campus for people who run **voice, unified communications, and contact center** systems. The shell is a few kilobytes. Lessons load one at a time: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, the main CCaaS platforms, E911, QoS, and the troubleshooting habit that ties them together.
 
