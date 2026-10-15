@@ -4,14 +4,14 @@
   var THEMES = ["neon", "holographic", "cyberpunk", "sunset", "light"];
   var root = document.documentElement;
   var I18N = {
-    en: { skip: "Skip to content", brandSub: "Free University", greet: "Welcome to the lab", heroTitle: "Voice, UC, and contact center.", heroLede: "Fundamentals, then the edge, the cloud, and the systems around the agent.", startPath: "Start the path", openDiagrams: "Open diagrams", campus: "Deep campus", wall: "Signal wall", next: "Where to go next", audioTitle: "Architect conversation", searchPh: "Search", langLabel: "Language", mode: "Light", modeDark: "Dark", navHome: "Home", navDiagrams: "Diagrams", navFlows: "Flows", navCharts: "Charts", navCheats: "Cheat Codes", navPlay: "Play", navEco: "Ecosystem", navDownloads: "Downloads", navCareers: "Careers" },
-    es: { skip: "Saltar al contenido", brandSub: "Universidad libre", greet: "Bienvenido al laboratorio", heroTitle: "Voz, UC y centro de contacto.", heroLede: "Primero lo fundamental, luego el borde, la nube y los sistemas junto al agente.", startPath: "Empezar la ruta", openDiagrams: "Abrir diagramas", campus: "Campus profundo", wall: "Muro de señal", next: "A dónde seguir", audioTitle: "Conversación de arquitectos", searchPh: "Buscar", langLabel: "Idioma", mode: "Claro", modeDark: "Oscuro", navHome: "Inicio", navDiagrams: "Diagramas", navFlows: "Flujos", navCharts: "Gráficos", navCheats: "Chuletas", navPlay: "Jugar", navEco: "Ecosistema", navDownloads: "Descargas", navCareers: "Carreras" },
-    hi: { skip: "सामग्री पर जाएँ", brandSub: "मुक्त विश्वविद्यालय", greet: "प्रयोगशाला में स्वागत है", heroTitle: "वॉइस, यूसी और कॉन्टैक्ट सेंटर।", heroLede: "पहले मूल बातें, फिर एज, क्लाउड, और एजेंट के आसपास के सिस्टम।", startPath: "पथ शुरू करें", openDiagrams: "आरेख खोलें", campus: "गहरा परिसर", wall: "सिग्नल दीवार", next: "आगे कहाँ", audioTitle: "आर्किटेक्ट बातचीत", searchPh: "खोजें", langLabel: "भाषा", mode: "हल्का", modeDark: "गहरा", navHome: "होम", navDiagrams: "आरेख", navFlows: "प्रवाह", navCharts: "चार्ट", navCheats: "चीट कोड", navPlay: "खेल", navEco: "पारिस्थितिकी", navDownloads: "डाउनलोड", navCareers: "करियर" },
-    te: { skip: "విషయానికి వెళ్లండి", brandSub: "ఉచిత విశ్వవిద్యాలయం", greet: "ప్రయోగశాలకు స్వాగతం", heroTitle: "వాయిస్, యూసీ, కాంటాక్ట్ సెంటర్.", heroLede: "ముందు మూలాలు, తర్వాత ఎడ్జ్, క్లౌడ్, ఏజెంట్ చుట్టూ ఉన్న వ్యవస్థలు.", startPath: "మార్గం ప్రారంభించండి", openDiagrams: "చిత్రాలు తెరవండి", campus: "లోతైన క్యాంపస్", wall: "సిగ్నల్ గోడ", next: "తర్వాత ఎక్కడ", audioTitle: "ఆర్కిటెక్ట్ సంభాషణ", searchPh: "వెతకండి", langLabel: "భాష", mode: "వెలుతురు", modeDark: "చీకటి", navHome: "హోమ్", navDiagrams: "చిత్రాలు", navFlows: "ప్రవాహాలు", navCharts: "చార్టులు", navCheats: "చీట్ కోడ్స్", navPlay: "ఆట", navEco: "పర్యావరణం", navDownloads: "డౌన్‌లోడ్", navCareers: "వృత్తి" },
-    fr: { skip: "Aller au contenu", brandSub: "Université libre", greet: "Bienvenue dans le laboratoire", heroTitle: "Voix, UC et centre de contact.", heroLede: "D'abord les bases, puis la bordure, le cloud, et les systèmes autour de l'agent.", startPath: "Commencer le parcours", openDiagrams: "Ouvrir les schémas", campus: "Campus approfondi", wall: "Mur de signal", next: "Où aller ensuite", audioTitle: "Conversation d'architectes", searchPh: "Rechercher", langLabel: "Langue", mode: "Clair", modeDark: "Sombre", navHome: "Accueil", navDiagrams: "Schémas", navFlows: "Flux", navCharts: "Graphiques", navCheats: "Antisèches", navPlay: "Jouer", navEco: "Écosystème", navDownloads: "Téléchargements", navCareers: "Carrières" },
-    de: { skip: "Zum Inhalt", brandSub: "Freie Universität", greet: "Willkommen im Labor", heroTitle: "Sprache, UC und Contact Center.", heroLede: "Zuerst die Grundlagen, dann der Rand, die Cloud und die Systeme um den Agenten.", startPath: "Pfad starten", openDiagrams: "Diagramme öffnen", campus: "Tiefer Campus", wall: "Signalwand", next: "Wohin als Nächstes", audioTitle: "Architekten-Gespräch", searchPh: "Suchen", langLabel: "Sprache", mode: "Hell", modeDark: "Dunkel", navHome: "Start", navDiagrams: "Diagramme", navFlows: "Abläufe", navCharts: "Balken", navCheats: "Spickzettel", navPlay: "Spielen", navEco: "Ökosystem", navDownloads: "Downloads", navCareers: "Beruf" },
-    ja: { skip: "本文へ", brandSub: "フリー大学", greet: "ラボへようこそ", heroTitle: "音声、UC、コンタクトセンター。", heroLede: "基礎から、エッジ、クラウド、エージェント周りのシステムへ。", startPath: "経路を始める", openDiagrams: "図を開く", campus: "深いキャンパス", wall: "シグナルの壁", next: "次に行く場所", audioTitle: "アーキテクトの対話", searchPh: "検索", langLabel: "言語", mode: "ライト", modeDark: "ダーク", navHome: "ホーム", navDiagrams: "図", navFlows: "フロー", navCharts: "チャート", navCheats: "チート", navPlay: "プレイ", navEco: "エコシステム", navDownloads: "ダウンロード", navCareers: "キャリア" },
-    ar: { skip: "انتقل إلى المحتوى", brandSub: "جامعة حرة", greet: "أهلًا بك في المختبر", heroTitle: "الصوت والاتصالات ومركز الاتصال.", heroLede: "الأساسيات أولًا، ثم الحافة والسحابة والأنظمة حول الوكيل.", startPath: "ابدأ المسار", openDiagrams: "افتح المخططات", campus: "الحرم العميق", wall: "جدار الإشارة", next: "إلى أين بعد ذلك", audioTitle: "حوار المهندسين", searchPh: "بحث", langLabel: "اللغة", mode: "فاتح", modeDark: "داكن", navHome: "الرئيسية", navDiagrams: "المخططات", navFlows: "التدفقات", navCharts: "الرسوم", navCheats: "أوراق المراجعة", navPlay: "العب", navEco: "المنظومة", navDownloads: "التنزيلات", navCareers: "المسار المهني" }
+    en: { skip: "Skip to content", brandSub: "Free University", greet: "Welcome to the lab", heroTitle: "Voice, UC, and contact center.", heroLede: "Fundamentals, then the edge, the cloud, and the systems around the agent.", startPath: "Start the path", openDiagrams: "Open diagrams", campus: "Deep campus", wall: "Signal wall", next: "Where to go next", audioTitle: "Architect conversation", searchPh: "Search", langLabel: "Language", mode: "Light", modeDark: "Dark", navHome: "Home", navDiagrams: "Diagrams", navFlows: "Flows", navCharts: "Charts", navCheats: "Cheat Codes", navPlay: "Play", navEco: "Ecosystem", navDownloads: "Downloads", navCareers: "Careers", menu: "Menu", close: "Close", settings: "Settings", quickLearn: "Learn", quickListen: "Listen" },
+    es: { skip: "Saltar al contenido", brandSub: "Universidad libre", greet: "Bienvenido al laboratorio", heroTitle: "Voz, UC y centro de contacto.", heroLede: "Primero lo fundamental, luego el borde, la nube y los sistemas junto al agente.", startPath: "Empezar la ruta", openDiagrams: "Abrir diagramas", campus: "Campus profundo", wall: "Muro de señal", next: "A dónde seguir", audioTitle: "Conversación de arquitectos", searchPh: "Buscar", langLabel: "Idioma", mode: "Claro", modeDark: "Oscuro", navHome: "Inicio", navDiagrams: "Diagramas", navFlows: "Flujos", navCharts: "Gráficos", navCheats: "Chuletas", navPlay: "Jugar", navEco: "Ecosistema", navDownloads: "Descargas", navCareers: "Carreras", menu: "Menú", close: "Cerrar", settings: "Ajustes", quickLearn: "Aprender", quickListen: "Escuchar" },
+    hi: { skip: "सामग्री पर जाएँ", brandSub: "मुक्त विश्वविद्यालय", greet: "प्रयोगशाला में स्वागत है", heroTitle: "वॉइस, यूसी और कॉन्टैक्ट सेंटर।", heroLede: "पहले मूल बातें, फिर एज, क्लाउड, और एजेंट के आसपास के सिस्टम।", startPath: "पथ शुरू करें", openDiagrams: "आरेख खोलें", campus: "गहरा परिसर", wall: "सिग्नल दीवार", next: "आगे कहाँ", audioTitle: "आर्किटेक्ट बातचीत", searchPh: "खोजें", langLabel: "भाषा", mode: "हल्का", modeDark: "गहरा", navHome: "होम", navDiagrams: "आरेख", navFlows: "प्रवाह", navCharts: "चार्ट", navCheats: "चीट कोड", navPlay: "खेल", navEco: "पारिस्थितिकी", navDownloads: "डाउनलोड", navCareers: "करियर", menu: "मेनू", close: "बंद", settings: "सेटिंग", quickLearn: "सीखें", quickListen: "सुनें" },
+    te: { skip: "విషయానికి వెళ్లండి", brandSub: "ఉచిత విశ్వవిద్యాలయం", greet: "ప్రయోగశాలకు స్వాగతం", heroTitle: "వాయిస్, యూసీ, కాంటాక్ట్ సెంటర్.", heroLede: "ముందు మూలాలు, తర్వాత ఎడ్జ్, క్లౌడ్, ఏజెంట్ చుట్టూ ఉన్న వ్యవస్థలు.", startPath: "మార్గం ప్రారంభించండి", openDiagrams: "చిత్రాలు తెరవండి", campus: "లోతైన క్యాంపస్", wall: "సిగ్నల్ గోడ", next: "తర్వాత ఎక్కడ", audioTitle: "ఆర్కిటెక్ట్ సంభాషణ", searchPh: "వెతకండి", langLabel: "భాష", mode: "వెలుతురు", modeDark: "చీకటి", navHome: "హోమ్", navDiagrams: "చిత్రాలు", navFlows: "ప్రవాహాలు", navCharts: "చార్టులు", navCheats: "చీట్ కోడ్స్", navPlay: "ఆట", navEco: "పర్యావరణం", navDownloads: "డౌన్‌లోడ్", navCareers: "వృత్తి", menu: "మెను", close: "మూసివేయి", settings: "సెట్టింగ్", quickLearn: "నేర్చుకోండి", quickListen: "వినండి" },
+    fr: { skip: "Aller au contenu", brandSub: "Université libre", greet: "Bienvenue dans le laboratoire", heroTitle: "Voix, UC et centre de contact.", heroLede: "D'abord les bases, puis la bordure, le cloud, et les systèmes autour de l'agent.", startPath: "Commencer le parcours", openDiagrams: "Ouvrir les schémas", campus: "Campus approfondi", wall: "Mur de signal", next: "Où aller ensuite", audioTitle: "Conversation d'architectes", searchPh: "Rechercher", langLabel: "Langue", mode: "Clair", modeDark: "Sombre", navHome: "Accueil", navDiagrams: "Schémas", navFlows: "Flux", navCharts: "Graphiques", navCheats: "Antisèches", navPlay: "Jouer", navEco: "Écosystème", navDownloads: "Téléchargements", navCareers: "Carrières", menu: "Menu", close: "Fermer", settings: "Réglages", quickLearn: "Apprendre", quickListen: "Écouter" },
+    de: { skip: "Zum Inhalt", brandSub: "Freie Universität", greet: "Willkommen im Labor", heroTitle: "Sprache, UC und Contact Center.", heroLede: "Zuerst die Grundlagen, dann der Rand, die Cloud und die Systeme um den Agenten.", startPath: "Pfad starten", openDiagrams: "Diagramme öffnen", campus: "Tiefer Campus", wall: "Signalwand", next: "Wohin als Nächstes", audioTitle: "Architekten-Gespräch", searchPh: "Suchen", langLabel: "Sprache", mode: "Hell", modeDark: "Dunkel", navHome: "Start", navDiagrams: "Diagramme", navFlows: "Abläufe", navCharts: "Balken", navCheats: "Spickzettel", navPlay: "Spielen", navEco: "Ökosystem", navDownloads: "Downloads", navCareers: "Beruf", menu: "Menü", close: "Schließen", settings: "Einstellungen", quickLearn: "Lernen", quickListen: "Hören" },
+    ja: { skip: "本文へ", brandSub: "フリー大学", greet: "ラボへようこそ", heroTitle: "音声、UC、コンタクトセンター。", heroLede: "基礎から、エッジ、クラウド、エージェント周りのシステムへ。", startPath: "経路を始める", openDiagrams: "図を開く", campus: "深いキャンパス", wall: "シグナルの壁", next: "次に行く場所", audioTitle: "アーキテクトの対話", searchPh: "検索", langLabel: "言語", mode: "ライト", modeDark: "ダーク", navHome: "ホーム", navDiagrams: "図", navFlows: "フロー", navCharts: "チャート", navCheats: "チート", navPlay: "プレイ", navEco: "エコシステム", navDownloads: "ダウンロード", navCareers: "キャリア", menu: "メニュー", close: "閉じる", settings: "設定", quickLearn: "学ぶ", quickListen: "聴く" },
+    ar: { skip: "انتقل إلى المحتوى", brandSub: "جامعة حرة", greet: "أهلًا بك في المختبر", heroTitle: "الصوت والاتصالات ومركز الاتصال.", heroLede: "الأساسيات أولًا، ثم الحافة والسحابة والأنظمة حول الوكيل.", startPath: "ابدأ المسار", openDiagrams: "افتح المخططات", campus: "الحرم العميق", wall: "جدار الإشارة", next: "إلى أين بعد ذلك", audioTitle: "حوار المهندسين", searchPh: "بحث", langLabel: "اللغة", mode: "فاتح", modeDark: "داكن", navHome: "الرئيسية", navDiagrams: "المخططات", navFlows: "التدفقات", navCharts: "الرسوم", navCheats: "أوراق المراجعة", navPlay: "العب", navEco: "المنظومة", navDownloads: "التنزيلات", navCareers: "المسار المهني", menu: "القائمة", close: "إغلاق", settings: "الإعدادات", quickLearn: "تعلّم", quickListen: "استمع" }
   };
   var EXTRA = {
     en: { pageCharts: "Charts", pagePlay: "Play", pageCheats: "Cheat codes", pageDownloads: "Download this lab", pageCareers: "Interview prep and career path", pageFlows: "Call flows", pageDiagrams: "Diagram atlas", pageEco: "Ecosystem" },
@@ -43,8 +43,9 @@
     $all(".lang-chips button").forEach(function (btn) {
       btn.setAttribute("aria-pressed", btn.getAttribute("data-lang") === lang ? "true" : "false");
     });
-    var modeBtn = $(".mode-btn");
-    if (modeBtn) modeBtn.textContent = root.getAttribute("data-theme") === "light" ? label("modeDark") : label("mode");
+    $all(".mode-btn").forEach(function (btn) {
+      btn.textContent = root.getAttribute("data-theme") === "light" ? label("modeDark") : label("mode");
+    });
   }
 
   function $(sel, base) { return (base || document).querySelector(sel); }
@@ -59,8 +60,9 @@
     $all(".themes button").forEach(function (btn) {
       btn.setAttribute("aria-checked", btn.getAttribute("data-theme-set") === name ? "true" : "false");
     });
-    var modeBtn = $(".mode-btn");
-    if (modeBtn) modeBtn.textContent = name === "light" ? label("modeDark") : label("mode");
+    $all(".mode-btn").forEach(function (btn) {
+      btn.textContent = name === "light" ? label("modeDark") : label("mode");
+    });
     if (window.UC_APPLY_THEME) window.UC_APPLY_THEME();
   }
 
@@ -68,12 +70,11 @@
     btn.addEventListener("click", function () { setTheme(btn.getAttribute("data-theme-set")); });
   });
   setTheme(root.getAttribute("data-theme") || "neon");
-  var modeBtn = $(".mode-btn");
-  if (modeBtn) {
-    modeBtn.addEventListener("click", function () {
+  $all(".mode-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
       setTheme(root.getAttribute("data-theme") === "light" ? lastDark : "light");
     });
-  }
+  });
   try {
     var asked = new URLSearchParams(window.location.search).get("theme");
     if (asked) setTheme(asked);
@@ -89,28 +90,50 @@
     });
   });
 
-  var menu = $(".menu-btn");
-  if (menu) {
-    menu.addEventListener("click", function () {
-      var open = document.querySelector(".topbar").classList.toggle("open");
-      menu.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-  }
-
-  var motionBtn = $(".motion-btn");
   function motionNow() {
     return root.getAttribute("data-motion") || "system";
   }
-  if (motionBtn) {
-    motionBtn.addEventListener("click", function () {
-      var next = motionNow() === "reduce" ? "allow" : "reduce";
-      root.setAttribute("data-motion", next);
-      try { localStorage.setItem("uc_flagship_motion", next); } catch (err) { /* private mode */ }
-      motionBtn.textContent = next === "reduce" ? "Motion off" : "Motion on";
+  function paintMotion() {
+    var off = motionNow() === "reduce";
+    $all(".motion-btn").forEach(function (btn) {
+      btn.setAttribute("aria-pressed", off ? "true" : "false");
+      btn.textContent = off ? "Motion off" : "Motion on";
     });
   }
+  function setMotion(next) {
+    root.setAttribute("data-motion", next);
+    try { localStorage.setItem("uc_flagship_motion", next); } catch (err) { /* private mode */ }
+    paintMotion();
+  }
+  paintMotion();
+  $all(".motion-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      setMotion(motionNow() === "reduce" ? "allow" : "reduce");
+    });
+  });
+
+  function soundOn() {
+    try { return localStorage.getItem("uc_flagship_sound") !== "off"; } catch (err) { return true; }
+  }
+  function paintSound() {
+    var on = soundOn();
+    $all("audio").forEach(function (el) { el.muted = !on; });
+    $all(".sound-btn").forEach(function (btn) {
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      btn.textContent = on ? "Sound on" : "Sound off";
+    });
+  }
+  function setSound(on) {
+    try { localStorage.setItem("uc_flagship_sound", on ? "on" : "off"); } catch (err) { /* private mode */ }
+    paintSound();
+  }
+  paintSound();
+  $all(".sound-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () { setSound(!soundOn()); });
+  });
 
   function tick() {
+    if (!soundOn()) return;
     if (motionNow() === "reduce") return;
     if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches && motionNow() !== "allow") return;
     try {
@@ -842,6 +865,187 @@
       card.addEventListener("pointerleave", function () { card.style.transform = ""; });
     });
   }
+  var SHEETS = { menu: "siteMenu", settings: "settingsPanel", listen: "listenSheet" };
+  var sheetStack = [];
+  var sheetFocus = [];
+  var sheetPushed = 0;
+  var ignorePop = false;
+
+  function sheetEl(name) { return document.getElementById(SHEETS[name]); }
+  function phoneLayout() {
+    return window.matchMedia && window.matchMedia("(max-width: 760px)").matches;
+  }
+  function parkSearch(intoMenu) {
+    var form = $(".site-search");
+    var slot = $("#menuSearchSlot");
+    var bar = $(".bar");
+    if (!form || !slot || !bar) return;
+    if (intoMenu && phoneLayout()) slot.appendChild(form);
+    else bar.appendChild(form);
+  }
+  function paintSheetButtons() {
+    var menuOpen = sheetStack.indexOf("menu") >= 0;
+    var listenOpen = sheetStack.indexOf("listen") >= 0;
+    $all("[data-open='menu']").forEach(function (btn) {
+      btn.setAttribute("aria-expanded", menuOpen ? "true" : "false");
+    });
+    $all("[data-open='listen']").forEach(function (btn) {
+      btn.setAttribute("aria-expanded", listenOpen ? "true" : "false");
+    });
+    document.body.classList.toggle("sheet-open", sheetStack.length > 0);
+  }
+  function syncInert() {
+    var top = sheetStack[sheetStack.length - 1] || "";
+    var blocked = sheetStack.length > 0;
+    ["header.topbar", "main", "footer.site-foot"].forEach(function (sel) {
+      var el = $(sel);
+      if (el) el.inert = blocked;
+    });
+    Object.keys(SHEETS).forEach(function (name) {
+      var el = sheetEl(name);
+      if (!el) return;
+      el.inert = sheetStack.indexOf(name) >= 0 && name !== top;
+    });
+  }
+  function hideSheet(name) {
+    var el = sheetEl(name);
+    if (!el) return;
+    el.hidden = true;
+    if (name === "menu") parkSearch(false);
+  }
+  function showSheet(name) {
+    var el = sheetEl(name);
+    if (!el) return;
+    if (name === "menu") parkSearch(true);
+    el.hidden = false;
+    var closeBtn = $(".sheet-close", el);
+    if (closeBtn) closeBtn.focus();
+  }
+  function openSheet(name, opener) {
+    if (!sheetEl(name)) return;
+    if (sheetStack[sheetStack.length - 1] === name) return;
+    sheetFocus.push(opener || document.activeElement);
+    showSheet(name);
+    sheetStack.push(name);
+    try {
+      history.pushState({ ucSheet: name }, "");
+      sheetPushed += 1;
+    } catch (err) { /* file URL */ }
+    paintSheetButtons();
+    syncInert();
+  }
+  function closeTop(fromPop) {
+    if (!sheetStack.length) return;
+    var name = sheetStack.pop();
+    hideSheet(name);
+    var back = sheetFocus.pop();
+    paintSheetButtons();
+    syncInert();
+    if (back && back.focus) back.focus();
+    if (!fromPop && sheetPushed) {
+      ignorePop = true;
+      sheetPushed -= 1;
+      history.back();
+    }
+  }
+  function closeAll() {
+    if (!sheetStack.length) return;
+    var steps = sheetPushed;
+    while (sheetStack.length) hideSheet(sheetStack.pop());
+    var back = sheetFocus[0];
+    sheetFocus = [];
+    sheetPushed = 0;
+    paintSheetButtons();
+    syncInert();
+    if (back && back.focus) back.focus();
+    if (steps) {
+      ignorePop = true;
+      history.go(-steps);
+    }
+  }
+  function toggleSheet(name, opener) {
+    if (name === "menu" && sheetStack.indexOf("menu") >= 0) {
+      closeAll();
+      return;
+    }
+    if (sheetStack[sheetStack.length - 1] === name) {
+      closeTop(false);
+      return;
+    }
+    openSheet(name, opener);
+  }
+  function mountSheets() {
+    $all("[data-open]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        toggleSheet(btn.getAttribute("data-open"), btn);
+      });
+    });
+    $all("[data-close]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var name = btn.getAttribute("data-close");
+        if (sheetStack[sheetStack.length - 1] === name) closeTop(false);
+        else if (sheetStack.indexOf(name) >= 0) closeAll();
+      });
+    });
+    document.addEventListener("keydown", function (event) {
+      var top = sheetStack[sheetStack.length - 1];
+      if (!top) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeTop(false);
+        return;
+      }
+      if (event.key !== "Tab") return;
+      var panel = sheetEl(top);
+      if (!panel) return;
+      var nodes = panel.querySelectorAll("a[href], button, input, select, textarea");
+      var list = [];
+      for (var i = 0; i < nodes.length; i += 1) {
+        if (!nodes[i].disabled && nodes[i].getClientRects().length) list.push(nodes[i]);
+      }
+      if (!list.length) return;
+      var first = list[0];
+      var last = list[list.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+    window.addEventListener("popstate", function () {
+      if (ignorePop) {
+        ignorePop = false;
+        return;
+      }
+      if (!sheetStack.length) return;
+      sheetPushed = Math.max(0, sheetPushed - 1);
+      closeTop(true);
+    });
+  }
+  function mountReveal() {
+    if (reduced()) return;
+    if (!("IntersectionObserver" in window)) return;
+    var nodes = $all("main .card, main .tilt-card, main .file-card");
+    if (!nodes.length) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-in");
+        io.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    nodes.forEach(function (el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+        el.classList.add("is-in");
+        return;
+      }
+      el.classList.add("reveal");
+      io.observe(el);
+    });
+  }
   function mountPhoneChrome() {
     var dock = $("#iconDock");
     var more = $("#iconMore");
@@ -862,6 +1066,8 @@
       });
     }
   }
+  mountSheets();
+  mountReveal();
   mountPhoneChrome();
   mountTilt();
   mountStudio();

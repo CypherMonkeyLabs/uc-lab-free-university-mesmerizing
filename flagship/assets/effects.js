@@ -1,8 +1,16 @@
 import { animate } from "./vendor/anime.esm.min.js";
 import rough from "./vendor/rough.esm.js";
 
-const reduce = document.documentElement.getAttribute("data-motion") === "reduce"
-  || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function prefersReduce() {
+  const mode = document.documentElement.getAttribute("data-motion");
+  if (mode === "reduce") return true;
+  if (mode === "allow") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+const reduce = prefersReduce();
+function pixelRatio() {
+  return Math.min(window.devicePixelRatio || 1, 2);
+}
 
 function cssColor(name, fallback) {
   const value = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -25,7 +33,7 @@ function mountHero(THREE, canvas) {
     return;
   }
   document.documentElement.setAttribute("data-webgl", "on");
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+  renderer.setPixelRatio(pixelRatio());
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(58, 1, 0.1, 80);
   camera.position.set(0.4, 1.5, 7.2);
@@ -266,13 +274,26 @@ function mountHero(THREE, canvas) {
   }
   size();
   window.addEventListener("resize", size);
-  let running = true;
-  document.addEventListener("visibilitychange", function () { running = !document.hidden; });
+  let raf = 0;
+  let inView = true;
+  function paused() {
+    return document.hidden || !inView || document.documentElement.getAttribute("data-motion") === "reduce";
+  }
+  function kick() {
+    if (raf || paused()) return;
+    raf = requestAnimationFrame(frame);
+  }
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) kick(); });
+  if ("IntersectionObserver" in window) {
+    const watch = new IntersectionObserver(function (entries) {
+      inView = entries.some(function (entry) { return entry.isIntersecting; });
+      if (inView) kick();
+    }, { threshold: 0 });
+    watch.observe(canvas);
+  }
   function frame(t) {
-    if (!running) {
-      requestAnimationFrame(frame);
-      return;
-    }
+    raf = 0;
+    if (paused()) return;
     const scroll = window.scrollY || 0;
     globe.rotation.y = t * 0.00012;
     nodes.forEach(function (mesh) {
@@ -315,9 +336,9 @@ function mountHero(THREE, canvas) {
     camera.position.z = 7.6 - scroll * 0.001;
     camera.lookAt(mx * 0.4, my * -0.2, 0);
     renderer.render(scene, camera);
-    requestAnimationFrame(frame);
+    raf = requestAnimationFrame(frame);
   }
-  requestAnimationFrame(frame);
+  kick();
 }
 
 function mountMini(THREE, canvas) {
@@ -347,15 +368,35 @@ function mountMini(THREE, canvas) {
   const sun = new THREE.PointLight(0xffffff, 6, 10);
   sun.position.set(2, 3, 2);
   scene.add(sun);
+  renderer.setPixelRatio(pixelRatio());
   renderer.setSize(canvas.clientWidth || 140, canvas.clientHeight || 140, false);
+  let raf = 0;
+  let inView = true;
+  function paused() {
+    return document.hidden || !inView || document.documentElement.getAttribute("data-motion") === "reduce";
+  }
+  function kick() {
+    if (raf || paused()) return;
+    raf = requestAnimationFrame(frame);
+  }
   function frame(t) {
+    raf = 0;
+    if (paused()) return;
     core.rotation.y = t * 0.001;
     halo.rotation.z = t * 0.0014;
     renderer.render(scene, camera);
-    if (!reduce) requestAnimationFrame(frame);
+    raf = requestAnimationFrame(frame);
+  }
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) kick(); });
+  if ("IntersectionObserver" in window) {
+    const watch = new IntersectionObserver(function (entries) {
+      inView = entries.some(function (entry) { return entry.isIntersecting; });
+      if (inView) kick();
+    }, { threshold: 0 });
+    watch.observe(canvas);
   }
   if (reduce) renderer.render(scene, camera);
-  else requestAnimationFrame(frame);
+  else kick();
 }
 
 function iconGeometry(THREE, shape) {
@@ -409,11 +450,25 @@ function mountIconDock(THREE, canvas) {
     scene.add(new THREE.AmbientLight(0xffffff, 0.8));
     return { scene: scene, camera: camera, mesh: mesh };
   });
+  let raf = 0;
+  let inView = true;
+  function offscreen() {
+    return document.hidden || !inView;
+  }
+  function motionOff() {
+    return reduce || document.documentElement.getAttribute("data-motion") === "reduce";
+  }
+  function kick() {
+    if (raf || offscreen() || motionOff()) return;
+    raf = requestAnimationFrame(draw);
+  }
   function draw(t) {
+    raf = 0;
+    if (offscreen()) return;
     const width = host.clientWidth;
     const height = host.clientHeight;
     if (!width || !height) {
-      if (!reduce) requestAnimationFrame(draw);
+      raf = requestAnimationFrame(draw);
       return;
     }
     const bleed = document.querySelector(".bleed");
@@ -441,10 +496,18 @@ function mountIconDock(THREE, canvas) {
       slot.camera.updateProjectionMatrix();
       renderer.render(slot.scene, slot.camera);
     });
-    if (!reduce) requestAnimationFrame(draw);
+    if (!motionOff()) raf = requestAnimationFrame(draw);
+  }
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) kick(); });
+  if ("IntersectionObserver" in window) {
+    const watch = new IntersectionObserver(function (entries) {
+      inView = entries.some(function (entry) { return entry.isIntersecting; });
+      if (inView) kick();
+    }, { threshold: 0 });
+    watch.observe(host);
   }
   if (reduce) draw(0);
-  else requestAnimationFrame(draw);
+  else kick();
 }
 
 function mountCounts() {
