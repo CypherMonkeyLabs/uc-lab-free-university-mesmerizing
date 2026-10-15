@@ -428,6 +428,7 @@ function mountIconDock(THREE, canvas) {
     renderer.setScissorTest(true);
     slots.forEach(function (slot, i) {
       const box = links[i].getBoundingClientRect();
+      if (box.width < 2 || box.height < 2) return;
       const x = box.left - origin.left;
       const y = height - (box.bottom - origin.top);
       const w = Math.max(box.width, 1);

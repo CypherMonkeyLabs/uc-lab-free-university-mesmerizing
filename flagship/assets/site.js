@@ -842,6 +842,27 @@
       card.addEventListener("pointerleave", function () { card.style.transform = ""; });
     });
   }
+  function mountPhoneChrome() {
+    var dock = $("#iconDock");
+    var more = $("#iconMore");
+    if (dock && more) {
+      more.addEventListener("click", function () {
+        var open = dock.classList.toggle("is-open");
+        more.setAttribute("aria-expanded", open ? "true" : "false");
+        more.textContent = open ? "Show less" : "Show all";
+      });
+    }
+    var audio = $(".audio-float");
+    var toggle = $("#audioToggle");
+    if (audio && toggle) {
+      toggle.addEventListener("click", function () {
+        var open = audio.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        toggle.textContent = open ? "Close" : "Listen";
+      });
+    }
+  }
+  mountPhoneChrome();
   mountTilt();
   mountStudio();
   mountSearch();

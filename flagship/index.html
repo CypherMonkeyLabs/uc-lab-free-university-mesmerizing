@@ -68,13 +68,17 @@ try {
 <div class="icon-track">
 <canvas id="iconStage" aria-hidden="true"></canvas>
 <div class="icon-links"><a href="tracks/start.html" data-shape="start"><span>Start</span></a><a href="tracks/sip.html" data-shape="sip"><span>SIP</span></a><a href="tracks/cucm.html" data-shape="cucm"><span>CUCM</span></a><a href="tracks/cloud.html" data-shape="cloud"><span>Webex</span></a><a href="tracks/ucce.html" data-shape="ucce"><span>UCCE</span></a><a href="tracks/ccaas.html" data-shape="ccaas"><span>CCaaS</span></a><a href="tracks/e911.html" data-shape="e911"><span>E911</span></a><a href="tracks/qos.html" data-shape="qos"><span>QoS</span></a><a href="tracks/migrate.html" data-shape="migrate"><span>Migrate</span></a><a href="tracks/trouble.html" data-shape="trouble"><span>Trouble</span></a><a href="tracks/evidence.html" data-shape="evidence"><span>Evidence</span></a><a href="tracks/design.html" data-shape="design"><span>Design</span></a><a href="tracks/practice.html" data-shape="practice"><span>Practice</span></a><a href="tracks/reference.html" data-shape="reference"><span>Reference</span></a></div>
+<button type="button" class="icon-more" id="iconMore" aria-expanded="false">Show all</button>
 </div>
 </div>
 <aside class="audio-float glass" aria-label="Architect conversation">
+<button type="button" class="audio-toggle" id="audioToggle" aria-expanded="false" aria-controls="audioPanel">Listen</button>
+<div class="audio-panel" id="audioPanel">
 <p data-i18n="audioTitle">Architect conversation</p>
 <audio controls preload="none" src="audio/architect-tour.mp3"><a href="audio/architect-tour.mp3">How to view the lab</a></audio>
 <audio controls preload="none" src="audio/architect-practice.mp3"><a href="audio/architect-practice.mp3">How to practise and share</a></audio>
 <p class="audio-links"><a href="audio/scripts/architect-tour.md">Tour script</a> · <a href="audio/scripts/architect-practice.md">Practice script</a></p>
+</div>
 </aside>
 <div class="neon-fallback" aria-hidden="true">
   <div class="grid"></div>

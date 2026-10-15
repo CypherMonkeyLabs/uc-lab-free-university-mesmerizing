@@ -440,13 +440,17 @@ def build_round3(write_page, sources, bank: dict, order: list) -> None:
     f'<a href="tracks/{slug}.html" data-shape="{slug}"><span>{esc(icon_names.get(slug, title.split("—")[0].strip()))}</span></a>'
     for slug, title, count, blurb, href in CAMPUS_TRACKS
 )}</div>
+<button type="button" class="icon-more" id="iconMore" aria-expanded="false">Show all</button>
 </div>
 </div>
 <aside class="audio-float glass" aria-label="Architect conversation">
+<button type="button" class="audio-toggle" id="audioToggle" aria-expanded="false" aria-controls="audioPanel">Listen</button>
+<div class="audio-panel" id="audioPanel">
 <p data-i18n="audioTitle">Architect conversation</p>
 <audio controls preload="none" src="audio/architect-tour.mp3"><a href="audio/architect-tour.mp3">How to view the lab</a></audio>
 <audio controls preload="none" src="audio/architect-practice.mp3"><a href="audio/architect-practice.mp3">How to practise and share</a></audio>
 <p class="audio-links"><a href="audio/scripts/architect-tour.md">Tour script</a> · <a href="audio/scripts/architect-practice.md">Practice script</a></p>
+</div>
 </aside>
 <div class="neon-fallback" aria-hidden="true">
   <div class="grid"></div>
