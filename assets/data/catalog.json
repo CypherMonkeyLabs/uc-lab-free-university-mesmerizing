@@ -1,0 +1,363 @@
+{
+  "pages": [
+    {
+      "title": "Home",
+      "href": "index.html",
+      "blurb": "Eight tracks",
+      "keys": [
+        "home",
+        "start"
+      ]
+    },
+    {
+      "title": "Learn",
+      "href": "start.html",
+      "blurb": "Ten minutes or the full course",
+      "keys": [
+        "learn",
+        "course"
+      ]
+    },
+    {
+      "title": "Diagrams",
+      "href": "diagrams.html",
+      "blurb": "Drawings",
+      "keys": [
+        "diagram"
+      ]
+    },
+    {
+      "title": "Flows",
+      "href": "flows.html",
+      "blurb": "Ladders",
+      "keys": [
+        "flow",
+        "ladder"
+      ]
+    },
+    {
+      "title": "Play",
+      "href": "play.html",
+      "blurb": "Drill",
+      "keys": [
+        "play",
+        "quiz"
+      ]
+    },
+    {
+      "title": "Listen",
+      "href": "listen.html",
+      "blurb": "Read along",
+      "keys": [
+        "listen",
+        "audio"
+      ]
+    },
+    {
+      "title": "Downloads",
+      "href": "downloads.html",
+      "blurb": "Exports",
+      "keys": [
+        "download",
+        "export"
+      ]
+    },
+    {
+      "title": "Ecosystem",
+      "href": "ecosystem.html",
+      "blurb": "Glossary",
+      "keys": [
+        "glossary",
+        "ecosystem"
+      ]
+    },
+    {
+      "title": "Help",
+      "href": "help.html",
+      "blurb": "Tour and bot",
+      "keys": [
+        "help",
+        "tour"
+      ]
+    },
+    {
+      "title": "Legal",
+      "href": "legal.html",
+      "blurb": "Credits",
+      "keys": [
+        "legal",
+        "privacy"
+      ]
+    },
+    {
+      "title": "SIP transactions and dialogs",
+      "href": "rooms/sip-transactions.html",
+      "blurb": "A transaction pairs a request with its responses.",
+      "keys": [
+        "sip transactions",
+        "t1-r01",
+        "sip"
+      ]
+    },
+    {
+      "title": "Offer and answer",
+      "href": "rooms/offer-answer.html",
+      "blurb": "SDP is the offer or the answer, not a second signaling protocol you ignore.",
+      "keys": [
+        "offer answer",
+        "t1-r02",
+        "sip"
+      ]
+    },
+    {
+      "title": "Registration",
+      "href": "rooms/sip-registration.html",
+      "blurb": "REGISTER publishes a Contact. It does not place a call.",
+      "keys": [
+        "sip registration",
+        "t1-r03",
+        "sip"
+      ]
+    },
+    {
+      "title": "Early media and PRACK",
+      "href": "rooms/prack-early-media.html",
+      "blurb": "183 Session Progress can carry SDP before answer.",
+      "keys": [
+        "prack early media",
+        "t1-r04",
+        "sip"
+      ]
+    },
+    {
+      "title": "Partitions and calling search spaces",
+      "href": "rooms/partitions-css.html",
+      "blurb": "A partition is a bucket of patterns.",
+      "keys": [
+        "partitions css",
+        "t2-r01",
+        "cucm dial plan"
+      ]
+    },
+    {
+      "title": "Route patterns, lists, and groups",
+      "href": "rooms/route-patterns.html",
+      "blurb": "A route pattern matches digits.",
+      "keys": [
+        "route patterns",
+        "t2-r02",
+        "cucm dial plan"
+      ]
+    },
+    {
+      "title": "Transformations",
+      "href": "rooms/transformations.html",
+      "blurb": "Called, calling, and redirecting numbers are different fields.",
+      "keys": [
+        "transformations",
+        "t2-r03",
+        "cucm dial plan"
+      ]
+    },
+    {
+      "title": "SIP trunks on CUCM",
+      "href": "rooms/sip-trunks.html",
+      "blurb": "The trunk, the SIP profile, and the security profile are three objects.",
+      "keys": [
+        "sip trunks",
+        "t2-r04",
+        "cucm dial plan"
+      ]
+    },
+    {
+      "title": "Dial peers",
+      "href": "rooms/dial-peers.html",
+      "blurb": "A dial peer matches an incoming or outgoing call.",
+      "keys": [
+        "dial peers",
+        "t3-r01",
+        "cube and srst"
+      ]
+    },
+    {
+      "title": "CUBE as a B2BUA",
+      "href": "rooms/cube-b2bua.html",
+      "blurb": "CUBE terminates one dialog and starts another.",
+      "keys": [
+        "cube b2bua",
+        "t3-r02",
+        "cube and srst"
+      ]
+    },
+    {
+      "title": "SRST",
+      "href": "rooms/srst.html",
+      "blurb": "SRST is the fallback when phones cannot reach CUCM.",
+      "keys": [
+        "srst",
+        "t3-r03",
+        "cube and srst"
+      ]
+    },
+    {
+      "title": "Local gateway toward Webex Calling",
+      "href": "rooms/local-gateway.html",
+      "blurb": "The local gateway is how premises PSTN or a PBX meets Webex Calling.",
+      "keys": [
+        "local gateway",
+        "t3-r04",
+        "cube and srst"
+      ]
+    },
+    {
+      "title": "Expressway-C and Expressway-E",
+      "href": "rooms/expressway-pair.html",
+      "blurb": "Expressway-C lives on the inside, next to CUCM.",
+      "keys": [
+        "expressway pair",
+        "t4-r01",
+        "expressway"
+      ]
+    },
+    {
+      "title": "Mobile and Remote Access",
+      "href": "rooms/mra.html",
+      "blurb": "MRA lets a remote Cisco phone or Jabber register to CUCM through the Expressway pair.",
+      "keys": [
+        "mra",
+        "t4-r02",
+        "expressway"
+      ]
+    },
+    {
+      "title": "Firewall and traversal",
+      "href": "rooms/firewall-traversal.html",
+      "blurb": "Open the ports your version's guide lists.",
+      "keys": [
+        "firewall traversal",
+        "t4-r03",
+        "expressway"
+      ]
+    },
+    {
+      "title": "DSCP and the trust boundary",
+      "href": "rooms/dscp-trust.html",
+      "blurb": "Voice RTP is commonly marked EF, DSCP 46.",
+      "keys": [
+        "dscp trust",
+        "t5-r01",
+        "voice qos"
+      ]
+    },
+    {
+      "title": "LLQ and the delay budget",
+      "href": "rooms/llq-delay.html",
+      "blurb": "Priority queue bandwidth is a limiter for the EF class.",
+      "keys": [
+        "llq delay",
+        "t5-r02",
+        "voice qos"
+      ]
+    },
+    {
+      "title": "Locations and call admission control",
+      "href": "rooms/locations-cac.html",
+      "blurb": "A CUCM location names a bandwidth budget between sites.",
+      "keys": [
+        "locations cac",
+        "t5-r03",
+        "voice qos"
+      ]
+    },
+    {
+      "title": "UCCE from carrier to agent",
+      "href": "rooms/ucce-path.html",
+      "blurb": "Ingress, routing, queue treatment, and the agent are different stages.",
+      "keys": [
+        "ucce path",
+        "t6-r01",
+        "ucce bridges"
+      ]
+    },
+    {
+      "title": "The CUCM bridge into UCCE",
+      "href": "rooms/cucm-ucce-bridge.html",
+      "blurb": "Agents are CUCM endpoints.",
+      "keys": [
+        "cucm ucce bridge",
+        "t6-r02",
+        "ucce bridges"
+      ]
+    },
+    {
+      "title": "Webex Contact Center beside UCCE",
+      "href": "rooms/wxcc-and-ucce.html",
+      "blurb": "Webex Contact Center and UCCE are different products.",
+      "keys": [
+        "wxcc and ucce",
+        "t6-r03",
+        "ucce bridges"
+      ]
+    },
+    {
+      "title": "Webex Calling and Dedicated Instance",
+      "href": "rooms/calling-versus-di.html",
+      "blurb": "Multi-tenant Webex Calling and Dedicated Instance are different offers.",
+      "keys": [
+        "calling versus di",
+        "t7-r01",
+        "webex calling migration"
+      ]
+    },
+    {
+      "title": "Dual-run and rollback",
+      "href": "rooms/dual-run.html",
+      "blurb": "Move one number you can give back.",
+      "keys": [
+        "dual run",
+        "t7-r02",
+        "webex calling migration"
+      ]
+    },
+    {
+      "title": "Survivability during cutover",
+      "href": "rooms/cutover-survivability.html",
+      "blurb": "Cloud calling needs a plan for when the cloud path is down.",
+      "keys": [
+        "cutover survivability",
+        "t7-r03",
+        "webex calling migration"
+      ]
+    },
+    {
+      "title": "One hypothesis, one change",
+      "href": "rooms/one-change.html",
+      "blurb": "Say what you think is broken, in one sentence.",
+      "keys": [
+        "one change",
+        "t8-r01",
+        "troubleshooting"
+      ]
+    },
+    {
+      "title": "Reading a ladder",
+      "href": "rooms/read-a-ladder.html",
+      "blurb": "One leg at a time.",
+      "keys": [
+        "read a ladder",
+        "t8-r02",
+        "troubleshooting"
+      ]
+    },
+    {
+      "title": "One-way audio",
+      "href": "rooms/one-way-audio.html",
+      "blurb": "Signaling can be perfect while RTP fails in one direction.",
+      "keys": [
+        "one way audio",
+        "t8-r03",
+        "troubleshooting"
+      ]
+    }
+  ]
+}

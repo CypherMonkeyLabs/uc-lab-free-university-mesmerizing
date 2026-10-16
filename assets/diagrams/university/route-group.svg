@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 320" role="img" aria-label="Route group members">
+<rect width="980" height="320" rx="18" fill="#0b1020"/>
+<text x="24" y="36" fill="#fde68a" font-family="system-ui,sans-serif" font-size="18">Route group members</text>
+<rect x="40.0" y="70" width="426.0" height="64" rx="14" fill="#22d3ee"/>
+<text x="253.0" y="108" text-anchor="middle" font-size="14" font-family="system-ui,sans-serif" fill="#0b1020">RG1 GW-A</text>
+<rect x="490.0" y="70" width="426.0" height="64" rx="14" fill="#a5b4fc"/>
+<text x="703.0" y="108" text-anchor="middle" font-size="14" font-family="system-ui,sans-serif" fill="#0b1020">RG1 GW-B</text>
+<path d="M474.0 102 H490.0" stroke="#fff" stroke-width="3"/>
+<text x="32" y="168" fill="#e0e7ff" font-size="15" font-family="system-ui,sans-serif">Distribution is top-down or circular. Confirm the setting on the route group.</text>
+</svg>

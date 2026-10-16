@@ -28,7 +28,7 @@ No separate textbook. The campus is the book. Use the browser print dialog, or t
 
 ## Is this official vendor training?
 
-No. It is educational material by CYPHER0X9. Read the current Cisco, Microsoft, or CCaaS document before you change production.
+No. It is educational material by CypherMonkey Labs. Read the current Cisco, Microsoft, or CCaaS document before you change production.
 
 ## Why is WebRTC here?
 

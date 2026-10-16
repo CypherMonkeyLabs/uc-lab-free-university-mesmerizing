@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 680" role="img" aria-label="A teaching UC stack">
+<defs>
+<linearGradient id="ucstack-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#312e81"/><stop offset=".5" stop-color="#0e7490"/><stop offset="1" stop-color="#9d174d"/></linearGradient>
+<linearGradient id="ucstack-phone" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ecfeff"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+<linearGradient id="ucstack-cucm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ede9fe"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+<linearGradient id="ucstack-cube" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fef9c3"/><stop offset="1" stop-color="#fbbf24"/></linearGradient>
+<linearGradient id="ucstack-pstn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe4e6"/><stop offset="1" stop-color="#fb7185"/></linearGradient>
+</defs>
+<rect width="520" height="680" fill="url(#ucstack-bg)"/>
+<text x="32" y="48" fill="#ffffff" font-family="system-ui,sans-serif" font-size="28" font-weight="700">Teaching UC stack</text>
+<text x="32" y="78" fill="#e0f2fe" font-family="system-ui,sans-serif" font-size="16">Signaling goes down. Media can take the side path.</text>
+<rect x="48" y="108" width="320" height="96" rx="24" fill="url(#ucstack-phone)"/>
+<text x="208" y="166" text-anchor="middle" fill="#082f49" font-family="system-ui,sans-serif" font-size="28" font-weight="700">Phone</text>
+<rect x="48" y="236" width="320" height="96" rx="24" fill="url(#ucstack-cucm)"/>
+<text x="208" y="294" text-anchor="middle" fill="#1e1b4b" font-family="system-ui,sans-serif" font-size="28" font-weight="700">CUCM</text>
+<rect x="48" y="364" width="320" height="96" rx="24" fill="url(#ucstack-cube)"/>
+<text x="208" y="422" text-anchor="middle" fill="#422006" font-family="system-ui,sans-serif" font-size="28" font-weight="700">CUBE</text>
+<rect x="48" y="492" width="320" height="96" rx="24" fill="url(#ucstack-pstn)"/>
+<text x="208" y="550" text-anchor="middle" fill="#4c0519" font-family="system-ui,sans-serif" font-size="28" font-weight="700">PSTN</text>
+<path d="M208 204 V236 M208 332 V364 M208 460 V492" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+<path d="M388 156 C 492 170 496 530 388 548" fill="none" stroke="#fde047" stroke-width="6" stroke-dasharray="12 10" stroke-linecap="round"/>
+<text x="448" y="360" fill="#fde047" font-family="system-ui,sans-serif" font-size="18" font-weight="700">RTP</text>
+<circle r="11" fill="#ffffff"><animateMotion dur="3.4s" repeatCount="indefinite" path="M208 156 V548"/></circle>
+<circle r="10" fill="#fde047"><animateMotion dur="4s" repeatCount="indefinite" path="M388 156 C 492 170 496 530 388 548"/></circle>
+<text x="32" y="628" fill="#ffffff" font-family="system-ui,sans-serif" font-size="16">Confirm every box against the design you run.</text>
+<text x="32" y="656" fill="#e0f2fe" font-family="system-ui,sans-serif" font-size="15">RTP skips a proxy unless that box is a B2BUA.</text>
+</svg>
