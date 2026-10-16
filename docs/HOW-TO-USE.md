@@ -10,7 +10,7 @@ The campus opens from `uc-lab-free-university.html`. Keep the `assets` folder be
 |------|---------|------------|
 | `campus/uc-lab-free-university.html` | Double-click, or open the file from the browser. Keep `assets`, `sw.js`, and `manifest.webmanifest` beside it. `file://` opens the shell and the lesson you navigate to. | Use the Chrome or Safari **app**. The shell paints first. **Menu** opens the path drawer. A bottom nav covers Home, Paths, Labs, Search, and Progress. |
 | `releases/uc-lab-free-university.html.zip` | Unzip, keep `assets`, `sw.js`, and `manifest.webmanifest` next to the HTML, then open the HTML. | Download in the browser app, unzip in **Files** (iPhone) or Downloads (Android), then open the HTML in Chrome or Safari. |
-| `downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx` | PowerPoint, Keynote, or LibreOffice, from the local file. 62 slides. | PowerPoint or Keynote mobile, or the Files preview. The HTML is the better phone textbook. The deck is the projected story. |
+| `downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx` | PowerPoint, Keynote, or LibreOffice, from the local file. 63 slides. | PowerPoint or Keynote mobile, or the Files preview. The HTML is the better phone textbook. The deck is the projected story. |
 | `docs/HOW-TO-USE.md`, `docs/FAQ.md`, `docs/REMIX.md`, `docs/SIBLINGS.md` | Any markdown preview, including the GitHub app offline cache or a local editor. | Comfortable to read. They do not replace the campus. |
 | `docs/references/uc-contact-center-session-vault-2026-10.md` | The list itself is local. | Read the titles offline. Opening a Cisco Live or YouTube link needs a network, and some sessions need a free vendor account. |
 | `docs/assets/campus-home.png` | Local image. | The home-page picture on the README. |
@@ -90,7 +90,7 @@ Use the campus as a speaking gym.
    - Webex Calling user to the PSTN through a Local Gateway, including a transfer
    - Teams Direct Routing versus Operator Connect, including an emergency call
 4. Open `qbank`. Export CSV if you want a paper stack. Misses go back into a LICC line, not into a highlight.
-5. Borrow the **62-slide deck** when you want a whiteboard narrative for "tell me about a migration." The slides are a briefing. The section behind them is the study.
+5. Borrow the **63-slide deck** when you want a whiteboard narrative for "tell me about a migration." The slides are a briefing. The section behind them is the study.
 6. Close the laptop and teach the answer to a timer. Four minutes. Then one minute on what evidence you would capture.
 
 Bring synthetic numbers only. A real customer story needs permission and still does not belong in a public fork.

@@ -1,18 +1,59 @@
-<p align="center">
-  <img src="./docs/assets/hero.svg" alt="UC Lab Free University v21. Voice, UC, and contact center." width="100%"/>
-</p>
+# UC Lab Free University
+
+An independent student campus for enterprise voice, unified communications, and contact center. Open it in the browser, or download the zip and read it offline.
 
 <p align="center">
-  <a href="./releases/uc-lab-free-university.html.zip"><img src="./docs/assets/btn-download.svg" alt="Download (v21)" height="48"/></a>
-  &nbsp;
-  <a href="./campus/uc-lab-free-university.html"><img src="./docs/assets/btn-open.svg" alt="Open" height="48"/></a>
+<!-- cml-badges:start -->
+<a href="https://cyphermonkeylabs.com/uc-lab-free-university-mesmerizing/"><img src="./docs/assets/badges/app.svg" alt="Open the app" height="56"/></a>
+&nbsp;
+<a href="https://github.com/cipher0x9"><img src="./docs/assets/badges/github.svg" alt="Visit my GitHub" height="56"/></a>
+&nbsp;
+<a href="https://github.com/CypherMonkeyLabs"><img src="./docs/assets/badges/labs.svg" alt="Labs org" height="56"/></a>
+&nbsp;
+<a href="https://cyphermonkeylabs.com"><img src="./docs/assets/badges/website.svg" alt="Website" height="56"/></a>
+&nbsp;
+<a href="https://x.com/Cypher0x9"><img src="./docs/assets/badges/x.svg" alt="X" height="56"/></a>
+&nbsp;
+<a href="https://www.linkedin.com/in/luckylakshmanucwebex"><img src="./docs/assets/badges/linkedin.svg" alt="LinkedIn" height="56"/></a>
+&nbsp;
+<a href="https://huggingface.co/Cypher0x9"><img src="./docs/assets/badges/huggingface.svg" alt="Hugging Face" height="56"/></a>
+<!-- cml-badges:end -->
 </p>
 
-The flagship studio is the repository root [index.html](./index.html): call-flow ladders, the diagram atlas, charts, cheat codes, and an offline zip. The same studio also lives at [flagship/index.html](./flagship/index.html). The 580-section campus below is still the deep library.
+## Contents
 
-A free offline campus for people who run **voice, unified communications, and contact center** systems. The shell is a few kilobytes. Lessons load one at a time: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, the main CCaaS platforms, E911, QoS, and the troubleshooting habit that ties them together.
+| Kind | Document | Size |
+|---|---|---:|
+| Cheat sheet | [Call flows](./flagship/cheats/call-flows.pdf) | 78.3 KB |
+| Cheat sheet | [Configuration](./flagship/cheats/config.pdf) | 79.1 KB |
+| Cheat sheet | [E911](./flagship/cheats/e911.pdf) | 78.8 KB |
+| Cheat sheet | [Firewall](./flagship/cheats/firewall.pdf) | 79.8 KB |
+| Cheat sheet | [Flashcards](./flagship/cheats/flashcards.pdf) | 90.8 KB |
+| Cheat sheet | [Glossary](./flagship/cheats/glossary.pdf) | 79.8 KB |
+| Cheat sheet | [Migration](./flagship/cheats/migration.pdf) | 77.6 KB |
+| Cheat sheet | [Ports](./flagship/cheats/ports.pdf) | 79.5 KB |
+| Cheat sheet | [PSTN](./flagship/cheats/pstn.pdf) | 79.1 KB |
+| Cheat sheet | [QoS](./flagship/cheats/qos.pdf) | 79.5 KB |
+| Cheat sheet | [Security](./flagship/cheats/security.pdf) | 79.1 KB |
+| Cheat sheet | [Troubleshooting](./flagship/cheats/troubleshoot.pdf) | 78.2 KB |
+| Cheat sheet | [WFM and recording](./flagship/cheats/wfm-recording.pdf) | 78.4 KB |
+| Topic note | [CUBE and SBC](./flagship/downloads/cube-sbc.pdf) | 45.2 KB |
+| Topic note | [CUCM dial plan](./flagship/downloads/cucm-dial-plan.pdf) | 48.3 KB |
+| Topic note | [CUCM and Webex migration](./flagship/downloads/cucm-webex-migration.pdf) | 43.2 KB |
+| Topic note | [E911 design](./flagship/downloads/e911-design.pdf) | 49.9 KB |
+| Topic note | [QoS and DSCP](./flagship/downloads/qos-dscp.pdf) | 45.3 KB |
+| Topic note | [SDP offer and answer](./flagship/downloads/sdp-offer-answer.pdf) | 47.5 KB |
+| Topic note | [SIP call flows](./flagship/downloads/sip-call-flows.pdf) | 50.8 KB |
+| Briefing | [Enterprise voice deck](./downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx) | 5.0 MB |
+| Campus | [HTML zip](./releases/uc-lab-free-university.html.zip) | 4.3 MB |
 
-Built by **CYPHER0X9**, a voice and UC engineer. Version **21**. No account, no install, no CDN. Open the HTML and keep `assets`, `sw.js`, and `manifest.webmanifest` beside it.
+Educational independent student project. Not affiliated with or endorsed by Cisco or any vendor. Trademarks belong to their owners.
+
+Cypher Monkey Labs © 2026 CypherMonkeyLabs
+
+The flagship studio is the repository root [index.html](./index.html): call-flow ladders, the diagram atlas, charts, cheat codes, and an offline zip. The same studio also lives at [flagship/index.html](./flagship/index.html). The 580-section campus below is the deep library.
+
+The shell is a few kilobytes. Lessons load one at a time: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, the main CCaaS platforms, E911, QoS, and the troubleshooting habit that ties them together. Version 21. No account, no install, no CDN. Open the HTML and keep `assets`, `sw.js`, and `manifest.webmanifest` beside it.
 
 <p align="center">
   <img src="./docs/assets/campus-home.png" alt="Campus home in the light theme, with the study rail and track list" width="100%"/>
@@ -146,7 +187,7 @@ Desktop is the comfortable way to read it. Under 640px the path list moves behin
 
 | Also in the repo | What it is |
 |---|---|
-| [62-slide briefing](./downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx) | Enterprise voice, contact center, and cloud migration |
+| [63-slide briefing](./downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx) | Enterprise voice, contact center, and cloud migration |
 | [How to get the file](./HOW-TO-GET.md) | Phone and desktop steps |
 | [Start here](./START-HERE.md) | First hour |
 | [How to use it](./docs/HOW-TO-USE.md) | A 30-day path, interview prep, and a class plan |
@@ -239,4 +280,4 @@ Per-track quiz score, known cards, and the boss result stay in `localStorage`. N
 
 Educational material under the [MIT license](./LICENSE). Not an official Cisco, Microsoft, Google, Amazon, or Genesys publication. Check the vendor's current document before you change production.
 
-**CYPHER0X9** · [github.com/cipher0x9](https://github.com/cipher0x9)
+Cypher Monkey Labs © 2026 CypherMonkeyLabs

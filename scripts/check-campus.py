@@ -9,6 +9,7 @@ import sys
 import zipfile
 from pathlib import Path
 
+from lab_links import DISCLAIMER, EXPECTED_SLIDES, FOOTER_LINE, FOOTER_LINKS
 from test_campus_redirects import collect_errors
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -205,6 +206,9 @@ def main() -> int:
         text = path.read_text(encoding="utf-8", errors="ignore").lower()
         text = OFFICIAL_LAB_URL_RE.sub(" ", text)
         text = GEMINI_GALLERY_URL_RE.sub(" ", text)
+        # The lab brand (CypherMonkeyLabs, cyphermonkeylabs.com) is the public
+        # footer. Any other "cyphermonkey" token is still a personal hub.
+        text = text.replace("cyphermonkeylabs", " ")
         if ("linktr.ee" in text or "cyphermonkey" in text) and not (
             rel.startswith(HUB_OK_PREFIXES) or rel in HUB_OK_FILES
         ):
@@ -223,14 +227,21 @@ def main() -> int:
                 for name in zf.namelist()
                 if name.endswith((".xml", ".rels"))
             )
-        low = blob.lower()
+        low = blob.lower().replace("cyphermonkeylabs", " ")
         for needle in ("moonshot", "linktr.ee", "cyphermonkey", "kimi-design", "msh.team"):
             if needle in low:
                 fail(errors, f"deck still contains {needle}")
         if "<dc:creator>CYPHER0X9</dc:creator>" not in blob:
             fail(errors, "deck creator is not CYPHER0X9")
-        if blob.count("<p:sldId ") != 62:
-            fail(errors, "deck is no longer 62 slides")
+        if blob.count("<p:sldId ") != EXPECTED_SLIDES:
+            fail(errors, f"deck is no longer {EXPECTED_SLIDES} slides")
+        if DISCLAIMER not in blob:
+            fail(errors, "deck is missing the footer disclaimer")
+        if FOOTER_LINE not in blob:
+            fail(errors, "deck is missing the footer line")
+        for link in FOOTER_LINKS:
+            if link.href not in blob:
+                fail(errors, f"deck is missing footer link {link.key}")
     else:
         fail(errors, "briefing deck missing")
 

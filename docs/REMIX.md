@@ -26,7 +26,7 @@ campus/assets/curriculum/sections/<id>.js   one lesson
 campus/assets/curriculum/walks.js           long scenes
 campus/assets/visual-*.js                   studio player
 releases/uc-lab-free-university.html.zip
-downloads/*.pptx                            62-slide briefing
+downloads/*.pptx                            63-slide briefing
 docs/                                       learner and remix guides
 scripts/check-campus.py                     integrity gate
 scripts/rebuild-campus-zip.py              zip builder
@@ -123,21 +123,22 @@ The README points learners at the files in the repo. The zip in `releases/` is e
 
 ## Regenerate the PPTX
 
-There is no slide generator in this repo. The deck is a normal Office Open XML file:
+The briefing is a normal Office Open XML file. `scripts/brand-pptx.py` adds the footer and the closing slide from `scripts/lab_links.py`. Add a later icon row by appending one `FooterLink` line, then run the script again.
 
 `downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx`
 
-1. Edit it in PowerPoint, Keynote, or LibreOffice.
+1. Edit the briefing in PowerPoint, Keynote, or LibreOffice.
 2. Keep it a technical briefing. Synthetic numbers only (documentation ranges such as `203.0.113.0/24` and `198.51.100.0/24` are fine).
-3. Save over the same filename, still 62 slides unless you also update the README and the checker.
+3. Save over the same filename. The branded close makes 63 slides. Change that only together with `EXPECTED_SLIDES` in `scripts/lab_links.py`.
 4. Run:
 
 ```bash
+python3 scripts/brand-pptx.py
 python3 scripts/scrub-pptx-metadata.py
 python3 scripts/check-campus.py
 ```
 
-The scrubber sets the creator to **CYPHER0X9**, drops company and application metadata, drops the custom AIGC property and the orphaned provenance part, and rewrites the generator hostname in the `pptd` namespace. Slide text is left alone. Run it again after every save; office apps write identity back into the package.
+The branding script restores the footer band and the closing slide without rewriting the briefing text. The scrubber sets the creator to **CYPHER0X9**, drops company and application metadata, drops the custom AIGC property and the orphaned provenance part, and rewrites the generator hostname in the `pptd` namespace. Run the scrubber again after every office save; office apps write identity back into the package.
 
 ## Use an AI coding agent
 

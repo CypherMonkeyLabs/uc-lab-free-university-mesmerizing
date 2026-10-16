@@ -23,6 +23,7 @@ The engineering guide is [docs/REMIX.md](./docs/REMIX.md): file layout, section 
 ```bash
 python3 scripts/check-campus.py
 python3 scripts/rebuild-campus-zip.py   # if the HTML changed
+python3 scripts/brand-pptx.py           # if the deck changed
 python3 scripts/scrub-pptx-metadata.py  # if the deck changed
 ```
 

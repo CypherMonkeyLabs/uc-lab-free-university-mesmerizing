@@ -12,7 +12,7 @@ Educational material. MIT license. No warranty.
 |---|---|
 | Campus zip (v21) | [releases/uc-lab-free-university.html.zip](./releases/uc-lab-free-university.html.zip) |
 | Campus HTML | [campus/uc-lab-free-university.html](./campus/uc-lab-free-university.html) |
-| Enterprise voice briefing, 62 slides | [downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx](./downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx) |
+| Enterprise voice briefing, 63 slides | [downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx](./downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx) |
 
 Unzip the campus, then open the HTML file in Chrome, Safari, Edge, or Firefox.
 
