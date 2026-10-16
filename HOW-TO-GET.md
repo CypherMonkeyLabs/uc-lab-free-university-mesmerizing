@@ -25,7 +25,7 @@ If the page stays on "Opening" for a long time, try a laptop. Chat-app browsers 
 ## Clone
 
 ```bash
-git clone https://github.com/cipher0x9/uc-lab-free-university-mesmerizing.git
+git clone https://github.com/CypherMonkeyLabs/uc-lab-free-university-mesmerizing.git
 cd uc-lab-free-university-mesmerizing
 ```
 

@@ -48,7 +48,7 @@ The license is MIT. Do not paste secrets or customer captures into an issue. Do 
 
 ## Related campus
 
-[AI Lab Free University](https://github.com/cipher0x9/ai-lab-free-university-mesmerizing) is a separate offline campus for a different subject. See [SIBLINGS](./SIBLINGS.md).
+[AI Lab Free University](https://github.com/CypherMonkeyLabs/ai-lab-free-university-mesmerizing) is a separate offline campus for a different subject. See [SIBLINGS](./SIBLINGS.md).
 
 ## How do I contribute?
 
