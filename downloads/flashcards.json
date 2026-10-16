@@ -1,0 +1,549 @@
+{
+  "cards": [
+    {
+      "front": "Transaction",
+      "back": "A request and its matching responses.",
+      "source": "RFC 3261, SIP"
+    },
+    {
+      "front": "Dialog",
+      "back": "A peer relationship identified by Call-ID and tags.",
+      "source": "RFC 3261, SIP"
+    },
+    {
+      "front": "SIP transactions and dialogs",
+      "back": "A transaction pairs a request with its responses.",
+      "source": "RFC 3261, SIP"
+    },
+    {
+      "front": "A 180 Ringing means the call was answered.",
+      "back": "False. False. It means alerting. The 200 accepts the session.",
+      "source": "RFC 3261, SIP"
+    },
+    {
+      "front": "ACK for a 2xx is optional.",
+      "back": "False. False. Without ACK the far end retransmits the 200 and can drop the call.",
+      "source": "RFC 3261, SIP"
+    },
+    {
+      "front": "Early offer",
+      "back": "SDP in the INVITE.",
+      "source": "RFC 3264, offer/answer"
+    },
+    {
+      "front": "Delayed offer",
+      "back": "SDP offered in the reliable response or the 200.",
+      "source": "RFC 3264, offer/answer"
+    },
+    {
+      "front": "Offer and answer",
+      "back": "SDP is the offer or the answer, not a second signaling protocol you ignore.",
+      "source": "RFC 3264, offer/answer"
+    },
+    {
+      "front": "The answer may add a codec the offer did not list.",
+      "back": "False. False. The answer narrows the offer.",
+      "source": "RFC 3264, offer/answer"
+    },
+    {
+      "front": "AOR",
+      "back": "The address-of-record being registered.",
+      "source": "RFC 3261, SIP"
+    },
+    {
+      "front": "Contact",
+      "back": "The device URI to try later.",
+      "source": "RFC 3261, SIP"
+    },
+    {
+      "front": "Registration",
+      "back": "REGISTER publishes a Contact. It does not place a call.",
+      "source": "RFC 3261, SIP"
+    },
+    {
+      "front": "REGISTER creates a voice session.",
+      "back": "False. False. It stores a Contact binding.",
+      "source": "RFC 3261, SIP"
+    },
+    {
+      "front": "PRACK",
+      "back": "Acknowledgement of a reliable provisional response.",
+      "source": "RFC 3262, PRACK"
+    },
+    {
+      "front": "100rel",
+      "back": "The extension that makes selected 1xx responses reliable.",
+      "source": "RFC 3262, PRACK"
+    },
+    {
+      "front": "Early media and PRACK",
+      "back": "183 Session Progress can carry SDP before answer.",
+      "source": "RFC 3262, PRACK"
+    },
+    {
+      "front": "Hearing ringback proves the called party answered.",
+      "back": "False. False. Ringback can be early media.",
+      "source": "RFC 3262, PRACK"
+    },
+    {
+      "front": "Partition",
+      "back": "A group of patterns with the same reachability.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "CSS",
+      "back": "An ordered list of partitions.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "Partitions and calling search spaces",
+      "back": "A partition is a bucket of patterns.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "CUCM searches every partition and picks the longest match across all of them.",
+      "back": "False. False. It walks the CSS in order.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "Route pattern",
+      "back": "Digits in a partition that point at a gateway or route list.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "Route list",
+      "back": "An ordered set of route groups.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "Route patterns, lists, and groups",
+      "back": "A route pattern matches digits.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "A route group is a list of partitions.",
+      "back": "False. False. It is a list of gateways or trunks.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "Translation pattern",
+      "back": "A pattern that transforms digits and can continue routing.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "Mask",
+      "back": "A digit rewrite applied to a number field.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "Transformations",
+      "back": "Called, calling, and redirecting numbers are different fields.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "The calling number and the called number are the same field.",
+      "back": "False. False.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "SIP trunk",
+      "back": "CUCM's signaling peer toward a gateway or another call agent.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "SIP profile",
+      "back": "Timers, OPTIONS, and offer behavior for that trunk.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "SIP trunks on CUCM",
+      "back": "The trunk, the SIP profile, and the security profile are three objects.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "A SIP trunk in service proves the route pattern points at it.",
+      "back": "False. False. Routing and status are separate.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "Dial peer",
+      "back": "An IOS rule that matches a call and names a target.",
+      "source": "Cisco Unified Border Element product support"
+    },
+    {
+      "front": "Preference",
+      "back": "A tie-break after match length.",
+      "source": "Cisco Unified Border Element product support"
+    },
+    {
+      "front": "Dial peers",
+      "back": "A dial peer matches an incoming or outgoing call.",
+      "source": "Cisco Unified Border Element product support"
+    },
+    {
+      "front": "Outbound dial-peer preference is consulted before match length.",
+      "back": "False. False. Longest match comes first when hunt is the default.",
+      "source": "Cisco Unified Border Element product support"
+    },
+    {
+      "front": "B2BUA",
+      "back": "A user agent that sits between two dialogs.",
+      "source": "Cisco Unified Border Element product support"
+    },
+    {
+      "front": "Media anchor",
+      "back": "RTP terminates on the SBC.",
+      "source": "Cisco Unified Border Element product support"
+    },
+    {
+      "front": "CUBE as a B2BUA",
+      "back": "CUBE terminates one dialog and starts another.",
+      "source": "Cisco Unified Border Element product support"
+    },
+    {
+      "front": "CUBE forwards one SIP dialog unchanged, like a proxy.",
+      "back": "False. False. It is a B2BUA.",
+      "source": "Cisco Unified Border Element product support"
+    },
+    {
+      "front": "SRST",
+      "back": "Fallback call processing on the branch router.",
+      "source": "Cisco Unified SRST product support"
+    },
+    {
+      "front": "Re-home",
+      "back": "Phones returning to CUCM after the WAN recovers.",
+      "source": "Cisco Unified SRST product support"
+    },
+    {
+      "front": "SRST",
+      "back": "SRST is the fallback when phones cannot reach CUCM.",
+      "source": "Cisco Unified SRST product support"
+    },
+    {
+      "front": "SRST automatically clones every CUCM hunt pilot.",
+      "back": "False. False.",
+      "source": "Cisco Unified SRST product support"
+    },
+    {
+      "front": "Local gateway",
+      "back": "The premises SBC that connects Webex Calling to PSTN or a PBX.",
+      "source": "Webex Help"
+    },
+    {
+      "front": "Certificate trunk",
+      "back": "A trunk that authenticates with a certificate instead of a registration.",
+      "source": "Webex Help"
+    },
+    {
+      "front": "Local gateway toward Webex Calling",
+      "back": "The local gateway is how premises PSTN or a PBX meets Webex Calling.",
+      "source": "Webex Help"
+    },
+    {
+      "front": "A local gateway registration is the same object as a CUCM phone registration.",
+      "back": "False. False. It is the trunk from CUBE toward Calling.",
+      "source": "Webex Help"
+    },
+    {
+      "front": "Traversal zone",
+      "back": "The zone that joins Expressway-C and Expressway-E.",
+      "source": "Cisco Expressway Series product support"
+    },
+    {
+      "front": "Expressway-E",
+      "back": "The edge server.",
+      "source": "Cisco Expressway Series product support"
+    },
+    {
+      "front": "Expressway-C and Expressway-E",
+      "back": "Expressway-C lives on the inside, next to CUCM.",
+      "source": "Cisco Expressway Series product support"
+    },
+    {
+      "front": "Every CUCM call must pass through Expressway.",
+      "back": "False. False.",
+      "source": "Cisco Expressway Series product support"
+    },
+    {
+      "front": "MRA",
+      "back": "Mobile and Remote Access through Expressway.",
+      "source": "Cisco Expressway Series product support"
+    },
+    {
+      "front": "SRV",
+      "back": "A DNS record the client uses to find the edge.",
+      "source": "Cisco Expressway Series product support"
+    },
+    {
+      "front": "Mobile and Remote Access",
+      "back": "MRA lets a remote Cisco phone or Jabber register to CUCM through the Expressway pair.",
+      "source": "Cisco Expressway Series product support"
+    },
+    {
+      "front": "MRA replaces CUCM as the registrar.",
+      "back": "False. False. CUCM remains the registrar.",
+      "source": "Cisco Expressway Series product support"
+    },
+    {
+      "front": "Traversal media",
+      "back": "The UDP range Expressway uses for remote media.",
+      "source": "Cisco Expressway Series product support"
+    },
+    {
+      "front": "Signaling",
+      "back": "SIP or the HTTPS path used to register.",
+      "source": "Cisco Expressway Series product support"
+    },
+    {
+      "front": "Firewall and traversal",
+      "back": "Open the ports your version's guide lists.",
+      "source": "Cisco Expressway Series product support"
+    },
+    {
+      "front": "A completed INVITE proves the firewall allows RTP.",
+      "back": "False. False.",
+      "source": "Cisco Expressway Series product support"
+    },
+    {
+      "front": "EF",
+      "back": "Expedited Forwarding, DSCP 46.",
+      "source": "RFC 3246, Expedited Forwarding"
+    },
+    {
+      "front": "Trust boundary",
+      "back": "The place you decide to keep or rewrite a mark.",
+      "source": "RFC 3246, Expedited Forwarding"
+    },
+    {
+      "front": "DSCP and the trust boundary",
+      "back": "Voice RTP is commonly marked EF, DSCP 46.",
+      "source": "RFC 3246, Expedited Forwarding"
+    },
+    {
+      "front": "EF and CS3 are the same mark.",
+      "back": "False. False. EF is DSCP 46. CS3 is a different codepoint.",
+      "source": "RFC 3246, Expedited Forwarding"
+    },
+    {
+      "front": "LLQ",
+      "back": "A queue that serves a priority class up to a configured rate.",
+      "source": "ITU-T G.114, one-way transmission time"
+    },
+    {
+      "front": "Packetization",
+      "back": "The time to fill one RTP payload.",
+      "source": "ITU-T G.114, one-way transmission time"
+    },
+    {
+      "front": "LLQ and the delay budget",
+      "back": "Priority queue bandwidth is a limiter for the EF class.",
+      "source": "ITU-T G.114, one-way transmission time"
+    },
+    {
+      "front": "LLQ adds bandwidth to a circuit.",
+      "back": "False. False. It schedules the bandwidth you already have.",
+      "source": "ITU-T G.114, one-way transmission time"
+    },
+    {
+      "front": "Location",
+      "back": "A CUCM bandwidth domain for admission control.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "CAC",
+      "back": "Call admission control, the decision to allow a call.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "Locations and call admission control",
+      "back": "A CUCM location names a bandwidth budget between sites.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "CUCM locations mark RTP as EF.",
+      "back": "False. False.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "CVP",
+      "back": "Customer Voice Portal, the voice browser and call-control front in many designs.",
+      "source": "Cisco Unified Contact Center Enterprise product support"
+    },
+    {
+      "front": "ICM",
+      "back": "The routing brain in UCCE.",
+      "source": "Cisco Unified Contact Center Enterprise product support"
+    },
+    {
+      "front": "UCCE from carrier to agent",
+      "back": "Ingress, routing, queue treatment, and the agent are different stages.",
+      "source": "Cisco Unified Contact Center Enterprise product support"
+    },
+    {
+      "front": "Queue music means an agent phone is ringing.",
+      "back": "False. False. Treatment happens before delivery.",
+      "source": "Cisco Unified Contact Center Enterprise product support"
+    },
+    {
+      "front": "Label",
+      "back": "The destination the script returns.",
+      "source": "Cisco Unified Contact Center Enterprise product support"
+    },
+    {
+      "front": "Peripheral gateway",
+      "back": "The process that represents CUCM devices to ICM.",
+      "source": "Cisco Unified Contact Center Enterprise product support"
+    },
+    {
+      "front": "The CUCM bridge into UCCE",
+      "back": "Agents are CUCM endpoints.",
+      "source": "Cisco Unified Contact Center Enterprise product support"
+    },
+    {
+      "front": "A successful ICM script guarantees CUCM can ring the phone.",
+      "back": "False. False.",
+      "source": "Cisco Unified Contact Center Enterprise product support"
+    },
+    {
+      "front": "Flow",
+      "back": "The routing document in Webex Contact Center.",
+      "source": "Cisco Unified Contact Center Enterprise product support"
+    },
+    {
+      "front": "Script",
+      "back": "The routing document in ICM.",
+      "source": "Cisco Unified Contact Center Enterprise product support"
+    },
+    {
+      "front": "Webex Contact Center beside UCCE",
+      "back": "Webex Contact Center and UCCE are different products.",
+      "source": "Cisco Unified Contact Center Enterprise product support"
+    },
+    {
+      "front": "An ICM script runs unchanged inside Webex Contact Center.",
+      "back": "False. False.",
+      "source": "Cisco Unified Contact Center Enterprise product support"
+    },
+    {
+      "front": "Dedicated Instance",
+      "back": "A hosted CUCM offer inside the Webex cloud contract.",
+      "source": "Webex Help"
+    },
+    {
+      "front": "Control Hub",
+      "back": "The admin place for Webex Calling locations and numbers.",
+      "source": "Webex Help"
+    },
+    {
+      "front": "Webex Calling and Dedicated Instance",
+      "back": "Multi-tenant Webex Calling and Dedicated Instance are different offers.",
+      "source": "Webex Help"
+    },
+    {
+      "front": "Dedicated Instance uses the same dial-plan objects as multi-tenant Calling.",
+      "back": "False. False.",
+      "source": "Webex Help"
+    },
+    {
+      "front": "Dual-run",
+      "back": "Old and new paths both available for a number during a test.",
+      "source": "Webex Help"
+    },
+    {
+      "front": "Rollback",
+      "back": "Returning the number to the path you saved.",
+      "source": "Webex Help"
+    },
+    {
+      "front": "Dual-run and rollback",
+      "back": "Move one number you can give back.",
+      "source": "Webex Help"
+    },
+    {
+      "front": "A carrier port can always be undone in five minutes.",
+      "back": "False. False. Confirm the porting rules.",
+      "source": "Webex Help"
+    },
+    {
+      "front": "Survivability gateway",
+      "back": "A local gateway mode that keeps selected Calling users up during a cloud outage.",
+      "source": "Webex Help"
+    },
+    {
+      "front": "Fallback test",
+      "back": "A planned failure of the primary path.",
+      "source": "Webex Help"
+    },
+    {
+      "front": "Survivability during cutover",
+      "back": "Cloud calling needs a plan for when the cloud path is down.",
+      "source": "Webex Help"
+    },
+    {
+      "front": "SRST protects Webex Calling apps with no extra design.",
+      "back": "False. False.",
+      "source": "Webex Help"
+    },
+    {
+      "front": "Hypothesis",
+      "back": "The single fault you are testing.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "Evidence pack",
+      "back": "The traces and notes that show the test.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "One hypothesis, one change",
+      "back": "Say what you think is broken, in one sentence.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "Changing the CSS, the codec, and the gateway in one window is a clean test.",
+      "back": "False. False.",
+      "source": "Cisco Unified Communications Manager product support"
+    },
+    {
+      "front": "Ladder",
+      "back": "A drawing of messages between named boxes.",
+      "source": "RFC 3261, SIP"
+    },
+    {
+      "front": "Cause",
+      "back": "The reason phrase or Q.850 cause on a failure.",
+      "source": "RFC 3261, SIP"
+    },
+    {
+      "front": "Reading a ladder",
+      "back": "One leg at a time.",
+      "source": "RFC 3261, SIP"
+    },
+    {
+      "front": "Two Call-IDs mean the trace is corrupt.",
+      "back": "False. False. A B2BUA creates two dialogs.",
+      "source": "RFC 3261, SIP"
+    },
+    {
+      "front": "SDP c= line",
+      "back": "The address where media should be sent.",
+      "source": "RFC 3550, RTP"
+    },
+    {
+      "front": "One-way audio",
+      "back": "Media in a single direction.",
+      "source": "RFC 3550, RTP"
+    },
+    {
+      "front": "One-way audio",
+      "back": "Signaling can be perfect while RTP fails in one direction.",
+      "source": "RFC 3550, RTP"
+    },
+    {
+      "front": "A 200 OK with SDP proves two-way audio.",
+      "back": "False. False.",
+      "source": "RFC 3550, RTP"
+    }
+  ]
+}
