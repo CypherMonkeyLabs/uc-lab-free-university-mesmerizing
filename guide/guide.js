@@ -462,7 +462,7 @@
   var kicker = tour.querySelector("[data-kicker]");
   var dots = tour.querySelector(".tour-dots");
   var steps = [
-    { sel: "[data-tour='home']", n: "1 of 6", text: "Home is the front door. The eight tracks sit under this banner." },
+    { sel: "[data-tour='home']", n: "1 of 6", text: "Home is the front door. The eleven tracks sit under this banner." },
     { sel: "[data-tour='menu']", n: "2 of 6", text: "Menu is at the top left. The drawer slides in. Esc or a tap outside closes it." },
     { sel: "[data-tour='learn']", n: "3 of 6", text: "Learn is the short path: ten minutes, or the full course." },
     { sel: "[data-tour='diagrams']", n: "4 of 6", text: "Diagrams are the still drawings. Flows are the ladders that move." },

@@ -1,0 +1,38 @@
+{
+  "room": "cer-callback",
+  "checked": "2026-10",
+  "sources": [
+    {
+      "kind": "fcc",
+      "title": "FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems",
+      "url": "https://www.fcc.gov/mlts-911-requirements",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Enhanced 911 (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Enhanced_9-1-1",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "law",
+      "title": "United States public-law text for Kari's Law",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "The congress.gov bill page returned a bot challenge, and the PDF text was not readable in this session. The FCC MLTS page that did open is listed separately."
+    },
+    {
+      "kind": "law",
+      "title": "Emergency-calling rule outside the FCC MLTS page",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "No statute outside that FCC page was opened. Confirm the rule where the site operates."
+    }
+  ]
+}

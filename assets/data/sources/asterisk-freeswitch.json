@@ -1,0 +1,54 @@
+{
+  "room": "asterisk-freeswitch",
+  "checked": "2026-10",
+  "sources": [
+    {
+      "kind": "wikipedia",
+      "title": "Asterisk (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Asterisk_(PBX)",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "asterisk",
+      "title": "Types of Asterisk modules",
+      "url": "https://docs.asterisk.org/Fundamentals/Asterisk-Architecture/Types-of-Asterisk-Modules/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "asterisk",
+      "title": "Configuring res_pjsip",
+      "url": "https://docs.asterisk.org/Configuration/Channel-Drivers/SIP/Configuring-res_pjsip/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "FreeSWITCH (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/FreeSWITCH",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "freeswitch",
+      "title": "FreeSWITCH users manual",
+      "url": "https://developer.signalwire.com/freeswitch/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3261, SIP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3261",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    }
+  ]
+}

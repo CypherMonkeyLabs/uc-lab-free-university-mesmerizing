@@ -88,6 +88,11 @@ const citationHosts = new Set([
   "www.iana.org",
   "en.wikipedia.org",
   "community.cisco.com",
+  "www.fcc.gov",
+  "docs.asterisk.org",
+  "developer.signalwire.com",
+  "www.sipforum.org",
+  "www.w3.org",
 ]);
 const banned = /(?:^|[^a-z0-9.])(?:x\.com|linkedin\.com|huggingface\.co)|github\.com\/cipher0x9|mailto:/i;
 const email = /[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z]{2,}/;
