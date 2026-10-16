@@ -41,7 +41,7 @@ def transform(name: str, data: bytes) -> bytes | None:
     if name == "docProps/core.xml":
         text = re.sub(
             r"<dc:creator>[^<]*</dc:creator>",
-            "<dc:creator>CYPHER0X9</dc:creator>",
+            "<dc:creator>UC Lab</dc:creator>",
             text,
             count=1,
         )
