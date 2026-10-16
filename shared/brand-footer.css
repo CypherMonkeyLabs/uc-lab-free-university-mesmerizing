@@ -1,0 +1,163 @@
+/* Cypher Monkey Labs brand footer.
+   Copy with shared/brand-footer.js. Colors come from the page theme:
+   flagship sets --a/--b/--c/--ink/--muted/--card/--line/--teal (neon,
+   holographic, cyberpunk, sunset, light). Campus sets --teal/--purple/
+   --gold and the same ink, card, and line tokens (light, dark, signal,
+   contrast). No images, no fonts, no network. */
+
+.brand-footer {
+  --bf-a: var(--a, var(--teal, #5eead4));
+  --bf-b: var(--b, var(--purple, var(--violet, #e879f9)));
+  --bf-c: var(--c, var(--gold, #fde047));
+  --bf-ink: var(--ink, #172033);
+  --bf-muted: var(--muted, #4c4568);
+  --bf-card: var(--card, #ffffff);
+  --bf-line: var(--line, rgba(23, 32, 51, 0.18));
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 16px 0 0;
+  padding: 12px 14px 10px;
+  border: 1px solid var(--bf-line);
+  border-radius: 16px;
+  color: var(--bf-ink);
+  background:
+    linear-gradient(90deg, var(--bf-a), var(--bf-b), var(--bf-c)) 0 0 / 100% 2px no-repeat,
+    color-mix(in srgb, var(--bf-card) 92%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--bf-a) 16%, transparent);
+}
+
+.brand-footer *,
+.brand-footer *::before,
+.brand-footer *::after {
+  box-sizing: border-box;
+}
+
+.brand-footer-disclaimer {
+  margin: 0 0 8px;
+  max-width: 72ch;
+  color: var(--bf-muted);
+  font-family: var(--sans, "Segoe UI", system-ui, sans-serif);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.brand-footer-mark {
+  margin: 0;
+  color: var(--bf-ink);
+  font-family: var(--serif, Georgia, "Iowan Old Style", Palatino, serif);
+  font-size: 1.05rem;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+
+.brand-footer-mark span {
+  color: var(--bf-muted);
+  font-family: var(--sans, "Segoe UI", system-ui, sans-serif);
+  font-size: 0.92rem;
+  letter-spacing: 0;
+}
+
+.brand-footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  max-width: 720px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.brand-footer-links li {
+  min-width: 0;
+  display: flex;
+}
+
+.brand-footer a,
+.studio-foot .brand-footer a,
+.site-foot .brand-footer a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 6px;
+  border: 1px solid color-mix(in srgb, var(--bf-a) 42%, var(--bf-line));
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--bf-a) 10%, var(--bf-card));
+  color: var(--teal, var(--bf-a));
+  font-family: var(--sans, "Segoe UI", system-ui, sans-serif);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.brand-footer a svg {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  display: block;
+  fill: currentColor;
+}
+
+.brand-footer a:hover {
+  background: color-mix(in srgb, var(--bf-a) 18%, var(--bf-card));
+  border-color: var(--bf-a);
+}
+
+.brand-footer a:focus-visible {
+  outline: 3px solid var(--bf-c);
+  outline-offset: 2px;
+}
+
+@media (min-width: 800px) {
+  .brand-footer-links {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+html[data-theme="contrast"] .brand-footer {
+  border: 2px solid #fff;
+  background: #000;
+  color: #fff;
+  box-shadow: none;
+}
+
+html[data-theme="contrast"] .brand-footer-disclaimer,
+html[data-theme="contrast"] .brand-footer-mark span {
+  color: #fff;
+}
+
+html[data-theme="contrast"] .brand-footer a,
+html[data-theme="contrast"] .studio-foot .brand-footer a {
+  color: #ff0;
+  background: #000;
+  border-color: #fff;
+}
+
+@media (max-width: 420px) {
+  .brand-footer {
+    margin-top: 12px;
+    padding: 10px 10px 8px;
+    border-radius: 14px;
+  }
+
+  .brand-footer-links {
+    gap: 6px;
+  }
+}
+
+@media print {
+  .brand-footer {
+    display: none !important;
+  }
+}

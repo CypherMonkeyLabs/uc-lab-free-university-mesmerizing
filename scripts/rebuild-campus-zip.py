@@ -34,6 +34,11 @@ def main() -> int:
         if ASSETS.is_dir():
             for path in sorted(p for p in ASSETS.rglob("*") if p.is_file()):
                 zf.write(path, arcname="assets/" + path.relative_to(ASSETS).as_posix())
+        shared = ROOT / "shared"
+        for name in ("brand-footer.js", "brand-footer.css"):
+            footer = shared / name
+            if footer.is_file():
+                zf.write(footer, arcname="shared/" + name)
     tmp.replace(ZIP)
     with zipfile.ZipFile(ZIP) as zf:
         info = zf.getinfo(MEMBER)

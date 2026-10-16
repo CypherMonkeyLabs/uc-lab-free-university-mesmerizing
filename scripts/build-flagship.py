@@ -1676,6 +1676,11 @@ def write_zip() -> None:
             if not path.is_file() or path == target or path.name == ".DS_Store":
                 continue
             zf.write(path, arcname=str(path.relative_to(OUT)))
+        shared = ROOT / "shared"
+        for name in ("brand-footer.js", "brand-footer.css"):
+            footer = shared / name
+            if footer.is_file():
+                zf.write(footer, arcname="shared/" + name)
 
 
 def main() -> None:

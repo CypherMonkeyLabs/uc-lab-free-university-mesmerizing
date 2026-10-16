@@ -1084,3 +1084,39 @@
     navigator.serviceWorker.register(script.href).catch(function () { /* file or blocked */ });
   }
 })();
+
+/* Brand footer lives in /shared so every page that loads this shell gets it.
+   Paths are relative to this file: repo flagship/assets and the offline zip. */
+(function () {
+  "use strict";
+  if (window.__ucBrandFooterBoot) return;
+  window.__ucBrandFooterBoot = true;
+  var shell = document.currentScript && document.currentScript.src;
+  if (!shell || !document.head) return;
+  var list = ["../../shared/brand-footer.js", "../shared/brand-footer.js"];
+  var index = 0;
+  function load() {
+    if (index >= list.length) return;
+    var jsUrl;
+    try {
+      jsUrl = new URL(list[index], shell).href;
+    } catch (err) {
+      index += 1;
+      load();
+      return;
+    }
+    index += 1;
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = new URL("brand-footer.css", jsUrl).href;
+    document.head.appendChild(link);
+    var script = document.createElement("script");
+    script.src = jsUrl;
+    script.onerror = function () {
+      if (link.parentNode) link.parentNode.removeChild(link);
+      load();
+    };
+    document.head.appendChild(script);
+  }
+  load();
+})();

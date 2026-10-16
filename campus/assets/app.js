@@ -2,6 +2,7 @@
 (function () {
   "use strict";
 
+  var brandShell = document.currentScript;
   var PROGRESS_KEY = "uc_lab_progress_v21";
   var titleEl = document.getElementById("viewTitle");
   var view = document.getElementById("view");
@@ -1103,8 +1104,42 @@
     return currentSection ? currentSection.id : "";
   };
 
+  function loadBrandFooter() {
+    if (window.__ucBrandFooterBoot) return;
+    window.__ucBrandFooterBoot = true;
+    var shell = brandShell && brandShell.src;
+    if (!shell || !document.head) return;
+    var list = ["../../shared/brand-footer.js", "../shared/brand-footer.js"];
+    var index = 0;
+    function load() {
+      if (index >= list.length) return;
+      var jsUrl;
+      try {
+        jsUrl = new URL(list[index], shell).href;
+      } catch (err) {
+        index += 1;
+        load();
+        return;
+      }
+      index += 1;
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = new URL("brand-footer.css", jsUrl).href;
+      document.head.appendChild(link);
+      var script = document.createElement("script");
+      script.src = jsUrl;
+      script.onerror = function () {
+        if (link.parentNode) link.parentNode.removeChild(link);
+        load();
+      };
+      document.head.appendChild(script);
+    }
+    load();
+  }
+
   bind();
   registerWorker();
+  loadBrandFooter();
   loadScript("assets/curriculum/manifest.js").then(function () {
     window.UC_CHART_TYPES = data().chartTypes || [];
     window.UC_PUBLISHED_COUNTS = publishedCounts();
