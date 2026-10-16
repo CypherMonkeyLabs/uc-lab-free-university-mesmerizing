@@ -653,6 +653,246 @@
       "back": "False. False.",
       "source": "RFC 3550, RTP",
       "room": "one-way-audio"
+    },
+    {
+      "front": "MLTS",
+      "back": "A multi-line telephone system, the term the FCC page uses for enterprise and hotel phone systems.",
+      "source": "FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems",
+      "room": "emergency-direct"
+    },
+    {
+      "front": "Dispatchable location",
+      "back": "The FCC page's term for a validated street address plus detail needed to find the caller.",
+      "source": "FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems",
+      "room": "emergency-direct"
+    },
+    {
+      "front": "Direct dial, notification, and location",
+      "back": "This page is study material, not legal advice and not an emergency plan.",
+      "source": "FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems",
+      "room": "emergency-direct"
+    },
+    {
+      "front": "Kari's Law, as the FCC page describes it, is satisfied by requiring users to dial 9 before 911.",
+      "back": "False. False. The page says direct dialing means no prefix or access code such as 9.",
+      "source": "FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems",
+      "room": "emergency-direct"
+    },
+    {
+      "front": "This lab page is legal advice for every country.",
+      "back": "False. False. It is a study note about pages that were opened. Confirm the rule where you operate.",
+      "source": "FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems",
+      "room": "emergency-direct"
+    },
+    {
+      "front": "ERL",
+      "back": "Emergency response location. The zone Emergency Responder binds to a switch port.",
+      "source": "Cisco Emergency Responder product support",
+      "room": "cer-erl-elin"
+    },
+    {
+      "front": "ELIN",
+      "back": "Emergency location identification number. The callback number sent for that zone.",
+      "source": "Cisco Emergency Responder product support",
+      "room": "cer-erl-elin"
+    },
+    {
+      "front": "Emergency Responder, ERL, and ELIN",
+      "back": "Cisco Emergency Responder is a separate product. The support page opened here lists Release 15 as available, with a release date of 16 October 2023.",
+      "source": "Cisco Emergency Responder product support",
+      "room": "cer-erl-elin"
+    },
+    {
+      "front": "An ELIN is the caller's directory number.",
+      "back": "False. False. The CUCM chapter describes the ELIN as the number Emergency Responder uses for routing and PSAP callback, mapped back to the extension.",
+      "source": "Cisco Emergency Responder product support",
+      "room": "cer-erl-elin"
+    },
+    {
+      "front": "A phone on a switch Emergency Responder does not know is still located.",
+      "back": "False. False. The planning chapter calls those phones unlocated.",
+      "source": "Cisco Emergency Responder product support",
+      "room": "cer-erl-elin"
+    },
+    {
+      "front": "PSAP",
+      "back": "Public safety answering point. The Wikipedia article describes it as the call center that answers the emergency call.",
+      "source": "Cisco Emergency Responder Administration Guide, Release 15",
+      "room": "emergency-onsite"
+    },
+    {
+      "front": "On-site alert",
+      "back": "The Emergency Responder notification path named in the Release 15 administration guide.",
+      "source": "Cisco Emergency Responder Administration Guide, Release 15",
+      "room": "emergency-onsite"
+    },
+    {
+      "front": "On-site alert, callback, and what this lab will not decide",
+      "back": "The Release 15 administration guide contents include on-site alerts, off-premises users, and a national E911 service provider. Those are different chapters.",
+      "source": "Cisco Emergency Responder Administration Guide, Release 15",
+      "room": "emergency-onsite"
+    },
+    {
+      "front": "An outbound 911 test proves PSAP callback.",
+      "back": "False. False. Callback is a separate call toward the ELIN.",
+      "source": "Cisco Emergency Responder Administration Guide, Release 15",
+      "room": "emergency-onsite"
+    },
+    {
+      "front": "Built-in bridge",
+      "back": "The phone feature CUCM uses when the phone itself forks recording media.",
+      "source": "Feature Configuration Guide for CUCM, Release 15, Recording",
+      "room": "recording-phone"
+    },
+    {
+      "front": "Fork",
+      "back": "A copy of the media stream sent to a recorder.",
+      "source": "Feature Configuration Guide for CUCM, Release 15, Recording",
+      "room": "recording-phone"
+    },
+    {
+      "front": "Phone fork and network fork",
+      "back": "The CUCM 15 feature guide says phone-based recording takes media from the phone. The phone forks two streams to the recording server.",
+      "source": "Feature Configuration Guide for CUCM, Release 15, Recording",
+      "room": "recording-phone"
+    },
+    {
+      "front": "A 200 OK proves the recorder received both audio directions.",
+      "back": "False. False. The fork is a separate media path.",
+      "source": "Feature Configuration Guide for CUCM, Release 15, Recording",
+      "room": "recording-phone"
+    },
+    {
+      "front": "The built-in bridge on one phone always follows the cluster-wide parameter.",
+      "back": "False. False. The feature guide says the phone setting overrides the cluster default when default is not selected.",
+      "source": "Feature Configuration Guide for CUCM, Release 15, Recording",
+      "room": "recording-phone"
+    },
+    {
+      "front": "SRC",
+      "back": "Session recording client. The CUBE guide says CUBE takes this role when SIPREC is configured.",
+      "source": "RFC 7245, architecture for media recording using SIP",
+      "room": "recording-siprec"
+    },
+    {
+      "front": "SRS",
+      "back": "Session recording server. RFC 7865 describes metadata from the server's point of view.",
+      "source": "RFC 7245, architecture for media recording using SIP",
+      "room": "recording-siprec"
+    },
+    {
+      "front": "SIPREC and CUBE as the recording client",
+      "back": "RFC 7245 describes architectures for recording in a SIP environment by sending a copy of a media stream to a recording device.",
+      "source": "RFC 7245, architecture for media recording using SIP",
+      "room": "recording-siprec"
+    },
+    {
+      "front": "The recording INVITE is the same dialog as the call being recorded.",
+      "back": "False. False. SIPREC is a separate recording session.",
+      "source": "RFC 7245, architecture for media recording using SIP",
+      "room": "recording-siprec"
+    },
+    {
+      "front": "Recording file",
+      "back": "The stored copy of the media.",
+      "source": "RFC 7245, architecture for media recording using SIP",
+      "room": "recording-compliance"
+    },
+    {
+      "front": "Quality score",
+      "back": "A review of a call. It is not the media file.",
+      "source": "RFC 7245, architecture for media recording using SIP",
+      "room": "recording-compliance"
+    },
+    {
+      "front": "Compliance is a reason, not a setting",
+      "back": "RFC 7245 says some environments record every call for regulatory, compliance, and consumer-protection reasons.",
+      "source": "RFC 7245, architecture for media recording using SIP",
+      "room": "recording-compliance"
+    },
+    {
+      "front": "RFC 7245 chooses the retention period for your contact center.",
+      "back": "False. False. It explains recording architectures. It does not set your policy.",
+      "source": "RFC 7245, architecture for media recording using SIP",
+      "room": "recording-compliance"
+    },
+    {
+      "front": "SIP trunk",
+      "back": "The signaling peer between two call agents or between a PBX and a provider.",
+      "source": "SIP trunking (Wikipedia)",
+      "room": "open-sip-trunk"
+    },
+    {
+      "front": "SIPconnect",
+      "back": "The SIP Forum's technical recommendation for IP peering with a VoIP provider.",
+      "source": "SIP trunking (Wikipedia)",
+      "room": "open-sip-trunk"
+    },
+    {
+      "front": "A SIP trunk is a peer, not a brand",
+      "back": "Wikipedia's SIP trunking article describes a SIP service between a provider and a customer's SIP PBX.",
+      "source": "SIP trunking (Wikipedia)",
+      "room": "open-sip-trunk"
+    },
+    {
+      "front": "One SIP trunk means both PBXs share one dial plan.",
+      "back": "False. False. Each side matches the digits with its own rules.",
+      "source": "SIP trunking (Wikipedia)",
+      "room": "open-sip-trunk"
+    },
+    {
+      "front": "Dialplan",
+      "back": "The Asterisk or FreeSWITCH rules that match a call. Not a CUCM CSS.",
+      "source": "Asterisk (Wikipedia)",
+      "room": "asterisk-freeswitch"
+    },
+    {
+      "front": "res_pjsip",
+      "back": "The Asterisk SIP channel stack named in the documentation opened for this lab.",
+      "source": "Asterisk (Wikipedia)",
+      "room": "asterisk-freeswitch"
+    },
+    {
+      "front": "Asterisk and FreeSWITCH as the other PBX",
+      "back": "Wikipedia describes Asterisk as a software PBX that connects phones, the PSTN, and VoIP endpoints.",
+      "source": "Asterisk (Wikipedia)",
+      "room": "asterisk-freeswitch"
+    },
+    {
+      "front": "An Asterisk dialplan is a CUCM calling search space.",
+      "back": "False. False. It is a different object on a different product.",
+      "source": "Asterisk (Wikipedia)",
+      "room": "asterisk-freeswitch"
+    },
+    {
+      "front": "WebRTC",
+      "back": "Browser real-time communication. The W3C recommendation is the API. RFC 8825 points at the protocol suite.",
+      "source": "WebRTC (Wikipedia)",
+      "room": "webrtc-bridge"
+    },
+    {
+      "front": "JSEP",
+      "back": "JavaScript Session Establishment Protocol, RFC 8829.",
+      "source": "WebRTC (Wikipedia)",
+      "room": "webrtc-bridge"
+    },
+    {
+      "front": "WebRTC, SIP over WebSocket, and a hosted bridge",
+      "back": "Wikipedia describes WebRTC as browser and mobile APIs for real-time audio and video without a plugin.",
+      "source": "WebRTC (Wikipedia)",
+      "room": "webrtc-bridge"
+    },
+    {
+      "front": "A WebRTC page is a CUCM SIP phone.",
+      "back": "False. False. Something has to translate, unless the far end also speaks WebRTC.",
+      "source": "WebRTC (Wikipedia)",
+      "room": "webrtc-bridge"
+    },
+    {
+      "front": "RFC 8829 replaces SIP.",
+      "back": "False. False. It describes JavaScript control of the signaling plane and how that relates to existing signaling.",
+      "source": "WebRTC (Wikipedia)",
+      "room": "webrtc-bridge"
     }
   ]
 }

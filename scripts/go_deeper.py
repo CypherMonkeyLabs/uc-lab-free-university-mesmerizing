@@ -30,6 +30,13 @@ KIND_LABEL = {
     "wikipedia": "Wikipedia",
     "itu": "ITU",
     "webex": "Webex",
+    "fcc": "FCC",
+    "law": "Law",
+    "asterisk": "Asterisk",
+    "freeswitch": "FreeSWITCH",
+    "webrtc": "WebRTC",
+    "sipforum": "SIP Forum",
+    "lab": "Sibling lab",
 }
 
 
@@ -97,6 +104,42 @@ CATALOG: dict[str, dict] = {
     "wiki-srst": _row("wikipedia", "English Wikipedia article for Survivable Remote Site Telephony", None, "That title returned HTTP 404."),
     "survivability": _row("webex", "Webex Calling survivability gateway guide", None, "A survivability-gateway article was not opened, so this row has no link. The local-gateway guide that did open is listed above."),
     "e911-law": _row("cisco", "Emergency-calling statute for your country", None, "No emergency-law page was opened for this block. Confirm the rule that applies where the site is."),
+    "fcc-mlts": _row("fcc", "FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems", "https://www.fcc.gov/mlts-911-requirements"),
+    "cer": _row("cisco", "Cisco Emergency Responder product support", "https://www.cisco.com/c/en/us/support/unified-communications/emergency-responder/series.html"),
+    "cer-plan": _row("cisco", "Plan for Cisco Emergency Responder, Release 15", "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_01.html"),
+    "cer-cucm": _row("cisco", "Configure Cisco Unified Communications Manager, Emergency Responder 15", "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_011.html"),
+    "cer-admin": _row("cisco", "Cisco Emergency Responder Administration Guide, Release 15", "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15.html"),
+    "wiki-e911": _row("wikipedia", "Enhanced 911 (Wikipedia)", "https://en.wikipedia.org/wiki/Enhanced_9-1-1"),
+    "kari-statute": _row("law", "United States public-law text for Kari's Law", None, "The congress.gov bill page returned a bot challenge, and the PDF text was not readable in this session. The FCC MLTS page that did open is listed separately."),
+    "local-emergency-law": _row("law", "Emergency-calling rule outside the FCC MLTS page", None, "No statute outside that FCC page was opened. Confirm the rule where the site operates."),
+    "cucm-rec": _row("cisco", "Feature Configuration Guide for CUCM, Release 15, Recording", "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/cucm_b_feature-configuration-guide-for-15/cucm_mp_r53f7ff4_00_recording-12-0.html"),
+    "cucm-rec-basic": _row("cisco", "Configure and troubleshoot basic call recording", "https://www.cisco.com/c/en/us/support/docs/unified-communications/unified-communications-manager-callmanager/200788-Call-Recording-Basic-Configuration-and-T.html"),
+    "cube-siprec": _row("cisco", "CUBE configuration guide, SIP forking (IOS XE 17.6 onwards)", "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/voice/cube/ios-xe/config/ios-xe-book/m_voi-cube-sip-rec-recorder.html"),
+    "rfc7245": _row("rfc", "RFC 7245, architecture for media recording using SIP", "https://www.rfc-editor.org/rfc/rfc7245"),
+    "rfc7865": _row("rfc", "RFC 7865, SIP recording metadata", "https://www.rfc-editor.org/rfc/rfc7865"),
+    "recording-rule": _row("law", "Call-recording consent and retention rule", None, "No privacy or retention statute was opened. RFC 7245 names compliance as a reason some sites record. It does not say which rule applies to you."),
+    "wiki-siptrunk": _row("wikipedia", "SIP trunking (Wikipedia)", "https://en.wikipedia.org/wiki/SIP_trunking"),
+    "sipconnect": _row("sipforum", "SIPconnect technical recommendation", "https://www.sipforum.org/technology/sipconnect/"),
+    "wiki-asterisk": _row("wikipedia", "Asterisk (Wikipedia)", "https://en.wikipedia.org/wiki/Asterisk_(PBX)"),
+    "ast-modules": _row("asterisk", "Types of Asterisk modules", "https://docs.asterisk.org/Fundamentals/Asterisk-Architecture/Types-of-Asterisk-Modules/"),
+    "ast-pjsip": _row("asterisk", "Configuring res_pjsip", "https://docs.asterisk.org/Configuration/Channel-Drivers/SIP/Configuring-res_pjsip/"),
+    "wiki-freeswitch": _row("wikipedia", "FreeSWITCH (Wikipedia)", "https://en.wikipedia.org/wiki/FreeSWITCH"),
+    "fs-manual": _row("freeswitch", "FreeSWITCH users manual", "https://developer.signalwire.com/freeswitch/"),
+    "wiki-webrtc": _row("wikipedia", "WebRTC (Wikipedia)", "https://en.wikipedia.org/wiki/WebRTC"),
+    "w3c-webrtc": _row("webrtc", "W3C WebRTC recommendation", "https://www.w3.org/TR/webrtc/"),
+    "rfc7118": _row("rfc", "RFC 7118, SIP over WebSocket", "https://www.rfc-editor.org/rfc/rfc7118"),
+    "rfc8825": _row("rfc", "RFC 8825, WebRTC protocol overview", "https://www.rfc-editor.org/rfc/rfc8825"),
+    "rfc8829": _row("rfc", "RFC 8829, JavaScript session establishment", "https://www.rfc-editor.org/rfc/rfc8829"),
+    "cpaas-matrix": _row("webrtc", "CPaaS vendor matrix", None, "No vendor matrix was opened. The FreeSWITCH manual notes one hosted platform. Confirm any other vendor on that vendor's own page."),
+    "lab-sip": _row("lab", "SIP Universe Free University", "https://cyphermonkeylabs.com/sip-universe-lab-free-university-mesmerizing/"),
+    "lab-webex": _row("lab", "Webex Lab Free University", "https://cyphermonkeylabs.com/webex-lab-free-university-mesmerizing/"),
+    "lab-microsoft": _row("lab", "Microsoft Voice and Contact Center Lab", "https://cyphermonkeylabs.com/microsoft-voice-cc-lab-free-university-mesmerizing/"),
+    "lab-connect": _row("lab", "Amazon Connect Lab", "https://cyphermonkeylabs.com/amazon-connect-lab-free-university-mesmerizing/"),
+    "lab-genesys": _row("lab", "Genesys Cloud CX Lab", "https://cyphermonkeylabs.com/genesys-cloud-lab-free-university-mesmerizing/"),
+    "lab-five9": _row("lab", "Five9 Lab", "https://cyphermonkeylabs.com/five9-lab-free-university-mesmerizing/"),
+    "lab-nice": _row("lab", "NICE CXone Lab", "https://cyphermonkeylabs.com/nice-cxone-lab-free-university-mesmerizing/"),
+    "lab-ai": _row("lab", "AI omni-channel learning lab", "https://cyphermonkeylabs.com/ai-lab-free-university-mesmerizing/"),
+    "lab-uc": _row("lab", "This UC lab, published copy", "https://cyphermonkeylabs.com/uc-lab-free-university-mesmerizing/"),
 }
 
 
@@ -148,6 +191,15 @@ ROOM_KEYS: dict[str, list[str]] = {
     "one-change": union(["cucm-sys", "rfc3261", "community", "wiki-sip", "cucm-ports"]),
     "read-a-ladder": union(["rfc3261", "rfc3515", "rfc3264", "rfc3550", "cube", "dialpeer", "community", "wiki-sip"]),
     "one-way-audio": union(["rfc3550", "rfc3264", "rfc3711", "rfc8445", "cube", "cucm-ports", "exp-ports", "community", "wiki-rtp"]),
+    "emergency-direct": union(["fcc-mlts", "wiki-e911", "kari-statute", "local-emergency-law"]),
+    "cer-erl-elin": union(["cer", "cer-plan", "cer-cucm", "cer-admin", "cucm", "cucm-sys"]),
+    "emergency-onsite": union(["cer-admin", "cer-cucm", "fcc-mlts", "wiki-e911", "local-emergency-law"]),
+    "recording-phone": union(["cucm-rec", "cucm-rec-basic", "rfc3550", "cucm-sys"]),
+    "recording-siprec": union(["rfc7245", "rfc7865", "rfc7866", "cube-siprec", "rfc3261", "cube"]),
+    "recording-compliance": union(["rfc7245", "rfc7866", "cucm-rec", "recording-rule"]),
+    "open-sip-trunk": union(["wiki-siptrunk", "sipconnect", "rfc3261", "cucm", "cucm-sys"]),
+    "asterisk-freeswitch": union(["wiki-asterisk", "ast-modules", "ast-pjsip", "wiki-freeswitch", "fs-manual", "rfc3261"]),
+    "webrtc-bridge": union(["wiki-webrtc", "w3c-webrtc", "rfc8825", "rfc8829", "rfc7118", "fs-manual", "cpaas-matrix"]),
 }
 
 CORE = union(
@@ -159,7 +211,7 @@ CORE = union(
 )
 
 SHEET_EXTRA: dict[str, list[str]] = {
-    "e911": union(["webex-calling", "cucm-sys", "cucm-ports", "community", "wiki-voip", "e911-law"]),
+    "e911": union(["fcc-mlts", "wiki-e911", "cer", "cer-plan", "cer-cucm", "cer-admin", "cucm", "cucm-sys", "kari-statute", "local-emergency-law"]),
     "bandwidth": union(["g711", "rfc3550", "rfc4594", "community", "wiki-qos", "qos-srnd"]),
     "ports-note": union(["cucm-ports", "exp-ports", "webex-ports", "iana-ports", "iana-sip", "iana-rtp", "community", "wiki-rtp"]),
     "evidence": union(["rfc3261", "cucm-sys", "community", "wiki-sip", "cucm-ports"]),

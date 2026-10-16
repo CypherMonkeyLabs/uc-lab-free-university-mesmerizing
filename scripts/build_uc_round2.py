@@ -12,6 +12,8 @@ import re
 import zipfile
 from pathlib import Path
 
+from round4_chapters import extra_arches, extra_flows, extra_rooms
+
 ROOT = Path(__file__).resolve().parent.parent
 CONTACT = "https://cyphermonkeylabs.com/#contact"
 WEB = "https://cyphermonkeylabs.com"
@@ -45,10 +47,13 @@ TRACKS = [
     ("T6", "UCCE bridges", "From the carrier to the agent desktop", "#d9f99d"),
     ("T7", "Webex Calling migration", "Move a number and keep a rollback", "#fed7aa"),
     ("T8", "Troubleshooting", "One hypothesis, then one change", "#f5d0fe"),
+    ("T9", "Emergency calling", "Direct 911, Emergency Responder, and callback", "#fb7185"),
+    ("T10", "Call recording", "Forks, SIPREC, and what a file is not", "#67e8f9"),
+    ("T11", "Open telephony bridges", "SIP trunks, Asterisk, FreeSWITCH, and WebRTC", "#c4b5fd"),
 ]
 
 SECTIONS = [
-    ("home", "Home", "index.html", "Eight tracks. Start here if you are new."),
+    ("home", "Home", "index.html", f"{len(TRACKS)} tracks. Start here if you are new."),
     ("learn", "Learn", "start.html", "Ten minutes, or the full course."),
     ("diagrams", "Diagrams", "diagrams.html", "Still drawings you can export."),
     ("flows", "Flows", "flows.html", "Ladders with a moving packet."),
@@ -103,6 +108,7 @@ def footer() -> str:
         '<h2 id="disc-title">A note from the student behind this lab</h2>'
         '<p>This is an <strong>independent, free, learning-only student project</strong>. It respects every company and vendor, and every trademark belongs to its owner. It is <strong>not affiliated with or endorsed by</strong> any of them.</p>'
         f'<p>If anyone has a concern, the content will be removed or corrected promptly via the contact form at <a href="{CONTACT}">{CONTACT}</a>. Nothing here is sold. I am happy to volunteer for any organization.</p>'
+        "<p>Emergency-calling and call-recording chapters are study notes. They are not legal advice and not an emergency plan. Rules differ by country and by the system you run.</p>"
         "</div></aside>"
         '<p class="footer-brand">CypherMonkey Labs</p>'
         f'<nav class="brand-row brand-icons" aria-label="CypherMonkey Labs">{icons}</nav>'
@@ -129,6 +135,9 @@ ICONS = {
     "ecosystem": icon('<circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2 2.4 3 5 3 8s-1 5.6-3 8c-2-2.4-3-5-3-8s1-5.6 3-8z"/>'),
     "help": icon('<circle cx="12" cy="12" r="8"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7V14"/><path d="M12 17h.01"/>'),
     "menu": icon('<path d="M4 7h16M4 12h16M4 17h16"/>'),
+    "T9": icon('<path d="M12 3 2.8 20h18.4z"/><path d="M12 9v5"/><path d="M12 17h.01"/>'),
+    "T10": icon('<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/>'),
+    "T11": icon('<path d="M3 8h7v8H3z"/><path d="M14 8h7v8h-7z"/><path d="M10 12h4"/>'),
 }
 
 
@@ -155,7 +164,7 @@ def chrome(pre: str, title: str, desc: str, current: str, body: str, track: str 
     for tid, name, blurb, _color in TRACKS:
         rows.append(
             "<li><a data-menu-text=\"" + esc((name + " " + blurb).lower()) + f'" href="{href(pre, "tracks/" + tid + ".html")}">'
-            f'<span class="ico">{ICONS["learn"]}</span><span><strong>{esc(name)}</strong>'
+            f'<span class="ico">{ICONS.get(tid, ICONS["learn"])}</span><span><strong>{esc(name)}</strong>'
             f'<span class="desc">{esc(blurb)}</span></span></a></li>'
         )
     phone = (
@@ -404,6 +413,7 @@ def build_diagrams() -> list[dict]:
         ("shared-line", "Shared line", ["Phone A", "CUCM", "Phone B"], [(1, 0, "INVITE"), (1, 2, "INVITE"), (0, 1, "200"), (1, 2, "CANCEL")]),
         ("hunt-pilot", "Hunt pilot", ["Caller", "Hunt pilot", "Line group"], [(0, 1, "digits"), (1, 2, "next member"), (2, 1, "200")]),
     ]
+    flows.extend(extra_flows())
     arches = [
         ("uc-stack", "A teaching UC stack", ["Phone", "CUCM", "CUBE", "PSTN"], ["Signaling and media are different paths.", "Confirm every box against the design you actually run."]),
         ("sip-trapezoid", "SIP trapezoid", ["UA", "Proxy", "Proxy", "UA"], ["The dialog is end to end. A proxy is not a party on the RTP path unless it is a B2BUA."]),
@@ -433,12 +443,13 @@ def build_diagrams() -> list[dict]:
         ("migration-waves", "Migration waves", ["Pilot", "Site", "Rollback"], ["Move a number you can give back. Keep the old path until evidence says the new path works."]),
         ("evidence-pack", "Evidence before the change", ["Hypothesis", "Capture", "Result"], ["One change. Save the ladder, the counter, and the time."]),
         ("trouble-tree", "Where to look first", ["Signaling", "Media", "Identity"], ["A 200 OK does not prove two-way audio."]),
-        ("integration-map", "CUCM, UCCE, and Calling", ["CUCM", "UCCE", "Webex Calling"], ["Bridges are explicit trunks or gateways. A shared brand name is not a shared dial plan."]),
+        ("integration-map", "CUCM and the systems beside it", ["CUCM", "CER", "Recorder", "Open PBX"], ["Emergency Responder, a recorder, and another PBX meet CUCM on purpose. A shared vendor is not a shared dial plan."]),
         ("cert-map", "Study toward collaboration exams", ["Associate", "Professional", "Specialist"], ["Exam names change. Confirm the current title on Cisco's certification page before you pay."]),
-        ("glossary-map", "Words that travel together", ["Dialog", "CSS", "B2BUA", "EF"], ["Learn the word next to the object it names."]),
+        ("glossary-map", "Words that travel together", ["Dialog", "ELIN", "Fork", "WebRTC"], ["Learn the word next to the object it names. The list on the ecosystem page is the full set."]),
         ("timeline", "A honest study order", ["SIP", "Dial plan", "Edge", "Contact center"], ["SRST and Expressway come after you can read a ladder."]),
-        ("future-hooks", "What this lab does not decide", ["Your release", "Your carrier", "Your region"], ["Port lists, license counts, and emergency law are local. Confirm them."]),
+        ("future-hooks", "What this lab does not decide", ["Your release", "Your region", "Sibling labs"], ["Port lists and local emergency or recording rules stay outside this page until you confirm them. Sibling labs are linked from the ecosystem page."]),
     ]
+    arches.extend(extra_arches())
     out = []
     for slug, title, actors, steps in flows:
         out.append({"slug": slug, "title": title, "kind": "flow", "actors": actors, "steps": steps})
@@ -448,7 +459,7 @@ def build_diagrams() -> list[dict]:
 
 
 def rooms() -> list[dict]:
-    common_eco = "Sister pieces sit on the ecosystem page: glossary, the mind map, and the CUCM to Webex Calling bridge."
+    common_eco = "Sister pieces sit on the ecosystem page: the glossary, the mind map, the integration map, and the sibling labs."
     rows = [
         dict(id="T1-R01", track="T1", slug="sip-transactions", title="SIP transactions and dialogs", diagram="sip-basic-call", sheet="sip",
              five=["A transaction pairs a request with its responses.", "INVITE, its final response, and the ACK for a 2xx are how a call is accepted.", "A dialog needs a Call-ID and both tags. A 100 Trying has no To tag.", "BYE ends that dialog.", "RTP does not have to follow the proxy that forwarded the INVITE."],
@@ -722,6 +733,7 @@ def rooms() -> list[dict]:
              bridge="SRTP without matching keys sounds like silence or a dropped call. Check whether both legs intended SRTP.",
              confirm=""),
     ]
+    rows.extend(extra_rooms())
     for row in rows:
         row.setdefault("confirm", "")
         row["eco"] = common_eco

@@ -25,10 +25,12 @@ from build_uc_round2 import (
     write_page,
 )
 from go_deeper import (
+    CATALOG,
     CHEAT_KEYS,
     CORE,
     ROOM_KEYS,
     TEMPLATE_SHEET,
+    union,
     add_docx_sources,
     add_pptx_sources,
     append_pdf_sources,
@@ -199,6 +201,9 @@ def sheet_for(tid: str) -> str:
         "T6": "ucce",
         "T7": "migration",
         "T8": "trouble",
+        "T9": "e911",
+        "T10": "recording",
+        "T11": "bridges",
     }[tid]
 
 
@@ -211,7 +216,9 @@ SHEETS = {
     "ucce": ("UCCE bridge", ["Ingress, script, queue, and agent are different stages.", "A label must be a number CUCM can route.", "Queue audio is not an agent ringing.", "Webex Contact Center is a different product.", "Source: Cisco UCCE design guides."]),
     "migration": ("Webex Calling migration", ["Calling and Dedicated Instance are different offers.", "Dual-run a number you can return.", "Save the old route before you edit it.", "SRST does not automatically cover Webex apps.", "Confirm survivability features on your subscription."]),
     "trouble": ("Troubleshooting habit", ["One hypothesis. One change.", "Read one SIP leg at a time.", "A 200 OK does not prove two-way audio.", "Compare SDP addresses with the packets you see.", "Revert if the symptom does not move."]),
-    "e911": ("Emergency calling note", ["Emergency calling is regional law plus a carrier design.", "A lab ladder is not an emergency plan.", "Test callback identity on the path you will use.", "Confirm Kari's Law and RAY BAUM's Act only as US examples, and confirm your own jurisdiction.", "Source: your carrier and local regulation. Confirm before relying."]),
+    "e911": ("Emergency calling note", ["Study notes, not legal advice and not an emergency plan.", "The FCC MLTS page describes direct 911 dialing, notification, and dispatchable location for covered US systems.", "Cisco Emergency Responder maps a switch port to an ERL and an ELIN. Confirm Release 15 before you build.", "A PSAP callback is a separate call toward that ELIN.", "Rules and carriers outside the pages this lab opened stay on a confirm row."]),
+    "recording": ("Call recording note", ["Phone-based recording forks from the phone. Network-based recording can fork from the phone or the gateway.", "SIPREC is a separate recording session. RFC 7866 is the protocol. RFC 7865 is the metadata.", "CUBE's IOS XE 17.6 guide calls CUBE the session recording client when SIPREC is configured.", "A quality score is not the audio file.", "Consent and retention were not opened. Confirm the rule where you operate."]),
+    "bridges": ("Open telephony bridges", ["A SIP trunk joins two dial plans. It does not merge them.", "SIPconnect is the SIP Forum recommendation for provider peering.", "Asterisk and FreeSWITCH are separate PBXs with their own dialplans.", "WebRTC is a browser API plus the protocol suite in RFC 8825. SIP over WebSocket is RFC 7118.", "A CPaaS vendor matrix was not opened. Confirm a vendor on that vendor's page."]),
     "bandwidth": ("Bandwidth sketch", ["G.711 20 ms payload is 160 bytes.", "IP, UDP, and RTP add 40 bytes.", "Layer 3 is about 80 kbit/s.", "An 18-byte Ethernet header makes about 87.2 kbit/s.", "Size the priority queue from admitted calls.", "Formula: (payload + 40 + L2) x 8 x (1000 / ptime) / 1000."]),
     "ports-note": ("Ports, without a fake matrix", ["SIP is often 5060 and 5061. That is not a firewall design.", "Media ranges differ for phones, CUBE, and Expressway.", "Open the table in the guide for your version.", "Write source, destination, and direction.", "Confirm before relying."]),
     "evidence": ("Evidence pack", ["Time, calling number, called number.", "Hypothesis in one sentence.", "The ladder or the trace.", "The single change.", "The result, including a revert."]),
@@ -252,7 +259,10 @@ def study_primer() -> str:
 <p>Voice quality is a budget, not a slogan. <a href="https://www.rfc-editor.org/rfc/rfc3246">RFC 3246</a> defines expedited forwarding, the behavior people mark as DSCP 46 for voice RTP. <a href="https://www.rfc-editor.org/rfc/rfc4594">RFC 4594</a> is the service-class map, and it does not always match a vendor signaling mark. <a href="https://www.itu.int/rec/T-REC-G.114">ITU-T G.114</a> is the usual citation for one-way delay planning, often remembered as 150 milliseconds. <a href="https://www.itu.int/rec/T-REC-G.711">ITU-T G.711</a> is the pulse-code codec behind the 64 kbit/s payload. On the wire, a 20 millisecond G.711 packet plus the IP, UDP, and RTP headers is about 80 kbit/s at layer 3, and a little more with an Ethernet header. A priority queue schedules that class. It does not create bandwidth the link does not have. A location on the call agent is a call-admission budget between sites. It does not, by itself, mark the packets.</p>
 <p>Contact center is a later stage of the same call. Ingress, the routing script, the queue treatment, and the agent endpoint are different objects. Queue audio is not an agent ringing. Webex Contact Center and Unified Contact Center Enterprise are different products. A label still has to be a number the call agent can route.</p>
 <p>A move toward Webex Calling is a number you can give back. Multi-tenant Calling and Dedicated Instance are different offers. <a href="https://help.webex.com/en-us/article/8jda92/Webex-Calling">Get started with Webex Calling</a> is the overview this lab opened on the Webex Help Center. Dual-run one number, save the old route, and rehearse the rollback before you move the next one. Survivability features depend on the subscription. If a survivability article was not opened, the sources row says confirm and carries no address.</p>
-<p>When something breaks, write one hypothesis and make one change. A 200 OK does not prove two-way audio. Compare the addresses in SDP with the packets you actually see. If the symptom does not move, put the change back. The eight tracks below are that sequence: SIP, the dial plan, CUBE and SRST, Expressway, voice QoS, the contact-center bridge, a careful migration, and the troubleshooting habit.</p>
+<p>Emergency calling is a later requirement on the same phone, and it is not a lab trick. The FCC page this lab opened, <a href="https://www.fcc.gov/mlts-911-requirements">Kari's Law and RAY BAUM'S Act for multi-line telephone systems</a>, describes direct 911 dialing, a notification that must not delay the call, and dispatchable location for covered systems in the United States. <a href="https://www.cisco.com/c/en/us/support/unified-communications/emergency-responder/series.html">Cisco Emergency Responder</a> is the product that maps a discovered switch port to an emergency response location and an ELIN. The Release 15 planning chapter says phones on unknown switches are unlocated. This is study material, not legal advice. A rule this lab did not open stays on a confirm row with no address.</p>
+<p>Call recording is a copy of the media, started on purpose. The CUCM 15 feature guide says a phone can fork two streams, or a gateway can, and the built-in bridge has to be on when the phone is the source. <a href="https://www.rfc-editor.org/rfc/rfc7866">RFC 7866</a> is the session recording protocol. <a href="https://www.rfc-editor.org/rfc/rfc7245">RFC 7245</a> is the architecture, and it says some environments record for compliance. It does not name your statute. A quality score is not the file.</p>
+<p>An open PBX or a browser is another peer. <a href="https://en.wikipedia.org/wiki/SIP_trunking">SIP trunking</a> joins a provider and a SIP PBX. Asterisk and FreeSWITCH keep their own dialplans. <a href="https://www.rfc-editor.org/rfc/rfc8825">RFC 8825</a> is the WebRTC protocol overview, and <a href="https://www.rfc-editor.org/rfc/rfc7118">RFC 7118</a> carries SIP over a WebSocket. A browser does not become a CUCM phone because both can carry voice.</p>
+<p>When something breaks, write one hypothesis and make one change. A 200 OK does not prove two-way audio. Compare the addresses in SDP with the packets you actually see. If the symptom does not move, put the change back. The tracks below are that sequence: SIP, the dial plan, CUBE and SRST, Expressway, voice QoS, the contact-center bridge, a careful migration, the troubleshooting habit, emergency calling, recording, and the open-telephony bridge.</p>
 """
 
 
@@ -273,7 +283,7 @@ def emit_home(room_rows: list[dict], items: list[dict]) -> None:
 <div>
 <p class="kicker">CUCM · SIP · gateways · contact center</p>
 <h1>Voice, then the dial plan, then the edge.</h1>
-<p class="lede">A free study lab for Unified Communications: SIP, CUCM, CUBE, SRST, Expressway, voice QoS, UCCE, and a careful move toward Webex Calling. Figures that depend on a release are marked confirm before relying.</p>
+<p class="lede">A free study lab for Unified Communications: SIP, CUCM, CUBE, SRST, Expressway, voice QoS, UCCE, a careful move toward Webex Calling, emergency calling, call recording, and bridges to open telephony. Figures that depend on a release are marked confirm before relying. Emergency and recording pages are study notes, not legal advice.</p>
 <div class="actions">
 <a class="btn" href="start.html">Start here</a>
 <a class="ghost" href="diagrams.html">Diagrams</a>
@@ -288,9 +298,9 @@ def emit_home(room_rows: list[dict], items: list[dict]) -> None:
 <div class="stat"><b data-count="{len(room_rows)}">{len(room_rows)}</b><span>rooms</span></div>
 <div class="stat"><b data-count="{len(items)}">{len(items)}</b><span>diagrams</span></div>
 <div class="stat"><b data-count="{flows}">{flows}</b><span>flows</span></div>
-<div class="stat"><b data-count="8">8</b><span>tracks</span></div>
+<div class="stat"><b data-count="{len(TRACKS)}">{len(TRACKS)}</b><span>tracks</span></div>
 </div>
-<h2>Eight paths</h2>
+<h2>{len(TRACKS)} paths</h2>
 <div class="track-map">{''.join(tiles)}</div>
 <p class="lede">The older flagship studio remains at <a href="flagship/index.html">flagship/index.html</a>. The 580-section campus remains beside it as a comparison library: Teams Phone, Genesys, Five9, NICE, Amazon Connect, and the other names there are study references, not this course and not endorsements. This front door is the round-2 Cisco UC course.</p>
 </section>
@@ -321,7 +331,7 @@ def emit_start(room_rows: list[dict]) -> None:
 <div class="room-downloads"><a class="dl-btn" href="downloads/sheets/sip.html">SIP sheet</a></div>
 </section>
 <section id="path"><h2>Full course</h2>
-<p>Fundamentals, the dial plan, the gateway, the edge, QoS, the contact-center bridge, migration, then the troubleshooting habit.</p>
+<p>Fundamentals, the dial plan, the gateway, the edge, QoS, the contact-center bridge, migration, the troubleshooting habit, then emergency calling, recording, and open-telephony bridges.</p>
 <ol>{full}</ol>
 </section>
 <section><h2>Certifications</h2>
@@ -408,23 +418,66 @@ def emit_listen() -> None:
 
 def emit_ecosystem(room_rows: list[dict]) -> None:
     terms = []
+    seen = set()
     for room in room_rows:
         for term, meaning in room["glossary"]:
+            if term in seen:
+                continue
+            seen.add(term)
             terms.append(f"<li><strong>{esc(term)}</strong> — {esc(meaning)}</li>")
+    sisters = [
+        ("lab-sip", "SIP campus. The page title that opened is SIP Universe Free University."),
+        ("lab-webex", "Webex campus. The page title that opened is Webex Lab Free University."),
+        ("lab-microsoft", "Microsoft voice campus. The page title that opened is Microsoft Voice and Contact Center Lab."),
+        ("lab-connect", "Amazon Connect campus. The page title that opened is Amazon Connect Lab."),
+        ("lab-genesys", "Genesys campus. The page title that opened is Genesys Cloud CX Lab."),
+        ("lab-five9", "Five9 campus. The page title that opened is Five9 Lab."),
+        ("lab-nice", "NICE campus. The page title that opened is Contact Path · NICE CXone Lab."),
+        ("lab-ai", "AI campus. The page title that opened is AI omni-channel learning lab."),
+        ("lab-uc", "The published copy of this UC course. The page title that opened is UC Lab Free University."),
+    ]
+    sister_rows = []
+    for key, note in sisters:
+        item = CATALOG[key]
+        sister_rows.append(
+            f'<li><a href="{esc(item["url"])}">{esc(item["title"])}</a> — {esc(note)}</li>'
+        )
+    source_items = entries(
+        union(
+            ["rfc3261", "rfc3550", "rfc4566", "fcc-mlts", "cer", "cer-plan", "cucm-rec", "rfc7866", "rfc7245", "rfc8825", "rfc7118", "wiki-siptrunk", "wiki-webrtc", "fs-manual"],
+            [key for key, _note in sisters],
+            ["kari-statute", "local-emergency-law", "recording-rule", "cpaas-matrix"],
+        )
+    )
+    mirror_sources(ROOT / "sources" / "ecosystem" / "sources.json", "ecosystem", source_items)
+    write_json("ecosystem.json", "ecosystem", source_items)
+    deeper = html_block(source_items, "sources/ecosystem/sources.json", md_href="downloads/ecosystem.md")
+    write_text(
+        ROOT / "downloads" / "ecosystem.md",
+        "# Ecosystem\n\nGlossary, mind map, sister labs, integration map, and future hooks.\n\n"
+        + markdown_block(source_items, "../sources/ecosystem/sources.json"),
+    )
     body = page_wrap(
         f"""
 <h1>Ecosystem</h1>
-<section><h2>Glossary</h2><ul>{''.join(terms)}</ul></section>
-<section><h2>Mind map</h2><div class="diagram-frame"><img src="assets/diagrams/university/glossary-map.svg" alt="Glossary mind map"></div></section>
-<section><h2>Sister technologies</h2><p>SIP, RTP, CUCM dial plan, IOS dial peers, Expressway traversal, DiffServ, and UCCE scripts are sisters. Learn the object each word names.</p></section>
-<section><h2>Integration map</h2><div class="diagram-frame"><img src="assets/diagrams/university/integration-map.svg" alt="Integration map">
-<p>CUCM, UCCE, and Webex Calling meet on explicit trunks and labels. A shared vendor is not a shared dial plan.</p></section>
+<p class="lede">Words, drawings, and the sibling labs this course can point at. Counts and titles below are from pages opened in 2026-10 or from this repository. A confirm row has no link.</p>
+<section><h2>Glossary</h2><p>{len(terms)} terms from the rooms in this repository. The same term is listed once.</p><ul>{''.join(terms)}</ul></section>
+<section><h2>Mind map</h2><div class="diagram-frame"><img src="assets/diagrams/university/glossary-map.svg" alt="Glossary mind map"></div>
+<p>Dialog, ELIN, fork, and WebRTC are the four words on the drawing. The list above is the rest.</p></section>
+<section><h2>Sister technologies</h2>
+<p>SIP, RTP, a CUCM dial plan, IOS dial peers, Expressway traversal, DiffServ, UCCE scripts, Emergency Responder locations, recording forks, and an open PBX dialplan are sisters. Learn the object each word names.</p>
+<p>These sibling labs opened in 2026-10. They are separate courses. A shared author is not a shared dial plan, and a name here is not an endorsement.</p>
+<ul>{''.join(sister_rows)}</ul>
+</section>
+<section><h2>Integration map</h2><div class="diagram-frame"><img src="assets/diagrams/university/integration-map.svg" alt="Integration map"></div>
+<p>CUCM meets Emergency Responder, a recorder, and another PBX on explicit trunks, route points, and labels. UCCE still meets CUCM on a label. Webex Calling still meets a local gateway on a SIP trunk. The <a href="tracks/T9.html">emergency</a>, <a href="tracks/T10.html">recording</a>, and <a href="tracks/T11.html">open bridge</a> tracks are the rooms for those three hops.</p></section>
 <section><h2>Future hooks</h2><div class="diagram-frame"><img src="assets/diagrams/university/future-hooks.svg" alt="Future hooks"></div>
-<p>Releases, carriers, and emergency law stay outside this lab until you confirm them.</p></section>
-<div class="room-downloads"><a class="dl-btn" href="assets/diagrams/university/glossary-map.svg" download>SVG</a></div>
+<p>Releases, carriers, and any emergency or recording rule this lab did not open stay outside the course until you confirm them. The AI lab is a sibling for agents and tools, not a UC feature. The SIP, Webex, Microsoft, and contact-center labs are the next rooms when the peer is no longer CUCM.</p></section>
+<div class="room-downloads"><a class="dl-btn" href="assets/diagrams/university/glossary-map.svg" download>SVG</a><a class="dl-btn" href="downloads/ecosystem.md">Markdown</a></div>
+{deeper}
 """
     )
-    write_page("ecosystem.html", "Ecosystem", "Glossary and bridges for the UC lab.", "ecosystem", body)
+    write_page("ecosystem.html", "Ecosystem", "Glossary, maps, and sibling labs for the UC course.", "ecosystem", body)
 
 
 def emit_help_legal() -> None:
@@ -432,7 +485,7 @@ def emit_help_legal() -> None:
         """
 <h1>Help</h1>
 <section><h2>Menu</h2><p>The Menu button is at the top left. The drawer slides in. Escape or a tap on the dimmed page closes it. On a phone the same Menu is the left side of the bottom bar.</p></section>
-<section><h2>Course</h2><p>Learn opens a ten-minute SIP path and the eight-track course. Each room has a five-minute block, a drawing, a worked example, a quiz, and sources.</p></section>
+<section><h2>Course</h2><p>Learn opens a ten-minute SIP path and the full course. Each room has a five-minute block, a drawing, a worked example, a quiz, and sources. Emergency calling and recording are study notes, not legal advice.</p></section>
 <section><h2>Bot</h2><p>The monkey greets once after the tour, then sits at the right. Drag it. It can read the page aloud, take a typed question, or try the mic. Ambient sound is off until you turn it on. After a few quiet minutes it may offer help. Not now dismisses that offer. Stop offering keeps it quiet.</p>
 <p><button type="button" data-tour-open>Replay the tour</button></p></section>
 <section><h2>Downloads</h2><p>Every room has SVG, PNG, HTML, and a cheat sheet. The Downloads page lists the deck, the cards, the templates, and one zip.</p></section>
@@ -443,7 +496,8 @@ def emit_help_legal() -> None:
         f"""
 <h1>Legal and credits</h1>
 <section><h2>Copyright</h2><p>The words and drawings in this round-2 course are a student project, © 2026 CypherMonkeyLabs. The deep campus and flagship keep their own notices.</p></section>
-<section><h2>Trademarks</h2><p>Cisco, CUCM, CUBE, SRST, Expressway, Unified Contact Center Enterprise, Webex, and Webex Calling are trademarks of their owners. This lab is not affiliated with or endorsed by them.</p></section>
+<section><h2>Trademarks</h2><p>Cisco, CUCM, CUBE, SRST, Expressway, Emergency Responder, Unified Contact Center Enterprise, Webex, and Webex Calling are trademarks of their owners. Asterisk, FreeSWITCH, and other names on the bridge pages belong to their owners. This lab is not affiliated with or endorsed by them.</p></section>
+<section><h2>Not legal advice</h2><p>Emergency-calling and call-recording chapters explain documents this lab opened. They are not legal advice, not an emergency plan, and not a retention policy. Confirm the rule where the system operates.</p></section>
 <section><h2>Licences</h2><p>Code written for this course is MIT, matching the repository licence. Vendored libraries under flagship/assets/vendor keep MIT, ISC, and BSD-style notices beside the files. Drawings in this course are shared CC BY-NC-SA unless a file says otherwise. RFC text stays with the IETF and the RFC Editor.</p></section>
 <section><h2>Privacy</h2><p>There is no account and no tracker. Progress, the tour flag, voice settings, and badge names stay in this browser.</p></section>
 <section><h2>Accessibility</h2><p>Display sets font size and font colour. Bright is the default. Dark is optional. The tour and the drawer work from the keyboard. Escape closes them.</p></section>
@@ -644,7 +698,10 @@ def emit_office(cards: list[dict]) -> None:
         ("UCCE", "Script, label, then a number CUCM can route."),
         ("Migration", "Dual-run a number you can return."),
         ("Troubleshooting", "One hypothesis. One change. Save the ladder."),
-        ("Disclaimer", "Independent free learning project. Not affiliated or endorsed. Contact cyphermonkeylabs.com. Nothing is sold."),
+        ("Emergency calling", "Study notes. Direct dial, Emergency Responder, ELIN callback. Not legal advice."),
+        ("Call recording", "Phone fork or gateway fork. SIPREC is a separate session."),
+        ("Open bridges", "SIP trunk, Asterisk or FreeSWITCH, WebRTC through a gateway."),
+        ("Disclaimer", "Independent free learning project. Not affiliated or endorsed. Not legal advice. Contact cyphermonkeylabs.com. Nothing is sold."),
     ]
     for title, line in slides:
         layout = pres.slide_layouts[1]
@@ -664,7 +721,7 @@ def emit_office(cards: list[dict]) -> None:
 
 def emit_catalog(room_rows: list[dict]) -> None:
     pages = [
-        {"title": "Home", "href": "index.html", "blurb": "Eight tracks", "keys": ["home", "start"]},
+        {"title": "Home", "href": "index.html", "blurb": f"{len(TRACKS)} tracks", "keys": ["home", "start"]},
         {"title": "Learn", "href": "start.html", "blurb": "Ten minutes or the full course", "keys": ["learn", "course"]},
         {"title": "Diagrams", "href": "diagrams.html", "blurb": "Drawings", "keys": ["diagram"]},
         {"title": "Flows", "href": "flows.html", "blurb": "Ladders", "keys": ["flow", "ladder"]},

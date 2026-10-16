@@ -2382,6 +2382,735 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 
 Room or sheet file: ../rooms/sources/one-way-audio/sources.json
 
+## MLTS
+
+A multi-line telephone system, the term the FCC page uses for enterprise and hotel phone systems.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- FCC. [FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems](https://www.fcc.gov/mlts-911-requirements). last checked 2026-10
+- Wikipedia. [Enhanced 911 (Wikipedia)](https://en.wikipedia.org/wiki/Enhanced_9-1-1). last checked 2026-10
+- Law. United States public-law text for Kari's Law. confirm. The congress.gov bill page returned a bot challenge, and the PDF text was not readable in this session. The FCC MLTS page that did open is listed separately. last checked 2026-10
+- Law. Emergency-calling rule outside the FCC MLTS page. confirm. No statute outside that FCC page was opened. Confirm the rule where the site operates. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/emergency-direct/sources.json
+
+## Dispatchable location
+
+The FCC page's term for a validated street address plus detail needed to find the caller.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- FCC. [FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems](https://www.fcc.gov/mlts-911-requirements). last checked 2026-10
+- Wikipedia. [Enhanced 911 (Wikipedia)](https://en.wikipedia.org/wiki/Enhanced_9-1-1). last checked 2026-10
+- Law. United States public-law text for Kari's Law. confirm. The congress.gov bill page returned a bot challenge, and the PDF text was not readable in this session. The FCC MLTS page that did open is listed separately. last checked 2026-10
+- Law. Emergency-calling rule outside the FCC MLTS page. confirm. No statute outside that FCC page was opened. Confirm the rule where the site operates. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/emergency-direct/sources.json
+
+## Direct dial, notification, and location
+
+This page is study material, not legal advice and not an emergency plan.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- FCC. [FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems](https://www.fcc.gov/mlts-911-requirements). last checked 2026-10
+- Wikipedia. [Enhanced 911 (Wikipedia)](https://en.wikipedia.org/wiki/Enhanced_9-1-1). last checked 2026-10
+- Law. United States public-law text for Kari's Law. confirm. The congress.gov bill page returned a bot challenge, and the PDF text was not readable in this session. The FCC MLTS page that did open is listed separately. last checked 2026-10
+- Law. Emergency-calling rule outside the FCC MLTS page. confirm. No statute outside that FCC page was opened. Confirm the rule where the site operates. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/emergency-direct/sources.json
+
+## Kari's Law, as the FCC page describes it, is satisfied by requiring users to dial 9 before 911.
+
+False. False. The page says direct dialing means no prefix or access code such as 9.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- FCC. [FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems](https://www.fcc.gov/mlts-911-requirements). last checked 2026-10
+- Wikipedia. [Enhanced 911 (Wikipedia)](https://en.wikipedia.org/wiki/Enhanced_9-1-1). last checked 2026-10
+- Law. United States public-law text for Kari's Law. confirm. The congress.gov bill page returned a bot challenge, and the PDF text was not readable in this session. The FCC MLTS page that did open is listed separately. last checked 2026-10
+- Law. Emergency-calling rule outside the FCC MLTS page. confirm. No statute outside that FCC page was opened. Confirm the rule where the site operates. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/emergency-direct/sources.json
+
+## This lab page is legal advice for every country.
+
+False. False. It is a study note about pages that were opened. Confirm the rule where you operate.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- FCC. [FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems](https://www.fcc.gov/mlts-911-requirements). last checked 2026-10
+- Wikipedia. [Enhanced 911 (Wikipedia)](https://en.wikipedia.org/wiki/Enhanced_9-1-1). last checked 2026-10
+- Law. United States public-law text for Kari's Law. confirm. The congress.gov bill page returned a bot challenge, and the PDF text was not readable in this session. The FCC MLTS page that did open is listed separately. last checked 2026-10
+- Law. Emergency-calling rule outside the FCC MLTS page. confirm. No statute outside that FCC page was opened. Confirm the rule where the site operates. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/emergency-direct/sources.json
+
+## ERL
+
+Emergency response location. The zone Emergency Responder binds to a switch port.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Cisco. [Cisco Emergency Responder product support](https://www.cisco.com/c/en/us/support/unified-communications/emergency-responder/series.html). last checked 2026-10
+- Cisco. [Plan for Cisco Emergency Responder, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_01.html). last checked 2026-10
+- Cisco. [Configure Cisco Unified Communications Manager, Emergency Responder 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_011.html). last checked 2026-10
+- Cisco. [Cisco Emergency Responder Administration Guide, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15.html). last checked 2026-10
+- Cisco. [Cisco Unified Communications Manager product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-communications-manager-callmanager/series.html). last checked 2026-10
+- Cisco. [System Configuration Guide for CUCM, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/cer-erl-elin/sources.json
+
+## ELIN
+
+Emergency location identification number. The callback number sent for that zone.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Cisco. [Cisco Emergency Responder product support](https://www.cisco.com/c/en/us/support/unified-communications/emergency-responder/series.html). last checked 2026-10
+- Cisco. [Plan for Cisco Emergency Responder, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_01.html). last checked 2026-10
+- Cisco. [Configure Cisco Unified Communications Manager, Emergency Responder 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_011.html). last checked 2026-10
+- Cisco. [Cisco Emergency Responder Administration Guide, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15.html). last checked 2026-10
+- Cisco. [Cisco Unified Communications Manager product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-communications-manager-callmanager/series.html). last checked 2026-10
+- Cisco. [System Configuration Guide for CUCM, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/cer-erl-elin/sources.json
+
+## Emergency Responder, ERL, and ELIN
+
+Cisco Emergency Responder is a separate product. The support page opened here lists Release 15 as available, with a release date of 16 October 2023.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Cisco. [Cisco Emergency Responder product support](https://www.cisco.com/c/en/us/support/unified-communications/emergency-responder/series.html). last checked 2026-10
+- Cisco. [Plan for Cisco Emergency Responder, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_01.html). last checked 2026-10
+- Cisco. [Configure Cisco Unified Communications Manager, Emergency Responder 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_011.html). last checked 2026-10
+- Cisco. [Cisco Emergency Responder Administration Guide, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15.html). last checked 2026-10
+- Cisco. [Cisco Unified Communications Manager product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-communications-manager-callmanager/series.html). last checked 2026-10
+- Cisco. [System Configuration Guide for CUCM, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/cer-erl-elin/sources.json
+
+## An ELIN is the caller's directory number.
+
+False. False. The CUCM chapter describes the ELIN as the number Emergency Responder uses for routing and PSAP callback, mapped back to the extension.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Cisco. [Cisco Emergency Responder product support](https://www.cisco.com/c/en/us/support/unified-communications/emergency-responder/series.html). last checked 2026-10
+- Cisco. [Plan for Cisco Emergency Responder, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_01.html). last checked 2026-10
+- Cisco. [Configure Cisco Unified Communications Manager, Emergency Responder 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_011.html). last checked 2026-10
+- Cisco. [Cisco Emergency Responder Administration Guide, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15.html). last checked 2026-10
+- Cisco. [Cisco Unified Communications Manager product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-communications-manager-callmanager/series.html). last checked 2026-10
+- Cisco. [System Configuration Guide for CUCM, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/cer-erl-elin/sources.json
+
+## A phone on a switch Emergency Responder does not know is still located.
+
+False. False. The planning chapter calls those phones unlocated.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Cisco. [Cisco Emergency Responder product support](https://www.cisco.com/c/en/us/support/unified-communications/emergency-responder/series.html). last checked 2026-10
+- Cisco. [Plan for Cisco Emergency Responder, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_01.html). last checked 2026-10
+- Cisco. [Configure Cisco Unified Communications Manager, Emergency Responder 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_011.html). last checked 2026-10
+- Cisco. [Cisco Emergency Responder Administration Guide, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15.html). last checked 2026-10
+- Cisco. [Cisco Unified Communications Manager product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-communications-manager-callmanager/series.html). last checked 2026-10
+- Cisco. [System Configuration Guide for CUCM, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/cer-erl-elin/sources.json
+
+## PSAP
+
+Public safety answering point. The Wikipedia article describes it as the call center that answers the emergency call.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Cisco. [Cisco Emergency Responder Administration Guide, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15.html). last checked 2026-10
+- Cisco. [Configure Cisco Unified Communications Manager, Emergency Responder 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_011.html). last checked 2026-10
+- FCC. [FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems](https://www.fcc.gov/mlts-911-requirements). last checked 2026-10
+- Wikipedia. [Enhanced 911 (Wikipedia)](https://en.wikipedia.org/wiki/Enhanced_9-1-1). last checked 2026-10
+- Law. Emergency-calling rule outside the FCC MLTS page. confirm. No statute outside that FCC page was opened. Confirm the rule where the site operates. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/emergency-onsite/sources.json
+
+## On-site alert
+
+The Emergency Responder notification path named in the Release 15 administration guide.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Cisco. [Cisco Emergency Responder Administration Guide, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15.html). last checked 2026-10
+- Cisco. [Configure Cisco Unified Communications Manager, Emergency Responder 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_011.html). last checked 2026-10
+- FCC. [FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems](https://www.fcc.gov/mlts-911-requirements). last checked 2026-10
+- Wikipedia. [Enhanced 911 (Wikipedia)](https://en.wikipedia.org/wiki/Enhanced_9-1-1). last checked 2026-10
+- Law. Emergency-calling rule outside the FCC MLTS page. confirm. No statute outside that FCC page was opened. Confirm the rule where the site operates. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/emergency-onsite/sources.json
+
+## On-site alert, callback, and what this lab will not decide
+
+The Release 15 administration guide contents include on-site alerts, off-premises users, and a national E911 service provider. Those are different chapters.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Cisco. [Cisco Emergency Responder Administration Guide, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15.html). last checked 2026-10
+- Cisco. [Configure Cisco Unified Communications Manager, Emergency Responder 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_011.html). last checked 2026-10
+- FCC. [FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems](https://www.fcc.gov/mlts-911-requirements). last checked 2026-10
+- Wikipedia. [Enhanced 911 (Wikipedia)](https://en.wikipedia.org/wiki/Enhanced_9-1-1). last checked 2026-10
+- Law. Emergency-calling rule outside the FCC MLTS page. confirm. No statute outside that FCC page was opened. Confirm the rule where the site operates. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/emergency-onsite/sources.json
+
+## An outbound 911 test proves PSAP callback.
+
+False. False. Callback is a separate call toward the ELIN.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Cisco. [Cisco Emergency Responder Administration Guide, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15.html). last checked 2026-10
+- Cisco. [Configure Cisco Unified Communications Manager, Emergency Responder 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_011.html). last checked 2026-10
+- FCC. [FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems](https://www.fcc.gov/mlts-911-requirements). last checked 2026-10
+- Wikipedia. [Enhanced 911 (Wikipedia)](https://en.wikipedia.org/wiki/Enhanced_9-1-1). last checked 2026-10
+- Law. Emergency-calling rule outside the FCC MLTS page. confirm. No statute outside that FCC page was opened. Confirm the rule where the site operates. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/emergency-onsite/sources.json
+
+## Built-in bridge
+
+The phone feature CUCM uses when the phone itself forks recording media.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Cisco. [Feature Configuration Guide for CUCM, Release 15, Recording](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/cucm_b_feature-configuration-guide-for-15/cucm_mp_r53f7ff4_00_recording-12-0.html). last checked 2026-10
+- Cisco. [Configure and troubleshoot basic call recording](https://www.cisco.com/c/en/us/support/docs/unified-communications/unified-communications-manager-callmanager/200788-Call-Recording-Basic-Configuration-and-T.html). last checked 2026-10
+- RFC. [RFC 3550, RTP](https://www.rfc-editor.org/rfc/rfc3550). last checked 2026-10
+- Cisco. [System Configuration Guide for CUCM, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/recording-phone/sources.json
+
+## Fork
+
+A copy of the media stream sent to a recorder.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Cisco. [Feature Configuration Guide for CUCM, Release 15, Recording](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/cucm_b_feature-configuration-guide-for-15/cucm_mp_r53f7ff4_00_recording-12-0.html). last checked 2026-10
+- Cisco. [Configure and troubleshoot basic call recording](https://www.cisco.com/c/en/us/support/docs/unified-communications/unified-communications-manager-callmanager/200788-Call-Recording-Basic-Configuration-and-T.html). last checked 2026-10
+- RFC. [RFC 3550, RTP](https://www.rfc-editor.org/rfc/rfc3550). last checked 2026-10
+- Cisco. [System Configuration Guide for CUCM, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/recording-phone/sources.json
+
+## Phone fork and network fork
+
+The CUCM 15 feature guide says phone-based recording takes media from the phone. The phone forks two streams to the recording server.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Cisco. [Feature Configuration Guide for CUCM, Release 15, Recording](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/cucm_b_feature-configuration-guide-for-15/cucm_mp_r53f7ff4_00_recording-12-0.html). last checked 2026-10
+- Cisco. [Configure and troubleshoot basic call recording](https://www.cisco.com/c/en/us/support/docs/unified-communications/unified-communications-manager-callmanager/200788-Call-Recording-Basic-Configuration-and-T.html). last checked 2026-10
+- RFC. [RFC 3550, RTP](https://www.rfc-editor.org/rfc/rfc3550). last checked 2026-10
+- Cisco. [System Configuration Guide for CUCM, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/recording-phone/sources.json
+
+## A 200 OK proves the recorder received both audio directions.
+
+False. False. The fork is a separate media path.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Cisco. [Feature Configuration Guide for CUCM, Release 15, Recording](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/cucm_b_feature-configuration-guide-for-15/cucm_mp_r53f7ff4_00_recording-12-0.html). last checked 2026-10
+- Cisco. [Configure and troubleshoot basic call recording](https://www.cisco.com/c/en/us/support/docs/unified-communications/unified-communications-manager-callmanager/200788-Call-Recording-Basic-Configuration-and-T.html). last checked 2026-10
+- RFC. [RFC 3550, RTP](https://www.rfc-editor.org/rfc/rfc3550). last checked 2026-10
+- Cisco. [System Configuration Guide for CUCM, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/recording-phone/sources.json
+
+## The built-in bridge on one phone always follows the cluster-wide parameter.
+
+False. False. The feature guide says the phone setting overrides the cluster default when default is not selected.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Cisco. [Feature Configuration Guide for CUCM, Release 15, Recording](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/cucm_b_feature-configuration-guide-for-15/cucm_mp_r53f7ff4_00_recording-12-0.html). last checked 2026-10
+- Cisco. [Configure and troubleshoot basic call recording](https://www.cisco.com/c/en/us/support/docs/unified-communications/unified-communications-manager-callmanager/200788-Call-Recording-Basic-Configuration-and-T.html). last checked 2026-10
+- RFC. [RFC 3550, RTP](https://www.rfc-editor.org/rfc/rfc3550). last checked 2026-10
+- Cisco. [System Configuration Guide for CUCM, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/recording-phone/sources.json
+
+## SRC
+
+Session recording client. The CUBE guide says CUBE takes this role when SIPREC is configured.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- RFC. [RFC 7245, architecture for media recording using SIP](https://www.rfc-editor.org/rfc/rfc7245). last checked 2026-10
+- RFC. [RFC 7865, SIP recording metadata](https://www.rfc-editor.org/rfc/rfc7865). last checked 2026-10
+- RFC. [RFC 7866, session recording protocol](https://www.rfc-editor.org/rfc/rfc7866). last checked 2026-10
+- Cisco. [CUBE configuration guide, SIP forking (IOS XE 17.6 onwards)](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/voice/cube/ios-xe/config/ios-xe-book/m_voi-cube-sip-rec-recorder.html). last checked 2026-10
+- RFC. [RFC 3261, SIP](https://www.rfc-editor.org/rfc/rfc3261). last checked 2026-10
+- Cisco. [Cisco Unified Border Element product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-border-element/series.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/recording-siprec/sources.json
+
+## SRS
+
+Session recording server. RFC 7865 describes metadata from the server's point of view.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- RFC. [RFC 7245, architecture for media recording using SIP](https://www.rfc-editor.org/rfc/rfc7245). last checked 2026-10
+- RFC. [RFC 7865, SIP recording metadata](https://www.rfc-editor.org/rfc/rfc7865). last checked 2026-10
+- RFC. [RFC 7866, session recording protocol](https://www.rfc-editor.org/rfc/rfc7866). last checked 2026-10
+- Cisco. [CUBE configuration guide, SIP forking (IOS XE 17.6 onwards)](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/voice/cube/ios-xe/config/ios-xe-book/m_voi-cube-sip-rec-recorder.html). last checked 2026-10
+- RFC. [RFC 3261, SIP](https://www.rfc-editor.org/rfc/rfc3261). last checked 2026-10
+- Cisco. [Cisco Unified Border Element product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-border-element/series.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/recording-siprec/sources.json
+
+## SIPREC and CUBE as the recording client
+
+RFC 7245 describes architectures for recording in a SIP environment by sending a copy of a media stream to a recording device.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- RFC. [RFC 7245, architecture for media recording using SIP](https://www.rfc-editor.org/rfc/rfc7245). last checked 2026-10
+- RFC. [RFC 7865, SIP recording metadata](https://www.rfc-editor.org/rfc/rfc7865). last checked 2026-10
+- RFC. [RFC 7866, session recording protocol](https://www.rfc-editor.org/rfc/rfc7866). last checked 2026-10
+- Cisco. [CUBE configuration guide, SIP forking (IOS XE 17.6 onwards)](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/voice/cube/ios-xe/config/ios-xe-book/m_voi-cube-sip-rec-recorder.html). last checked 2026-10
+- RFC. [RFC 3261, SIP](https://www.rfc-editor.org/rfc/rfc3261). last checked 2026-10
+- Cisco. [Cisco Unified Border Element product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-border-element/series.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/recording-siprec/sources.json
+
+## The recording INVITE is the same dialog as the call being recorded.
+
+False. False. SIPREC is a separate recording session.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- RFC. [RFC 7245, architecture for media recording using SIP](https://www.rfc-editor.org/rfc/rfc7245). last checked 2026-10
+- RFC. [RFC 7865, SIP recording metadata](https://www.rfc-editor.org/rfc/rfc7865). last checked 2026-10
+- RFC. [RFC 7866, session recording protocol](https://www.rfc-editor.org/rfc/rfc7866). last checked 2026-10
+- Cisco. [CUBE configuration guide, SIP forking (IOS XE 17.6 onwards)](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/voice/cube/ios-xe/config/ios-xe-book/m_voi-cube-sip-rec-recorder.html). last checked 2026-10
+- RFC. [RFC 3261, SIP](https://www.rfc-editor.org/rfc/rfc3261). last checked 2026-10
+- Cisco. [Cisco Unified Border Element product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-border-element/series.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/recording-siprec/sources.json
+
+## Recording file
+
+The stored copy of the media.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- RFC. [RFC 7245, architecture for media recording using SIP](https://www.rfc-editor.org/rfc/rfc7245). last checked 2026-10
+- RFC. [RFC 7866, session recording protocol](https://www.rfc-editor.org/rfc/rfc7866). last checked 2026-10
+- Cisco. [Feature Configuration Guide for CUCM, Release 15, Recording](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/cucm_b_feature-configuration-guide-for-15/cucm_mp_r53f7ff4_00_recording-12-0.html). last checked 2026-10
+- Law. Call-recording consent and retention rule. confirm. No privacy or retention statute was opened. RFC 7245 names compliance as a reason some sites record. It does not say which rule applies to you. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/recording-compliance/sources.json
+
+## Quality score
+
+A review of a call. It is not the media file.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- RFC. [RFC 7245, architecture for media recording using SIP](https://www.rfc-editor.org/rfc/rfc7245). last checked 2026-10
+- RFC. [RFC 7866, session recording protocol](https://www.rfc-editor.org/rfc/rfc7866). last checked 2026-10
+- Cisco. [Feature Configuration Guide for CUCM, Release 15, Recording](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/cucm_b_feature-configuration-guide-for-15/cucm_mp_r53f7ff4_00_recording-12-0.html). last checked 2026-10
+- Law. Call-recording consent and retention rule. confirm. No privacy or retention statute was opened. RFC 7245 names compliance as a reason some sites record. It does not say which rule applies to you. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/recording-compliance/sources.json
+
+## Compliance is a reason, not a setting
+
+RFC 7245 says some environments record every call for regulatory, compliance, and consumer-protection reasons.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- RFC. [RFC 7245, architecture for media recording using SIP](https://www.rfc-editor.org/rfc/rfc7245). last checked 2026-10
+- RFC. [RFC 7866, session recording protocol](https://www.rfc-editor.org/rfc/rfc7866). last checked 2026-10
+- Cisco. [Feature Configuration Guide for CUCM, Release 15, Recording](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/cucm_b_feature-configuration-guide-for-15/cucm_mp_r53f7ff4_00_recording-12-0.html). last checked 2026-10
+- Law. Call-recording consent and retention rule. confirm. No privacy or retention statute was opened. RFC 7245 names compliance as a reason some sites record. It does not say which rule applies to you. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/recording-compliance/sources.json
+
+## RFC 7245 chooses the retention period for your contact center.
+
+False. False. It explains recording architectures. It does not set your policy.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- RFC. [RFC 7245, architecture for media recording using SIP](https://www.rfc-editor.org/rfc/rfc7245). last checked 2026-10
+- RFC. [RFC 7866, session recording protocol](https://www.rfc-editor.org/rfc/rfc7866). last checked 2026-10
+- Cisco. [Feature Configuration Guide for CUCM, Release 15, Recording](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/cucm_b_feature-configuration-guide-for-15/cucm_mp_r53f7ff4_00_recording-12-0.html). last checked 2026-10
+- Law. Call-recording consent and retention rule. confirm. No privacy or retention statute was opened. RFC 7245 names compliance as a reason some sites record. It does not say which rule applies to you. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/recording-compliance/sources.json
+
+## SIP trunk
+
+The signaling peer between two call agents or between a PBX and a provider.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Wikipedia. [SIP trunking (Wikipedia)](https://en.wikipedia.org/wiki/SIP_trunking). last checked 2026-10
+- SIP Forum. [SIPconnect technical recommendation](https://www.sipforum.org/technology/sipconnect/). last checked 2026-10
+- RFC. [RFC 3261, SIP](https://www.rfc-editor.org/rfc/rfc3261). last checked 2026-10
+- Cisco. [Cisco Unified Communications Manager product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-communications-manager-callmanager/series.html). last checked 2026-10
+- Cisco. [System Configuration Guide for CUCM, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/open-sip-trunk/sources.json
+
+## SIPconnect
+
+The SIP Forum's technical recommendation for IP peering with a VoIP provider.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Wikipedia. [SIP trunking (Wikipedia)](https://en.wikipedia.org/wiki/SIP_trunking). last checked 2026-10
+- SIP Forum. [SIPconnect technical recommendation](https://www.sipforum.org/technology/sipconnect/). last checked 2026-10
+- RFC. [RFC 3261, SIP](https://www.rfc-editor.org/rfc/rfc3261). last checked 2026-10
+- Cisco. [Cisco Unified Communications Manager product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-communications-manager-callmanager/series.html). last checked 2026-10
+- Cisco. [System Configuration Guide for CUCM, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/open-sip-trunk/sources.json
+
+## A SIP trunk is a peer, not a brand
+
+Wikipedia's SIP trunking article describes a SIP service between a provider and a customer's SIP PBX.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Wikipedia. [SIP trunking (Wikipedia)](https://en.wikipedia.org/wiki/SIP_trunking). last checked 2026-10
+- SIP Forum. [SIPconnect technical recommendation](https://www.sipforum.org/technology/sipconnect/). last checked 2026-10
+- RFC. [RFC 3261, SIP](https://www.rfc-editor.org/rfc/rfc3261). last checked 2026-10
+- Cisco. [Cisco Unified Communications Manager product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-communications-manager-callmanager/series.html). last checked 2026-10
+- Cisco. [System Configuration Guide for CUCM, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/open-sip-trunk/sources.json
+
+## One SIP trunk means both PBXs share one dial plan.
+
+False. False. Each side matches the digits with its own rules.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Wikipedia. [SIP trunking (Wikipedia)](https://en.wikipedia.org/wiki/SIP_trunking). last checked 2026-10
+- SIP Forum. [SIPconnect technical recommendation](https://www.sipforum.org/technology/sipconnect/). last checked 2026-10
+- RFC. [RFC 3261, SIP](https://www.rfc-editor.org/rfc/rfc3261). last checked 2026-10
+- Cisco. [Cisco Unified Communications Manager product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-communications-manager-callmanager/series.html). last checked 2026-10
+- Cisco. [System Configuration Guide for CUCM, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/open-sip-trunk/sources.json
+
+## Dialplan
+
+The Asterisk or FreeSWITCH rules that match a call. Not a CUCM CSS.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Wikipedia. [Asterisk (Wikipedia)](https://en.wikipedia.org/wiki/Asterisk_(PBX)). last checked 2026-10
+- Asterisk. [Types of Asterisk modules](https://docs.asterisk.org/Fundamentals/Asterisk-Architecture/Types-of-Asterisk-Modules/). last checked 2026-10
+- Asterisk. [Configuring res_pjsip](https://docs.asterisk.org/Configuration/Channel-Drivers/SIP/Configuring-res_pjsip/). last checked 2026-10
+- Wikipedia. [FreeSWITCH (Wikipedia)](https://en.wikipedia.org/wiki/FreeSWITCH). last checked 2026-10
+- FreeSWITCH. [FreeSWITCH users manual](https://developer.signalwire.com/freeswitch/). last checked 2026-10
+- RFC. [RFC 3261, SIP](https://www.rfc-editor.org/rfc/rfc3261). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/asterisk-freeswitch/sources.json
+
+## res_pjsip
+
+The Asterisk SIP channel stack named in the documentation opened for this lab.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Wikipedia. [Asterisk (Wikipedia)](https://en.wikipedia.org/wiki/Asterisk_(PBX)). last checked 2026-10
+- Asterisk. [Types of Asterisk modules](https://docs.asterisk.org/Fundamentals/Asterisk-Architecture/Types-of-Asterisk-Modules/). last checked 2026-10
+- Asterisk. [Configuring res_pjsip](https://docs.asterisk.org/Configuration/Channel-Drivers/SIP/Configuring-res_pjsip/). last checked 2026-10
+- Wikipedia. [FreeSWITCH (Wikipedia)](https://en.wikipedia.org/wiki/FreeSWITCH). last checked 2026-10
+- FreeSWITCH. [FreeSWITCH users manual](https://developer.signalwire.com/freeswitch/). last checked 2026-10
+- RFC. [RFC 3261, SIP](https://www.rfc-editor.org/rfc/rfc3261). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/asterisk-freeswitch/sources.json
+
+## Asterisk and FreeSWITCH as the other PBX
+
+Wikipedia describes Asterisk as a software PBX that connects phones, the PSTN, and VoIP endpoints.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Wikipedia. [Asterisk (Wikipedia)](https://en.wikipedia.org/wiki/Asterisk_(PBX)). last checked 2026-10
+- Asterisk. [Types of Asterisk modules](https://docs.asterisk.org/Fundamentals/Asterisk-Architecture/Types-of-Asterisk-Modules/). last checked 2026-10
+- Asterisk. [Configuring res_pjsip](https://docs.asterisk.org/Configuration/Channel-Drivers/SIP/Configuring-res_pjsip/). last checked 2026-10
+- Wikipedia. [FreeSWITCH (Wikipedia)](https://en.wikipedia.org/wiki/FreeSWITCH). last checked 2026-10
+- FreeSWITCH. [FreeSWITCH users manual](https://developer.signalwire.com/freeswitch/). last checked 2026-10
+- RFC. [RFC 3261, SIP](https://www.rfc-editor.org/rfc/rfc3261). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/asterisk-freeswitch/sources.json
+
+## An Asterisk dialplan is a CUCM calling search space.
+
+False. False. It is a different object on a different product.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Wikipedia. [Asterisk (Wikipedia)](https://en.wikipedia.org/wiki/Asterisk_(PBX)). last checked 2026-10
+- Asterisk. [Types of Asterisk modules](https://docs.asterisk.org/Fundamentals/Asterisk-Architecture/Types-of-Asterisk-Modules/). last checked 2026-10
+- Asterisk. [Configuring res_pjsip](https://docs.asterisk.org/Configuration/Channel-Drivers/SIP/Configuring-res_pjsip/). last checked 2026-10
+- Wikipedia. [FreeSWITCH (Wikipedia)](https://en.wikipedia.org/wiki/FreeSWITCH). last checked 2026-10
+- FreeSWITCH. [FreeSWITCH users manual](https://developer.signalwire.com/freeswitch/). last checked 2026-10
+- RFC. [RFC 3261, SIP](https://www.rfc-editor.org/rfc/rfc3261). last checked 2026-10
+
+Room or sheet file: ../rooms/sources/asterisk-freeswitch/sources.json
+
+## WebRTC
+
+Browser real-time communication. The W3C recommendation is the API. RFC 8825 points at the protocol suite.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Wikipedia. [WebRTC (Wikipedia)](https://en.wikipedia.org/wiki/WebRTC). last checked 2026-10
+- WebRTC. [W3C WebRTC recommendation](https://www.w3.org/TR/webrtc/). last checked 2026-10
+- RFC. [RFC 8825, WebRTC protocol overview](https://www.rfc-editor.org/rfc/rfc8825). last checked 2026-10
+- RFC. [RFC 8829, JavaScript session establishment](https://www.rfc-editor.org/rfc/rfc8829). last checked 2026-10
+- RFC. [RFC 7118, SIP over WebSocket](https://www.rfc-editor.org/rfc/rfc7118). last checked 2026-10
+- FreeSWITCH. [FreeSWITCH users manual](https://developer.signalwire.com/freeswitch/). last checked 2026-10
+- WebRTC. CPaaS vendor matrix. confirm. No vendor matrix was opened. The FreeSWITCH manual notes one hosted platform. Confirm any other vendor on that vendor's own page. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/webrtc-bridge/sources.json
+
+## JSEP
+
+JavaScript Session Establishment Protocol, RFC 8829.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Wikipedia. [WebRTC (Wikipedia)](https://en.wikipedia.org/wiki/WebRTC). last checked 2026-10
+- WebRTC. [W3C WebRTC recommendation](https://www.w3.org/TR/webrtc/). last checked 2026-10
+- RFC. [RFC 8825, WebRTC protocol overview](https://www.rfc-editor.org/rfc/rfc8825). last checked 2026-10
+- RFC. [RFC 8829, JavaScript session establishment](https://www.rfc-editor.org/rfc/rfc8829). last checked 2026-10
+- RFC. [RFC 7118, SIP over WebSocket](https://www.rfc-editor.org/rfc/rfc7118). last checked 2026-10
+- FreeSWITCH. [FreeSWITCH users manual](https://developer.signalwire.com/freeswitch/). last checked 2026-10
+- WebRTC. CPaaS vendor matrix. confirm. No vendor matrix was opened. The FreeSWITCH manual notes one hosted platform. Confirm any other vendor on that vendor's own page. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/webrtc-bridge/sources.json
+
+## WebRTC, SIP over WebSocket, and a hosted bridge
+
+Wikipedia describes WebRTC as browser and mobile APIs for real-time audio and video without a plugin.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Wikipedia. [WebRTC (Wikipedia)](https://en.wikipedia.org/wiki/WebRTC). last checked 2026-10
+- WebRTC. [W3C WebRTC recommendation](https://www.w3.org/TR/webrtc/). last checked 2026-10
+- RFC. [RFC 8825, WebRTC protocol overview](https://www.rfc-editor.org/rfc/rfc8825). last checked 2026-10
+- RFC. [RFC 8829, JavaScript session establishment](https://www.rfc-editor.org/rfc/rfc8829). last checked 2026-10
+- RFC. [RFC 7118, SIP over WebSocket](https://www.rfc-editor.org/rfc/rfc7118). last checked 2026-10
+- FreeSWITCH. [FreeSWITCH users manual](https://developer.signalwire.com/freeswitch/). last checked 2026-10
+- WebRTC. CPaaS vendor matrix. confirm. No vendor matrix was opened. The FreeSWITCH manual notes one hosted platform. Confirm any other vendor on that vendor's own page. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/webrtc-bridge/sources.json
+
+## A WebRTC page is a CUCM SIP phone.
+
+False. False. Something has to translate, unless the far end also speaks WebRTC.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Wikipedia. [WebRTC (Wikipedia)](https://en.wikipedia.org/wiki/WebRTC). last checked 2026-10
+- WebRTC. [W3C WebRTC recommendation](https://www.w3.org/TR/webrtc/). last checked 2026-10
+- RFC. [RFC 8825, WebRTC protocol overview](https://www.rfc-editor.org/rfc/rfc8825). last checked 2026-10
+- RFC. [RFC 8829, JavaScript session establishment](https://www.rfc-editor.org/rfc/rfc8829). last checked 2026-10
+- RFC. [RFC 7118, SIP over WebSocket](https://www.rfc-editor.org/rfc/rfc7118). last checked 2026-10
+- FreeSWITCH. [FreeSWITCH users manual](https://developer.signalwire.com/freeswitch/). last checked 2026-10
+- WebRTC. CPaaS vendor matrix. confirm. No vendor matrix was opened. The FreeSWITCH manual notes one hosted platform. Confirm any other vendor on that vendor's own page. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/webrtc-bridge/sources.json
+
+## RFC 8829 replaces SIP.
+
+False. False. It describes JavaScript control of the signaling plane and how that relates to existing signaling.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Wikipedia. [WebRTC (Wikipedia)](https://en.wikipedia.org/wiki/WebRTC). last checked 2026-10
+- WebRTC. [W3C WebRTC recommendation](https://www.w3.org/TR/webrtc/). last checked 2026-10
+- RFC. [RFC 8825, WebRTC protocol overview](https://www.rfc-editor.org/rfc/rfc8825). last checked 2026-10
+- RFC. [RFC 8829, JavaScript session establishment](https://www.rfc-editor.org/rfc/rfc8829). last checked 2026-10
+- RFC. [RFC 7118, SIP over WebSocket](https://www.rfc-editor.org/rfc/rfc7118). last checked 2026-10
+- FreeSWITCH. [FreeSWITCH users manual](https://developer.signalwire.com/freeswitch/). last checked 2026-10
+- WebRTC. CPaaS vendor matrix. confirm. No vendor matrix was opened. The FreeSWITCH manual notes one hosted platform. Confirm any other vendor on that vendor's own page. last checked 2026-10
+
+Room or sheet file: ../rooms/sources/webrtc-bridge/sources.json
+
 ## Sources and go deeper
 
 Independent, free, learning-only student project.

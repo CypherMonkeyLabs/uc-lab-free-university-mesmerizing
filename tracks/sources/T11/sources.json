@@ -1,0 +1,134 @@
+{
+  "room": "T11",
+  "checked": "2026-10",
+  "sources": [
+    {
+      "kind": "wikipedia",
+      "title": "SIP trunking (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/SIP_trunking",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "sipforum",
+      "title": "SIPconnect technical recommendation",
+      "url": "https://www.sipforum.org/technology/sipconnect/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3261, SIP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3261",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Unified Communications Manager product support",
+      "url": "https://www.cisco.com/c/en/us/support/unified-communications/unified-communications-manager-callmanager/series.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "System Configuration Guide for CUCM, Release 15",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Asterisk (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Asterisk_(PBX)",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "asterisk",
+      "title": "Types of Asterisk modules",
+      "url": "https://docs.asterisk.org/Fundamentals/Asterisk-Architecture/Types-of-Asterisk-Modules/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "asterisk",
+      "title": "Configuring res_pjsip",
+      "url": "https://docs.asterisk.org/Configuration/Channel-Drivers/SIP/Configuring-res_pjsip/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "FreeSWITCH (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/FreeSWITCH",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "freeswitch",
+      "title": "FreeSWITCH users manual",
+      "url": "https://developer.signalwire.com/freeswitch/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "WebRTC (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/WebRTC",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webrtc",
+      "title": "W3C WebRTC recommendation",
+      "url": "https://www.w3.org/TR/webrtc/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 8825, WebRTC protocol overview",
+      "url": "https://www.rfc-editor.org/rfc/rfc8825",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 8829, JavaScript session establishment",
+      "url": "https://www.rfc-editor.org/rfc/rfc8829",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 7118, SIP over WebSocket",
+      "url": "https://www.rfc-editor.org/rfc/rfc7118",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webrtc",
+      "title": "CPaaS vendor matrix",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "No vendor matrix was opened. The FreeSWITCH manual notes one hosted platform. Confirm any other vendor on that vendor's own page."
+    }
+  ]
+}

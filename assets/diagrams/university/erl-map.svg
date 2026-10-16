@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 320" role="img" aria-label="Switch port, ERL, and ELIN">
+<rect width="980" height="320" rx="18" fill="#0b1020"/>
+<text x="24" y="36" fill="#fde68a" font-family="system-ui,sans-serif" font-size="18">Switch port, ERL, and ELIN</text>
+<rect x="40.0" y="70" width="201.0" height="64" rx="14" fill="#22d3ee"/>
+<text x="140.5" y="108" text-anchor="middle" font-size="14" font-family="system-ui,sans-serif" fill="#0b1020">Port</text>
+<rect x="265.0" y="70" width="201.0" height="64" rx="14" fill="#a5b4fc"/>
+<text x="365.5" y="108" text-anchor="middle" font-size="14" font-family="system-ui,sans-serif" fill="#0b1020">ERL</text>
+<path d="M249.0 102 H265.0" stroke="#fff" stroke-width="3"/>
+<rect x="490.0" y="70" width="201.0" height="64" rx="14" fill="#fbbf24"/>
+<text x="590.5" y="108" text-anchor="middle" font-size="14" font-family="system-ui,sans-serif" fill="#0b1020">ELIN</text>
+<path d="M474.0 102 H490.0" stroke="#fff" stroke-width="3"/>
+<rect x="715.0" y="70" width="201.0" height="64" rx="14" fill="#fb7185"/>
+<text x="815.5" y="108" text-anchor="middle" font-size="14" font-family="system-ui,sans-serif" fill="#0b1020">ALI</text>
+<path d="M699.0 102 H715.0" stroke="#fff" stroke-width="3"/>
+<text x="32" y="168" fill="#e0e7ff" font-size="15" font-family="system-ui,sans-serif">CER assigns an ERL to the switch port, then an ELIN for that ERL.</text>
+<text x="32" y="194" fill="#e0e7ff" font-size="15" font-family="system-ui,sans-serif">The Release 15 plan says a moved patch cord can point the port at the wrong ERL.</text>
+</svg>

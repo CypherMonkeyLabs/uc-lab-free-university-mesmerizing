@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 320" role="img" aria-label="Where the copy of the audio starts">
+<rect width="980" height="320" rx="18" fill="#0b1020"/>
+<text x="24" y="36" fill="#fde68a" font-family="system-ui,sans-serif" font-size="18">Where the copy of the audio starts</text>
+<rect x="40.0" y="70" width="276.0" height="64" rx="14" fill="#22d3ee"/>
+<text x="178.0" y="108" text-anchor="middle" font-size="14" font-family="system-ui,sans-serif" fill="#0b1020">Phone BiB</text>
+<rect x="340.0" y="70" width="276.0" height="64" rx="14" fill="#a5b4fc"/>
+<text x="478.0" y="108" text-anchor="middle" font-size="14" font-family="system-ui,sans-serif" fill="#0b1020">Gateway</text>
+<path d="M324.0 102 H340.0" stroke="#fff" stroke-width="3"/>
+<rect x="640.0" y="70" width="276.0" height="64" rx="14" fill="#fbbf24"/>
+<text x="778.0" y="108" text-anchor="middle" font-size="14" font-family="system-ui,sans-serif" fill="#0b1020">SIPREC</text>
+<path d="M624.0 102 H640.0" stroke="#fff" stroke-width="3"/>
+<text x="32" y="168" fill="#e0e7ff" font-size="15" font-family="system-ui,sans-serif">CUCM 15 documents phone-based and network-based recording.</text>
+<text x="32" y="194" fill="#e0e7ff" font-size="15" font-family="system-ui,sans-serif">A score or a pause is not the same object as the media file.</text>
+</svg>
