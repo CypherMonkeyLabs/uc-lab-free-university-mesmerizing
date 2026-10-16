@@ -1,19 +1,29 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>A teaching UC stack</title><link rel="stylesheet" href="../../assets/css/footer.css"><style>body{margin:0;background:#0b1020;color:#e0e7ff;font-family:system-ui,sans-serif}svg{width:100%;height:auto}</style></head><body><h1 style="padding:12px 16px">A teaching UC stack</h1><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 320" role="img" aria-label="A teaching UC stack">
-<rect width="980" height="320" rx="18" fill="#0b1020"/>
-<text x="24" y="36" fill="#fde68a" font-family="system-ui,sans-serif" font-size="18">A teaching UC stack</text>
-<rect x="40.0" y="70" width="201.0" height="64" rx="14" fill="#22d3ee"/>
-<text x="140.5" y="108" text-anchor="middle" font-size="14" font-family="system-ui,sans-serif" fill="#0b1020">Phone</text>
-<rect x="265.0" y="70" width="201.0" height="64" rx="14" fill="#a5b4fc"/>
-<text x="365.5" y="108" text-anchor="middle" font-size="14" font-family="system-ui,sans-serif" fill="#0b1020">CUCM</text>
-<path d="M249.0 102 H265.0" stroke="#fff" stroke-width="3"/>
-<rect x="490.0" y="70" width="201.0" height="64" rx="14" fill="#fbbf24"/>
-<text x="590.5" y="108" text-anchor="middle" font-size="14" font-family="system-ui,sans-serif" fill="#0b1020">CUBE</text>
-<path d="M474.0 102 H490.0" stroke="#fff" stroke-width="3"/>
-<rect x="715.0" y="70" width="201.0" height="64" rx="14" fill="#fb7185"/>
-<text x="815.5" y="108" text-anchor="middle" font-size="14" font-family="system-ui,sans-serif" fill="#0b1020">PSTN</text>
-<path d="M699.0 102 H715.0" stroke="#fff" stroke-width="3"/>
-<text x="32" y="168" fill="#e0e7ff" font-size="15" font-family="system-ui,sans-serif">Signaling and media are different paths.</text>
-<text x="32" y="194" fill="#e0e7ff" font-size="15" font-family="system-ui,sans-serif">Confirm every box against the design you actually run.</text>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>A teaching UC stack</title><link rel="stylesheet" href="../../assets/css/footer.css"><style>body{margin:0;background:#0b1020;color:#e0e7ff;font-family:system-ui,sans-serif}svg{width:100%;height:auto}</style></head><body><h1 style="padding:12px 16px">A teaching UC stack</h1><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 680" role="img" aria-label="A teaching UC stack">
+<defs>
+<linearGradient id="ucstack-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#312e81"/><stop offset=".5" stop-color="#0e7490"/><stop offset="1" stop-color="#9d174d"/></linearGradient>
+<linearGradient id="ucstack-phone" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ecfeff"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+<linearGradient id="ucstack-cucm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ede9fe"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+<linearGradient id="ucstack-cube" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fef9c3"/><stop offset="1" stop-color="#fbbf24"/></linearGradient>
+<linearGradient id="ucstack-pstn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe4e6"/><stop offset="1" stop-color="#fb7185"/></linearGradient>
+</defs>
+<rect width="520" height="680" fill="url(#ucstack-bg)"/>
+<text x="32" y="48" fill="#ffffff" font-family="system-ui,sans-serif" font-size="28" font-weight="700">Teaching UC stack</text>
+<text x="32" y="78" fill="#e0f2fe" font-family="system-ui,sans-serif" font-size="16">Signaling goes down. Media can take the side path.</text>
+<rect x="48" y="108" width="320" height="96" rx="24" fill="url(#ucstack-phone)"/>
+<text x="208" y="166" text-anchor="middle" fill="#082f49" font-family="system-ui,sans-serif" font-size="28" font-weight="700">Phone</text>
+<rect x="48" y="236" width="320" height="96" rx="24" fill="url(#ucstack-cucm)"/>
+<text x="208" y="294" text-anchor="middle" fill="#1e1b4b" font-family="system-ui,sans-serif" font-size="28" font-weight="700">CUCM</text>
+<rect x="48" y="364" width="320" height="96" rx="24" fill="url(#ucstack-cube)"/>
+<text x="208" y="422" text-anchor="middle" fill="#422006" font-family="system-ui,sans-serif" font-size="28" font-weight="700">CUBE</text>
+<rect x="48" y="492" width="320" height="96" rx="24" fill="url(#ucstack-pstn)"/>
+<text x="208" y="550" text-anchor="middle" fill="#4c0519" font-family="system-ui,sans-serif" font-size="28" font-weight="700">PSTN</text>
+<path d="M208 204 V236 M208 332 V364 M208 460 V492" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+<path d="M388 156 C 492 170 496 530 388 548" fill="none" stroke="#fde047" stroke-width="6" stroke-dasharray="12 10" stroke-linecap="round"/>
+<text x="448" y="360" fill="#fde047" font-family="system-ui,sans-serif" font-size="18" font-weight="700">RTP</text>
+<circle r="11" fill="#ffffff"><animateMotion dur="3.4s" repeatCount="indefinite" path="M208 156 V548"/></circle>
+<circle r="10" fill="#fde047"><animateMotion dur="4s" repeatCount="indefinite" path="M388 156 C 492 170 496 530 388 548"/></circle>
+<text x="32" y="628" fill="#ffffff" font-family="system-ui,sans-serif" font-size="16">Confirm every box against the design you run.</text>
+<text x="32" y="656" fill="#e0f2fe" font-family="system-ui,sans-serif" font-size="15">RTP skips a proxy unless that box is a B2BUA.</text>
 </svg><footer class="site-footer lab-footer wrap" data-canon-footer><aside class="disclaimer-panel" aria-labelledby="disc-title"><span class="disclaimer-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4.5 5.5v5.8c0 4.6 3.1 8.6 7.5 10.2 4.4-1.6 7.5-5.6 7.5-10.2V5.5z" fill="currentColor" opacity=".18" stroke="currentColor" stroke-width="1.6"/><path d="M8.2 12.2 11 15l4.8-5.2" fill="none" stroke="#0f766e" stroke-width="1.8" stroke-linecap="round"/></svg></span><div><h2 id="disc-title">A note from the student behind this lab</h2><p>This is an <strong>independent, free, learning-only student project</strong>. It respects every company and vendor, and every trademark belongs to its owner. It is <strong>not affiliated with or endorsed by</strong> any of them.</p><p>If anyone has a concern, the content will be removed or corrected promptly via the contact form at <a href="https://cyphermonkeylabs.com/#contact">https://cyphermonkeylabs.com/#contact</a>. Nothing here is sold. I am happy to volunteer for any organization.</p></div></aside><p class="footer-brand">CypherMonkey Labs</p><nav class="brand-row brand-icons" aria-label="CypherMonkey Labs"><a class="brand-icon brand-web" href="https://cyphermonkeylabs.com" aria-label="CypherMonkey Labs website"><svg viewBox="0 0 64 64" class="monkey-icon" aria-hidden="true"><defs>
 <radialGradient id="mh" cx="38%" cy="30%" r="80%"><stop offset="0" stop-color="#ffd9a0"/><stop offset=".5" stop-color="#e8903a"/><stop offset="1" stop-color="#8a3f10"/></radialGradient></defs>
 <circle cx="14" cy="34" r="7" fill="url(#mh)"/><circle cx="50" cy="34" r="7" fill="url(#mh)"/>

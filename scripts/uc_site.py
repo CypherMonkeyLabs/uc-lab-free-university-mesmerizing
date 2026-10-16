@@ -9,6 +9,7 @@ import zipfile
 from pathlib import Path
 
 from build_uc_round2 import (
+    hero_stack_svg,
     CONTACT,
     ORG,
     SECTIONS,
@@ -183,7 +184,7 @@ def emit_home(room_rows: list[dict], items: list[dict]) -> None:
 <a class="ghost" href="campus/uc-lab-free-university.html">Deep campus</a>
 </div>
 </div>
-<div class="diagram-frame"><img src="assets/diagrams/university/uc-stack.svg" alt="Teaching UC stack"></div>
+<div class="diagram-frame hero-diagram">{hero_stack_svg()}</div>
 </section>
 <section class="wrap">
 <div class="stat-row" aria-label="Counts from this repository">
@@ -194,7 +195,7 @@ def emit_home(room_rows: list[dict], items: list[dict]) -> None:
 </div>
 <h2>Eight paths</h2>
 <div class="track-map">{''.join(tiles)}</div>
-<p class="lede">The older flagship studio remains at <a href="flagship/index.html">flagship/index.html</a>. The 580-section campus remains beside it. This front door is the round-2 course.</p>
+<p class="lede">The older flagship studio remains at <a href="flagship/index.html">flagship/index.html</a>. The 580-section campus remains beside it as a comparison library: Teams Phone, Genesys, Five9, NICE, Amazon Connect, and the other names there are study references, not this course and not endorsements. This front door is the round-2 Cisco UC course.</p>
 </section>
 """
     write_page("index.html", "UC Lab Free University", "SIP, CUCM, CUBE, SRST, Expressway, QoS, UCCE, and Webex Calling migration.", "home", body)
@@ -625,6 +626,18 @@ def emit_zip() -> None:
                     if file.suffix == ".png" and "screenshots" in file.parts:
                         continue
                     archive.write(file, file.relative_to(ROOT).as_posix())
+    page = ROOT / "downloads.html"
+    if page.exists():
+        size = target.stat().st_size
+        text = page.read_text(encoding="utf-8")
+        updated, count = re.subn(
+            r"(uc-lab-university\.zip</td><td>)\d+",
+            rf"\g<1>{size}",
+            text,
+            count=1,
+        )
+        if count and updated != text:
+            page.write_text(updated, encoding="utf-8")
 
 
 def scrub_legacy() -> int:
