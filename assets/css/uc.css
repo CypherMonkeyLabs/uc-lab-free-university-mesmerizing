@@ -491,26 +491,6 @@ html[data-theme="aurora"] body.uc-lab main a:not(.btn):not(.ghost):not(.dl-btn):
 .site-footer { padding-bottom: 28px; }
 .chart-bar { height: 18px; border-radius: 9px; background: linear-gradient(90deg, #22d3ee, #f472b6); margin: 4px 0 12px; }
 
-.tour-shade { position: fixed; inset: 0; z-index: 90; pointer-events: none; }
-.tour-hole {
-  position: fixed;
-  z-index: 91;
-  border-radius: 16px;
-  box-shadow: 0 0 0 9999px rgba(8, 10, 30, 0.72), 0 0 0 3px #fde047;
-  pointer-events: none;
-}
-.tour-card {
-  position: fixed;
-  z-index: 92;
-  width: min(360px, calc(100% - 24px));
-  background: #fff;
-  color: #0b1020;
-  border-radius: 16px;
-  padding: 14px;
-  box-shadow: var(--shadow);
-}
-.tour-card .row { display: flex; gap: 8px; flex-wrap: wrap; }
-
 .bot-dock {
   position: fixed;
   z-index: 82;

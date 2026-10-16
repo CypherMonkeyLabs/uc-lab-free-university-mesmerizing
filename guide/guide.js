@@ -439,10 +439,13 @@
 
   var tour = document.createElement("div");
   tour.hidden = true;
-  tour.innerHTML = '<div class="tour-hole" data-hole></div><div class="tour-card" role="dialog" aria-modal="true" aria-label="First visit tour"><p data-step></p><div class="row"><button type="button" data-back>Back</button><button type="button" data-next>Next</button><button type="button" data-skip>Skip</button></div></div>';
+  tour.className = "tour-layer";
+  tour.innerHTML = '<div class="tour-hole" data-hole></div><div class="tour-card" role="dialog" aria-modal="true" aria-label="First visit tour"><p class="tour-kicker" data-kicker></p><p data-step></p><div class="tour-dots" role="group" aria-label="Steps 1 to 6"></div><div class="row"><button type="button" data-back>Back</button><button type="button" data-next>Next</button><button type="button" data-skip>Skip</button></div></div>';
   document.body.appendChild(tour);
   var hole = tour.querySelector("[data-hole]");
   var stepText = tour.querySelector("[data-step]");
+  var kicker = tour.querySelector("[data-kicker]");
+  var dots = tour.querySelector(".tour-dots");
   var steps = [
     { sel: "[data-tour='home']", n: "1 of 6", text: "Home is the front door. The eight tracks sit under this banner." },
     { sel: "[data-tour='menu']", n: "2 of 6", text: "Menu is at the top left. The drawer slides in. Esc or a tap outside closes it." },
@@ -452,34 +455,97 @@
     { sel: "[data-tour='downloads']", n: "6 of 6", text: "Downloads holds the sheets, cards, and the zip. Every room also has its own export buttons. The monkey can point at the file for this section." }
   ];
   var stepAt = 0;
+  steps.forEach(function (step, index) {
+    var dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "tour-dot";
+    dot.setAttribute("data-dot", String(index));
+    dot.setAttribute("aria-label", "Step " + (index + 1) + " of " + steps.length);
+    dot.textContent = String(index + 1);
+    dot.addEventListener("click", function () {
+      stepAt = index;
+      placeTour();
+    });
+    dots.appendChild(dot);
+  });
+  function fullyInside(node) {
+    var rect = node.getBoundingClientRect();
+    if (rect.width < 8 || rect.height < 8) return false;
+    var margin = 6;
+    return rect.top >= margin
+      && rect.left >= margin
+      && rect.bottom <= window.innerHeight - margin
+      && rect.right <= window.innerWidth - margin;
+  }
   function visibleTarget(sel) {
-    var nodes = document.querySelectorAll(sel);
+    var nodes = Array.prototype.slice.call(document.querySelectorAll(sel));
     var found = null;
     nodes.forEach(function (node) {
-      if (found) return;
-      var rect = node.getBoundingClientRect();
-      if (rect.width < 8 || rect.height < 8) return;
-      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-      if (rect.right < 0 || rect.left > window.innerWidth) return;
-      found = node;
+      if (!found && fullyInside(node)) found = node;
     });
-    return found || nodes[0] || monkey;
+    if (found) return found;
+    var pick = nodes[0] || monkey;
+    if (pick && pick.scrollIntoView) {
+      pick.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" });
+    }
+    return pick;
+  }
+  function band(selector) {
+    var node = document.querySelector(selector);
+    if (!node) return null;
+    var rect = node.getBoundingClientRect();
+    if (rect.width < 8 || rect.height < 8) return null;
+    if (window.getComputedStyle(node).display === "none") return null;
+    return rect;
   }
   function placeTour() {
     var target = visibleTarget(steps[stepAt].sel);
     var rect = target.getBoundingClientRect();
-    hole.style.left = (rect.left - 6) + "px";
-    hole.style.top = (rect.top - 6) + "px";
-    hole.style.width = (rect.width + 12) + "px";
-    hole.style.height = (rect.height + 12) + "px";
+    var pad = 8;
+    hole.style.left = (rect.left - pad) + "px";
+    hole.style.top = (rect.top - pad) + "px";
+    hole.style.width = (rect.width + pad * 2) + "px";
+    hole.style.height = (rect.height + pad * 2) + "px";
     var card = tour.querySelector(".tour-card");
-    var top = rect.bottom + 12;
-    if (top > window.innerHeight - 160) top = Math.max(12, rect.top - 150);
-    card.style.left = Math.min(window.innerWidth - card.offsetWidth - 12, Math.max(12, rect.left)) + "px";
-    card.style.top = top + "px";
-    stepText.textContent = steps[stepAt].n + ". " + steps[stepAt].text;
+    kicker.textContent = steps[stepAt].n;
+    stepText.textContent = steps[stepAt].text;
+    tour.querySelectorAll(".tour-dot").forEach(function (dot, index) {
+      var on = index === stepAt;
+      dot.classList.toggle("is-on", on);
+      dot.classList.toggle("is-done", index < stepAt);
+      if (on) dot.setAttribute("aria-current", "step");
+      else dot.removeAttribute("aria-current");
+    });
     tour.querySelector("[data-back]").disabled = stepAt === 0;
     tour.querySelector("[data-next]").textContent = stepAt === steps.length - 1 ? "Done" : "Next";
+    var header = band(".uc-top");
+    var phone = band(".phone-bar");
+    var headerBottom = header ? header.bottom : 8;
+    var phoneTop = phone ? phone.top : window.innerHeight;
+    var gap = 14;
+    var cardH = card.offsetHeight;
+    var roomTop = headerBottom + gap;
+    var roomBottom = phoneTop - gap;
+    var below = rect.bottom + gap;
+    var above = rect.top - cardH - gap;
+    var top = below;
+    if (top < roomTop || top + cardH > roomBottom) {
+      if (above >= roomTop && above + cardH <= roomBottom) top = above;
+      else top = roomTop;
+    }
+    if (top + cardH > roomBottom) top = Math.max(roomTop, roomBottom - cardH);
+    if (top < roomTop) top = roomTop;
+    var hero = document.querySelector("main h1");
+    if (hero && window.innerWidth <= 800) {
+      var heroBottom = hero.getBoundingClientRect().bottom;
+      var belowHero = heroBottom + gap;
+      if (top < heroBottom - 8 && belowHero + cardH <= roomBottom) top = belowHero;
+    }
+    var width = card.offsetWidth;
+    var left = Math.min(rect.left, window.innerWidth - width - 12);
+    if (left < 12) left = 12;
+    card.style.left = Math.round(left) + "px";
+    card.style.top = Math.round(top) + "px";
   }
   function showTour() {
     tour.hidden = false;
