@@ -72,6 +72,40 @@ def main() -> int:
         errors.append("track chrome missing: " + ", ".join(track_missing[:8]))
     if 'id="siteSearch"' not in home or "Breadcrumb" not in home:
         errors.append("search or breadcrumbs missing on home")
+    footer_js = ROOT / "shared" / "brand-footer.js"
+    footer_css = ROOT / "shared" / "brand-footer.css"
+    if not footer_js.is_file() or not footer_css.is_file():
+        errors.append("shared brand footer files are missing")
+    else:
+        footer = footer_js.read_text(encoding="utf-8")
+        for needle in (
+            "https://github.com/cipher0x9",
+            "https://github.com/CypherMonkeyLabs",
+            "https://cyphermonkeylabs.com",
+            "https://x.com/Cypher0x9",
+            "https://www.linkedin.com/in/luckylakshmanucwebex",
+            "https://huggingface.co/Cypher0x9",
+            "© 2026 CypherMonkeyLabs",
+            "Educational independent study project by a student.",
+        ):
+            if needle not in footer:
+                errors.append(f"brand footer missing {needle}")
+        for banned in ("linktr.ee", "mailto:", "instagram.com", "kaggle.com"):
+            if banned in footer:
+                errors.append(f"brand footer includes {banned}")
+    shell = (FLAG / "assets" / "site.js").read_text(encoding="utf-8")
+    if "shared/brand-footer.js" not in shell:
+        errors.append("flagship shell does not load the brand footer")
+    campus_shell = (ROOT / "campus" / "assets" / "app.js").read_text(encoding="utf-8")
+    if "shared/brand-footer.js" not in campus_shell:
+        errors.append("campus shell does not load the brand footer")
+    bare = [
+        path.relative_to(ROOT).as_posix()
+        for path in list(FLAG.rglob("*.html")) + [ROOT / "index.html"]
+        if "site.js" not in path.read_text(encoding="utf-8")
+    ]
+    if bare:
+        errors.append("pages missing site.js shell: " + ", ".join(bare[:8]))
     print(
         f"counts diagrams={len(svgs)} animated={len(animated)} surfaced={surfaced} "
         f"charts={chart_ids} pdfs={len(pdfs)} tracks={len(tracks)} vendors={len(VENDORS)}"

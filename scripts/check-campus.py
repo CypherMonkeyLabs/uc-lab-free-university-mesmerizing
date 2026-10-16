@@ -33,6 +33,8 @@ HUB_OK_FILES = {
     "scripts/round2_pages.py",
     "scripts/round3_pages.py",
     "scripts/check-flagship.py",
+    # Public brand plate. The icon list includes the studio URLs on purpose.
+    "docs/BRAND_FOOTER.md",
 }
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}")
 PHONE_RE = re.compile(r"(?<![\w.])(?:\+\d{1,3}[\s.\-]?)?\(?\d{3}\)?[\s.\-]\d{3}[\s.\-]\d{4}(?!\d)")
@@ -256,9 +258,16 @@ def main() -> int:
             if zipped_assets != expected:
                 fail(errors, f"zip assets {sorted(zipped_assets)} != campus/assets {sorted(expected)}")
             allowed_root = {"uc-lab-free-university.html", "sw.js", "manifest.webmanifest"}
+            shared_footer = {"shared/brand-footer.js", "shared/brand-footer.css"}
             for name in names:
-                if name not in allowed_root and not name.startswith("assets/"):
+                if name not in allowed_root and name not in shared_footer and not name.startswith("assets/"):
                     fail(errors, f"unexpected zip member {name}")
+            for name in sorted(shared_footer):
+                disk = ROOT / name
+                if name not in names:
+                    fail(errors, f"zip is missing {name}")
+                elif not disk.is_file() or zf.read(name) != disk.read_bytes():
+                    fail(errors, f"zip member does not match {name}")
             for name in sorted(expected):
                 disk = asset_root / name.removeprefix("assets/")
                 if zf.read(name) != disk.read_bytes():
