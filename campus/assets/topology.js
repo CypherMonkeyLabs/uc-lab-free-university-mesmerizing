@@ -200,8 +200,9 @@ function mount(host) {
   const flat = stage.querySelector(".topo-flat");
   if (flat) flat.hidden = true;
 
-  const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  const coarseGpu = window.matchMedia("(max-width: 800px), (pointer: coarse)").matches;
+  const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: !coarseGpu, alpha: true, powerPreference: coarseGpu ? "low-power" : "default" });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, coarseGpu ? 1 : 1.5));
   const scene = new THREE.Scene();
   scene.fog = new THREE.Fog(0x0b1120, 12, 26);
   const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 50);

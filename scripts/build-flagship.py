@@ -19,12 +19,12 @@ import sys
 import zipfile
 from pathlib import Path
 
+from flagship_chrome import render_chrome
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "flagship"
 POOL = "origin/merge/idea-pool-2026-10-14"
 LEARN = "origin/cursor/supercharge-2026-10-03"
-REPO = "https://github.com/cipher0x9/uc-lab-free-university-mesmerizing"
-CONTACT = "https://cyphermonkeylabs.com/#contact"
 PORT_DOC = "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15/cucm_m_tcp-and-udp-port-usage-12-0.html"
 
 NAV = [
@@ -209,226 +209,7 @@ def crumbs_for(rel: str, title: str, root: str) -> str:
 
 
 def chrome(rel: str, title: str, body: str, description: str) -> str:
-    depth = rel.count("/")
-    root = "../" * depth
-    current = rel
-    hub = [
-        ("https://cyphermonkeylabs.com", "Studio"),
-        ("https://linktr.ee/cyphermonkey", "Links"),
-        (REPO, "GitHub · rate, comment, help"),
-        ("https://dev.to/cyphermonkey", "DEV"),
-        ("https://huggingface.co/Cypher0x9", "Hugging Face"),
-        ("https://x.com/CypherMonkey", "X · @CypherMonkey"),
-    ]
-    hub_html = "".join(
-        f'<a href="{esc(href)}">{esc(label)}</a>' for href, label in hub
-    )
-    i18n_nav = {
-        "Home": "navHome",
-        "Diagrams": "navDiagrams",
-        "Flows": "navFlows",
-        "Charts": "navCharts",
-        "Cheat Codes": "navCheats",
-        "Play": "navPlay",
-        "Ecosystem": "navEco",
-        "Downloads": "navDownloads",
-        "Careers": "navCareers",
-    }
-
-    def marked(href: str) -> str:
-        section = href.split("/")[0] if href.endswith("/index.html") else ""
-        on_section = bool(section) and current.startswith(section + "/")
-        if href == current or on_section:
-            return ' aria-current="page"'
-        return ""
-
-    tabs = []
-    sheet = []
-    for label, href in NAV:
-        abs_href = root + href
-        here = marked(href)
-        key = i18n_nav.get(label, "")
-        link = f'<a href="{esc(abs_href)}"{here} data-i18n="{key}">{esc(label)}</a>'
-        tabs.append(link)
-        sheet.append(link)
-    quick = [
-        ("Learn", "path.html", "quickLearn"),
-        ("Diagrams", "diagrams/index.html", "navDiagrams"),
-        ("Play", "play/index.html", "navPlay"),
-    ]
-    quick_html = "".join(
-        f'<a href="{esc(root + href)}"{marked(href)} data-i18n="{key}">{esc(label)}</a>'
-        for label, href, key in quick
-    )
-    theme_html = """
-        <div class="themes" role="radiogroup" aria-label="Theme">
-          <button type="button" class="swatch-neon" data-theme-set="neon" aria-label="Neon" aria-checked="true"></button>
-          <button type="button" class="swatch-holographic" data-theme-set="holographic" aria-label="Holographic" aria-checked="false"></button>
-          <button type="button" class="swatch-cyberpunk" data-theme-set="cyberpunk" aria-label="Cyberpunk" aria-checked="false"></button>
-          <button type="button" class="swatch-sunset" data-theme-set="sunset" aria-label="Sunset" aria-checked="false"></button>
-          <button type="button" class="swatch-light" data-theme-set="light" aria-label="Light" aria-checked="false"></button>
-        </div>"""
-    lang_html = """
-      <div class="lang-chips" role="radiogroup" aria-label="Language">
-        <button type="button" data-lang="en" aria-pressed="true"><span aria-hidden="true">🇬🇧</span> EN</button>
-        <button type="button" data-lang="es" aria-pressed="false"><span aria-hidden="true">🇪🇸</span> ES</button>
-        <button type="button" data-lang="hi" aria-pressed="false"><span aria-hidden="true">🇮🇳</span> HI</button>
-        <button type="button" data-lang="te" aria-pressed="false"><span aria-hidden="true">🇮🇳</span> TE</button>
-        <button type="button" data-lang="fr" aria-pressed="false"><span aria-hidden="true">🇫🇷</span> FR</button>
-        <button type="button" data-lang="de" aria-pressed="false"><span aria-hidden="true">🇩🇪</span> DE</button>
-        <button type="button" data-lang="ja" aria-pressed="false"><span aria-hidden="true">🇯🇵</span> JA</button>
-        <button type="button" data-lang="ar" aria-pressed="false"><span aria-hidden="true">🇸🇦</span> AR</button>
-      </div>"""
-    found = [i for i, (href, _) in enumerate(ORDER) if href == rel]
-    if found:
-        idx = found[0]
-        prev_h, prev_l = ORDER[(idx - 1) % len(ORDER)]
-        next_h, next_l = ORDER[(idx + 1) % len(ORDER)]
-    else:
-        prev_h, prev_l = ("cheats/index.html", "Cheat codes")
-        next_h, next_l = ("download.html", "Offline download")
-
-    def rel_to(target: str) -> str:
-        if target.startswith("../"):
-            return target
-        return root + target
-
-    sisters = [
-        ("https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/", "AI Lab"),
-        ("https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/", "Amazon Connect"),
-        ("https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/", "Microsoft Voice"),
-        ("https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/", "Five9"),
-        ("https://cipher0x9.github.io/genesys-cloud-lab-free-university-mesmerizing/", "Genesys Cloud"),
-        ("https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/", "NICE CXone"),
-        ("https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/", "SIP Universe"),
-        (rel_to("path.html"), "Study path"),
-    ]
-    sister_html = "".join(f'<a class="card" href="{esc(href)}"><strong>{esc(label)}</strong></a>' for href, label in sisters)
-    effects_html = ""
-    if "data-effects" in body or rel in ("index.html", "diagrams/index.html", "charts/index.html"):
-        effects_html = f'<script type="module" src="{root}assets/effects.js"></script>'
-    confetti_html = ""
-    if 'id="quiz"' in body:
-        confetti_html = f'<script src="{root}assets/vendor/confetti.browser.js"></script>'
-    crumb_html = crumbs_for(rel, title, root)
-    return f"""<!DOCTYPE html>
-<html lang="en" data-theme="neon">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(title)} · UC Lab Free University</title>
-<meta name="description" content="{esc(description)}">
-<link rel="icon" href="{root}assets/icon.svg">
-<link rel="manifest" href="{root}manifest.webmanifest">
-<link rel="stylesheet" href="{root}assets/site.css">
-<script>
-try {{
-  var params = new URLSearchParams(location.search);
-  var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
-  var ok = {{neon:1, holographic:1, cyberpunk:1, sunset:1, light:1}};
-  if (ok[t]) document.documentElement.setAttribute("data-theme", t);
-  var motion = localStorage.getItem("uc_flagship_motion");
-  if (motion === "reduce" || motion === "allow") document.documentElement.setAttribute("data-motion", motion);
-  var lang = localStorage.getItem("uc_flagship_lang");
-  if (lang) document.documentElement.lang = lang;
-  if (lang === "ar") document.documentElement.dir = "rtl";
-}} catch (e) {{}}
-</script>
-</head>
-<body data-root="{root}">
-<a class="skip" href="#content" data-i18n="skip">Skip to content</a>
-<header class="topbar">
-  <div class="bar">
-    <a class="brand" href="{root}index.html">
-      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#172033"/><path d="M6 22c4-8 8-8 12 0s8 8 12 0" fill="none" stroke="#7dcec4" stroke-width="2"/><circle cx="10" cy="14" r="2" fill="#f0b429"/><circle cx="18" cy="14" r="2" fill="#f4efe6"/><circle cx="26" cy="14" r="2" fill="#e07a5f"/></svg>
-      <span><strong>UC Lab</strong><small data-i18n="brandSub">Free University</small></span>
-    </a>
-    <nav class="hub" aria-label="Studio">{hub_html}</nav>
-    <div class="tools">
-      {theme_html}
-      <button type="button" class="btn mode-btn" data-i18n="mode">Light</button>
-      <button type="button" class="btn motion-btn">Motion</button>
-      <a class="btn dl" href="{root}download.html">Offline</a>
-      <button type="button" class="btn settings-open" data-open="settings">Settings</button>
-      <button type="button" class="btn menu-btn" data-open="menu" aria-expanded="false" aria-controls="siteMenu"><span class="burger" aria-hidden="true"></span><span data-i18n="menu">Menu</span></button>
-    </div>
-    <form class="site-search" role="search">
-      <input id="siteSearch" type="search" placeholder="Search" aria-label="Search the lab" autocomplete="off" data-i18n-placeholder="searchPh">
-      <div id="searchPop" class="search-pop" hidden></div>
-    </form>
-  </div>
-  <nav class="tabs" aria-label="Lab">{''.join(tabs)}</nav>
-  {lang_html}
-  <p class="progress" id="visitProgress">Progress</p>
-</header>
-<main id="content" class="wrap">
-{crumb_html}
-{body}
-</main>
-<footer class="site-foot">
-  <div class="wrap">
-    <p class="kicker">Next</p>
-    <p><a href="{esc(rel_to(prev_h))}">Previous · {esc(prev_l)}</a> · <a href="{esc(rel_to(next_h))}">Next · {esc(next_l)}</a> · <a href="{root}../campus/uc-lab-free-university.html">Deep campus · 580 sections</a></p>
-    <div class="sister">{sister_html}</div>
-    <p class="sig">CYPHER0X9</p>
-    <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
-    <p><a href="{REPO}">Rate, comment, or help</a> · <a href="{CONTACT}">Report a concern or takedown</a> · <a href="{CONTACT}">Work with us</a></p>
-  </div>
-</footer>
-<div id="siteMenu" class="site-menu" hidden role="dialog" aria-modal="true" aria-labelledby="menuTitle">
-  <div class="sheet-bar">
-    <h2 id="menuTitle" data-i18n="menu">Menu</h2>
-    <button type="button" class="btn sheet-close" data-close="menu" data-i18n="close">Close</button>
-  </div>
-  <div id="menuSearchSlot"></div>
-  <nav class="sheet-nav" aria-label="Sections">{''.join(sheet)}</nav>
-  <button type="button" class="btn settings-open sheet-settings" data-open="settings" data-i18n="settings">Settings</button>
-</div>
-<div id="settingsPanel" class="settings-sheet" hidden role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
-  <div class="sheet-card">
-    <div class="sheet-bar">
-      <h2 id="settingsTitle" data-i18n="settings">Settings</h2>
-      <button type="button" class="btn sheet-close" data-close="settings" data-i18n="close">Close</button>
-    </div>
-    <p class="kicker">Theme</p>
-    {theme_html}
-    <p><button type="button" class="btn mode-btn" data-i18n="mode">Light</button></p>
-    <p class="kicker">Language</p>
-    {lang_html}
-    <p class="kicker">Sound</p>
-    <p><button type="button" class="btn sound-btn" aria-pressed="true">Sound on</button></p>
-    <p class="kicker">Motion</p>
-    <p><button type="button" class="btn motion-btn" aria-pressed="false">Motion on</button></p>
-    <p class="kicker">Studio</p>
-    <nav class="studio-links" aria-label="Studio">{hub_html}</nav>
-  </div>
-</div>
-<div id="listenSheet" class="listen-sheet" hidden role="dialog" aria-modal="true" aria-labelledby="listenTitle">
-  <div class="sheet-card">
-    <div class="sheet-bar">
-      <h2 id="listenTitle" data-i18n="quickListen">Listen</h2>
-      <button type="button" class="btn sheet-close" data-close="listen" data-i18n="close">Close</button>
-    </div>
-    <p>Architect tour</p>
-    <audio controls preload="none" src="{root}audio/architect-tour.mp3"></audio>
-    <p>Architect practice</p>
-    <audio controls preload="none" src="{root}audio/architect-practice.mp3"></audio>
-  </div>
-</div>
-<nav class="quickbar" aria-label="Quick">
-  {quick_html}
-  <button type="button" class="quick-menu" data-open="menu" aria-expanded="false" aria-controls="siteMenu" data-i18n="menu">Menu</button>
-  <button type="button" class="quick-listen" data-open="listen" aria-expanded="false" aria-controls="listenSheet" data-i18n="quickListen">Listen</button>
-</nav>
-<script src="{root}assets/search.js"></script>
-<script src="{root}assets/bank.js"></script>
-<script src="{root}assets/site.js"></script>
-<script src="{root}assets/play.js"></script>
-{effects_html}
-{confetti_html}
-</body>
-</html>
-"""
+    return render_chrome(rel, title, body, description, ORDER)
 
 
 def write_page(rel: str, title: str, body: str, description: str) -> None:
@@ -1576,11 +1357,14 @@ def write_static_files() -> None:
         "display": "standalone",
         "background_color": "#f4efe6",
         "theme_color": "#172033",
-        "icons": [{"src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml"}],
+        "icons": [
+            {"src": "assets/favicon.ico", "sizes": "32x32", "type": "image/x-icon"},
+            {"src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml"},
+        ],
     }, indent=2), encoding="utf-8")
     (OUT / "sw.js").write_text(r"""
-var CACHE = "uc-flagship-v1";
-var CORE = ["./index.html", "./assets/site.css", "./assets/site.js", "./assets/play.js", "./assets/bank.js", "./assets/icon.svg", "./manifest.webmanifest"];
+var CACHE = "uc-flagship-v2";
+var CORE = ["./index.html", "./assets/site.css", "./assets/site.js", "./assets/play.js", "./assets/search.js", "./assets/icon.svg", "./assets/favicon.ico", "./manifest.webmanifest"];
 self.addEventListener("install", function (event) {
   event.waitUntil(caches.open(CACHE).then(function (cache) { return cache.addAll(CORE); }));
 });

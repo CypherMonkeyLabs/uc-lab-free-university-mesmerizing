@@ -1,6 +1,6 @@
 
-var CACHE = "uc-flagship-v1";
-var CORE = ["./index.html", "./assets/site.css", "./assets/site.js", "./assets/play.js", "./assets/bank.js", "./assets/icon.svg", "./manifest.webmanifest"];
+var CACHE = "uc-flagship-v2";
+var CORE = ["./index.html", "./assets/site.css", "./assets/site.js", "./assets/play.js", "./assets/search.js", "./assets/icon.svg", "./assets/favicon.ico", "./manifest.webmanifest"];
 self.addEventListener("install", function (event) {
   event.waitUntil(caches.open(CACHE).then(function (cache) { return cache.addAll(CORE); }));
 });
