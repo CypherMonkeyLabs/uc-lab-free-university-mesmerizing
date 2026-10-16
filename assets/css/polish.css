@@ -200,7 +200,6 @@ html[data-theme="bloom"] .section-chip.is-current span { color: #fff !important;
 .site-footer.lab-footer .lab-card strong { color: #0f172a; }
 .site-footer.lab-footer .lab-card small { color: #334155; display: block; }
 .site-footer.lab-footer a.brand-icon { color: #fff; }
-.site-footer.lab-footer a.brand-hf { color: #1c1917; }
 @media (max-width: 720px) { .site-footer.lab-footer { margin-left: 0; width: 100%; } }
 @media (min-width: 721px) { .section-rail .section-chip { padding-block: 4px; } .section-rail, body.home-world .section-rail { gap: 6px 8px; padding: 6px 10px; } }
 .site-footer.lab-footer { padding-top: 40px; max-width: 1180px; }
