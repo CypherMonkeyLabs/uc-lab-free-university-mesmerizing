@@ -1,0 +1,62 @@
+{
+  "room": "legal",
+  "checked": "2026-10",
+  "sources": [
+    {
+      "kind": "fcc",
+      "title": "FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems",
+      "url": "https://www.fcc.gov/mlts-911-requirements",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Emergency Responder product support",
+      "url": "https://www.cisco.com/c/en/us/support/unified-communications/emergency-responder/series.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Feature Configuration Guide for CUCM, Release 15, Recording",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/cucm_b_feature-configuration-guide-for-15/cucm_mp_r53f7ff4_00_recording-12-0.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 7245, architecture for media recording using SIP",
+      "url": "https://www.rfc-editor.org/rfc/rfc7245",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "law",
+      "title": "United States public-law text for Kari's Law",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "The congress.gov bill page returned a bot challenge, and the PDF text was not readable in this session. The FCC MLTS page that did open is listed separately."
+    },
+    {
+      "kind": "law",
+      "title": "Emergency-calling rule outside the FCC MLTS page",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "No statute outside that FCC page was opened. Confirm the rule where the site operates."
+    },
+    {
+      "kind": "law",
+      "title": "Call-recording consent and retention rule",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "No privacy or retention statute was opened. RFC 7245 names compliance as a reason some sites record. It does not say which rule applies to you."
+    }
+  ]
+}

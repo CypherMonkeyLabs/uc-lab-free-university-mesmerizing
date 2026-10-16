@@ -3,7 +3,7 @@
     {
       "title": "Home",
       "href": "index.html",
-      "blurb": "Eight tracks",
+      "blurb": "11 tracks",
       "keys": [
         "home",
         "start"
@@ -357,6 +357,96 @@
         "one way audio",
         "t8-r03",
         "troubleshooting"
+      ]
+    },
+    {
+      "title": "Direct dial, notification, and location",
+      "href": "rooms/emergency-direct.html",
+      "blurb": "This page is study material, not legal advice and not an emergency plan.",
+      "keys": [
+        "emergency direct",
+        "t9-r01",
+        "emergency calling"
+      ]
+    },
+    {
+      "title": "Emergency Responder, ERL, and ELIN",
+      "href": "rooms/cer-erl-elin.html",
+      "blurb": "Cisco Emergency Responder is a separate product. The support page opened here lists Release 15 as available, with a release date of 16 October 2023.",
+      "keys": [
+        "cer erl elin",
+        "t9-r02",
+        "emergency calling"
+      ]
+    },
+    {
+      "title": "On-site alert, callback, and what this lab will not decide",
+      "href": "rooms/emergency-onsite.html",
+      "blurb": "The Release 15 administration guide contents include on-site alerts, off-premises users, and a national E911 service provider. Those are different chapters.",
+      "keys": [
+        "emergency onsite",
+        "t9-r03",
+        "emergency calling"
+      ]
+    },
+    {
+      "title": "Phone fork and network fork",
+      "href": "rooms/recording-phone.html",
+      "blurb": "The CUCM 15 feature guide says phone-based recording takes media from the phone. The phone forks two streams to the recording server.",
+      "keys": [
+        "recording phone",
+        "t10-r01",
+        "call recording"
+      ]
+    },
+    {
+      "title": "SIPREC and CUBE as the recording client",
+      "href": "rooms/recording-siprec.html",
+      "blurb": "RFC 7245 describes architectures for recording in a SIP environment by sending a copy of a media stream to a recording device.",
+      "keys": [
+        "recording siprec",
+        "t10-r02",
+        "call recording"
+      ]
+    },
+    {
+      "title": "Compliance is a reason, not a setting",
+      "href": "rooms/recording-compliance.html",
+      "blurb": "RFC 7245 says some environments record every call for regulatory, compliance, and consumer-protection reasons.",
+      "keys": [
+        "recording compliance",
+        "t10-r03",
+        "call recording"
+      ]
+    },
+    {
+      "title": "A SIP trunk is a peer, not a brand",
+      "href": "rooms/open-sip-trunk.html",
+      "blurb": "Wikipedia's SIP trunking article describes a SIP service between a provider and a customer's SIP PBX.",
+      "keys": [
+        "open sip trunk",
+        "t11-r01",
+        "open telephony bridges"
+      ]
+    },
+    {
+      "title": "Asterisk and FreeSWITCH as the other PBX",
+      "href": "rooms/asterisk-freeswitch.html",
+      "blurb": "Wikipedia describes Asterisk as a software PBX that connects phones, the PSTN, and VoIP endpoints.",
+      "keys": [
+        "asterisk freeswitch",
+        "t11-r02",
+        "open telephony bridges"
+      ]
+    },
+    {
+      "title": "WebRTC, SIP over WebSocket, and a hosted bridge",
+      "href": "rooms/webrtc-bridge.html",
+      "blurb": "Wikipedia describes WebRTC as browser and mobile APIs for real-time audio and video without a plugin.",
+      "keys": [
+        "webrtc bridge",
+        "t11-r03",
+        "open telephony bridges"
       ]
     }
   ]
