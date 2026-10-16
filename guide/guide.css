@@ -1,5 +1,110 @@
-/* Guide bot layout lives with the lab chrome. This file only adds the
-   read-along and idle pieces that must exist even if uc.css is missing. */
+/* Guide chrome. The first-open tour lives here so another lab can copy
+   guide.js and guide.css and keep the same card, dots, and spotlight. */
+.tour-layer { position: fixed; inset: 0; z-index: 90; pointer-events: none; }
+.tour-layer[hidden] { display: none !important; }
+.tour-hole {
+  position: fixed;
+  z-index: 91;
+  border-radius: 18px;
+  pointer-events: none;
+  box-shadow:
+    0 0 0 3px #fde047,
+    0 0 0 7px rgba(34, 211, 238, 0.95),
+    0 0 22px 4px rgba(34, 211, 238, 0.7),
+    0 0 0 9999px rgba(27, 19, 64, 0.28);
+}
+.tour-card {
+  position: fixed;
+  z-index: 92;
+  pointer-events: auto;
+  width: min(360px, calc(100% - 24px));
+  max-height: min(420px, calc(100vh - 168px));
+  overflow: auto;
+  padding: 16px 16px 14px;
+  border-radius: 22px;
+  border: 2px solid transparent;
+  color: #1b1340;
+  background:
+    linear-gradient(#fffdfb, #f4f0ff) padding-box,
+    linear-gradient(120deg, #22d3ee, #a78bfa, #f472b6, #fde047) border-box;
+  box-shadow:
+    0 22px 48px rgba(49, 46, 129, 0.28),
+    0 0 32px rgba(167, 139, 250, 0.55);
+}
+html[data-theme="aurora"] .tour-card {
+  color: #f8fafc;
+  background:
+    linear-gradient(#141a30, #0e1324) padding-box,
+    linear-gradient(120deg, #22d3ee, #a78bfa, #f472b6, #fde047) border-box;
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.45),
+    0 0 32px rgba(34, 211, 238, 0.35);
+}
+.tour-kicker {
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #5b21b6;
+}
+html[data-theme="aurora"] .tour-kicker { color: #c4b5fd; }
+.tour-card p { margin: 0 0 12px; line-height: 1.45; }
+.tour-dots {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+.tour-card .tour-dot {
+  width: 32px;
+  height: 32px;
+  min-height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  background: #e0e7ff;
+  color: #312e81;
+  box-shadow: none;
+}
+.tour-card .tour-dot.is-done { background: #c4b5fd; color: #1e1b4b; }
+.tour-card .tour-dot.is-on {
+  background: linear-gradient(140deg, #22d3ee, #a78bfa);
+  color: #082f49;
+  box-shadow: 0 0 14px rgba(34, 211, 238, 0.85);
+}
+.tour-card .row { display: flex; gap: 8px; flex-wrap: wrap; }
+.tour-card button {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  border-radius: 999px;
+  min-height: 40px;
+  padding: 0 16px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+.tour-card [data-next] {
+  background: linear-gradient(120deg, #22d3ee, #818cf8);
+  color: #082f49;
+  box-shadow: 0 0 16px rgba(34, 211, 238, 0.55);
+}
+.tour-card [data-back],
+.tour-card [data-skip] {
+  background: #ede9fe;
+  color: #3b0764;
+}
+.tour-card [data-back]:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.tour-card button:focus-visible {
+  outline: 3px solid #082f49;
+  outline-offset: 2px;
+}
+html[data-theme="aurora"] .tour-card button:focus-visible { outline-color: #fde047; }
+@media (max-width: 800px) {
+  .tour-card { width: calc(100% - 24px); }
+}
 .bot-dock[hidden] { display: none !important; }
 .sr {
   position: absolute;

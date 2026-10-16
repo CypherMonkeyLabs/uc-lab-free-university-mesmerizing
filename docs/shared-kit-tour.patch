@@ -1,0 +1,944 @@
+From 32fd962ec201ba975e2e2346f75844f5bb5ca5b3 Mon Sep 17 00:00:00 2001
+From: Cursor Agent <cursoragent@cursor.com>
+Date: Fri, 16 Oct 2026 13:29:00 +0000
+Subject: [PATCH] Share the glowing tour card, lighter spotlight, and step
+ dots.
+
+The first-open tour and the guide callout use the same gradient card, pill buttons, numbered dots, and a lighter ring. The card stays below the top bar and above the phone dock.
+---
+ assets/css/polish.css  |  52 +++++++++++++++-----
+ assets/js/onboard.js   |  87 ++++++++++++++++++++++++++++-----
+ guide/guide.css        | 106 ++++++++++++++++++++++++++++++++++++-----
+ guide/guide.js         |  87 +++++++++++++++++++++++++++++----
+ kit/bot/README.md      |   2 +-
+ kit/bot/guide.css      | 106 ++++++++++++++++++++++++++++++++++++-----
+ kit/bot/guide.js       |  87 +++++++++++++++++++++++++++++----
+ kit/chrome/polish.css  |  52 +++++++++++++++-----
+ kit/onboarding/tour.js |  87 ++++++++++++++++++++++++++++-----
+ 9 files changed, 575 insertions(+), 91 deletions(-)
+
+diff --git a/assets/css/polish.css b/assets/css/polish.css
+index 37c96fe..72dccc5 100644
+--- a/assets/css/polish.css
++++ b/assets/css/polish.css
+@@ -273,24 +273,52 @@ a.glow-ico .menu-ico,
+ /* First-open tour. The dim is the spot's shadow, so the real button stays visible. */
+ .ob-layer { position: fixed; inset: 0; z-index: 80; pointer-events: none; }
+ .ob-spot {
+-  position: fixed; z-index: 80; border-radius: 16px; pointer-events: none;
+-  box-shadow: 0 0 0 9999px rgba(12, 6, 32, 0.72), 0 0 0 3px #fde047, 0 0 22px #c4b5fd;
++  position: fixed; z-index: 80; border-radius: 18px; pointer-events: none;
++  box-shadow:
++    0 0 0 3px #fde047,
++    0 0 0 7px rgba(34, 211, 238, 0.95),
++    0 0 22px 4px rgba(34, 211, 238, 0.7);
++}
++.ob-spot.is-dim {
++  box-shadow:
++    0 0 0 3px #fde047,
++    0 0 0 7px rgba(34, 211, 238, 0.95),
++    0 0 22px 4px rgba(34, 211, 238, 0.7),
++    0 0 0 9999px rgba(27, 19, 64, 0.28);
+ }
+ .ob-card {
+-  position: fixed; z-index: 82; pointer-events: auto; left: 50%; width: min(440px, calc(100vw - 24px));
+-  transform: translateX(-50%); padding: 16px 16px 14px; border-radius: 22px; color: #1b1340;
+-  background: #fff; border: 3px solid transparent;
+-  background: linear-gradient(#fff, #fff) padding-box, linear-gradient(120deg, #22d3ee, #a78bfa, #f472b6) border-box;
+-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
++  position: fixed; z-index: 82; pointer-events: auto; left: 12px; width: min(360px, calc(100vw - 24px));
++  padding: 16px 16px 14px; border-radius: 22px; color: #1b1340;
++  border: 2px solid transparent;
++  background:
++    linear-gradient(#fffdfb, #f4f0ff) padding-box,
++    linear-gradient(120deg, #22d3ee, #a78bfa, #f472b6, #fde047) border-box;
++  box-shadow:
++    0 22px 48px rgba(49, 46, 129, 0.28),
++    0 0 32px rgba(167, 139, 250, 0.55);
++}
++.ob-num { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(140deg, #22d3ee, #a78bfa); color: #082f49; font-weight: 800; }
++.ob-dots { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
++.ob-dots button {
++  width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%;
++  background: #e0e7ff; color: #312e81; font: inherit; font-weight: 800; cursor: pointer;
++}
++.ob-dots button.is-done { background: #c4b5fd; color: #1e1b4b; }
++.ob-dots button.is-on {
++  background: linear-gradient(140deg, #22d3ee, #a78bfa);
++  color: #082f49;
++  box-shadow: 0 0 14px rgba(34, 211, 238, 0.85);
+ }
+-.ob-card.is-low { bottom: 24px; }
+-.ob-card.is-high { top: 76px; }
+-.ob-num { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: #7c3aed; color: #fff; font-weight: 800; }
+ .ob-card h2 { margin: 6px 0; font-size: 1.25rem; }
+ .ob-card p { margin: 0 0 10px; line-height: 1.45; }
++.ob-count { font-weight: 800; color: #5b21b6; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.78rem; }
+ .ob-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+-.ob-actions button { border: 0; border-radius: 999px; padding: 8px 14px; font: inherit; font-weight: 800; cursor: pointer; background: #ede9fe; color: #3b0764; }
+-.ob-actions [data-ob-next] { background: #7c3aed; color: #fff; }
++.ob-actions button { border: 0; border-radius: 999px; min-height: 40px; padding: 0 16px; font: inherit; font-weight: 800; cursor: pointer; background: #ede9fe; color: #3b0764; }
++.ob-actions [data-ob-next] {
++  background: linear-gradient(120deg, #22d3ee, #818cf8);
++  color: #082f49;
++  box-shadow: 0 0 16px rgba(34, 211, 238, 0.55);
++}
+ body.onboard-open .cg-nudge { visibility: hidden; }
+ 
+ .export-bar { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; }
+diff --git a/assets/js/onboard.js b/assets/js/onboard.js
+index dc9114d..36e2345 100644
+--- a/assets/js/onboard.js
++++ b/assets/js/onboard.js
+@@ -100,21 +100,60 @@
+ 
+   function paintSpots(nodes) {
+     layer.querySelectorAll(".ob-spot").forEach(function (spot) { spot.remove(); });
+-    var low = false;
+-    nodes.forEach(function (el) {
++    nodes.forEach(function (el, index) {
+       var rect = el.getBoundingClientRect();
+-      if (rect.top > window.innerHeight * 0.55) low = true;
+       var spot = document.createElement("div");
+-      spot.className = "ob-spot";
+-      spot.style.top = Math.max(4, rect.top - 6) + "px";
+-      spot.style.left = Math.max(4, rect.left - 6) + "px";
+-      spot.style.width = Math.min(window.innerWidth - 8, rect.width + 12) + "px";
+-      spot.style.height = rect.height + 12 + "px";
++      spot.className = "ob-spot" + (index === 0 ? " is-dim" : "");
++      spot.style.top = Math.max(4, rect.top - 8) + "px";
++      spot.style.left = Math.max(4, rect.left - 8) + "px";
++      spot.style.width = Math.min(window.innerWidth - 8, rect.width + 16) + "px";
++      spot.style.height = rect.height + 16 + "px";
+       layer.appendChild(spot);
+     });
++  }
++
++  function placeCard(nodes) {
+     var card = layer.querySelector(".ob-card");
+-    card.classList.toggle("is-high", low);
+-    card.classList.toggle("is-low", !low);
++    card.style.bottom = "auto";
++    card.style.transform = "none";
++    card.style.width = "min(360px, calc(100vw - 24px))";
++    var header = document.querySelector(".topbar");
++    var phone = document.querySelector(".phone-dock");
++    var headerBottom = 8;
++    if (header) {
++      var hr = header.getBoundingClientRect();
++      if (hr.height > 8) headerBottom = hr.bottom;
++    }
++    var phoneTop = window.innerHeight;
++    if (phone && getComputedStyle(phone).display !== "none") {
++      var pr = phone.getBoundingClientRect();
++      if (pr.height > 8) phoneTop = pr.top;
++    }
++    var gap = 14;
++    var cardH = card.offsetHeight;
++    var roomTop = headerBottom + gap;
++    var roomBottom = phoneTop - gap;
++    var rect = nodes[0] ? nodes[0].getBoundingClientRect() : { top: roomTop, bottom: roomTop, left: 12 };
++    var below = rect.bottom + gap;
++    var above = rect.top - cardH - gap;
++    var top = below;
++    if (top < roomTop || top + cardH > roomBottom) {
++      if (above >= roomTop && above + cardH <= roomBottom) top = above;
++      else top = roomTop;
++    }
++    if (top + cardH > roomBottom) top = Math.max(roomTop, roomBottom - cardH);
++    if (top < roomTop) top = roomTop;
++    var hero = document.querySelector("h1");
++    if (hero && window.innerWidth <= 800) {
++      var heroBottom = hero.getBoundingClientRect().bottom;
++      var belowHero = heroBottom + gap;
++      if (top < heroBottom - 8 && belowHero + cardH <= roomBottom) top = belowHero;
++    }
++    card.style.top = Math.round(top) + "px";
++    var width = card.offsetWidth || 320;
++    var left = Math.min(Math.max(12, rect.left || 12), window.innerWidth - width - 12);
++    if (left < 12) left = 12;
++    card.style.left = Math.round(left) + "px";
+   }
+ 
+   function paint() {
+@@ -127,7 +166,17 @@
+     var next = card.querySelector("[data-ob-next]");
+     next.textContent = step === STEPS.length - 1 ? "OK" : "Next";
+     card.querySelector("[data-ob-back]").hidden = step === 0;
+-    paintSpots(targets());
++    var nodes = targets();
++    paintSpots(nodes);
++    placeCard(nodes);
++    var dots = card.querySelector("[data-ob-dots]");
++    Array.prototype.forEach.call(dots.children, function (dot, index) {
++      var on = index === step;
++      dot.classList.toggle("is-on", on);
++      dot.classList.toggle("is-done", index < step);
++      if (on) dot.setAttribute("aria-current", "step");
++      else dot.removeAttribute("aria-current");
++    });
+   }
+ 
+   function close(finished) {
+@@ -154,16 +203,32 @@
+     layer.setAttribute("aria-labelledby", "ob-title");
+     layer.innerHTML =
+       '<div class="ob-card"><p class="ob-count"><span class="ob-num" data-ob-num>1</span> <span data-ob-count></span></p><h2 id="ob-title"></h2><p class="ob-body"></p>' +
++      '<div class="ob-dots" data-ob-dots role="group" aria-label="Steps 1 to 6"></div>' +
+       '<div class="ob-actions">' +
+       '<button type="button" data-ob-sound aria-pressed="false">Sound off</button>' +
+       '<button type="button" data-ob-back hidden>Back</button>' +
+       '<button type="button" data-ob-skip>Skip</button>' +
+       '<button type="button" data-ob-next>Next</button></div></div>';
+     document.body.appendChild(layer);
++    var dots = layer.querySelector("[data-ob-dots]");
++    STEPS.forEach(function (item, index) {
++      var dot = document.createElement("button");
++      dot.type = "button";
++      dot.className = "ob-dot";
++      dot.setAttribute("data-ob-dot", String(index));
++      dot.setAttribute("aria-label", "Step " + (index + 1) + " of " + STEPS.length);
++      dot.textContent = String(index + 1);
++      dots.appendChild(dot);
++    });
+     step = 0;
+     paint();
+     layer.querySelector("[data-ob-next]").focus();
+     layer.addEventListener("click", function (event) {
++      if (event.target.closest("[data-ob-dot]")) {
++        step = Number(event.target.closest("[data-ob-dot]").getAttribute("data-ob-dot"));
++        paint();
++        return;
++      }
+       if (event.target.closest("[data-ob-sound]")) {
+         soundOn = !soundOn;
+         var button = layer.querySelector("[data-ob-sound]");
+diff --git a/guide/guide.css b/guide/guide.css
+index 00d4674..49f45b4 100644
+--- a/guide/guide.css
++++ b/guide/guide.css
+@@ -601,34 +601,114 @@
+ .cg-tour-back {
+   position: absolute;
+   inset: 0;
+-  background: rgba(4, 8, 20, 0.28);
++  background: transparent;
+ }
+ 
+ .cg-spot {
+   position: fixed;
+   z-index: 71;
+-  border-radius: 16px;
+-  border: 3px solid #22d3ee;
+-  box-shadow: 0 0 0 9999px rgba(4, 8, 20, 0.62), 0 0 24px rgba(34, 211, 238, 0.8);
++  border-radius: 18px;
++  border: 0;
+   pointer-events: none;
++  box-shadow:
++    0 0 0 3px #fde047,
++    0 0 0 7px rgba(34, 211, 238, 0.95),
++    0 0 22px 4px rgba(34, 211, 238, 0.7),
++    0 0 0 9999px rgba(27, 19, 64, 0.28);
+ }
+ 
+ .cg-callout {
+   position: fixed;
+   z-index: 72;
+-  width: min(300px, calc(100vw - 24px));
+-  padding: 12px;
+-  border-radius: 16px;
+-  border: 1px solid var(--line-strong, rgba(255, 255, 255, 0.28));
+-  background: var(--card-bg, #0b1020);
+-  color: var(--ink, #e8eefc);
+-  box-shadow: var(--shadow, 0 16px 40px rgba(0, 0, 0, 0.35));
++  width: min(360px, calc(100vw - 24px));
++  max-height: min(420px, calc(100vh - 168px));
++  overflow: auto;
++  padding: 16px 16px 14px;
++  border-radius: 22px;
++  border: 2px solid transparent;
++  color: #f8fafc;
++  background:
++    linear-gradient(#141a30, #0e1324) padding-box,
++    linear-gradient(120deg, #22d3ee, #a78bfa, #f472b6, #fde047) border-box;
++  box-shadow:
++    0 22px 48px rgba(0, 0, 0, 0.45),
++    0 0 32px rgba(34, 211, 238, 0.35);
+ }
+ 
+-.cg-callout p {
+-  margin: 0 0 8px;
++html[data-theme="bloom"] .cg-callout,
++html[data-theme="light"] .cg-callout {
++  color: #1b1340;
++  background:
++    linear-gradient(#fffdfb, #f4f0ff) padding-box,
++    linear-gradient(120deg, #22d3ee, #a78bfa, #f472b6, #fde047) border-box;
++  box-shadow:
++    0 22px 48px rgba(49, 46, 129, 0.28),
++    0 0 32px rgba(167, 139, 250, 0.55);
++}
++
++.cg-kicker {
++  margin: 0 0 6px;
++  font-size: 0.78rem;
++  font-weight: 800;
++  letter-spacing: 0.04em;
++  text-transform: uppercase;
++  color: #c4b5fd;
++}
++
++html[data-theme="bloom"] .cg-kicker,
++html[data-theme="light"] .cg-kicker { color: #5b21b6; }
++
++.cg-callout p { margin: 0 0 12px; line-height: 1.45; }
++
++.cg-dots { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
++
++.cg-callout .cg-dot {
++  width: 32px;
++  height: 32px;
++  min-height: 32px;
++  padding: 0;
++  border: 0;
++  border-radius: 50%;
++  background: #e0e7ff;
++  color: #312e81;
++  box-shadow: none;
+ }
+ 
++.cg-callout .cg-dot.is-done { background: #c4b5fd; color: #1e1b4b; }
++
++.cg-callout .cg-dot.is-on {
++  background: linear-gradient(140deg, #22d3ee, #a78bfa);
++  color: #082f49;
++  box-shadow: 0 0 14px rgba(34, 211, 238, 0.85);
++}
++
++.cg-callout [data-tour-back],
++.cg-callout [data-tour-next],
++.cg-callout [data-tour-end] {
++  appearance: none;
++  -webkit-appearance: none;
++  border: 0;
++  border-radius: 999px;
++  min-height: 40px;
++  padding: 0 16px;
++  font: inherit;
++  font-weight: 800;
++}
++
++.cg-callout [data-tour-next] {
++  background: linear-gradient(120deg, #22d3ee, #818cf8);
++  color: #082f49;
++  box-shadow: 0 0 16px rgba(34, 211, 238, 0.55);
++}
++
++.cg-callout [data-tour-back],
++.cg-callout [data-tour-end] {
++  background: #ede9fe;
++  color: #3b0764;
++}
++
++.cg-callout [data-tour-back]:disabled { opacity: 0.5; cursor: default; }
++
+ .cg-target {
+   outline: 3px solid #22d3ee;
+   outline-offset: 4px;
+diff --git a/guide/guide.js b/guide/guide.js
+index be085c5..59d9afe 100644
+--- a/guide/guide.js
++++ b/guide/guide.js
+@@ -103,8 +103,11 @@ tourLayer.innerHTML =
+   '<div class="cg-tour-back" data-tour-end></div>' +
+   '<div class="cg-spot" hidden></div>' +
+   '<div class="cg-callout" role="dialog" aria-modal="true" aria-label="Page tour">' +
+-  '<p></p><div class="cg-callout-actions"><button type="button" data-tour-next>Next</button>' +
+-  '<button type="button" data-tour-end>Done</button></div></div>';
++  '<p class="cg-kicker" data-tour-kicker></p><p data-tour-text></p>' +
++  '<div class="cg-dots" data-tour-dots role="group" aria-label="Tour steps"></div>' +
++  '<div class="cg-callout-actions"><button type="button" data-tour-back>Back</button>' +
++  '<button type="button" data-tour-next>Next</button>' +
++  '<button type="button" data-tour-end>Skip</button></div></div>';
+ 
+ host.appendChild(nudge);
+ host.appendChild(monkey);
+@@ -114,7 +117,7 @@ document.body.appendChild(host);
+ 
+ var css = document.createElement("link");
+ css.rel = "stylesheet";
+-css.href = guideBase + "guide/guide.css?v=15";
++css.href = guideBase + "guide/guide.css?v=16";
+ document.head.appendChild(css);
+ 
+ var log = panel.querySelector(".cg-log");
+@@ -1097,6 +1100,19 @@ function findStep(step) {
+   return null;
+ }
+ 
++function bandOf(selector) {
++  var parts = selector.split(",");
++  for (var i = 0; i < parts.length; i += 1) {
++    var node = document.querySelector(parts[i].trim());
++    if (!node) continue;
++    var rect = node.getBoundingClientRect();
++    if (rect.width < 8 || rect.height < 8) continue;
++    if (window.getComputedStyle(node).display === "none") continue;
++    return rect;
++  }
++  return null;
++}
++
+ function placeTour() {
+   if (!tourState) return;
+   var step = tourState.steps[tourState.index];
+@@ -1136,13 +1152,54 @@ function placeTour() {
+     spot.style.left = Math.max(8, rect.left - 6) + "px";
+     spot.style.width = Math.min(rect.width + 12, window.innerWidth - 16) + "px";
+     spot.style.height = Math.min(rect.height + 12, window.innerHeight - 16) + "px";
+-    callout.querySelector("p").textContent = step.text || "";
++    var total = tourState.steps.length;
++    callout.querySelector("[data-tour-text]").textContent = step.text || "";
++    callout.querySelector("[data-tour-kicker]").textContent = (tourState.index + 1) + " of " + total;
++    var dots = callout.querySelector("[data-tour-dots]");
++    if (dots.childElementCount !== total) {
++      dots.innerHTML = "";
++      for (var d = 0; d < total; d += 1) {
++        var dot = document.createElement("button");
++        dot.type = "button";
++        dot.className = "cg-dot";
++        dot.setAttribute("data-tour-dot", String(d));
++        dot.setAttribute("aria-label", "Step " + (d + 1) + " of " + total);
++        dot.textContent = String(d + 1);
++        dots.appendChild(dot);
++      }
++    }
++    Array.prototype.forEach.call(dots.children, function (dot, index) {
++      var on = index === tourState.index;
++      dot.classList.toggle("is-on", on);
++      dot.classList.toggle("is-done", index < tourState.index);
++      if (on) dot.setAttribute("aria-current", "step");
++      else dot.removeAttribute("aria-current");
++    });
+     var next = tourLayer.querySelector("[data-tour-next]");
+-    next.textContent = tourState.index === tourState.steps.length - 1 ? "Finish" : "Next";
+-    var top = rect.bottom + 12;
+-    if (top > window.innerHeight - 160) top = Math.max(12, rect.top - 160);
+-    callout.style.top = top + "px";
+-    callout.style.left = Math.max(12, Math.min(rect.left, window.innerWidth - 320)) + "px";
++    var back = tourLayer.querySelector("[data-tour-back]");
++    next.textContent = tourState.index === total - 1 ? "Finish" : "Next";
++    back.disabled = tourState.index === 0;
++    var header = bandOf(".topbar, .uc-top, header");
++    var phone = bandOf(".phone-dock, .phone-bar");
++    var headerBottom = header ? header.bottom : 8;
++    var phoneTop = phone ? phone.top : window.innerHeight;
++    var gap = 14;
++    var cardH = callout.offsetHeight;
++    var roomTop = headerBottom + gap;
++    var roomBottom = phoneTop - gap;
++    var below = rect.bottom + gap;
++    var above = rect.top - cardH - gap;
++    var top = below;
++    if (top < roomTop || top + cardH > roomBottom) {
++      if (above >= roomTop && above + cardH <= roomBottom) top = above;
++      else top = roomTop;
++    }
++    if (top + cardH > roomBottom) top = Math.max(roomTop, roomBottom - cardH);
++    if (top < roomTop) top = roomTop;
++    var width = callout.offsetWidth || 300;
++    var left = Math.min(Math.max(12, rect.left), window.innerWidth - width - 12);
++    callout.style.top = Math.round(top) + "px";
++    callout.style.left = Math.round(left) + "px";
+     next.focus();
+   }, motionReduced() ? 0 : 280);
+ }
+@@ -1591,6 +1648,18 @@ function bind() {
+     talk.hidden = true;
+     submitText(said);
+   });
++  tourLayer.querySelector("[data-tour-dots]").addEventListener("click", function (event) {
++    var node = event.target;
++    while (node && node !== tourLayer && !node.getAttribute("data-tour-dot")) node = node.parentElement;
++    if (!node || !node.getAttribute || !tourState) return;
++    tourState.index = Number(node.getAttribute("data-tour-dot"));
++    placeTour();
++  });
++  tourLayer.querySelector("[data-tour-back]").addEventListener("click", function () {
++    if (!tourState || tourState.index === 0) return;
++    tourState.index -= 1;
++    placeTour();
++  });
+   tourLayer.querySelector("[data-tour-next]").addEventListener("click", function () {
+     if (!tourState) return;
+     tourState.index += 1;
+diff --git a/kit/bot/README.md b/kit/bot/README.md
+index ed3edf0..c9aa1d3 100644
+--- a/kit/bot/README.md
++++ b/kit/bot/README.md
+@@ -1,6 +1,6 @@
+ # Bot
+ 
+-The guide that docks on the right.
++The guide that docks on the right. The page tour callout is the same premium card other labs can copy: gradient border, glow, pill buttons, numbered step dots, and a light spotlight ring. It stays below `.topbar` and above `.phone-dock`.
+ 
+ | File | Role |
+ | --- | --- |
+diff --git a/kit/bot/guide.css b/kit/bot/guide.css
+index 00d4674..49f45b4 100644
+--- a/kit/bot/guide.css
++++ b/kit/bot/guide.css
+@@ -601,34 +601,114 @@
+ .cg-tour-back {
+   position: absolute;
+   inset: 0;
+-  background: rgba(4, 8, 20, 0.28);
++  background: transparent;
+ }
+ 
+ .cg-spot {
+   position: fixed;
+   z-index: 71;
+-  border-radius: 16px;
+-  border: 3px solid #22d3ee;
+-  box-shadow: 0 0 0 9999px rgba(4, 8, 20, 0.62), 0 0 24px rgba(34, 211, 238, 0.8);
++  border-radius: 18px;
++  border: 0;
+   pointer-events: none;
++  box-shadow:
++    0 0 0 3px #fde047,
++    0 0 0 7px rgba(34, 211, 238, 0.95),
++    0 0 22px 4px rgba(34, 211, 238, 0.7),
++    0 0 0 9999px rgba(27, 19, 64, 0.28);
+ }
+ 
+ .cg-callout {
+   position: fixed;
+   z-index: 72;
+-  width: min(300px, calc(100vw - 24px));
+-  padding: 12px;
+-  border-radius: 16px;
+-  border: 1px solid var(--line-strong, rgba(255, 255, 255, 0.28));
+-  background: var(--card-bg, #0b1020);
+-  color: var(--ink, #e8eefc);
+-  box-shadow: var(--shadow, 0 16px 40px rgba(0, 0, 0, 0.35));
++  width: min(360px, calc(100vw - 24px));
++  max-height: min(420px, calc(100vh - 168px));
++  overflow: auto;
++  padding: 16px 16px 14px;
++  border-radius: 22px;
++  border: 2px solid transparent;
++  color: #f8fafc;
++  background:
++    linear-gradient(#141a30, #0e1324) padding-box,
++    linear-gradient(120deg, #22d3ee, #a78bfa, #f472b6, #fde047) border-box;
++  box-shadow:
++    0 22px 48px rgba(0, 0, 0, 0.45),
++    0 0 32px rgba(34, 211, 238, 0.35);
+ }
+ 
+-.cg-callout p {
+-  margin: 0 0 8px;
++html[data-theme="bloom"] .cg-callout,
++html[data-theme="light"] .cg-callout {
++  color: #1b1340;
++  background:
++    linear-gradient(#fffdfb, #f4f0ff) padding-box,
++    linear-gradient(120deg, #22d3ee, #a78bfa, #f472b6, #fde047) border-box;
++  box-shadow:
++    0 22px 48px rgba(49, 46, 129, 0.28),
++    0 0 32px rgba(167, 139, 250, 0.55);
++}
++
++.cg-kicker {
++  margin: 0 0 6px;
++  font-size: 0.78rem;
++  font-weight: 800;
++  letter-spacing: 0.04em;
++  text-transform: uppercase;
++  color: #c4b5fd;
++}
++
++html[data-theme="bloom"] .cg-kicker,
++html[data-theme="light"] .cg-kicker { color: #5b21b6; }
++
++.cg-callout p { margin: 0 0 12px; line-height: 1.45; }
++
++.cg-dots { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
++
++.cg-callout .cg-dot {
++  width: 32px;
++  height: 32px;
++  min-height: 32px;
++  padding: 0;
++  border: 0;
++  border-radius: 50%;
++  background: #e0e7ff;
++  color: #312e81;
++  box-shadow: none;
+ }
+ 
++.cg-callout .cg-dot.is-done { background: #c4b5fd; color: #1e1b4b; }
++
++.cg-callout .cg-dot.is-on {
++  background: linear-gradient(140deg, #22d3ee, #a78bfa);
++  color: #082f49;
++  box-shadow: 0 0 14px rgba(34, 211, 238, 0.85);
++}
++
++.cg-callout [data-tour-back],
++.cg-callout [data-tour-next],
++.cg-callout [data-tour-end] {
++  appearance: none;
++  -webkit-appearance: none;
++  border: 0;
++  border-radius: 999px;
++  min-height: 40px;
++  padding: 0 16px;
++  font: inherit;
++  font-weight: 800;
++}
++
++.cg-callout [data-tour-next] {
++  background: linear-gradient(120deg, #22d3ee, #818cf8);
++  color: #082f49;
++  box-shadow: 0 0 16px rgba(34, 211, 238, 0.55);
++}
++
++.cg-callout [data-tour-back],
++.cg-callout [data-tour-end] {
++  background: #ede9fe;
++  color: #3b0764;
++}
++
++.cg-callout [data-tour-back]:disabled { opacity: 0.5; cursor: default; }
++
+ .cg-target {
+   outline: 3px solid #22d3ee;
+   outline-offset: 4px;
+diff --git a/kit/bot/guide.js b/kit/bot/guide.js
+index be085c5..59d9afe 100644
+--- a/kit/bot/guide.js
++++ b/kit/bot/guide.js
+@@ -103,8 +103,11 @@ tourLayer.innerHTML =
+   '<div class="cg-tour-back" data-tour-end></div>' +
+   '<div class="cg-spot" hidden></div>' +
+   '<div class="cg-callout" role="dialog" aria-modal="true" aria-label="Page tour">' +
+-  '<p></p><div class="cg-callout-actions"><button type="button" data-tour-next>Next</button>' +
+-  '<button type="button" data-tour-end>Done</button></div></div>';
++  '<p class="cg-kicker" data-tour-kicker></p><p data-tour-text></p>' +
++  '<div class="cg-dots" data-tour-dots role="group" aria-label="Tour steps"></div>' +
++  '<div class="cg-callout-actions"><button type="button" data-tour-back>Back</button>' +
++  '<button type="button" data-tour-next>Next</button>' +
++  '<button type="button" data-tour-end>Skip</button></div></div>';
+ 
+ host.appendChild(nudge);
+ host.appendChild(monkey);
+@@ -114,7 +117,7 @@ document.body.appendChild(host);
+ 
+ var css = document.createElement("link");
+ css.rel = "stylesheet";
+-css.href = guideBase + "guide/guide.css?v=15";
++css.href = guideBase + "guide/guide.css?v=16";
+ document.head.appendChild(css);
+ 
+ var log = panel.querySelector(".cg-log");
+@@ -1097,6 +1100,19 @@ function findStep(step) {
+   return null;
+ }
+ 
++function bandOf(selector) {
++  var parts = selector.split(",");
++  for (var i = 0; i < parts.length; i += 1) {
++    var node = document.querySelector(parts[i].trim());
++    if (!node) continue;
++    var rect = node.getBoundingClientRect();
++    if (rect.width < 8 || rect.height < 8) continue;
++    if (window.getComputedStyle(node).display === "none") continue;
++    return rect;
++  }
++  return null;
++}
++
+ function placeTour() {
+   if (!tourState) return;
+   var step = tourState.steps[tourState.index];
+@@ -1136,13 +1152,54 @@ function placeTour() {
+     spot.style.left = Math.max(8, rect.left - 6) + "px";
+     spot.style.width = Math.min(rect.width + 12, window.innerWidth - 16) + "px";
+     spot.style.height = Math.min(rect.height + 12, window.innerHeight - 16) + "px";
+-    callout.querySelector("p").textContent = step.text || "";
++    var total = tourState.steps.length;
++    callout.querySelector("[data-tour-text]").textContent = step.text || "";
++    callout.querySelector("[data-tour-kicker]").textContent = (tourState.index + 1) + " of " + total;
++    var dots = callout.querySelector("[data-tour-dots]");
++    if (dots.childElementCount !== total) {
++      dots.innerHTML = "";
++      for (var d = 0; d < total; d += 1) {
++        var dot = document.createElement("button");
++        dot.type = "button";
++        dot.className = "cg-dot";
++        dot.setAttribute("data-tour-dot", String(d));
++        dot.setAttribute("aria-label", "Step " + (d + 1) + " of " + total);
++        dot.textContent = String(d + 1);
++        dots.appendChild(dot);
++      }
++    }
++    Array.prototype.forEach.call(dots.children, function (dot, index) {
++      var on = index === tourState.index;
++      dot.classList.toggle("is-on", on);
++      dot.classList.toggle("is-done", index < tourState.index);
++      if (on) dot.setAttribute("aria-current", "step");
++      else dot.removeAttribute("aria-current");
++    });
+     var next = tourLayer.querySelector("[data-tour-next]");
+-    next.textContent = tourState.index === tourState.steps.length - 1 ? "Finish" : "Next";
+-    var top = rect.bottom + 12;
+-    if (top > window.innerHeight - 160) top = Math.max(12, rect.top - 160);
+-    callout.style.top = top + "px";
+-    callout.style.left = Math.max(12, Math.min(rect.left, window.innerWidth - 320)) + "px";
++    var back = tourLayer.querySelector("[data-tour-back]");
++    next.textContent = tourState.index === total - 1 ? "Finish" : "Next";
++    back.disabled = tourState.index === 0;
++    var header = bandOf(".topbar, .uc-top, header");
++    var phone = bandOf(".phone-dock, .phone-bar");
++    var headerBottom = header ? header.bottom : 8;
++    var phoneTop = phone ? phone.top : window.innerHeight;
++    var gap = 14;
++    var cardH = callout.offsetHeight;
++    var roomTop = headerBottom + gap;
++    var roomBottom = phoneTop - gap;
++    var below = rect.bottom + gap;
++    var above = rect.top - cardH - gap;
++    var top = below;
++    if (top < roomTop || top + cardH > roomBottom) {
++      if (above >= roomTop && above + cardH <= roomBottom) top = above;
++      else top = roomTop;
++    }
++    if (top + cardH > roomBottom) top = Math.max(roomTop, roomBottom - cardH);
++    if (top < roomTop) top = roomTop;
++    var width = callout.offsetWidth || 300;
++    var left = Math.min(Math.max(12, rect.left), window.innerWidth - width - 12);
++    callout.style.top = Math.round(top) + "px";
++    callout.style.left = Math.round(left) + "px";
+     next.focus();
+   }, motionReduced() ? 0 : 280);
+ }
+@@ -1591,6 +1648,18 @@ function bind() {
+     talk.hidden = true;
+     submitText(said);
+   });
++  tourLayer.querySelector("[data-tour-dots]").addEventListener("click", function (event) {
++    var node = event.target;
++    while (node && node !== tourLayer && !node.getAttribute("data-tour-dot")) node = node.parentElement;
++    if (!node || !node.getAttribute || !tourState) return;
++    tourState.index = Number(node.getAttribute("data-tour-dot"));
++    placeTour();
++  });
++  tourLayer.querySelector("[data-tour-back]").addEventListener("click", function () {
++    if (!tourState || tourState.index === 0) return;
++    tourState.index -= 1;
++    placeTour();
++  });
+   tourLayer.querySelector("[data-tour-next]").addEventListener("click", function () {
+     if (!tourState) return;
+     tourState.index += 1;
+diff --git a/kit/chrome/polish.css b/kit/chrome/polish.css
+index 37c96fe..72dccc5 100644
+--- a/kit/chrome/polish.css
++++ b/kit/chrome/polish.css
+@@ -273,24 +273,52 @@ a.glow-ico .menu-ico,
+ /* First-open tour. The dim is the spot's shadow, so the real button stays visible. */
+ .ob-layer { position: fixed; inset: 0; z-index: 80; pointer-events: none; }
+ .ob-spot {
+-  position: fixed; z-index: 80; border-radius: 16px; pointer-events: none;
+-  box-shadow: 0 0 0 9999px rgba(12, 6, 32, 0.72), 0 0 0 3px #fde047, 0 0 22px #c4b5fd;
++  position: fixed; z-index: 80; border-radius: 18px; pointer-events: none;
++  box-shadow:
++    0 0 0 3px #fde047,
++    0 0 0 7px rgba(34, 211, 238, 0.95),
++    0 0 22px 4px rgba(34, 211, 238, 0.7);
++}
++.ob-spot.is-dim {
++  box-shadow:
++    0 0 0 3px #fde047,
++    0 0 0 7px rgba(34, 211, 238, 0.95),
++    0 0 22px 4px rgba(34, 211, 238, 0.7),
++    0 0 0 9999px rgba(27, 19, 64, 0.28);
+ }
+ .ob-card {
+-  position: fixed; z-index: 82; pointer-events: auto; left: 50%; width: min(440px, calc(100vw - 24px));
+-  transform: translateX(-50%); padding: 16px 16px 14px; border-radius: 22px; color: #1b1340;
+-  background: #fff; border: 3px solid transparent;
+-  background: linear-gradient(#fff, #fff) padding-box, linear-gradient(120deg, #22d3ee, #a78bfa, #f472b6) border-box;
+-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
++  position: fixed; z-index: 82; pointer-events: auto; left: 12px; width: min(360px, calc(100vw - 24px));
++  padding: 16px 16px 14px; border-radius: 22px; color: #1b1340;
++  border: 2px solid transparent;
++  background:
++    linear-gradient(#fffdfb, #f4f0ff) padding-box,
++    linear-gradient(120deg, #22d3ee, #a78bfa, #f472b6, #fde047) border-box;
++  box-shadow:
++    0 22px 48px rgba(49, 46, 129, 0.28),
++    0 0 32px rgba(167, 139, 250, 0.55);
++}
++.ob-num { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(140deg, #22d3ee, #a78bfa); color: #082f49; font-weight: 800; }
++.ob-dots { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
++.ob-dots button {
++  width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%;
++  background: #e0e7ff; color: #312e81; font: inherit; font-weight: 800; cursor: pointer;
++}
++.ob-dots button.is-done { background: #c4b5fd; color: #1e1b4b; }
++.ob-dots button.is-on {
++  background: linear-gradient(140deg, #22d3ee, #a78bfa);
++  color: #082f49;
++  box-shadow: 0 0 14px rgba(34, 211, 238, 0.85);
+ }
+-.ob-card.is-low { bottom: 24px; }
+-.ob-card.is-high { top: 76px; }
+-.ob-num { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: #7c3aed; color: #fff; font-weight: 800; }
+ .ob-card h2 { margin: 6px 0; font-size: 1.25rem; }
+ .ob-card p { margin: 0 0 10px; line-height: 1.45; }
++.ob-count { font-weight: 800; color: #5b21b6; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.78rem; }
+ .ob-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+-.ob-actions button { border: 0; border-radius: 999px; padding: 8px 14px; font: inherit; font-weight: 800; cursor: pointer; background: #ede9fe; color: #3b0764; }
+-.ob-actions [data-ob-next] { background: #7c3aed; color: #fff; }
++.ob-actions button { border: 0; border-radius: 999px; min-height: 40px; padding: 0 16px; font: inherit; font-weight: 800; cursor: pointer; background: #ede9fe; color: #3b0764; }
++.ob-actions [data-ob-next] {
++  background: linear-gradient(120deg, #22d3ee, #818cf8);
++  color: #082f49;
++  box-shadow: 0 0 16px rgba(34, 211, 238, 0.55);
++}
+ body.onboard-open .cg-nudge { visibility: hidden; }
+ 
+ .export-bar { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; }
+diff --git a/kit/onboarding/tour.js b/kit/onboarding/tour.js
+index dc9114d..36e2345 100644
+--- a/kit/onboarding/tour.js
++++ b/kit/onboarding/tour.js
+@@ -100,21 +100,60 @@
+ 
+   function paintSpots(nodes) {
+     layer.querySelectorAll(".ob-spot").forEach(function (spot) { spot.remove(); });
+-    var low = false;
+-    nodes.forEach(function (el) {
++    nodes.forEach(function (el, index) {
+       var rect = el.getBoundingClientRect();
+-      if (rect.top > window.innerHeight * 0.55) low = true;
+       var spot = document.createElement("div");
+-      spot.className = "ob-spot";
+-      spot.style.top = Math.max(4, rect.top - 6) + "px";
+-      spot.style.left = Math.max(4, rect.left - 6) + "px";
+-      spot.style.width = Math.min(window.innerWidth - 8, rect.width + 12) + "px";
+-      spot.style.height = rect.height + 12 + "px";
++      spot.className = "ob-spot" + (index === 0 ? " is-dim" : "");
++      spot.style.top = Math.max(4, rect.top - 8) + "px";
++      spot.style.left = Math.max(4, rect.left - 8) + "px";
++      spot.style.width = Math.min(window.innerWidth - 8, rect.width + 16) + "px";
++      spot.style.height = rect.height + 16 + "px";
+       layer.appendChild(spot);
+     });
++  }
++
++  function placeCard(nodes) {
+     var card = layer.querySelector(".ob-card");
+-    card.classList.toggle("is-high", low);
+-    card.classList.toggle("is-low", !low);
++    card.style.bottom = "auto";
++    card.style.transform = "none";
++    card.style.width = "min(360px, calc(100vw - 24px))";
++    var header = document.querySelector(".topbar");
++    var phone = document.querySelector(".phone-dock");
++    var headerBottom = 8;
++    if (header) {
++      var hr = header.getBoundingClientRect();
++      if (hr.height > 8) headerBottom = hr.bottom;
++    }
++    var phoneTop = window.innerHeight;
++    if (phone && getComputedStyle(phone).display !== "none") {
++      var pr = phone.getBoundingClientRect();
++      if (pr.height > 8) phoneTop = pr.top;
++    }
++    var gap = 14;
++    var cardH = card.offsetHeight;
++    var roomTop = headerBottom + gap;
++    var roomBottom = phoneTop - gap;
++    var rect = nodes[0] ? nodes[0].getBoundingClientRect() : { top: roomTop, bottom: roomTop, left: 12 };
++    var below = rect.bottom + gap;
++    var above = rect.top - cardH - gap;
++    var top = below;
++    if (top < roomTop || top + cardH > roomBottom) {
++      if (above >= roomTop && above + cardH <= roomBottom) top = above;
++      else top = roomTop;
++    }
++    if (top + cardH > roomBottom) top = Math.max(roomTop, roomBottom - cardH);
++    if (top < roomTop) top = roomTop;
++    var hero = document.querySelector("h1");
++    if (hero && window.innerWidth <= 800) {
++      var heroBottom = hero.getBoundingClientRect().bottom;
++      var belowHero = heroBottom + gap;
++      if (top < heroBottom - 8 && belowHero + cardH <= roomBottom) top = belowHero;
++    }
++    card.style.top = Math.round(top) + "px";
++    var width = card.offsetWidth || 320;
++    var left = Math.min(Math.max(12, rect.left || 12), window.innerWidth - width - 12);
++    if (left < 12) left = 12;
++    card.style.left = Math.round(left) + "px";
+   }
+ 
+   function paint() {
+@@ -127,7 +166,17 @@
+     var next = card.querySelector("[data-ob-next]");
+     next.textContent = step === STEPS.length - 1 ? "OK" : "Next";
+     card.querySelector("[data-ob-back]").hidden = step === 0;
+-    paintSpots(targets());
++    var nodes = targets();
++    paintSpots(nodes);
++    placeCard(nodes);
++    var dots = card.querySelector("[data-ob-dots]");
++    Array.prototype.forEach.call(dots.children, function (dot, index) {
++      var on = index === step;
++      dot.classList.toggle("is-on", on);
++      dot.classList.toggle("is-done", index < step);
++      if (on) dot.setAttribute("aria-current", "step");
++      else dot.removeAttribute("aria-current");
++    });
+   }
+ 
+   function close(finished) {
+@@ -154,16 +203,32 @@
+     layer.setAttribute("aria-labelledby", "ob-title");
+     layer.innerHTML =
+       '<div class="ob-card"><p class="ob-count"><span class="ob-num" data-ob-num>1</span> <span data-ob-count></span></p><h2 id="ob-title"></h2><p class="ob-body"></p>' +
++      '<div class="ob-dots" data-ob-dots role="group" aria-label="Steps 1 to 6"></div>' +
+       '<div class="ob-actions">' +
+       '<button type="button" data-ob-sound aria-pressed="false">Sound off</button>' +
+       '<button type="button" data-ob-back hidden>Back</button>' +
+       '<button type="button" data-ob-skip>Skip</button>' +
+       '<button type="button" data-ob-next>Next</button></div></div>';
+     document.body.appendChild(layer);
++    var dots = layer.querySelector("[data-ob-dots]");
++    STEPS.forEach(function (item, index) {
++      var dot = document.createElement("button");
++      dot.type = "button";
++      dot.className = "ob-dot";
++      dot.setAttribute("data-ob-dot", String(index));
++      dot.setAttribute("aria-label", "Step " + (index + 1) + " of " + STEPS.length);
++      dot.textContent = String(index + 1);
++      dots.appendChild(dot);
++    });
+     step = 0;
+     paint();
+     layer.querySelector("[data-ob-next]").focus();
+     layer.addEventListener("click", function (event) {
++      if (event.target.closest("[data-ob-dot]")) {
++        step = Number(event.target.closest("[data-ob-dot]").getAttribute("data-ob-dot"));
++        paint();
++        return;
++      }
+       if (event.target.closest("[data-ob-sound]")) {
+         soundOn = !soundOn;
+         var button = layer.querySelector("[data-ob-sound]");
+-- 
+2.43.0
+
