@@ -7,6 +7,11 @@
   "theme_color": "#172033",
   "icons": [
     {
+      "src": "assets/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
       "src": "assets/icon.svg",
       "sizes": "any",
       "type": "image/svg+xml"

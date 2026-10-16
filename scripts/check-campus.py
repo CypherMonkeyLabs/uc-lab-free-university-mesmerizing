@@ -30,6 +30,7 @@ HUB_OK_FILES = {
     "index.html",
     "campus/uc-lab-free-university.html",
     "scripts/build-flagship.py",
+    "scripts/flagship_chrome.py",
     "scripts/round2_pages.py",
     "scripts/round3_pages.py",
     "scripts/check-flagship.py",

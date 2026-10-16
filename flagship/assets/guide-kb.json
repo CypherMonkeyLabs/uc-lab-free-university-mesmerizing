@@ -1,0 +1,303 @@
+{
+  "fallback": "I only answer from this lab's own pages. I don't have a matching note, so I won't guess.",
+  "greeting": "I'm the Guide Bot for this lab. I answer from the pages here, and I say so when a question is not in those notes. Lucky is a lifelong student and an AI enthusiast, coming from systems, networking, voice, and the contact center, and growing into AI omni-channel agents.",
+  "synonyms": {
+    "register": ["registration", "registrar", "binding"],
+    "invite": ["basic call", "call setup", "dialog"],
+    "qos": ["dscp", "ef", "marking", "quality"],
+    "cube": ["sbc", "b2bua", "border", "gateway"],
+    "e911": ["emergency", "911", "callback"],
+    "diagram": ["diagrams", "drawing", "ladder", "atlas"],
+    "flow": ["flows", "ladder", "sequence"],
+    "chart": ["charts", "graph", "bandwidth"],
+    "cheat": ["cheats", "cheatsheet", "sheet", "codes"],
+    "wfm": ["workforce", "forecast", "schedule"],
+    "recording": ["qm", "fork", "compliance"],
+    "crm": ["screen pop", "popup"],
+    "teams": ["direct routing", "options"],
+    "webex": ["calling", "local gateway", "lgw"]
+  },
+  "entries": [
+    {
+      "id": "register",
+      "title": "SIP registration",
+      "href": "flows/registration.html",
+      "keywords": ["register", "registration", "binding", "401"],
+      "answer": "REGISTER stores a binding. It does not create a call. A 401 is the registrar challenge.",
+      "source": "Registration diagram in this lab, citing RFC 3261 section 10."
+    },
+    {
+      "id": "basic-call",
+      "title": "Basic call",
+      "href": "flows/basic-call.html",
+      "keywords": ["invite", "ack", "basic call", "dialog"],
+      "answer": "The call is not up until ACK. Media can skip the proxy.",
+      "source": "Basic-call diagram in this lab, citing RFC 3261."
+    },
+    {
+      "id": "sdp",
+      "title": "Offer and answer",
+      "href": "flows/sdp.html",
+      "keywords": ["sdp", "offer", "answer", "early offer"],
+      "answer": "Early offer puts SDP in the INVITE. The answer is in the 200.",
+      "source": "Early-offer diagram in this lab, citing RFC 3264."
+    },
+    {
+      "id": "park",
+      "title": "Call park",
+      "href": "flows/park.html",
+      "keywords": ["park", "retrieve", "orbit"],
+      "answer": "Park holds the call on the server. Another phone retrieves it. This lab draws a teaching ladder, not a product click-path.",
+      "source": "Call park diagram in this lab."
+    },
+    {
+      "id": "conference",
+      "title": "Ad-hoc conference",
+      "href": "flows/conference.html",
+      "keywords": ["conference", "adhoc", "join"],
+      "answer": "Hold one party, invite the next, then join. The drawing is a teaching ladder, not a product click-path.",
+      "source": "Conference diagram in this lab."
+    },
+    {
+      "id": "voicemail",
+      "title": "Voicemail",
+      "href": "flows/voicemail.html",
+      "keywords": ["voicemail", "unity", "no answer"],
+      "answer": "No answer on the phone leg is not the same as the voicemail system answering.",
+      "source": "Voicemail diagram in this lab."
+    },
+    {
+      "id": "snr",
+      "title": "Single number reach",
+      "href": "flows/snr.html",
+      "keywords": ["snr", "single number", "mobile", "desk"],
+      "answer": "The desk and the mobile are two legs. A 200 on one does not prove audio on the other.",
+      "source": "Single number reach diagram in this lab."
+    },
+    {
+      "id": "t38",
+      "title": "T.38 fax",
+      "href": "flows/t38.html",
+      "keywords": ["t38", "fax", "reinvite"],
+      "answer": "A voice call can switch to T.38 with a re-INVITE. The drawing is the teaching shape, not a gateway debug.",
+      "source": "Fax re-INVITE diagram in this lab."
+    },
+    {
+      "id": "e911",
+      "title": "Emergency calling",
+      "href": "flows/e911.html",
+      "keywords": ["e911", "emergency", "911", "callback"],
+      "answer": "Emergency calling needs a callback identity. This drawing is a teaching ladder, not a carrier design.",
+      "source": "Emergency callback diagram in this lab."
+    },
+    {
+      "id": "qos",
+      "title": "QoS marks",
+      "href": "flows/qos.html",
+      "keywords": ["qos", "dscp", "ef", "46", "cs3", "cs5"],
+      "answer": "Voice RTP is commonly EF, DSCP 46. Cisco signaling designs often use CS3. RFC 4594 assigns signaling CS5. Do not copy one plan over the other without reading both.",
+      "source": "QoS marks diagram and the charts page in this lab, citing RFC 4594."
+    },
+    {
+      "id": "g711",
+      "title": "G.711 bandwidth",
+      "href": "charts/index.html",
+      "keywords": ["g711", "g.711", "bandwidth", "80", "87.2", "ptime"],
+      "answer": "G.711 at 20 ms is 80 kbit/s at layer 3: (160 bytes of payload + 40 bytes of IP, UDP, and RTP) times 8 times 50 packets. An 18-byte Ethernet header makes 87.2 kbit/s.",
+      "source": "Charts page in this lab."
+    },
+    {
+      "id": "cube",
+      "title": "CUBE",
+      "href": "flows/cube.html",
+      "keywords": ["cube", "sbc", "b2bua", "dial-peer"],
+      "answer": "CUBE is a B2BUA. Read the CUCM leg and the carrier leg separately.",
+      "source": "CUBE diagram in this lab."
+    },
+    {
+      "id": "teams",
+      "title": "Teams OPTIONS",
+      "href": "flows/teams-dr.html",
+      "keywords": ["teams", "options", "direct routing", "trunk"],
+      "answer": "OPTIONS can busy a Direct Routing trunk. Name the PSTN model before you read the ladder.",
+      "source": "Teams OPTIONS diagram in this lab."
+    },
+    {
+      "id": "ports",
+      "title": "Ports",
+      "href": "cheats/ports.html",
+      "keywords": ["5060", "5061", "2000", "2443", "69", "6970", "port"],
+      "answer": "In this lab's port sheet, 5060 is SIP, 5061 is SIP over TLS, 2000 is SCCP, 2443 is secure SCCP, 69 is TFTP, and 6970 is the HTTP file download. Check the CUCM 15 port chapter before you filter a live network.",
+      "source": "Ports cheat sheet in this lab, citing the CUCM 15 port-usage chapter."
+    },
+    {
+      "id": "css",
+      "title": "Calling search space",
+      "href": "diagrams/css-order.html",
+      "keywords": ["css", "partition", "calling search space", "line css"],
+      "answer": "When a line and a device both have a CSS, this lab's cited cards say precedence goes to the directory number CSS. The diagram is titled line CSS then device CSS.",
+      "source": "Line CSS diagram and the idea-pool cards in this lab."
+    },
+    {
+      "id": "diagrams",
+      "title": "Diagrams",
+      "href": "diagrams/index.html",
+      "keywords": ["diagram", "diagrams", "atlas", "drawing"],
+      "answer": "The diagrams section is the atlas of animated ladders and architecture drawings.",
+      "source": "Diagrams index in this lab."
+    },
+    {
+      "id": "flows",
+      "title": "Flows",
+      "href": "flows/index.html",
+      "keywords": ["flow", "flows", "playable"],
+      "answer": "The flows section is the playable call-flow atlas. The home page counts 29 playable flows.",
+      "source": "Flows index and the home page counts in this lab."
+    },
+    {
+      "id": "charts",
+      "title": "Charts",
+      "href": "charts/index.html",
+      "keywords": ["chart", "charts", "campus sections", "quiz tracks"],
+      "answer": "The charts page counts campus sections, quiz tracks, flows, G.711 bandwidth, and port families. Nothing there is a market share.",
+      "source": "Charts page in this lab."
+    },
+    {
+      "id": "cheats",
+      "title": "Cheat codes",
+      "href": "cheats/index.html",
+      "keywords": ["cheat", "cheatsheet", "sheet", "printable"],
+      "answer": "Cheat codes are one-page sheets, each with a PDF and a PNG.",
+      "source": "Cheat codes index in this lab."
+    },
+    {
+      "id": "ecosystem",
+      "title": "Ecosystem",
+      "href": "ecosystem/index.html",
+      "keywords": ["ecosystem", "wfm", "recording", "crm", "regions", "agent"],
+      "answer": "The ecosystem section covers workforce management, recording, CRM, analytics, emergency systems, regions, and AI agents around the contact.",
+      "source": "Ecosystem index in this lab."
+    },
+    {
+      "id": "play",
+      "title": "Play",
+      "href": "play/index.html",
+      "keywords": ["play", "game", "sandbox", "daily", "badge"],
+      "answer": "Play holds the ports game, the flow map, the sandbox, the daily challenge, and badges.",
+      "source": "Play index in this lab."
+    },
+    {
+      "id": "careers",
+      "title": "Careers",
+      "href": "guide/interview.html",
+      "keywords": ["career", "interview", "job", "wage"],
+      "answer": "The careers page is interview practice. This lab does not invent wages.",
+      "source": "Interview and career page in this lab."
+    },
+    {
+      "id": "downloads",
+      "title": "Downloads",
+      "href": "download.html",
+      "keywords": ["download", "offline", "zip"],
+      "answer": "Downloads has the flagship zip, the campus zip, the one-page sheets, and the audio files.",
+      "source": "Download page in this lab."
+    },
+    {
+      "id": "campus",
+      "title": "Deep campus",
+      "href": "../campus/uc-lab-free-university.html",
+      "keywords": ["campus", "580", "sections", "university"],
+      "answer": "The deep campus is the long library. This lab's pages count 580 sections there.",
+      "source": "Home page and the campus link in this lab."
+    },
+    {
+      "id": "path",
+      "title": "Where to start",
+      "href": "path.html",
+      "keywords": ["start", "begin", "path", "study", "first", "fundamentals", "order"],
+      "answer": "Start on the study path. It orders registration and the basic call, then the dial plan, then the edge, then cloud trunks, emergency, and the contact center. Do not start at the queue.",
+      "source": "Study path page in this lab."
+    },
+    {
+      "id": "lucky",
+      "title": "Lucky",
+      "href": "index.html",
+      "keywords": ["lucky", "who", "student", "author"],
+      "answer": "Lucky is a lifelong student and an AI enthusiast. The path runs from systems, networking, voice, and the contact center into AI omni-channel agents.",
+      "source": "The byline on this lab's pages."
+    }
+  ],
+  "tours": [
+    {
+      "id": "start",
+      "title": "Start here",
+      "steps": [
+        {"href": "path.html", "text": "Open the study path. It orders fundamentals, then the edge, then the systems around the agent."},
+        {"href": "diagrams/index.html", "text": "The diagram atlas is the picture set. Open one ladder before you read a long page."},
+        {"href": "flows/basic-call.html", "text": "Step the basic call. The lab says the call is not up until ACK."},
+        {"href": "cheats/index.html", "text": "Cheat codes are the one-page sheets. Print the one you are about to use."}
+      ]
+    },
+    {
+      "id": "sip",
+      "title": "SIP signaling",
+      "steps": [
+        {"href": "flows/registration.html", "text": "REGISTER stores a binding. It does not create a call."},
+        {"href": "flows/basic-call.html", "text": "INVITE, provisional responses, 200, then ACK."},
+        {"href": "flows/sdp.html", "text": "Early offer puts SDP in the INVITE. The answer is in the 200."},
+        {"href": "diagrams/basic-call.html", "text": "The same ladder as a diagram you can enlarge."}
+      ]
+    },
+    {
+      "id": "edge",
+      "title": "Edge and PSTN",
+      "steps": [
+        {"href": "flows/cube.html", "text": "CUBE is a B2BUA. Read each leg on its own."},
+        {"href": "flows/pstn.html", "text": "CUCM toward the carrier. A signaling 200 is not two-way audio."},
+        {"href": "diagrams/cube.html", "text": "The two-leg drawing for the same idea."}
+      ]
+    },
+    {
+      "id": "around",
+      "title": "Around the agent",
+      "steps": [
+        {"href": "ecosystem/index.html", "text": "The ecosystem index names WFM, recording, CRM, and regions."},
+        {"href": "ecosystem/wfm.html", "text": "Workforce management sits beside the contact, not inside the SIP dialog."},
+        {"href": "ecosystem/recording.html", "text": "Recording is its own fork. Confirm what the page cites before you design one."},
+        {"href": "ecosystem/crm.html", "text": "CRM screen pop is a separate event from the voice leg."}
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "q": "REGISTER stores a binding. It does not create a call.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "why": "That is the note on the registration diagram, citing RFC 3261 section 10."
+    },
+    {
+      "q": "The call is up as soon as the INVITE leaves the phone.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "why": "The basic-call diagram says the call is not up until ACK."
+    },
+    {
+      "q": "G.711 at 20 ms is 80 kbit/s at layer 3 in this lab's chart.",
+      "choices": ["True", "False"],
+      "answer": 0,
+      "why": "The charts page uses (160 + 40) × 8 × 50."
+    },
+    {
+      "q": "A 200 OK on one Single Number Reach leg proves audio on the other leg.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "why": "The SNR diagram says the desk and the mobile are two legs."
+    },
+    {
+      "q": "This lab publishes wage figures on the careers page.",
+      "choices": ["True", "False"],
+      "answer": 1,
+      "why": "The careers card says the path has no invented wages."
+    }
+  ]
+}
