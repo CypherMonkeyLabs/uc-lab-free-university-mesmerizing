@@ -207,7 +207,8 @@
     ];
     function resize() {
       var rect = canvas.getBoundingClientRect();
-      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var mobile = window.matchMedia && window.matchMedia("(max-width: 800px), (pointer: coarse)").matches;
+      var dpr = Math.min(window.devicePixelRatio || 1, mobile ? 1 : 1.5);
       canvas.width = Math.max(1, Math.floor(rect.width * dpr));
       canvas.height = Math.max(1, Math.floor(rect.height * dpr));
     }
@@ -617,45 +618,53 @@
   window.UC_FLAGSHIP = { award: award };
 
   function mountSearch() {
-    var input = $("#siteSearch");
-    var pop = $("#searchPop");
-    if (!input || !pop) return;
     var items = window.UC_SEARCH || [];
     var prefix = (document.body && document.body.getAttribute("data-root")) || "";
-    var cursor = -1;
-    function close() { pop.hidden = true; cursor = -1; }
-    function render(list) {
-      pop.innerHTML = list.slice(0, 8).map(function (item, i) {
-        var href = item.href.indexOf("http") === 0 ? item.href : prefix + item.href;
-        return "<a href='" + href + "' data-i='" + i + "'" + (i === cursor ? " aria-selected='true'" : "") + ">" + item.title + "</a>";
-      }).join("");
-      pop.hidden = list.length === 0;
+    var inputs = $all(".js-search");
+    if (!inputs.length) {
+      var legacy = $("#siteSearch");
+      if (legacy) inputs = [legacy];
     }
-    input.addEventListener("input", function () {
-      var q = input.value.trim().toLowerCase();
-      cursor = 0;
-      if (!q) { close(); return; }
-      render(items.filter(function (item) {
-        return (item.title + " " + item.text + " " + item.href).toLowerCase().indexOf(q) >= 0;
-      }));
-    });
-    input.addEventListener("keydown", function (event) {
-      var links = $all("a", pop);
-      if (event.key === "ArrowDown" || event.key === "ArrowUp") {
-        event.preventDefault();
-        if (!links.length) return;
-        cursor = event.key === "ArrowDown" ? Math.min(links.length - 1, cursor + 1) : Math.max(0, cursor - 1);
-        links.forEach(function (link, i) { link.setAttribute("aria-selected", i === cursor ? "true" : "false"); });
-      } else if (event.key === "Enter" && links[cursor]) {
-        event.preventDefault();
-        window.location.href = links[cursor].getAttribute("href");
-      } else if (event.key === "Escape") close();
+    inputs.forEach(function (input) {
+      var form = input.closest ? input.closest("form") : null;
+      var pop = (form && form.querySelector(".search-pop")) || $("#searchPop");
+      if (!pop) return;
+      var cursor = -1;
+      function close() { pop.hidden = true; cursor = -1; }
+      function render(list) {
+        pop.innerHTML = list.slice(0, 8).map(function (item, i) {
+          var href = item.href.indexOf("http") === 0 ? item.href : prefix + item.href;
+          return "<a href='" + href + "' data-i='" + i + "'" + (i === cursor ? " aria-selected='true'" : "") + ">" + item.title + "</a>";
+        }).join("");
+        pop.hidden = list.length === 0;
+      }
+      input.addEventListener("input", function () {
+        var q = input.value.trim().toLowerCase();
+        cursor = 0;
+        if (!q) { close(); return; }
+        render(items.filter(function (item) {
+          return (item.title + " " + item.text + " " + item.href).toLowerCase().indexOf(q) >= 0;
+        }));
+      });
+      input.addEventListener("keydown", function (event) {
+        var links = $all("a", pop);
+        if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+          event.preventDefault();
+          if (!links.length) return;
+          cursor = event.key === "ArrowDown" ? Math.min(links.length - 1, cursor + 1) : Math.max(0, cursor - 1);
+          links.forEach(function (link, i) { link.setAttribute("aria-selected", i === cursor ? "true" : "false"); });
+        } else if (event.key === "Enter" && links[cursor]) {
+          event.preventDefault();
+          window.location.href = links[cursor].getAttribute("href");
+        } else if (event.key === "Escape") close();
+      });
     });
     document.addEventListener("keydown", function (event) {
       var tag = (event.target && event.target.tagName) || "";
       if (event.key === "/" && tag !== "INPUT" && tag !== "TEXTAREA" && tag !== "SELECT") {
         event.preventDefault();
-        input.focus();
+        var visible = inputs.filter(function (input) { return input.getClientRects().length; })[0] || inputs[0];
+        if (visible) visible.focus();
       }
     });
   }
@@ -767,6 +776,7 @@
     });
   }
   function mountMascotCycle() {
+    if (reduced()) return;
     var variants = ["study", "alert", "celebrate", "night", "holo"];
     var step = 0;
     setInterval(function () {
