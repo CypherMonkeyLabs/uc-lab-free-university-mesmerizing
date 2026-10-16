@@ -20,4 +20,4 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Webex. Webex Calling survivability gateway guide. confirm. A survivability-gateway article was not opened, so this row has no link. The local-gateway guide that did open is listed above. last checked 2026-10
 - Cisco. [Cisco Unified SRST product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-survivable-remote-site-telephony/series.html). last checked 2026-10
 
-Room or sheet file: ../../assets/data/sources/diagrams/survivability.json
+Room or sheet file: sources/survivability/sources.json

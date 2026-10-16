@@ -24,7 +24,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - RFC. [RFC 3264, offer/answer](https://www.rfc-editor.org/rfc/rfc3264). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/sip-transactions.json
+Room or sheet file: ../rooms/sources/sip-transactions/sources.json
 
 ## Dialog
 
@@ -50,7 +50,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - RFC. [RFC 3264, offer/answer](https://www.rfc-editor.org/rfc/rfc3264). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/sip-transactions.json
+Room or sheet file: ../rooms/sources/sip-transactions/sources.json
 
 ## SIP transactions and dialogs
 
@@ -76,7 +76,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - RFC. [RFC 3264, offer/answer](https://www.rfc-editor.org/rfc/rfc3264). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/sip-transactions.json
+Room or sheet file: ../rooms/sources/sip-transactions/sources.json
 
 ## A 180 Ringing means the call was answered.
 
@@ -102,7 +102,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - RFC. [RFC 3264, offer/answer](https://www.rfc-editor.org/rfc/rfc3264). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/sip-transactions.json
+Room or sheet file: ../rooms/sources/sip-transactions/sources.json
 
 ## ACK for a 2xx is optional.
 
@@ -128,7 +128,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - RFC. [RFC 3264, offer/answer](https://www.rfc-editor.org/rfc/rfc3264). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/sip-transactions.json
+Room or sheet file: ../rooms/sources/sip-transactions/sources.json
 
 ## Early offer
 
@@ -155,7 +155,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - Wikipedia. [Session Description Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Description_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/offer-answer.json
+Room or sheet file: ../rooms/sources/offer-answer/sources.json
 
 ## Delayed offer
 
@@ -182,7 +182,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - Wikipedia. [Session Description Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Description_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/offer-answer.json
+Room or sheet file: ../rooms/sources/offer-answer/sources.json
 
 ## Offer and answer
 
@@ -209,7 +209,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - Wikipedia. [Session Description Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Description_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/offer-answer.json
+Room or sheet file: ../rooms/sources/offer-answer/sources.json
 
 ## The answer may add a codec the offer did not list.
 
@@ -236,7 +236,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - Wikipedia. [Session Description Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Description_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/offer-answer.json
+Room or sheet file: ../rooms/sources/offer-answer/sources.json
 
 ## AOR
 
@@ -259,7 +259,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [CUCM (Wikipedia disambiguation)](https://en.wikipedia.org/wiki/CUCM). last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/sip-registration.json
+Room or sheet file: ../rooms/sources/sip-registration/sources.json
 
 ## Contact
 
@@ -282,7 +282,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [CUCM (Wikipedia disambiguation)](https://en.wikipedia.org/wiki/CUCM). last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/sip-registration.json
+Room or sheet file: ../rooms/sources/sip-registration/sources.json
 
 ## Registration
 
@@ -305,7 +305,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [CUCM (Wikipedia disambiguation)](https://en.wikipedia.org/wiki/CUCM). last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/sip-registration.json
+Room or sheet file: ../rooms/sources/sip-registration/sources.json
 
 ## REGISTER creates a voice session.
 
@@ -328,7 +328,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [CUCM (Wikipedia disambiguation)](https://en.wikipedia.org/wiki/CUCM). last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/sip-registration.json
+Room or sheet file: ../rooms/sources/sip-registration/sources.json
 
 ## PRACK
 
@@ -349,7 +349,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 - Wikipedia. [Session Description Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Description_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/prack-early-media.json
+Room or sheet file: ../rooms/sources/prack-early-media/sources.json
 
 ## 100rel
 
@@ -370,7 +370,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 - Wikipedia. [Session Description Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Description_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/prack-early-media.json
+Room or sheet file: ../rooms/sources/prack-early-media/sources.json
 
 ## Early media and PRACK
 
@@ -391,7 +391,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 - Wikipedia. [Session Description Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Description_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/prack-early-media.json
+Room or sheet file: ../rooms/sources/prack-early-media/sources.json
 
 ## Hearing ringback proves the called party answered.
 
@@ -412,7 +412,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 - Wikipedia. [Session Description Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Description_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/prack-early-media.json
+Room or sheet file: ../rooms/sources/prack-early-media/sources.json
 
 ## Partition
 
@@ -436,7 +436,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/partitions-css.json
+Room or sheet file: ../rooms/sources/partitions-css/sources.json
 
 ## CSS
 
@@ -460,7 +460,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/partitions-css.json
+Room or sheet file: ../rooms/sources/partitions-css/sources.json
 
 ## Partitions and calling search spaces
 
@@ -484,7 +484,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/partitions-css.json
+Room or sheet file: ../rooms/sources/partitions-css/sources.json
 
 ## CUCM searches every partition and picks the longest match across all of them.
 
@@ -508,7 +508,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/partitions-css.json
+Room or sheet file: ../rooms/sources/partitions-css/sources.json
 
 ## Route pattern
 
@@ -532,7 +532,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/route-patterns.json
+Room or sheet file: ../rooms/sources/route-patterns/sources.json
 
 ## Route list
 
@@ -556,7 +556,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/route-patterns.json
+Room or sheet file: ../rooms/sources/route-patterns/sources.json
 
 ## Route patterns, lists, and groups
 
@@ -580,7 +580,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/route-patterns.json
+Room or sheet file: ../rooms/sources/route-patterns/sources.json
 
 ## A route group is a list of partitions.
 
@@ -604,7 +604,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/route-patterns.json
+Room or sheet file: ../rooms/sources/route-patterns/sources.json
 
 ## Translation pattern
 
@@ -628,7 +628,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/transformations.json
+Room or sheet file: ../rooms/sources/transformations/sources.json
 
 ## Mask
 
@@ -652,7 +652,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/transformations.json
+Room or sheet file: ../rooms/sources/transformations/sources.json
 
 ## Transformations
 
@@ -676,7 +676,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/transformations.json
+Room or sheet file: ../rooms/sources/transformations/sources.json
 
 ## The calling number and the called number are the same field.
 
@@ -700,7 +700,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/transformations.json
+Room or sheet file: ../rooms/sources/transformations/sources.json
 
 ## SIP trunk
 
@@ -722,7 +722,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/sip-trunks.json
+Room or sheet file: ../rooms/sources/sip-trunks/sources.json
 
 ## SIP profile
 
@@ -744,7 +744,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/sip-trunks.json
+Room or sheet file: ../rooms/sources/sip-trunks/sources.json
 
 ## SIP trunks on CUCM
 
@@ -766,7 +766,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/sip-trunks.json
+Room or sheet file: ../rooms/sources/sip-trunks/sources.json
 
 ## A SIP trunk in service proves the route pattern points at it.
 
@@ -788,7 +788,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/sip-trunks.json
+Room or sheet file: ../rooms/sources/sip-trunks/sources.json
 
 ## Dial peer
 
@@ -811,7 +811,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Border Element. confirm. That title returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/dial-peers.json
+Room or sheet file: ../rooms/sources/dial-peers/sources.json
 
 ## Preference
 
@@ -834,7 +834,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Border Element. confirm. That title returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/dial-peers.json
+Room or sheet file: ../rooms/sources/dial-peers/sources.json
 
 ## Dial peers
 
@@ -857,7 +857,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Border Element. confirm. That title returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/dial-peers.json
+Room or sheet file: ../rooms/sources/dial-peers/sources.json
 
 ## Outbound dial-peer preference is consulted before match length.
 
@@ -880,7 +880,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Border Element. confirm. That title returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/dial-peers.json
+Room or sheet file: ../rooms/sources/dial-peers/sources.json
 
 ## B2BUA
 
@@ -906,7 +906,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - RFC. [RFC 4733, RTP telephony events](https://www.rfc-editor.org/rfc/rfc4733). last checked 2026-10
 - RFC. [RFC 4566, SDP](https://www.rfc-editor.org/rfc/rfc4566). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/cube-b2bua.json
+Room or sheet file: ../rooms/sources/cube-b2bua/sources.json
 
 ## Media anchor
 
@@ -932,7 +932,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - RFC. [RFC 4733, RTP telephony events](https://www.rfc-editor.org/rfc/rfc4733). last checked 2026-10
 - RFC. [RFC 4566, SDP](https://www.rfc-editor.org/rfc/rfc4566). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/cube-b2bua.json
+Room or sheet file: ../rooms/sources/cube-b2bua/sources.json
 
 ## CUBE as a B2BUA
 
@@ -958,7 +958,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - RFC. [RFC 4733, RTP telephony events](https://www.rfc-editor.org/rfc/rfc4733). last checked 2026-10
 - RFC. [RFC 4566, SDP](https://www.rfc-editor.org/rfc/rfc4566). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/cube-b2bua.json
+Room or sheet file: ../rooms/sources/cube-b2bua/sources.json
 
 ## CUBE forwards one SIP dialog unchanged, like a proxy.
 
@@ -984,7 +984,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - RFC. [RFC 4733, RTP telephony events](https://www.rfc-editor.org/rfc/rfc4733). last checked 2026-10
 - RFC. [RFC 4566, SDP](https://www.rfc-editor.org/rfc/rfc4566). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/cube-b2bua.json
+Room or sheet file: ../rooms/sources/cube-b2bua/sources.json
 
 ## SRST
 
@@ -1004,7 +1004,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 - Wikipedia. English Wikipedia article for Survivable Remote Site Telephony. confirm. That title returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/srst.json
+Room or sheet file: ../rooms/sources/srst/sources.json
 
 ## Re-home
 
@@ -1024,7 +1024,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 - Wikipedia. English Wikipedia article for Survivable Remote Site Telephony. confirm. That title returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/srst.json
+Room or sheet file: ../rooms/sources/srst/sources.json
 
 ## SRST
 
@@ -1044,7 +1044,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 - Wikipedia. English Wikipedia article for Survivable Remote Site Telephony. confirm. That title returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/srst.json
+Room or sheet file: ../rooms/sources/srst/sources.json
 
 ## SRST automatically clones every CUCM hunt pilot.
 
@@ -1064,7 +1064,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 - Wikipedia. English Wikipedia article for Survivable Remote Site Telephony. confirm. That title returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/srst.json
+Room or sheet file: ../rooms/sources/srst/sources.json
 
 ## Local gateway
 
@@ -1086,7 +1086,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/local-gateway.json
+Room or sheet file: ../rooms/sources/local-gateway/sources.json
 
 ## Certificate trunk
 
@@ -1108,7 +1108,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/local-gateway.json
+Room or sheet file: ../rooms/sources/local-gateway/sources.json
 
 ## Local gateway toward Webex Calling
 
@@ -1130,7 +1130,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/local-gateway.json
+Room or sheet file: ../rooms/sources/local-gateway/sources.json
 
 ## A local gateway registration is the same object as a CUCM phone registration.
 
@@ -1152,7 +1152,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/local-gateway.json
+Room or sheet file: ../rooms/sources/local-gateway/sources.json
 
 ## Traversal zone
 
@@ -1174,7 +1174,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/expressway-pair.json
+Room or sheet file: ../rooms/sources/expressway-pair/sources.json
 
 ## Expressway-E
 
@@ -1196,7 +1196,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/expressway-pair.json
+Room or sheet file: ../rooms/sources/expressway-pair/sources.json
 
 ## Expressway-C and Expressway-E
 
@@ -1218,7 +1218,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/expressway-pair.json
+Room or sheet file: ../rooms/sources/expressway-pair/sources.json
 
 ## Every CUCM call must pass through Expressway.
 
@@ -1240,7 +1240,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/expressway-pair.json
+Room or sheet file: ../rooms/sources/expressway-pair/sources.json
 
 ## MRA
 
@@ -1260,7 +1260,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/mra.json
+Room or sheet file: ../rooms/sources/mra/sources.json
 
 ## SRV
 
@@ -1280,7 +1280,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/mra.json
+Room or sheet file: ../rooms/sources/mra/sources.json
 
 ## Mobile and Remote Access
 
@@ -1300,7 +1300,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/mra.json
+Room or sheet file: ../rooms/sources/mra/sources.json
 
 ## MRA replaces CUCM as the registrar.
 
@@ -1320,7 +1320,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/mra.json
+Room or sheet file: ../rooms/sources/mra/sources.json
 
 ## Traversal media
 
@@ -1340,7 +1340,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Real-time Transport Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Real-time_Transport_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/firewall-traversal.json
+Room or sheet file: ../rooms/sources/firewall-traversal/sources.json
 
 ## Signaling
 
@@ -1360,7 +1360,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Real-time Transport Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Real-time_Transport_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/firewall-traversal.json
+Room or sheet file: ../rooms/sources/firewall-traversal/sources.json
 
 ## Firewall and traversal
 
@@ -1380,7 +1380,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Real-time Transport Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Real-time_Transport_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/firewall-traversal.json
+Room or sheet file: ../rooms/sources/firewall-traversal/sources.json
 
 ## A completed INVITE proves the firewall allows RTP.
 
@@ -1400,7 +1400,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Real-time Transport Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Real-time_Transport_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/firewall-traversal.json
+Room or sheet file: ../rooms/sources/firewall-traversal/sources.json
 
 ## EF
 
@@ -1423,7 +1423,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Quality of service (Wikipedia)](https://en.wikipedia.org/wiki/Quality_of_service). last checked 2026-10
 - Cisco. Enterprise QoS SRND book. confirm. The Enterprise QoS SRND path returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/dscp-trust.json
+Room or sheet file: ../rooms/sources/dscp-trust/sources.json
 
 ## Trust boundary
 
@@ -1446,7 +1446,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Quality of service (Wikipedia)](https://en.wikipedia.org/wiki/Quality_of_service). last checked 2026-10
 - Cisco. Enterprise QoS SRND book. confirm. The Enterprise QoS SRND path returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/dscp-trust.json
+Room or sheet file: ../rooms/sources/dscp-trust/sources.json
 
 ## DSCP and the trust boundary
 
@@ -1469,7 +1469,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Quality of service (Wikipedia)](https://en.wikipedia.org/wiki/Quality_of_service). last checked 2026-10
 - Cisco. Enterprise QoS SRND book. confirm. The Enterprise QoS SRND path returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/dscp-trust.json
+Room or sheet file: ../rooms/sources/dscp-trust/sources.json
 
 ## EF and CS3 are the same mark.
 
@@ -1492,7 +1492,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Quality of service (Wikipedia)](https://en.wikipedia.org/wiki/Quality_of_service). last checked 2026-10
 - Cisco. Enterprise QoS SRND book. confirm. The Enterprise QoS SRND path returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/dscp-trust.json
+Room or sheet file: ../rooms/sources/dscp-trust/sources.json
 
 ## LLQ
 
@@ -1515,7 +1515,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Quality of service (Wikipedia)](https://en.wikipedia.org/wiki/Quality_of_service). last checked 2026-10
 - Cisco. Enterprise QoS SRND book. confirm. The Enterprise QoS SRND path returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/llq-delay.json
+Room or sheet file: ../rooms/sources/llq-delay/sources.json
 
 ## Packetization
 
@@ -1538,7 +1538,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Quality of service (Wikipedia)](https://en.wikipedia.org/wiki/Quality_of_service). last checked 2026-10
 - Cisco. Enterprise QoS SRND book. confirm. The Enterprise QoS SRND path returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/llq-delay.json
+Room or sheet file: ../rooms/sources/llq-delay/sources.json
 
 ## LLQ and the delay budget
 
@@ -1561,7 +1561,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Quality of service (Wikipedia)](https://en.wikipedia.org/wiki/Quality_of_service). last checked 2026-10
 - Cisco. Enterprise QoS SRND book. confirm. The Enterprise QoS SRND path returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/llq-delay.json
+Room or sheet file: ../rooms/sources/llq-delay/sources.json
 
 ## LLQ adds bandwidth to a circuit.
 
@@ -1584,7 +1584,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Quality of service (Wikipedia)](https://en.wikipedia.org/wiki/Quality_of_service). last checked 2026-10
 - Cisco. Enterprise QoS SRND book. confirm. The Enterprise QoS SRND path returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/llq-delay.json
+Room or sheet file: ../rooms/sources/llq-delay/sources.json
 
 ## Location
 
@@ -1604,7 +1604,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Quality of service (Wikipedia)](https://en.wikipedia.org/wiki/Quality_of_service). last checked 2026-10
 - Cisco. Enterprise QoS SRND book. confirm. The Enterprise QoS SRND path returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/locations-cac.json
+Room or sheet file: ../rooms/sources/locations-cac/sources.json
 
 ## CAC
 
@@ -1624,7 +1624,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Quality of service (Wikipedia)](https://en.wikipedia.org/wiki/Quality_of_service). last checked 2026-10
 - Cisco. Enterprise QoS SRND book. confirm. The Enterprise QoS SRND path returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/locations-cac.json
+Room or sheet file: ../rooms/sources/locations-cac/sources.json
 
 ## Locations and call admission control
 
@@ -1644,7 +1644,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Quality of service (Wikipedia)](https://en.wikipedia.org/wiki/Quality_of_service). last checked 2026-10
 - Cisco. Enterprise QoS SRND book. confirm. The Enterprise QoS SRND path returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/locations-cac.json
+Room or sheet file: ../rooms/sources/locations-cac/sources.json
 
 ## CUCM locations mark RTP as EF.
 
@@ -1664,7 +1664,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Quality of service (Wikipedia)](https://en.wikipedia.org/wiki/Quality_of_service). last checked 2026-10
 - Cisco. Enterprise QoS SRND book. confirm. The Enterprise QoS SRND path returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/locations-cac.json
+Room or sheet file: ../rooms/sources/locations-cac/sources.json
 
 ## CVP
 
@@ -1685,7 +1685,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/ucce-path.json
+Room or sheet file: ../rooms/sources/ucce-path/sources.json
 
 ## ICM
 
@@ -1706,7 +1706,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/ucce-path.json
+Room or sheet file: ../rooms/sources/ucce-path/sources.json
 
 ## UCCE from carrier to agent
 
@@ -1727,7 +1727,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/ucce-path.json
+Room or sheet file: ../rooms/sources/ucce-path/sources.json
 
 ## Queue music means an agent phone is ringing.
 
@@ -1748,7 +1748,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/ucce-path.json
+Room or sheet file: ../rooms/sources/ucce-path/sources.json
 
 ## Label
 
@@ -1766,7 +1766,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/cucm-ucce-bridge.json
+Room or sheet file: ../rooms/sources/cucm-ucce-bridge/sources.json
 
 ## Peripheral gateway
 
@@ -1784,7 +1784,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/cucm-ucce-bridge.json
+Room or sheet file: ../rooms/sources/cucm-ucce-bridge/sources.json
 
 ## The CUCM bridge into UCCE
 
@@ -1802,7 +1802,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/cucm-ucce-bridge.json
+Room or sheet file: ../rooms/sources/cucm-ucce-bridge/sources.json
 
 ## A successful ICM script guarantees CUCM can ring the phone.
 
@@ -1820,7 +1820,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/cucm-ucce-bridge.json
+Room or sheet file: ../rooms/sources/cucm-ucce-bridge/sources.json
 
 ## Flow
 
@@ -1838,7 +1838,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/wxcc-and-ucce.json
+Room or sheet file: ../rooms/sources/wxcc-and-ucce/sources.json
 
 ## Script
 
@@ -1856,7 +1856,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/wxcc-and-ucce.json
+Room or sheet file: ../rooms/sources/wxcc-and-ucce/sources.json
 
 ## Webex Contact Center beside UCCE
 
@@ -1874,7 +1874,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/wxcc-and-ucce.json
+Room or sheet file: ../rooms/sources/wxcc-and-ucce/sources.json
 
 ## An ICM script runs unchanged inside Webex Contact Center.
 
@@ -1892,7 +1892,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/wxcc-and-ucce.json
+Room or sheet file: ../rooms/sources/wxcc-and-ucce/sources.json
 
 ## Dedicated Instance
 
@@ -1911,7 +1911,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/calling-versus-di.json
+Room or sheet file: ../rooms/sources/calling-versus-di/sources.json
 
 ## Control Hub
 
@@ -1930,7 +1930,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/calling-versus-di.json
+Room or sheet file: ../rooms/sources/calling-versus-di/sources.json
 
 ## Webex Calling and Dedicated Instance
 
@@ -1949,7 +1949,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/calling-versus-di.json
+Room or sheet file: ../rooms/sources/calling-versus-di/sources.json
 
 ## Dedicated Instance uses the same dial-plan objects as multi-tenant Calling.
 
@@ -1968,7 +1968,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/calling-versus-di.json
+Room or sheet file: ../rooms/sources/calling-versus-di/sources.json
 
 ## Dual-run
 
@@ -1986,7 +1986,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/dual-run.json
+Room or sheet file: ../rooms/sources/dual-run/sources.json
 
 ## Rollback
 
@@ -2004,7 +2004,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/dual-run.json
+Room or sheet file: ../rooms/sources/dual-run/sources.json
 
 ## Dual-run and rollback
 
@@ -2022,7 +2022,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/dual-run.json
+Room or sheet file: ../rooms/sources/dual-run/sources.json
 
 ## A carrier port can always be undone in five minutes.
 
@@ -2040,7 +2040,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/dual-run.json
+Room or sheet file: ../rooms/sources/dual-run/sources.json
 
 ## Survivability gateway
 
@@ -2064,7 +2064,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Webex. Webex Calling survivability gateway guide. confirm. A survivability-gateway article was not opened, so this row has no link. The local-gateway guide that did open is listed above. last checked 2026-10
 - Cisco. [Cisco Unified SRST product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-survivable-remote-site-telephony/series.html). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/cutover-survivability.json
+Room or sheet file: ../rooms/sources/cutover-survivability/sources.json
 
 ## Fallback test
 
@@ -2088,7 +2088,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Webex. Webex Calling survivability gateway guide. confirm. A survivability-gateway article was not opened, so this row has no link. The local-gateway guide that did open is listed above. last checked 2026-10
 - Cisco. [Cisco Unified SRST product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-survivable-remote-site-telephony/series.html). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/cutover-survivability.json
+Room or sheet file: ../rooms/sources/cutover-survivability/sources.json
 
 ## Survivability during cutover
 
@@ -2112,7 +2112,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Webex. Webex Calling survivability gateway guide. confirm. A survivability-gateway article was not opened, so this row has no link. The local-gateway guide that did open is listed above. last checked 2026-10
 - Cisco. [Cisco Unified SRST product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-survivable-remote-site-telephony/series.html). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/cutover-survivability.json
+Room or sheet file: ../rooms/sources/cutover-survivability/sources.json
 
 ## SRST protects Webex Calling apps with no extra design.
 
@@ -2136,7 +2136,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Webex. Webex Calling survivability gateway guide. confirm. A survivability-gateway article was not opened, so this row has no link. The local-gateway guide that did open is listed above. last checked 2026-10
 - Cisco. [Cisco Unified SRST product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-survivable-remote-site-telephony/series.html). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/cutover-survivability.json
+Room or sheet file: ../rooms/sources/cutover-survivability/sources.json
 
 ## Hypothesis
 
@@ -2154,7 +2154,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 - Protocol and ports. [CUCM 15 TCP and UDP port usage](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15/cucm_m_tcp-and-udp-port-usage-12-0.html). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/one-change.json
+Room or sheet file: ../rooms/sources/one-change/sources.json
 
 ## Evidence pack
 
@@ -2172,7 +2172,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 - Protocol and ports. [CUCM 15 TCP and UDP port usage](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15/cucm_m_tcp-and-udp-port-usage-12-0.html). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/one-change.json
+Room or sheet file: ../rooms/sources/one-change/sources.json
 
 ## One hypothesis, one change
 
@@ -2190,7 +2190,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 - Protocol and ports. [CUCM 15 TCP and UDP port usage](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15/cucm_m_tcp-and-udp-port-usage-12-0.html). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/one-change.json
+Room or sheet file: ../rooms/sources/one-change/sources.json
 
 ## Changing the CSS, the codec, and the gateway in one window is a clean test.
 
@@ -2208,7 +2208,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 - Protocol and ports. [CUCM 15 TCP and UDP port usage](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15/cucm_m_tcp-and-udp-port-usage-12-0.html). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/one-change.json
+Room or sheet file: ../rooms/sources/one-change/sources.json
 
 ## Ladder
 
@@ -2229,7 +2229,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/read-a-ladder.json
+Room or sheet file: ../rooms/sources/read-a-ladder/sources.json
 
 ## Cause
 
@@ -2250,7 +2250,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/read-a-ladder.json
+Room or sheet file: ../rooms/sources/read-a-ladder/sources.json
 
 ## Reading a ladder
 
@@ -2271,7 +2271,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/read-a-ladder.json
+Room or sheet file: ../rooms/sources/read-a-ladder/sources.json
 
 ## Two Call-IDs mean the trace is corrupt.
 
@@ -2292,7 +2292,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/read-a-ladder.json
+Room or sheet file: ../rooms/sources/read-a-ladder/sources.json
 
 ## SDP c= line
 
@@ -2314,7 +2314,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Real-time Transport Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Real-time_Transport_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/one-way-audio.json
+Room or sheet file: ../rooms/sources/one-way-audio/sources.json
 
 ## One-way audio
 
@@ -2336,7 +2336,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Real-time Transport Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Real-time_Transport_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/one-way-audio.json
+Room or sheet file: ../rooms/sources/one-way-audio/sources.json
 
 ## One-way audio
 
@@ -2358,7 +2358,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Real-time Transport Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Real-time_Transport_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/one-way-audio.json
+Room or sheet file: ../rooms/sources/one-way-audio/sources.json
 
 ## A 200 OK with SDP proves two-way audio.
 
@@ -2380,7 +2380,7 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Real-time Transport Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Real-time_Transport_Protocol). last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/one-way-audio.json
+Room or sheet file: ../rooms/sources/one-way-audio/sources.json
 
 ## Sources and go deeper
 
@@ -2413,4 +2413,4 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Enterprise QoS SRND book. confirm. The Enterprise QoS SRND path returned HTTP 404. last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../assets/data/sources/flashcards.json
+Room or sheet file: sources/flashcards/sources.json

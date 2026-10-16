@@ -21,4 +21,4 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Real-time Transport Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Real-time_Transport_Protocol). last checked 2026-10
 
-Room or sheet file: ../../assets/data/sources/sheets/ports-note.json
+Room or sheet file: sources/ports-note/sources.json

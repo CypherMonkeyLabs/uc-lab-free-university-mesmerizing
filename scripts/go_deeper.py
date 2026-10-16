@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import html
 import json
+import re
 from pathlib import Path
 
 from docx.oxml import OxmlElement
@@ -221,18 +222,17 @@ def _intro() -> str:
 
 
 def html_block(items: list[dict], json_href: str, *, dark: bool = False, md_href: str = "") -> str:
-    link = "#93c5fd" if dark else ""
-    style = "margin:16px 0;padding:12px 14px;border:1px solid #99f6e4;border-radius:12px"
+    link = "#99f6e4" if dark else "#134e4a"
+    style = "margin:28px 0;padding:16px 18px;border:2px solid #0f766e;border-radius:16px;background:#f0fdfa;color:#042f2e"
     if dark:
-        style += ";border-color:#334155;color:#e0e7ff"
+        style = "margin:28px 0;padding:16px 18px;border:2px solid #5eead4;border-radius:16px;background:#042f2e;color:#ecfeff"
     rows = []
     for item in items:
         label = KIND_LABEL[item["kind"]]
         checked = f"last checked {item['last_checked']}"
         note = f" {_esc(item['note'])}" if item["note"] else ""
         if item["url"]:
-            color = f' style="color:{link}"' if link else ""
-            body = f'<a href="{_esc(item["url"])}"{color}>{_esc(item["title"])}</a>'
+            body = f'<a href="{_esc(item["url"])}" style="color:{link}">{_esc(item["title"])}</a>'
         else:
             body = f'{_esc(item["title"])}. confirm.{note}'
         rows.append(f"<li><strong>{label}.</strong> {body} <span style=\"white-space:nowrap\">{checked}</span></li>")
@@ -286,6 +286,17 @@ def write_json(rel: str, owner: str, items: list[dict]) -> None:
     path = DATA / rel
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload(owner, items), indent=2) + "\n", encoding="utf-8")
+
+
+def re_sub_block(text: str, block: str) -> str:
+    updated, count = re.subn(r'<section class="go-deeper"[\s\S]*?</section>', block, text, count=1)
+    return updated if count else text
+
+
+def mirror_sources(dest: Path, owner: str, items: list[dict]) -> None:
+    """Write the per-page sources.json the visible block links to."""
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_text(json.dumps(payload(owner, items), indent=2) + "\n", encoding="utf-8")
 
 
 def write_text(path: Path, text: str) -> None:
@@ -444,14 +455,16 @@ def patch_flagship_cheats() -> int:
         items = entries(keys)
         rel = f"cheats/{slug}.json"
         write_json(rel, slug, items)
-        block = html_block(items, f"../../assets/data/sources/{rel}", dark=True)
+        mirror_sources(folder / "sources" / slug / "sources.json", slug, items)
+        block = html_block(items, f"sources/{slug}/sources.json", dark=True)
         text = path.read_text(encoding="utf-8")
-        if "Sources and go deeper" in text:
-            continue
         needle = '<footer class="cheat-print">'
         if needle not in text:
             continue
-        text = text.replace(needle, block + needle, 1)
+        if "Sources and go deeper" in text:
+            text = re_sub_block(text, block)
+        else:
+            text = text.replace(needle, block + needle, 1)
         path.write_text(text, encoding="utf-8")
         changed += 1
     return changed
@@ -477,4 +490,5 @@ def cheat_html(slug: str) -> str:
     items = entries(keys)
     rel = f"cheats/{slug}.json"
     write_json(rel, slug, items)
-    return html_block(items, f"../../assets/data/sources/{rel}", dark=True)
+    mirror_sources(ROOT / "flagship" / "cheats" / "sources" / slug / "sources.json", slug, items)
+    return html_block(items, f"sources/{slug}/sources.json", dark=True)

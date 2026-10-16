@@ -433,7 +433,10 @@ html[data-theme="aurora"] body.uc-lab main a:not(.btn):not(.ghost):not(.dl-btn):
 .stat { background: var(--card-bg); border-radius: 14px; padding: 10px 14px; min-width: 110px; border: 1px solid var(--line); }
 .stat b { display: block; font-size: 1.4rem; }
 
-.go-deeper { border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; margin: 16px 0; background: var(--card-bg); }
+.study-primer { max-width: 72ch; }
+.study-primer p { font-size: 1.05rem; line-height: 1.55; }
+.go-deeper { border: 2px solid #0f766e; border-radius: 16px; padding: 16px 18px; margin: 28px 0; background: #f0fdfa; color: #042f2e; }
+html[data-theme="aurora"] .go-deeper { background: #042f2e; color: #ecfeff; border-color: #5eead4; }
 .go-deeper h2 { margin-top: 0; }
 .go-deeper li { margin: 6px 0; }
 .five, .worked, .eco-panel, .quiz, .sources, .room-downloads {
@@ -520,6 +523,15 @@ html[data-theme="aurora"] body.uc-lab main a:not(.btn):not(.ghost):not(.dl-btn):
 .monkey-btn .lid { transform-box: fill-box; transform-origin: center; animation: blink 4.5s infinite; }
 @keyframes wave { 50% { transform: rotate(-22deg); } }
 @keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 96% { transform: scaleY(0.12); } }
+.bot-disclaimer {
+  margin: 0;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: #f0fdfa;
+  color: #134e4a;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
 .bot-panel[hidden] { display: none !important; }
 .bot-panel {
   display: flex;
