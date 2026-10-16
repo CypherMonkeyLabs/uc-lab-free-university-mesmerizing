@@ -1,0 +1,62 @@
+{
+  "room": "mra-register",
+  "checked": "2026-10",
+  "sources": [
+    {
+      "kind": "cisco",
+      "title": "Mobile and Remote Access through Cisco Expressway, X15.2",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/expressway/config_guide/X15-2/mra/exwy_b_mra-deployment-guide-x152.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Expressway Series product support",
+      "url": "https://www.cisco.com/c/en/us/support/unified-communications/expressway-series/series.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "ports",
+      "title": "Cisco Expressway IP port usage (X14.3 and X15.0)",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/expressway/config_guide/X15-0/ip-port/exwy_b_cisco-expressway-ip-port-usage-configuration-guide-x15.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "System Configuration Guide for CUCM, Release 15",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "ports",
+      "title": "IANA service names and port numbers",
+      "url": "https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "community",
+      "title": "Cisco Community, Collaboration knowledge base",
+      "url": "https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Voice over IP (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Voice_over_IP",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    }
+  ]
+}

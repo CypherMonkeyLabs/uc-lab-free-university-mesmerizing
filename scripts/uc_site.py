@@ -38,6 +38,7 @@ from go_deeper import (
     keys_for_sheet,
     keys_for_track,
     markdown_block,
+    mirror_sources,
     patch_flagship_cheats,
     plain_lines,
     room_markdown,
@@ -70,9 +71,10 @@ def room_body(room: dict, pre: str) -> str:
         )
     sources = "".join(f'<li><a href="{href}">{esc(title)}</a></li>' for title, href in room["sources"])
     source_items = entries(ROOM_KEYS[room["slug"]])
+    mirror_sources(ROOT / "rooms" / "sources" / room["slug"] / "sources.json", room["slug"], source_items)
     deeper = html_block(
         source_items,
-        f"{pre}assets/data/sources/{room['slug']}.json",
+        f"sources/{room['slug']}/sources.json",
         md_href=f"{pre}downloads/rooms/{room['slug']}.md",
     )
     glossary = "".join(f"<li><strong>{esc(term)}</strong> — {esc(meaning)}</li>" for term, meaning in room["glossary"])
@@ -121,9 +123,10 @@ def emit_diagrams(items: list[dict]) -> None:
         (svg_dir / f"{item['slug']}.svg").write_text(svg, encoding="utf-8")
         source_items = entries(keys_for_diagram(room_rows, item["slug"]))
         write_json(f"diagrams/{item['slug']}.json", item["slug"], source_items)
+        mirror_sources(html_dir / "sources" / item["slug"] / "sources.json", item["slug"], source_items)
         deeper = html_block(
             source_items,
-            f"../../assets/data/sources/diagrams/{item['slug']}.json",
+            f"sources/{item['slug']}/sources.json",
             dark=True,
             md_href=f"{item['slug']}.md",
         )
@@ -135,7 +138,7 @@ def emit_diagrams(items: list[dict]) -> None:
             f"</head><body><h1 style=\"padding:12px 16px\">{esc(item['title'])}</h1>{svg}{deeper}{footer()}</body></html>"
         )
         (html_dir / f"{item['slug']}.html").write_text(standalone, encoding="utf-8")
-        json_href = f"../../assets/data/sources/diagrams/{item['slug']}.json"
+        json_href = f"sources/{item['slug']}/sources.json"
         write_text(
             html_dir / f"{item['slug']}.md",
             f"# {item['title']}\n\nSection export for this drawing.\n\n{markdown_block(source_items, json_href)}",
@@ -146,11 +149,12 @@ def emit_rooms(room_rows: list[dict]) -> None:
     for room in room_rows:
         source_items = entries(ROOM_KEYS[room["slug"]])
         write_json(f"{room['slug']}.json", room["slug"], source_items)
+        mirror_sources(ROOT / "rooms" / "sources" / room["slug"] / "sources.json", room["slug"], source_items)
         rel = f"rooms/{room['slug']}.html"
         write_page(rel, room["title"], room["five"][0], "learn", room_body(room, "../"), room["track"])
         write_text(
             ROOT / "downloads" / "rooms" / f"{room['slug']}.md",
-            room_markdown(room, source_items, f"../../assets/data/sources/{room['slug']}.json"),
+            room_markdown(room, source_items, f"../../rooms/sources/{room['slug']}/sources.json"),
         )
 
 
@@ -165,9 +169,10 @@ def emit_tracks(room_rows: list[dict]) -> None:
             )
         source_items = entries(keys_for_track(room_rows, tid))
         write_json(f"tracks/{tid}.json", tid, source_items)
+        mirror_sources(ROOT / "tracks" / "sources" / tid / "sources.json", tid, source_items)
         deeper = html_block(
             source_items,
-            f"../assets/data/sources/tracks/{tid}.json",
+            f"sources/{tid}/sources.json",
             md_href=f"../downloads/tracks/{tid}.md",
         )
         body = page_wrap(
@@ -180,7 +185,7 @@ def emit_tracks(room_rows: list[dict]) -> None:
         room_lines = "\n".join(f"- {room['title']}" for room in room_rows if room["track"] == tid)
         write_text(
             ROOT / "downloads" / "tracks" / f"{tid}.md",
-            f"# {name}\n\n{blurb}\n\n{room_lines}\n\n{markdown_block(source_items, f'../../assets/data/sources/tracks/{tid}.json')}",
+            f"# {name}\n\n{blurb}\n\n{room_lines}\n\n{markdown_block(source_items, f'../../tracks/sources/{tid}/sources.json')}",
         )
 
 
@@ -220,7 +225,8 @@ def emit_sheets() -> None:
     for slug, (title, lines) in SHEETS.items():
         source_items = entries(keys_for_sheet(room_rows, slug))
         write_json(f"sheets/{slug}.json", slug, source_items)
-        deeper = html_block(source_items, f"../../assets/data/sources/sheets/{slug}.json", md_href=f"{slug}.md")
+        mirror_sources(folder / "sources" / slug / "sources.json", slug, source_items)
+        deeper = html_block(source_items, f"sources/{slug}/sources.json", md_href=f"{slug}.md")
         items = "".join(f"<li>{esc(line)}</li>" for line in lines)
         doc = (
             "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\">"
@@ -229,7 +235,25 @@ def emit_sheets() -> None:
             f"</head><body><h1>{esc(title)}</h1><ul>{items}</ul>{deeper}{footer()}</body></html>"
         )
         (folder / f"{slug}.html").write_text(doc, encoding="utf-8")
-        write_text(folder / f"{slug}.md", sheet_markdown(title, lines, source_items, f"../../assets/data/sources/sheets/{slug}.json"))
+        write_text(folder / f"{slug}.md", sheet_markdown(title, lines, source_items, f"sources/{slug}/sources.json"))
+
+
+def study_primer() -> str:
+    """Cited learner text for the front door. Counts stay in the prose, not in a widget."""
+    return """
+<h2>Read this before the first room</h2>
+<p>A phone call in this lab is two jobs that share a clock. Signaling asks for the session and names the parties. Media is the voice, carried as RTP. <a href="https://www.rfc-editor.org/rfc/rfc3261">RFC 3261</a> defines the Session Initiation Protocol that carries the request. <a href="https://www.rfc-editor.org/rfc/rfc3550">RFC 3550</a> defines RTP. If you mix those jobs, you will chase a dial plan while the packets never arrive, or you will chase a codec while the request never left the phone.</p>
+<p>Start with one leg. An INVITE asks for a session. A 100 Trying means a hop received it. A 180 Ringing means alerting. A 200 OK means the far end accepted. The ACK completes a successful INVITE. A transaction is that request together with its responses. A dialog is the longer relationship, named by a Call-ID and the tags on From and To. A 100 has no To tag, so it is not yet a dialog. BYE ends the dialog you already have. CUCM and CUBE are often back-to-back user agents, so one human call can be two Call-IDs. Count the dialogs before you decide the call failed.</p>
+<p>SDP is not a second protocol you can skip. <a href="https://www.rfc-editor.org/rfc/rfc4566">RFC 4566</a> describes the session description. <a href="https://www.rfc-editor.org/rfc/rfc3264">RFC 3264</a> is the offer and the answer. Early offer puts the offer in the INVITE. Delayed offer puts it later, often in the 200, with the answer in the ACK. The answer may drop codecs. It does not invent a codec the offer never listed. Read the m= lines and the direction attributes. sendonly against sendonly is a quiet call with perfect signaling.</p>
+<p>REGISTER is not a call. It publishes a Contact for an address-of-record, and the binding expires. A 401 is a challenge. The next REGISTER needs a new CSeq. A phone can be registered and still have no media path. That distinction matters again at the edge. Mobile and Remote Access still ends as a registration on the call agent. The Expressway pair is the path. The port list belongs to the guide for the release you run. This page does not invent one.</p>
+<p>Early media is the tone or the announcement you hear before answer. A 183 Session Progress can carry SDP. When that response is reliable, <a href="https://www.rfc-editor.org/rfc/rfc3262">RFC 3262</a> expects a PRACK, and PRACK is its own transaction. Hearing ringback does not mean the called party answered.</p>
+<p>The dial plan is who may reach which pattern. On CUCM a partition is a bucket of patterns and a calling search space is an ordered list of those buckets. First match in that order wins. A route pattern matches digits, a route list orders route groups, and a route group holds trunks or gateways. Called, calling, and redirecting numbers are different fields, so a mask can repair caller identity or break it. Menu names move between releases. When a Cisco guide was not opened for this lab, the sources block says confirm and shows no address. Use the guide for the version you run before you change a live system.</p>
+<p>CUBE is a border element that terminates one SIP dialog and starts another. Inbound match and outbound match are different questions. SRST is the smaller dial plan a phone uses when it cannot reach the call agent. It is not a copy of the campus dial plan. A local gateway toward Webex Calling is another peer. The local-gateway articles on Webex Help are the ones this lab opened, including <a href="https://help.webex.com/en-us/article/t9xctu/Get-started-with-Local-Gateway">Get started with Local Gateway</a>.</p>
+<p>Voice quality is a budget, not a slogan. <a href="https://www.rfc-editor.org/rfc/rfc3246">RFC 3246</a> defines expedited forwarding, the behavior people mark as DSCP 46 for voice RTP. <a href="https://www.rfc-editor.org/rfc/rfc4594">RFC 4594</a> is the service-class map, and it does not always match a vendor signaling mark. <a href="https://www.itu.int/rec/T-REC-G.114">ITU-T G.114</a> is the usual citation for one-way delay planning, often remembered as 150 milliseconds. <a href="https://www.itu.int/rec/T-REC-G.711">ITU-T G.711</a> is the pulse-code codec behind the 64 kbit/s payload. On the wire, a 20 millisecond G.711 packet plus the IP, UDP, and RTP headers is about 80 kbit/s at layer 3, and a little more with an Ethernet header. A priority queue schedules that class. It does not create bandwidth the link does not have. A location on the call agent is a call-admission budget between sites. It does not, by itself, mark the packets.</p>
+<p>Contact center is a later stage of the same call. Ingress, the routing script, the queue treatment, and the agent endpoint are different objects. Queue audio is not an agent ringing. Webex Contact Center and Unified Contact Center Enterprise are different products. A label still has to be a number the call agent can route.</p>
+<p>A move toward Webex Calling is a number you can give back. Multi-tenant Calling and Dedicated Instance are different offers. <a href="https://help.webex.com/en-us/article/8jda92/Webex-Calling">Get started with Webex Calling</a> is the overview this lab opened on the Webex Help Center. Dual-run one number, save the old route, and rehearse the rollback before you move the next one. Survivability features depend on the subscription. If a survivability article was not opened, the sources row says confirm and carries no address.</p>
+<p>When something breaks, write one hypothesis and make one change. A 200 OK does not prove two-way audio. Compare the addresses in SDP with the packets you actually see. If the symptom does not move, put the change back. The eight tracks below are that sequence: SIP, the dial plan, CUBE and SRST, Expressway, voice QoS, the contact-center bridge, a careful migration, and the troubleshooting habit.</p>
+"""
 
 
 def emit_home(room_rows: list[dict], items: list[dict]) -> None:
@@ -240,6 +264,10 @@ def emit_home(room_rows: list[dict], items: list[dict]) -> None:
             f'<a class="track-tile" style="--card:{color}" href="tracks/{tid}.html"><h2>{esc(name)}</h2><p>{esc(blurb)}</p><p>{count} rooms</p></a>'
         )
     flows = sum(1 for item in items if item["kind"] == "flow")
+    home_items = entries(CORE)
+    mirror_sources(ROOT / "sources" / "home" / "sources.json", "home", home_items)
+    write_json("home.json", "home", home_items)
+    deeper = html_block(home_items, "sources/home/sources.json")
     body = f"""
 <section class="wrap hero-band">
 <div>
@@ -266,6 +294,10 @@ def emit_home(room_rows: list[dict], items: list[dict]) -> None:
 <div class="track-map">{''.join(tiles)}</div>
 <p class="lede">The older flagship studio remains at <a href="flagship/index.html">flagship/index.html</a>. The 580-section campus remains beside it as a comparison library: Teams Phone, Genesys, Five9, NICE, Amazon Connect, and the other names there are study references, not this course and not endorsements. This front door is the round-2 Cisco UC course.</p>
 </section>
+<section class="wrap study-primer" id="primer">
+{study_primer()}
+{deeper}
+</section>
 """
     write_page("index.html", "UC Lab Free University", "SIP, CUCM, CUBE, SRST, Expressway, QoS, UCCE, and Webex Calling migration.", "home", body)
 
@@ -276,6 +308,10 @@ def emit_start(room_rows: list[dict]) -> None:
     full = "".join(
         f'<li><a href="tracks/{tid}.html">{esc(name)}</a> — {esc(blurb)}</li>' for tid, name, blurb, _color in TRACKS
     )
+    start_items = entries(["rfc3261", "rfc3264", "rfc3550", "rfc4566", "rfc3262", "cucm", "wiki-sip"])
+    mirror_sources(ROOT / "sources" / "start" / "sources.json", "start", start_items)
+    write_json("start.json", "start", start_items)
+    deeper = html_block(start_items, "sources/start/sources.json")
     body = page_wrap(
         f"""
 <h1>Start here</h1>
@@ -289,8 +325,9 @@ def emit_start(room_rows: list[dict]) -> None:
 <ol>{full}</ol>
 </section>
 <section><h2>Certifications</h2>
-<p>Cisco's collaboration exam names change. <a href="https://www.cisco.com/c/en/us/training-events/training-certifications.html">Confirm the current title</a> before you pay. This lab is study material, not an exam voucher.</p>
+<p>Collaboration exam titles change. The Cisco training catalog returned HTTP 403 to the checker on 2026-10, so this page does not link it. Confirm the current title on the vendor site before you pay. This lab is study material, not an exam voucher.</p>
 </section>
+{deeper}
 """
     )
     write_page("start.html", "Start here", "Ten minutes or the full UC course.", "learn", body)
@@ -454,10 +491,13 @@ def emit_flashcards(cards: list[dict]) -> None:
     (folder / "flashcards.json").write_text(json.dumps({"cards": cards}, indent=2), encoding="utf-8")
     deck_items = entries(CORE)
     write_json("flashcards.json", "flashcards", deck_items)
+    mirror_sources(folder / "sources" / "flashcards" / "sources.json", "flashcards", deck_items)
     rows = []
     md_parts = ["# UC flashcards", ""]
     for card in cards:
-        block = html_block(card_sources(card), f"../assets/data/sources/{card.get('room', 'flashcards')}.json")
+        room_slug = card.get("room") or "flashcards"
+        card_href = f"../rooms/sources/{room_slug}/sources.json" if room_slug != "flashcards" else "sources/flashcards/sources.json"
+        block = html_block(card_sources(card), card_href)
         rows.append(
             f"<article><h2>{esc(card['front'])}</h2><p>{esc(card['back'])}</p><p>Source: {esc(card['source'])}</p>{block}</article>"
         )
@@ -465,8 +505,8 @@ def emit_flashcards(cards: list[dict]) -> None:
         md_parts.append("")
         md_parts.append(card["back"])
         md_parts.append("")
-        md_parts.append(markdown_block(card_sources(card), f"../assets/data/sources/{card.get('room', 'flashcards')}.json"))
-    closing = html_block(deck_items, "../assets/data/sources/flashcards.json", md_href="flashcards.md")
+        md_parts.append(markdown_block(card_sources(card), card_href))
+    closing = html_block(deck_items, "sources/flashcards/sources.json", md_href="flashcards.md")
     doc = (
         "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>UC flashcards</title>"
         "<link rel=\"stylesheet\" href=\"../assets/css/footer.css\">"
@@ -475,11 +515,13 @@ def emit_flashcards(cards: list[dict]) -> None:
     )
     (folder / "flashcards.html").write_text(doc, encoding="utf-8")
     (folder / "flashcards-print.html").write_text(doc, encoding="utf-8")
-    md_parts.append(markdown_block(deck_items, "../assets/data/sources/flashcards.json"))
+    md_parts.append(markdown_block(deck_items, "sources/flashcards/sources.json"))
     write_text(folder / "flashcards.md", "\n".join(md_parts))
     preview = []
     for card in cards[:12]:
-        block = html_block(card_sources(card), f"assets/data/sources/{card.get('room', 'flashcards')}.json")
+        room_slug = card.get("room") or "flashcards"
+        card_href = f"rooms/sources/{room_slug}/sources.json" if room_slug != "flashcards" else "downloads/sources/flashcards/sources.json"
+        block = html_block(card_sources(card), card_href)
         preview.append(f'<article class="room-card"><h2>{esc(card["front"])}</h2><p>{esc(card["back"])}</p>{block}</article>')
     write_page(
         "flashcards.html",
@@ -490,7 +532,7 @@ def emit_flashcards(cards: list[dict]) -> None:
             f"<h1>Flashcards</h1><p>{len(cards)} cards. The deck file is a download. This page shows the first questions from the same list.</p>"
             + "".join(preview)
             + '<div class="room-downloads"><a class="dl-btn" href="downloads/flashcards.json" download>JSON</a><a class="dl-btn" href="downloads/flashcards.html">HTML</a><a class="dl-btn" href="downloads/flashcards.pdf">PDF</a><a class="dl-btn" href="downloads/flashcards.md">Markdown</a></div>'
-            + html_block(deck_items, "assets/data/sources/flashcards.json", md_href="downloads/flashcards.md")
+            + html_block(deck_items, "downloads/sources/flashcards/sources.json", md_href="downloads/flashcards.md")
         ),
     )
 
@@ -569,7 +611,8 @@ def emit_office(cards: list[dict]) -> None:
     for slug, lines in template_text.items():
         source_items = entries(keys_for_sheet(room_rows, TEMPLATE_SHEET[slug]))
         write_json(f"templates/{slug}.json", slug, source_items)
-        deeper = html_block(source_items, f"../../assets/data/sources/templates/{slug}.json", md_href=f"{slug}.md")
+        mirror_sources(templates / "sources" / slug / "sources.json", slug, source_items)
+        deeper = html_block(source_items, f"sources/{slug}/sources.json", md_href=f"{slug}.md")
         html_doc = (
             "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\">"
             f"<title>{esc(lines[0])}</title><link rel=\"stylesheet\" href=\"../../assets/css/footer.css\"></head><body>"
@@ -586,7 +629,7 @@ def emit_office(cards: list[dict]) -> None:
         document.save(templates / f"{slug}.docx")
         write_text(
             templates / f"{slug}.md",
-            sheet_markdown(lines[0], lines[1:], source_items, f"../../assets/data/sources/templates/{slug}.json"),
+            sheet_markdown(lines[0], lines[1:], source_items, f"sources/{slug}/sources.json"),
         )
 
     pres = Presentation()
@@ -699,8 +742,11 @@ def emit_downloads(items: list[dict]) -> None:
 {''.join(rows)}
 </tbody></table></div>
 <p>{len(items)} diagrams are linked from <a href="diagrams.html">Diagrams</a>.</p>
+{html_block(entries(CORE), "sources/downloads/sources.json")}
 """
     )
+    mirror_sources(ROOT / "sources" / "downloads" / "sources.json", "downloads", entries(CORE))
+    write_json("downloads.json", "downloads", entries(CORE))
     write_page("downloads.html", "Downloads", "Sheets, cards, templates, and the zip.", "downloads", body)
 
 

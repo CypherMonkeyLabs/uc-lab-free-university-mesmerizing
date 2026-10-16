@@ -17,4 +17,4 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 - Wikipedia. [Session Description Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Description_Protocol). last checked 2026-10
 
-Room or sheet file: ../../assets/data/sources/diagrams/sip-prack.json
+Room or sheet file: sources/sip-prack/sources.json

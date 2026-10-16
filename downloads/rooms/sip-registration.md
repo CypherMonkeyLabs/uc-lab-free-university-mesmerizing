@@ -27,4 +27,4 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [CUCM (Wikipedia disambiguation)](https://en.wikipedia.org/wiki/CUCM). last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../../assets/data/sources/sip-registration.json
+Room or sheet file: ../../rooms/sources/sip-registration/sources.json

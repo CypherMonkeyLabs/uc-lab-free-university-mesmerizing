@@ -32,6 +32,8 @@
     monkeySvg() + "</button>" +
     '<section id="bot-panel" class="bot-panel" hidden>' +
     '<button type="button" class="sheet-handle" data-sheet-close aria-label="Close the guide"><span></span></button>' +
+    '<p class="bot-disclaimer">I only repeat the notes already on these pages. I am not Cisco, Webex, or any other vendor, and this chat is not official support.</p>' +
+    '<p class="bot-disclaimer">This is an independent, free, learning-only student project. It is not affiliated with or endorsed by any company. Confirm version-specific steps in the cited guide before you change a live system.</p>' +
     '<div class="choice-row" data-choices></div>' +
     '<div class="bot-log" role="log" aria-live="polite"></div>' +
     '<label class="voice-pick">Voice <select data-voice-name aria-label="Speaking voice"></select></label>' +
@@ -153,7 +155,9 @@
       '<div class="greet-card" role="dialog" aria-modal="true" aria-labelledby="greet-title">' +
       '<div class="greet-mascot">' + monkeySvg() + "</div>" +
       '<h2 id="greet-title">Welcome to CypherMonkey Labs</h2>' +
-      "<p>I am the UC guide for CUCM, SIP, gateways, and the path toward Webex Calling. I only repeat what these pages say.</p>" +
+      "<p>I am the UC guide for CUCM, SIP, gateways, and the path toward Webex Calling.</p>" +
+      "<p>I only repeat the notes already on these pages. I am not Cisco, Webex, or any other vendor, and this chat is not official support.</p>" +
+      "<p>This is an independent, free, learning-only student project. It is not affiliated with or endorsed by any company. Confirm version-specific steps in the cited guide before you change a live system.</p>" +
       '<div class="choice-row">' +
       '<button type="button" data-go="start.html#ten">Finish in 10 minutes</button>' +
       '<button type="button" data-go="start.html#path">Full course</button>' +
@@ -161,6 +165,7 @@
       '<button type="button" data-greet-close>Continue on this page</button>' +
       "</div></div>";
     document.body.appendChild(modal);
+    talkOnce("Welcome to CypherMonkey Labs. I am the UC guide. I only repeat the notes already on these pages. I am not Cisco, Webex, or any other vendor, and this chat is not official support.");
     function closeGreet() {
       if (modal.parentNode) modal.parentNode.removeChild(modal);
       pose("idle");
@@ -210,6 +215,16 @@
   if (window.speechSynthesis) {
     fillVoices();
     window.speechSynthesis.addEventListener("voiceschanged", fillVoices);
+  }
+  function talkOnce(text) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    var utter = new SpeechSynthesisUtterance(text);
+    var voice = chosenVoice();
+    if (voice) utter.voice = voice;
+    utter.rate = Number(rate.value) || 0.95;
+    utter.pitch = Number(pitch.value) || 1;
+    window.speechSynthesis.speak(utter);
   }
   function chosenVoice() {
     var list = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
@@ -440,7 +455,7 @@
   var tour = document.createElement("div");
   tour.hidden = true;
   tour.className = "tour-layer";
-  tour.innerHTML = '<div class="tour-hole" data-hole></div><div class="tour-card" role="dialog" aria-modal="true" aria-label="First visit tour"><p class="tour-kicker" data-kicker></p><p data-step></p><div class="tour-dots" role="group" aria-label="Steps 1 to 6"></div><div class="row"><button type="button" data-back>Back</button><button type="button" data-next>Next</button><button type="button" data-skip>Skip</button></div></div>';
+  tour.innerHTML = '<div class="tour-hole" data-hole></div><div class="tour-card" role="dialog" aria-modal="false" aria-label="First visit tour"><p class="tour-kicker" data-kicker></p><p data-step></p><div class="tour-dots" role="group" aria-label="Steps 1 to 6"></div><div class="row"><button type="button" data-back>Back</button><button type="button" data-next>Next</button><button type="button" data-skip>Skip</button></div></div>';
   document.body.appendChild(tour);
   var hole = tour.querySelector("[data-hole]");
   var stepText = tour.querySelector("[data-step]");
@@ -520,31 +535,34 @@
     tour.querySelector("[data-next]").textContent = stepAt === steps.length - 1 ? "Done" : "Next";
     var header = band(".uc-top");
     var phone = band(".phone-bar");
-    var headerBottom = header ? header.bottom : 8;
-    var phoneTop = phone ? phone.top : window.innerHeight;
-    var gap = 14;
+    var banner = band(".canon-banner");
+    var gap = 12;
     var cardH = card.offsetHeight;
-    var roomTop = headerBottom + gap;
-    var roomBottom = phoneTop - gap;
-    var below = rect.bottom + gap;
-    var above = rect.top - cardH - gap;
-    var top = below;
-    if (top < roomTop || top + cardH > roomBottom) {
-      if (above >= roomTop && above + cardH <= roomBottom) top = above;
-      else top = roomTop;
-    }
-    if (top + cardH > roomBottom) top = Math.max(roomTop, roomBottom - cardH);
-    if (top < roomTop) top = roomTop;
+    var roomTop = Math.max(header ? header.bottom : 8, banner ? banner.bottom : 0) + gap;
+    var roomBottom = (phone ? phone.top : window.innerHeight) - gap;
     var hero = document.querySelector("main h1");
-    if (hero && window.innerWidth <= 800) {
-      var heroBottom = hero.getBoundingClientRect().bottom;
-      var belowHero = heroBottom + gap;
-      if (top < heroBottom - 8 && belowHero + cardH <= roomBottom) top = belowHero;
+    var heroBox = hero ? hero.getBoundingClientRect() : null;
+    function hitsHero(candidate) {
+      if (!heroBox || heroBox.height < 8) return false;
+      return !(candidate + cardH < heroBox.top - 8 || candidate > heroBox.bottom + 8);
     }
-    var width = card.offsetWidth;
-    var left = Math.min(rect.left, window.innerWidth - width - 12);
-    if (left < 12) left = 12;
-    card.style.left = Math.round(left) + "px";
+    var top = roomBottom - cardH;
+    if (hitsHero(top)) {
+      var belowHero = heroBox.bottom + gap;
+      var aboveHero = heroBox.top - cardH - gap;
+      if (belowHero >= roomTop && belowHero + cardH <= roomBottom) top = belowHero;
+      else if (aboveHero >= roomTop) top = aboveHero;
+    }
+    if (top + cardH > roomBottom) top = roomBottom - cardH;
+    if (top < 8) top = 8;
+    if (top + cardH > window.innerHeight - 8) {
+      card.style.maxHeight = Math.max(120, window.innerHeight - 16 - top) + "px";
+      cardH = card.offsetHeight;
+      if (top + cardH > window.innerHeight - 8) top = Math.max(8, window.innerHeight - 8 - cardH);
+    }
+    card.style.left = "50%";
+    card.style.right = "auto";
+    card.style.transform = "translateX(-50%)";
     card.style.top = Math.round(top) + "px";
   }
   function showTour() {
