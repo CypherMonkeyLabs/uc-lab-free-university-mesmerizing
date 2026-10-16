@@ -227,8 +227,8 @@ def main() -> int:
         for needle in ("moonshot", "linktr.ee", "cyphermonkey", "kimi-design", "msh.team"):
             if needle in low:
                 fail(errors, f"deck still contains {needle}")
-        if "<dc:creator>CYPHER0X9</dc:creator>" not in blob:
-            fail(errors, "deck creator is not CYPHER0X9")
+        if "<dc:creator>UC Lab</dc:creator>" not in blob:
+            fail(errors, "deck creator is not UC Lab")
         if blob.count("<p:sldId ") != 62:
             fail(errors, "deck is no longer 62 slides")
     else:

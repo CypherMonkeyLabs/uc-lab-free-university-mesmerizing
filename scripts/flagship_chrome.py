@@ -31,17 +31,14 @@ ICONS = {
     "menu": '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>',
     "listen": '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 10h2v4H4zm4-3h2v10H8zm4-3h2v16h-2zm4 4h2v8h-2zm4 2h2v4h-2z"/></svg>',
     "github": '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.7 7.7 0 0 1 8 3.87c.67 0 1.35.09 1.98.26 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>',
-    "x": '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.6 10.4 21.8 2h-1.7l-6.3 7.2L8.7 2H2.2l7.6 10.9L2.2 22h1.7l6.7-7.6L15.1 22h6.5l-7-11.6zm-2.4 2.7-.8-1.1L4.7 3.5h2.7l5.1 7.2.8 1.1 6.5 9.2h-2.7l-5.4-7.9z"/></svg>',
-    "hf": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="10" r="1.15" fill="currentColor"/><circle cx="15" cy="10" r="1.15" fill="currentColor"/><path d="M8.2 14.2c1.1 1.7 6.5 1.7 7.6 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
     "labs": '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M6 15c2.2-4 4.4-4 6.6 0s4.4 4 6.6 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+    "tree": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4" r="2.1" fill="currentColor"/><circle cx="5" cy="10" r="2" fill="currentColor"/><circle cx="19" cy="10" r="2" fill="currentColor"/><circle cx="4" cy="16" r="2" fill="currentColor"/><circle cx="20" cy="16" r="2" fill="currentColor"/><path fill="currentColor" d="M11 5.2h2v3.2h-2zM6.2 9h11.6v2H6.2zM11 11h2v3.2h-2zM5.2 15h13.6v2H5.2zM10 17h4v4h-4z"/></svg>',
 }
 
 BRANDS = [
-    ("https://github.com/cipher0x9", "Visit my GitHub", "github"),
-    ("https://github.com/CypherMonkeyLabs", "Visit the Labs org", "github"),
-    ("https://cyphermonkeylabs.com", "Visit Cypher Monkey Labs", "labs"),
-    ("https://x.com/Cypher0x9", "X", "x"),
-    ("https://huggingface.co/Cypher0x9", "Hugging Face", "hf"),
+    ("https://cyphermonkeylabs.com", "CypherMonkey Labs website", "labs"),
+    ("https://github.com/CypherMonkeyLabs", "CypherMonkey Labs on GitHub", "github"),
+    ("https://linktr.ee/cypherMonkey", "CypherMonkey on Linktree", "tree"),
 ]
 
 
@@ -248,7 +245,7 @@ try {{
     <p class="who">{esc(who)}</p>
     <div class="sister">{sister_html}</div>
     <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
-    <p><a href="https://github.com/cipher0x9">Visit my GitHub</a> · <a href="{CONTACT}">Report a concern or takedown</a> · <a href="{CONTACT}">Work with us</a></p>
+    <p><a href="https://github.com/CypherMonkeyLabs">CypherMonkey Labs on GitHub</a> · <a href="{CONTACT}">Report a concern or takedown</a> · <a href="{CONTACT}">Work with us</a></p>
     <p class="copy">© 2026 CypherMonkeyLabs 🐒</p>
   </div>
 </footer>
