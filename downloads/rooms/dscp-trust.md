@@ -1,0 +1,30 @@
+# DSCP and the trust boundary
+
+- Voice RTP is commonly marked EF, DSCP 46.
+- RFC 3246 defines Expedited Forwarding.
+- RFC 4594 maps telephony to EF and points signaling at CS5.
+- Cisco campus designs often mark call signaling CS3.
+- Say which document you are following.
+
+Phones can mark packets. Switches can trust that mark or rewrite it. If the access port does not trust the phone, the WAN queue never sees EF, and the priority class stays empty while voice is delayed in the default class.
+
+A capture at the phone shows DSCP 46. A capture after the access switch shows DSCP 0. The trust boundary is the switchport. Fix the policy there before you resize the WAN queue.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- RFC. [RFC 3246, Expedited Forwarding](https://www.rfc-editor.org/rfc/rfc3246). last checked 2026-10
+- RFC. [RFC 4594, DiffServ service classes](https://www.rfc-editor.org/rfc/rfc4594). last checked 2026-10
+- ITU. [ITU-T G.114, one-way transmission time](https://www.itu.int/rec/T-REC-G.114). last checked 2026-10
+- ITU. [ITU-T G.711, pulse code modulation of voice](https://www.itu.int/rec/T-REC-G.711). last checked 2026-10
+- Cisco. [Cisco Collaboration Preferred Architectures](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/uc_system/design/guides/PAdocs.html). last checked 2026-10
+- Cisco. [System Configuration Guide for CUCM, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html). last checked 2026-10
+- Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
+- Wikipedia. [Differentiated services (Wikipedia)](https://en.wikipedia.org/wiki/Differentiated_services). last checked 2026-10
+- Wikipedia. [Quality of service (Wikipedia)](https://en.wikipedia.org/wiki/Quality_of_service). last checked 2026-10
+- Cisco. Enterprise QoS SRND book. confirm. The Enterprise QoS SRND path returned HTTP 404. last checked 2026-10
+
+Room or sheet file: ../../assets/data/sources/dscp-trust.json

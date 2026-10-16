@@ -1,0 +1,54 @@
+{
+  "room": "bandwidth",
+  "checked": "2026-10",
+  "sources": [
+    {
+      "kind": "itu",
+      "title": "ITU-T G.711, pulse code modulation of voice",
+      "url": "https://www.itu.int/rec/T-REC-G.711",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3550, RTP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3550",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 4594, DiffServ service classes",
+      "url": "https://www.rfc-editor.org/rfc/rfc4594",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "community",
+      "title": "Cisco Community, Collaboration knowledge base",
+      "url": "https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Quality of service (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Quality_of_service",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Enterprise QoS SRND book",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "The Enterprise QoS SRND path returned HTTP 404."
+    }
+  ]
+}

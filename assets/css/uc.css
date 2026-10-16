@@ -433,6 +433,9 @@ html[data-theme="aurora"] body.uc-lab main a:not(.btn):not(.ghost):not(.dl-btn):
 .stat { background: var(--card-bg); border-radius: 14px; padding: 10px 14px; min-width: 110px; border: 1px solid var(--line); }
 .stat b { display: block; font-size: 1.4rem; }
 
+.go-deeper { border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; margin: 16px 0; background: var(--card-bg); }
+.go-deeper h2 { margin-top: 0; }
+.go-deeper li { margin: 6px 0; }
 .five, .worked, .eco-panel, .quiz, .sources, .room-downloads {
   border: 1px solid var(--line);
   border-radius: 16px;

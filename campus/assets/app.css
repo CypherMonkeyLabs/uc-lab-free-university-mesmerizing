@@ -576,6 +576,9 @@ html[data-font="xl"] body { font-size: 22px; }
 .sheet th, .sheet td { text-align: left; padding: 8px; border-bottom: 1px solid var(--cc-line); vertical-align: top; }
 .sheet th { background: #0b1120; color: #f8fafc; }
 html[data-theme="contrast"] .sheet th { background: #fff; color: #000; }
+.go-deeper { margin-top: 28px; padding: 14px 16px; border: 1px solid var(--cc-line); border-radius: 14px; background: var(--card); }
+.go-deeper h2 { margin-top: 0; }
+.go-deeper a { font-weight: 700; }
 @media (prefers-reduced-motion: reduce) {
   html:not([data-motion="allow"]) *, html:not([data-motion="allow"]) *::before, html:not([data-motion="allow"]) *::after { animation: none !important; transition: none !important; }
 }
