@@ -13,6 +13,8 @@ import sys
 import zipfile
 from pathlib import Path
 
+from lab_links import EXPECTED_SLIDES
+
 ROOT = Path(__file__).resolve().parents[1]
 DECK = ROOT / "downloads" / "Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx"
 
@@ -72,8 +74,8 @@ def main() -> int:
     tmp.replace(DECK)
     blob = zipfile.ZipFile(DECK).read("ppt/presentation.xml")
     slides = blob.decode("utf-8").count("<p:sldId ")
-    if slides != 62:
-        print(f"expected 62 slides, found {slides}", file=sys.stderr)
+    if slides != EXPECTED_SLIDES:
+        print(f"expected {EXPECTED_SLIDES} slides, found {slides}", file=sys.stderr)
         return 1
     print(f"scrubbed {DECK.name}: {len(original)} -> {DECK.stat().st_size} bytes, {slides} slides")
     return 0
