@@ -34,13 +34,15 @@
     '<button type="button" class="sheet-handle" data-sheet-close aria-label="Close the guide"><span></span></button>' +
     '<div class="choice-row" data-choices></div>' +
     '<div class="bot-log" role="log" aria-live="polite"></div>' +
-    '<details class="bot-extras"><summary>Voice and sound</summary>' +
-    '<div class="voice-row">' +
-    '<label>Voice <select data-voice-name aria-label="Speaking voice"></select></label>' +
-    '<label>Rate <input data-rate type="range" min="0.7" max="1.3" step="0.05" value="0.95" aria-label="Speech rate"></label>' +
-    '<label>Pitch <input data-pitch type="range" min="0.7" max="1.3" step="0.05" value="1" aria-label="Speech pitch"></label>' +
+    '<label class="voice-pick">Voice <select data-voice-name aria-label="Speaking voice"></select></label>' +
+    '<div class="choice-row">' +
     '<button type="button" data-read>Read along</button>' +
     '<button type="button" data-stop>Stop</button>' +
+    "</div>" +
+    '<details class="bot-extras"><summary>Voice and sound</summary>' +
+    '<div class="voice-row">' +
+    '<label>Rate <input data-rate type="range" min="0.7" max="1.3" step="0.05" value="0.95" aria-label="Speech rate"></label>' +
+    '<label>Pitch <input data-pitch type="range" min="0.7" max="1.3" step="0.05" value="1" aria-label="Speech pitch"></label>' +
     '<button type="button" data-ambient aria-pressed="false">Ambient off</button>' +
     "</div></details>" +
     '<form class="bot-form"><button type="button" data-mic aria-label="Voice input">Mic</button>' +
@@ -134,6 +136,7 @@
       { label: "Finish in 10 minutes", run: function () { go("start.html#ten"); } },
       { label: "Full course", run: function () { go("start.html#path"); } },
       { label: "Just download", run: function () { go("downloads.html"); } },
+      { label: "Read this page aloud", run: function () { dock.querySelector("[data-read]").click(); } },
       { label: "Export this section", run: function () { location.href = currentExport(); } }
     ]);
   }
@@ -214,22 +217,40 @@
     return rankVoices(list)[0] || null;
   }
   function speak(text, onend) {
-    if (!window.speechSynthesis) { if (onend) onend(); return; }
+    var done = false;
+    var paced = 0;
+    var started = Date.now();
+    function finish() {
+      if (done || !speaking) return;
+      done = true;
+      window.clearTimeout(paced);
+      var wait = Math.max(0, 800 - (Date.now() - started));
+      window.setTimeout(function () {
+        if (onend && speaking) onend();
+      }, wait);
+    }
+    if (!window.speechSynthesis) {
+      paced = window.setTimeout(finish, 1400);
+      return;
+    }
     window.speechSynthesis.cancel();
     var utter = new SpeechSynthesisUtterance(text);
     var voice = chosenVoice();
     if (voice) utter.voice = voice;
     utter.rate = Number(rate.value) || 0.95;
     utter.pitch = Number(pitch.value) || 1;
-    utter.onend = function () { if (onend) onend(); };
-    utter.onerror = function () { if (onend) onend(); };
+    paced = window.setTimeout(finish, Math.min(9000, 900 + text.length * 40));
+    utter.onend = finish;
+    utter.onerror = finish;
     speaking = true;
     pose("listen");
+    root.classList.add("is-readalong");
     window.speechSynthesis.speak(utter);
   }
   function stopSpeak() {
     speaking = false;
     readAt = 0;
+    root.classList.remove("is-readalong");
     if (window.speechSynthesis) window.speechSynthesis.cancel();
     document.querySelectorAll(".is-spoken").forEach(function (el) { el.classList.remove("is-spoken"); });
     document.querySelectorAll(".is-reading").forEach(function (el) { el.classList.remove("is-reading"); });
@@ -282,7 +303,9 @@
     document.querySelectorAll(".is-reading").forEach(function (el) { el.classList.remove("is-reading"); });
     item.span.classList.add("is-spoken");
     if (item.section && item.section.classList) item.section.classList.add("is-reading");
-    item.span.scrollIntoView({ block: "center", behavior: root.dataset.motion === "reduce" ? "auto" : "smooth" });
+    root.classList.add("is-readalong");
+    var reduce = root.dataset.motion === "reduce" || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    item.span.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" });
     var text = item.span.textContent || "";
     readAt += 1;
     speak(text, readNext);

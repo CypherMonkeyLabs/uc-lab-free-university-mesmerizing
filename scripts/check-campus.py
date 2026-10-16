@@ -23,17 +23,32 @@ ALLOWED_EMAILS = {
     "bob@example.com",
     "carol@example.com",
 }
-# The flagship studio bar and the deep-campus bar publish the public studio
-# links on purpose. The campus lesson text and the briefing deck stay scrubbed.
-HUB_OK_PREFIXES = ("flagship/",)
+# The university, the flagship, and the deep-campus chrome publish the three
+# official studio links on purpose. Campus lesson text and the briefing deck
+# stay scrubbed: a different linktr.ee handle still fails.
+HUB_OK_PREFIXES = (
+    "flagship/",
+    "rooms/",
+    "tracks/",
+    "downloads/",
+    "docs/",
+    "guide/",
+    "assets/",
+)
 HUB_OK_FILES = {
     "index.html",
+    "README.md",
     "campus/uc-lab-free-university.html",
+    "campus/index.html",
     "scripts/build-flagship.py",
+    "scripts/build_uc_round2.py",
+    "scripts/uc_site.py",
     "scripts/flagship_chrome.py",
     "scripts/round2_pages.py",
     "scripts/round3_pages.py",
     "scripts/check-flagship.py",
+    "scripts/restamp-chrome.py",
+    "scripts/verify-university.mjs",
 }
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}")
 PHONE_RE = re.compile(r"(?<![\w.])(?:\+\d{1,3}[\s.\-]?)?\(?\d{3}\)?[\s.\-]\d{3}[\s.\-]\d{4}(?!\d)")
@@ -49,6 +64,17 @@ OFFICIAL_LAB_URL_RE = re.compile(
     r"|(?:https?://)?github\.com/cyphermonkeylabs/"
     r"|(?:https?://)?raw\.githubusercontent\.com/cyphermonkeylabs/"
     r"|(?:https?://)?api\.github\.com/repos/cyphermonkeylabs/"
+)
+# The three public studio marks, including the bare site, the org, Linktree,
+# and the studio name in aria-labels and the copyright line.
+OFFICIAL_STUDIO_RE = re.compile(
+    r"(?:https?:)?//(?:www\.)?cyphermonkeylabs\.com\S*"
+    r"|(?:https?://)?(?:www\.)?github\.com/cyphermonkeylabs\S*"
+    r"|(?:https?://)?linktr\.ee/cyphermonkey\b"
+    r"|cyphermonkeylabs"
+    r"|cyphermonkey on linktree"
+    r"|cyphermonkey labs"
+    r"|cypher monkey labs"
 )
 GEMINI_GALLERY_URL_RE = re.compile(
     r"(?:https?:)?//cipher0x9\.github\.io/gemini-gems-free-gallery/?"
@@ -204,6 +230,7 @@ def main() -> int:
             continue
         text = path.read_text(encoding="utf-8", errors="ignore").lower()
         text = OFFICIAL_LAB_URL_RE.sub(" ", text)
+        text = OFFICIAL_STUDIO_RE.sub(" ", text)
         text = GEMINI_GALLERY_URL_RE.sub(" ", text)
         if ("linktr.ee" in text or "cyphermonkey" in text) and not (
             rel.startswith(HUB_OK_PREFIXES) or rel in HUB_OK_FILES

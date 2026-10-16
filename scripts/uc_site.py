@@ -24,6 +24,28 @@ from build_uc_round2 import (
     rooms,
     write_page,
 )
+from go_deeper import (
+    CHEAT_KEYS,
+    CORE,
+    ROOM_KEYS,
+    TEMPLATE_SHEET,
+    add_docx_sources,
+    add_pptx_sources,
+    append_pdf_sources,
+    entries,
+    html_block,
+    keys_for_diagram,
+    keys_for_sheet,
+    keys_for_track,
+    markdown_block,
+    patch_flagship_cheats,
+    plain_lines,
+    room_markdown,
+    sheet_markdown,
+    write_campus_bundle,
+    write_json,
+    write_text,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -47,19 +69,28 @@ def room_body(room: dict, pre: str) -> str:
             f"{buttons}<p class=\"quiz-note\" hidden>{esc(why)}</p></div>"
         )
     sources = "".join(f'<li><a href="{href}">{esc(title)}</a></li>' for title, href in room["sources"])
+    source_items = entries(ROOM_KEYS[room["slug"]])
+    deeper = html_block(
+        source_items,
+        f"{pre}assets/data/sources/{room['slug']}.json",
+        md_href=f"{pre}downloads/rooms/{room['slug']}.md",
+    )
     glossary = "".join(f"<li><strong>{esc(term)}</strong> — {esc(meaning)}</li>" for term, meaning in room["glossary"])
     confirm = f'<p class="confirm">Confirm before relying. {esc(room["confirm"])}</p>' if room.get("confirm") else ""
     sheet = room["sheet"]
+    exports = dl_buttons(pre, room["diagram"], sheet).replace(
+        'class="room-downloads"', 'class="room-downloads section-dl"', 1
+    )
     return f"""
 <div class="wrap">
 <p class="kicker">{esc(room["track"])} · {esc(room["id"])}</p>
 <h1>{esc(room["title"])}</h1>
 {dl_buttons(pre, room["diagram"], sheet)}
-<section id="five" class="five"><h2>Learn it in 5 minutes</h2><ul>{bullets}</ul></section>
-<section id="visual"><h2>Visual</h2><div class="diagram-frame"><img src="{pre}assets/diagrams/university/{room["diagram"]}.svg" alt="{esc(room["title"])} diagram"></div></section>
-<section id="core"><h2>What is going on</h2><p>{esc(room["core"])}</p>{confirm}</section>
-<section id="example" class="worked"><h2>Worked example</h2><p>{esc(room["example"])}</p></section>
-<section id="quiz"><h2>Quiz</h2>{''.join(questions)}</section>
+<section id="five" class="five"><h2>Learn it in 5 minutes</h2><ul>{bullets}</ul>{exports}</section>
+<section id="visual"><h2>Visual</h2><div class="diagram-frame"><img src="{pre}assets/diagrams/university/{room["diagram"]}.svg" alt="{esc(room["title"])} diagram"></div>{exports}</section>
+<section id="core"><h2>What is going on</h2><p>{esc(room["core"])}</p>{confirm}{exports}</section>
+<section id="example" class="worked"><h2>Worked example</h2><p>{esc(room["example"])}</p>{exports}</section>
+<section id="quiz"><h2>Quiz</h2>{''.join(questions)}{exports}</section>
 <section id="eco" class="eco-panel"><h2>Ecosystem</h2>
 <p>{esc(room["eco"])}</p>
 <ul>{glossary}</ul>
@@ -67,10 +98,10 @@ def room_body(room: dict, pre: str) -> str:
 <p><strong>Troubleshooting.</strong> {esc(room["trouble"])}</p>
 <p><strong>Bridge.</strong> {esc(room["bridge"])}</p>
 <p>Mind map, sister technologies, and future hooks live on the <a href="{pre}ecosystem.html">ecosystem page</a>.</p>
+{exports}
 </section>
 <section id="sources" class="sources"><h2>Sources</h2><ul>{sources}</ul>
-<p>Product screens move. Confirm the guide for your release before you change a live system.</p></section>
-{dl_buttons(pre, room["diagram"], sheet)}
+<p>Product screens move. Confirm the guide for your release before you change a live system.</p>{exports}{deeper}</section>
 </div>
 """
 
@@ -84,23 +115,43 @@ def emit_diagrams(items: list[dict]) -> None:
     html_dir = ROOT / "downloads" / "diagrams"
     svg_dir.mkdir(parents=True, exist_ok=True)
     html_dir.mkdir(parents=True, exist_ok=True)
+    room_rows = rooms()
     for item in items:
         svg = diagram_svg(item)
         (svg_dir / f"{item['slug']}.svg").write_text(svg, encoding="utf-8")
+        source_items = entries(keys_for_diagram(room_rows, item["slug"]))
+        write_json(f"diagrams/{item['slug']}.json", item["slug"], source_items)
+        deeper = html_block(
+            source_items,
+            f"../../assets/data/sources/diagrams/{item['slug']}.json",
+            dark=True,
+            md_href=f"{item['slug']}.md",
+        )
         standalone = (
             "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\">"
             f"<title>{esc(item['title'])}</title>"
             "<link rel=\"stylesheet\" href=\"../../assets/css/footer.css\">"
-            "<style>body{margin:0;background:#0b1020;color:#e0e7ff;font-family:system-ui,sans-serif}svg{width:100%;height:auto}</style>"
-            f"</head><body><h1 style=\"padding:12px 16px\">{esc(item['title'])}</h1>{svg}{footer()}</body></html>"
+            "<style>body{margin:0;background:#0b1020;color:#e0e7ff;font-family:system-ui,sans-serif}svg{width:100%;height:auto}.go-deeper{margin:16px}</style>"
+            f"</head><body><h1 style=\"padding:12px 16px\">{esc(item['title'])}</h1>{svg}{deeper}{footer()}</body></html>"
         )
         (html_dir / f"{item['slug']}.html").write_text(standalone, encoding="utf-8")
+        json_href = f"../../assets/data/sources/diagrams/{item['slug']}.json"
+        write_text(
+            html_dir / f"{item['slug']}.md",
+            f"# {item['title']}\n\nSection export for this drawing.\n\n{markdown_block(source_items, json_href)}",
+        )
 
 
 def emit_rooms(room_rows: list[dict]) -> None:
     for room in room_rows:
+        source_items = entries(ROOM_KEYS[room["slug"]])
+        write_json(f"{room['slug']}.json", room["slug"], source_items)
         rel = f"rooms/{room['slug']}.html"
         write_page(rel, room["title"], room["five"][0], "learn", room_body(room, "../"), room["track"])
+        write_text(
+            ROOT / "downloads" / "rooms" / f"{room['slug']}.md",
+            room_markdown(room, source_items, f"../../assets/data/sources/{room['slug']}.json"),
+        )
 
 
 def emit_tracks(room_rows: list[dict]) -> None:
@@ -112,12 +163,25 @@ def emit_tracks(room_rows: list[dict]) -> None:
             cards.append(
                 f'<a class="room-card" href="../rooms/{room["slug"]}.html"><h2>{esc(room["title"])}</h2><p>{esc(room["five"][0])}</p></a>'
             )
+        source_items = entries(keys_for_track(room_rows, tid))
+        write_json(f"tracks/{tid}.json", tid, source_items)
+        deeper = html_block(
+            source_items,
+            f"../assets/data/sources/tracks/{tid}.json",
+            md_href=f"../downloads/tracks/{tid}.md",
+        )
         body = page_wrap(
             f'<p class="kicker">{esc(tid)}</p><h1>{esc(name)}</h1><p class="lede">{esc(blurb)}</p>'
-            f'<div class="room-downloads"><a class="dl-btn" href="../downloads/sheets/{sheet_for(tid)}.html">Cheat sheet</a></div>'
-            f'<div class="card-grid">{"".join(cards)}</div>'
+            f'<div class="room-downloads"><a class="dl-btn" href="../downloads/sheets/{sheet_for(tid)}.html">Cheat sheet</a>'
+            f'<a class="dl-btn" href="../downloads/tracks/{tid}.md">Markdown</a></div>'
+            f'<div class="card-grid">{"".join(cards)}</div>{deeper}'
         )
         write_page(f"tracks/{tid}.html", name, blurb, "learn", body, tid)
+        room_lines = "\n".join(f"- {room['title']}" for room in room_rows if room["track"] == tid)
+        write_text(
+            ROOT / "downloads" / "tracks" / f"{tid}.md",
+            f"# {name}\n\n{blurb}\n\n{room_lines}\n\n{markdown_block(source_items, f'../../assets/data/sources/tracks/{tid}.json')}",
+        )
 
 
 def sheet_for(tid: str) -> str:
@@ -152,15 +216,20 @@ SHEETS = {
 def emit_sheets() -> None:
     folder = ROOT / "downloads" / "sheets"
     folder.mkdir(parents=True, exist_ok=True)
+    room_rows = rooms()
     for slug, (title, lines) in SHEETS.items():
+        source_items = entries(keys_for_sheet(room_rows, slug))
+        write_json(f"sheets/{slug}.json", slug, source_items)
+        deeper = html_block(source_items, f"../../assets/data/sources/sheets/{slug}.json", md_href=f"{slug}.md")
         items = "".join(f"<li>{esc(line)}</li>" for line in lines)
         doc = (
             "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\">"
             f"<title>{esc(title)}</title><link rel=\"stylesheet\" href=\"../../assets/css/footer.css\">"
             "<style>body{font-family:system-ui,sans-serif;margin:24px;background:#f8fafc;color:#0f172a}ul{font-size:1.15rem;line-height:1.5}</style>"
-            f"</head><body><h1>{esc(title)}</h1><ul>{items}</ul>{footer()}</body></html>"
+            f"</head><body><h1>{esc(title)}</h1><ul>{items}</ul>{deeper}{footer()}</body></html>"
         )
         (folder / f"{slug}.html").write_text(doc, encoding="utf-8")
+        write_text(folder / f"{slug}.md", sheet_markdown(title, lines, source_items, f"../../assets/data/sources/sheets/{slug}.json"))
 
 
 def emit_home(room_rows: list[dict], items: list[dict]) -> None:
@@ -365,29 +434,53 @@ def cards_for(room_rows: list[dict]) -> list[dict]:
     cards = []
     for room in room_rows:
         for term, meaning in room["glossary"]:
-            cards.append({"front": term, "back": meaning, "source": room["sources"][0][0]})
-        cards.append({"front": room["title"], "back": room["five"][0], "source": room["sources"][0][0]})
+            cards.append({"front": term, "back": meaning, "source": room["sources"][0][0], "room": room["slug"]})
+        cards.append({"front": room["title"], "back": room["five"][0], "source": room["sources"][0][0], "room": room["slug"]})
         for prompt, why, _choices, answer in room["quiz"]:
-            cards.append({"front": prompt, "back": f"{answer}. {why}", "source": room["sources"][0][0]})
+            cards.append({"front": prompt, "back": f"{answer}. {why}", "source": room["sources"][0][0], "room": room["slug"]})
     return cards
+
+
+def card_sources(card: dict) -> list[dict]:
+    slug = card.get("room") or ""
+    if slug in ROOM_KEYS:
+        return entries(ROOM_KEYS[slug])
+    return entries(CORE)
 
 
 def emit_flashcards(cards: list[dict]) -> None:
     folder = ROOT / "downloads"
     folder.mkdir(parents=True, exist_ok=True)
     (folder / "flashcards.json").write_text(json.dumps({"cards": cards}, indent=2), encoding="utf-8")
-    rows = "".join(
-        f"<article><h2>{esc(card['front'])}</h2><p>{esc(card['back'])}</p><p>Source: {esc(card['source'])}</p></article>"
-        for card in cards
-    )
+    deck_items = entries(CORE)
+    write_json("flashcards.json", "flashcards", deck_items)
+    rows = []
+    md_parts = ["# UC flashcards", ""]
+    for card in cards:
+        block = html_block(card_sources(card), f"../assets/data/sources/{card.get('room', 'flashcards')}.json")
+        rows.append(
+            f"<article><h2>{esc(card['front'])}</h2><p>{esc(card['back'])}</p><p>Source: {esc(card['source'])}</p>{block}</article>"
+        )
+        md_parts.append(f"## {card['front']}")
+        md_parts.append("")
+        md_parts.append(card["back"])
+        md_parts.append("")
+        md_parts.append(markdown_block(card_sources(card), f"../assets/data/sources/{card.get('room', 'flashcards')}.json"))
+    closing = html_block(deck_items, "../assets/data/sources/flashcards.json", md_href="flashcards.md")
     doc = (
         "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>UC flashcards</title>"
         "<link rel=\"stylesheet\" href=\"../assets/css/footer.css\">"
         "<style>body{font-family:system-ui,sans-serif;margin:24px;background:#fff;color:#0f172a}article{break-inside:avoid;border:1px solid #99f6e4;border-radius:12px;padding:12px;margin:8px 0}</style>"
-        f"</head><body><h1>UC flashcards</h1>{rows}{footer()}</body></html>"
+        f"</head><body><h1>UC flashcards</h1>{''.join(rows)}{closing}{footer()}</body></html>"
     )
     (folder / "flashcards.html").write_text(doc, encoding="utf-8")
     (folder / "flashcards-print.html").write_text(doc, encoding="utf-8")
+    md_parts.append(markdown_block(deck_items, "../assets/data/sources/flashcards.json"))
+    write_text(folder / "flashcards.md", "\n".join(md_parts))
+    preview = []
+    for card in cards[:12]:
+        block = html_block(card_sources(card), f"assets/data/sources/{card.get('room', 'flashcards')}.json")
+        preview.append(f'<article class="room-card"><h2>{esc(card["front"])}</h2><p>{esc(card["back"])}</p>{block}</article>')
     write_page(
         "flashcards.html",
         "Flashcards",
@@ -395,11 +488,9 @@ def emit_flashcards(cards: list[dict]) -> None:
         "play",
         page_wrap(
             f"<h1>Flashcards</h1><p>{len(cards)} cards. The deck file is a download. This page shows the first questions from the same list.</p>"
-            + "".join(
-                f'<article class="room-card"><h2>{esc(card["front"])}</h2><p>{esc(card["back"])}</p></article>'
-                for card in cards[:12]
-            )
-            + '<div class="room-downloads"><a class="dl-btn" href="downloads/flashcards.json" download>JSON</a><a class="dl-btn" href="downloads/flashcards.html">HTML</a><a class="dl-btn" href="downloads/flashcards.pdf">PDF</a></div>'
+            + "".join(preview)
+            + '<div class="room-downloads"><a class="dl-btn" href="downloads/flashcards.json" download>JSON</a><a class="dl-btn" href="downloads/flashcards.html">HTML</a><a class="dl-btn" href="downloads/flashcards.pdf">PDF</a><a class="dl-btn" href="downloads/flashcards.md">Markdown</a></div>'
+            + html_block(deck_items, "assets/data/sources/flashcards.json", md_href="downloads/flashcards.md")
         ),
     )
 
@@ -415,32 +506,60 @@ def emit_office(cards: list[dict]) -> None:
     templates.mkdir(parents=True, exist_ok=True)
     sheets = ROOT / "downloads" / "sheets"
 
-    def pdf(path: Path, title: str, lines: list[str]) -> None:
+    room_rows = rooms()
+
+    def wrap_line(line: str, width: int = 90) -> list[str]:
+        text = " ".join(line.split())
+        if not text:
+            return []
+        out: list[str] = []
+        while text:
+            if len(text) <= width:
+                out.append(text)
+                break
+            cut = text.rfind(" ", 0, width)
+            if cut < 24:
+                cut = width
+            out.append(text[:cut].strip())
+            text = text[cut:].strip()
+        return out
+
+    def pdf(path: Path, title: str, lines: list[str], source_items: list[dict] | None = None) -> None:
         c = canvas.Canvas(str(path), pagesize=letter)
-        width, height = letter
+        _width, height = letter
         y = height - 54
-        c.setFont("Helvetica-Bold", 16)
-        c.drawString(48, y, title[:90])
-        y -= 28
-        c.setFont("Helvetica", 11)
-        for line in lines:
-            for chunk in re.findall(r".{1,90}(?:\s|$)", line) or [line]:
-                if y < 72:
+
+        def draw(text: str, size: int = 11, bold: bool = False) -> None:
+            nonlocal y
+            c.setFont("Helvetica-Bold" if bold else "Helvetica", size)
+            for chunk in wrap_line(text, 90 if size >= 11 else 100):
+                if y < 54:
                     c.showPage()
-                    c.setFont("Helvetica", 11)
+                    c.setFont("Helvetica-Bold" if bold else "Helvetica", size)
                     y = height - 54
-                c.drawString(48, y, chunk.strip())
-                y -= 16
-        y -= 12
-        note = "Independent free learning-only student project. Trademarks belong to their owners. Not affiliated or endorsed. Contact: https://cyphermonkeylabs.com/#contact. Nothing is sold."
-        for chunk in re.findall(r".{1,90}(?:\s|$)", note):
-            c.drawString(48, y, chunk.strip())
-            y -= 14
+                c.drawString(48, y, chunk)
+                y -= size + 4
+
+        draw(title[:120], 16, True)
+        y -= 8
+        for line in lines:
+            draw(line)
+        y -= 8
+        draw("Independent free learning-only student project. Trademarks belong to their owners. Not affiliated or endorsed. Contact: https://cyphermonkeylabs.com/#contact. Nothing is sold.", 9)
+        if source_items:
+            y -= 8
+            for line in plain_lines(source_items):
+                draw(line, 9)
         c.save()
 
     for slug, (title, lines) in SHEETS.items():
-        pdf(sheets / f"{slug}.pdf", title, lines)
-    pdf(ROOT / "downloads" / "flashcards.pdf", "UC flashcards", [f"{card['front']} — {card['back']}" for card in cards])
+        source_items = entries(keys_for_sheet(room_rows, slug))
+        pdf(sheets / f"{slug}.pdf", title, lines, source_items)
+    flash_lines = []
+    for card in cards:
+        flash_lines.append(f"{card['front']} — {card['back']}")
+        flash_lines.extend(plain_lines(card_sources(card)))
+    pdf(ROOT / "downloads" / "flashcards.pdf", "UC flashcards", flash_lines, entries(CORE))
 
     template_text = {
         "evidence-pack": ["Evidence pack", "Hypothesis:", "Time:", "Calling number:", "Called number:", "One change:", "Result:", "Revert plan:"],
@@ -448,19 +567,27 @@ def emit_office(cards: list[dict]) -> None:
         "dial-plan-worksheet": ["Dial plan worksheet", "Partition:", "CSS order:", "Pattern:", "Route list:", "Gateway or trunk:", "Called transform:", "Calling transform:"],
     }
     for slug, lines in template_text.items():
+        source_items = entries(keys_for_sheet(room_rows, TEMPLATE_SHEET[slug]))
+        write_json(f"templates/{slug}.json", slug, source_items)
+        deeper = html_block(source_items, f"../../assets/data/sources/templates/{slug}.json", md_href=f"{slug}.md")
         html_doc = (
             "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\">"
             f"<title>{esc(lines[0])}</title><link rel=\"stylesheet\" href=\"../../assets/css/footer.css\"></head><body>"
-            f"<h1>{esc(lines[0])}</h1><ul>" + "".join(f"<li>{esc(line)}</li>" for line in lines[1:]) + f"</ul>{footer()}</body></html>"
+            f"<h1>{esc(lines[0])}</h1><ul>" + "".join(f"<li>{esc(line)}</li>" for line in lines[1:]) + f"</ul>{deeper}{footer()}</body></html>"
         )
         (templates / f"{slug}.html").write_text(html_doc, encoding="utf-8")
-        pdf(templates / f"{slug}.pdf", lines[0], lines[1:])
+        pdf(templates / f"{slug}.pdf", lines[0], lines[1:], source_items)
         document = Document()
         document.add_heading(lines[0], 0)
         for line in lines[1:]:
             document.add_paragraph(line)
         document.add_paragraph("Independent, free, learning-only student project. Trademarks belong to their owners. Not affiliated or endorsed. Concerns via https://cyphermonkeylabs.com/#contact. Nothing is sold.")
+        add_docx_sources(document, source_items)
         document.save(templates / f"{slug}.docx")
+        write_text(
+            templates / f"{slug}.md",
+            sheet_markdown(lines[0], lines[1:], source_items, f"../../assets/data/sources/templates/{slug}.json"),
+        )
 
     pres = Presentation()
     slides = [
@@ -488,6 +615,7 @@ def emit_office(cards: list[dict]) -> None:
                 for run in paragraph.runs:
                     run.font.size = Pt(20)
                     run.font.name = "Calibri"
+    add_pptx_sources(pres, entries(CORE))
     pres.save(ROOT / "downloads" / "uc-lab-deck.pptx")
 
 
@@ -532,7 +660,7 @@ def emit_downloads(items: list[dict]) -> None:
         for path in sorted(folder.rglob("*")):
             if not path.is_file():
                 continue
-            if path.suffix.lower() not in {".html", ".pdf", ".png", ".svg", ".json", ".docx", ".pptx", ".zip"}:
+            if path.suffix.lower() not in {".html", ".pdf", ".png", ".svg", ".json", ".docx", ".pptx", ".zip", ".md"}:
                 continue
             interesting.append(path)
     # The zip is added after this table is first built. Include planned zip if present.
@@ -540,7 +668,7 @@ def emit_downloads(items: list[dict]) -> None:
         text = ""
         if path.suffix.lower() in {".html", ".svg", ".json"}:
             text = path.read_text(encoding="utf-8", errors="ignore")
-        has_note = "learning-only" in text or path.suffix.lower() in {".pdf", ".docx", ".pptx", ".png", ".zip"}
+        has_note = "learning-only" in text or "Sources and go deeper" in text or path.suffix.lower() in {".pdf", ".docx", ".pptx", ".png", ".zip"}
         rel = path.relative_to(ROOT).as_posix()
         rows.append(f"<tr><td>{esc(rel)}</td><td>{path.stat().st_size}</td><td>{'yes' if has_note else 'check'}</td></tr>")
     body = page_wrap(
@@ -557,7 +685,7 @@ def emit_downloads(items: list[dict]) -> None:
 </div>
 <h2>Cheat sheets</h2>
 <div class="room-downloads">
-{''.join(f'<a class="dl-btn" href="downloads/sheets/{esc(slug)}.html">{esc(slug)} HTML</a><a class="dl-btn" href="downloads/sheets/{esc(slug)}.pdf">{esc(slug)} PDF</a><a class="dl-btn" href="downloads/sheets/{esc(slug)}.png">{esc(slug)} PNG</a>' for slug in SHEETS)}
+{''.join(f'<a class="dl-btn" href="downloads/sheets/{esc(slug)}.html">{esc(slug)} HTML</a><a class="dl-btn" href="downloads/sheets/{esc(slug)}.pdf">{esc(slug)} PDF</a><a class="dl-btn" href="downloads/sheets/{esc(slug)}.md">{esc(slug)} MD</a><a class="dl-btn" href="downloads/sheets/{esc(slug)}.png">{esc(slug)} PNG</a>' for slug in SHEETS)}
 </div>
 <h2>Templates</h2>
 <div class="room-downloads">
@@ -640,6 +768,31 @@ def emit_zip() -> None:
             page.write_text(updated, encoding="utf-8")
 
 
+def emit_source_extras() -> None:
+    """Flagship cheat HTML, older flagship PDFs, and the campus lesson export."""
+    room_rows = rooms()
+    patch_flagship_cheats()
+    flagship_pdfs = {
+        "cube-sbc.pdf": keys_for_sheet(room_rows, "cube"),
+        "cucm-dial-plan.pdf": keys_for_sheet(room_rows, "dial-plan"),
+        "cucm-webex-migration.pdf": keys_for_sheet(room_rows, "migration"),
+        "e911-design.pdf": keys_for_sheet(room_rows, "e911"),
+        "qos-dscp.pdf": keys_for_sheet(room_rows, "qos"),
+        "sdp-offer-answer.pdf": ROOM_KEYS["offer-answer"],
+        "sip-call-flows.pdf": keys_for_sheet(room_rows, "sip"),
+    }
+    for name, keys in flagship_pdfs.items():
+        path = ROOT / "flagship" / "downloads" / name
+        if path.is_file():
+            append_pdf_sources(path, entries(keys))
+    cheat_dir = ROOT / "flagship" / "cheats"
+    for slug, keys in CHEAT_KEYS.items():
+        pdf_path = cheat_dir / f"{slug}.pdf"
+        if pdf_path.is_file():
+            append_pdf_sources(pdf_path, entries(keys))
+    write_campus_bundle(entries(CORE))
+
+
 def scrub_legacy() -> int:
     changed = 0
     email = re.compile(r"([A-Za-z0-9._%+-]+)@([A-Za-z0-9-]+\.[A-Za-z]{2,})")
@@ -649,6 +802,8 @@ def scrub_legacy() -> int:
         if path.suffix.lower() not in {".html", ".md", ".js", ".css", ".json"}:
             continue
         if any(part in {".git", "vendor", "node_modules"} for part in path.parts):
+            continue
+        if path.relative_to(ROOT).as_posix() == "campus/index.html":
             continue
         text = path.read_text(encoding="utf-8", errors="ignore")
         original = text
@@ -702,6 +857,7 @@ def main() -> None:
     render_pngs()
     emit_downloads(items)
     scrubbed = scrub_legacy()
+    emit_source_extras()
     emit_zip()
     print(f"rooms {len(room_rows)} diagrams {len(items)} cards {len(card_rows)} scrubbed {scrubbed}")
 

@@ -1,0 +1,33 @@
+# SIP transactions and dialogs
+
+- A transaction pairs a request with its responses.
+- INVITE, its final response, and the ACK for a 2xx are how a call is accepted.
+- A dialog needs a Call-ID and both tags. A 100 Trying has no To tag.
+- BYE ends that dialog.
+- RTP does not have to follow the proxy that forwarded the INVITE.
+
+RFC 3261 separates transactions from dialogs. People debug the wrong object when a retransmitted 200 is treated as a second call, or when a To tag on a 180 is treated as an answer. The 180 means alerting. The 200 means the far end accepted the session. ACK completes that handshake for a 2xx. Media can start once offer and answer are known, which is often the 200, and the packets may go directly between the endpoints.
+
+A phone sends INVITE through CUCM. CUCM is a back-to-back user agent in this path, so you may see two Call-IDs. On each leg, find the branch, the CSeq, and the tags before you decide the call failed.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- RFC. [RFC 3261, SIP](https://www.rfc-editor.org/rfc/rfc3261). last checked 2026-10
+- RFC. [RFC 3550, RTP](https://www.rfc-editor.org/rfc/rfc3550). last checked 2026-10
+- RFC. [RFC 4566, SDP](https://www.rfc-editor.org/rfc/rfc4566). last checked 2026-10
+- Cisco. [Cisco Unified Communications Manager product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-communications-manager-callmanager/series.html). last checked 2026-10
+- Cisco. [System Configuration Guide for CUCM, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html). last checked 2026-10
+- Protocol and ports. [CUCM 15 TCP and UDP port usage](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15/cucm_m_tcp-and-udp-port-usage-12-0.html). last checked 2026-10
+- Protocol and ports. [IANA SIP parameters](https://www.iana.org/assignments/sip-parameters/sip-parameters.xhtml). last checked 2026-10
+- Protocol and ports. [IANA RTP parameters](https://www.iana.org/assignments/rtp-parameters/rtp-parameters.xhtml). last checked 2026-10
+- Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
+- Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
+- Wikipedia. [Real-time Transport Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Real-time_Transport_Protocol). last checked 2026-10
+- Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
+- RFC. [RFC 3264, offer/answer](https://www.rfc-editor.org/rfc/rfc3264). last checked 2026-10
+
+Room or sheet file: ../../assets/data/sources/sip-transactions.json

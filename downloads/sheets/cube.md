@@ -1,0 +1,40 @@
+# CUBE, dial peers, SRST
+
+- CUBE is a B2BUA with two dialogs.
+- Confirm inbound match order for your IOS release.
+- Longest match, then preference, on outbound peers.
+- SRST is a subset dial plan, not a clone of CUCM.
+- A local gateway toward Webex Calling is a different peer.
+- Source: Cisco CUBE and SRST documentation. Confirm call caps.
+
+## Sources and go deeper
+
+Independent, free, learning-only student project.
+
+Opened 2026-10. A row marked confirm has no link, because that page was not verified.
+
+- Cisco. [Understand IOS and IOS XE call routing](https://www.cisco.com/c/en/us/support/docs/voice/ip-telephony-voice-over-ip-voip/211306-In-Depth-Explanation-of-Cisco-IOS-and-IO.html). last checked 2026-10
+- Cisco. [CUBE configuration guide, dial peers (IOS XE 17.6 onwards)](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/voice/cube/ios-xe/config/ios-xe-book/m_cube-dp.html). last checked 2026-10
+- RFC. [RFC 4733, RTP telephony events](https://www.rfc-editor.org/rfc/rfc4733). last checked 2026-10
+- Cisco. [Cisco Unified Border Element product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-border-element/series.html). last checked 2026-10
+- Protocol and ports. [IANA SIP parameters](https://www.iana.org/assignments/sip-parameters/sip-parameters.xhtml). last checked 2026-10
+- Protocol and ports. [IANA service names and port numbers](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml). last checked 2026-10
+- Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
+- Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
+- Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
+- Wikipedia. English Wikipedia article for Cisco Unified Border Element. confirm. That title returned HTTP 404. last checked 2026-10
+- RFC. [RFC 3261, SIP](https://www.rfc-editor.org/rfc/rfc3261). last checked 2026-10
+- RFC. [RFC 3550, RTP](https://www.rfc-editor.org/rfc/rfc3550). last checked 2026-10
+- RFC. [RFC 3711, SRTP](https://www.rfc-editor.org/rfc/rfc3711). last checked 2026-10
+- Protocol and ports. [CUCM 15 TCP and UDP port usage](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15/cucm_m_tcp-and-udp-port-usage-12-0.html). last checked 2026-10
+- RFC. [RFC 4566, SDP](https://www.rfc-editor.org/rfc/rfc4566). last checked 2026-10
+- Cisco. [Cisco Unified SRST product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-survivable-remote-site-telephony/series.html). last checked 2026-10
+- Cisco. [Cisco Unified Communications Manager product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-communications-manager-callmanager/series.html). last checked 2026-10
+- Cisco. [System Configuration Guide for CUCM, Release 15](https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html). last checked 2026-10
+- Wikipedia. English Wikipedia article for Survivable Remote Site Telephony. confirm. That title returned HTTP 404. last checked 2026-10
+- Webex. [Get started with Local Gateway](https://help.webex.com/en-us/article/t9xctu/Get-started-with-Local-Gateway). last checked 2026-10
+- Webex. [Configure Local Gateway on Cisco IOS XE for Webex Calling](https://help.webex.com/en-us/article/jr1i3r/Configure-local-gateway-on-IOS-XE-for-Webex-Calling). last checked 2026-10
+- Webex. [Get started with Webex Calling](https://help.webex.com/en-us/article/8jda92/Webex-Calling). last checked 2026-10
+- Protocol and ports. [Port reference for Webex Calling](https://help.webex.com/en-us/article/b2exve/Port-Reference-Information-for-Cisco-Webex-Calling). last checked 2026-10
+
+Room or sheet file: ../../assets/data/sources/sheets/cube.json
