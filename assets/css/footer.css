@@ -20,7 +20,7 @@
 .brand-icon .monkey-icon{width:56px;height:56px}
 .brand-web{background:radial-gradient(circle at 30% 25%,#7c3aed,#312e81 70%);box-shadow:0 0 22px #a78bfa,0 6px 18px rgba(0,0,0,.28)}
 .brand-tree{background:radial-gradient(circle at 32% 22%,#86efac,#16a34a 48%,#14532d);color:#f7fee7;box-shadow:0 0 0 3px #bbf7d0,0 0 22px #4ade80,0 6px 18px rgba(0,0,0,.28)}
-.brand-gh{background:#24292f}.brand-x{background:#000}.brand-li{background:#0a66c2}.brand-hf{background:#fff7d6;color:#1c1917;border:2px solid #ffd21f}
+.brand-gh{background:#24292f}
 .next-labs{margin:0}
 .next-labs .next-title{margin:0 0 12px;font-size:1.05rem;background:none;-webkit-text-fill-color:currentColor}
 .lab-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;text-align:left}

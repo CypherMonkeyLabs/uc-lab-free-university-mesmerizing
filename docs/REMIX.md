@@ -137,7 +137,7 @@ python3 scripts/scrub-pptx-metadata.py
 python3 scripts/check-campus.py
 ```
 
-The scrubber sets the creator to **CYPHER0X9**, drops company and application metadata, drops the custom AIGC property and the orphaned provenance part, and rewrites the generator hostname in the `pptd` namespace. Slide text is left alone. Run it again after every save; office apps write identity back into the package.
+The scrubber sets the creator to **UC Lab**, drops company and application metadata, drops the custom AIGC property and the orphaned provenance part, and rewrites the generator hostname in the `pptd` namespace. Slide text is left alone. Run it again after every save; office apps write identity back into the package. Do not put a personal handle back into the creator field, and do not add other social-network links. The campus top row is only the three studio icons: the website, the GitHub organization, and the link-in-bio mark.
 
 ## Use an AI coding agent
 

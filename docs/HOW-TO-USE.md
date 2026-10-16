@@ -16,7 +16,7 @@ The campus opens from `uc-lab-free-university.html`. Keep the `assets` folder be
 | `docs/assets/campus-home.png` | Local image. | The home-page picture on the README. |
 
 > [!TIP]
-> In-app browsers inside LinkedIn, Instagram, and Telegram often stop on "Loading" for this file. Move the zip into Files and open it from Chrome or Safari.
+> Some in-app browsers stop on "Loading" for this file. Move the zip into Files and open it from Chrome or Safari.
 
 ### A ten-minute first session
 

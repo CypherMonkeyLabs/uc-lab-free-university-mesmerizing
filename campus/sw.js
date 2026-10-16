@@ -2,7 +2,7 @@
    and when the page asks for a full offline copy. */
 "use strict";
 
-var CACHE = "uc-lab-v21-labs";
+var CACHE = "uc-lab-v21-brands";
 var SHELL = [
   "./uc-lab-free-university.html",
   "./manifest.webmanifest",

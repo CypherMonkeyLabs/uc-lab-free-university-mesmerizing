@@ -17,11 +17,9 @@ RFC3261 = "https://www.rfc-editor.org/rfc/rfc3261"
 def cheat_foot() -> str:
     return """
 <footer class="cheat-print">
-<p><a href="https://github.com/cipher0x9">Visit my GitHub</a>
-· <a href="https://github.com/CypherMonkeyLabs">Visit the Labs org</a>
-· <a href="https://cyphermonkeylabs.com">Visit Cypher Monkey Labs</a>
-· <a href="https://x.com/Cypher0x9">X</a>
-· <a href="https://huggingface.co/Cypher0x9">Hugging Face</a></p>
+<p><a href="https://cyphermonkeylabs.com">CypherMonkey Labs</a>
+· <a href="https://github.com/CypherMonkeyLabs">GitHub</a>
+· <a href="https://linktr.ee/cypherMonkey">Linktree</a></p>
 <p>© 2026 CypherMonkeyLabs 🐒</p>
 <p>Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content.</p>
 </footer>
