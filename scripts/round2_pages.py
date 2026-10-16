@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 from build_uc_round2 import GITHUB, LINKTREE, MONKEY, ORG, TREE, WEB
+from go_deeper import cheat_html
 
 ROOT = Path(__file__).resolve().parents[1]
 PORT_DOC = "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15/cucm_m_tcp-and-udp-port-usage-12-0.html"
@@ -633,7 +634,7 @@ def write_cheats(write_page, sources, bank: dict) -> list[str]:
         write_page(
             f"cheats/{slug}.html",
             title,
-            f"<article class='cheat-sheet'><p class='kicker'>Cheat code</p>{body}{cites[slug]}{cheat_foot()}</article>",
+            f"<article class='cheat-sheet'><p class='kicker'>Cheat code</p>{body}{cites[slug]}{cheat_html(slug)}{cheat_foot()}</article>",
             title,
         )
     rows = []
@@ -652,7 +653,7 @@ def write_cheats(write_page, sources, bank: dict) -> list[str]:
         f"""<article class="cheat-sheet"><p class="kicker">Cheat code</p><h1>Twelve cited cards</h1>
 <p>The JSON files next to this page hold the full cited deck ({len(bank['pr2Cards'])}) and the idea-pool deck ({len(bank['cards'])}). This page is the one-page pass.</p>
 <table class="deck"><thead><tr><th>Question</th><th>Answer</th><th>Cite</th></tr></thead><tbody>{''.join(rows)}</tbody></table>
-{cheat_foot()}</article>""",
+{cheat_html("flashcards")}{cheat_foot()}</article>""",
         "Printable cited flashcards.",
     )
     links = "".join(f"<li><a href='{slug}.html'>{slug}</a> · <a href='{slug}.pdf'>PDF</a> · <a href='{slug}.png'>PNG</a></li>" for slug in slugs)
@@ -695,6 +696,6 @@ def write_cheats(write_page, sources, bank: dict) -> list[str]:
 <h2>Full offline bundle</h2>
 <p><a class="btn dl" href="../uc-lab-flagship.zip">Download the flagship zip</a></p>
 <p class="muted">Older October study PDFs remain in the download folder: SIP, SDP, dial plan, CUBE, E911, QoS, and migration.</p>
-{cheat_foot()}
+{cheat_html("index")}{cheat_foot()}
 """, "Downloadable one-page cheat sheets, flashcard files, and the offline zip.")
     return slugs

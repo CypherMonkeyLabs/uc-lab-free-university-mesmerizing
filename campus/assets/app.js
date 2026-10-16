@@ -588,6 +588,7 @@
         '<article class="sec-body"></article>';
       var body = view.querySelector(".sec-body");
       body.innerHTML = window.UCTools.linkifyHtml(demoteHeadings(section.body || ""));
+      if (window.UC_GO_DEEPER_HTML) body.insertAdjacentHTML("beforeend", window.UC_GO_DEEPER_HTML);
       wireTabs(body);
       paginate(body);
       wireItems(body);
@@ -986,7 +987,7 @@
       }
       return workerJob({ type: "md", texts: texts });
     }).then(function (result) {
-      download(filename, "text/markdown", result.md || "");
+      download(filename, "text/markdown", (result.md || "") + "\n\n" + (window.UC_GO_DEEPER_MD || ""));
       showToast("Markdown is ready.");
     }).catch(function () { showToast("Markdown export did not finish."); });
   }

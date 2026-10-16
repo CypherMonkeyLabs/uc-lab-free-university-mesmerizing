@@ -85,6 +85,9 @@ const citationHosts = new Set([
   "help.webex.com",
   "www.itu.int",
   "datatracker.ietf.org",
+  "www.iana.org",
+  "en.wikipedia.org",
+  "community.cisco.com",
 ]);
 const banned = /(?:^|[^a-z0-9.])(?:x\.com|linkedin\.com|huggingface\.co)|github\.com\/cipher0x9|mailto:/i;
 const email = /[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z]{2,}/;

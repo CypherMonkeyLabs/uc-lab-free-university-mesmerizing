@@ -1,0 +1,46 @@
+{
+  "room": "wxcc-and-ucce",
+  "checked": "2026-10",
+  "sources": [
+    {
+      "kind": "cisco",
+      "title": "Cisco Unified Contact Center Enterprise product support",
+      "url": "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-enterprise/series.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webex",
+      "title": "Webex Help Center",
+      "url": "https://help.webex.com/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webex",
+      "title": "Get started with Webex Calling",
+      "url": "https://help.webex.com/en-us/article/8jda92/Webex-Calling",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "community",
+      "title": "Cisco Community, Collaboration knowledge base",
+      "url": "https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Voice over IP (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Voice_over_IP",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    }
+  ]
+}
