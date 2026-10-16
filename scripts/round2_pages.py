@@ -6,6 +6,8 @@ import html
 import json
 from pathlib import Path
 
+from build_uc_round2 import GITHUB, LINKTREE, MONKEY, ORG, TREE, WEB
+
 ROOT = Path(__file__).resolve().parents[1]
 PORT_DOC = "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15/cucm_m_tcp-and-udp-port-usage-12-0.html"
 SYS = "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html"
@@ -15,11 +17,18 @@ RFC3261 = "https://www.rfc-editor.org/rfc/rfc3261"
 
 
 def cheat_foot() -> str:
-    return """
+    monkey = MONKEY.replace('id="mh"', 'id="mh-cheat"').replace("url(#mh)", "url(#mh-cheat)")
+    tree = LINKTREE.replace('id="uc-tree-glow"', 'id="uc-tree-glow-cheat"').replace(
+        "url(#uc-tree-glow)", "url(#uc-tree-glow-cheat)"
+    )
+    icons = (
+        f'<a class="brand-icon brand-web" href="{WEB}" aria-label="CypherMonkey Labs website">{monkey}</a>'
+        f'<a class="brand-icon brand-gh" href="{ORG}" aria-label="CypherMonkey Labs on GitHub">{GITHUB}</a>'
+        f'<a class="brand-icon brand-tree" href="{TREE}" aria-label="CypherMonkey on Linktree">{tree}</a>'
+    )
+    return f"""
 <footer class="cheat-print">
-<p><a href="https://cyphermonkeylabs.com">CypherMonkey Labs</a>
-· <a href="https://github.com/CypherMonkeyLabs">GitHub</a>
-· <a href="https://linktr.ee/cypherMonkey">Linktree</a></p>
+<nav class="brand-row brand-icons" aria-label="CypherMonkey Labs">{icons}</nav>
 <p>© 2026 CypherMonkeyLabs 🐒</p>
 <p>Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content.</p>
 </footer>

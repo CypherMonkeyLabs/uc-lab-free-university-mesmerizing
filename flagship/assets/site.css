@@ -1463,4 +1463,29 @@ html[data-motion="reduce"] .reveal.is-in { opacity: 1; transform: none; transiti
   html:not([data-motion="allow"]) .sparks,
   html:not([data-motion="allow"]) .mascot .lid,
   html:not([data-motion="allow"]) .mascot .arm { animation: none !important; }
+  .brand-icon { transition: none !important; }
+}
+.brand-icons { display: flex; flex-wrap: wrap; gap: 14px; justify-content: flex-start; margin: 12px 0; }
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transform: perspective(140px) rotateX(10deg);
+}
+.brand-icon svg { width: 36px; height: 36px; display: block; }
+.brand-icon .monkey-icon { width: 52px; height: 52px; }
+.brand-web { background: radial-gradient(circle at 30% 25%, #7c3aed, #312e81 70%); box-shadow: 0 0 22px #a78bfa; }
+.brand-gh { background: #24292f; }
+.brand-tree {
+  background: radial-gradient(circle at 32% 22%, #86efac, #16a34a 48%, #14532d);
+  box-shadow: 0 0 0 3px #bbf7d0, 0 0 22px #4ade80;
+}
+.brand-icon:hover, .brand-icon:focus-visible {
+  transform: perspective(140px) rotateX(0deg) translateY(-3px) scale(1.05);
+  outline: 3px solid #fde047;
 }
