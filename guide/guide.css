@@ -1,0 +1,13 @@
+/* Guide bot layout lives with the lab chrome. This file only adds the
+   read-along and idle pieces that must exist even if uc.css is missing. */
+.bot-dock[hidden] { display: none !important; }
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
