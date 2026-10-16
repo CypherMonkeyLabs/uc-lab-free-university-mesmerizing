@@ -25,4 +25,4 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. [Cisco Unified Border Element product support](https://www.cisco.com/c/en/us/support/unified-communications/unified-border-element/series.html). last checked 2026-10
 - Cisco. [Understand IOS and IOS XE call routing](https://www.cisco.com/c/en/us/support/docs/voice/ip-telephony-voice-over-ip-voip/211306-In-Depth-Explanation-of-Cisco-IOS-and-IO.html). last checked 2026-10
 
-Room or sheet file: ../../assets/data/sources/diagrams/sip-basic-call.json
+Room or sheet file: sources/sip-basic-call/sources.json

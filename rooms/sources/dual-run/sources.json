@@ -1,0 +1,46 @@
+{
+  "room": "dual-run",
+  "checked": "2026-10",
+  "sources": [
+    {
+      "kind": "webex",
+      "title": "Get started with Webex Calling",
+      "url": "https://help.webex.com/en-us/article/8jda92/Webex-Calling",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "System Configuration Guide for CUCM, Release 15",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webex",
+      "title": "Get started with Local Gateway",
+      "url": "https://help.webex.com/en-us/article/t9xctu/Get-started-with-Local-Gateway",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "community",
+      "title": "Cisco Community, Collaboration knowledge base",
+      "url": "https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Voice over IP (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Voice_over_IP",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "room": "prack-early-media",
+  "checked": "2026-10",
+  "sources": [
+    {
+      "kind": "rfc",
+      "title": "RFC 3262, reliable provisional responses (PRACK)",
+      "url": "https://www.rfc-editor.org/rfc/rfc3262",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3261, SIP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3261",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 4566, SDP",
+      "url": "https://www.rfc-editor.org/rfc/rfc4566",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "System Configuration Guide for CUCM, Release 15",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "ports",
+      "title": "IANA SIP parameters",
+      "url": "https://www.iana.org/assignments/sip-parameters/sip-parameters.xhtml",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "community",
+      "title": "Cisco Community, Collaboration knowledge base",
+      "url": "https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Session Initiation Protocol (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Session_Initiation_Protocol",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Session Description Protocol (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Session_Description_Protocol",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    }
+  ]
+}

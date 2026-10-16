@@ -33,4 +33,4 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Cisco. Enterprise QoS SRND book. confirm. The Enterprise QoS SRND path returned HTTP 404. last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Communications Manager. confirm. That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened. last checked 2026-10
 
-Room or sheet file: ../../assets/data/sources/diagrams/translation.json
+Room or sheet file: sources/translation/sources.json

@@ -1,0 +1,94 @@
+{
+  "room": "cutover-survivability",
+  "checked": "2026-10",
+  "sources": [
+    {
+      "kind": "webex",
+      "title": "Get started with Webex Calling",
+      "url": "https://help.webex.com/en-us/article/8jda92/Webex-Calling",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webex",
+      "title": "Webex Help Center",
+      "url": "https://help.webex.com/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webex",
+      "title": "Get started with Local Gateway",
+      "url": "https://help.webex.com/en-us/article/t9xctu/Get-started-with-Local-Gateway",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webex",
+      "title": "Configure Local Gateway on Cisco IOS XE for Webex Calling",
+      "url": "https://help.webex.com/en-us/article/jr1i3r/Configure-local-gateway-on-IOS-XE-for-Webex-Calling",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "ports",
+      "title": "Port reference for Webex Calling",
+      "url": "https://help.webex.com/en-us/article/b2exve/Port-Reference-Information-for-Cisco-Webex-Calling",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Unified Communications Manager product support",
+      "url": "https://www.cisco.com/c/en/us/support/unified-communications/unified-communications-manager-callmanager/series.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "System Configuration Guide for CUCM, Release 15",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "community",
+      "title": "Cisco Community, Collaboration knowledge base",
+      "url": "https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Voice over IP (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Voice_over_IP",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webex",
+      "title": "Webex Calling survivability gateway guide",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "A survivability-gateway article was not opened, so this row has no link. The local-gateway guide that did open is listed above."
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Unified SRST product support",
+      "url": "https://www.cisco.com/c/en/us/support/unified-communications/unified-survivable-remote-site-telephony/series.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    }
+  ]
+}

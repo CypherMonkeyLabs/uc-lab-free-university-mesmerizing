@@ -23,4 +23,4 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Webex. [Webex Help Center](https://help.webex.com/). last checked 2026-10
 - Webex. [Get started with Webex Calling](https://help.webex.com/en-us/article/8jda92/Webex-Calling). last checked 2026-10
 
-Room or sheet file: ../../assets/data/sources/sheets/ucce.json
+Room or sheet file: sources/ucce/sources.json

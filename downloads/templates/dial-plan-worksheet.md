@@ -29,4 +29,4 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - RFC. [RFC 4028, SIP session timers](https://www.rfc-editor.org/rfc/rfc4028). last checked 2026-10
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 
-Room or sheet file: ../../assets/data/sources/templates/dial-plan-worksheet.json
+Room or sheet file: sources/dial-plan-worksheet/sources.json

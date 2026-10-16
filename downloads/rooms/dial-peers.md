@@ -27,4 +27,4 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 - Wikipedia. English Wikipedia article for Cisco Unified Border Element. confirm. That title returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../../assets/data/sources/dial-peers.json
+Room or sheet file: ../../rooms/sources/dial-peers/sources.json
