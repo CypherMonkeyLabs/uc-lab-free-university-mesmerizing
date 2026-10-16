@@ -1,6 +1,3 @@
-import { animate } from "./vendor/anime.esm.min.js";
-import rough from "./vendor/rough.esm.js";
-
 function prefersReduce() {
   const mode = document.documentElement.getAttribute("data-motion");
   if (mode === "reduce") return true;
@@ -8,8 +5,12 @@ function prefersReduce() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 const reduce = prefersReduce();
+function coarseScreen() {
+  return window.matchMedia("(max-width: 800px), (pointer: coarse)").matches;
+}
 function pixelRatio() {
-  return Math.min(window.devicePixelRatio || 1, 2);
+  const cap = coarseScreen() ? 1 : 1.5;
+  return Math.min(window.devicePixelRatio || 1, cap);
 }
 
 function cssColor(name, fallback) {
@@ -25,7 +26,7 @@ function mountHero(THREE, canvas) {
   }
   let renderer;
   try {
-    renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: false, antialias: true, powerPreference: "high-performance" });
+    renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: false, antialias: !coarseScreen(), powerPreference: coarseScreen() ? "low-power" : "high-performance" });
     if (!renderer.getContext()) throw new Error("no webgl context");
   } catch (err) {
     canvas.hidden = true;
@@ -344,7 +345,7 @@ function mountHero(THREE, canvas) {
 function mountMini(THREE, canvas) {
   let renderer;
   try {
-    renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: !coarseScreen(), powerPreference: coarseScreen() ? "low-power" : "default" });
     if (!renderer.getContext()) throw new Error("no webgl");
   } catch (err) {
     canvas.hidden = true;
@@ -426,12 +427,13 @@ function mountIconDock(THREE, canvas) {
   if (!n) return;
   let renderer;
   try {
-    renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: !coarseScreen(), powerPreference: coarseScreen() ? "low-power" : "default" });
     if (!renderer.getContext()) throw new Error("no webgl");
   } catch (err) {
     canvas.hidden = true;
     return;
   }
+  renderer.setPixelRatio(pixelRatio());
   const colors = [0x22d3ee, 0xe879f9, 0xfde047, 0xfb7185, 0x86efac, 0xa78bfa, 0x67e8f9, 0xf97316];
   const slots = Array.prototype.map.call(links, function (link, i) {
     const scene = new THREE.Scene();
@@ -513,37 +515,33 @@ function mountIconDock(THREE, canvas) {
 function mountCounts() {
   document.querySelectorAll("[data-count]").forEach(function (el) {
     const target = Number(el.getAttribute("data-count"));
-    if (!Number.isFinite(target) || reduce) return;
-    const proxy = { n: 0 };
-    try {
-      animate(proxy, {
-        n: target,
-        duration: 900,
-        ease: "outCubic",
-        onUpdate: function () { el.textContent = String(Math.round(proxy.n)); }
-      });
-    } catch (err) {
-      el.textContent = String(target);
-    }
+    if (Number.isFinite(target)) el.textContent = String(target);
   });
 }
 
-function mountMascots() {
-  if (reduce || !document.querySelector(".mascot")) return;
-  try {
-    animate(".mascot", {
-      rotate: [-3, 3],
-      duration: 2200,
-      alternate: true,
-      loop: true,
-      ease: "inOutSine"
-    });
-  } catch (err) { /* selector or reduced environment */ }
-}
+function mountMascots() { /* CSS handles the mascot. Skipping the anime loop keeps the main thread free. */ }
 
 function mountRough() {
   const host = document.querySelector("#roughBoard");
-  if (!host) return;
+  if (!host || host.dataset.drawn) return;
+  host.dataset.drawn = "1";
+  const start = function () {
+    import("./vendor/rough.esm.js").then(function (mod) {
+      paintRough(mod.default, host);
+    }).catch(function () { /* drawing stays empty */ });
+  };
+  if ("IntersectionObserver" in window) {
+    const watch = new IntersectionObserver(function (entries) {
+      if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
+      watch.disconnect();
+      if ("requestIdleCallback" in window) requestIdleCallback(start, { timeout: 1500 });
+      else setTimeout(start, 300);
+    }, { rootMargin: "80px" });
+    watch.observe(host);
+  } else start();
+}
+
+function paintRough(rough, host) {
   const rc = rough.svg(host);
   const nodes = [
     [24, 30, "Symptom"],
@@ -572,22 +570,66 @@ function mountRough() {
 const hero = document.querySelector("#hero3d");
 const minis = document.querySelectorAll("[data-mini3d]");
 const iconStage = document.querySelector("#iconStage");
-if (hero || minis.length || iconStage) {
+let threeStarted = false;
+
+function hideHero() {
+  if (hero) hero.hidden = true;
+  document.documentElement.setAttribute("data-webgl", "off");
+}
+
+function startThree() {
+  if (threeStarted || reduce) return;
+  threeStarted = true;
   import("./vendor/three.module.js").then(function (THREE) {
     if (hero) mountHero(THREE, hero);
     if (iconStage) {
       try { mountIconDock(THREE, iconStage); } catch (err) { iconStage.hidden = true; }
     }
     minis.forEach(function (canvas) { mountMini(THREE, canvas); });
-  }).catch(function () {
-    if (hero) {
-      hero.hidden = true;
-      document.documentElement.setAttribute("data-webgl", "off");
-    }
-  });
-} else if (document.querySelector(".neon-fallback")) {
-  document.documentElement.setAttribute("data-webgl", "off");
+  }).catch(hideHero);
 }
+
+function armOrbit() {
+  if (reduce) {
+    hideHero();
+    return;
+  }
+  if (!hero && !minis.length && !iconStage) {
+    if (document.querySelector(".neon-fallback")) document.documentElement.setAttribute("data-webgl", "off");
+    return;
+  }
+  const copy = document.querySelector(".bleed-copy .actions");
+  if (copy && hero && !document.getElementById("orbitPlay")) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.id = "orbitPlay";
+    btn.className = "btn orbit-play";
+    btn.textContent = "Play the orbit";
+    copy.appendChild(btn);
+    btn.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      startThree();
+      btn.hidden = true;
+    });
+  }
+  function onGesture() {
+    startThree();
+  }
+  window.addEventListener("pointerdown", onGesture, { once: true, passive: true });
+  window.addEventListener("keydown", onGesture, { once: true });
+  if (minis.length && "IntersectionObserver" in window) {
+    const watch = new IntersectionObserver(function (entries) {
+      if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
+      watch.disconnect();
+      if ("requestIdleCallback" in window) requestIdleCallback(startThree, { timeout: 2000 });
+      else setTimeout(startThree, 800);
+    }, { rootMargin: "40px" });
+    minis.forEach(function (canvas) { watch.observe(canvas); });
+  }
+}
+
+armOrbit();
 mountCounts();
 mountMascots();
 mountRough();
