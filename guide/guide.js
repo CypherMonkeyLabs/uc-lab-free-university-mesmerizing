@@ -462,7 +462,7 @@
   var kicker = tour.querySelector("[data-kicker]");
   var dots = tour.querySelector(".tour-dots");
   var steps = [
-    { sel: "[data-tour='home']", n: "1 of 6", text: "Home is the front door. The eight tracks sit under this banner." },
+    { sel: "[data-tour='home']", n: "1 of 6", text: "Home is the front door. The eleven tracks sit under this banner." },
     { sel: "[data-tour='menu']", n: "2 of 6", text: "Menu is at the top left. The drawer slides in. Esc or a tap outside closes it." },
     { sel: "[data-tour='learn']", n: "3 of 6", text: "Learn is the short path: ten minutes, or the full course." },
     { sel: "[data-tour='diagrams']", n: "4 of 6", text: "Diagrams are the still drawings. Flows are the ladders that move." },
@@ -625,9 +625,40 @@
     window.setTimeout(offerIdle, wait);
   }
 
+  function parkOffLede() {
+    if (!isPhone() || !panel.hidden) {
+      dock.classList.remove("is-parked");
+      dock.style.top = "";
+      dock.style.bottom = "";
+      return;
+    }
+    dock.style.top = "";
+    dock.style.bottom = "";
+    var mascot = monkey.getBoundingClientRect();
+    var covered = false;
+    var ledeBottom = 0;
+    document.querySelectorAll(".lede").forEach(function (el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.width < 8 || rect.height < 8) return;
+      if (rect.top < window.innerHeight && rect.bottom > ledeBottom) ledeBottom = rect.bottom;
+      var clear = mascot.right < rect.left + 1 || mascot.left > rect.right - 1 || mascot.bottom < rect.top + 1 || mascot.top > rect.bottom - 1;
+      if (!clear) covered = true;
+    });
+    dock.classList.toggle("is-parked", covered);
+    if (covered) {
+      var top = Math.min(window.innerHeight - 128, Math.max(8, ledeBottom + 12));
+      dock.style.top = Math.round(top) + "px";
+      dock.style.bottom = "auto";
+    }
+  }
+  window.addEventListener("resize", parkOffLede);
+  window.addEventListener("scroll", parkOffLede, { passive: true });
+  window.addEventListener("load", parkOffLede);
+
   if (!state.tour) showTour();
   else if (!state.greeted) greetCenter();
   else { pose("idle"); introCards(); }
+  parkOffLede();
 
   window.UC_GUIDE = { showTour: showTour, speak: speak, stop: stopSpeak };
 })();

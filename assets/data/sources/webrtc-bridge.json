@@ -1,0 +1,62 @@
+{
+  "room": "webrtc-bridge",
+  "checked": "2026-10",
+  "sources": [
+    {
+      "kind": "wikipedia",
+      "title": "WebRTC (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/WebRTC",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webrtc",
+      "title": "W3C WebRTC recommendation",
+      "url": "https://www.w3.org/TR/webrtc/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 8825, WebRTC protocol overview",
+      "url": "https://www.rfc-editor.org/rfc/rfc8825",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 8829, JavaScript session establishment",
+      "url": "https://www.rfc-editor.org/rfc/rfc8829",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 7118, SIP over WebSocket",
+      "url": "https://www.rfc-editor.org/rfc/rfc7118",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "freeswitch",
+      "title": "FreeSWITCH users manual",
+      "url": "https://developer.signalwire.com/freeswitch/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webrtc",
+      "title": "CPaaS vendor matrix",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "No vendor matrix was opened. The FreeSWITCH manual notes one hosted platform. Confirm any other vendor on that vendor's own page."
+    }
+  ]
+}

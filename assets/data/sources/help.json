@@ -1,0 +1,38 @@
+{
+  "room": "help",
+  "checked": "2026-10",
+  "sources": [
+    {
+      "kind": "rfc",
+      "title": "RFC 3261, SIP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3261",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "fcc",
+      "title": "FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems",
+      "url": "https://www.fcc.gov/mlts-911-requirements",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Feature Configuration Guide for CUCM, Release 15, Recording",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/cucm_b_feature-configuration-guide-for-15/cucm_mp_r53f7ff4_00_recording-12-0.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 7245, architecture for media recording using SIP",
+      "url": "https://www.rfc-editor.org/rfc/rfc7245",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    }
+  ]
+}

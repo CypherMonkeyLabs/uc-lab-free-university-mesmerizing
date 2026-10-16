@@ -193,6 +193,182 @@
       "status": "confirm",
       "last_checked": "2026-10",
       "note": "That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened."
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3262, reliable provisional responses (PRACK)",
+      "url": "https://www.rfc-editor.org/rfc/rfc3262",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3246, Expedited Forwarding",
+      "url": "https://www.rfc-editor.org/rfc/rfc3246",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 4594, DiffServ service classes",
+      "url": "https://www.rfc-editor.org/rfc/rfc4594",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "itu",
+      "title": "ITU-T G.114, one-way transmission time",
+      "url": "https://www.itu.int/rec/T-REC-G.114",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "itu",
+      "title": "ITU-T G.711, pulse code modulation of voice",
+      "url": "https://www.itu.int/rec/T-REC-G.711",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webex",
+      "title": "Get started with Webex Calling",
+      "url": "https://help.webex.com/en-us/article/8jda92/Webex-Calling",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webex",
+      "title": "Get started with Local Gateway",
+      "url": "https://help.webex.com/en-us/article/t9xctu/Get-started-with-Local-Gateway",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "fcc",
+      "title": "FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems",
+      "url": "https://www.fcc.gov/mlts-911-requirements",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Emergency Responder product support",
+      "url": "https://www.cisco.com/c/en/us/support/unified-communications/emergency-responder/series.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Plan for Cisco Emergency Responder, Release 15",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_01.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Feature Configuration Guide for CUCM, Release 15, Recording",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/cucm_b_feature-configuration-guide-for-15/cucm_mp_r53f7ff4_00_recording-12-0.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 7245, architecture for media recording using SIP",
+      "url": "https://www.rfc-editor.org/rfc/rfc7245",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 7865, SIP recording metadata",
+      "url": "https://www.rfc-editor.org/rfc/rfc7865",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 7866, session recording protocol",
+      "url": "https://www.rfc-editor.org/rfc/rfc7866",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "SIP trunking (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/SIP_trunking",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "WebRTC (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/WebRTC",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 8825, WebRTC protocol overview",
+      "url": "https://www.rfc-editor.org/rfc/rfc8825",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 7118, SIP over WebSocket",
+      "url": "https://www.rfc-editor.org/rfc/rfc7118",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "law",
+      "title": "United States public-law text for Kari's Law",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "The congress.gov bill page returned a bot challenge, and the PDF text was not readable in this session. The FCC MLTS page that did open is listed separately."
+    },
+    {
+      "kind": "law",
+      "title": "Emergency-calling rule outside the FCC MLTS page",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "No statute outside that FCC page was opened. Confirm the rule where the site operates."
+    },
+    {
+      "kind": "law",
+      "title": "Call-recording consent and retention rule",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "No privacy or retention statute was opened. RFC 7245 names compliance as a reason some sites record. It does not say which rule applies to you."
+    },
+    {
+      "kind": "webrtc",
+      "title": "CPaaS vendor matrix",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "No vendor matrix was opened. The FreeSWITCH manual notes one hosted platform. Confirm any other vendor on that vendor's own page."
     }
   ]
 }
