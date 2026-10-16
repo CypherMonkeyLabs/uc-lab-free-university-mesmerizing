@@ -24,7 +24,7 @@ Yes, in the full browser app. The shell loads first. Under 640px, **Menu** opens
 
 ## Is there a PDF?
 
-No separate textbook. The campus is the book. Use the browser print dialog, or the export menu inside the page, when you want a PDF of a section. The [62-slide briefing](../downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx) is the slide companion.
+No separate textbook. The campus is the book. Use the browser print dialog, or the export menu inside the page, when you want a PDF of a section. The [63-slide briefing](../downloads/Enterprise-Voice-with-Cisco-Technologies-CC-Cloud-Migration.pptx) is the slide companion.
 
 ## Is this official vendor training?
 
