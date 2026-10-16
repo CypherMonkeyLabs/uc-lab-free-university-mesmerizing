@@ -1,0 +1,198 @@
+{
+  "room": "exp-traversal",
+  "checked": "2026-10",
+  "sources": [
+    {
+      "kind": "rfc",
+      "title": "RFC 3261, SIP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3261",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3264, offer/answer",
+      "url": "https://www.rfc-editor.org/rfc/rfc3264",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3550, RTP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3550",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 4566, SDP",
+      "url": "https://www.rfc-editor.org/rfc/rfc4566",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3711, SRTP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3711",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Unified Communications Manager product support",
+      "url": "https://www.cisco.com/c/en/us/support/unified-communications/unified-communications-manager-callmanager/series.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "System Configuration Guide for CUCM, Release 15",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Collaboration Preferred Architectures",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/uc_system/design/guides/PAdocs.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Preferred Architecture for Cisco Collaboration 15, design overview (PDF)",
+      "url": "https://www.cisco.com/c/dam/en/us/td/docs/solutions/PA/overview/15x/clbpa15x.pdf",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Unified Border Element product support",
+      "url": "https://www.cisco.com/c/en/us/support/unified-communications/unified-border-element/series.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "ports",
+      "title": "CUCM 15 TCP and UDP port usage",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15/cucm_m_tcp-and-udp-port-usage-12-0.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "ports",
+      "title": "Cisco Expressway IP port usage (X14.3 and X15.0)",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/expressway/config_guide/X15-0/ip-port/exwy_b_cisco-expressway-ip-port-usage-configuration-guide-x15.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "ports",
+      "title": "Port reference for Webex Calling",
+      "url": "https://help.webex.com/en-us/article/b2exve/Port-Reference-Information-for-Cisco-Webex-Calling",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "ports",
+      "title": "IANA SIP parameters",
+      "url": "https://www.iana.org/assignments/sip-parameters/sip-parameters.xhtml",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "ports",
+      "title": "IANA RTP parameters",
+      "url": "https://www.iana.org/assignments/rtp-parameters/rtp-parameters.xhtml",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "ports",
+      "title": "IANA service names and port numbers",
+      "url": "https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "community",
+      "title": "Cisco Community, Collaboration knowledge base",
+      "url": "https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Session Initiation Protocol (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Session_Initiation_Protocol",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Real-time Transport Protocol (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Real-time_Transport_Protocol",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Session Description Protocol (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Session_Description_Protocol",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Voice over IP (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Voice_over_IP",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Collaboration 12 SRND book",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened."
+    },
+    {
+      "kind": "cisco",
+      "title": "Enterprise QoS SRND book",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "The Enterprise QoS SRND path returned HTTP 404."
+    },
+    {
+      "kind": "wikipedia",
+      "title": "English Wikipedia article for Cisco Unified Communications Manager",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened."
+    }
+  ]
+}

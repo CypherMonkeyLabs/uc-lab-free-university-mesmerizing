@@ -27,4 +27,4 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Quality of service (Wikipedia)](https://en.wikipedia.org/wiki/Quality_of_service). last checked 2026-10
 - Cisco. Enterprise QoS SRND book. confirm. The Enterprise QoS SRND path returned HTTP 404. last checked 2026-10
 
-Room or sheet file: ../../assets/data/sources/dscp-trust.json
+Room or sheet file: ../../rooms/sources/dscp-trust/sources.json

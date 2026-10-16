@@ -22,4 +22,4 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Community. [Cisco Community, Collaboration knowledge base](https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video). last checked 2026-10
 - Wikipedia. [Voice over IP (Wikipedia)](https://en.wikipedia.org/wiki/Voice_over_IP). last checked 2026-10
 
-Room or sheet file: ../../assets/data/sources/wxcc-and-ucce.json
+Room or sheet file: ../../rooms/sources/wxcc-and-ucce/sources.json

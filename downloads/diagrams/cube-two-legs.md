@@ -22,4 +22,4 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - RFC. [RFC 4733, RTP telephony events](https://www.rfc-editor.org/rfc/rfc4733). last checked 2026-10
 - RFC. [RFC 4566, SDP](https://www.rfc-editor.org/rfc/rfc4566). last checked 2026-10
 
-Room or sheet file: ../../assets/data/sources/diagrams/cube-two-legs.json
+Room or sheet file: sources/cube-two-legs/sources.json

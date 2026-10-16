@@ -26,4 +26,4 @@ Opened 2026-10. A row marked confirm has no link, because that page was not veri
 - Wikipedia. [Session Initiation Protocol (Wikipedia)](https://en.wikipedia.org/wiki/Session_Initiation_Protocol). last checked 2026-10
 - Cisco. Collaboration 12 SRND book. confirm. The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened. last checked 2026-10
 
-Room or sheet file: ../../assets/data/sources/sip-trunks.json
+Room or sheet file: ../../rooms/sources/sip-trunks/sources.json

@@ -1,0 +1,62 @@
+{
+  "room": "start",
+  "checked": "2026-10",
+  "sources": [
+    {
+      "kind": "rfc",
+      "title": "RFC 3261, SIP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3261",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3264, offer/answer",
+      "url": "https://www.rfc-editor.org/rfc/rfc3264",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3550, RTP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3550",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 4566, SDP",
+      "url": "https://www.rfc-editor.org/rfc/rfc4566",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3262, reliable provisional responses (PRACK)",
+      "url": "https://www.rfc-editor.org/rfc/rfc3262",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Unified Communications Manager product support",
+      "url": "https://www.cisco.com/c/en/us/support/unified-communications/unified-communications-manager-callmanager/series.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Session Initiation Protocol (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Session_Initiation_Protocol",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    }
+  ]
+}
