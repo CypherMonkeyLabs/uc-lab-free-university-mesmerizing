@@ -8,11 +8,11 @@
   <a href="./campus/uc-lab-free-university.html"><img src="./docs/assets/btn-open.svg" alt="Open" height="48"/></a>
 </p>
 
-The flagship studio is the repository root [index.html](./index.html): call-flow ladders, the diagram atlas, charts, cheat codes, and an offline zip. The same studio also lives at [flagship/index.html](./flagship/index.html). The 580-section campus below is still the deep library.
+The round-2 course is the repository root [index.html](./index.html): SIP, CUCM, CUBE, SRST, Expressway, voice QoS, UCCE, and a careful move toward Webex Calling. The older flagship studio remains at [flagship/index.html](./flagship/index.html). The 580-section campus remains the deep library at [campus/uc-lab-free-university.html](./campus/uc-lab-free-university.html).
 
 A free offline campus for people who run **voice, unified communications, and contact center** systems. The shell is a few kilobytes. Lessons load one at a time: CUCM, CUBE, SIP, Webex Calling, Webex Contact Center, Teams Phone, UCCE, PCCE, CUIC, the main CCaaS platforms, E911, QoS, and the troubleshooting habit that ties them together.
 
-Built by **CYPHER0X9**, a voice and UC engineer. Version **21**. No account, no install, no CDN. Open the HTML and keep `assets`, `sw.js`, and `manifest.webmanifest` beside it.
+Built by **CypherMonkey Labs**. Version **21** remains the deep campus. No account, no install, no CDN. Open the HTML and keep `assets`, `sw.js`, and `manifest.webmanifest` beside it.
 
 <p align="center">
   <img src="./docs/assets/campus-home.png" alt="Campus home in the light theme, with the study rail and track list" width="100%"/>
@@ -239,4 +239,4 @@ Per-track quiz score, known cards, and the boss result stay in `localStorage`. N
 
 Educational material under the [MIT license](./LICENSE). Not an official Cisco, Microsoft, Google, Amazon, or Genesys publication. Check the vendor's current document before you change production.
 
-**CYPHER0X9** · [github.com/cipher0x9](https://github.com/cipher0x9)
+**CypherMonkey Labs** · [github.com/CypherMonkeyLabs](https://github.com/CypherMonkeyLabs)
