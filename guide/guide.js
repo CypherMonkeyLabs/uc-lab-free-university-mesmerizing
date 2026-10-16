@@ -625,9 +625,40 @@
     window.setTimeout(offerIdle, wait);
   }
 
+  function parkOffLede() {
+    if (!isPhone() || !panel.hidden) {
+      dock.classList.remove("is-parked");
+      dock.style.top = "";
+      dock.style.bottom = "";
+      return;
+    }
+    dock.style.top = "";
+    dock.style.bottom = "";
+    var mascot = monkey.getBoundingClientRect();
+    var covered = false;
+    var ledeBottom = 0;
+    document.querySelectorAll(".lede").forEach(function (el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.width < 8 || rect.height < 8) return;
+      if (rect.top < window.innerHeight && rect.bottom > ledeBottom) ledeBottom = rect.bottom;
+      var clear = mascot.right < rect.left + 1 || mascot.left > rect.right - 1 || mascot.bottom < rect.top + 1 || mascot.top > rect.bottom - 1;
+      if (!clear) covered = true;
+    });
+    dock.classList.toggle("is-parked", covered);
+    if (covered) {
+      var top = Math.min(window.innerHeight - 128, Math.max(8, ledeBottom + 12));
+      dock.style.top = Math.round(top) + "px";
+      dock.style.bottom = "auto";
+    }
+  }
+  window.addEventListener("resize", parkOffLede);
+  window.addEventListener("scroll", parkOffLede, { passive: true });
+  window.addEventListener("load", parkOffLede);
+
   if (!state.tour) showTour();
   else if (!state.greeted) greetCenter();
   else { pose("idle"); introCards(); }
+  parkOffLede();
 
   window.UC_GUIDE = { showTour: showTour, speak: speak, stop: stopSpeak };
 })();

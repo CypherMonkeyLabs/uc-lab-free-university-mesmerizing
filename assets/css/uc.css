@@ -439,6 +439,7 @@ html[data-theme="aurora"] body.uc-lab main a:not(.btn):not(.ghost):not(.dl-btn):
 html[data-theme="aurora"] .go-deeper { background: #042f2e; color: #ecfeff; border-color: #5eead4; }
 .go-deeper h2 { margin-top: 0; }
 .go-deeper li { margin: 6px 0; }
+#sources .go-deeper { max-height: min(42vh, 320px); overflow: auto; }
 .five, .worked, .eco-panel, .quiz, .sources, .room-downloads {
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -682,17 +683,33 @@ section.is-reading {
   .hero-band { grid-template-columns: 1fr; }
   .hero-diagram { margin-right: 0; }
   .track-map { padding-bottom: 130px; }
-  body.uc-lab main { padding-right: 96px; }
+  body.uc-lab main { padding-right: 72px; }
   body.uc-lab main .lede { padding-right: 0; }
   .room-downloads { padding-right: 4px; }
   .site-drawer { padding-bottom: 120px; }
-  .bot-dock {
+  .bot-dock:not(.is-open) {
     left: auto;
     right: 8px;
-    bottom: calc(100px + env(safe-area-inset-bottom));
+    bottom: calc(72px + env(safe-area-inset-bottom));
+    width: 48px;
+    height: 48px;
     z-index: 64;
   }
-  .bot-dock .monkey-btn { width: 84px; height: 98px; }
+  .bot-dock:not(.is-open) .monkey-btn,
+  .bot-dock.is-parked:not(.is-open) .monkey-btn {
+    width: 48px;
+    height: 48px;
+    overflow: hidden;
+    border-radius: 14px;
+  }
+  .bot-dock.is-parked:not(.is-open) {
+    top: auto;
+    left: auto;
+    right: 8px;
+    bottom: calc(72px + env(safe-area-inset-bottom));
+    width: 48px;
+    height: 48px;
+  }
   .bot-dock.is-open {
     left: 8px;
     right: 8px;

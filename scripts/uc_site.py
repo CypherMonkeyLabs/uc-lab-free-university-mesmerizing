@@ -182,6 +182,7 @@ def emit_tracks(room_rows: list[dict]) -> None:
             f'<p class="kicker">{esc(tid)}</p><h1>{esc(name)}</h1><p class="lede">{esc(blurb)}</p>'
             f'<div class="room-downloads"><a class="dl-btn" href="../downloads/sheets/{sheet_for(tid)}.html">Cheat sheet</a>'
             f'<a class="dl-btn" href="../downloads/tracks/{tid}.md">Markdown</a></div>'
+            f'<div id="sources">{deeper}</div>'
             f'<div class="card-grid">{"".join(cards)}</div>{deeper}'
         )
         write_page(f"tracks/{tid}.html", name, blurb, "learn", body, tid)
@@ -275,7 +276,13 @@ def emit_home(room_rows: list[dict], items: list[dict]) -> None:
             f'<a class="track-tile" style="--card:{color}" href="tracks/{tid}.html"><h2>{esc(name)}</h2><p>{esc(blurb)}</p><p>{count} rooms</p></a>'
         )
     flows = sum(1 for item in items if item["kind"] == "flow")
-    home_items = entries(CORE)
+    home_items = entries(union(
+        CORE,
+        ["rfc3262", "rfc3246", "rfc4594", "g114", "g711", "webex-calling", "lgw"],
+        ["fcc-mlts", "cer", "cer-plan", "cucm-rec", "rfc7245", "rfc7865", "rfc7866"],
+        ["wiki-siptrunk", "wiki-webrtc", "rfc8825", "rfc7118"],
+        ["kari-statute", "local-emergency-law", "recording-rule", "cpaas-matrix"],
+    ))
     mirror_sources(ROOT / "sources" / "home" / "sources.json", "home", home_items)
     write_json("home.json", "home", home_items)
     deeper = html_block(home_items, "sources/home/sources.json")
@@ -285,6 +292,7 @@ def emit_home(room_rows: list[dict], items: list[dict]) -> None:
 <p class="kicker">CUCM · SIP · gateways · contact center</p>
 <h1>Voice, then the dial plan, then the edge.</h1>
 <p class="lede">A free study lab for Unified Communications: SIP, CUCM, CUBE, SRST, Expressway, voice QoS, UCCE, a careful move toward Webex Calling, emergency calling, call recording, and bridges to open telephony. Figures that depend on a release are marked confirm before relying. Emergency and recording pages are study notes, not legal advice.</p>
+<div id="sources">{deeper}</div>
 <div class="actions">
 <a class="btn" href="start.html">Start here</a>
 <a class="ghost" href="diagrams.html">Diagrams</a>
