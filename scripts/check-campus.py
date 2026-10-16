@@ -36,6 +36,22 @@ HUB_OK_FILES = {
 }
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}")
 PHONE_RE = re.compile(r"(?<![\w.])(?:\+\d{1,3}[\s.\-]?)?\(?\d{3}\)?[\s.\-]\d{3}[\s.\-]\d{4}(?!\d)")
+# Lab homes moved to cyphermonkeylabs.com/<repo>/ and github.com/CypherMonkeyLabs/.
+# Strip those before the personal-hub scan. The Gemini gallery stays on
+# cipher0x9.github.io/gemini-gems-free-gallery and is not a hub token.
+_LAB_REPO = (
+    r"(?:five9|nice-cxone|genesys-cloud|sip-universe|ai|amazon-connect|"
+    r"microsoft-voice-cc|webex|uc)-lab-free-university-mesmerizing"
+)
+OFFICIAL_LAB_URL_RE = re.compile(
+    r"(?:https?:)?//cyphermonkeylabs\.com/" + _LAB_REPO + r"/?"
+    r"|(?:https?://)?github\.com/cyphermonkeylabs/"
+    r"|(?:https?://)?raw\.githubusercontent\.com/cyphermonkeylabs/"
+    r"|(?:https?://)?api\.github\.com/repos/cyphermonkeylabs/"
+)
+GEMINI_GALLERY_URL_RE = re.compile(
+    r"(?:https?:)?//cipher0x9\.github\.io/gemini-gems-free-gallery/?"
+)
 
 
 def fail(errors: list[str], message: str) -> None:
@@ -186,6 +202,8 @@ def main() -> int:
         if rel == "scripts/check-campus.py":
             continue
         text = path.read_text(encoding="utf-8", errors="ignore").lower()
+        text = OFFICIAL_LAB_URL_RE.sub(" ", text)
+        text = GEMINI_GALLERY_URL_RE.sub(" ", text)
         if ("linktr.ee" in text or "cyphermonkey" in text) and not (
             rel.startswith(HUB_OK_PREFIXES) or rel in HUB_OK_FILES
         ):

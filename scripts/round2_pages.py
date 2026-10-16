@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-REPO = "https://github.com/cipher0x9/uc-lab-free-university-mesmerizing"
+REPO = "https://github.com/CypherMonkeyLabs/uc-lab-free-university-mesmerizing"
 PORT_DOC = "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15/cucm_m_tcp-and-udp-port-usage-12-0.html"
 SYS = "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html"
 BLOG = "https://blogs.cisco.com/learning/the-future-of-collaboration-is-here"

@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "flagship"
 POOL = "origin/merge/idea-pool-2026-10-14"
 LEARN = "origin/cursor/supercharge-2026-10-03"
-REPO = "https://github.com/cipher0x9/uc-lab-free-university-mesmerizing"
+REPO = "https://github.com/CypherMonkeyLabs/uc-lab-free-university-mesmerizing"
 CONTACT = "https://cyphermonkeylabs.com/#contact"
 PORT_DOC = "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15/cucm_m_tcp-and-udp-port-usage-12-0.html"
 
@@ -294,13 +294,13 @@ def chrome(rel: str, title: str, body: str, description: str) -> str:
         return root + target
 
     sisters = [
-        ("https://cipher0x9.github.io/ai-lab-free-university-mesmerizing/", "AI Lab"),
-        ("https://cipher0x9.github.io/amazon-connect-lab-free-university-mesmerizing/", "Amazon Connect"),
-        ("https://cipher0x9.github.io/microsoft-voice-cc-lab-free-university-mesmerizing/", "Microsoft Voice"),
-        ("https://cipher0x9.github.io/five9-lab-free-university-mesmerizing/", "Five9"),
-        ("https://cipher0x9.github.io/genesys-cloud-lab-free-university-mesmerizing/", "Genesys Cloud"),
-        ("https://cipher0x9.github.io/nice-cxone-lab-free-university-mesmerizing/", "NICE CXone"),
-        ("https://cipher0x9.github.io/sip-universe-lab-free-university-mesmerizing/", "SIP Universe"),
+        ("https://cyphermonkeylabs.com/ai-lab-free-university-mesmerizing/", "AI Lab"),
+        ("https://cyphermonkeylabs.com/amazon-connect-lab-free-university-mesmerizing/", "Amazon Connect"),
+        ("https://cyphermonkeylabs.com/microsoft-voice-cc-lab-free-university-mesmerizing/", "Microsoft Voice"),
+        ("https://cyphermonkeylabs.com/five9-lab-free-university-mesmerizing/", "Five9"),
+        ("https://cyphermonkeylabs.com/genesys-cloud-lab-free-university-mesmerizing/", "Genesys Cloud"),
+        ("https://cyphermonkeylabs.com/nice-cxone-lab-free-university-mesmerizing/", "NICE CXone"),
+        ("https://cyphermonkeylabs.com/sip-universe-lab-free-university-mesmerizing/", "SIP Universe"),
         (rel_to("path.html"), "Study path"),
     ]
     sister_html = "".join(f'<a class="card" href="{esc(href)}"><strong>{esc(label)}</strong></a>' for href, label in sisters)
