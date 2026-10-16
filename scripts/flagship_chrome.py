@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import html
 
+from build_uc_round2 import GITHUB, LINKTREE, MONKEY, ORG, TREE, WEB
+
 CONTACT = "https://cyphermonkeylabs.com/#contact"
 
 NAV = [
@@ -178,6 +180,17 @@ def render_chrome(rel: str, title: str, body: str, description: str, order: list
     if any(token in body for token in ('id="quiz"', 'id="cards"', 'id="casePlayer"', 'id="dailyHost"')):
         bank_html = f'<script src="{root}assets/bank.js" defer></script>'
     brands = brand_links()
+    monkey = MONKEY.replace('id="mh"', 'id="mh-flag"').replace("url(#mh)", "url(#mh-flag)")
+    tree = LINKTREE.replace('id="uc-tree-glow"', 'id="uc-tree-glow-flag"').replace(
+        "url(#uc-tree-glow)", "url(#uc-tree-glow-flag)"
+    )
+    studio = (
+        '<nav class="brand-row brand-icons" aria-label="CypherMonkey Labs">'
+        f'<a class="brand-icon brand-web" href="{WEB}" aria-label="CypherMonkey Labs website">{monkey}</a>'
+        f'<a class="brand-icon brand-gh" href="{ORG}" aria-label="CypherMonkey Labs on GitHub">{GITHUB}</a>'
+        f'<a class="brand-icon brand-tree" href="{TREE}" aria-label="CypherMonkey on Linktree">{tree}</a>'
+        "</nav>"
+    )
     who = (
         "Lucky is a lifelong student and an AI enthusiast. The path runs from systems, "
         "networking, voice, and the contact center into AI omni-channel agents."
@@ -245,7 +258,8 @@ try {{
     <p class="who">{esc(who)}</p>
     <div class="sister">{sister_html}</div>
     <p class="disc">Independent educational project, not affiliated with vendors. Trademarks belong to their owners. MIT code, CC BY-NC-SA content. Teaching models do not change a live system. Check the vendor's current document before you change production.</p>
-    <p><a href="https://github.com/CypherMonkeyLabs">CypherMonkey Labs on GitHub</a> · <a href="{CONTACT}">Report a concern or takedown</a> · <a href="{CONTACT}">Work with us</a></p>
+    {studio}
+    <p><a href="{CONTACT}">Report a concern or takedown</a> · <a href="{CONTACT}">Work with us</a></p>
     <p class="copy">© 2026 CypherMonkeyLabs 🐒</p>
   </div>
 </footer>

@@ -50,16 +50,19 @@ def room_body(room: dict, pre: str) -> str:
     glossary = "".join(f"<li><strong>{esc(term)}</strong> — {esc(meaning)}</li>" for term, meaning in room["glossary"])
     confirm = f'<p class="confirm">Confirm before relying. {esc(room["confirm"])}</p>' if room.get("confirm") else ""
     sheet = room["sheet"]
+    exports = dl_buttons(pre, room["diagram"], sheet).replace(
+        'class="room-downloads"', 'class="room-downloads section-dl"', 1
+    )
     return f"""
 <div class="wrap">
 <p class="kicker">{esc(room["track"])} · {esc(room["id"])}</p>
 <h1>{esc(room["title"])}</h1>
 {dl_buttons(pre, room["diagram"], sheet)}
-<section id="five" class="five"><h2>Learn it in 5 minutes</h2><ul>{bullets}</ul></section>
-<section id="visual"><h2>Visual</h2><div class="diagram-frame"><img src="{pre}assets/diagrams/university/{room["diagram"]}.svg" alt="{esc(room["title"])} diagram"></div></section>
-<section id="core"><h2>What is going on</h2><p>{esc(room["core"])}</p>{confirm}</section>
-<section id="example" class="worked"><h2>Worked example</h2><p>{esc(room["example"])}</p></section>
-<section id="quiz"><h2>Quiz</h2>{''.join(questions)}</section>
+<section id="five" class="five"><h2>Learn it in 5 minutes</h2><ul>{bullets}</ul>{exports}</section>
+<section id="visual"><h2>Visual</h2><div class="diagram-frame"><img src="{pre}assets/diagrams/university/{room["diagram"]}.svg" alt="{esc(room["title"])} diagram"></div>{exports}</section>
+<section id="core"><h2>What is going on</h2><p>{esc(room["core"])}</p>{confirm}{exports}</section>
+<section id="example" class="worked"><h2>Worked example</h2><p>{esc(room["example"])}</p>{exports}</section>
+<section id="quiz"><h2>Quiz</h2>{''.join(questions)}{exports}</section>
 <section id="eco" class="eco-panel"><h2>Ecosystem</h2>
 <p>{esc(room["eco"])}</p>
 <ul>{glossary}</ul>
@@ -67,10 +70,10 @@ def room_body(room: dict, pre: str) -> str:
 <p><strong>Troubleshooting.</strong> {esc(room["trouble"])}</p>
 <p><strong>Bridge.</strong> {esc(room["bridge"])}</p>
 <p>Mind map, sister technologies, and future hooks live on the <a href="{pre}ecosystem.html">ecosystem page</a>.</p>
+{exports}
 </section>
 <section id="sources" class="sources"><h2>Sources</h2><ul>{sources}</ul>
-<p>Product screens move. Confirm the guide for your release before you change a live system.</p></section>
-{dl_buttons(pre, room["diagram"], sheet)}
+<p>Product screens move. Confirm the guide for your release before you change a live system.</p>{exports}</section>
 </div>
 """
 
@@ -649,6 +652,8 @@ def scrub_legacy() -> int:
         if path.suffix.lower() not in {".html", ".md", ".js", ".css", ".json"}:
             continue
         if any(part in {".git", "vendor", "node_modules"} for part in path.parts):
+            continue
+        if path.relative_to(ROOT).as_posix() == "campus/index.html":
             continue
         text = path.read_text(encoding="utf-8", errors="ignore")
         original = text

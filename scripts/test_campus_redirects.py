@@ -80,12 +80,19 @@ def collect_errors(root: Path | None = None) -> list[str]:
     if root_index.is_file():
         root_html = root_index.read_text(encoding="utf-8")
         if 'http-equiv="refresh"' in root_html:
-            errors.append("repo index.html must be the flagship front door, not a refresh")
-        for label in ("Diagrams", "Flows", "Charts", "Cheat Codes", "Play", "Ecosystem", "Downloads", "Careers"):
+            errors.append("repo index.html must be the university front door, not a refresh")
+        for label in ("Home", "Learn", "Diagrams", "Flows", "Play", "Downloads", "Ecosystem"):
             if label not in root_html:
                 errors.append(f"repo index.html menu is missing {label}")
-        if 'id="hero3d"' not in root_html:
-            errors.append("repo index.html is missing the flagship hero")
+        if "hero-diagram" not in root_html and 'id="hero3d"' not in root_html:
+            errors.append("repo index.html is missing the teaching hero")
+        for href in (
+            "https://cyphermonkeylabs.com",
+            "https://github.com/CypherMonkeyLabs",
+            "https://linktr.ee/cypherMonkey",
+        ):
+            if href not in root_html:
+                errors.append(f"repo index.html is missing {href}")
         if 'href="campus/uc-lab-free-university.html"' not in root_html:
             errors.append("repo index.html does not keep the deep campus link")
         if not (root / "flagship" / "index.html").is_file():

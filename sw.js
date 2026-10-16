@@ -1,5 +1,5 @@
 /* Same-origin cache for the UC university shell. */
-var CACHE = "uc-university-r3";
+var CACHE = "uc-university-r4";
 var SHELL = [
   "./",
   "./index.html",
