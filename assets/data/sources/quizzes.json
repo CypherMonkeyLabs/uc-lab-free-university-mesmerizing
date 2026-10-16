@@ -1,0 +1,630 @@
+{
+  "room": "quizzes",
+  "checked": "2026-10",
+  "sources": [
+    {
+      "kind": "rfc",
+      "title": "RFC 3261, SIP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3261",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3550, RTP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3550",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 4566, SDP",
+      "url": "https://www.rfc-editor.org/rfc/rfc4566",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Unified Communications Manager product support",
+      "url": "https://www.cisco.com/c/en/us/support/unified-communications/unified-communications-manager-callmanager/series.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "System Configuration Guide for CUCM, Release 15",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "ports",
+      "title": "CUCM 15 TCP and UDP port usage",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/15/systemConfig/cucm_b_system-configuration-guide-15/cucm_m_tcp-and-udp-port-usage-12-0.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "ports",
+      "title": "IANA SIP parameters",
+      "url": "https://www.iana.org/assignments/sip-parameters/sip-parameters.xhtml",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "ports",
+      "title": "IANA RTP parameters",
+      "url": "https://www.iana.org/assignments/rtp-parameters/rtp-parameters.xhtml",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "community",
+      "title": "Cisco Community, Collaboration knowledge base",
+      "url": "https://community.cisco.com/t5/collaboration-knowledge-base/tkb-p/4691-docs-collaboration-voice-video",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Session Initiation Protocol (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Session_Initiation_Protocol",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Real-time Transport Protocol (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Real-time_Transport_Protocol",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Collaboration 12 SRND book",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "The historical Collaboration 12 SRND path opened as a product listing, not the design book. Use the Preferred Architecture index, which was opened."
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3264, offer/answer",
+      "url": "https://www.rfc-editor.org/rfc/rfc3264",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Session Description Protocol (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Session_Description_Protocol",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Skinny Client Control Protocol (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Skinny_Call_Control_Protocol",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "CUCM (Wikipedia disambiguation)",
+      "url": "https://en.wikipedia.org/wiki/CUCM",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "English Wikipedia article for Cisco Unified Communications Manager",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "That title returned HTTP 404. The CUCM disambiguation page is the Wikipedia page that opened."
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3262, reliable provisional responses (PRACK)",
+      "url": "https://www.rfc-editor.org/rfc/rfc3262",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Collaboration Preferred Architectures",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/uc_system/design/guides/PAdocs.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Preferred Architecture for Cisco Collaboration 15, design overview (PDF)",
+      "url": "https://www.cisco.com/c/dam/en/us/td/docs/solutions/PA/overview/15x/clbpa15x.pdf",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Voice over IP (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Voice_over_IP",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 4028, SIP session timers",
+      "url": "https://www.rfc-editor.org/rfc/rfc4028",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Understand IOS and IOS XE call routing",
+      "url": "https://www.cisco.com/c/en/us/support/docs/voice/ip-telephony-voice-over-ip-voip/211306-In-Depth-Explanation-of-Cisco-IOS-and-IO.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "CUBE configuration guide, dial peers (IOS XE 17.6 onwards)",
+      "url": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/voice/cube/ios-xe/config/ios-xe-book/m_cube-dp.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 4733, RTP telephony events",
+      "url": "https://www.rfc-editor.org/rfc/rfc4733",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Unified Border Element product support",
+      "url": "https://www.cisco.com/c/en/us/support/unified-communications/unified-border-element/series.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "ports",
+      "title": "IANA service names and port numbers",
+      "url": "https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "English Wikipedia article for Cisco Unified Border Element",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "That title returned HTTP 404."
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3711, SRTP",
+      "url": "https://www.rfc-editor.org/rfc/rfc3711",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Unified SRST product support",
+      "url": "https://www.cisco.com/c/en/us/support/unified-communications/unified-survivable-remote-site-telephony/series.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "English Wikipedia article for Survivable Remote Site Telephony",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "That title returned HTTP 404."
+    },
+    {
+      "kind": "webex",
+      "title": "Get started with Local Gateway",
+      "url": "https://help.webex.com/en-us/article/t9xctu/Get-started-with-Local-Gateway",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webex",
+      "title": "Configure Local Gateway on Cisco IOS XE for Webex Calling",
+      "url": "https://help.webex.com/en-us/article/jr1i3r/Configure-local-gateway-on-IOS-XE-for-Webex-Calling",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webex",
+      "title": "Get started with Webex Calling",
+      "url": "https://help.webex.com/en-us/article/8jda92/Webex-Calling",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "ports",
+      "title": "Port reference for Webex Calling",
+      "url": "https://help.webex.com/en-us/article/b2exve/Port-Reference-Information-for-Cisco-Webex-Calling",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Expressway Series product support",
+      "url": "https://www.cisco.com/c/en/us/support/unified-communications/expressway-series/series.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Mobile and Remote Access through Cisco Expressway, X15.2",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/expressway/config_guide/X15-2/mra/exwy_b_mra-deployment-guide-x152.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "ports",
+      "title": "Cisco Expressway IP port usage (X14.3 and X15.0)",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/expressway/config_guide/X15-0/ip-port/exwy_b_cisco-expressway-ip-port-usage-configuration-guide-x15.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 8445, ICE",
+      "url": "https://www.rfc-editor.org/rfc/rfc8445",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3246, Expedited Forwarding",
+      "url": "https://www.rfc-editor.org/rfc/rfc3246",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 4594, DiffServ service classes",
+      "url": "https://www.rfc-editor.org/rfc/rfc4594",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "itu",
+      "title": "ITU-T G.114, one-way transmission time",
+      "url": "https://www.itu.int/rec/T-REC-G.114",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "itu",
+      "title": "ITU-T G.711, pulse code modulation of voice",
+      "url": "https://www.itu.int/rec/T-REC-G.711",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Differentiated services (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Differentiated_services",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Quality of service (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Quality_of_service",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Enterprise QoS SRND book",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "The Enterprise QoS SRND path returned HTTP 404."
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Unified Contact Center Enterprise product support",
+      "url": "https://www.cisco.com/c/en/us/support/customer-collaboration/unified-contact-center-enterprise/series.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webex",
+      "title": "Webex Help Center",
+      "url": "https://help.webex.com/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webex",
+      "title": "Webex Calling survivability gateway guide",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "A survivability-gateway article was not opened, so this row has no link. The local-gateway guide that did open is listed above."
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 3515, SIP REFER",
+      "url": "https://www.rfc-editor.org/rfc/rfc3515",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "fcc",
+      "title": "FCC, Kari's Law and RAY BAUM'S Act for multi-line telephone systems",
+      "url": "https://www.fcc.gov/mlts-911-requirements",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Enhanced 911 (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Enhanced_9-1-1",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "law",
+      "title": "United States public-law text for Kari's Law",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "The congress.gov bill page returned a bot challenge, and the PDF text was not readable in this session. The FCC MLTS page that did open is listed separately."
+    },
+    {
+      "kind": "law",
+      "title": "Emergency-calling rule outside the FCC MLTS page",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "No statute outside that FCC page was opened. Confirm the rule where the site operates."
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Emergency Responder product support",
+      "url": "https://www.cisco.com/c/en/us/support/unified-communications/emergency-responder/series.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Plan for Cisco Emergency Responder, Release 15",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_01.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Configure Cisco Unified Communications Manager, Emergency Responder 15",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15/cer0_b_cisco-emergency-responder-administration-guide-1401_chapter_011.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Cisco Emergency Responder Administration Guide, Release 15",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cer/15/english/administration/guide/cer0_b_cisco-emergency-responder-administration-guide-15.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Feature Configuration Guide for CUCM, Release 15, Recording",
+      "url": "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/cucm_b_feature-configuration-guide-for-15/cucm_mp_r53f7ff4_00_recording-12-0.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "Configure and troubleshoot basic call recording",
+      "url": "https://www.cisco.com/c/en/us/support/docs/unified-communications/unified-communications-manager-callmanager/200788-Call-Recording-Basic-Configuration-and-T.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 7245, architecture for media recording using SIP",
+      "url": "https://www.rfc-editor.org/rfc/rfc7245",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 7865, SIP recording metadata",
+      "url": "https://www.rfc-editor.org/rfc/rfc7865",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 7866, session recording protocol",
+      "url": "https://www.rfc-editor.org/rfc/rfc7866",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "cisco",
+      "title": "CUBE configuration guide, SIP forking (IOS XE 17.6 onwards)",
+      "url": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/voice/cube/ios-xe/config/ios-xe-book/m_voi-cube-sip-rec-recorder.html",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "law",
+      "title": "Call-recording consent and retention rule",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "No privacy or retention statute was opened. RFC 7245 names compliance as a reason some sites record. It does not say which rule applies to you."
+    },
+    {
+      "kind": "wikipedia",
+      "title": "SIP trunking (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/SIP_trunking",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "sipforum",
+      "title": "SIPconnect technical recommendation",
+      "url": "https://www.sipforum.org/technology/sipconnect/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "Asterisk (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Asterisk_(PBX)",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "asterisk",
+      "title": "Types of Asterisk modules",
+      "url": "https://docs.asterisk.org/Fundamentals/Asterisk-Architecture/Types-of-Asterisk-Modules/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "asterisk",
+      "title": "Configuring res_pjsip",
+      "url": "https://docs.asterisk.org/Configuration/Channel-Drivers/SIP/Configuring-res_pjsip/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "FreeSWITCH (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/FreeSWITCH",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "freeswitch",
+      "title": "FreeSWITCH users manual",
+      "url": "https://developer.signalwire.com/freeswitch/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "wikipedia",
+      "title": "WebRTC (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/WebRTC",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webrtc",
+      "title": "W3C WebRTC recommendation",
+      "url": "https://www.w3.org/TR/webrtc/",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 8825, WebRTC protocol overview",
+      "url": "https://www.rfc-editor.org/rfc/rfc8825",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 8829, JavaScript session establishment",
+      "url": "https://www.rfc-editor.org/rfc/rfc8829",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "rfc",
+      "title": "RFC 7118, SIP over WebSocket",
+      "url": "https://www.rfc-editor.org/rfc/rfc7118",
+      "status": "verified",
+      "last_checked": "2026-10",
+      "note": ""
+    },
+    {
+      "kind": "webrtc",
+      "title": "CPaaS vendor matrix",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "No vendor matrix was opened. The FreeSWITCH manual notes one hosted platform. Confirm any other vendor on that vendor's own page."
+    }
+  ]
+}

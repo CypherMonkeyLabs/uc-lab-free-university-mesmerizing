@@ -37,6 +37,7 @@ KIND_LABEL = {
     "webrtc": "WebRTC",
     "sipforum": "SIP Forum",
     "lab": "Sibling lab",
+    "local": "Local file",
 }
 
 
@@ -131,6 +132,7 @@ CATALOG: dict[str, dict] = {
     "rfc8825": _row("rfc", "RFC 8825, WebRTC protocol overview", "https://www.rfc-editor.org/rfc/rfc8825"),
     "rfc8829": _row("rfc", "RFC 8829, JavaScript session establishment", "https://www.rfc-editor.org/rfc/rfc8829"),
     "cpaas-matrix": _row("webrtc", "CPaaS vendor matrix", None, "No vendor matrix was opened. The FreeSWITCH manual notes one hosted platform. Confirm any other vendor on that vendor's own page."),
+    "flagship-audio": _row("local", "Flagship tour and practice audio", None, "The mp3 files and the tour script are local files under flagship/audio. No external page was opened for them."),
     "lab-sip": _row("lab", "SIP Universe Free University", "https://cyphermonkeylabs.com/sip-universe-lab-free-university-mesmerizing/"),
     "lab-webex": _row("lab", "Webex Lab Free University", "https://cyphermonkeylabs.com/webex-lab-free-university-mesmerizing/"),
     "lab-microsoft": _row("lab", "Microsoft Voice and Contact Center Lab", "https://cyphermonkeylabs.com/microsoft-voice-cc-lab-free-university-mesmerizing/"),
