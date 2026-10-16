@@ -1,0 +1,14 @@
+{
+  "room": "listen",
+  "checked": "2026-10",
+  "sources": [
+    {
+      "kind": "local",
+      "title": "Flagship tour and practice audio",
+      "url": null,
+      "status": "confirm",
+      "last_checked": "2026-10",
+      "note": "The mp3 files and the tour script are local files under flagship/audio. No external page was opened for them."
+    }
+  ]
+}

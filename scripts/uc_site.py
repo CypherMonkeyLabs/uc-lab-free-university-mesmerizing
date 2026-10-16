@@ -29,6 +29,7 @@ from go_deeper import (
     CHEAT_KEYS,
     CORE,
     ROOM_KEYS,
+    SHEET_EXTRA,
     TEMPLATE_SHEET,
     union,
     add_docx_sources,
@@ -355,8 +356,15 @@ def emit_diagram_indexes(items: list[dict]) -> None:
         )
         if item["kind"] == "flow":
             flows.append(cards[-1])
-    write_page("diagrams.html", "Diagrams", "UC diagrams as SVG, PNG, and HTML.", "diagrams", page_wrap(f"<h1>Diagrams</h1><p>{len(items)} drawings.</p><div class=\"card-grid\">{''.join(cards)}</div>"))
-    write_page("flows.html", "Flows", "Animated UC call flows.", "flows", page_wrap(f"<h1>Flows</h1><p>{len(flows)} ladders with a moving packet. Reduced motion keeps every step visible in the SVG.</p><div class=\"card-grid\">{''.join(flows)}</div>"))
+    diagram_sources = entries(CORE)
+    diagram_block = html_block(diagram_sources, "sources/diagrams/sources.json")
+    flow_block = html_block(diagram_sources, "sources/flows/sources.json")
+    mirror_sources(ROOT / "sources" / "diagrams" / "sources.json", "diagrams", diagram_sources)
+    mirror_sources(ROOT / "sources" / "flows" / "sources.json", "flows", diagram_sources)
+    write_json("diagrams.json", "diagrams", diagram_sources)
+    write_json("flows.json", "flows", diagram_sources)
+    write_page("diagrams.html", "Diagrams", "UC diagrams as SVG, PNG, and HTML.", "diagrams", page_wrap(f"<h1>Diagrams</h1><p>{len(items)} drawings. Each export has its own source list.</p><div class=\"card-grid\">{''.join(cards)}</div>{diagram_block}"))
+    write_page("flows.html", "Flows", "Animated UC call flows.", "flows", page_wrap(f"<h1>Flows</h1><p>{len(flows)} ladders with a moving packet. Reduced motion keeps every step visible in the SVG.</p><div class=\"card-grid\">{''.join(flows)}</div>{flow_block}"))
 
 
 def emit_charts(room_rows: list[dict], items: list[dict]) -> None:
@@ -375,13 +383,21 @@ def emit_charts(room_rows: list[dict], items: list[dict]) -> None:
 <div data-chart="g711"><span>G.711 layer 3 · 80 kbit/s</span><div class="chart-bar" style="width:160px"></div></div>
 <div data-chart="g711-l2"><span>G.711 plus Ethernet · 87.2 kbit/s</span><div class="chart-bar" style="width:174px"></div></div>
 """
-    body = page_wrap("<h1>Charts</h1><p>Counts from this repository, plus the standard G.711 sketch. No traffic and no revenue.</p>" + "".join(bars) + extra)
+    chart_sources = entries(SHEET_EXTRA["bandwidth"])
+    chart_block = html_block(chart_sources, "sources/charts/sources.json")
+    mirror_sources(ROOT / "sources" / "charts" / "sources.json", "charts", chart_sources)
+    write_json("charts.json", "charts", chart_sources)
+    body = page_wrap("<h1>Charts</h1><p>Room counts come from this repository. The G.711 bars use the bandwidth sheet sources. No traffic and no revenue.</p>" + "".join(bars) + extra + chart_block)
     write_page("charts.html", "Charts", "Counts from this UC lab.", "diagrams", body)
 
 
 def emit_play() -> None:
+    play_sources = entries(["rfc3261", "rfc3246", "rfc4594", "cube", "cucm"])
+    play_block = html_block(play_sources, "sources/play/sources.json")
+    mirror_sources(ROOT / "sources" / "play" / "sources.json", "play", play_sources)
+    write_json("play.json", "play", play_sources)
     body = page_wrap(
-        """
+        f"""
 <h1>Play</h1>
 <p>Three checks. Nothing is stored on a server.</p>
 <div class="quiz" data-quiz data-answer="Alerting, not answer"><p>What is 180 Ringing?</p>
@@ -397,20 +413,26 @@ def emit_play() -> None:
 <button type="button" class="choice ghost" data-choice="One proxy transaction">One proxy transaction</button>
 <p class="quiz-note" hidden>CUBE and CUCM on a trunk are B2BUAs. Count the Call-IDs.</p></div>
 <div class="room-downloads"><a class="dl-btn" href="downloads/flashcards.html">Flashcards</a></div>
+{play_block}
 """
     )
     write_page("play.html", "Play", "A short UC drill.", "play", body)
 
 
 def emit_listen() -> None:
+    listen_sources = entries(["flagship-audio"])
+    listen_block = html_block(listen_sources, "sources/listen/sources.json")
+    mirror_sources(ROOT / "sources" / "listen" / "sources.json", "listen", listen_sources)
+    write_json("listen.json", "listen", listen_sources)
     body = page_wrap(
-        """
+        f"""
 <h1>Listen</h1>
 <p>The phone bar and the guide can read this page aloud. Recorded desk notes from the flagship studio are optional and separate from the guide voice.</p>
 <audio controls preload="none" src="flagship/audio/architect-tour.mp3"><a href="flagship/audio/architect-tour.mp3">Tour notes</a></audio>
 <audio controls preload="none" src="flagship/audio/architect-practice.mp3"><a href="flagship/audio/architect-practice.mp3">Practice notes</a></audio>
 <p><a href="flagship/audio/scripts/architect-tour.md">Tour script</a></p>
 <div class="room-downloads"><button type="button" class="dl-btn" data-listen>Read this page</button></div>
+{listen_block}
 """
     )
     write_page("listen.html", "Listen", "Read-along and recorded notes.", "listen", body)
@@ -481,8 +503,16 @@ def emit_ecosystem(room_rows: list[dict]) -> None:
 
 
 def emit_help_legal() -> None:
+    help_sources = entries(["rfc3261", "fcc-mlts", "cucm-rec", "rfc7245"])
+    help_block = html_block(help_sources, "sources/help/sources.json")
+    mirror_sources(ROOT / "sources" / "help" / "sources.json", "help", help_sources)
+    write_json("help.json", "help", help_sources)
+    legal_sources = entries(["fcc-mlts", "cer", "cucm-rec", "rfc7245", "kari-statute", "local-emergency-law", "recording-rule"])
+    legal_block = html_block(legal_sources, "sources/legal/sources.json")
+    mirror_sources(ROOT / "sources" / "legal" / "sources.json", "legal", legal_sources)
+    write_json("legal.json", "legal", legal_sources)
     help_body = page_wrap(
-        """
+        f"""
 <h1>Help</h1>
 <section><h2>Menu</h2><p>The Menu button is at the top left. The drawer slides in. Escape or a tap on the dimmed page closes it. On a phone the same Menu is the left side of the bottom bar.</p></section>
 <section><h2>Course</h2><p>Learn opens a ten-minute SIP path and the full course. Each room has a five-minute block, a drawing, a worked example, a quiz, and sources. Emergency calling and recording are study notes, not legal advice.</p></section>
@@ -490,6 +520,7 @@ def emit_help_legal() -> None:
 <p><button type="button" data-tour-open>Replay the tour</button></p></section>
 <section><h2>Downloads</h2><p>Every room has SVG, PNG, HTML, and a cheat sheet. The Downloads page lists the deck, the cards, the templates, and one zip.</p></section>
 <div class="room-downloads"><a class="dl-btn" href="downloads.html">Open downloads</a></div>
+{help_block}
 """
     )
     legal_body = page_wrap(
@@ -502,6 +533,7 @@ def emit_help_legal() -> None:
 <section><h2>Privacy</h2><p>There is no account and no tracker. Progress, the tour flag, voice settings, and badge names stay in this browser.</p></section>
 <section><h2>Accessibility</h2><p>Display sets font size and font colour. Bright is the default. Dark is optional. The tour and the drawer work from the keyboard. Escape closes them.</p></section>
 <section><h2>Removal</h2><p>Write via <a href="{CONTACT}">{CONTACT}</a> and the page will be corrected or removed.</p></section>
+{legal_block}
 """
     )
     write_page("help.html", "Help", "How to use the UC lab.", "help", help_body)
@@ -518,7 +550,11 @@ def emit_quizzes(room_rows: list[dict]) -> None:
             blocks.append(
                 f'<div class="quiz" data-quiz data-answer="{esc(answer)}"><p><a href="rooms/{room["slug"]}.html">{esc(room["title"])}</a>. {esc(prompt)}</p>{buttons}<p class="quiz-note" hidden>{esc(why)}</p></div>'
             )
-    write_page("quizzes.html", "Quizzes", "Room quizzes in one list.", "play", page_wrap(f"<h1>Quizzes</h1>{''.join(blocks)}"))
+    quiz_sources = entries(union(*[ROOM_KEYS[room["slug"]] for room in room_rows]))
+    quiz_block = html_block(quiz_sources, "sources/quizzes/sources.json")
+    mirror_sources(ROOT / "sources" / "quizzes" / "sources.json", "quizzes", quiz_sources)
+    write_json("quizzes.json", "quizzes", quiz_sources)
+    write_page("quizzes.html", "Quizzes", "Room quizzes in one list.", "play", page_wrap(f"<h1>Quizzes</h1>{''.join(blocks)}{quiz_block}"))
 
 
 def cards_for(room_rows: list[dict]) -> list[dict]:
