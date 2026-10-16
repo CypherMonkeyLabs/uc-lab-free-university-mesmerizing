@@ -2,7 +2,7 @@
    and when the page asks for a full offline copy. */
 "use strict";
 
-var CACHE = "uc-lab-v21-brands";
+var CACHE = "uc-lab-v23-sources";
 var SHELL = [
   "./uc-lab-free-university.html",
   "./manifest.webmanifest",
@@ -12,6 +12,7 @@ var SHELL = [
   "./assets/tools.js",
   "./assets/settings.js",
   "./assets/tips.js",
+  "./assets/go-deeper.js",
   "./assets/icon.svg"
 ];
 /* Not precached. The fetch handler stores these on first use, and Save lessons

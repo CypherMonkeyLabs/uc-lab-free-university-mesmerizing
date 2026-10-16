@@ -161,5 +161,38 @@
     navigator.serviceWorker.register(fromRoot("sw.js")).catch(function () { /* file or private mode */ });
   }
 
+  function motionOff() {
+    if (document.documentElement.getAttribute("data-motion") === "reduce") return true;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+  function mountEffects() {
+    if (motionOff() || document.querySelector(".uc-particles")) return;
+    var layer = document.createElement("div");
+    layer.className = "uc-particles";
+    layer.setAttribute("aria-hidden", "true");
+    var i;
+    for (i = 0; i < 16; i += 1) {
+      var dot = document.createElement("span");
+      dot.style.left = (Math.random() * 100) + "%";
+      dot.style.animationDelay = (Math.random() * -12) + "s";
+      dot.style.animationDuration = (9 + Math.random() * 10) + "s";
+      layer.appendChild(dot);
+    }
+    document.body.appendChild(layer);
+    var hero = document.querySelector(".hero-diagram");
+    if (hero && window.matchMedia("(pointer: fine)").matches) {
+      window.addEventListener("pointermove", function (event) {
+        if (motionOff()) {
+          hero.style.transform = "";
+          return;
+        }
+        var x = (event.clientX / window.innerWidth - 0.5) * 14;
+        var y = (event.clientY / window.innerHeight - 0.5) * 8;
+        hero.style.transform = "translate3d(" + x.toFixed(1) + "px," + y.toFixed(1) + "px,0)";
+      }, { passive: true });
+    }
+  }
+  mountEffects();
+
   window.UC_FRAME = { fromRoot: fromRoot, setDrawer: setDrawer, applyFont: applyFont, applyTheme: applyTheme };
 })();
