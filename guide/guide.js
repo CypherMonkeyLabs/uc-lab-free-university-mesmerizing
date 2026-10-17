@@ -628,7 +628,8 @@
   window.addEventListener("scroll", parkOffLede, { passive: true });
   window.addEventListener("load", parkOffLede);
 
-  if (!state.tour) showTour();
+  // Pages without the tour anchors (the campus app) skip straight to the greeting.
+  if (!state.tour && document.querySelector("[data-tour='home']")) showTour();
   else if (!state.greeted) greetCenter();
   else { pose("idle"); introCards(); }
   parkOffLede();
