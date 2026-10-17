@@ -24,6 +24,7 @@ const need = [
   "assets/css/uc.css",
   "guide/guide.js",
   "guide/guide.css",
+  "guide/dragbot.js",
   "docs/KIT.md",
   "docs/PUBLISHING.md",
   "downloads/flashcards.json",

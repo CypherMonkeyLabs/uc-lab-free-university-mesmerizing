@@ -68,12 +68,6 @@
   var ambient = null;
   var catalog = [];
 
-  if (state.x != null && state.y != null && !isPhone()) {
-    dock.style.left = state.x + "px";
-    dock.style.top = state.y + "px";
-    dock.style.right = "auto";
-    dock.style.bottom = "auto";
-  }
   if (state.rate) rate.value = state.rate;
   if (state.pitch) pitch.value = state.pitch;
 
@@ -423,34 +417,10 @@
     ambient = { ctx: ctx };
   });
 
-  var drag = null;
-  monkey.addEventListener("pointerdown", function (event) {
-    if (event.button !== 0 || isPhone()) return;
-    drag = { x: event.clientX, y: event.clientY, left: dock.getBoundingClientRect().left, top: dock.getBoundingClientRect().top, moved: false };
-    monkey.setPointerCapture(event.pointerId);
-  });
-  monkey.addEventListener("pointermove", function (event) {
-    if (!drag) return;
-    var dx = event.clientX - drag.x;
-    var dy = event.clientY - drag.y;
-    if (Math.abs(dx) + Math.abs(dy) < 6) return;
-    drag.moved = true;
-    var x = Math.max(8, drag.left + dx);
-    var y = Math.max(8, drag.top + dy);
-    dock.style.left = x + "px";
-    dock.style.top = y + "px";
-    dock.style.right = "auto";
-    dock.style.bottom = "auto";
-  });
-  monkey.addEventListener("pointerup", function () {
-    if (!drag) return;
-    if (drag.moved) suppressClick = true;
-    drag = null;
-    var rect = dock.getBoundingClientRect();
-    state.x = Math.round(rect.left);
-    state.y = Math.round(rect.top);
-    save(state);
-  });
+  // Drag, edge snap, tilt, shadow and reset live in guide/dragbot.js.
+  var botScript = document.createElement("script");
+  botScript.src = base + "guide/dragbot.js";
+  document.body.appendChild(botScript);
 
   var tour = document.createElement("div");
   tour.hidden = true;
@@ -626,6 +596,7 @@
   }
 
   function parkOffLede() {
+    if (dock.classList.contains("is-moved") && panel.hidden) return;
     if (!isPhone() || !panel.hidden) {
       dock.classList.remove("is-parked");
       dock.style.top = "";
