@@ -510,6 +510,8 @@
     var cardH = card.offsetHeight;
     var roomTop = Math.max(header ? header.bottom : 8, banner ? banner.bottom : 0) + gap;
     var roomBottom = (phone ? phone.top : window.innerHeight) - gap;
+    var mascot = window.matchMedia("(max-width: 800px)").matches ? band(".bot-dock:not(.is-open) .monkey-btn") : null;
+    if (mascot && mascot.top - gap < roomBottom) roomBottom = mascot.top - gap;
     var hero = document.querySelector("main h1");
     var heroBox = hero ? hero.getBoundingClientRect() : null;
     function hitsHero(candidate) {
