@@ -1,5 +1,5 @@
 /* Same-origin cache for the UC university shell. */
-var CACHE = "uc-university-r8";
+var CACHE = "uc-university-r9";
 var SHELL = [
   "./",
   "./index.html",
@@ -20,6 +20,7 @@ var SHELL = [
   "./assets/js/university.js",
   "./guide/guide.js",
   "./guide/guide.css",
+  "./guide/dragbot.js",
   "./assets/data/catalog.json",
   "./favicon.svg"
 ];
