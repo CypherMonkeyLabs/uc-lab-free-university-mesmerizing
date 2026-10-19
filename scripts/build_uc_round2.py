@@ -177,14 +177,7 @@ def chrome(pre: str, title: str, desc: str, current: str, body: str, track: str 
         f'<button type="button" data-open-guide>{ICONS["help"]}Guide</button>'
         "</nav>"
     )
-    theme = (
-        '<script>try{var t=localStorage.getItem("canon-theme");if(t!=="aurora")t="bloom";'
-        'document.documentElement.dataset.theme=t;var f=localStorage.getItem("canon-font");'
-        'if(f==="sm"||f==="lg")document.documentElement.dataset.font=f;'
-        'var ink=localStorage.getItem("canon-ink");if(ink&&/^#[0-9a-f]{6}$/i.test(ink))'
-        'document.documentElement.style.setProperty("--ink",ink);}catch(e){'
-        'document.documentElement.dataset.theme="bloom";}</script>'
-    )
+    theme = f'<script src="{pre}assets/js/canon-theme.js"></script>'
     head_links = "".join(
         f'<link rel="stylesheet" href="{pre}assets/css/{name}">'
         for name in ("canon.css", "shell.css", "wow.css", "frame.css", "polish.css", "footer.css", "university.css", "uc.css")
@@ -193,6 +186,7 @@ def chrome(pre: str, title: str, desc: str, current: str, body: str, track: str 
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob: data:; font-src 'self' data:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)} · UC Lab Free University</title>
 <meta name="description" content="{esc(desc)}">

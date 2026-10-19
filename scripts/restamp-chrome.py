@@ -54,8 +54,7 @@ def lazy_mindmap(body: str) -> str:
     if not match:
         return body
     data = match.group(1)
-    replacement = (
-        "<script>\n"
+    script = (
         "(function () {\n"
         "  var data = " + data + ";\n"
         "  var root = (document.body && document.body.getAttribute('data-root')) || '';\n"
@@ -90,8 +89,10 @@ def lazy_mindmap(body: str) -> str:
         "  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);\n"
         "  else start();\n"
         "})();\n"
-        "</script>"
     )
+    init = ROOT / "flagship" / "ecosystem" / "mindmap-init.js"
+    init.write_text(script, encoding="utf-8")
+    replacement = '<script src="mindmap-init.js"></script>'
     body = re.sub(r"<script src=\"[^\"]*d3\.min\.js\"></script>\s*", "", body)
     body = re.sub(r"<script src=\"[^\"]*markmap-view\.js\"></script>\s*", "", body)
     body = re.sub(r"<script>markmap\.Markmap\.create\(\"#mind\", \{\}, \{.*?\}\);</script>", replacement, body, count=1)

@@ -28,6 +28,7 @@ var SHELL = [
   "./assets/css/uc.css",
   "./assets/css/studio.css",
   "./assets/js/frame.js",
+  "./assets/js/canon-theme.js",
   "./assets/js/university.js",
   "./assets/js/studio.js",
   "./assets/js/dialsim.js",

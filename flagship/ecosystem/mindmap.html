@@ -2,6 +2,7 @@
 <html lang="en" data-theme="neon">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob: data:; font-src 'self' data:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mind map · UC Lab Free University</title>
 <meta name="description" content="Interactive mind map of the lab.">
@@ -10,19 +11,7 @@
 <link rel="apple-touch-icon" href="../assets/icon.svg">
 <link rel="manifest" href="../manifest.webmanifest">
 <link rel="stylesheet" href="../assets/site.css">
-<script>
-try {
-  var params = new URLSearchParams(location.search);
-  var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
-  var ok = {neon:1, holographic:1, cyberpunk:1, sunset:1, light:1};
-  if (ok[t]) document.documentElement.setAttribute("data-theme", t);
-  var motion = localStorage.getItem("uc_flagship_motion");
-  if (motion === "reduce" || motion === "allow") document.documentElement.setAttribute("data-motion", motion);
-  var lang = localStorage.getItem("uc_flagship_lang");
-  if (lang) document.documentElement.lang = lang;
-  if (lang === "ar") document.documentElement.dir = "rtl";
-} catch (e) {}
-</script>
+<script src="../assets/flagship-theme.js"></script>
 </head>
 <body data-root="../">
 <a class="skip" href="#content" data-i18n="skip">Skip to content</a>
@@ -68,42 +57,7 @@ try {
 </header>
 <main id="content" class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../ecosystem/index.html">Ecosystem</a></li><li aria-current="page">Mind map</li></ol></nav>
-<p class="kicker">Map</p><h1>Mind map</h1><p class="lede">An interactive map drawn with Markmap and D3, both vendored. The static drawing under it is the idea-pool ecosystem.</p><svg id="mind" class="mind-live"></svg><figure class="ladder"><img src="../assets/pool/ecosystem/mindmap.svg" alt="Idea-pool ecosystem drawing"></figure><script>
-(function () {
-  var data = {"content": "UC Lab", "children": [{"content": "Signaling", "children": [{"content": "REGISTER", "children": []}, {"content": "INVITE", "children": []}, {"content": "SDP", "children": []}]}, {"content": "Edge", "children": [{"content": "CUBE", "children": []}, {"content": "MRA", "children": []}, {"content": "SRTP", "children": []}]}, {"content": "Cloud", "children": [{"content": "Webex Calling", "children": []}, {"content": "Teams Phone", "children": []}]}, {"content": "Around the agent", "children": [{"content": "WFM", "children": []}, {"content": "Recording", "children": []}, {"content": "CRM", "children": []}]}]};
-  var root = (document.body && document.body.getAttribute('data-root')) || '';
-  function load(src) {
-    return new Promise(function (resolve, reject) {
-      var script = document.createElement('script');
-      script.src = src;
-      script.onload = resolve;
-      script.onerror = reject;
-      document.body.appendChild(script);
-    });
-  }
-  function start() {
-    var host = document.querySelector('#mind');
-    if (!host) return;
-    var run = function () {
-      load(root + 'assets/vendor/d3.min.js').then(function () {
-        return load(root + 'assets/vendor/markmap-view.js');
-      }).then(function () {
-        if (window.markmap) markmap.Markmap.create('#mind', {}, data);
-      }).catch(function () {});
-    };
-    if ('IntersectionObserver' in window) {
-      var watch = new IntersectionObserver(function (entries) {
-        if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
-        watch.disconnect();
-        run();
-      }, { rootMargin: '120px' });
-      watch.observe(host);
-    } else run();
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
-  else start();
-})();
-</script>
+<p class="kicker">Map</p><h1>Mind map</h1><p class="lede">An interactive map drawn with Markmap and D3, both vendored. The static drawing under it is the idea-pool ecosystem.</p><svg id="mind" class="mind-live"></svg><figure class="ladder"><img src="../assets/pool/ecosystem/mindmap.svg" alt="Idea-pool ecosystem drawing"></figure><script src="mindmap-init.js"></script>
 
 
 </main>
