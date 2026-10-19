@@ -401,12 +401,13 @@
   chatCss.rel = "stylesheet";
   chatCss.href = base + "shared/pybot-chat/chat.css";
   document.head.appendChild(chatCss);
-  import(base + "guide/ucbot-host.js").then(function (mod) {
+  var chatUrl = new URL((base || "./") + "guide/ucbot-host.js", window.location.href).href;
+  import(chatUrl).then(function (mod) {
     return mod.mountChat(chatHost, base);
   }).then(function () {
     dock.querySelector(".bot-form").hidden = true;
     log.hidden = true;
-  }).catch(function () { /* typed questions keep the older page finder */ });
+  }).catch(function (err) { console.error("UC chat did not mount", err); /* typed questions keep the older page finder */ });
 
   dock.querySelector("[data-ambient]").addEventListener("click", function (event) {
     var on = event.currentTarget.getAttribute("aria-pressed") !== "true";
