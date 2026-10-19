@@ -1,0 +1,83 @@
+/* Topic worlds and a depth layer for the home hero. No external assets. */
+.studio-sky {
+  position: relative;
+  height: 120px;
+  margin: 0 0 -40px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.studio-sky canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.worlds {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin: 18px 0 8px;
+  perspective: 800px;
+}
+.world-card {
+  display: block;
+  min-height: 88px;
+  padding: 12px 12px 14px;
+  border-radius: 16px;
+  border: 2px solid var(--line, rgba(22, 24, 43, 0.16));
+  background: var(--bg, #f3f6ff);
+  color: var(--ink, #16182b);
+  text-decoration: none;
+  transform: translateZ(0);
+  box-shadow: 0 10px 0 rgba(15, 155, 142, 0.18);
+}
+.world-card strong { display: block; font-size: 1rem; }
+.world-card span { display: block; margin-top: 4px; font-size: 0.85rem; }
+.world-card:hover,
+.world-card:focus-visible {
+  transform: translateY(-4px) rotateX(4deg);
+  outline: 3px solid var(--accent, #0f766e);
+  outline-offset: 2px;
+}
+@media (max-width: 420px) {
+  .worlds { grid-template-columns: 1fr 1fr; }
+  .studio-sky { height: 72px; }
+}
+.dial-sim {
+  display: grid;
+  gap: 10px;
+  max-width: 40rem;
+  margin: 12px 0 20px;
+  padding: 14px;
+  border: 2px solid var(--accent, #0f766e);
+  border-radius: 16px;
+  background: var(--bg, #f3f6ff);
+  color: var(--ink, #16182b);
+}
+.dial-sim label { display: grid; gap: 4px; font-weight: 700; }
+.dial-sim input, .dial-sim select, .dial-sim button {
+  min-height: 44px;
+  font: inherit;
+  border-radius: 10px;
+  border: 2px solid var(--ink, #16182b);
+  padding: 6px 10px;
+  background: #fff;
+  color: #16182b;
+}
+.dial-sim button { background: #0f766e; color: #f8fffe; font-weight: 700; }
+.dial-sim pre {
+  white-space: pre-wrap;
+  margin: 0;
+  padding: 10px;
+  border-radius: 10px;
+  background: #0b1120;
+  color: #e0f2fe;
+}
+.dial-sim button:focus-visible,
+.dial-sim input:focus-visible,
+.dial-sim select:focus-visible { outline: 3px solid #fde047; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .studio-sky { display: none; }
+  .world-card,
+  .world-card:hover,
+  .world-card:focus-visible { transform: none; transition: none; }
+}

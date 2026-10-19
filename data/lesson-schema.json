@@ -1,0 +1,16 @@
+{
+  "required": [
+    "key",
+    "title",
+    "level",
+    "outcomes",
+    "sources",
+    "href",
+    "last_verified"
+  ],
+  "level": {
+    "min": 0,
+    "max": 10
+  },
+  "last_verified": "null or YYYY-MM-DD"
+}
