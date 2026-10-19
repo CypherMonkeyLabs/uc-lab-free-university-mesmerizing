@@ -1,0 +1,161 @@
+{
+  "components": [
+    {
+      "name": "Outfit",
+      "version": "unconfirmed",
+      "licence": "SIL Open Font License 1.1",
+      "url": "https://github.com/Outfitio/Outfit-Fonts",
+      "licence_file": "assets/fonts/Outfit-OFL.txt",
+      "files": [
+        {
+          "path": "assets/fonts/outfit-latin.woff2",
+          "sha256": "3a462c85b910c74e32c9cfaa5a1906c72043606f7bff6f6ff90a7de06468d20c"
+        },
+        {
+          "path": "assets/fonts/Outfit-OFL.txt",
+          "sha256": "c676351bf8576b9aba743cd5eaa8c0e7ee0d51f805d720447b4df4ddb6a2e416"
+        }
+      ]
+    },
+    {
+      "name": "three.js (campus)",
+      "version": "unconfirmed",
+      "licence": "MIT",
+      "url": "https://github.com/mrdoob/three.js",
+      "licence_file": "campus/assets/vendor/THREE-LICENSE",
+      "files": [
+        {
+          "path": "campus/assets/vendor/three.module.min.js",
+          "sha256": "08fd7545d13d2c7fb65ab691530a802dafefd638596501854f267d0fb13c39e7"
+        },
+        {
+          "path": "campus/assets/vendor/THREE-LICENSE",
+          "sha256": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454"
+        }
+      ]
+    },
+    {
+      "name": "three.js (flagship)",
+      "version": "unconfirmed",
+      "licence": "MIT",
+      "url": "https://github.com/mrdoob/three.js",
+      "licence_file": "flagship/assets/vendor/licenses/three-MIT.txt",
+      "files": [
+        {
+          "path": "flagship/assets/vendor/three.module.js",
+          "sha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea"
+        },
+        {
+          "path": "flagship/assets/vendor/three.core.js",
+          "sha256": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6"
+        },
+        {
+          "path": "flagship/assets/vendor/licenses/three-MIT.txt",
+          "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+        }
+      ]
+    },
+    {
+      "name": "d3",
+      "version": "unconfirmed",
+      "licence": "ISC",
+      "url": "https://github.com/d3/d3",
+      "licence_file": "flagship/assets/vendor/licenses/d3-ISC.txt",
+      "files": [
+        {
+          "path": "flagship/assets/vendor/d3.min.js",
+          "sha256": "f2094bbf6141b359722c4fe454eb6c4b0f0e42cc10cc7af921fc158fceb86539"
+        },
+        {
+          "path": "flagship/assets/vendor/licenses/d3-ISC.txt",
+          "sha256": "3e6849627f74ff73c257a3ae1efb574015d94fc1035c05ec3c15805165efcbc4"
+        }
+      ]
+    },
+    {
+      "name": "markmap-view",
+      "version": "unconfirmed",
+      "licence": "MIT",
+      "url": "https://github.com/markmap/markmap",
+      "licence_file": "flagship/assets/vendor/licenses/markmap-view-MIT.txt",
+      "files": [
+        {
+          "path": "flagship/assets/vendor/markmap-view.js",
+          "sha256": "861eb6d20af18aaa300878d46d695722a73625c58b40f49236af027f18b74e07"
+        },
+        {
+          "path": "flagship/assets/vendor/licenses/markmap-view-MIT.txt",
+          "sha256": "6595d9ee0cf25c14d247e7d78f82f9e3b291bb6a2265e34cb084dc46bdab7cf4"
+        }
+      ]
+    },
+    {
+      "name": "rough.js",
+      "version": "unconfirmed",
+      "licence": "MIT",
+      "url": "https://github.com/rough-stuff/rough",
+      "licence_file": "flagship/assets/vendor/licenses/roughjs-MIT.txt",
+      "files": [
+        {
+          "path": "flagship/assets/vendor/rough.esm.js",
+          "sha256": "e921535f216ebc93d422489d614da955b5286812220b3149fc70978f4cb5bd45"
+        },
+        {
+          "path": "flagship/assets/vendor/licenses/roughjs-MIT.txt",
+          "sha256": "dca9a392272606ac748ac0976a2a1133f14eef841c27beaa51a844d53c56a09d"
+        }
+      ]
+    },
+    {
+      "name": "anime.js",
+      "version": "unconfirmed",
+      "licence": "MIT",
+      "url": "https://github.com/juliangarnier/anime",
+      "licence_file": "flagship/assets/vendor/licenses/animejs-MIT.md",
+      "files": [
+        {
+          "path": "flagship/assets/vendor/anime.esm.min.js",
+          "sha256": "a19015a1a92d52025a2fb6703b6d67eadd1cc2aeaf880770e96e04cf6aa07be1"
+        },
+        {
+          "path": "flagship/assets/vendor/licenses/animejs-MIT.md",
+          "sha256": "3f3e835a9952cfc2a6ca836fb95b3257c981f24fa3ef51249055acb09931897b"
+        }
+      ]
+    },
+    {
+      "name": "mermaid",
+      "version": "unconfirmed",
+      "licence": "MIT",
+      "url": "https://github.com/mermaid-js/mermaid",
+      "licence_file": "flagship/assets/vendor/licenses/mermaid-MIT.txt",
+      "files": [
+        {
+          "path": "flagship/assets/vendor/mermaid.min.js",
+          "sha256": "a8a6a6f805b074a8261a2825c86f99c8054acb3b35f50bb7e24a4f9f2c3c3b9f"
+        },
+        {
+          "path": "flagship/assets/vendor/licenses/mermaid-MIT.txt",
+          "sha256": "ec9fb67dcb25eccc416ed56e1aab819222c805a2a4bfe4cb19e7556bf2ffde80"
+        }
+      ]
+    },
+    {
+      "name": "canvas-confetti",
+      "version": "unconfirmed",
+      "licence": "ISC",
+      "url": "https://github.com/catdad/canvas-confetti",
+      "licence_file": "flagship/assets/vendor/licenses/canvas-confetti-ISC.txt",
+      "files": [
+        {
+          "path": "flagship/assets/vendor/confetti.browser.js",
+          "sha256": "49f4bcbc56e7ceb5c3d25d13db1d0da965b6cd1c8a54a707bb055be0685b0a95"
+        },
+        {
+          "path": "flagship/assets/vendor/licenses/canvas-confetti-ISC.txt",
+          "sha256": "fd44477c30a832a1dee9ef0b6cfb34677fbe5ef58c0cf655d27c646f11bb2f7a"
+        }
+      ]
+    }
+  ]
+}

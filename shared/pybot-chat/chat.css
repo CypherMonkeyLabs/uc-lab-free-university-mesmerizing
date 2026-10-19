@@ -1,0 +1,183 @@
+/* Chat dock inside a lab bot panel. Copy this file with engine.js and ui.js. */
+.py-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  background: var(--bg-elev);
+  flex: 0 0 auto;
+}
+.bot-dock .py-chat {
+  min-height: 0;
+}
+.bot-panel .py-chat-log {
+  max-height: min(180px, 28vh);
+}
+.bp-head,
+.bp-bot,
+.py-chat-beta,
+.py-chat-try,
+.py-chat-examples,
+.py-chat-chips,
+.py-chat-form,
+.py-chat > .bp-link { flex: 0 0 auto; }
+.bp-scroll { overflow: auto; min-height: 0; flex: 1 1 auto; }
+.py-chat-log {
+  max-height: 112px;
+  min-height: 0;
+  flex: 0 1 auto;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+}
+.py-msg { max-width: 95%; padding: 6px 8px; border-radius: 12px; font-size: 0.88rem; line-height: 1.35; }
+.py-msg p { margin: 0; }
+.py-msg-user { align-self: flex-end; background: color-mix(in srgb, var(--accent) 22%, var(--bg)); }
+.py-msg-bot { align-self: flex-start; background: color-mix(in srgb, var(--accent-2, var(--accent)) 12%, var(--bg)); border: 1px solid var(--line); }
+.py-msg-link { display: inline-flex; margin-top: 4px; font-weight: 700; }
+.py-msg-code { margin: 6px 0 0; padding: 6px; overflow: auto; border-radius: 8px; background: var(--code-bg, var(--bg)); font-size: 0.75rem; }
+.py-chat-try { margin: 0; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.py-chat-examples, .py-chat-chips { display: flex; gap: 6px; overflow-x: auto; }
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.py-chat-form { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; width: 100%; position: relative; }
+.py-chat-form input {
+  flex: 1 1 200px;
+  min-width: 180px;
+  width: auto;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+}
+.py-chat-form button, .py-mic {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.py-chat-form button[type="submit"] { background: var(--accent); color: var(--btn-ink); border-color: var(--accent); }
+.py-chat-form button:focus-visible, .py-mic:focus-visible, #py-chat-input:focus-visible, .py-read:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+@media (min-width: 900px) {
+  .py-chat-log { max-height: 168px; }
+}
+@media (max-width: 420px) {
+  .py-chat-log { max-height: 88px; }
+  .py-chat-form button[type="submit"] { padding-inline: 8px; }
+}
+@media (max-height: 520px) {
+  .bot-dock.is-open .py-chat-beta,
+  .bot-dock.is-open .py-chat-try,
+  .bot-dock.is-open .py-chat-examples,
+  .bot-dock.is-open .py-chat-chips { display: none; }
+  .bot-dock.is-open .py-chat {
+    flex: 1 1 auto;
+    min-height: 0;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+    gap: 4px;
+    overflow: hidden;
+  }
+  .bot-dock.is-open .py-chat-log {
+    flex: 1 1 auto;
+    min-height: 120px;
+    max-height: none;
+    overflow: auto;
+  }
+  .bot-dock.is-open .py-chat-form,
+  .bot-dock.is-open .py-chat > .bp-link { flex: 0 0 auto; }
+}
+.bot-dock.is-compact .py-chat-beta,
+.bot-dock.is-compact .py-chat-try,
+.bot-dock.is-compact .py-chat-examples,
+.bot-dock.is-compact .py-chat-chips { display: none; }
+.bot-dock.is-compact .py-chat {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+  gap: 4px;
+  overflow: hidden;
+}
+.bot-dock.is-compact .py-chat-log {
+  flex: 1 1 auto;
+  min-height: 120px;
+  max-height: none;
+  overflow: auto;
+}
+.bot-dock.is-compact .py-chat-form,
+.bot-dock.is-compact .py-chat > .bp-link { flex: 0 0 auto; }
+@media (max-height: 560px) {
+  .bot-panel { padding: 4px 8px; }
+  .bp-head,
+  .bp-bot,
+  .bp-scroll { display: none; }
+  .py-chat {
+    flex: 1 1 auto;
+    min-height: 0;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+    gap: 4px;
+    overflow: hidden;
+  }
+  .py-chat-try,
+  .py-chat-examples,
+  .py-chat-chips { display: none; }
+  .py-chat > .bp-link {
+    display: inline-flex;
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 1.2;
+  }
+  .py-chat-log {
+    flex: 1 1 auto;
+    min-height: 48px;
+    max-height: none;
+    overflow: auto;
+    padding: 4px 6px;
+    border-width: 0;
+  }
+  .py-chat-form button,
+  .py-mic,
+  .py-chat-form input { min-height: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bot-panel { animation: none; }
+  .py-chat-log { scroll-behavior: auto; }
+}
+
+.py-chat-beta { margin: 0; font-size: 0.75rem; line-height: 1.3; color: var(--muted); }
+.py-beta-badge { display: inline-block; padding: 1px 7px; margin-right: 4px; border-radius: 999px; border: 1px solid var(--accent); background: var(--accent); color: var(--btn-ink); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+@media (max-height: 559px) { .py-chat-beta { font-size: 0.7rem; } }

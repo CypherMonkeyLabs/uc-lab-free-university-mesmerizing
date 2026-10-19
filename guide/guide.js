@@ -360,6 +360,7 @@
   function answer(text) {
     var q = (text || "").trim();
     if (!q) return;
+    if (window.UC_ASK) { window.UC_ASK(q); return; }
     sayLocal("You: " + q);
     input.value = "";
     var lower = q.toLowerCase();
@@ -393,6 +394,20 @@
     event.preventDefault();
     answer(input.value);
   });
+  var chatHost = document.createElement("div");
+  chatHost.id = "uc-chat-host";
+  panel.insertBefore(chatHost, dock.querySelector(".bot-form"));
+  var chatCss = document.createElement("link");
+  chatCss.rel = "stylesheet";
+  chatCss.href = base + "shared/pybot-chat/chat.css";
+  document.head.appendChild(chatCss);
+  var chatUrl = new URL((base || "./") + "guide/ucbot-host.js", window.location.href).href;
+  import(chatUrl).then(function (mod) {
+    return mod.mountChat(chatHost, base);
+  }).then(function () {
+    dock.querySelector(".bot-form").hidden = true;
+    log.hidden = true;
+  }).catch(function (err) { console.error("UC chat did not mount", err); /* typed questions keep the older page finder */ });
 
   dock.querySelector("[data-ambient]").addEventListener("click", function (event) {
     var on = event.currentTarget.getAttribute("aria-pressed") !== "true";
@@ -627,6 +642,16 @@
   window.addEventListener("resize", parkOffLede);
   window.addEventListener("scroll", parkOffLede, { passive: true });
   window.addEventListener("load", parkOffLede);
+
+  function fitCompact() {
+    var vv = window.visualViewport;
+    var viewH = vv ? vv.height : window.innerHeight;
+    var keyboard = !!(vv && window.innerHeight - vv.height > 80);
+    dock.classList.toggle("is-compact", viewH <= 520 || keyboard);
+  }
+  fitCompact();
+  window.addEventListener("resize", fitCompact);
+  if (window.visualViewport) window.visualViewport.addEventListener("resize", fitCompact);
 
   // Pages without the tour anchors (the campus app) skip straight to the greeting.
   if (!state.tour && document.querySelector("[data-tour='home']")) showTour();
