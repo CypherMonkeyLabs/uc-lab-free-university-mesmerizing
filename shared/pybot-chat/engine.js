@@ -377,6 +377,17 @@ function hasDomainTerm(text, domain, syn, pool, freq) {
   return weak >= 1 && foreign === 0;
 }
 
+/* "agent" and "queue" are ordinary words. Together they are not a lesson title.
+   A query made only of those words must not open the UCCE page. */
+function thinQueueOnly(text) {
+  const parts = normalize(text).split(" ").filter((word) => word && word.length >= 2 && !STOP.has(word) && !FILLER.has(word));
+  if (!parts.length) return false;
+  return parts.every((word) => {
+    const rooted = stem(word);
+    return word === "agent" || word === "queue" || rooted === "agent" || rooted === "queue";
+  });
+}
+
 const GREET_FILL = new Set("there friend py everyone folks all buddy pal anyone home up whats ya bot again today please just so hi hello".split(" "));
 
 function smallTalk(q) {
@@ -997,6 +1008,7 @@ export function createRetriever(index) {
     if (!routed.searchText) return routed;
     const titled = docs.some((doc) => doc.titleNorm.length >= 8 && normalize(routed.searchText).includes(doc.titleNorm));
     if (!titled && !hasDomainTerm(routed.searchText, domain, syn, pool, freq)) return fallbackAnswer([], routed.followMode, true);
+    if (thinQueueOnly(routed.searchText)) return fallbackAnswer([], routed.followMode, true);
     const seed = matchSeed(routed.searchText);
     if (seed) return fromSeed(seed, limited);
     const qTerms = queryTokens(routed.searchText, syn, pool, knownSet, seedPool, freq);

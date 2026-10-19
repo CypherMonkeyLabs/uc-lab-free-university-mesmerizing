@@ -643,6 +643,16 @@
   window.addEventListener("scroll", parkOffLede, { passive: true });
   window.addEventListener("load", parkOffLede);
 
+  function fitCompact() {
+    var vv = window.visualViewport;
+    var viewH = vv ? vv.height : window.innerHeight;
+    var keyboard = !!(vv && window.innerHeight - vv.height > 80);
+    dock.classList.toggle("is-compact", viewH <= 520 || keyboard);
+  }
+  fitCompact();
+  window.addEventListener("resize", fitCompact);
+  if (window.visualViewport) window.visualViewport.addEventListener("resize", fitCompact);
+
   // Pages without the tour anchors (the campus app) skip straight to the greeting.
   if (!state.tour && document.querySelector("[data-tour='home']")) showTour();
   else if (!state.greeted) greetCenter();

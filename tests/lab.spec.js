@@ -88,7 +88,7 @@ test("offline reload still opens a lesson and the guide", async ({ page, context
   await page.waitForFunction(async () => {
     const ready = await navigator.serviceWorker.ready;
     if (!ready.active) return false;
-    const cache = await caches.open("uc-university-r10");
+    const cache = await caches.open("uc-university-r11");
     const index = await cache.match("./js/content/ucbot-index.json");
     const engine = await cache.match("./shared/pybot-chat/engine.js");
     const lesson = await cache.match("./rooms/sip-transactions.html");
@@ -120,6 +120,46 @@ test("dial-plan desk is labeled as a simulation", async ({ page }) => {
   await page.locator("[data-css]").selectOption("internal");
   await page.locator("[data-sim-run]").click();
   await expect(page.locator("[data-sim-out]")).toContainText("cannot see it");
+});
+
+test("chat input and Send stay on screen at 390x430", async ({ browser }) => {
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 430 },
+    hasTouch: true,
+    isMobile: true,
+  });
+  await context.addInitScript(seen);
+  const page = await context.newPage();
+  await page.goto("/index.html");
+  await page.locator(".monkey-btn").click();
+  const input = page.locator("#py-chat-input");
+  const send = page.locator(".py-chat-form button[type=submit]");
+  await expect(input).toBeVisible();
+  await expect(send).toBeVisible();
+  const box = await page.evaluate(() => {
+    function place(el) {
+      const rect = el.getBoundingClientRect();
+      const x = Math.min(window.innerWidth - 2, Math.max(2, rect.left + rect.width / 2));
+      const y = Math.min(window.innerHeight - 2, Math.max(2, rect.top + rect.height / 2));
+      const top = document.elementFromPoint(x, y);
+      return {
+        inView: rect.top >= -1 && rect.bottom <= window.innerHeight + 1 && rect.left >= -1 && rect.right <= window.innerWidth + 1 && rect.height > 8,
+        hit: !!(top && (top === el || el.contains(top))),
+      };
+    }
+    const log = document.querySelector(".py-chat-log");
+    return {
+      input: place(document.querySelector("#py-chat-input")),
+      send: place(document.querySelector(".py-chat-form button[type=submit]")),
+      log: log.getBoundingClientRect().height,
+    };
+  });
+  expect(box.input.inView, "input is outside the 430px viewport").toBe(true);
+  expect(box.input.hit, "input is covered").toBe(true);
+  expect(box.send.inView, "Send is outside the 430px viewport").toBe(true);
+  expect(box.send.hit, "Send is covered").toBe(true);
+  expect(box.log, "answer area is under 120px").toBeGreaterThanOrEqual(120);
+  await context.close();
 });
 
 test("reduced motion still shows the home page", async ({ page }) => {

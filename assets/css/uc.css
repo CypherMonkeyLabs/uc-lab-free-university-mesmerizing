@@ -732,6 +732,63 @@ section.is-reading {
   .bot-dock:not(.is-open) .bot-panel { display: none; }
   .sheet-handle { display: flex; }
 }
+/* Short viewports, including a keyboard that leaves about 430px. */
+@media (max-height: 520px) {
+  .bot-dock.is-open {
+    top: 6px;
+    bottom: calc(84px + env(safe-area-inset-bottom));
+    left: 8px;
+    right: 8px;
+    width: auto;
+    max-height: none;
+    overflow: hidden;
+  }
+}
+.bot-dock.is-compact.is-open {
+  top: 6px;
+  bottom: calc(84px + env(safe-area-inset-bottom));
+  left: 8px;
+  right: 8px;
+  width: auto;
+  max-height: none;
+  overflow: hidden;
+}
+@media (max-height: 520px) {
+  .bot-dock.is-open .monkey-btn { display: none; }
+  .bot-dock.is-open .bot-disclaimer,
+  .bot-dock.is-open .choice-row,
+  .bot-dock.is-open .voice-pick,
+  .bot-dock.is-open .bot-extras,
+  .bot-dock.is-open .bot-log { display: none !important; }
+  .bot-dock.is-open .bot-panel {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: none;
+    overflow: hidden;
+    margin-top: 0;
+    padding: 4px 8px 8px;
+    gap: 4px;
+  }
+  .bot-dock.is-open .sheet-handle { min-height: 36px; }
+  .bot-dock.is-open .choice-row { margin-top: 0; }
+}
+.bot-dock.is-compact.is-open .monkey-btn { display: none; }
+.bot-dock.is-compact.is-open .bot-disclaimer,
+.bot-dock.is-compact.is-open .choice-row,
+.bot-dock.is-compact.is-open .voice-pick,
+.bot-dock.is-compact.is-open .bot-extras,
+.bot-dock.is-compact.is-open .bot-log { display: none !important; }
+.bot-dock.is-compact.is-open .bot-panel {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none;
+  overflow: hidden;
+  margin-top: 0;
+  padding: 4px 8px 8px;
+  gap: 4px;
+}
+.bot-dock.is-compact.is-open .sheet-handle { min-height: 36px; }
+.bot-dock.is-compact.is-open .choice-row { margin-top: 0; }
 @media (max-width: 520px) {
   .track-tile { padding-right: 12px; }
 }
