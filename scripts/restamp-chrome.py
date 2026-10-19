@@ -57,7 +57,7 @@ def lazy_mindmap(body: str) -> str:
     script = (
         "(function () {\n"
         "  var data = " + data + ";\n"
-        "  var root = (document.body && document.body.getAttribute('data-root')) || '';\n"
+        "  var root = '../';\n"
         "  function load(src) {\n"
         "    return new Promise(function (resolve, reject) {\n"
         "      var script = document.createElement('script');\n"

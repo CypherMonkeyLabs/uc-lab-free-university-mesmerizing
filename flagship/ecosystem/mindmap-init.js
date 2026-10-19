@@ -1,7 +1,7 @@
 
 (function () {
   var data = {"content": "UC Lab", "children": [{"content": "Signaling", "children": [{"content": "REGISTER", "children": []}, {"content": "INVITE", "children": []}, {"content": "SDP", "children": []}]}, {"content": "Edge", "children": [{"content": "CUBE", "children": []}, {"content": "MRA", "children": []}, {"content": "SRTP", "children": []}]}, {"content": "Cloud", "children": [{"content": "Webex Calling", "children": []}, {"content": "Teams Phone", "children": []}]}, {"content": "Around the agent", "children": [{"content": "WFM", "children": []}, {"content": "Recording", "children": []}, {"content": "CRM", "children": []}]}]};
-  var root = (document.body && document.body.getAttribute('data-root')) || '';
+  var root = '../';
   function load(src) {
     return new Promise(function (resolve, reject) {
       var script = document.createElement('script');

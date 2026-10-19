@@ -17,7 +17,7 @@ from csp_policy import CSP_CONTENT, CSP_META
 
 ROOT = Path(__file__).resolve().parents[1]
 SKIP = {".git", "node_modules"}
-SCRIPT_RE = re.compile(r"<script\b([^>]*)>(.*?)</script>", re.I | re.S)
+SCRIPT_RE = re.compile(r"<script\b([^>]*)>(.*?)</script\s*>", re.I | re.S)
 CHARSET_RE = re.compile(r"<meta\s+charset\s*=\s*[\"']utf-8[\"']\s*/?>", re.I)
 HEAD_RE = re.compile(r"<head[^>]*>", re.I)
 TYPE_RE = re.compile(r"""\btype\s*=\s*(["'])([^"']+)\1""", re.I)
