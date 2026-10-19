@@ -210,7 +210,11 @@ def main() -> int:
     if not teams_extra:
         fail(errors, "Teams Phone PSTN checklist addition is missing")
     sections = catalog
-    stats = re.search(r"window\.STATS = (\{.*?\});", html)
+    stats_source = html
+    boot_path = ROOT / "campus" / "assets" / "campus-boot.js"
+    if boot_path.is_file():
+        stats_source += "\n" + boot_path.read_text(encoding="utf-8")
+    stats = re.search(r"window\.STATS = (\{.*?\});", stats_source)
     if not stats:
         fail(errors, "window.STATS missing")
     else:

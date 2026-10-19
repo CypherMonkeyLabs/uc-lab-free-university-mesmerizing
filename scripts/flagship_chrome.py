@@ -199,6 +199,7 @@ def render_chrome(rel: str, title: str, body: str, description: str, order: list
 <html lang="en" data-theme="neon">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob: data:; font-src 'self' data:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)} · UC Lab Free University</title>
 <meta name="description" content="{esc(description)}">
@@ -207,19 +208,7 @@ def render_chrome(rel: str, title: str, body: str, description: str, order: list
 <link rel="apple-touch-icon" href="{root}assets/icon.svg">
 <link rel="manifest" href="{root}manifest.webmanifest">
 <link rel="stylesheet" href="{root}assets/site.css">
-<script>
-try {{
-  var params = new URLSearchParams(location.search);
-  var t = params.get("theme") || localStorage.getItem("uc_flagship_theme");
-  var ok = {{neon:1, holographic:1, cyberpunk:1, sunset:1, light:1}};
-  if (ok[t]) document.documentElement.setAttribute("data-theme", t);
-  var motion = localStorage.getItem("uc_flagship_motion");
-  if (motion === "reduce" || motion === "allow") document.documentElement.setAttribute("data-motion", motion);
-  var lang = localStorage.getItem("uc_flagship_lang");
-  if (lang) document.documentElement.lang = lang;
-  if (lang === "ar") document.documentElement.dir = "rtl";
-}} catch (e) {{}}
-</script>
+<script src="{root}assets/flagship-theme.js"></script>
 </head>
 <body data-root="{root}">
 <a class="skip" href="#content" data-i18n="skip">Skip to content</a>

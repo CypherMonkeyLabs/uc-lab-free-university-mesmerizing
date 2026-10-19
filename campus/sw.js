@@ -7,6 +7,7 @@ var SHELL = [
   "./uc-lab-free-university.html",
   "./manifest.webmanifest",
   "./assets/app.css",
+  "./assets/campus-boot.js",
   "./assets/app.js",
   "./assets/telephony.js",
   "./assets/tools.js",
