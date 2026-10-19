@@ -377,6 +377,16 @@ function hasDomainTerm(text, domain, syn, pool, freq) {
   return weak >= 1 && foreign === 0;
 }
 
+/* Pet names and "a name for ..." are not lab questions unless a real UC term is present. */
+function casualNaming(text) {
+  const q = normalize(text);
+  const pet = /\b(dog|dogs|cat|cats|pet|pets|puppy|puppies|kitten|kittens|goldfish|parrot|hamster)\b/.test(q);
+  const naming = /\b(a name|name for|name my|names for|nickname|what to name|should i name)\b/.test(q);
+  if (!pet && !naming) return false;
+  const parts = q.split(" ").filter(Boolean);
+  return !parts.some((word) => STRONG_WORDS.has(word) || STRONG_WORDS.has(stem(word)));
+}
+
 /* "agent" and "queue" are ordinary words. Together they are not a lesson title.
    A query made only of those words must not open the UCCE page. */
 function thinQueueOnly(text) {
@@ -1009,6 +1019,7 @@ export function createRetriever(index) {
     const titled = docs.some((doc) => doc.titleNorm.length >= 8 && normalize(routed.searchText).includes(doc.titleNorm));
     if (!titled && !hasDomainTerm(routed.searchText, domain, syn, pool, freq)) return fallbackAnswer([], routed.followMode, true);
     if (thinQueueOnly(routed.searchText)) return fallbackAnswer([], routed.followMode, true);
+    if (casualNaming(routed.searchText)) return fallbackAnswer([], routed.followMode, true);
     const seed = matchSeed(routed.searchText);
     if (seed) return fromSeed(seed, limited);
     const qTerms = queryTokens(routed.searchText, syn, pool, knownSet, seedPool, freq);
