@@ -1,6 +1,6 @@
 /* Same-origin cache for the UC university shell.
    Scope is the directory that contains this file. Register with { scope: "./" }. */
-var CACHE = "uc-university-r11";
+var CACHE = "uc-university-r12";
 var SHELL = [
   "./",
   "./index.html",

@@ -45,10 +45,23 @@
 .py-msg-code { margin: 6px 0 0; padding: 6px; overflow: auto; border-radius: 8px; background: var(--code-bg, var(--bg)); font-size: 0.75rem; }
 .py-chat-try { margin: 0; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
 .py-chat-examples, .py-chat-chips { display: flex; gap: 6px; overflow-x: auto; }
-.py-chat-form { display: flex; gap: 6px; align-items: center; }
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.py-chat-form { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; width: 100%; position: relative; }
 .py-chat-form input {
-  flex: 1;
-  min-width: 0;
+  flex: 1 1 200px;
+  min-width: 180px;
+  width: auto;
+  max-width: 100%;
   min-height: 44px;
   padding: 6px 10px;
   border-radius: 10px;

@@ -88,7 +88,7 @@ test("offline reload still opens a lesson and the guide", async ({ page, context
   await page.waitForFunction(async () => {
     const ready = await navigator.serviceWorker.ready;
     if (!ready.active) return false;
-    const cache = await caches.open("uc-university-r11");
+    const cache = await caches.open("uc-university-r12");
     const index = await cache.match("./js/content/ucbot-index.json");
     const engine = await cache.match("./shared/pybot-chat/engine.js");
     const lesson = await cache.match("./rooms/sip-transactions.html");
@@ -120,6 +120,25 @@ test("dial-plan desk is labeled as a simulation", async ({ page }) => {
   await page.locator("[data-css]").selectOption("internal");
   await page.locator("[data-sim-run]").click();
   await expect(page.locator("[data-sim-out]")).toContainText("cannot see it");
+});
+
+test("chat input is at least 180px wide on a phone", async ({ browser }) => {
+  for (const viewport of [
+    { width: 390, height: 844 },
+    { width: 390, height: 430 },
+  ]) {
+    const context = await browser.newContext({ viewport, hasTouch: true, isMobile: true });
+    await context.addInitScript(seen);
+    const page = await context.newPage();
+    await page.goto("/index.html");
+    await page.locator(".monkey-btn").click();
+    const input = page.locator("#py-chat-input");
+    await expect(input).toBeVisible();
+    const width = await input.evaluate((el) => el.getBoundingClientRect().width);
+    expect(width, `input width at ${viewport.width}x${viewport.height}`).toBeGreaterThanOrEqual(180);
+    await expect(page.locator(".py-chat-form button[type=submit]")).toBeVisible();
+    await context.close();
+  }
 });
 
 test("chat input and Send stay on screen at 390x430", async ({ browser }) => {
