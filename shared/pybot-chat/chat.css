@@ -81,6 +81,50 @@
   .py-chat-log { max-height: 88px; }
   .py-chat-form button[type="submit"] { padding-inline: 8px; }
 }
+@media (max-height: 520px) {
+  .bot-dock.is-open .py-chat-beta,
+  .bot-dock.is-open .py-chat-try,
+  .bot-dock.is-open .py-chat-examples,
+  .bot-dock.is-open .py-chat-chips { display: none; }
+  .bot-dock.is-open .py-chat {
+    flex: 1 1 auto;
+    min-height: 0;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+    gap: 4px;
+    overflow: hidden;
+  }
+  .bot-dock.is-open .py-chat-log {
+    flex: 1 1 auto;
+    min-height: 120px;
+    max-height: none;
+    overflow: auto;
+  }
+  .bot-dock.is-open .py-chat-form,
+  .bot-dock.is-open .py-chat > .bp-link { flex: 0 0 auto; }
+}
+.bot-dock.is-compact .py-chat-beta,
+.bot-dock.is-compact .py-chat-try,
+.bot-dock.is-compact .py-chat-examples,
+.bot-dock.is-compact .py-chat-chips { display: none; }
+.bot-dock.is-compact .py-chat {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+  gap: 4px;
+  overflow: hidden;
+}
+.bot-dock.is-compact .py-chat-log {
+  flex: 1 1 auto;
+  min-height: 120px;
+  max-height: none;
+  overflow: auto;
+}
+.bot-dock.is-compact .py-chat-form,
+.bot-dock.is-compact .py-chat > .bp-link { flex: 0 0 auto; }
 @media (max-height: 560px) {
   .bot-panel { padding: 4px 8px; }
   .bp-head,

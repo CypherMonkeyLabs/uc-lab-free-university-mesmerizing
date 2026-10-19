@@ -95,7 +95,7 @@
     var correct = 0;
     function render() {
       if (cursor >= 8 || cursor >= order.length) {
-        host.innerHTML = "<p class='num'>" + correct + " / " + cursor + "</p><p>8 rounds or the end of the deck. A score of 6 or more earns the Port ear badge.</p>";
+        host.innerHTML = "<p class='num'>" + correct + " / " + cursor + "</p><p>8 rounds or the end of the deck. A score of 6 or more unlocks the Port ear badge.</p>";
         if (correct >= 6) award("ports");
         return;
       }
@@ -203,9 +203,9 @@
     if (!list) return;
     var got = {};
     try { got = JSON.parse(localStorage.getItem("uc_flagship_badges") || "{}"); } catch (err) { got = {}; }
-    var earned = Object.keys(got).length;
-    list.innerHTML = "<p class='num'>" + earned + " / " + BADGES.length + "</p>" + BADGES.map(function (row) {
-      var on = got[row[0]] ? "Earned" : "Not yet";
+    var unlockedCount = Object.keys(got).length;
+    list.innerHTML = "<p class='num'>" + unlockedCount + " / " + BADGES.length + "</p>" + BADGES.map(function (row) {
+      var on = got[row[0]] ? "Unlocked" : "Not yet";
       return "<article class='paper'><h2>" + row[1] + "</h2><p>" + row[2] + "</p><p class='muted'>" + on + "</p></article>";
     }).join("");
   }
