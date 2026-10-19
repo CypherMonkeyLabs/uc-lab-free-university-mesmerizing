@@ -158,7 +158,7 @@
   });
 
   if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
-    navigator.serviceWorker.register(fromRoot("sw.js")).catch(function () { /* file or private mode */ });
+    navigator.serviceWorker.register(fromRoot("sw.js"), { scope: rootPrefix || "./" }).catch(function () { /* file or private mode */ });
   }
 
   function motionOff() {

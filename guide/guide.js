@@ -360,6 +360,7 @@
   function answer(text) {
     var q = (text || "").trim();
     if (!q) return;
+    if (window.UC_ASK) { window.UC_ASK(q); return; }
     sayLocal("You: " + q);
     input.value = "";
     var lower = q.toLowerCase();
@@ -393,6 +394,19 @@
     event.preventDefault();
     answer(input.value);
   });
+  var chatHost = document.createElement("div");
+  chatHost.id = "uc-chat-host";
+  panel.insertBefore(chatHost, dock.querySelector(".bot-form"));
+  var chatCss = document.createElement("link");
+  chatCss.rel = "stylesheet";
+  chatCss.href = base + "shared/pybot-chat/chat.css";
+  document.head.appendChild(chatCss);
+  import(base + "guide/ucbot-host.js").then(function (mod) {
+    return mod.mountChat(chatHost, base);
+  }).then(function () {
+    dock.querySelector(".bot-form").hidden = true;
+    log.hidden = true;
+  }).catch(function () { /* typed questions keep the older page finder */ });
 
   dock.querySelector("[data-ambient]").addEventListener("click", function (event) {
     var on = event.currentTarget.getAttribute("aria-pressed") !== "true";

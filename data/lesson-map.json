@@ -1,0 +1,697 @@
+{
+  "lessons": [
+    {
+      "key": "asterisk-freeswitch",
+      "title": "Asterisk and FreeSWITCH as the other PBX",
+      "level": 10,
+      "outcomes": [
+        "Wikipedia describes Asterisk as a software PBX that connects phones, the PSTN, and VoIP endpoints."
+      ],
+      "sources": [
+        "wikipedia-asterisk-wikipedia",
+        "asterisk-types-of-asterisk-modules",
+        "asterisk-configuring-res-pjsip",
+        "wikipedia-freeswitch-wikipedia",
+        "freeswitch-freeswitch-users-manual",
+        "rfc-3261"
+      ],
+      "href": "rooms/asterisk-freeswitch.html",
+      "last_verified": null
+    },
+    {
+      "key": "calling-versus-di",
+      "title": "Webex Calling and Dedicated Instance",
+      "level": 7,
+      "outcomes": [
+        "Multi-tenant Webex Calling and Dedicated Instance are different offers."
+      ],
+      "sources": [
+        "webex-get-started-with-webex-calling",
+        "webex-webex-help-center",
+        "cisco-cisco-unified-communications-manager-product-support",
+        "cisco-cisco-collaboration-preferred-architectures",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-voice-over-ip-wikipedia"
+      ],
+      "href": "rooms/calling-versus-di.html",
+      "last_verified": null
+    },
+    {
+      "key": "cer-erl-elin",
+      "title": "Emergency Responder, ERL, and ELIN",
+      "level": 9,
+      "outcomes": [
+        "Cisco Emergency Responder is a separate product. The support page opened here lists Release 15 as available, with a release date of 16 October 2023."
+      ],
+      "sources": [
+        "cisco-cisco-emergency-responder-product-support",
+        "cisco-plan-for-cisco-emergency-responder-release-15",
+        "cisco-configure-cisco-unified-communications-manager-emergency-responder",
+        "cisco-cisco-emergency-responder-administration-guide-release-15",
+        "cisco-cisco-unified-communications-manager-product-support",
+        "cisco-system-configuration-guide-for-cucm-release-15"
+      ],
+      "href": "rooms/cer-erl-elin.html",
+      "last_verified": null
+    },
+    {
+      "key": "cube-b2bua",
+      "title": "CUBE as a B2BUA",
+      "level": 3,
+      "outcomes": [
+        "CUBE terminates one dialog and starts another."
+      ],
+      "sources": [
+        "rfc-3261",
+        "rfc-3550",
+        "rfc-3711",
+        "cisco-cisco-unified-border-element-product-support",
+        "cisco-cube-configuration-guide-dial-peers-ios-xe-17-6-onwards",
+        "cisco-understand-ios-and-ios-xe-call-routing",
+        "ports-cucm-15-tcp-and-udp-port-usage",
+        "ports-iana-sip-parameters",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-session-initiation-protocol-wikipedia",
+        "rfc-4733",
+        "rfc-4566"
+      ],
+      "href": "rooms/cube-b2bua.html",
+      "last_verified": null
+    },
+    {
+      "key": "cucm-ucce-bridge",
+      "title": "The CUCM bridge into UCCE",
+      "level": 6,
+      "outcomes": [
+        "Agents are CUCM endpoints."
+      ],
+      "sources": [
+        "cisco-cisco-unified-contact-center-enterprise-product-support",
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "ports-cucm-15-tcp-and-udp-port-usage",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-voice-over-ip-wikipedia"
+      ],
+      "href": "rooms/cucm-ucce-bridge.html",
+      "last_verified": null
+    },
+    {
+      "key": "cutover-survivability",
+      "title": "Survivability during cutover",
+      "level": 7,
+      "outcomes": [
+        "Cloud calling needs a plan for when the cloud path is down."
+      ],
+      "sources": [
+        "webex-get-started-with-webex-calling",
+        "webex-webex-help-center",
+        "webex-get-started-with-local-gateway",
+        "webex-configure-local-gateway-on-cisco-ios-xe-for-webex-calling",
+        "ports-port-reference-for-webex-calling",
+        "cisco-cisco-unified-communications-manager-product-support",
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-voice-over-ip-wikipedia",
+        "cisco-cisco-unified-srst-product-support"
+      ],
+      "href": "rooms/cutover-survivability.html",
+      "last_verified": null
+    },
+    {
+      "key": "dial-peers",
+      "title": "Dial peers",
+      "level": 3,
+      "outcomes": [
+        "A dial peer matches an incoming or outgoing call."
+      ],
+      "sources": [
+        "cisco-understand-ios-and-ios-xe-call-routing",
+        "cisco-cube-configuration-guide-dial-peers-ios-xe-17-6-onwards",
+        "rfc-4733",
+        "cisco-cisco-unified-border-element-product-support",
+        "ports-iana-sip-parameters",
+        "ports-iana-service-names-and-port-numbers",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-session-initiation-protocol-wikipedia",
+        "wikipedia-voice-over-ip-wikipedia"
+      ],
+      "href": "rooms/dial-peers.html",
+      "last_verified": null
+    },
+    {
+      "key": "dscp-trust",
+      "title": "DSCP and the trust boundary",
+      "level": 5,
+      "outcomes": [
+        "Voice RTP is commonly marked EF, DSCP 46."
+      ],
+      "sources": [
+        "rfc-3246",
+        "rfc-4594",
+        "itu-itu-t-g-114-one-way-transmission-time",
+        "itu-itu-t-g-711-pulse-code-modulation-of-voice",
+        "cisco-cisco-collaboration-preferred-architectures",
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-differentiated-services-wikipedia",
+        "wikipedia-quality-of-service-wikipedia"
+      ],
+      "href": "rooms/dscp-trust.html",
+      "last_verified": null
+    },
+    {
+      "key": "dual-run",
+      "title": "Dual-run and rollback",
+      "level": 7,
+      "outcomes": [
+        "Move one number you can give back."
+      ],
+      "sources": [
+        "webex-get-started-with-webex-calling",
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "webex-get-started-with-local-gateway",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-voice-over-ip-wikipedia"
+      ],
+      "href": "rooms/dual-run.html",
+      "last_verified": null
+    },
+    {
+      "key": "emergency-direct",
+      "title": "Direct dial, notification, and location",
+      "level": 9,
+      "outcomes": [
+        "This page is study material, not legal advice and not an emergency plan."
+      ],
+      "sources": [
+        "fcc-fcc-kari-s-law-and-ray-baum-s-act-for-multi-line-telephone-systems",
+        "wikipedia-enhanced-911-wikipedia"
+      ],
+      "href": "rooms/emergency-direct.html",
+      "last_verified": null
+    },
+    {
+      "key": "emergency-onsite",
+      "title": "On-site alert, callback, and what this lab will not decide",
+      "level": 9,
+      "outcomes": [
+        "The Release 15 administration guide contents include on-site alerts, off-premises users, and a national E911 service provider. Those are different chapters."
+      ],
+      "sources": [
+        "cisco-cisco-emergency-responder-administration-guide-release-15",
+        "cisco-configure-cisco-unified-communications-manager-emergency-responder",
+        "fcc-fcc-kari-s-law-and-ray-baum-s-act-for-multi-line-telephone-systems",
+        "wikipedia-enhanced-911-wikipedia"
+      ],
+      "href": "rooms/emergency-onsite.html",
+      "last_verified": null
+    },
+    {
+      "key": "expressway-pair",
+      "title": "Expressway-C and Expressway-E",
+      "level": 4,
+      "outcomes": [
+        "Expressway-C lives on the inside, next to CUCM."
+      ],
+      "sources": [
+        "cisco-cisco-expressway-series-product-support",
+        "cisco-mobile-and-remote-access-through-cisco-expressway-x15-2",
+        "ports-cisco-expressway-ip-port-usage-x14-3-and-x15-0",
+        "cisco-cisco-unified-communications-manager-product-support",
+        "ports-cucm-15-tcp-and-udp-port-usage",
+        "cisco-cisco-collaboration-preferred-architectures",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-voice-over-ip-wikipedia"
+      ],
+      "href": "rooms/expressway-pair.html",
+      "last_verified": null
+    },
+    {
+      "key": "firewall-traversal",
+      "title": "Firewall and traversal",
+      "level": 4,
+      "outcomes": [
+        "Open the ports your version's guide lists."
+      ],
+      "sources": [
+        "ports-cisco-expressway-ip-port-usage-x14-3-and-x15-0",
+        "rfc-3550",
+        "rfc-8445",
+        "cisco-cisco-expressway-series-product-support",
+        "ports-iana-service-names-and-port-numbers",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-real-time-transport-protocol-wikipedia"
+      ],
+      "href": "rooms/firewall-traversal.html",
+      "last_verified": null
+    },
+    {
+      "key": "llq-delay",
+      "title": "LLQ and the delay budget",
+      "level": 5,
+      "outcomes": [
+        "Priority queue bandwidth is a limiter for the EF class."
+      ],
+      "sources": [
+        "rfc-3246",
+        "rfc-4594",
+        "itu-itu-t-g-114-one-way-transmission-time",
+        "itu-itu-t-g-711-pulse-code-modulation-of-voice",
+        "cisco-cisco-collaboration-preferred-architectures",
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-differentiated-services-wikipedia",
+        "wikipedia-quality-of-service-wikipedia"
+      ],
+      "href": "rooms/llq-delay.html",
+      "last_verified": null
+    },
+    {
+      "key": "local-gateway",
+      "title": "Local gateway toward Webex Calling",
+      "level": 3,
+      "outcomes": [
+        "The local gateway is how premises PSTN or a PBX meets Webex Calling."
+      ],
+      "sources": [
+        "webex-get-started-with-local-gateway",
+        "webex-configure-local-gateway-on-cisco-ios-xe-for-webex-calling",
+        "webex-get-started-with-webex-calling",
+        "ports-port-reference-for-webex-calling",
+        "rfc-3711",
+        "rfc-3261",
+        "cisco-cisco-unified-border-element-product-support",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-voice-over-ip-wikipedia"
+      ],
+      "href": "rooms/local-gateway.html",
+      "last_verified": null
+    },
+    {
+      "key": "locations-cac",
+      "title": "Locations and call admission control",
+      "level": 5,
+      "outcomes": [
+        "A CUCM location names a bandwidth budget between sites."
+      ],
+      "sources": [
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "cisco-preferred-architecture-for-cisco-collaboration-15-design-overview-",
+        "rfc-4594",
+        "cisco-cisco-unified-communications-manager-product-support",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-quality-of-service-wikipedia"
+      ],
+      "href": "rooms/locations-cac.html",
+      "last_verified": null
+    },
+    {
+      "key": "mra",
+      "title": "Mobile and Remote Access",
+      "level": 4,
+      "outcomes": [
+        "MRA lets a remote Cisco phone or Jabber register to CUCM through the Expressway pair."
+      ],
+      "sources": [
+        "cisco-mobile-and-remote-access-through-cisco-expressway-x15-2",
+        "cisco-cisco-expressway-series-product-support",
+        "ports-cisco-expressway-ip-port-usage-x14-3-and-x15-0",
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "ports-iana-service-names-and-port-numbers",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-voice-over-ip-wikipedia"
+      ],
+      "href": "rooms/mra.html",
+      "last_verified": null
+    },
+    {
+      "key": "offer-answer",
+      "title": "Offer and answer",
+      "level": 1,
+      "outcomes": [
+        "SDP is the offer or the answer, not a second signaling protocol you ignore."
+      ],
+      "sources": [
+        "rfc-3264",
+        "rfc-3261",
+        "rfc-4566",
+        "rfc-3550",
+        "cisco-cisco-unified-communications-manager-product-support",
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "ports-cucm-15-tcp-and-udp-port-usage",
+        "ports-iana-sip-parameters",
+        "ports-iana-rtp-parameters",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-session-initiation-protocol-wikipedia",
+        "wikipedia-real-time-transport-protocol-wikipedia",
+        "wikipedia-session-description-protocol-wikipedia"
+      ],
+      "href": "rooms/offer-answer.html",
+      "last_verified": null
+    },
+    {
+      "key": "one-change",
+      "title": "One hypothesis, one change",
+      "level": 8,
+      "outcomes": [
+        "Say what you think is broken, in one sentence."
+      ],
+      "sources": [
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "rfc-3261",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-session-initiation-protocol-wikipedia",
+        "ports-cucm-15-tcp-and-udp-port-usage"
+      ],
+      "href": "rooms/one-change.html",
+      "last_verified": null
+    },
+    {
+      "key": "one-way-audio",
+      "title": "One-way audio",
+      "level": 8,
+      "outcomes": [
+        "Signaling can be perfect while RTP fails in one direction."
+      ],
+      "sources": [
+        "rfc-3550",
+        "rfc-3264",
+        "rfc-3711",
+        "rfc-8445",
+        "cisco-cisco-unified-border-element-product-support",
+        "ports-cucm-15-tcp-and-udp-port-usage",
+        "ports-cisco-expressway-ip-port-usage-x14-3-and-x15-0",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-real-time-transport-protocol-wikipedia"
+      ],
+      "href": "rooms/one-way-audio.html",
+      "last_verified": null
+    },
+    {
+      "key": "open-sip-trunk",
+      "title": "A SIP trunk is a peer, not a brand",
+      "level": 10,
+      "outcomes": [
+        "Wikipedia's SIP trunking article describes a SIP service between a provider and a customer's SIP PBX."
+      ],
+      "sources": [
+        "wikipedia-sip-trunking-wikipedia",
+        "sipforum-sipconnect-technical-recommendation",
+        "rfc-3261",
+        "cisco-cisco-unified-communications-manager-product-support",
+        "cisco-system-configuration-guide-for-cucm-release-15"
+      ],
+      "href": "rooms/open-sip-trunk.html",
+      "last_verified": null
+    },
+    {
+      "key": "partitions-css",
+      "title": "Partitions and calling search spaces",
+      "level": 2,
+      "outcomes": [
+        "A partition is a bucket of patterns."
+      ],
+      "sources": [
+        "cisco-cisco-unified-communications-manager-product-support",
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "cisco-cisco-collaboration-preferred-architectures",
+        "cisco-preferred-architecture-for-cisco-collaboration-15-design-overview-",
+        "ports-cucm-15-tcp-and-udp-port-usage",
+        "ports-iana-sip-parameters",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-voice-over-ip-wikipedia",
+        "wikipedia-cucm-wikipedia-disambiguation"
+      ],
+      "href": "rooms/partitions-css.html",
+      "last_verified": null
+    },
+    {
+      "key": "prack-early-media",
+      "title": "Early media and PRACK",
+      "level": 1,
+      "outcomes": [
+        "183 Session Progress can carry SDP before answer."
+      ],
+      "sources": [
+        "rfc-3262",
+        "rfc-3261",
+        "rfc-4566",
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "ports-iana-sip-parameters",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-session-initiation-protocol-wikipedia",
+        "wikipedia-session-description-protocol-wikipedia"
+      ],
+      "href": "rooms/prack-early-media.html",
+      "last_verified": null
+    },
+    {
+      "key": "read-a-ladder",
+      "title": "Reading a ladder",
+      "level": 8,
+      "outcomes": [
+        "One leg at a time."
+      ],
+      "sources": [
+        "rfc-3261",
+        "rfc-3515",
+        "rfc-3264",
+        "rfc-3550",
+        "cisco-cisco-unified-border-element-product-support",
+        "cisco-understand-ios-and-ios-xe-call-routing",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-session-initiation-protocol-wikipedia"
+      ],
+      "href": "rooms/read-a-ladder.html",
+      "last_verified": null
+    },
+    {
+      "key": "recording-compliance",
+      "title": "Compliance is a reason, not a setting",
+      "level": 10,
+      "outcomes": [
+        "RFC 7245 says some environments record every call for regulatory, compliance, and consumer-protection reasons."
+      ],
+      "sources": [
+        "rfc-7245",
+        "rfc-7866",
+        "cisco-feature-configuration-guide-for-cucm-release-15-recording"
+      ],
+      "href": "rooms/recording-compliance.html",
+      "last_verified": null
+    },
+    {
+      "key": "recording-phone",
+      "title": "Phone fork and network fork",
+      "level": 10,
+      "outcomes": [
+        "The CUCM 15 feature guide says phone-based recording takes media from the phone. The phone forks two streams to the recording server."
+      ],
+      "sources": [
+        "cisco-feature-configuration-guide-for-cucm-release-15-recording",
+        "cisco-configure-and-troubleshoot-basic-call-recording",
+        "rfc-3550",
+        "cisco-system-configuration-guide-for-cucm-release-15"
+      ],
+      "href": "rooms/recording-phone.html",
+      "last_verified": null
+    },
+    {
+      "key": "recording-siprec",
+      "title": "SIPREC and CUBE as the recording client",
+      "level": 10,
+      "outcomes": [
+        "RFC 7245 describes architectures for recording in a SIP environment by sending a copy of a media stream to a recording device."
+      ],
+      "sources": [
+        "rfc-7245",
+        "rfc-7865",
+        "rfc-7866",
+        "cisco-cube-configuration-guide-sip-forking-ios-xe-17-6-onwards",
+        "rfc-3261",
+        "cisco-cisco-unified-border-element-product-support"
+      ],
+      "href": "rooms/recording-siprec.html",
+      "last_verified": null
+    },
+    {
+      "key": "route-patterns",
+      "title": "Route patterns, lists, and groups",
+      "level": 2,
+      "outcomes": [
+        "A route pattern matches digits."
+      ],
+      "sources": [
+        "cisco-cisco-unified-communications-manager-product-support",
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "cisco-cisco-collaboration-preferred-architectures",
+        "cisco-preferred-architecture-for-cisco-collaboration-15-design-overview-",
+        "ports-cucm-15-tcp-and-udp-port-usage",
+        "ports-iana-sip-parameters",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-voice-over-ip-wikipedia",
+        "wikipedia-cucm-wikipedia-disambiguation"
+      ],
+      "href": "rooms/route-patterns.html",
+      "last_verified": null
+    },
+    {
+      "key": "sip-registration",
+      "title": "Registration",
+      "level": 1,
+      "outcomes": [
+        "REGISTER publishes a Contact. It does not place a call."
+      ],
+      "sources": [
+        "rfc-3261",
+        "cisco-cisco-unified-communications-manager-product-support",
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "ports-cucm-15-tcp-and-udp-port-usage",
+        "ports-iana-sip-parameters",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-session-initiation-protocol-wikipedia",
+        "wikipedia-skinny-client-control-protocol-wikipedia",
+        "wikipedia-cucm-wikipedia-disambiguation"
+      ],
+      "href": "rooms/sip-registration.html",
+      "last_verified": null
+    },
+    {
+      "key": "sip-transactions",
+      "title": "SIP transactions and dialogs",
+      "level": 1,
+      "outcomes": [
+        "A transaction pairs a request with its responses."
+      ],
+      "sources": [
+        "rfc-3261",
+        "rfc-3550",
+        "rfc-4566",
+        "cisco-cisco-unified-communications-manager-product-support",
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "ports-cucm-15-tcp-and-udp-port-usage",
+        "ports-iana-sip-parameters",
+        "ports-iana-rtp-parameters",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-session-initiation-protocol-wikipedia",
+        "wikipedia-real-time-transport-protocol-wikipedia",
+        "rfc-3264"
+      ],
+      "href": "rooms/sip-transactions.html",
+      "last_verified": null
+    },
+    {
+      "key": "sip-trunks",
+      "title": "SIP trunks on CUCM",
+      "level": 2,
+      "outcomes": [
+        "The trunk, the SIP profile, and the security profile are three objects."
+      ],
+      "sources": [
+        "rfc-3261",
+        "rfc-4028",
+        "cisco-cisco-unified-communications-manager-product-support",
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "ports-cucm-15-tcp-and-udp-port-usage",
+        "ports-iana-sip-parameters",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-session-initiation-protocol-wikipedia"
+      ],
+      "href": "rooms/sip-trunks.html",
+      "last_verified": null
+    },
+    {
+      "key": "srst",
+      "title": "SRST",
+      "level": 3,
+      "outcomes": [
+        "SRST is the fallback when phones cannot reach CUCM."
+      ],
+      "sources": [
+        "cisco-cisco-unified-srst-product-support",
+        "cisco-cisco-unified-communications-manager-product-support",
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "ports-cucm-15-tcp-and-udp-port-usage",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-voice-over-ip-wikipedia"
+      ],
+      "href": "rooms/srst.html",
+      "last_verified": null
+    },
+    {
+      "key": "transformations",
+      "title": "Transformations",
+      "level": 2,
+      "outcomes": [
+        "Called, calling, and redirecting numbers are different fields."
+      ],
+      "sources": [
+        "cisco-cisco-unified-communications-manager-product-support",
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "cisco-cisco-collaboration-preferred-architectures",
+        "cisco-preferred-architecture-for-cisco-collaboration-15-design-overview-",
+        "ports-cucm-15-tcp-and-udp-port-usage",
+        "ports-iana-sip-parameters",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-voice-over-ip-wikipedia",
+        "wikipedia-cucm-wikipedia-disambiguation"
+      ],
+      "href": "rooms/transformations.html",
+      "last_verified": null
+    },
+    {
+      "key": "ucce-path",
+      "title": "UCCE from carrier to agent",
+      "level": 6,
+      "outcomes": [
+        "Ingress, routing, queue treatment, and the agent are different stages."
+      ],
+      "sources": [
+        "cisco-cisco-unified-contact-center-enterprise-product-support",
+        "cisco-cisco-unified-communications-manager-product-support",
+        "cisco-system-configuration-guide-for-cucm-release-15",
+        "cisco-cisco-collaboration-preferred-architectures",
+        "ports-cucm-15-tcp-and-udp-port-usage",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-voice-over-ip-wikipedia"
+      ],
+      "href": "rooms/ucce-path.html",
+      "last_verified": null
+    },
+    {
+      "key": "webrtc-bridge",
+      "title": "WebRTC, SIP over WebSocket, and a hosted bridge",
+      "level": 10,
+      "outcomes": [
+        "Wikipedia describes WebRTC as browser and mobile APIs for real-time audio and video without a plugin."
+      ],
+      "sources": [
+        "wikipedia-webrtc-wikipedia",
+        "webrtc-w3c-webrtc-recommendation",
+        "rfc-8825",
+        "rfc-8829",
+        "rfc-7118",
+        "freeswitch-freeswitch-users-manual"
+      ],
+      "href": "rooms/webrtc-bridge.html",
+      "last_verified": null
+    },
+    {
+      "key": "wxcc-and-ucce",
+      "title": "Webex Contact Center beside UCCE",
+      "level": 6,
+      "outcomes": [
+        "Webex Contact Center and UCCE are different products."
+      ],
+      "sources": [
+        "cisco-cisco-unified-contact-center-enterprise-product-support",
+        "webex-webex-help-center",
+        "webex-get-started-with-webex-calling",
+        "community-cisco-community-collaboration-knowledge-base",
+        "wikipedia-voice-over-ip-wikipedia"
+      ],
+      "href": "rooms/wxcc-and-ucce.html",
+      "last_verified": null
+    }
+  ]
+}
